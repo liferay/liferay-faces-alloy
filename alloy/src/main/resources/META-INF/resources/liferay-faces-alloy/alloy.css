@@ -1,0 +1,391 @@
+/* alloy-accordion */
+.alloy-accordion .toggler-content {
+	padding: 0px 4px;
+}
+
+.alloy-accordion .toggler-header {
+	cursor: pointer;
+	font-weight: bold;
+	padding: 4px;
+}
+
+/* alloy-button-row */
+div.alloy-button-row {
+	overflow: visible;
+}
+
+div.alloy-button-row:after {
+	clear: both;
+	content: " ";
+	display: block;
+	overflow: hidden;
+}
+
+div.alloy-button-row button.alloy-button, div.alloy-button-row button.alloy-command-button {
+	margin-right: 4px;
+}
+
+/* alloy-datatable */
+table.alloy-datatable thead th.facet, table.alloy-datatable tfoot td.facet {
+    padding: 2px;
+    text-align: center;
+}
+
+/* alloy-dialog */
+div.alloy-dialog {
+	padding: 6px;
+}
+
+div.alloy-dialog div.modal-header {
+	color: #333;
+	background-color: #f5f5f5;
+}
+
+div.alloy-dialog div.modal-header span.alloy-overlay-title {
+	font-size: 16px;
+	font-weight: bold;
+}
+
+/* alloy-input-date / alloy-input-time */
+.alloy-input-date .input-medium,.alloy-input-date .alloy-button,.alloy-input-date .input-medium,
+.alloy-input-time .alloy-button {
+	margin-bottom: 7px;
+}
+
+/* alloy-input-file */
+.alloy-input-file .select-files-box,.alloy-input-file .upload-files-box {
+	display: inline-block;
+}
+
+.aui .alloy-input-file-button-hidden,.alloy-input-file-button-hidden {
+	display: none;
+}
+
+/* alloy-output-tooltip */
+div.alloy-output-tooltip {
+	text-align: center;
+}
+
+/* alloy-messages */
+.alloy-messages {
+	border: 1px solid #ddd;
+	-webkit-border-radius: 4px;
+	-moz-border-radius: 4px;
+	border-radius: 4px;
+}
+
+table.alloy-messages {
+	border-collapse: separate;
+	border-spacing: 4px;
+	width: 100%;
+}
+
+ul.alloy-messages {
+	list-style-position: inside;
+	margin: 0px;
+	padding: 4px;
+}
+
+/* alloy-paginator */
+div.alloy-paginator div.pagination {
+    margin: 0px;
+}
+
+/* alloy-panel: bootstrap 3 backport */
+div.alloy-panel {
+	margin-bottom: 20px;
+	background-color: #fff;
+	border: 1px solid transparent;
+	border-radius: 4px;
+	-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+	box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+}
+
+div.alloy-panel div.alloy-panel-body {
+	padding: 15px;
+}
+
+div.alloy-panel div.alloy-panel-heading {
+	padding: 10px 15px;
+	border-bottom: 1px solid transparent;
+	border-top-left-radius: 3px;
+	border-top-right-radius: 3px;
+}
+
+div.alloy-panel div.alloy-panel-heading>.dropdown .dropdown-toggle {
+	color: inherit;
+}
+
+div.alloy-panel .alloy-panel-title {
+	color: inherit;
+	margin-top: 0;
+	margin-bottom: 0;
+	font-size: 16px;
+	font-weight: bold;
+}
+
+div.alloy-panel .alloy-panel-title>a {
+	color: inherit;
+}
+
+div.alloy-panel div.alloy-panel-footer {
+	padding: 10px 15px;
+	background-color: #f5f5f5;
+	border-top: 1px solid #ddd;
+	border-bottom-right-radius: 3px;
+	border-bottom-left-radius: 3px;
+}
+
+div.alloy-panel-default {
+	border-color: #ddd;
+}
+
+div.alloy-panel-default>div.alloy-panel-heading {
+	color: #333;
+	background-color: #f5f5f5;
+	border-color: #ddd;
+}
+
+div.alloy-panel-default>div.alloy-panel-heading+.alloy-panel-collapse>div.alloy-panel-body {
+	border-top-color: #ddd;
+}
+
+div.alloy-panel-default>div.alloy-panel-heading .alloy-panel-badge {
+	color: #f5f5f5;
+	background-color: #333;
+}
+
+div.alloy-panel-default>div.panel-footer+div.panel-collapse>div.panel-body {
+	border-bottom-color: #ddd;
+}
+
+/* alloy-popover */
+div.alloy-popover {
+	padding: 6px;
+	text-align: center;
+}
+
+/* alloy-select-boolean-checkbox */
+.alloy-select-boolean-checkbox {
+	vertical-align: baseline;
+}
+
+/* alloy-select-one-radio */
+table.alloy-select-one-radio {
+	border-collapse: separate;
+}
+
+/* alloy-select-many-checkbox */
+table.alloy-select-many-checkbox td,table.alloy-select-one-radio td {
+	padding-right: 30px;
+}
+
+table.alloy-select-many-checkbox td input[type='checkbox'] {
+	vertical-align: baseline;
+}
+
+table.alloy-select-many-checkbox td label {
+	display: inline;
+}
+
+table.alloy-select-many-checkbox td label,table.alloy-select-one-radio td label {
+	white-space: nowrap;
+}
+
+/* yui3-splitbuttonnav */
+li.yui3-menuitem hr {
+	margin: 2px 0px;
+}
+
+a.yui3-menu-label .alloy-icon,li.yui3-menuitem .alloy-icon {
+	margin-right: 4px;
+}
+
+/* yui3-splitbuttonnav: remove content placed :after ul(s) to display inline like normal buttons */
+.yui3-menu-horizontal>div.yui3-menu-content>ul:after {
+	display: none;
+}
+
+/* yui3-splitbuttonnav: adjust padding to make splitButtons look like other bootstrap buttons */
+div.yui3-splitbuttonnav .yui3-menu-label a.btn {
+	padding: 4px 12px;
+}
+
+/* yui3-splitbuttonnav: adjust splitButton menus to look more like other overlays such as popovers and dialogs */
+
+/* yui3-splitbuttonnav: remove this to prevent staggering of "button" divs */
+div.yui3-menu .yui3-menu div.yui3-menu-content {
+	padding: 3px;
+}
+
+div.yui3-menu>div.yui3-menu-content div.yui3-menu>div.yui3-menu-content {
+	border: solid 1px #b3b3b3;
+}
+
+div.yui3-menu>div.yui3-menu-content>ul div.yui3-menu>div.yui3-menu-content>ul {
+	min-width: 11em;
+}
+
+.yui3-menu-content div.yui3-menu-content {
+	border-radius: 6px;
+	margin-top: 4px;
+}
+
+.yui3-menu-content li.yui3-menuitem {
+	padding: 3px 3px 3px 0px;
+}
+
+/* yui3-splitbuttonnav: remove borders */
+.yui3-menu-horizontal div.yui3-menu-content {
+	border: 0;
+}
+ 
+div.yui3-splitbuttonnav .yui3-menu-content ul {
+	list-style-type: none;
+	padding: 0px;
+	margin: 0px;
+}
+
+div.yui3-splitbuttonnav .yui3-menu-content li {
+	border: 0;
+}
+
+.yui3-menu a.yui3-menu-content,.yui3-menu .yui3-menu a.yui3-menu-content {
+	border: 0;
+}
+
+div.yui3-menu-horizontal a.yui3-menu-label,div.yui3-menu-horizontal .yui3-menu-content span.yui3-menu-label,div.yui3-menu-horizontal a.yui3-menuitem-content {
+	border: 0;
+	margin-left: 0;
+}
+
+/* yui3-splitbuttonnav: remove negative margin-left values */
+div.yui3-splitbuttonnav span.yui3-menu-label-menuvisible {
+	margin-left: 0;
+}
+
+div.yui3-menu-horizontal span.yui3-menu-label {
+	margin-left: 0;
+}
+
+/* yui3-splitbuttonnav: btn-default have black font all other btn-* have white font */
+div.yui3-splitbuttonnav .yui3-menu-label a.btn-default {
+	color: #000000;
+}
+
+div.yui3-splitbuttonnav .yui3-menu-label a.btn-primary {
+	color: #ffffff;
+}
+
+div.yui3-splitbuttonnav .yui3-menu-label a.btn-info {
+	color: #ffffff;
+}
+
+div.yui3-splitbuttonnav .yui3-menu-label a.btn-success {
+	color: #ffffff;
+}
+
+div.yui3-splitbuttonnav .yui3-menu-label a.btn-warning {
+	color: #ffffff;
+}
+
+div.yui3-splitbuttonnav .yui3-menu-label a.btn-danger {
+	color: #ffffff;
+}
+
+div.yui3-splitbuttonnav .yui3-menu-label a.btn-inverse {
+	color: #ffffff;
+}
+
+div.yui3-splitbuttonnav .yui3-menu-label a.btn {
+	align-items: flex-start;
+	font-weight: normal;
+}
+
+/* yui3-splitbuttonnav: button radii ... watch out for script tags! */
+div.yui3-splitbuttonnav .btn-group>script:first-child+a.btn {
+	-webkit-border-top-left-radius: 3px;
+	-moz-border-radius-topleft: 3px;
+	border-top-left-radius: 3px;
+	-webkit-border-bottom-left-radius: 3px;
+	-moz-border-radius-bottomleft: 3px;
+	border-bottom-left-radius: 3px;
+}
+
+div.yui3-splitbuttonnav .btn-group>a.btn:first-child {
+	-webkit-border-top-left-radius: 3px;
+	-moz-border-radius-topleft: 3px;
+	border-top-left-radius: 3px;
+	-webkit-border-bottom-left-radius: 3px;
+	-moz-border-radius-bottomleft: 3px;
+	border-bottom-left-radius: 3px;
+}
+
+div.yui3-splitbuttonnav .btn-group>a.btn:last-child {
+	-webkit-border-top-right-radius: 3px;
+	-moz-border-radius-topright: 3px;
+	border-top-right-radius: 3px;
+	-webkit-border-bottom-right-radius: 3px;
+	-moz-border-radius-bottomright: 3px;
+	border-bottom-right-radius: 3px;
+}
+
+/* yui3-splitbuttonnav: sizes */
+div.yui3-splitbuttonnav .yui3-menu-label a.btn-large {
+	padding: 11px 19px;
+	font-size: 17.5px;
+}
+
+div.yui3-splitbuttonnav .yui3-menu-label a.btn-small {
+	padding: 2px 10px;
+	font-size: 11.9px;
+}
+
+div.yui3-splitbuttonnav .yui3-menu-label a.btn-mini {
+	padding: 0 6px;
+	font-size: 10.5px;
+}
+
+/* yui3-splitbuttonnav: disabled */
+div.yui3-splitbuttonnav .yui3-menu-label a.btn-disabled {
+	opacity: .65;
+}
+
+div.yui3-splitbuttonnav .yui3-menu-label span.btn-disabled {
+	float: left;
+	opacity: .65;
+}
+
+/* vertical alloy-progress-bar */
+.alloy-progress-bar .vertical {
+	-o-transform: scaleY(-1);
+	-ms-transform: scaleY(-1);
+	-moz-transform: scaleY(-1);
+	-webkit-transform: scaleY(-1);
+	transform: scaleY(-1);
+	-moz-transform-style: preserve-3d;
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+}
+
+.alloy-progress-bar .vertical .progress-content {
+	transition: height 0.6s ease 0s;
+}
+
+.alloy-progress-bar .vertical p {
+	position: relative;
+	top: 50%;
+	-o-transform: translateY(-50%) scaleY(-1);
+	-ms-transform: translateY(-50%) scaleY(-1);
+	-moz-transform: translateY(-50%) scaleY(-1);
+	-webkit-transform: translateY(-50%) scaleY(-1);
+	transform: translateY(-50%) scaleY(-1);
+}
+
+/* Flip the vertical progressBar for IE8. The reason that the rule below must only target IE8 is because the rule */
+/* above works in IE9, and the rule below would break it if applied in IE9. */
+@media \0screen {
+	.alloy-progress-bar .vertical {
+		-ms-filter:"progid:DXImageTransform.Microsoft.BasicImage(Rotation=2)";
+	}
+}

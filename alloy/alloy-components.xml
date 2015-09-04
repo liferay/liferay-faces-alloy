@@ -1,0 +1,3118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE components>
+<components extends="../util/common-components.xml" defaultYUIRendererParentClass="com.liferay.faces.alloy.render.internal.AlloyRendererBase">
+	<description>
+		<![CDATA[The Liferay Faces Alloy facelet component tags with the <code>alloy:</code> tag name prefix.]]>
+	</description>
+	<extension>
+		<function>
+			<description><![CDATA[Returns an escaped representation of the specified client ID.]]></description>
+			<function-name>escapeClientId</function-name>
+			<function-class>com.liferay.faces.util.component.ComponentUtil</function-class>
+			<function-signature>java.lang.String escapeClientId(java.lang.String)</function-signature>
+		</function>
+		<function>
+			<description><![CDATA[Returns the client ID associated with the specified expression.]]></description>
+			<function-name>findClientId</function-name>
+			<function-class>com.liferay.faces.util.component.ComponentUtil</function-class>
+			<function-signature>java.lang.String findClientId(java.lang.String)</function-signature>
+		</function>
+	</extension>
+	<!-- generateTaglibXML="false" tags for common attributes -->
+	<!-- Common -->
+	<component name="AnchorLinkCommon" generateJava="false" generateTaglibXML="false">
+		<attributes>
+			<attribute>
+				<description>
+					<![CDATA[The character encoding of the resource linked to by this component.]]>
+				</description>
+				<name>charset</name>
+				<generateJava>false</generateJava>
+				<inherited>true</inherited>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[The position and shape of the component's area on the page. Used in image maps.]]>
+				</description>
+				<name>coords</name>
+				<generateJava>false</generateJava>
+				<inherited>true</inherited>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[The language code of the resource linked to by this component.]]>
+				</description>
+				<name>hreflang</name>
+				<generateJava>false</generateJava>
+				<inherited>true</inherited>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[The relationship between the current document and the one linked to by this component. This is a space-separated list of link types. Used by bots, not browsers.]]>
+				</description>
+				<name>rel</name>
+				<generateJava>false</generateJava>
+				<inherited>true</inherited>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[The reverse of the rel attribute. The relationship between the document linked to by this component and the current document. ]]>
+				</description>
+				<name>rev</name>
+				<generateJava>false</generateJava>
+				<inherited>true</inherited>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Used by some browsers with the coords to specify the size, shape, and placement of the link.]]>
+				</description>
+				<name>shape</name>
+				<generateJava>false</generateJava>
+				<inherited>true</inherited>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Specifies which window, tab, or frame to open the link in.]]>
+				</description>
+				<name>target</name>
+				<generateJava>false</generateJava>
+				<inherited>true</inherited>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[HTML passthrough attribute specifying the content type of resource located by the URL in the rendered href attribute.]]>
+				</description>
+				<generateJava>false</generateJava>
+				<inherited>true</inherited>
+				<name>type</name>
+				<type>java.lang.String</type>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="AudioVideoCommon" extendsTags="KeyboardDOMEventsInherited MouseDOMEventsInherited StyleableInherited" generateJava="false" generateTaglibXML="false">
+		<!-- This component exists so that Audio and Video can extend it. It includes all the attributes of -->
+		<!-- Media with <generateJava>false</generateJava>. If Audio and Video extended -->
+		<!-- Media directly, <generateJava> would be true, so getters and setters would be generated -->
+		<!-- unnecessarily. -->
+		<attributes>
+			<attribute>
+				<defaultValue>false</defaultValue>
+				<description>
+					<![CDATA[HTML5 passthrough attribute specifying whether the media will begin playing automatically. Defaults to false.]]>
+				</description>
+				<generateJava>false</generateJava>
+				<name>autoplay</name>
+				<type>boolean</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[The content type of the media. This attribute is required when the <code>value</code> attribute is used to specify the media URL. Otherwise, the contentType defaults to to the content type determined by the JSF runtime for the resource.]]>
+				</description>
+				<generateJava>false</generateJava>
+				<name>contentType</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<defaultValue>false</defaultValue>
+				<description>
+					<![CDATA[HTML5 passthrough attribute specifying whether controls should be rendered for the media. Defaults to false.]]>
+				</description>
+				<generateJava>false</generateJava>
+				<name>controls</name>
+				<type>boolean</type>
+			</attribute>
+			<attribute>
+				<defaultValue>true</defaultValue>
+				<description>
+					<![CDATA[When true the component will gracefully degrade to the Adobe&reg; Flash&reg; player for older browsers. Defaults to true. Defaults to true.]]>
+				</description>
+				<generateJava>false</generateJava>
+				<name>degrade</name>
+				<type>boolean</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[A context-relative path, resource URL, or FacesResource that can be used to retrieve the Adobe&reg; Flash&reg; player. Defaults to the player that comes bundled with AlloyUI. <strong>Note:</strong> The AlloyUI player does not support <code>.ogv</code> or <code>.webm</code> formats.]]>
+				</description>
+				<generateJava>false</generateJava>
+				<name>flashPlayer</name>
+				<type>java.lang.Object</type>
+			</attribute>
+			<attribute>
+				<defaultValue>"9,0,0,0"</defaultValue>
+				<description>
+					<![CDATA[The version of Adobe&reg; Flash&reg; required to play this media. Defaults to <code>"9,0,0,0"</code>.]]>
+				</description>
+				<generateJava>false</generateJava>
+				<name>flashPlayerVersion</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description><![CDATA[The name of the library which contains the resource.]]></description>
+				<generateJava>false</generateJava>
+				<name>library</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<defaultValue>false</defaultValue>
+				<description>
+					<![CDATA[HTML5 passthrough attribute specifying whether the media will restart after it has completed playing. Defaults to false.]]>
+				</description>
+				<generateJava>false</generateJava>
+				<name>loop</name>
+				<type>boolean</type>
+			</attribute>
+			<attribute>
+				<description><![CDATA[The name of the resource file to be included on the page.]]></description>
+				<generateJava>false</generateJava>
+				<name>name</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<defaultValue>false</defaultValue>
+				<description>
+					<![CDATA[HTML5 passthrough attribute specifying whether the media will be muted initially. Defaults to false.]]>
+				</description>
+				<generateJava>false</generateJava>
+				<name>muted</name>
+				<type>boolean</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Javascript to execute when a abort event occurs.]]>
+				</description>
+				<generateJava>false</generateJava>
+				<name>onabort</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Javascript to execute after this component loses focus.]]>
+				</description>
+				<generateJava>false</generateJava>
+				<name>onblur</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Javascript to execute when a canplay event occurs.]]>
+				</description>
+				<generateJava>false</generateJava>
+				<name>oncanplay</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Javascript to execute when a canplaythrough event occurs.]]>
+				</description>
+				<generateJava>false</generateJava>
+				<name>oncanplaythrough</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Javascript to execute when a durationchange event occurs.]]>
+				</description>
+				<generateJava>false</generateJava>
+				<name>ondurationchange</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Javascript to execute when a emptied event occurs.]]>
+				</description>
+				<generateJava>false</generateJava>
+				<name>onemptied</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Javascript to execute when a ended event occurs.]]>
+				</description>
+				<generateJava>false</generateJava>
+				<name>onended</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Javascript to execute when a error event occurs.]]>
+				</description>
+				<generateJava>false</generateJava>
+				<name>onerror</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Javascript to execute when this component gets focus.]]>
+				</description>
+				<generateJava>false</generateJava>
+				<name>onfocus</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Javascript to execute when a loadeddata event occurs.]]>
+				</description>
+				<generateJava>false</generateJava>
+				<name>onloadeddata</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Javascript to execute when a loadedmetadata event occurs.]]>
+				</description>
+				<generateJava>false</generateJava>
+				<name>onloadedmetadata</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Javascript to execute when a loadstart event occurs.]]>
+				</description>
+				<generateJava>false</generateJava>
+				<name>onloadstart</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Javascript to execute when a pause event occurs.]]>
+				</description>
+				<generateJava>false</generateJava>
+				<name>onpause</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Javascript to execute when a play event occurs.]]>
+				</description>
+				<generateJava>false</generateJava>
+				<name>onplay</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Javascript to execute when a playing event occurs.]]>
+				</description>
+				<generateJava>false</generateJava>
+				<name>onplaying</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Javascript to execute when a progress event occurs.]]>
+				</description>
+				<generateJava>false</generateJava>
+				<name>onprogress</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Javascript to execute when a ratechange event occurs.]]>
+				</description>
+				<generateJava>false</generateJava>
+				<name>onratechange</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Javascript to execute when a seeked event occurs.]]>
+				</description>
+				<generateJava>false</generateJava>
+				<name>onseeked</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Javascript to execute when a seeking event occurs.]]>
+				</description>
+				<generateJava>false</generateJava>
+				<name>onseeking</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Javascript to execute when a stalled event occurs.]]>
+				</description>
+				<generateJava>false</generateJava>
+				<name>onstalled</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Javascript to execute when a suspend event occurs.]]>
+				</description>
+				<generateJava>false</generateJava>
+				<name>onsuspend</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Javascript to execute when a timeupdate event occurs.]]>
+				</description>
+				<generateJava>false</generateJava>
+				<name>ontimeupdate</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Javascript to execute when a volumechange event occurs.]]>
+				</description>
+				<generateJava>false</generateJava>
+				<name>onvolumechange</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Javascript to execute when a waiting event occurs.]]>
+				</description>
+				<generateJava>false</generateJava>
+				<name>onwaiting</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[HTML5 passthrough attribute specifying how the media should be loaded in the page.]]>
+				</description>
+				<generateJava>false</generateJava>
+				<name>preload</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[A context-relative path, resource URL, <code>FacesResource</code>, or <code>List&lt;FacesResouce&gt;</code> that can be used to retrieve the media(s).]]>
+				</description>
+				<generateJava>false</generateJava>
+				<name>value</name>
+				<type>java.lang.Object</type>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="ButtonCommon" extendsTags="AltInherited StyleableInherited UIComponentBase" generateJava="false"
+		generateTaglibXML="false">
+		<attributes>
+			<attribute>
+				<description>
+					<![CDATA[HTML passthrough attribute specifying whether or not the component should automatically recieve focus on the initial page load.]]>
+				</description>
+				<name>autofocus</name>
+				<type>java.lang.Boolean</type>
+			</attribute>
+			<attribute>
+				<defaultValue>false</defaultValue>
+				<description>
+					<![CDATA[When this flag is true, the component will be disabled, and the user will be unable to interact with the component.]]>
+				</description>
+				<name>disabled</name>
+				<type>boolean</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Specifies the URL of an image.]]>
+				</description>
+				<name>image</name>
+				<type>java.lang.String</type>
+				<generateJava>false</generateJava>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[The value of this component.]]>
+				</description>
+				<name>value</name>
+				<type>java.lang.Object</type>
+				<generateJava>false</generateJava>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="InputCommon" extendsTags="HTMLAccessibilityEvents HTMLInputEvents StyleableInherited"
+		generateJava="false" generateTaglibXML="false">
+		<attributes>
+			<attribute>
+				<description>
+					<![CDATA[HTML passthrough attribute specifying the maximum length of characters allowed in the element.]]>
+				</description>
+				<name>maxlength</name>
+				<type>int</type>
+				<generateJava>false</generateJava>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="MessageCommon" extendsTags="HTMLPassthrough StyleableInherited UIComponentBase"
+		generateJava="false" generateTaglibXML="false">
+		<attributes>
+			<attribute>
+				<description>
+					<![CDATA[CSS class name that is to be appended to the value of the rendered class attribute when the severity of a FacesMessage is FacesMessage.Severity.ERROR.]]>
+				</description>
+				<name>errorClass</name>
+				<type>java.lang.String</type>
+				<generateJava>false</generateJava>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[CSS style that is to be appended to the value of the rendered style attribute when the severity of a FacesMessage is FacesMessage.Severity.ERROR.]]>
+				</description>
+				<name>errorStyle</name>
+				<type>java.lang.String</type>
+				<generateJava>false</generateJava>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[CSS class name that is to be appended to the value of the rendered class attribute when the severity of a FacesMessage is FacesMessage.Severity.FATAL.]]>
+				</description>
+				<name>fatalClass</name>
+				<type>java.lang.String</type>
+				<generateJava>false</generateJava>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[CSS style that is to be appended to the value of the rendered style attribute when the severity of a FacesMessage is FacesMessage.Severity.FATAL.]]>
+				</description>
+				<name>fatalStyle</name>
+				<type>java.lang.String</type>
+				<generateJava>false</generateJava>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[CSS class name that is to be appended to the value of the rendered class attribute when the severity of a FacesMessage is FacesMessage.Severity.INFO.]]>
+				</description>
+				<name>infoClass</name>
+				<type>java.lang.String</type>
+				<generateJava>false</generateJava>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[CSS style that is to be appended to the value of the rendered style attribute when the severity of a FacesMessage is FacesMessage.Severity.INFO.]]>
+				</description>
+				<name>infoStyle</name>
+				<type>java.lang.String</type>
+				<generateJava>false</generateJava>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[When true, the value of FacesMessage.getDetail() is rendered. This is true by default.]]>
+				</description>
+				<name>showDetail</name>
+				<type>boolean</type>
+				<generateJava>false</generateJava>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[When true, the value of FacesMessage.getSummary() is rendered. This is true by default.]]>
+				</description>
+				<name>showSummary</name>
+				<type>boolean</type>
+				<generateJava>false</generateJava>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[When true, the value of FacesMessage.getDetail() rendered as a tooltip. This is false by default.]]>
+				</description>
+				<name>tooltip</name>
+				<type>boolean</type>
+				<generateJava>false</generateJava>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[CSS class name that is to be appended to the value of the rendered class attribute when the severity of a FacesMessage is FacesMessage.Severity.WARN.]]>
+				</description>
+				<name>warnClass</name>
+				<type>java.lang.String</type>
+				<generateJava>false</generateJava>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[CSS style that is to be appended to the value of the rendered style attribute when the severity of a FacesMessage is FacesMessage.Severity.WARN.]]>
+				</description>
+				<name>warnStyle</name>
+				<type>java.lang.String</type>
+				<generateJava>false</generateJava>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="ResourceCommon" generateJava="false" generateTaglibXML="false">
+		<attributes>
+			<attribute>
+				<description><![CDATA[The name of the library which contains the resource.]]></description>
+				<name>library</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description><![CDATA[The name of the resource file to be included on the page.]]></description>
+				<name>name</name>
+				<type>java.lang.String</type>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="OverlayCommon" extendsTags="ClientComponent" generateJava="false" generateTaglibXML="false">
+		<attributes>
+			<attribute>
+				<defaultValue>false</defaultValue>
+				<description>
+					<![CDATA[When true, the component is visible initially. The default is false.]]>
+				</description>
+				<name>autoShow</name>
+				<type>boolean</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[The text to place in the header of the component.]]>
+				</description>
+				<name>headerText</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<defaultValue>Integer.MIN_VALUE</defaultValue>
+				<description>
+					<![CDATA[Specifies the stack order of the component. The default value is a constant from the Liferay.zIndex JavaScript object.]]>
+				</description>
+				<name>zIndex</name>
+				<type>java.lang.Integer</type>
+				<yui>true</yui>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="DialogPopoverCommon" generateJava="false" generateTaglibXML="false">
+		<attributes>
+			<attribute>
+				<defaultValue>true</defaultValue>
+				<description>
+					<![CDATA[When true, an "x" is placed in the upper right corner that the user can click on to hide/dismiss the overlay window. The default is true.]]>
+				</description>
+				<name>hideIconRendered</name>
+				<type>boolean</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[The height of the dialog/popover.]]>
+				</description>
+				<name>height</name>
+				<type>String</type>
+				<yui>true</yui>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[The width of the dialog/popover.]]>
+				</description>
+				<name>width</name>
+				<type>String</type>
+				<yui>true</yui>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="InputDateTimeCommon"
+		extendsTags="AltInherited DisabledInherited FacesMessageLabelInheritedGenerateJavaFalse InputCommon SizeInherited"
+		generateJava="false" generateTaglibXML="false">
+		<!-- This component exists so that InputDate and InputTime can extend it. It includes all the attributes of -->
+		<!-- InputDateTime with <generateJava>false</generateJava>. If InputDate and InputTime extended -->
+		<!-- InputDateTime directly, <generateJava> would be true, so getters and setters would be generated -->
+		<!-- unnecessarily. -->
+		<attributes>
+			<attribute>
+				<description>
+					<![CDATA[When this flag is true, the component will hide when an item is selected. The default value is true.]]>
+				</description>
+				<name>autoHide</name>
+				<type>java.lang.Boolean</type>
+				<generateJava>false</generateJava>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[The key name that can be used to reference the component on the client.]]>
+				</description>
+				<name>clientKey</name>
+				<type>java.lang.String</type>
+				<generateJava>false</generateJava>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[The locale of the component which can be of type <code>java.lang.String</code> or <code>java.util.Locale</code>.]]>
+				</description>
+				<name>locale</name>
+				<type>java.lang.Object</type>
+				<generateJava>false</generateJava>
+			</attribute>
+			<attribute>
+				<defaultValue>true</defaultValue>
+				<description>
+					<![CDATA[When true, the component will render an HTML5 <code>&lt;input type="date" /&gt;</code> element on small/mobile displays in order to enable selection of a date with the mobile device's native UI. The default is true.]]>
+				</description>
+				<name>nativeWhenMobile</name>
+				<type>boolean</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Specifies which event will pop up the picker. Valid values are <code>focus</code> (the default), <code>button</code>, and <code>both</code>.]]>
+				</description>
+				<type>java.lang.String</type>
+				<name>showOn</name>
+				<generateJava>false</generateJava>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[The time zone for the built-in DateTimeConverter.]]>
+				</description>
+				<type>java.lang.Object</type>
+				<name>timeZone</name>
+				<generateJava>false</generateJava>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Specifies the stack order of the component. The default value is a constant from the Liferay.zIndex JavaScript object.]]>
+				</description>
+				<name>zIndex</name>
+				<type>java.lang.Integer</type>
+				<generateJava>false</generateJava>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="OutputTooltipPopoverCommon" extendsTags="OverlayCommon" generateJava="false"
+		generateTaglibXML="false">
+		<attributes>
+			<attribute>
+				<defaultValue>"right"</defaultValue>
+				<description>
+					<![CDATA[Indicates the side of the associated component where the tooltip should appear ("right", "left", "top", "bottom"). Default is "right".]]>
+				</description>
+				<name>position</name>
+				<type>java.lang.String</type>
+				<yui>true</yui>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="AutoAjaxCommon" generateJava="false" generateTaglibXML="false">
+		<attributes>
+			<attribute>
+				<defaultValue>true</defaultValue>
+				<description>
+					<![CDATA[When this flag is true, clicking on the button will cause the form to be submitted via XmlHttpRequest. The default is true.]]>
+				</description>
+				<name>ajax</name>
+				<type>boolean</type>
+			</attribute>
+			<attribute>
+				<defaultValue>getExecute()</defaultValue>
+				<description>
+					<![CDATA[Synonym for the <code>execute</code> attribute.]]>
+				</description>
+				<name>process</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<defaultValue>getRender()</defaultValue>
+				<description>
+					<![CDATA[Synonym for the <code>render</code> attribute.]]>
+				</description>
+				<name>update</name>
+				<type>java.lang.String</type>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="AutoAjaxCommandCommon" extendsTags="AutoAjaxCommon" generateJava="false" generateTaglibXML="false">
+		<attributes>
+			<attribute>
+				<defaultValue>"@all"</defaultValue>
+				<description>
+					<![CDATA[Space-delimited list of component ids that are to participate in the APPLY_REQUEST_VALUES, PROCESS_VALIDATIONS, UPDATE_MODEL_VALUES, and INVOKE_APPLICATION phases of the JSF lifecycle. The following keywords may also appear in the list: <code>@this</code>, <code>@form</code>, <code>@all</code>, <code>@none</code>. The default value is <code>@all</code>.]]>
+				</description>
+				<name>execute</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<defaultValue>"@none"</defaultValue>
+				<description>
+					<![CDATA[Space-delimited list of component ids that are to participate in the RENDER_RESPONSE phase of the JSF lifecycle and be re-rendered in the DOM after the response is received from the XmlHttpRequest. The following keywords may also appear in the list: <code>@this</code>, <code>@form</code>, <code>@all</code>, <code>@none</code>. The default value is <code>@none</code>.]]>
+				</description>
+				<name>render</name>
+				<type>java.lang.String</type>
+			</attribute>
+		</attributes>
+	</component>
+	<!-- /Common -->
+	<!-- /generateTaglibXML="false" tags for common attributes -->
+	<component name="Accordion" extendsTags="ClientComponent UIData Styleable UIComponentBase"
+		module="aui-toggler" parentClass="javax.faces.component.UIData" yui="true" yuiName="TogglerDelegate">
+		<description>
+			<![CDATA[Accordion is a UIData (iterator) component that renders child tabs either statically or dynamically.]]>
+		</description>
+		<attributes>
+			<attribute>
+				<defaultValue>false</defaultValue>
+				<description>
+					<![CDATA[When true, expanding an item will not collapse the others, allowing multiple items to be visible at the same time. The default value is false.]]>
+				</description>
+				<name>multiple</name>
+				<type>boolean</type>
+				<yui>false</yui>
+				<yuiName>closeAllOnExpand</yuiName>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Integer representing the zero-based index representing the selected tab.]]>
+				</description>
+				<name>selectedIndex</name>
+				<type>java.lang.Integer</type>
+				<yui>false</yui>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="Audio" extendsTags="AudioVideoCommon" parentClass="com.liferay.faces.alloy.component.media.Media" rendererParentClass="com.liferay.faces.alloy.component.media.internal.MediaRenderer">
+		<description>
+			<![CDATA[Audio is a UIComponent that renders a <code>&lt;div&gt;</code> that contains an HTML5 <code>&lt;audio&gt;</code> element. It also supports graceful degradation for older browsers.]]>
+		</description>
+		<attributes>
+			<attribute>
+				<description>
+					<![CDATA[HTML5 passthrough attribute specifying the initial volume of the player.]]>
+				</description>
+				<name>volume</name>
+				<type>java.lang.String</type>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="AutoComplete" delegateRendererType="javax.faces.Text"
+		extendsTags="ClientComponent FacesMessageLabelInheritedGenerateJavaFalse InputText"
+		handlerClass="com.liferay.faces.alloy.component.autocomplete.internal.AutoCompleteHandler"
+		parentClass="com.liferay.faces.alloy.component.inputtext.InputTextBase"
+		rendererParentClass="com.liferay.faces.alloy.render.internal.DelegatingAlloyRendererBase" yui="true"
+		module="autocomplete">
+		<description>
+			<![CDATA[AutoComplete is a UIInput component that renders an <code>&lt;input&gt;</code> element and a popup list. Suggestions (list items) can be added by specifying f:selectItem or f:selectItems tags as children. Since it extends HtmlInputText, it supports all the features of h:inputText.]]>
+		</description>
+		<attributes>
+			<attribute>
+				<defaultValue>true</defaultValue>
+				<description>
+					<![CDATA[When true, the first item in the list will be activated so that users can press TAB or ENTER to select it. Default is <code>true</code>.]]>
+				</description>
+				<name>activateFirstItem</name>
+				<type>boolean</type>
+				<yui>true</yui>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[When true, if the active option of the autoComplete is not in view, the view will be scrolled to ensure that the active option is displayed to the user.]]>
+				</description>
+				<name>autoScroll</name>
+				<type>java.lang.Boolean</type>
+				<yui>true</yui>
+				<yuiName>scrollIntoView</yuiName>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[HTML passthrough attribute specifying whether autocomplete is turned on or off for the rendered HTML element. Valid values include <code>off</code> (default) and <code>on</code>.]]>
+				</description>
+				<generateJava>false</generateJava>
+				<name>autocomplete</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[When true, the autoComplete list will wrap around allowing users to use keyboard navigation to move from the top of the list to the bottom and vice versa. Defaults to <code>true</code>.]]>
+				</description>
+				<name>circular</name>
+				<type>java.lang.Boolean</type>
+				<yui>true</yui>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[A callback which filters the client-side results. The callback must be a function which takes <code>query</code> and <code>source</code> arguments and returns an array of <code>String</code>s as a result. The <code>source</code> argument recieved by this callback is an <code>Array</code> of <code>Object</code>s which contain three properties: <code>display</code>, <code>raw</code>, and <code>text</code>. <strong>Note:</strong> This attribute will be ignored if the <code>serverCustomFilter</code> or <code>serverFilterType</code> attributes are used.]]>
+				</description>
+				<name>clientCustomFilter</name>
+				<type>java.lang.String</type>
+				<yui>true</yui>
+				<yuiName>resultFilters</yuiName>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Specifies the type of filter that will be used for the autoComplete results. Valid values include:
+						<ul>
+							<li>charMatch</li>
+							<li>charMatchCase</li>
+							<li>phraseMatch</li>
+							<li>phraseMatchCase</li>
+							<li>startsWith</li>
+							<li>startsWithCase</li>
+							<li>subWordMatch</li>
+							<li>subWordMatchCase</li>
+							<li>wordMatch</li>
+							<li>wordMatchCase</li>
+						</ul>
+					<strong>Note:</strong> This attribute will be ignored if the <code>serverCustomFilter</code>, <code>serverFilterType</code>, or <code>clientCustomFilter</code> attributes are used.]]>
+				</description>
+				<name>clientFilterType</name>
+				<type>java.lang.String</type>
+				<yui>true</yui>
+				<!-- <yuiName>resultFilters</yuiName> -->
+				<!-- This attribute actually maps to the resultFilters attribute. However, since -->
+				<!-- clientCustomFilter also maps to resultFilters, we cannot specify resultFilters here. -->
+				<!-- Two attributes cannot map to the same yui attribute (unless their java types are different -->
+				<!-- because the generator will create the same exact method twice and cause a compile failure. -->
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[The delay in milliseconds before a request for filtering occurs. After the <code>autoComplete</code> receives input, it waits the specified number of milliseconds before sending a request for filtering it's source. If input occurs before the specified number of milliseconds has elapsed, the timer is reset.]]>
+				</description>
+				<name>delay</name>
+				<type>java.lang.Integer</type>
+				<yui>true</yui>
+				<yuiName>queryDelay</yuiName>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[The string which delimits the part of the text that will have completion. For example, if <code>delimiter=" "</code>, then only the text after the final space will have completion. <strong>Note:</strong> if <code>listItemRequired="true"</code>, this attribute is ignored.]]>
+				</description>
+				<name>delimiter</name>
+				<type>java.lang.String</type>
+				<yui>true</yui>
+				<yuiName>queryDelimiter</yuiName>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[The the height (in pixels) of the rendered autoComplete list.]]>
+				</description>
+				<name>height</name>
+				<type>java.lang.String</type>
+				<yui>true</yui>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Specifies the type of highlighter that will be used for the autoComplete results. Valid values include:
+						<ul>
+							<li>charMatch</li>
+							<li>charMatchCase</li>
+							<li>phraseMatch</li>
+							<li>phraseMatchCase</li>
+							<li>startsWith</li>
+							<li>startsWithCase</li>
+							<li>subWordMatch</li>
+							<li>subWordMatchCase</li>
+							<li>wordMatch</li>
+							<li>wordMatchCase</li>
+						</ul>
+					]]>
+				</description>
+				<name>highlighterType</name>
+				<type>java.lang.String</type>
+				<yui>true</yui>
+				<yuiName>resultHighlighter</yuiName>
+			</attribute>
+			<attribute>
+				<defaultValue>false</defaultValue>
+				<description>
+					<![CDATA[When true, the component will perform server-side validation to ensure that the value entered is on the list of completion items. Default is <code>false</code>.]]>
+				</description>
+				<name>listItemRequired</name>
+				<type>boolean</type>
+				<yui>true</yui>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[The maximum amount of autoComplete results.]]>
+				</description>
+				<name>maxItems</name>
+				<type>java.lang.Integer</type>
+				<yui>true</yui>
+				<yuiName>maxResults</yuiName>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[The minimum length of input required to trigger a query.]]>
+				</description>
+				<name>minChars</name>
+				<type>java.lang.Integer</type>
+				<yui>true</yui>
+				<yuiName>minQueryLength</yuiName>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[A method that is executed when a query occurs. The method must be <code>public</code>, return a <code>java.util.List&lt;java.lang.String&gt;</code>, and takes a <code>java.lang.String</code> and a <code>java.util.List&lt;java.lang.String&gt;</code> as a arguments. The <code>String</code> passed to the method is the current query. The <code>List&lt;String&gt;</code> is an immutable list of unfiltered results. The method must return a <code>List&lt;String&gt;</code> which contains the filtered results.]]>
+				</description>
+				<method-signature>
+					java.util.List&lt;java.lang.String&gt; filterResults(java.lang.String, java.util.List&lt;java.lang.String&gt;)
+				</method-signature>
+				<name>serverCustomFilter</name>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Specifies the type of filter that will be used for the autoComplete results. Valid values include:
+						<ul>
+							<li>charMatch</li>
+							<li>charMatchCase</li>
+							<li>phraseMatch</li>
+							<li>phraseMatchCase</li>
+							<li>startsWith</li>
+							<li>startsWithCase</li>
+							<li>subWordMatch</li>
+							<li>subWordMatchCase</li>
+							<li>wordMatch</li>
+							<li>wordMatchCase</li>
+						</ul>
+					<strong>Note:</strong> This attribute will be ignored if the <code>serverCustomFilter</code> attribute is used.]]>
+				</description>
+				<name>serverFilterType</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<defaultValue>true</defaultValue>
+				<description>
+					<![CDATA[When <code>true</code>, pressing TAB selects the active autoComplete option. Defaults to <code>true</code>.]]>
+				</description>
+				<name>tabSelect</name>
+				<type>boolean</type>
+				<yui>true</yui>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[The the width (in pixels) of the rendered autoComplete list.]]>
+				</description>
+				<name>width</name>
+				<type>java.lang.String</type>
+				<yui>true</yui>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="Body" delegateRendererType="javax.faces.Body" extendsTags="StyleableInherited"
+		parentClass="javax.faces.component.html.HtmlBody"
+		rendererParentClass="com.liferay.faces.util.render.DelegatingRendererBase">
+		<description>
+			<![CDATA[Body is a UIOutput that renders a <code>&lt;body&gt;</code> element for webapps and a <code>&lt;div&gt;</code> for portlets. Since it extends HtmlBody, it supports all the features of h:body.]]>
+		</description>
+	</component>
+	<component name="Button" delegateRendererType="javax.faces.Button" extendsTags="ButtonCommon UIOutcomeTarget"
+		parentClass="javax.faces.component.html.HtmlOutcomeTargetButton"
+		rendererParentClass="com.liferay.faces.alloy.component.button.internal.ButtonRendererCompat">
+		<description>
+			<![CDATA[Button is a UIOutput component that renders a styleable HTML <code>&lt;button&gt;</code> element. The default type is button. Since it extends <a href="http://docs.oracle.com/javaee/7/api/javax/faces/component/html/HtmlOutcomeTargetButton.html" target="_blank"><code>HtmlOutcomeTargetButton</code></a> it supports all the features of <a href="https://javaserverfaces.java.net/nonav/docs/2.2/vdldocs/facelets/h/button.html" target="_blank"><code>h:button</code></a>. The component does not need to be a child of h:form since the outcome attribute is designed to navigate via HTTP GET.]]>
+		</description>
+		<attributes>
+			<attribute>
+				<description>
+					<![CDATA[The type of the button: button (default), submit, or reset.]]>
+				</description>
+				<name>type</name>
+				<type>java.lang.String</type>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="ButtonRow" delegateRendererType="javax.faces.Group" extendsTags="HTMLCommonEvents"
+		extraStyleClasses="button-holder" parentClass="javax.faces.component.html.HtmlPanelGroup"
+		rendererParentClass="com.liferay.faces.util.render.DelegatingRendererBase">
+		<description>
+			<![CDATA[ButtonRow is a UIPanel component that renders a <code>&lt;div&gt;</code> element for grouping purposes. Since it extends HtmlPanelGroup, it supports all the features of h:panelGroup.]]>
+		</description>
+	</component>
+	<component name="Column" extendsTags="AutoAjaxCommon Styleable UIComponentBase" parentClass="javax.faces.component.html.HtmlColumn">
+		<description>
+			<![CDATA[Column is a UIColumn component that renders a div with CSS class name <code>span#</code> (for example: <code>span1</code> or <code>span5</code>).]]>
+		</description>
+		<attributes>
+			<attribute>
+				<defaultValue>"@parent"</defaultValue>
+				<description>
+					<![CDATA[Space-delimited list of component ids that are to participate in the APPLY_REQUEST_VALUES, PROCESS_VALIDATIONS, UPDATE_MODEL_VALUES, and INVOKE_APPLICATION phases of the JSF lifecycle. The following keywords may also appear in the list: <code>@this</code>, <code>@form</code>, <code>@all</code>, <code>@none</code>, <code>@parent</code>. The default value is <code>@parent</code> (meaning, the parent alloy:dataTable).]]>
+				</description>
+				<name>execute</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[When alloy:column is a child of alloy:dataTabe, this is the JavaBean property that is to be used for filtering.]]>
+				</description>
+				<name>filterBy</name>
+				<type>java.lang.Object</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[When alloy:column is a child of alloy:dataTable, this is the name of the CSS class that is to be rendered within the class attribute of the table's <code>&lt;td&gt;</code> element inside the <code>&lt;tfoot&gt;</code> element.]]>
+				</description>
+				<name>footerClass</name>
+				<type>java.lang.String</type>
+				<generateJava>false</generateJava>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[When alloy:column is a child of alloy:dataTable, this is the name of the CSS class that is to be rendered within the class attribute of the table's <code>&lt;th&gt;</code> element inside the <code>&lt;thead&gt;</code> element.]]>
+				</description>
+				<name>headerClass</name>
+				<type>java.lang.String</type>
+				<generateJava>false</generateJava>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[When alloy:column is a child of alloy:dataTable, this is the text for the column header. This attribute can be used as a convenience instead of specifying a child <code>&lt;f:facet name="header" /&gt;</code> tag.]]>
+				</description>
+				<name>headerText</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[When alloy:column is a child of alloy:row, this is the width that the column will be offset by as a unit from 1 to 12. This value is rendered as a CSS class as <code>offset#</code> (for example if offset="4", the CSS class rendered will be <code>offset4</code>). If both the offsetWidth and offset attributes are present, the offsetWidth attribute determines the value of the offset. Please consider using offsetWidth.]]>
+				</description>
+				<name>offset</name>
+				<type>java.lang.Integer</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[When alloy:column is a child of alloy:row, this is the width that the column will be offset by as a percent. This value selects the offset via the formula <code>offset = (offsetWidth/100)*12 (rounded to the nearest whole number)</code>. If both the offsetWidth and offset attributes are present, the offsetWidth attribute determines the value of the offset.]]>
+				</description>
+				<name>offsetWidth</name>
+				<type>java.lang.Integer</type>
+			</attribute>
+			<attribute>
+				<defaultValue>"@parent"</defaultValue>
+				<description>
+					<![CDATA[Space-delimited list of component ids that are to participate in the RENDER_RESPONSE phase of the JSF lifecycle and be re-rendered in the DOM after the response is received from the XmlHttpRequest. The following keywords may also appear in the list: <code>@this</code>, <code>@form</code>, <code>@all</code>, <code>@none</code>, <code>@parent</code>. The default value is <code>@parent</code> (meaning, the parent alloy:dataTable).]]>
+				</description>
+				<name>render</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[When alloy:column is a child of alloy:row and this flag is true, then the column is to be rendered as a <code>&lt;th&gt;</code> element with <code>scope=row</code>.]]>
+				</description>
+				<name>rowHeader</name>
+				<type>boolean</type>
+				<generateJava>false</generateJava>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[When alloy:column is a child of alloy:dataTabe, this is the JavaBean property that is to be used for sorting.]]>
+				</description>
+				<name>sortBy</name>
+				<type>java.lang.Object</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Indicates the sort order for the column. Valid values are <code>ascending</code>, <code>descending</code>, and <code>none</code>.]]>
+				</description>
+				<name>sortOrder</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[When alloy:column is a child of alloy:row, this is the width of this column as a unit from 1 to 12. This value is rendered as a CSS class as <code>span#</code> (for example if span="4", the CSS class rendered will be <code>span4</code>). If both the width and span attributes are present, the width attribute determines the value of the span number. Please consider using width.]]>
+				</description>
+				<name>span</name>
+				<type>java.lang.Integer</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[When alloy:column is a child of alloy:row, this is the width of the column as a percent. This value selects the span number via the formula <code>span = (width/100)*12 (rounded to the nearest whole number)</code>. If both the width and span attributes are present, the width attribute determines the value of the span number.]]>
+				</description>
+				<name>width</name>
+				<type>java.lang.Integer</type>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="CommandButton" delegateRendererType="javax.faces.Button"
+		extendsTags="AutoAjaxCommandCommon ButtonCommon UICommand"
+		parentClass="javax.faces.component.html.HtmlCommandButton"
+		rendererParentClass="com.liferay.faces.alloy.component.button.internal.AbstractButtonRenderer">
+		<description>
+			<![CDATA[CommandButton is a UICommand component that renders a styleable HTML <code>&lt;button&gt;</code> element. The default type is submit. Since it extends <a href="http://docs.oracle.com/javaee/7/api/javax/faces/component/html/HtmlCommandButton.html" target="_blank"><code>HtmlCommandButton</code></a> it supports all the features of <a href="https://javaserverfaces.java.net/nonav/docs/2.2/vdldocs/facelets/h/commandButton.html" target="_blank"><code>h:commandButton</code></a>. The component must be a child of h:form in order to trigger the action or actionListener.]]>
+		</description>
+		<attributes>
+			<attribute>
+				<description>
+					<![CDATA[The type of the button: button, submit (default), or reset.]]>
+				</description>
+				<name>type</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<!-- h:commandButton attributes -->
+			<attribute>
+				<defaultToComponentLabel>false</defaultToComponentLabel>
+				<description>
+					<![CDATA[A name for this component to be rendered to the user. This name should be localized for the user.]]>
+				</description>
+				<name>label</name>
+				<type>java.lang.String</type>
+				<generateJava>false</generateJava>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Javascript to execute after this component's value has changed, and then it loses focus.]]>
+				</description>
+				<name>onchange</name>
+				<type>java.lang.String</type>
+				<generateJava>false</generateJava>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Javascript to execute when the user selects this component.]]>
+				</description>
+				<name>onselect</name>
+				<type>java.lang.String</type>
+				<generateJava>false</generateJava>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[When true, this causes an attribute to be rendered as readonly="readonly", and prevents the user from changing the value of this component.]]>
+				</description>
+				<name>readonly</name>
+				<type>java.lang.Boolean</type>
+				<generateJava>false</generateJava>
+			</attribute>
+			<!-- /h:commandButton attributes -->
+		</attributes>
+	</component>
+	<component name="CommandLink" delegateRendererType="javax.faces.Link"
+		extendsTags="AnchorLinkCommon AutoAjaxCommandCommon DisabledInherited UICommand ValueInherited"
+		parentClass="javax.faces.component.html.HtmlCommandLink" rendererParentClass="com.liferay.faces.util.render.DelegatingRendererBase">
+		<description>
+			<![CDATA[CommandLink is a UICommand component that renders an HTML <code>&lt;a&gt;</code> element. Since it extends HtmlCommandLink, it supports all the features of h:commandLink. The component must be a child of h:form in order to trigger the action or actionListener.]]>
+		</description>
+	</component>
+	<component name="DataItem" extendsTags="Styleable UIComponentBase" parentClass="javax.faces.component.UIColumn">
+		<description>
+			<![CDATA[DataItem is a UIColumn component component that is designed to be used as a child of DataList and renders its children inside a <code>&lt;li&gt;</code> or <code>&lt;dt&gt;</code> element.]]>
+		</description>
+	</component>
+	<component name="DataList" extendsTags="Styleable UIData UIComponentBase"
+		parentClass="javax.faces.component.UIData" >
+		<description>
+			<![CDATA[DataList is a UIData (iterator) component that renders <code>&lt;ul&gt;</code> (unordered), <code>&lt;ol&gt;</code> (ordered), or <code>&lt;dl&gt;</code> (description) lists.]]>
+		</description>
+		<attributes>
+			<attribute>
+				<defaultValue>"unordered"</defaultValue>
+				<description>
+					<![CDATA[The type of the list to render. Valid values are "unordered", "ordered" and "description". The default is "unordered".]]>
+				</description>
+				<name>type</name>
+				<type>java.lang.String</type>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="DataTable" extendsTags="ClientComponent UIData HTMLCommonEvents HTMLPassthrough HTMLTable"
+		extraStyleClasses="table table-bordered table-hover table-striped"
+		module="aui-datatable" parentClass="javax.faces.component.html.HtmlDataTable"
+		rendererParentClass="com.liferay.faces.alloy.render.internal.AlloyRendererBase" yui="true">
+		<description>
+			<![CDATA[DataTable is a UIData (iterator) component that renders a <code>&lt;table&gt;</code> element representing tabular data and is designed to be used in conjunction with alloy:column child component tags. Since it extends HtmlDataTable, it supports all the features of h:dataTable.]]>
+		</description>
+		<attributes>
+			<attribute>
+				<description>
+					<![CDATA[The first row number that is to be displayed, relative to zero.]]>
+				</description>
+				<name>first</name>
+				<type>int</type>
+				<generateJava>false</generateJava>
+			</attribute>
+			<attribute>
+				<defaultValue>false</defaultValue>
+				<description>
+					<![CDATA[When true, multiple columns can be selected by the user when the meta key is held down during a left click on a sortable column header. The default is false.]]>
+				</description>
+				<name>multiColumnSort</name>
+				<type>boolean</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[The total number of rows that are to be displayed. If not set, then all rows are displayed.]]>
+				</description>
+				<name>rows</name>
+				<type>int</type>
+				<generateJava>false</generateJava>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Indicates the type of row selection. Valid values are <code>"checkbox"</code>, <code>"radio"</code>.]]>
+				</description>
+				<name>selectionMode</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Comma-delimited list of row indexes that indicate which rows are selected.]]>
+				</description>
+				<name>selectedRowIndexes</name>
+				<type>java.lang.String</type>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="Dialog" delegateRendererType="javax.faces.Group"
+		extendsTags="HTMLCommonEvents DialogPopoverCommon OverlayCommon" module="aui-modal"
+		parentClass="com.liferay.faces.alloy.component.panelgroup.PanelGroupBlockLayout"
+		rendererParentClass="com.liferay.faces.alloy.component.overlay.internal.OverlayRendererBase"
+		yui="true" yuiName="Modal">
+		<description>
+			<![CDATA[Dialog is a UIPanel component that that renders a <code>&lt;div&gt;</code> element that is initially styled with display:none so that it can be popped-up as an overlay by calling the JavaScript API. Since it extends HtmlPanelGroup, it supports all the features of h:panelGroup.]]>
+		</description>
+		<attributes>
+			<attribute>
+				<defaultValue>false</defaultValue>
+				<description>
+					<![CDATA[When true, the overlay window is automatically hidden when the user clicks outside of it. The default is false.]]>
+				</description>
+				<name>dismissible</name>
+				<type>boolean</type>
+			</attribute>
+			<attribute>
+				<defaultValue>false</defaultValue>
+				<description>
+					<![CDATA[When true the user must interact with the child dialog window before continuing to interact with the parent. The default is true.]]>
+				</description>
+				<name>modal</name>
+				<type>boolean</type>
+				<yui>true</yui>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="Field" extendsTags="PanelGroup" parentClass="com.liferay.faces.alloy.component.panelgroup.PanelGroupBlockLayout"
+		rendererParentClass="com.liferay.faces.alloy.component.panelgroup.internal.PanelGroupRendererBase">
+		<description>
+			<![CDATA[Field is a UIPanel component that renders a <code>&lt;div&gt;</code> element and a <code>&lt;label&gt;</code> element in order to wrap a field. Since it extends PanelGroup, it supports all the features of alloy:panelGroup.]]>
+		</description>
+		<attributes>
+			<attribute>
+				<defaultToComponentLabel>false</defaultToComponentLabel>
+				<description>
+					<![CDATA[The text value for the rendered &lt;label&gt; element.]]>
+				</description>
+				<name>label</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<defaultValue>true</defaultValue>
+				<description>
+					<![CDATA[When this flag is true, the label will be rendered before the rendered children.]]>
+				</description>
+				<name>labelFirst</name>
+				<type>boolean</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Specifies whether the HTML element rendered by this component will be a <code>div</code> (default) or a <code>span</code>. If the value of this attribute is <code>block</code>, the rendered element will be a <code>div</code>.]]>
+				</description>
+				<name>layout</name>
+				<type>java.lang.String</type>
+				<generateJava>false</generateJava>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="Fieldset" extendsTags="KeyboardDOMEvents MouseDOMEvents Styleable UIComponentBase"
+		extraStyleClasses="fieldset" parentClass="javax.faces.component.UIPanel"
+		rendererParentClass="com.liferay.faces.alloy.render.internal.PassThroughRenderer">
+		<description>
+			<![CDATA[Fieldset is a UIPanel component that renders a &lt;fieldset&gt; element in order to group form elements.]]>
+		</description>
+		<attributes>
+			<attribute>
+				<defaultValue>false</defaultValue>
+				<description>
+					<![CDATA[When this flag is true, the component will be disabled, and the user will be unable to interact with the component.]]>
+				</description>
+				<name>disabled</name>
+				<type>boolean</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[The text value for the rendered &lt;legend&gt; element.]]>
+				</description>
+				<name>legend</name>
+				<type>java.lang.String</type>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="Form" delegateRendererType="javax.faces.Form" extendsTags="HTMLCommonEvents HTMLPassthrough"
+		parentClass="javax.faces.component.html.HtmlForm"
+		rendererParentClass="com.liferay.faces.util.render.DelegatingRendererBase">
+		<description>
+			<![CDATA[Form is an <a href="http://docs.oracle.com/javaee/7/api/javax/faces/component/html/HtmlForm.html" target="_blank"><code>HtmlForm</code></a> component that delegates rendering to its JSF renderer.]]>
+		</description>
+		<attributes>
+			<attribute>
+				<description>
+		<![CDATA[HTML4 legacy passthrough attribute that has been made obsolete in HTML5 and is not supported by most browsers. The value can be a comma-delimited list of mime-types that the server accepts during file upload.]]>
+				</description>
+				<name>accept</name>
+				<type>java.lang.String</type>
+				<generateJava>false</generateJava>
+			</attribute>
+			<attribute>
+				<description>
+		<![CDATA[HTML passthrough attribute (accept-charset) is a space-separated list of character encodings associated with form submission.]]>
+				</description>
+				<name>acceptcharset</name>
+				<type>java.lang.String</type>
+				<generateJava>false</generateJava>
+			</attribute>
+			<attribute>
+				<description>
+		<![CDATA[HTML passthrough attribute that specifies how form-data should be encoded with form submission. Default is "application/x-www-form-urlencoded"]]>
+				</description>
+				<name>enctype</name>
+				<type>java.lang.String</type>
+				<generateJava>false</generateJava>
+			</attribute>
+			<attribute>
+				<defaultValue>false</defaultValue>
+				<description>
+					<![CDATA[When this flag is true, view parameters (specified via <code>f:viewParam</code> tags) will be included in the URL rendered in the action attribute.]]>
+				</description>
+				<name>includeViewParams</name>
+				<type>boolean</type>
+			</attribute>
+			<attribute>
+				<description>
+		<![CDATA[When true, the form will prepend its id to child components. This is true by default.]]>
+				</description>
+				<name>prependId</name>
+				<type>boolean</type>
+				<generateJava>false</generateJava>
+			</attribute>
+			<attribute>
+				<description>
+		<![CDATA[HTML passthrough attribute that specifies the name of a tab/window/iframe that displays the results of the form submission.]]>
+				</description>
+				<name>target</name>
+				<type>java.lang.String</type>
+				<generateJava>false</generateJava>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="Head" delegateRendererType="javax.faces.Head" extendsTags="Styleable UIOutput"
+		parentClass="javax.faces.component.html.HtmlHead"
+		rendererParentClass="com.liferay.faces.util.render.DelegatingRendererBase">
+		<description><![CDATA[Head is a UIOutput that renders a <code>&lt;head&gt;</code> element for webapps, but not for portlets. In the case of portlets, the presence of alloy:head informs the JSF portlet bridge that JSF resources with target="head" should be included in the <code>&lt;head&gt;</code> element rendered by the portal. Since it extends HtmlHead, it supports all the features of h:head.]]></description>
+		<attributes>
+			<attribute>
+				<description>
+					<![CDATA[HTML passthrough attribute specifying the reading direction for the element For example, right to left (RTL), or left to right (LTR).]]>
+				</description>
+				<name>dir</name>
+				<type>java.lang.String</type>
+				<generateJava>false</generateJava>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[HTML passthrough attribute specifying the language code used in the element.]]>
+				</description>
+				<name>lang</name>
+				<type>java.lang.String</type>
+				<generateJava>false</generateJava>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[HTML passthrough attribute specifying the XML namespace used in the element.]]>
+				</description>
+				<name>xmlns</name>
+				<type>java.lang.String</type>
+				<generateJava>false</generateJava>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="Icon" extendsTags="Styleable UIComponentBase">
+		<description>
+			<![CDATA[Icon is a component that renders a span which contains an icon specified by the name attribute.]]>
+		</description>
+		<attributes>
+			<attribute>
+				<description>
+					<![CDATA[The icon which this component will render. A list of valid icons can be found at <a href="http://liferay.github.io/alloy-bootstrap/base-css.html#icons" target="_blank">Bootstrap Base CSS</a>. <b>Note:</b> icon names must be specified without the <code>icon-</code> prefix.]]>
+				</description>
+				<name>name</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[The color of the icon which this component will render. The default is black. Another option is white.]]>
+				</description>
+				<name>color</name>
+				<type>java.lang.String</type>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="Image" delegateRendererType="javax.faces.Image"
+		extendsTags="AltInherited HTMLPassthrough HTMLCommonEvents"
+		parentClass="javax.faces.component.html.HtmlGraphicImage"
+		rendererParentClass="com.liferay.faces.util.render.DelegatingRendererBase">
+		<description>
+			<![CDATA[Image is a UIGraphic component that renders an img element. Since it extends HtmlGraphicImage, it supports all the features of h:graphicImage.]]>
+		</description>
+		<attributes>
+			<attribute>
+				<description>
+					<![CDATA[The height (in pixels) of the image.]]>
+				</description>
+				<name>height</name>
+				<type>java.lang.String</type>
+				<generateJava>false</generateJava>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[When true, the image is part of a server-side image with clickable areas.]]>
+				</description>
+				<name>ismap</name>
+				<type>boolean</type>
+				<generateJava>false</generateJava>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[The library that contains the JSF image resource.]]>
+				</description>
+				<name>library</name>
+				<type>java.lang.String</type>
+				<generateJava>false</generateJava>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[A URL linking to a page that contains a description of the image.]]>
+				</description>
+				<name>longdesc</name>
+				<type>java.lang.String</type>
+				<generateJava>false</generateJava>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[The name of the JSF image resource.]]>
+				</description>
+				<name>name</name>
+				<type>java.lang.String</type>
+				<generateJava>false</generateJava>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[An alias for the 'value' attribute.]]>
+				</description>
+				<name>url</name>
+				<type>java.lang.String</type>
+				<generateJava>false</generateJava>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Specifies the name or id of the map associated with the clickable areas of the image.]]>
+				</description>
+				<name>usemap</name>
+				<type>java.lang.String</type>
+				<generateJava>false</generateJava>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[A context-relative path that can be used to retrieve the image.]]>
+				</description>
+				<name>value</name>
+				<type>java.lang.Object</type>
+				<generateJava>false</generateJava>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[The width (in pixels) of the image.]]>
+				</description>
+				<name>width</name>
+				<type>java.lang.String</type>
+				<generateJava>false</generateJava>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="InputDate" delegateRendererType="javax.faces.Text" extendsTags="InputDateTimeCommon"
+		parentClass="com.liferay.faces.alloy.component.inputdatetime.InputDateTime"
+		rendererParentClass="com.liferay.faces.alloy.component.inputdatetime.internal.InputDateTimeRenderer"
+		module="aui-datepicker" yui="true" yuiName="DatePicker">
+		<description>
+			<![CDATA[InputDate is a UIInput component that renders an <code>&lt;input type="text"&gt;</code> element and a calendar-popover with selectable dates. The component attempts to automatically convert the submitted value to a Date via a built-in DateTimeConverter.]]>
+		</description>
+		<attributes>
+			<attribute>
+				<description>
+					<![CDATA[The format of the date that corresponds to patterns described in the javadoc for <code>java.text.SimpleDateFormat</code>.]]>
+				</description>
+				<name>pattern</name>
+				<type>java.lang.String</type>
+				<yui>true</yui>
+				<yuiName>mask</yuiName>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[The maximum date that can be selected by the user. This attribute can be of type <code>java.lang.String</code> or <code>java.util.Date</code>.]]>
+				</description>
+				<name>maxDate</name>
+				<type>java.lang.Object</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[The minimum date that can be selected by the user. This attribute can be of type <code>java.lang.String</code> or <code>java.util.Date</code>.]]>
+				</description>
+				<name>minDate</name>
+				<type>java.lang.Object</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[The number of month panes shown in the popup calendar. Valid values are 1 (the default), 2, and 3.]]>
+				</description>
+				<name>panes</name>
+				<type>java.lang.Integer</type>
+				<yui>true</yui>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="InputDateTime" extendsTags="InputDateTimeCommon"
+		generateTaglibXML="false" parentClass="com.liferay.faces.alloy.component.inputtext.InputTextBase"
+		rendererParentClass="com.liferay.faces.alloy.render.internal.DelegatingAlloyRendererBase">
+		<attributes>
+			<attribute>
+				<description>
+					<![CDATA[When this flag is true, the component will hide when an item is selected. The default value is true.]]>
+				</description>
+				<name>autoHide</name>
+				<type>java.lang.Boolean</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[The key name that can be used to reference the component on the client.]]>
+				</description>
+				<name>clientKey</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[The locale of the component which can be of type <code>java.lang.String</code> or <code>java.util.Locale</code>.]]>
+				</description>
+				<name>locale</name>
+				<type>java.lang.Object</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Specifies which event will pop up the picker. Valid values are <code>focus</code> (the default), <code>button</code>, and <code>both</code>.]]>
+				</description>
+				<name>showOn</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[The time zone of the component (defaults to "Greenwich").]]>
+				</description>
+				<name>timeZone</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Specifies the stack order of the component. The default value is a constant from the Liferay.zIndex JavaScript object.]]>
+				</description>
+				<name>zIndex</name>
+				<type>java.lang.Integer</type>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="InputFile" delegateRendererType="javax.faces.File" extendsTags="ClientComponent InputText"
+		extraStyleClasses="field" handlerClass="com.liferay.faces.alloy.component.inputfile.internal.InputFileHandler"
+		module="uploader" parentClass="javax.faces.component.html.HtmlInputFile"
+		rendererParentClass="com.liferay.faces.alloy.component.inputfile.internal.InputFileRendererCompat"
+		yui="true" yuiName="Uploader">
+		<description>
+			<![CDATA[InputFile is a UIInput component that renders an <code>&lt;input&gt;</code> element with type=file. Since it extends HtmlInputFile, it supports all the features of h:inputFile and also supports multi-file uploads, instant-Ajax, preview, upload progress, and validation.]]>
+		</description>
+		<attributes>
+			<attribute>
+				<defaultValue>false</defaultValue>
+				<description>
+					<![CDATA[When this flag is true, selected files are appended to the preview table. Otherwise, the preview table is cleared when new files are selected. The default value is false. NOTE: This feature is only available when showProgress=true.]]>
+				</description>
+				<name>appendNewFiles</name>
+				<type>boolean</type>
+				<yui>true</yui>
+			</attribute>
+			<attribute>
+				<defaultValue>false</defaultValue>
+				<description>
+					<![CDATA[When this flag is true, files are uploaded automatically as soon as they are selected. The default value is false.]]>
+				</description>
+				<name>auto</name>
+				<type>boolean</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Comma-delimited list of uploaded file MIME types that are valid. If not specified, then all MIME types are assumed to be valid.]]>
+				</description>
+				<name>contentTypes</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[A method that is executed when a file is uploaded. The method must be <code>public</code>, return <code>void</code>, and take a <code>FileUploadEvent</code> argument.]]>
+				</description>
+				<name>fileUploadListener</name>
+				<method-signature>
+					void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEvent)
+				</method-signature>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[The absolute path that uploaded file should be copied to. If not specified, then the value of the &lt;location&gt; element specified in the Servlet 3.0 web.xml &lt;multipart-config&gt; of the FacesServlet &lt;servlet&gt; will be utilized. Otherwise, the value of the "com.liferay.faces.util.uploadedFilesDir" context-param is utilizied.]]>
+				</description>
+				<type>java.lang.String</type>
+				<name>location</name>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Maximum length (in bytes) permitted for each individual uploaded file. If not specified, then files of any length are assumed to be valid.]]>
+				</description>
+				<name>maxFileSize</name>
+				<type>java.lang.Long</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[HTML passthrough attribute specifying whether or not multiple files can be uploaded. Valid values are blank (to upload a single file) or "multiple" (to upload multiple files).]]>
+				</description>
+				<type>java.lang.String</type>
+				<name>multiple</name>
+			</attribute>
+			<attribute>
+				<defaultValue>false</defaultValue>
+				<description>
+					<![CDATA[When this flag is true, a table showing a preview will be rendered when the user selects one or more files. The default value is false.]]>
+				</description>
+				<name>showPreview</name>
+				<type>boolean</type>
+			</attribute>
+			<attribute>
+				<defaultValue>false</defaultValue>
+				<description>
+					<![CDATA[When this flag is true, a table showing file upload progress will be rendered when the user selects one of more files. The default value is false.]]>
+				</description>
+				<name>showProgress</name>
+				<type>boolean</type>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="InputHidden" delegateRendererType="javax.faces.Hidden" extendsTags="UIInput"
+		parentClass="javax.faces.component.html.HtmlInputHidden"
+		rendererParentClass="com.liferay.faces.util.render.DelegatingRendererBase" styleable="false">
+		<description>
+			<![CDATA[InputHidden is a UIInput component that renders an input element with type="hidden". Since it extends HtmlInputHidden, it supports all the features of h:inputHidden.]]>
+		</description>
+	</component>
+	<component name="InputSecret" delegateRendererType="javax.faces.Secret" extraStyleClasses="field"
+		extendsTags="AltInherited AutocompleteInherited DisabledInherited FacesMessageLabelInherited InputCommon SizeInherited"
+		parentClass="javax.faces.component.html.HtmlInputSecret"
+		rendererParentClass="com.liferay.faces.util.render.DelegatingRendererBase">
+		<description>
+			<![CDATA[InputSecret is a UIInput component that renders an <code>&lt;input&gt;</code> element with type="password". Since it extends HtmlInputSecret, it supports all the features of h:inputSecret.]]>
+		</description>
+		<attributes>
+			<attribute>
+				<defaultValue>false</defaultValue>
+				<description>
+					<![CDATA[When true, the value attribute is rendered to the response. The default is false for security purposes.]]>
+				</description>
+				<generateJava>false</generateJava>
+				<inherited>true</inherited>
+				<name>redisplay</name>
+				<type>boolean</type>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="InputSourceCode" delegateRendererType="javax.faces.Text"
+		extendsTags="ClientComponent FacesMessageLabelInherited StyleableInherited UIInput" module="aui-ace-editor"
+		parentClass="javax.faces.component.html.HtmlInputText"
+		rendererParentClass="com.liferay.faces.alloy.render.internal.DelegatingAlloyRendererBase" yui="true"
+		yuiName="AceEditor">
+		<description>
+			<![CDATA[InputSourceCode is an input component that renders a field for editing source code text.]]>
+		</description>
+		<attributes>
+			<attribute>
+				<description>
+					<![CDATA[The the height (in pixels) of the rendered <code>&lt;div&gt;</code>.]]>
+				</description>
+				<name>height</name>
+				<type>java.lang.String</type>
+				<yui>true</yui>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[When true, the background-color of the line that is being edited by the user (the active line) will change to indicate a highlight.]]>
+				</description>
+				<name>highlightActiveLine</name>
+				<type>java.lang.Boolean</type>
+				<yui>true</yui>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[The locale of the text that the editor is editing or displaying.]]>
+				</description>
+				<name>locale</name>
+				<type>java.lang.String</type>
+				<yui>true</yui>
+			</attribute>
+			<attribute>
+				<defaultValue>6</defaultValue>
+				<description>
+					<![CDATA[Minimum number of lines that the editor is to display. Default is 6.]]>
+				</description>
+				<name>minLines</name>
+				<type>java.lang.Integer</type>
+			</attribute>
+			<attribute>
+				<defaultValue>1024</defaultValue>
+				<description>
+					<![CDATA[Specifies the maximum number of lines that the editor is to display before a vertical scrollbar appears. Default is 1024.]]>
+				</description>
+				<name>maxLines</name>
+				<type>java.lang.Integer</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[The name of the programming language that the editor is editing or displaying.]]>
+				</description>
+				<name>mode</name>
+				<type>java.lang.String</type>
+				<yui>true</yui>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[When this flag is true, the component will be read-only, meaning that the user will be unable to edit the source code text. The default value is false.]]>
+				</description>
+				<name>readOnly</name>
+				<type>java.lang.Boolean</type>
+				<yui>true</yui>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[When this flag is true, a vertical line will appear that indicates the print margin. The default value is true.]]>
+				</description>
+				<name>showPrintMargin</name>
+				<type>java.lang.Boolean</type>
+				<yui>true</yui>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[The number of spaces that are to be displayed in place of each tab character.]]>
+				</description>
+				<name>tabSize</name>
+				<type>java.lang.String</type>
+				<yui>true</yui>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[When this flag is true, the tab key will produce space characters rather than tab characters. The default value is false.]]>
+				</description>
+				<name>useSoftTabs</name>
+				<type>java.lang.Boolean</type>
+				<yui>true</yui>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[When this flag is true, the line will break when it reaches the end of the line. The default value is true.]]>
+				</description>
+				<name>useWrapMode</name>
+				<type>java.lang.Boolean</type>
+				<yui>true</yui>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[The value of this component, which is typically bound via EL to a model bean property.]]>
+				</description>
+				<name>value</name>
+				<type>java.lang.Object</type>
+				<inherited>true</inherited>
+				<yui>true</yui>
+				<yuiType>String</yuiType>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[The the width (in pixels) of the rendered <code>&lt;div&gt;</code>.]]>
+				</description>
+				<name>width</name>
+				<type>java.lang.String</type>
+				<yui>true</yui>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="InputText" delegateRendererType="javax.faces.Text" extraStyleClasses="field"
+		extendsTags="AltInherited AutocompleteInherited DisabledInherited FacesMessageLabelInherited InputCommon SizeInherited"
+		parentClass="javax.faces.component.html.HtmlInputText"
+		rendererParentClass="com.liferay.faces.util.render.DelegatingRendererBase">
+		<description>
+			<![CDATA[InputText is a UIInput component that renders a field for editing single-line text. Since it extends HtmlInputText, it supports all the features of h:inputText.]]>
+		</description>
+	</component>
+	<component name="InputTextarea" delegateRendererType="javax.faces.Textarea"
+		extendsTags="FacesMessageLabelInherited DisabledInherited InputCommon" extraStyleClasses="field"
+		parentClass="javax.faces.component.html.HtmlInputTextarea"
+		rendererParentClass="com.liferay.faces.util.render.DelegatingRendererBase">
+		<description>
+			<![CDATA[InputTextarea is a UIInput component that renders a field for editing multi-line text. Since it extends HtmlInputTextarea, it supports all the features of h:inputTextarea.]]>
+		</description>
+		<attributes>
+			<attribute>
+				<description>
+					<![CDATA[The visible width of the text area.]]>
+				</description>
+				<name>cols</name>
+				<type>int</type>
+				<generateJava>false</generateJava>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[The number of lines in the text area.]]>
+				</description>
+				<name>rows</name>
+				<type>int</type>
+				<generateJava>false</generateJava>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="InputTime" delegateRendererType="javax.faces.Text" extendsTags="InputDateTimeCommon"
+		parentClass="com.liferay.faces.alloy.component.inputdatetime.InputDateTime"
+		rendererParentClass="com.liferay.faces.alloy.component.inputdatetime.internal.InputDateTimeRenderer"
+		module="aui-timepicker" yui="true" yuiName="TimePicker">
+		<description>
+			<![CDATA[InputTime is a UIInput component that renders an <code>&lt;input type="text"&gt;</code> element and a list-popover with selectable times. The component attempts to automatically convert the submitted value to a Date via a built-in DateTimeConverter.]]>
+		</description>
+		<attributes>
+			<attribute>
+				<defaultValue>true</defaultValue>
+				<description><![CDATA[When true, the first item in the list will be activated so that users can press TAB or ENTER to select it. Default is <code>true</code>.]]></description>
+				<name>activateFirstItem</name>
+				<type>boolean</type>
+			</attribute>
+			<attribute>
+				<description><![CDATA[When true, the autoComplete list will wrap around allowing users to use keyboard navigation to move from the top of the list to the bottom and vice versa. Defaults to <code>true</code>.]]></description>
+				<name>circular</name>
+				<type>java.lang.Boolean</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Specifies the type of filter that will be used for the pickTime's autocompletion. Valid values include:
+						<ul>
+							<li>charMatch</li>
+							<li>charMatchCase</li>
+							<li>phraseMatch</li>
+							<li>phraseMatchCase</li>
+							<li>startsWith</li>
+							<li>startsWithCase</li>
+							<li>subWordMatch</li>
+							<li>subWordMatchCase</li>
+							<li>wordMatch</li>
+							<li>wordMatchCase</li>
+						</ul>
+					]]>
+				</description>
+				<name>filterType</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[The the height (in pixels) of the rendered autoComplete list.]]>
+				</description>
+				<name>height</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Specifies the type of filter that will be used for the pickTime's autocomplete highlighter. Valid values include:
+						<ul>
+							<li>charMatch</li>
+							<li>charMatchCase</li>
+							<li>phraseMatch</li>
+							<li>phraseMatchCase</li>
+							<li>startsWith</li>
+							<li>startsWithCase</li>
+							<li>subWordMatch</li>
+							<li>subWordMatchCase</li>
+							<li>wordMatch</li>
+							<li>wordMatchCase</li>
+						</ul>
+					]]>
+				</description>
+				<name>highlighterType</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description><![CDATA[The maximum amount of autoComplete results.]]></description>
+				<name>maxResults</name>
+				<type>java.lang.Integer</type>
+			</attribute>
+			<attribute>
+				<defaultValue>"23:59:59"</defaultValue>
+				<description>
+					<![CDATA[The maximum time that can be selected by the user. <code>maxTime</code> can be of type <code>java.lang.String</code> (of the pattern "HH:mm:ss") or <code>java.util.Date</code>.]]>
+				</description>
+				<name>maxTime</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<defaultValue>"00:00:00"</defaultValue>
+				<description>
+					<![CDATA[The minimum time that can be selected by the user. <code>minTime</code> can be of type <code>java.lang.String</code> (of the pattern "HH:mm:ss") or <code>java.util.Date</code>.]]>
+				</description>
+				<name>minTime</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description><![CDATA[The delay in milliseconds before a query occurs. After the <code>autoComplete</code> receives input, it waits the specified number of milliseconds before querying it's source. If input occurs before the specified number of milliseconds has elapsed, the timer is reset.]]></description>
+				<name>queryDelay</name>
+				<type>java.lang.Integer</type>
+			</attribute>
+			<attribute>
+				<defaultValue>true</defaultValue>
+				<description>
+					<![CDATA[When true, the component will render an HTML5 <code>&lt;input type="time" /&gt;</code> element on small/mobile displays in order to enable selection of a time with the mobile device's native UI. The default is true.]]>
+				</description>
+				<name>nativeWhenMobile</name>
+				<type>boolean</type>
+			</attribute>
+			<attribute>
+				<description><![CDATA[When true, if the active option of the autoComplete is not in view, the view will be scrolled to make the active option is displayed to the user.]]></description>
+				<name>scrollIntoView</name>
+				<type>java.lang.Boolean</type>
+			</attribute>
+			<attribute>
+				<defaultValue>3600</defaultValue>
+				<description>
+					<![CDATA[The step in seconds between each selectable timestamp. The default is 3,600 seconds (or 1 hour).]]>
+				</description>
+				<name>step</name>
+				<type>java.lang.Integer</type>
+			</attribute>
+			<attribute>
+				<defaultValue>"hh:mm a"</defaultValue>
+				<description>
+					<![CDATA[The format of the time that corresponds to patterns described in the javadoc for <code>java.text.SimpleDateFormat</code>. The default is <code>hh:mm a</code>.]]>
+				</description>
+				<name>pattern</name>
+				<type>java.lang.String</type>
+				<yui>true</yui>
+				<yuiName>mask</yuiName>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="Link" delegateRendererType="javax.faces.Link"
+		extendsTags="AnchorLinkCommon DisabledInherited ValueInherited StyleableInherited UIComponentBase UIOutcomeTarget"
+		parentClass="javax.faces.component.html.HtmlOutcomeTargetLink"
+		rendererParentClass="com.liferay.faces.util.render.DelegatingRendererBase">
+		<description>
+			<![CDATA[Link is a UIOutcomeTarget component that renders an <code>&lt;a&gt;</code> element (hyperlink). Since it extends HtmlLink, it supports all the features of h:link.]]>
+		</description>
+	</component>
+	<component name="Media" extendsTags="KeyboardDOMEvents MouseDOMEvents Styleable ResourceCommon" generateTaglibXML="false"
+		rendererParentClass="com.liferay.faces.alloy.render.internal.PassThroughRenderer">
+		<attributes>
+			<attribute>
+				<defaultValue>false</defaultValue>
+				<description>
+					<![CDATA[HTML5 passthrough attribute specifying whether the media will begin playing automatically. Defaults to false.]]>
+				</description>
+				<name>autoplay</name>
+				<type>boolean</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[The content type of the media. This attribute is required when the <code>value</code> attribute is used to specify the media URL. Otherwise, the contentType defaults to to the content type determined by the JSF runtime for the resource.]]>
+				</description>
+				<name>contentType</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<defaultValue>false</defaultValue>
+				<description>
+					<![CDATA[HTML5 passthrough attribute specifying whether controls should be rendered for the media. Defaults to false.]]>
+				</description>
+				<name>controls</name>
+				<type>boolean</type>
+			</attribute>
+			<attribute>
+				<defaultValue>true</defaultValue>
+				<description>
+					<![CDATA[When true the component will gracefully degrade to the Adobe&reg; Flash&reg; player for older browsers. Defaults to true.]]>
+				</description>
+				<name>degrade</name>
+				<type>boolean</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[A context-relative path, resource URL, or FacesResource that can be used to retrieve the Adobe&reg; Flash&reg; player. Defaults to the player that comes bundled with AlloyUI. <strong>Note:</strong> The AlloyUI player does not support <code>.ogv</code> or <code>.webm</code> formats.]]>
+				</description>
+				<name>flashPlayer</name>
+				<type>java.lang.Object</type>
+			</attribute>
+			<attribute>
+				<defaultValue>"9,0,0,0"</defaultValue>
+				<description>
+					<![CDATA[The version of Adobe&reg; Flash&reg; required to play this media. Defaults to <code>"9,0,0,0"</code>.]]>
+				</description>
+				<name>flashPlayerVersion</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<defaultValue>false</defaultValue>
+				<description>
+					<![CDATA[HTML5 passthrough attribute specifying whether the media will restart after it has completed playing. Defaults to false.]]>
+				</description>
+				<name>loop</name>
+				<type>boolean</type>
+			</attribute>
+			<attribute>
+				<defaultValue>false</defaultValue>
+				<description>
+					<![CDATA[HTML5 passthrough attribute specifying whether the media will be muted initially. Defaults to false.]]>
+				</description>
+				<name>muted</name>
+				<type>boolean</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Javascript to execute when a abort event occurs.]]>
+				</description>
+				<name>onabort</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Javascript to execute after this component loses focus.]]>
+				</description>
+				<name>onblur</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Javascript to execute when a canplay event occurs.]]>
+				</description>
+				<name>oncanplay</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Javascript to execute when a canplaythrough event occurs.]]>
+				</description>
+				<name>oncanplaythrough</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Javascript to execute when a durationchange event occurs.]]>
+				</description>
+				<name>ondurationchange</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Javascript to execute when a emptied event occurs.]]>
+				</description>
+				<name>onemptied</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Javascript to execute when a ended event occurs.]]>
+				</description>
+				<name>onended</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Javascript to execute when a error event occurs.]]>
+				</description>
+				<name>onerror</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Javascript to execute when this component gets focus.]]>
+				</description>
+				<name>onfocus</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Javascript to execute when a loadeddata event occurs.]]>
+				</description>
+				<name>onloadeddata</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Javascript to execute when a loadedmetadata event occurs.]]>
+				</description>
+				<name>onloadedmetadata</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Javascript to execute when a loadstart event occurs.]]>
+				</description>
+				<name>onloadstart</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Javascript to execute when a pause event occurs.]]>
+				</description>
+				<name>onpause</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Javascript to execute when a play event occurs.]]>
+				</description>
+				<name>onplay</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Javascript to execute when a playing event occurs.]]>
+				</description>
+				<name>onplaying</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Javascript to execute when a progress event occurs.]]>
+				</description>
+				<name>onprogress</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Javascript to execute when a ratechange event occurs.]]>
+				</description>
+				<name>onratechange</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Javascript to execute when a seeked event occurs.]]>
+				</description>
+				<name>onseeked</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Javascript to execute when a seeking event occurs.]]>
+				</description>
+				<name>onseeking</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Javascript to execute when a stalled event occurs.]]>
+				</description>
+				<name>onstalled</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Javascript to execute when a suspend event occurs.]]>
+				</description>
+				<name>onsuspend</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Javascript to execute when a timeupdate event occurs.]]>
+				</description>
+				<name>ontimeupdate</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Javascript to execute when a volumechange event occurs.]]>
+				</description>
+				<name>onvolumechange</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Javascript to execute when a waiting event occurs.]]>
+				</description>
+				<name>onwaiting</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[HTML5 passthrough attribute specifying how the media should be loaded in the page.]]>
+				</description>
+				<name>preload</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[A context-relative path, resource URL, <code>FacesResource</code>, or <code>List&lt;FacesResouce&gt;</code> that can be used to retrieve the media(s).]]>
+				</description>
+				<name>value</name>
+				<type>java.lang.Object</type>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="LoadConstants" generateJava="false"
+		handlerClass="com.liferay.faces.alloy.taghandler.LoadConstants" handlerClassOnly="true">
+		<description>
+			<![CDATA[LoadConstants is a TagHandler which can obtain constants from java for use in EL.]]>
+		</description>
+		<attributes>
+			<attribute>
+				<description>
+					<![CDATA[The fully qualified name of the class, enum, or interface which the constants are being imported from.]]>
+				</description>
+				<name>classType</name>
+				<required>true</required>
+				<type>java.lang.Object</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[The name of the variable that is to be introduced into the EL representing the map of imported constants.]]>
+				</description>
+				<name>var</name>
+				<required>true</required>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[When true, the imported constants will be cached. Defaults to true.]]>
+				</description>
+				<name>cacheable</name>
+				<type>boolean</type>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="Menu" extendsTags="Styleable UIComponentBase" generateRenderer="false"
+		parentClass="javax.faces.component.UIColumn">
+		<description>
+			<![CDATA[A menu is a UIColumn component that renders nested/child tags as content within itself.]]>
+		</description>
+		<attributes>
+			<attribute>
+				<defaultToComponentLabel>false</defaultToComponentLabel>
+				<description>
+					<![CDATA[The visible label for the menu. This is only used if a facet with name="label" is not present.]]>
+				</description>
+				<name>label</name>
+				<type>java.lang.String</type>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="Message" delegateRendererType="javax.faces.Message" extendsTags="MessageCommon"
+		extraStyleClasses="help-inline" parentClass="javax.faces.component.html.HtmlMessage"
+		rendererParentClass="com.liferay.faces.util.render.DelegatingRendererBase">
+		<description>
+			<![CDATA[Message is a UIMessage component that renders a <code>&lt;span&gt;</code> element containing the text of a single FacesMessage for an associated component. Since it extends HtmlMessage, it supports all the features of h:message.]]>
+		</description>
+		<attributes>
+			<attribute>
+				<description>
+					<![CDATA[The id of the component for which to render an associated message.]]>
+				</description>
+				<name>for</name>
+				<type>java.lang.String</type>
+				<generateJava>false</generateJava>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="Messages" delegateRendererType="javax.faces.Messages" extendsTags="MessageCommon"
+		parentClass="javax.faces.component.html.HtmlMessages"
+		rendererParentClass="com.liferay.faces.util.render.DelegatingRendererBase">
+		<description>
+			<![CDATA[Messages is a UIMessages component that the text of one or more FacesMessage instances inside a <code>&lt;ul&gt;</code> element or <code>&lt;table&gt;</code> element for an associated component, according to the layout attribute. Since it extends HtmlMessages, it supports all the features of h:messages.]]>
+		</description>
+		<attributes>
+			<attribute>
+				<description>
+					<![CDATA[The id of the component for which to render associated message(s). This attribute takes precedence over the globalOnly attribute.]]>
+				</description>
+				<name>for</name>
+				<type>java.lang.String</type>
+				<generateJava>false</generateJava>
+			</attribute>
+			<attribute>
+				<description>
+		<![CDATA[When true, only the global FacesMessages (those that are not associated with a specific component) are displayed. This is false by default.]]>
+				</description>
+				<name>globalOnly</name>
+				<type>boolean</type>
+				<generateJava>false</generateJava>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[When 'table', an HTML table is rendered and each message appears in a separate table row. When 'list', an HTML unordered list is rendered and each message appears in a separate list item. The default value is 'list'.]]>
+				</description>
+				<name>layout</name>
+				<type>java.lang.String</type>
+				<generateJava>false</generateJava>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="OutputScript" delegateComponentFamily="javax.faces.component.UIOutput.COMPONENT_FAMILY"
+		delegateRendererType="javax.faces.resource.Script" extendsTags="UIOutput ResourceCommon"
+		parentClass="javax.faces.component.UIOutput" styleable="false"
+		rendererParentClass="com.liferay.faces.alloy.component.outputscriptstylesheet.internal.OutputScriptStylesheetRendererBase">
+		<description>
+			<![CDATA[OutputScript is a UIOutput component that renders a <code>&lt;script&gt;</code> element with <code>type="text/javascript"</code>.]]>
+		</description>
+		<attributes>
+			<attribute>
+				<description><![CDATA[The position on the page where the JavaScript should be rendered. Valid values include <code>body</code>, <code>form</code>, and <code>head</code>. The default value of this attribute is an empty (null) value which causes the <code>&lt;script&gt;</code> to be rendered inline (corresponding to its position in the view). Specifying <code>body</code> for the target attribute will cause the <code>&lt;script&gt;</code> to be rendered as close to the closing body tag as possible.]]></description>
+				<name>target</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description><![CDATA[A comma-delimited list of YUI or AlloyUI modules to load for this script. <strong>Note:</strong> if this attribute is specified, a YUI sandbox will be created automatically for the <code>&lt;script&gt;</code>.]]></description>
+				<name>use</name>
+				<type>java.lang.String</type>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="OutputStylesheet" delegateComponentFamily="javax.faces.component.UIOutput.COMPONENT_FAMILY"
+		delegateRendererType="javax.faces.resource.Stylesheet" extendsTags="UIOutput ResourceCommon"
+		parentClass="javax.faces.component.UIOutput" styleable="false"
+		rendererParentClass="com.liferay.faces.alloy.component.outputscriptstylesheet.internal.OutputScriptStylesheetRendererBase">
+		<description>
+			<![CDATA[OutputStylesheet is a UIOutput component that renders a <code>&lt;style&gt;</code> element.]]>
+		</description>
+		<attributes>
+			<attribute>
+				<description><![CDATA[HTML passthrough attribute specifying the media type of the element.]]></description>
+				<name>media</name>
+				<type>java.lang.String</type>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="OutputFormat" delegateRendererType="javax.faces.Format"
+		extendsTags="HTMLPassthrough UIOutput EscapeInherited" parentClass="javax.faces.component.html.HtmlOutputFormat"
+		rendererParentClass="com.liferay.faces.util.render.DelegatingRendererBase">
+		<description>
+			<![CDATA[OutputFormat is a UIOutput component that renders parameterized text. Since it extends HtmlOutputFormat, it supports all the features of h:outputFormat.]]>
+		</description>
+	</component>
+	<component name="OutputLabel" delegateRendererType="javax.faces.Label"
+		extendsTags="HTMLAccessibilityEvents HTMLPassthrough UIOutput EscapeInherited"
+		parentClass="javax.faces.component.html.HtmlOutputLabel" rendererParentClass="com.liferay.faces.util.render.DelegatingRendererBase">
+		<description>
+			<![CDATA[OutputLabel is a UIOutput component that renders its value attribute within a <code>&lt;label&gt;</code> element. Since it extends HtmlOutputLabel, it supports all the features of h:outputLabel.]]>
+		</description>
+		<attributes>
+			<attribute>
+				<description>
+					<![CDATA[The id of the target associated with this component.]]>
+				</description>
+				<name>for</name>
+				<type>java.lang.String</type>
+				<generateJava>false</generateJava>
+				<inherited>true</inherited>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="OutputLink" delegateRendererType="javax.faces.Link"
+		extendsTags="AnchorLinkCommon DisabledInherited HTMLAccessibilityEvents HTMLPassthrough UIOutput"
+		parentClass="javax.faces.component.html.HtmlOutputLink"
+		rendererParentClass="com.liferay.faces.util.render.DelegatingRendererBase">
+		<description>
+			<![CDATA[OutputLink is a UIOutput component that renders an <code>&lt;a&gt;</code> element (hyperlink). Since it extends HtmlOutputLink, it supports all the features of h:outputLink.]]>
+		</description>
+	</component>
+	<component name="OutputRemainingChars" delegateRendererType="javax.faces.Text"
+		extendsTags="ClientComponent OutputText" module="aui-char-counter"
+		parentClass="com.liferay.faces.alloy.component.outputtext.OutputTextBase" rendererParentClass="com.liferay.faces.alloy.render.internal.DelegatingAlloyRendererBase"
+		yui="true" yuiName="CharCounter">
+		<description>
+			<![CDATA[OutputRemainingChars is a UIOutput component that displays the number of characters remaining for an associated alloy:inputText or alloy:inputTextarea.]]>
+		</description>
+		<attributes>
+			<!-- Attributes used to help the component follow normal JSF usage patterns -->
+			<attribute>
+				<description>
+					<![CDATA[The id of the component for which the remaining characters are to be calculated.]]>
+				</description>
+				<name>for</name>
+				<required>true</required>
+				<type>java.lang.String</type>
+				<yui>true</yui>
+				<yuiName>input</yuiName>
+				<yuiType>ClientId</yuiType>
+			</attribute>
+			<!-- Attributes that need to be generated for the Alloy component -->
+			<attribute>
+				<description>
+					<![CDATA[The maximum number of charachters to allow in the input.]]>
+				</description>
+				<name>maxLength</name>
+				<type>java.lang.Integer</type>
+				<yui>true</yui>
+			</attribute>
+			<!-- Attributes that were invented here to implement Alloy methods -->
+			<attribute>
+				<description>
+					<![CDATA[Node or Selector to display the number of remaining characters calculated by the charCounter.]]>
+				</description>
+				<name>onMaxlengthReached</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Node or Selector to display the number of remaining characters calculated by the charCounter.]]>
+				</description>
+				<name>onceMaxlengthReached</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<!-- Attributes used to help the component follow normal JSF usage patterns -->
+			<attribute>
+				<description>
+					<![CDATA[The value of this component, which is typically bound via EL to a model bean property.]]>
+				</description>
+				<name>value</name>
+				<type>java.lang.Object</type>
+				<inherited>true</inherited>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="OutputText" delegateRendererType="javax.faces.Text" extendsTags="HTMLPassthrough UIOutput"
+		parentClass="javax.faces.component.html.HtmlOutputText"
+		rendererParentClass="com.liferay.faces.util.render.DelegatingRendererBase">
+		<description>
+			<![CDATA[OutputText is an <a href="http://docs.oracle.com/javaee/7/api/javax/faces/component/html/HtmlOutputText.html" target="_blank"><code>HtmlOutputText</code></a> component that delegates rendering to its JSF renderer.]]>
+		</description>
+		<attributes>
+			<attribute>
+				<description><![CDATA[When false, markup will not be escaped. This is true by default.]]></description>
+				<name>escape</name>
+				<type>java.lang.String</type>
+				<generateJava>false</generateJava>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="OutputTooltip" delegateRendererType="javax.faces.Text"
+		extendsTags="OutputText OutputTooltipPopoverCommon" module="aui-tooltip"
+		parentClass="com.liferay.faces.alloy.component.outputtext.OutputTextBase" rendererParentClass="com.liferay.faces.alloy.component.overlay.internal.OverlayRendererBase"
+		yui="true" yuiName="Tooltip">
+		<description>
+			<![CDATA[OutputTooltip is a UIOutput component that renders a <code>&lt;div&gt;</code> element which is displayed as an overlay that is initially styled with display:none so that it can be popped-up as an overlay. Since it extends HtmlOutputText, it supports all the features of h:outputText.]]>
+		</description>
+		<attributes>
+			<attribute>
+				<description>
+					<![CDATA[The id of the component that is associated with the tooltip.]]>
+				</description>
+				<name>for</name>
+				<required>true</required>
+				<type>java.lang.String</type>
+				<yui>true</yui>
+				<yuiName>trigger</yuiName>
+				<yuiType>ClientId</yuiType>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[A number between 0 and 1 describing how much the tooltip will obscure its background when visible.]]>
+				</description>
+				<name>opacity</name>
+				<type>java.lang.String</type>
+				<yui>true</yui>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="Paginator" extendsTags="AutoAjaxCommon Styleable UIComponentBase ValueInherited" parentClass="javax.faces.component.UIComponentBase">
+		<description>
+			<![CDATA[Paginator is a UIComponent that renders pagination controls and can be used in conjunction with alloy:dataTable in order to paginate tabular data.]]>
+		</description>
+		<attributes>
+			<attribute>
+				<defaultValue>"@this @for"</defaultValue>
+				<description>
+					<![CDATA[Space-delimited list of component ids that are to participate in the APPLY_REQUEST_VALUES, PROCESS_VALIDATIONS, UPDATE_MODEL_VALUES, and INVOKE_APPLICATION phases of the JSF lifecycle. The following keywords may also appear in the list: <code>@this</code>, <code>@form</code>, <code>@all</code>, <code>@none</code>. The default value is <code>@this @for</code> (meaning, the paginator itself and the associated alloy:dataTable).]]>
+				</description>
+				<name>execute</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<defaultValue>1</defaultValue>
+				<description>
+					<![CDATA[Integer representing the first page number that is to be displayed in the list of page number controls. The default value is 1.]]>
+				</description>
+				<name>firstPage</name>
+				<type>int</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[The id of the UIData component that is to be paginated.]]>
+				</description>
+				<name>for</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<defaultValue><![CDATA["&laquo;"]]></defaultValue>
+				<description>
+					<![CDATA[The label of the control that causes the first page to be displayed. The default value is the &amp;laquo; character code.]]>
+				</description>
+				<name>firstPageLabel</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<defaultValue><![CDATA["&raquo;"]]></defaultValue>
+				<description>
+					<![CDATA[The label of the control that causes the last page to be displayed. The default value is the &amp;raquo; character code.]]>
+				</description>
+				<name>lastPageLabel</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<defaultValue>10</defaultValue>
+				<description>
+					<![CDATA[Integer representing the maximum number of page number controls that will be displayed. The default value is 10.]]>
+				</description>
+				<name>maxPageNumberControls</name>
+				<type>int</type>
+			</attribute>
+			<attribute>
+				<defaultValue><![CDATA["&rsaquo;"]]></defaultValue>
+				<description>
+					<![CDATA[The label of the control that causes the next page to be displayed. The default value is the &amp;rsaquo; character code.]]>
+				</description>
+				<name>nextPageLabel</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<defaultValue><![CDATA["&lsaquo;"]]></defaultValue>
+				<description>
+					<![CDATA[The label of the control that causes the previous page to be displayed. The default value is the &amp;lsaquo; character code.]]>
+				</description>
+				<name>previousPageLabel</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<defaultValue>"@this @for"</defaultValue>
+				<description>
+					<![CDATA[Space-delimited list of component ids that are to participate in the RENDER_RESPONSE phase of the JSF lifecycle and be re-rendered in the DOM after the response is received from the XmlHttpRequest. The following keywords may also appear in the list: <code>@this</code>, <code>@form</code>, <code>@all</code>, <code>@none</code>, <code>@for</code>. The default value is <code>@this @for</code> (meaning, the paginator itself and the associated alloy:dataTable).]]>
+				</description>
+				<name>render</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<defaultValue>true</defaultValue>
+				<description>
+					<![CDATA[When true, a control will be rendered that will cause the associated UIData component to display the first page . This is true by default.]]>
+				</description>
+				<name>showFirstPageControl</name>
+				<type>boolean</type>
+			</attribute>
+			<attribute>
+				<defaultValue>true</defaultValue>
+				<description>
+					<![CDATA[When true, a control will be rendered that will cause the associated UIData component to display the last page. This is true by default.]]>
+				</description>
+				<name>showLastPageControl</name>
+				<type>boolean</type>
+			</attribute>
+			<attribute>
+				<defaultValue>true</defaultValue>
+				<description>
+					<![CDATA[When true, a control will be rendered that will cause the associated UIData component to display the next page. This is true by default.]]>
+				</description>
+				<name>showNextPageControl</name>
+				<type>boolean</type>
+			</attribute>
+			<attribute>
+				<defaultValue>true</defaultValue>
+				<description>
+					<![CDATA[When true, controls will be rendered for each page number (limited by the maxPageNumberControls attribute). This is true by default.]]>
+				</description>
+				<name>showPageNumberControls</name>
+				<type>boolean</type>
+			</attribute>
+			<attribute>
+				<defaultValue>true</defaultValue>
+				<description>
+					<![CDATA[When true, a control will be rendered that will cause the associated UIData component to display the previous page. This is true by default.]]>
+				</description>
+				<name>showPreviousPageControl</name>
+				<type>boolean</type>
+			</attribute>
+			<attribute>
+				<defaultValue>"bottom"</defaultValue>
+				<description>
+					<![CDATA[When true, a row summary such as "Page 1 of 7." will be displayed based on the <code>results-x-x-of-x-page-x-of-x</code> internationalized language key. This is true by default.]]>
+				</description>
+				<name>summaryPosition</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[List of CSS class names (separated by spaces) that are to be rendered within the class attribute. Valid values are <code>pagination-large</code>, <code>pagination-small</code>, and <code>pagination-mini</code>.]]>
+				</description>
+				<name>styleClass</name>
+				<type>java.lang.String</type>
+				<override>true</override>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="PanelGrid" delegateRendererType="javax.faces.Grid" extendsTags="HTMLTable"
+		parentClass="javax.faces.component.html.HtmlPanelGrid"
+		rendererParentClass="com.liferay.faces.util.render.DelegatingRendererBase">
+		<description>
+			<![CDATA[PanelGrid is a UIPanel component that renders a <code>&lt;table&gt;</code> element to layout its children in a tabular grid. Since it extends HtmlPanelGrid, it supports all the features of h:panelGrid.]]>
+		</description>
+		<attributes>
+			<attribute>
+				<description>
+					<![CDATA[The total number of columns that are to be displayed. When the number of child components exceeds this number, the previous <code>&lt;tr&gt;</code> element is closed and a new <code>&lt;tr&gt;</code> element is opened.]]>
+				</description>
+				<name>columns</name>
+				<type>int</type>
+				<generateJava>false</generateJava>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="Panel" extendsTags="PanelGroup" extraStyleClasses="alloy-panel-default"
+		parentClass="com.liferay.faces.alloy.component.panelgroup.PanelGroupBlockLayout"
+		rendererParentClass="com.liferay.faces.alloy.component.panelgroup.internal.PanelGroupRendererBase">
+		<description>
+			<![CDATA[Panel is a UIPanel component that renders a <code>&lt;div&gt;</code> element with three child <code>&lt;div&gt;</code> elements (one for header, body, and footer). Since it extends HtmlPanelGroup, it supports all the features of h:panelGroup.]]>
+		</description>
+		<attributes>
+			<attribute>
+				<description>
+					<![CDATA[The text to place in the footer of the component.]]>
+				</description>
+				<name>footerText</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[The text to place in the header of the component.]]>
+				</description>
+				<name>headerText</name>
+				<type>java.lang.String</type>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="PanelGroup" delegateRendererType="javax.faces.Group" extendsTags="HTMLCommonEvents"
+		parentClass="javax.faces.component.html.HtmlPanelGroup"
+		rendererParentClass="com.liferay.faces.util.render.DelegatingRendererBase">
+		<description>
+			<![CDATA[PanelGroup is a UIPanel component that renders a <code>&lt;span&gt;</code> or a <code>&lt;div&gt;</code> element for grouping purposes. Since it extends HtmlPanelGroup, it supports all the features of h:panelGroup.]]>
+		</description>
+		<attributes>
+			<attribute>
+				<description>
+					<![CDATA[Specifies whether the HTML element rendered by this component will be a <code>span</code> (default) or a <code>div</code>. If the value of this attribute is <code>block</code>, the rendered element will be a <code>div</code>.]]>
+				</description>
+				<name>layout</name>
+				<type>java.lang.String</type>
+				<generateJava>false</generateJava>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="Popover" delegateRendererType="javax.faces.Group"
+		extendsTags="HTMLCommonEvents DialogPopoverCommon OutputTooltipPopoverCommon"
+		module="aui-popover" parentClass="com.liferay.faces.alloy.component.panelgroup.PanelGroupBlockLayout"
+		rendererParentClass="com.liferay.faces.alloy.component.overlay.internal.OverlayRendererBase" yui="true">
+		<description>
+			<![CDATA[Popover is a UIPanel component that that renders a <code>&lt;div&gt;</code> element that is initially styled with display:none so that it can be popped-up as an overlay by calling the JavaScript API. Since it extends HtmlPanelGroup, it supports all the features of h:panelGroup.]]>
+		</description>
+		<attributes>
+			<attribute>
+				<defaultValue>true</defaultValue>
+				<description>
+					<![CDATA[When true, the overlay window is automatically hidden when the user clicks outside of it. The default is true.]]>
+				</description>
+				<name>dismissible</name>
+				<type>boolean</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[The id of the component that is associated with the popover.]]>
+				</description>
+				<name>for</name>
+				<required>true</required>
+				<type>java.lang.String</type>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="ProgressBar" extendsTags="ClientComponent Styleable UIComponentBase" module="aui-progressbar"
+		parentClass="javax.faces.component.UIComponentBase"
+		rendererParentClass="com.liferay.faces.alloy.render.internal.AlloyRendererBase" yui="true">
+		<description>
+			<![CDATA[<p>ProgressBar is a UIComponent that displays a progress bar and can operate as a server-side or client-side progress indicator.</p>
+				<p>This component includes a client-side JavaScript API which can be accessed using the <code>clientKey</code> attribute and the <code>Liferay.component()</code> method:
+				<ul>
+					<li><code>set()</code> - The <code>set()</code> method can be used to set the client-side value of the component e.g. <code>Liferay.component('progressBar').set('value', value);</code>.</li>
+					<li><code>start()</code> - The <code>start()</code> method starts polling the server for the value of the component.</li>
+					<li><code>stop()</code> - The <code>stop()</code> method stops the component's polling of the server.</li>
+				</ul></p>]]>
+		</description>
+		<attributes>
+			<attribute>
+				<description>
+					<![CDATA[The the height (in pixels) of the progress bar.]]>
+				</description>
+				<name>height</name>
+				<type>java.lang.String</type>
+				<yui>true</yui>
+			</attribute>
+			<attribute>
+				<defaultToComponentLabel>false</defaultToComponentLabel>
+				<description>
+					<![CDATA[The label which appears on the progress bar. The <code>{0}</code> token can be used to include the value in the label.]]>
+				</description>
+				<name>label</name>
+				<type>java.lang.String</type>
+				<yui>true</yui>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[The direction in which the layout of the component should be displayed. Valid values include <code>lineDirection</code> (the default) and <code>pageDirection</code>.]]>
+				</description>
+				<name>layout</name>
+				<type>java.lang.String</type>
+				<yui>true</yui>
+				<yuiName>orientation</yuiName>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[The maximum value that the progress bar can have. Defaults to 100.]]>
+				</description>
+				<name>maxProgress</name>
+				<type>java.lang.Integer</type>
+				<yui>true</yui>
+				<yuiName>max</yuiName>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[The minimum value that the progress bar can have. Defaults to 0.]]>
+				</description>
+				<name>minProgress</name>
+				<type>java.lang.Integer</type>
+				<yui>true</yui>
+				<yuiName>min</yuiName>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Client-side javascript to be executed when progress has completed.]]>
+				</description>
+				<name>oncomplete</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<defaultValue>3000</defaultValue>
+				<description>
+					<![CDATA[The delay (in milliseconds) before dispatching a polling Ajax request after recieving the response of a previous request. Defaults to 3000.]]>
+				</description>
+				<name>pollingDelay</name>
+				<type>java.lang.Integer</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[The the width (in pixels) of the progress bar.]]>
+				</description>
+				<name>width</name>
+				<type>java.lang.String</type>
+				<yui>true</yui>
+			</attribute>
+			<attribute>
+				<defaultValue>0</defaultValue>
+				<description>
+					<![CDATA[The value of this component, which is typically bound via EL to a model bean property. Defaults to 0.]]>
+				</description>
+				<name>value</name>
+				<type>java.lang.Integer</type>
+				<yui>true</yui>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="Resource" styleable="false" generateRenderer="false">
+		<description><![CDATA[A generic resource tag for use with <code>&lt;alloy:audio&gt;</code> and <code>&lt;alloy:video&gt;</code>.]]></description>
+		<attributes>
+			<attribute>
+				<description>
+					<![CDATA[The content type of the resource.]]>
+				</description>
+				<name>contentType</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description><![CDATA[The name of the library which contains the resource.]]></description>
+				<name>library</name>
+				<required>true</required>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description><![CDATA[The name of the resource file to be included on the page.]]></description>
+				<name>name</name>
+				<required>true</required>
+				<type>java.lang.String</type>
+			</attribute>
+		</attributes>
+	</component> 
+	<component name="Row" extendsTags="Styleable UIComponentBase" parentClass="javax.faces.component.UIPanel">
+		<description>
+			<![CDATA[Row is a UIPanel component that renders a <code>&lt;div&gt;</code> and is designed to be used in conjunction with alloy:column child component tags.]]>
+		</description>
+		<attributes>
+			<attribute>
+				<defaultValue>true</defaultValue>
+				<description><![CDATA[When this flag is true, the element will have the CSS class <code>row-fluid</code>. Otherwise, the element will have the CSS class <code>row</code>. The default value is true.]]></description>
+				<name>fluid</name>
+				<type>boolean</type>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="SelectBooleanCheckbox" delegateRendererType="javax.faces.Checkbox"
+		extendsTags="DisabledInherited FacesMessageLabelInherited HTMLAccessibilityEvents HTMLInputEvents"
+		extraStyleClasses="checkbox" parentClass="javax.faces.component.html.HtmlSelectBooleanCheckbox"
+		rendererParentClass="com.liferay.faces.util.render.DelegatingRendererBase">
+		<description>
+			<![CDATA[SelectBooleanCheckbox is a UISelectOne component that renders a check box. Since it extends HtmlSelectBooleanCheckbox, it supports all the features of h:selectBooleanCheckbox such as accepting f:selectItem or f:selectItems as child tags.]]>
+		</description>
+	</component>
+	<component name="SelectManyCheckbox" delegateRendererType="javax.faces.Checkbox"
+		extendsTags="UISelectMany DisabledInherited FacesMessageLabelInherited HTMLAccessibilityEvents HTMLInputEvents"
+		extraStyleClasses="checkbox" parentClass="javax.faces.component.html.HtmlSelectManyCheckbox"
+		rendererParentClass="com.liferay.faces.alloy.component.select.internal.SelectDelegatingRendererBase">
+		<description>
+			<![CDATA[SelectManyCheckbox is a UISelectMany component that renders checkboxes and enables the user to select multiple values. Since it extends HtmlSelectManyCheckbox, it supports all the features of h:selectManyCheckbox such as accepting f:selectItem or f:selectItems as child tags. However, since it does not render a &lt;table&gt;, it does not support h:selectManyCheckbox's <code>border</code> and <code>layout</code> attributes.]]>
+		</description>
+		<attributes>
+			<attribute>
+				<description>
+					<![CDATA[A CSS class name to apply to the label of each selected item.]]>
+				</description>
+				<name>selectedClass</name>
+				<type>java.lang.Boolean</type>
+				<generateJava>false</generateJava>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[A CSS class name to apply to the label of each unselected item.]]>
+				</description>
+				<name>unselectedClass</name>
+				<type>java.lang.Boolean</type>
+				<generateJava>false</generateJava>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="SelectManyListbox" delegateRendererType="javax.faces.Listbox"
+		extendsTags="UISelectMany DisabledInherited FacesMessageLabelInherited HTMLAccessibilityEvents HTMLInputEvents"
+		parentClass="javax.faces.component.html.HtmlSelectManyListbox" rendererParentClass="com.liferay.faces.util.render.DelegatingRendererBase">
+		<description>
+			<![CDATA[SelectManyListbox is a UISelectMany component that renders a select element and enables the user to select multiple values. Since it extends HtmlSelectManyListbox, it supports all the features of h:selectManyListbox such as accepting f:selectItem or f:selectItems as child tags.]]>
+		</description>
+		<attributes>
+			<attribute>
+				<description>
+					<![CDATA[The number of items to show in the box. The default is to show all of the items.]]>
+				</description>
+				<name>size</name>
+				<type>int</type>
+				<generateJava>false</generateJava>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="SelectManyMenu" delegateRendererType="javax.faces.Menu"
+		extendsTags="UISelectMany DisabledInherited FacesMessageLabelInherited HTMLAccessibilityEvents HTMLInputEvents"
+		parentClass="javax.faces.component.html.HtmlSelectManyMenu" rendererParentClass="com.liferay.faces.util.render.DelegatingRendererBase">
+		<description>
+			<![CDATA[SelectManyMenu is a UISelectMany component that renders a select element and enables the user to select multiple values. It has the same basic features of alloy:selectManyListbox except that there is no size attribute because JSF "select*menu" components always render size=1. Since it extends HtmlSelectManyMenu, it supports all the features of h:selectManyMenu such as accepting f:selectItem or f:selectItems as child tags.]]>
+		</description>
+	</component>
+	<component name="SelectOneListbox" delegateRendererType="javax.faces.Listbox"
+		extendsTags="UISelect DisabledInherited FacesMessageLabelInherited HTMLAccessibilityEvents HTMLInputEvents"
+		parentClass="javax.faces.component.html.HtmlSelectOneListbox" rendererParentClass="com.liferay.faces.util.render.DelegatingRendererBase">
+		<description>
+			<![CDATA[SelectOneListbox is a UISelectOne component that renders a `select` element (multi-item list) and enables the user to select one value. Since it extends HtmlSelectOneListbox, it supports all the features of h:selectOneListbox such as accepting f:selectItem or f:selectItems as child tags.]]>
+		</description>
+		<attributes>
+			<attribute>
+				<description>
+					<![CDATA[The number of items to show in the box. The default is to show all of the items.]]>
+				</description>
+				<name>size</name>
+				<type>int</type>
+				<generateJava>false</generateJava>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="SelectOneMenu" delegateRendererType="javax.faces.Menu"
+		extendsTags="UISelect DisabledInherited FacesMessageLabelInherited HTMLAccessibilityEvents HTMLInputEvents"
+		parentClass="javax.faces.component.html.HtmlSelectOneMenu" rendererParentClass="com.liferay.faces.util.render.DelegatingRendererBase">
+		<description>
+			<![CDATA[SelectOneMenu is a UISelectOne component that renders a select element (drop down list) and enables the user to select one value. Since it extends HtmlSelectOneMenu, it supports all the features of h:selectOneMenu such as accepting f:selectItem or f:selectItems as child tags.]]>
+		</description>
+	</component>
+	<component name="SelectOneRadio" delegateRendererType="javax.faces.Radio"
+		extendsTags="UISelect DisabledInherited FacesMessageLabelInherited HTMLAccessibilityEvents HTMLInputEvents"
+		extraStyleClasses="radio" parentClass="javax.faces.component.html.HtmlSelectOneRadio"
+		rendererParentClass="com.liferay.faces.alloy.component.select.internal.SelectDelegatingRendererBase">
+		<description>
+			<![CDATA[SelectOneRadio is a UISelectOne component that renders radio buttons. Since it extends <a href="http://docs.oracle.com/javaee/7/api/javax/faces/component/html/HtmlSelectOneRadio.html" target="_blank"><code>HtmlSelectOneRadio</code></a>, it supports all the features of h:selectOneRadio such as accepting f:selectItem or f:selectItems as child tags. However, since it does not render a &lt;table&gt;, it does not support h:selectOneRadio's <code>border</code> and <code>layout</code> attributes.]]>
+		</description>
+	</component>
+	<component name="SelectRating" delegateRendererType="javax.faces.Radio"
+		extendsTags="FacesMessageLabelInheritedGenerateJavaFalse UIComponentBase UIInput"
+		generateTaglibXML="false" module="aui-rating"
+		parentClass="com.liferay.faces.alloy.component.selectoneradio.SelectOneRadioBase"
+		rendererParentClass="com.liferay.faces.alloy.render.internal.DelegatingAlloyRendererBase"
+		yui="true" yuiName="Rating">
+		<attributes>
+			<attribute>
+				<description>
+					<![CDATA[The class name of the converter instance that is to be used by this component.]]>
+				</description>
+				<name>converter</name>
+				<type>javax.faces.convert.Converter</type>
+				<generateJava>false</generateJava>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[HTML passthrough attribute specifying the language code used in the element.]]>
+				</description>
+				<name>lang</name>
+				<type>java.lang.String</type>
+				<generateJava>false</generateJava>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[HTML passthrough attribute specifying the various WAI-ARIA roles that the element is used for.]]>
+				</description>
+				<name>role</name>
+				<type>java.lang.String</type>
+				<generateJava>false</generateJava>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[HTML passthrough attribute specifying where the element is located in the tabbing progression.]]>
+				</description>
+				<name>tabindex</name>
+				<type>java.lang.String</type>
+				<generateJava>false</generateJava>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[HTML passthrough attribute specifying the title of the element.]]>
+				</description>
+				<name>title</name>
+				<type>java.lang.String</type>
+				<generateJava>false</generateJava>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="SelectStarRating"
+		extendsTags="ClientComponent FacesMessageLabelInheritedGenerateJavaFalse StyleableInherited SelectRating"
+		parentClass="com.liferay.faces.alloy.component.selectrating.SelectRating"
+		rendererParentClass="com.liferay.faces.alloy.component.selectrating.internal.SelectRatingRenderer">
+		<description>
+			<![CDATA[SelectStarRating is a UISelectOne component that renders a set of stars. The user can click on a star to select a rating and click on the same star a second time to de-select a rating. Since it extends <a href="http://docs.oracle.com/javaee/7/api/javax/faces/component/html/HtmlSelectOneRadio.html" target="_blank"><code>HtmlSelectOneRadio</code></a>, it accepts f:selectItem or f:selectItems as child tags.]]>
+		</description>
+	</component>
+	<component name="SelectThumbRating"
+		extendsTags="ClientComponent FacesMessageLabelInheritedGenerateJavaFalse StyleableInherited SelectRating"
+		parentClass="com.liferay.faces.alloy.component.selectrating.SelectRating"
+		rendererParentClass="com.liferay.faces.alloy.component.selectrating.internal.SelectRatingRenderer">
+		<description>
+			<![CDATA[SelectThumbRating is a UISelectOne component that renders a pair of thumb icons that a user can select to indicate their favor. The user can click on a thumb to select their favor and click on the same thumb a second time to de-select their favor. Since it extends <a href="http://docs.oracle.com/javaee/7/api/javax/faces/component/html/HtmlSelectOneRadio.html" target="_blank"><code>HtmlSelectOneRadio</code></a>, it accepts f:selectItem or f:selectItems as children.]]>
+		</description>
+	</component>
+	<component name="Tab" extendsTags="Styleable UIComponentBase"
+		handlerClass="com.liferay.faces.alloy.component.tab.internal.TabHandler"
+		parentClass="javax.faces.component.UIColumn">
+		<description>
+			<![CDATA[Tab is a panel component that renders nested/child tags as content within itself.]]>
+		</description>
+		<attributes>
+			<attribute>
+				<description>
+					<![CDATA[When alloy:tab is a child of alloy:accordion, this is the name of the CSS class that is to be rendered within the class attribute of the content &lt;div&gt;]]>
+				</description>
+				<name>contentClass</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<defaultValue>false</defaultValue>
+				<description>
+					<![CDATA[When this flag is true, the component will be disabled, and the user will be unable to intercat with the component.]]>
+				</description>
+				<name>disabled</name>
+				<type>boolean</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[When alloy:tab is a child of alloy:accordion, this is the name of the CSS class that is to be rendered within the class attribute of the header &lt;div&gt;]]>
+				</description>
+				<name>headerClass</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[The text to place in the header of the component.]]>
+				</description>
+				<name>headerText</name>
+				<type>java.lang.String</type>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="TabView" extendsTags="ClientComponent UIData Styleable UIComponentBase"
+		module="aui-tabview" parentClass="javax.faces.component.UIData" yui="true">
+		<description>
+			<![CDATA[TabView is an iterator component that renders tabs either statically or dynamically.]]>
+		</description>
+		<attributes>
+			<attribute>
+				<description>
+					<![CDATA[The the height (in pixels) of the rendered <code>&lt;div&gt;</code>.]]>
+				</description>
+				<name>height</name>
+				<type>java.lang.String</type>
+				<yui>true</yui>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[Integer representing the zero-based index representing the selected tab.]]>
+				</description>
+				<name>selectedIndex</name>
+				<type>java.lang.Integer</type>
+				<yui>false</yui>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[When true, this indicates whether or not the tabs will appear vertically. The default value is false.]]>
+				</description>
+				<name>stacked</name>
+				<type>java.lang.Boolean</type>
+				<yui>true</yui>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[The the height (in pixels) of the rendered <code>&lt;div&gt;</code>.]]>
+				</description>
+				<name>width</name>
+				<type>java.lang.String</type>
+				<yui>true</yui>
+			</attribute>
+		</attributes>
+	</component>
+	<component name="Video" extendsTags="AudioVideoCommon" parentClass="com.liferay.faces.alloy.component.media.Media" rendererParentClass="com.liferay.faces.alloy.component.media.internal.MediaRenderer">
+		<description>
+			<![CDATA[Video is a UIComponent that renders a <code>&lt;div&gt;</code> that contains an HTML5 <code>&lt;video&gt;</code> element. It also supports graceful degradation for older browsers.]]>
+		</description>
+		<attributes>
+			<attribute>
+				<description>
+					<![CDATA[The height (in pixels) of the video, this attribute will also be applied to the Adobe&reg; Flash&reg; player's <code>&lt;object&gt;</code> tag.]]>
+				</description>
+				<name>height</name>
+				<type>java.lang.String</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[A context-relative path, resource URL, or <code>FacesResource</code> that can be used to retrieve the poster image.]]>
+				</description>
+				<name>poster</name>
+				<type>java.lang.Object</type>
+			</attribute>
+			<attribute>
+				<description>
+					<![CDATA[The width (in pixels) of the video, this attribute will also be applied to the Adobe&reg; Flash&reg; player's <code>&lt;object&gt;</code> tag.]]>
+				</description>
+				<name>width</name>
+				<type>java.lang.String</type>
+			</attribute>
+		</attributes>
+	</component>
+
+</components>

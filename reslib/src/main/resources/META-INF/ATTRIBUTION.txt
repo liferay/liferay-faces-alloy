@@ -1,0 +1,11 @@
+The AlloyUI project is packaged with the liferay-faces-reslib.jar dependency
+and is subject to the license terms found in the alloyui-bsd-license.md file.
+------------------------------------------------------------------------------
+The AlloyUI project packages YUI3 which is subject to the license terms found
+in the yui3-bsd-license.txt file.
+------------------------------------------------------------------------------
+The AlloyUI project packages Bootstrap 2.3.2 which is subject to the license
+terms found in the bootstrap-apache-2.0.txt file.
+------------------------------------------------------------------------------
+The AlloyUI project packages the Ace editor which is subject to the license
+terms found in the ace-editor-bsd.txt file.

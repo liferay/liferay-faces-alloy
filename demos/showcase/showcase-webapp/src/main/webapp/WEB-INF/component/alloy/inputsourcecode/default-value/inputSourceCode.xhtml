@@ -1,0 +1,21 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:alloy="http://liferay.com/faces/alloy"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:showcase="http://xmlns.jcp.org/jsf/composite/showcase">
+
+	<alloy:form>
+		<showcase:example styleClass="editableAceEditor">
+			<alloy:outputLabel for="inputSourceCode" value="#{i18n['source-code']}" />
+			<alloy:inputSourceCode id="inputSourceCode" height="100" mode="xml"
+				rendered="#{showcaseModelBean.selectedComponent.rendered}"
+				required="#{showcaseModelBean.selectedComponent.required}" width="100%"
+				value="#{inputSourceCodeModelBean.sourceText}" />
+			<alloy:message for="inputSourceCode" />
+			<hr />
+			<alloy:commandButton action="#{inputSourceCodeBackingBean.submit}" render="@form"
+				value="#{i18n['submit']}" />
+		</showcase:example>
+		<showcase:outputModel>
+			<alloy:outputText id="modelValue" value="#{inputSourceCodeModelBean.sourceText}" />
+		</showcase:outputModel>
+	</alloy:form>
+
+</ui:composition>

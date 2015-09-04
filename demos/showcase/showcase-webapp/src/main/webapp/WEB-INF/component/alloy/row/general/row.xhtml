@@ -1,0 +1,20 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:alloy="http://liferay.com/faces/alloy"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets" xmlns:showcase="http://xmlns.jcp.org/jsf/composite/showcase">
+
+	<alloy:form>
+		<showcase:example renderedCheckbox="true">
+			<alloy:row rendered="#{showcaseModelBean.selectedComponent.rendered}">
+				<alloy:column width="33">
+					<alloy:outputText value="#{i18n['this-is-column-1']}" />
+				</alloy:column>
+				<alloy:column width="33">
+					<alloy:outputText value="#{i18n['this-is-column-2']}" />
+				</alloy:column>
+				<alloy:column width="33">
+					<alloy:outputText value="#{i18n['this-is-column-3']}" />
+				</alloy:column>
+			</alloy:row>
+		</showcase:example>
+	</alloy:form>
+
+</ui:composition>
