@@ -16,7 +16,7 @@ For the latest news and updates, follow [@liferayfaces](https://twitter.com/life
 
 Using [Maven](https://maven.apache.org/) 3.x:
 
-	mvn clean package
+	mvn clean install
 
 ## Documentation
 
