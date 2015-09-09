@@ -2,11 +2,12 @@
 
 [Liferay Faces Alloy](http://www.liferay.com/community/liferay-projects/liferay-faces/overview) is a JavaServer&trade;
 Faces (JSF) component suite based on [AlloyUI](http://alloyui.com/). Visit the
-(Showcase)[http://www.liferayfaces.org/web/guest/showcase] to try an online demo of the components.
+[Showcase](http://www.liferayfaces.org/web/guest/showcase) to try an online demo of the components.
 
 ## Building From Source
 
 Using [Maven](https://maven.apache.org/) 3.x:
+
 	mvn clean package
 
 ## Documentation
