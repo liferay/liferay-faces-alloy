@@ -19,6 +19,7 @@ import javax.faces.component.UIPanel;
 
 import com.liferay.faces.util.component.Styleable;
 
+
 /**
  * @author	Bruno Basto
  * @author	Kyle Stiemann
@@ -161,8 +162,9 @@ public abstract class FieldsetBase extends UIPanel implements Styleable {
 
 	@Override
 	public String getStyleClass() {
-		// getStateHelper().eval(FieldsetPropertyKeys.styleClass, null) is called because super.getStyleClass() may return the
-		// STYLE_CLASS_NAME of the super class.
+
+		// getStateHelper().eval(FieldsetPropertyKeys.styleClass, null) is called because
+		// super.getStyleClass() may return the styleClass name of the super class.
 		String styleClass = (String) getStateHelper().eval(FieldsetPropertyKeys.styleClass, null);
 
 		return com.liferay.faces.util.component.ComponentUtil.concatCssClasses(styleClass, "alloy-fieldset", "fieldset");

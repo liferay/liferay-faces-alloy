@@ -17,8 +17,9 @@ package com.liferay.faces.alloy.component.dialog;
 import javax.annotation.Generated;
 import com.liferay.faces.alloy.component.panelgroup.PanelGroupBlockLayout;
 
-import com.liferay.faces.util.component.Styleable;
 import com.liferay.faces.util.component.ClientComponent;
+import com.liferay.faces.util.component.Styleable;
+
 
 /**
  * @author	Bruno Basto
@@ -40,7 +41,6 @@ public abstract class DialogBase extends PanelGroupBlockLayout implements Stylea
 		height,
 		hideIconRendered,
 		modal,
-		styleClass,
 		width,
 		zIndex
 	}
@@ -110,16 +110,12 @@ public abstract class DialogBase extends PanelGroupBlockLayout implements Stylea
 
 	@Override
 	public String getStyleClass() {
-		// getStateHelper().eval(DialogPropertyKeys.styleClass, null) is called because super.getStyleClass() may return the
-		// STYLE_CLASS_NAME of the super class.
-		String styleClass = (String) getStateHelper().eval(DialogPropertyKeys.styleClass, null);
+
+		// getStateHelper().eval(PropertyKeys.styleClass, null) is called because
+		// super.getStyleClass() may return the styleClass name of the super class.
+		String styleClass = (String) getStateHelper().eval(PropertyKeys.styleClass, null);
 
 		return com.liferay.faces.util.component.ComponentUtil.concatCssClasses(styleClass, "alloy-dialog");
-	}
-
-	@Override
-	public void setStyleClass(String styleClass) {
-		getStateHelper().put(DialogPropertyKeys.styleClass, styleClass);
 	}
 
 	public String getWidth() {

@@ -21,9 +21,9 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
-import com.liferay.faces.alloy.component.inputdate.InputDate;
-
 import com.liferay.faces.alloy.component.inputdatetime.internal.InputDateTimeRenderer;
+
+import com.liferay.faces.alloy.component.inputdate.InputDate;
 
 
 /**
@@ -34,19 +34,14 @@ import com.liferay.faces.alloy.component.inputdatetime.internal.InputDateTimeRen
 public abstract class InputDateRendererBase extends InputDateTimeRenderer {
 
 	// Protected Constants
-	protected static final String MASK = "mask";
 	protected static final String MAX_DATE = "maxDate";
 	protected static final String MIN_DATE = "minDate";
 	protected static final String NATIVE_WHEN_MOBILE = "nativeWhenMobile";
 	protected static final String PANES = "panes";
-	protected static final String STYLE_CLASS = "styleClass";
-
-	// Private Constants
-	private static final String ALLOY_CLASS_NAME = "DatePicker";
-	private static final String ALLOY_MODULE_NAME = "aui-datepicker";
+	protected static final String MASK = "mask";
 
 	// Modules
-	protected static final String[] MODULES = {ALLOY_MODULE_NAME};
+	protected static final String[] MODULES = { "aui-datepicker" };
 
 	@Override
 	public void encodeAlloyAttributes(FacesContext facesContext, ResponseWriter responseWriter, UIComponent uiComponent) throws IOException {
@@ -75,7 +70,7 @@ public abstract class InputDateRendererBase extends InputDateTimeRenderer {
 
 	@Override
 	public String getAlloyClassName(FacesContext facesContext, UIComponent uiComponent) {
-		return ALLOY_CLASS_NAME;
+		return "DatePicker";
 	}
 
 	@Override

@@ -14,7 +14,6 @@
 package com.liferay.faces.alloy.component.inputdatetime.internal;
 //J-
 
-
 import javax.annotation.Generated;
 
 import com.liferay.faces.alloy.render.internal.DelegatingAlloyRendererBase;
@@ -33,7 +32,6 @@ public abstract class InputDateTimeRendererBase extends DelegatingAlloyRendererB
 	protected static final String LOCALE = "locale";
 	protected static final String NATIVE_WHEN_MOBILE = "nativeWhenMobile";
 	protected static final String SHOW_ON = "showOn";
-	protected static final String STYLE_CLASS = "styleClass";
 	protected static final String TIME_ZONE = "timeZone";
 	protected static final String Z_INDEX = "zIndex";
 }

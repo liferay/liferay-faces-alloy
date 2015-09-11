@@ -21,9 +21,9 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
-import com.liferay.faces.alloy.component.outputtooltip.OutputTooltip;
-
 import com.liferay.faces.alloy.component.overlay.internal.OverlayRendererBase;
+
+import com.liferay.faces.alloy.component.outputtooltip.OutputTooltip;
 
 
 /**
@@ -36,19 +36,14 @@ public abstract class OutputTooltipRendererBase extends OverlayRendererBase {
 	// Protected Constants
 	protected static final String AUTO_SHOW = "autoShow";
 	protected static final String CLIENT_KEY = "clientKey";
+	protected static final String TRIGGER = "trigger";
 	protected static final String HEADER_TEXT = "headerText";
 	protected static final String OPACITY = "opacity";
 	protected static final String POSITION = "position";
-	protected static final String STYLE_CLASS = "styleClass";
-	protected static final String TRIGGER = "trigger";
 	protected static final String Z_INDEX = "zIndex";
 
-	// Private Constants
-	private static final String ALLOY_CLASS_NAME = "Tooltip";
-	private static final String ALLOY_MODULE_NAME = "aui-tooltip";
-
 	// Modules
-	protected static final String[] MODULES = {ALLOY_MODULE_NAME};
+	protected static final String[] MODULES = { "aui-tooltip" };
 
 	@Override
 	public void encodeAlloyAttributes(FacesContext facesContext, ResponseWriter responseWriter, UIComponent uiComponent) throws IOException {
@@ -93,7 +88,7 @@ public abstract class OutputTooltipRendererBase extends OverlayRendererBase {
 
 	@Override
 	public String getAlloyClassName(FacesContext facesContext, UIComponent uiComponent) {
-		return ALLOY_CLASS_NAME;
+		return "Tooltip";
 	}
 
 	@Override

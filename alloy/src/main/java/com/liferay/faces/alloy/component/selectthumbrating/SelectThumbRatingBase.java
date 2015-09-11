@@ -19,6 +19,7 @@ import com.liferay.faces.alloy.component.selectrating.SelectRating;
 
 import com.liferay.faces.util.component.Styleable;
 
+
 /**
  * @author	Bruno Basto
  * @author	Kyle Stiemann
@@ -30,39 +31,19 @@ public abstract class SelectThumbRatingBase extends SelectRating implements Styl
 	public static final String COMPONENT_TYPE = "com.liferay.faces.alloy.component.selectthumbrating.SelectThumbRating";
 	public static final String RENDERER_TYPE = "com.liferay.faces.alloy.component.selectthumbrating.SelectThumbRatingRenderer";
 
-	// Protected Enumerations
-	protected enum SelectThumbRatingPropertyKeys {
-		clientKey,
-		styleClass
-	}
-
 	public SelectThumbRatingBase() {
 		super();
 		setRendererType(RENDERER_TYPE);
 	}
 
 	@Override
-	public String getClientKey() {
-		return (String) getStateHelper().eval(SelectThumbRatingPropertyKeys.clientKey, null);
-	}
-
-	@Override
-	public void setClientKey(String clientKey) {
-		getStateHelper().put(SelectThumbRatingPropertyKeys.clientKey, clientKey);
-	}
-
-	@Override
 	public String getStyleClass() {
-		// getStateHelper().eval(SelectThumbRatingPropertyKeys.styleClass, null) is called because super.getStyleClass() may return the
-		// STYLE_CLASS_NAME of the super class.
-		String styleClass = (String) getStateHelper().eval(SelectThumbRatingPropertyKeys.styleClass, null);
+
+		// getStateHelper().eval(PropertyKeys.styleClass, null) is called because
+		// super.getStyleClass() may return the styleClass name of the super class.
+		String styleClass = (String) getStateHelper().eval(PropertyKeys.styleClass, null);
 
 		return com.liferay.faces.util.component.ComponentUtil.concatCssClasses(styleClass, "alloy-select-thumb-rating");
-	}
-
-	@Override
-	public void setStyleClass(String styleClass) {
-		getStateHelper().put(SelectThumbRatingPropertyKeys.styleClass, styleClass);
 	}
 }
 //J+

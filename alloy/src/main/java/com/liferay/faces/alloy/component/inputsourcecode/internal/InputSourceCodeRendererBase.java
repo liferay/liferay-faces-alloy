@@ -21,9 +21,9 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
-import com.liferay.faces.alloy.component.inputsourcecode.InputSourceCode;
-
 import com.liferay.faces.alloy.render.internal.DelegatingAlloyRendererBase;
+
+import com.liferay.faces.alloy.component.inputsourcecode.InputSourceCode;
 
 
 /**
@@ -43,19 +43,14 @@ public abstract class InputSourceCodeRendererBase extends DelegatingAlloyRendere
 	protected static final String MODE = "mode";
 	protected static final String READ_ONLY = "readOnly";
 	protected static final String SHOW_PRINT_MARGIN = "showPrintMargin";
-	protected static final String STYLE_CLASS = "styleClass";
 	protected static final String TAB_SIZE = "tabSize";
 	protected static final String USE_SOFT_TABS = "useSoftTabs";
 	protected static final String USE_WRAP_MODE = "useWrapMode";
 	protected static final String VALUE = "value";
 	protected static final String WIDTH = "width";
 
-	// Private Constants
-	private static final String ALLOY_CLASS_NAME = "AceEditor";
-	private static final String ALLOY_MODULE_NAME = "aui-ace-editor";
-
 	// Modules
-	protected static final String[] MODULES = {ALLOY_MODULE_NAME};
+	protected static final String[] MODULES = { "aui-ace-editor" };
 
 	@Override
 	public void encodeAlloyAttributes(FacesContext facesContext, ResponseWriter responseWriter, UIComponent uiComponent) throws IOException {
@@ -156,7 +151,7 @@ public abstract class InputSourceCodeRendererBase extends DelegatingAlloyRendere
 
 	@Override
 	public String getAlloyClassName(FacesContext facesContext, UIComponent uiComponent) {
-		return ALLOY_CLASS_NAME;
+		return "AceEditor";
 	}
 
 	@Override

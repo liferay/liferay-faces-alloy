@@ -19,6 +19,7 @@ import javax.faces.component.html.HtmlSelectOneListbox;
 
 import com.liferay.faces.util.component.Styleable;
 
+
 /**
  * @author	Bruno Basto
  * @author	Kyle Stiemann
@@ -29,11 +30,6 @@ public abstract class SelectOneListboxBase extends HtmlSelectOneListbox implemen
 	// Public Constants
 	public static final String COMPONENT_TYPE = "com.liferay.faces.alloy.component.selectonelistbox.SelectOneListbox";
 	public static final String RENDERER_TYPE = "com.liferay.faces.alloy.component.selectonelistbox.SelectOneListboxRenderer";
-
-	// Protected Enumerations
-	protected enum SelectOneListboxPropertyKeys {
-		styleClass
-	}
 
 	public SelectOneListboxBase() {
 		super();
@@ -59,16 +55,12 @@ public abstract class SelectOneListboxBase extends HtmlSelectOneListbox implemen
 
 	@Override
 	public String getStyleClass() {
-		// getStateHelper().eval(SelectOneListboxPropertyKeys.styleClass, null) is called because super.getStyleClass() may return the
-		// STYLE_CLASS_NAME of the super class.
-		String styleClass = (String) getStateHelper().eval(SelectOneListboxPropertyKeys.styleClass, null);
+
+		// getStateHelper().eval(PropertyKeys.styleClass, null) is called because
+		// super.getStyleClass() may return the styleClass name of the super class.
+		String styleClass = (String) getStateHelper().eval(PropertyKeys.styleClass, null);
 
 		return com.liferay.faces.util.component.ComponentUtil.concatCssClasses(styleClass, "alloy-select-one-listbox");
-	}
-
-	@Override
-	public void setStyleClass(String styleClass) {
-		getStateHelper().put(SelectOneListboxPropertyKeys.styleClass, styleClass);
 	}
 }
 //J+

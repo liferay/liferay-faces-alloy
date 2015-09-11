@@ -19,6 +19,7 @@ import javax.faces.component.html.HtmlForm;
 
 import com.liferay.faces.util.component.Styleable;
 
+
 /**
  * @author	Bruno Basto
  * @author	Kyle Stiemann
@@ -32,8 +33,7 @@ public abstract class FormBase extends HtmlForm implements Styleable {
 
 	// Protected Enumerations
 	protected enum FormPropertyKeys {
-		includeViewParams,
-		styleClass
+		includeViewParams
 	}
 
 	public FormBase() {
@@ -51,16 +51,12 @@ public abstract class FormBase extends HtmlForm implements Styleable {
 
 	@Override
 	public String getStyleClass() {
-		// getStateHelper().eval(FormPropertyKeys.styleClass, null) is called because super.getStyleClass() may return the
-		// STYLE_CLASS_NAME of the super class.
-		String styleClass = (String) getStateHelper().eval(FormPropertyKeys.styleClass, null);
+
+		// getStateHelper().eval(PropertyKeys.styleClass, null) is called because
+		// super.getStyleClass() may return the styleClass name of the super class.
+		String styleClass = (String) getStateHelper().eval(PropertyKeys.styleClass, null);
 
 		return com.liferay.faces.util.component.ComponentUtil.concatCssClasses(styleClass, "alloy-form");
-	}
-
-	@Override
-	public void setStyleClass(String styleClass) {
-		getStateHelper().put(FormPropertyKeys.styleClass, styleClass);
 	}
 }
 //J+

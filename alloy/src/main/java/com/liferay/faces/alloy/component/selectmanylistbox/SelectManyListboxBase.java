@@ -19,6 +19,7 @@ import javax.faces.component.html.HtmlSelectManyListbox;
 
 import com.liferay.faces.util.component.Styleable;
 
+
 /**
  * @author	Bruno Basto
  * @author	Kyle Stiemann
@@ -29,11 +30,6 @@ public abstract class SelectManyListboxBase extends HtmlSelectManyListbox implem
 	// Public Constants
 	public static final String COMPONENT_TYPE = "com.liferay.faces.alloy.component.selectmanylistbox.SelectManyListbox";
 	public static final String RENDERER_TYPE = "com.liferay.faces.alloy.component.selectmanylistbox.SelectManyListboxRenderer";
-
-	// Protected Enumerations
-	protected enum SelectManyListboxPropertyKeys {
-		styleClass
-	}
 
 	public SelectManyListboxBase() {
 		super();
@@ -59,16 +55,12 @@ public abstract class SelectManyListboxBase extends HtmlSelectManyListbox implem
 
 	@Override
 	public String getStyleClass() {
-		// getStateHelper().eval(SelectManyListboxPropertyKeys.styleClass, null) is called because super.getStyleClass() may return the
-		// STYLE_CLASS_NAME of the super class.
-		String styleClass = (String) getStateHelper().eval(SelectManyListboxPropertyKeys.styleClass, null);
+
+		// getStateHelper().eval(PropertyKeys.styleClass, null) is called because
+		// super.getStyleClass() may return the styleClass name of the super class.
+		String styleClass = (String) getStateHelper().eval(PropertyKeys.styleClass, null);
 
 		return com.liferay.faces.util.component.ComponentUtil.concatCssClasses(styleClass, "alloy-select-many-listbox");
-	}
-
-	@Override
-	public void setStyleClass(String styleClass) {
-		getStateHelper().put(SelectManyListboxPropertyKeys.styleClass, styleClass);
 	}
 }
 //J+

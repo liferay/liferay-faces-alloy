@@ -21,9 +21,9 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
-import com.liferay.faces.alloy.component.outputremainingchars.OutputRemainingChars;
-
 import com.liferay.faces.alloy.render.internal.DelegatingAlloyRendererBase;
+
+import com.liferay.faces.alloy.component.outputremainingchars.OutputRemainingChars;
 
 
 /**
@@ -39,14 +39,9 @@ public abstract class OutputRemainingCharsRendererBase extends DelegatingAlloyRe
 	protected static final String MAX_LENGTH = "maxLength";
 	protected static final String ONCE_MAXLENGTH_REACHED = "onceMaxlengthReached";
 	protected static final String ON_MAXLENGTH_REACHED = "onMaxlengthReached";
-	protected static final String STYLE_CLASS = "styleClass";
-
-	// Private Constants
-	private static final String ALLOY_CLASS_NAME = "CharCounter";
-	private static final String ALLOY_MODULE_NAME = "aui-char-counter";
 
 	// Modules
-	protected static final String[] MODULES = {ALLOY_MODULE_NAME};
+	protected static final String[] MODULES = { "aui-char-counter" };
 
 	@Override
 	public void encodeAlloyAttributes(FacesContext facesContext, ResponseWriter responseWriter, UIComponent uiComponent) throws IOException {
@@ -75,7 +70,7 @@ public abstract class OutputRemainingCharsRendererBase extends DelegatingAlloyRe
 
 	@Override
 	public String getAlloyClassName(FacesContext facesContext, UIComponent uiComponent) {
-		return ALLOY_CLASS_NAME;
+		return "CharCounter";
 	}
 
 	@Override

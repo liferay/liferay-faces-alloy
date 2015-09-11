@@ -19,6 +19,7 @@ import com.liferay.faces.alloy.component.panelgroup.PanelGroupBlockLayout;
 
 import com.liferay.faces.util.component.Styleable;
 
+
 /**
  * @author	Bruno Basto
  * @author	Kyle Stiemann
@@ -33,8 +34,7 @@ public abstract class PanelBase extends PanelGroupBlockLayout implements Styleab
 	// Protected Enumerations
 	protected enum PanelPropertyKeys {
 		footerText,
-		headerText,
-		styleClass
+		headerText
 	}
 
 	public PanelBase() {
@@ -60,16 +60,12 @@ public abstract class PanelBase extends PanelGroupBlockLayout implements Styleab
 
 	@Override
 	public String getStyleClass() {
-		// getStateHelper().eval(PanelPropertyKeys.styleClass, null) is called because super.getStyleClass() may return the
-		// STYLE_CLASS_NAME of the super class.
-		String styleClass = (String) getStateHelper().eval(PanelPropertyKeys.styleClass, null);
+
+		// getStateHelper().eval(PropertyKeys.styleClass, null) is called because
+		// super.getStyleClass() may return the styleClass name of the super class.
+		String styleClass = (String) getStateHelper().eval(PropertyKeys.styleClass, null);
 
 		return com.liferay.faces.util.component.ComponentUtil.concatCssClasses(styleClass, "alloy-panel", "alloy-panel-default");
-	}
-
-	@Override
-	public void setStyleClass(String styleClass) {
-		getStateHelper().put(PanelPropertyKeys.styleClass, styleClass);
 	}
 }
 //J+

@@ -19,6 +19,7 @@ import javax.faces.component.html.HtmlSelectOneMenu;
 
 import com.liferay.faces.util.component.Styleable;
 
+
 /**
  * @author	Bruno Basto
  * @author	Kyle Stiemann
@@ -29,11 +30,6 @@ public abstract class SelectOneMenuBase extends HtmlSelectOneMenu implements Sty
 	// Public Constants
 	public static final String COMPONENT_TYPE = "com.liferay.faces.alloy.component.selectonemenu.SelectOneMenu";
 	public static final String RENDERER_TYPE = "com.liferay.faces.alloy.component.selectonemenu.SelectOneMenuRenderer";
-
-	// Protected Enumerations
-	protected enum SelectOneMenuPropertyKeys {
-		styleClass
-	}
 
 	public SelectOneMenuBase() {
 		super();
@@ -59,16 +55,12 @@ public abstract class SelectOneMenuBase extends HtmlSelectOneMenu implements Sty
 
 	@Override
 	public String getStyleClass() {
-		// getStateHelper().eval(SelectOneMenuPropertyKeys.styleClass, null) is called because super.getStyleClass() may return the
-		// STYLE_CLASS_NAME of the super class.
-		String styleClass = (String) getStateHelper().eval(SelectOneMenuPropertyKeys.styleClass, null);
+
+		// getStateHelper().eval(PropertyKeys.styleClass, null) is called because
+		// super.getStyleClass() may return the styleClass name of the super class.
+		String styleClass = (String) getStateHelper().eval(PropertyKeys.styleClass, null);
 
 		return com.liferay.faces.util.component.ComponentUtil.concatCssClasses(styleClass, "alloy-select-one-menu");
-	}
-
-	@Override
-	public void setStyleClass(String styleClass) {
-		getStateHelper().put(SelectOneMenuPropertyKeys.styleClass, styleClass);
 	}
 }
 //J+

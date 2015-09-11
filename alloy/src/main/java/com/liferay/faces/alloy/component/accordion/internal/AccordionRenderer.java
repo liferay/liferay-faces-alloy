@@ -405,7 +405,7 @@ public class AccordionRenderer extends AccordionRendererBase {
 
 		// closeAllOnExpand
 		boolean multiple = accordion.isMultiple();
-		encodeBoolean(responseWriter, CLOSE_ALL_ON_EXPAND, !multiple, first);
+		encodeBoolean(responseWriter, "closeAllOnExpand", !multiple, first);
 
 		// content
 		encodeString(responseWriter, "content", DOT_CONTENT, first);

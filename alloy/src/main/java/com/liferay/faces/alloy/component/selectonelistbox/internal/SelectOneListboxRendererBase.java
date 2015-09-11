@@ -14,12 +14,11 @@
 package com.liferay.faces.alloy.component.selectonelistbox.internal;
 //J-
 
-
 import javax.annotation.Generated;
 
-import com.liferay.faces.alloy.component.selectonelistbox.SelectOneListbox;
-
 import com.liferay.faces.util.render.DelegatingRendererBase;
+
+import com.liferay.faces.alloy.component.selectonelistbox.SelectOneListbox;
 
 
 /**
@@ -28,9 +27,6 @@ import com.liferay.faces.util.render.DelegatingRendererBase;
  */
 @Generated(value = "com.liferay.alloy.tools.builder.FacesBuilder")
 public abstract class SelectOneListboxRendererBase extends DelegatingRendererBase {
-
-	// Protected Constants
-	protected static final String STYLE_CLASS = "styleClass";
 
 	@Override
 	public String getDelegateComponentFamily() {

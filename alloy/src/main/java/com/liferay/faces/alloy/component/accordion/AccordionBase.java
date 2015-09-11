@@ -17,8 +17,9 @@ package com.liferay.faces.alloy.component.accordion;
 import javax.annotation.Generated;
 import javax.faces.component.UIData;
 
-import com.liferay.faces.util.component.Styleable;
 import com.liferay.faces.util.component.ClientComponent;
+import com.liferay.faces.util.component.Styleable;
+
 
 /**
  * @author	Bruno Basto
@@ -83,8 +84,9 @@ public abstract class AccordionBase extends UIData implements Styleable, ClientC
 
 	@Override
 	public String getStyleClass() {
-		// getStateHelper().eval(AccordionPropertyKeys.styleClass, null) is called because super.getStyleClass() may return the
-		// STYLE_CLASS_NAME of the super class.
+
+		// getStateHelper().eval(AccordionPropertyKeys.styleClass, null) is called because
+		// super.getStyleClass() may return the styleClass name of the super class.
 		String styleClass = (String) getStateHelper().eval(AccordionPropertyKeys.styleClass, null);
 
 		return com.liferay.faces.util.component.ComponentUtil.concatCssClasses(styleClass, "alloy-accordion");

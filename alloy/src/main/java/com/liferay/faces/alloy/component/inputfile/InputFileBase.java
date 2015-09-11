@@ -16,8 +16,9 @@ package com.liferay.faces.alloy.component.inputfile;
 
 import javax.annotation.Generated;
 
-import com.liferay.faces.util.component.Styleable;
 import com.liferay.faces.util.component.ClientComponent;
+import com.liferay.faces.util.component.Styleable;
+
 
 /**
  * @author	Bruno Basto
@@ -41,8 +42,7 @@ public abstract class InputFileBase extends com.liferay.faces.util.component.Inp
 		maxFileSize,
 		multiple,
 		showPreview,
-		showProgress,
-		styleClass
+		showProgress
 	}
 
 	public InputFileBase() {
@@ -151,16 +151,12 @@ public abstract class InputFileBase extends com.liferay.faces.util.component.Inp
 
 	@Override
 	public String getStyleClass() {
-		// getStateHelper().eval(InputFilePropertyKeys.styleClass, null) is called because super.getStyleClass() may return the
-		// STYLE_CLASS_NAME of the super class.
-		String styleClass = (String) getStateHelper().eval(InputFilePropertyKeys.styleClass, null);
+
+		// getStateHelper().eval(PropertyKeys.styleClass, null) is called because
+		// super.getStyleClass() may return the styleClass name of the super class.
+		String styleClass = (String) getStateHelper().eval(PropertyKeys.styleClass, null);
 
 		return com.liferay.faces.util.component.ComponentUtil.concatCssClasses(styleClass, "alloy-input-file", "field");
-	}
-
-	@Override
-	public void setStyleClass(String styleClass) {
-		getStateHelper().put(InputFilePropertyKeys.styleClass, styleClass);
 	}
 }
 //J+

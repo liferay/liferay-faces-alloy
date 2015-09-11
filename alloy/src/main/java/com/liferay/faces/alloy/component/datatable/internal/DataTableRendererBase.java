@@ -21,9 +21,9 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
-import com.liferay.faces.alloy.component.datatable.DataTable;
-
 import com.liferay.faces.alloy.render.internal.AlloyRendererBase;
+
+import com.liferay.faces.alloy.component.datatable.DataTable;
 
 
 /**
@@ -38,14 +38,9 @@ public abstract class DataTableRendererBase extends AlloyRendererBase {
 	protected static final String MULTI_COLUMN_SORT = "multiColumnSort";
 	protected static final String SELECTED_ROW_INDEXES = "selectedRowIndexes";
 	protected static final String SELECTION_MODE = "selectionMode";
-	protected static final String STYLE_CLASS = "styleClass";
-
-	// Private Constants
-	private static final String ALLOY_CLASS_NAME = "DataTable";
-	private static final String ALLOY_MODULE_NAME = "aui-datatable";
 
 	// Modules
-	protected static final String[] MODULES = {ALLOY_MODULE_NAME};
+	protected static final String[] MODULES = { "aui-datatable" };
 
 	@Override
 	public void encodeAlloyAttributes(FacesContext facesContext, ResponseWriter responseWriter, UIComponent uiComponent) throws IOException {
@@ -58,7 +53,7 @@ public abstract class DataTableRendererBase extends AlloyRendererBase {
 
 	@Override
 	public String getAlloyClassName(FacesContext facesContext, UIComponent uiComponent) {
-		return ALLOY_CLASS_NAME;
+		return "DataTable";
 	}
 
 	@Override

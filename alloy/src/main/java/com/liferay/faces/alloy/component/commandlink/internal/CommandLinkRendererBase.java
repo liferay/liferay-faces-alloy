@@ -14,12 +14,11 @@
 package com.liferay.faces.alloy.component.commandlink.internal;
 //J-
 
-
 import javax.annotation.Generated;
 
-import com.liferay.faces.alloy.component.commandlink.CommandLink;
-
 import com.liferay.faces.util.render.DelegatingRendererBase;
+
+import com.liferay.faces.alloy.component.commandlink.CommandLink;
 
 
 /**
@@ -34,7 +33,6 @@ public abstract class CommandLinkRendererBase extends DelegatingRendererBase {
 	protected static final String EXECUTE = "execute";
 	protected static final String PROCESS = "process";
 	protected static final String RENDER = "render";
-	protected static final String STYLE_CLASS = "styleClass";
 	protected static final String UPDATE = "update";
 
 	@Override

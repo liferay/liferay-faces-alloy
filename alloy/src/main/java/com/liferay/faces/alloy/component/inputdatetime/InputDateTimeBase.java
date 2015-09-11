@@ -17,14 +17,16 @@ package com.liferay.faces.alloy.component.inputdatetime;
 import javax.annotation.Generated;
 import com.liferay.faces.alloy.component.inputtext.InputTextBase;
 
+import com.liferay.faces.util.component.ClientComponent;
 import com.liferay.faces.util.component.Styleable;
+
 
 /**
  * @author	Bruno Basto
  * @author	Kyle Stiemann
  */
 @Generated(value = "com.liferay.alloy.tools.builder.FacesBuilder")
-public abstract class InputDateTimeBase extends InputTextBase implements Styleable {
+public abstract class InputDateTimeBase extends InputTextBase implements Styleable, ClientComponent {
 
 	// Public Constants
 	public static final String COMPONENT_TYPE = "com.liferay.faces.alloy.component.inputdatetime.InputDateTime";
@@ -37,7 +39,6 @@ public abstract class InputDateTimeBase extends InputTextBase implements Styleab
 		locale,
 		nativeWhenMobile,
 		showOn,
-		styleClass,
 		timeZone,
 		zIndex
 	}
@@ -80,7 +81,7 @@ public abstract class InputDateTimeBase extends InputTextBase implements Styleab
 	}
 
 	public String getShowOn() {
-		return (String) getStateHelper().eval(InputDateTimePropertyKeys.showOn, null);
+		return (String) getStateHelper().eval(InputDateTimePropertyKeys.showOn, "focus");
 	}
 
 	public void setShowOn(String showOn) {
@@ -89,20 +90,16 @@ public abstract class InputDateTimeBase extends InputTextBase implements Styleab
 
 	@Override
 	public String getStyleClass() {
-		// getStateHelper().eval(InputDateTimePropertyKeys.styleClass, null) is called because super.getStyleClass() may return the
-		// STYLE_CLASS_NAME of the super class.
-		String styleClass = (String) getStateHelper().eval(InputDateTimePropertyKeys.styleClass, null);
+
+		// getStateHelper().eval(PropertyKeys.styleClass, null) is called because
+		// super.getStyleClass() may return the styleClass name of the super class.
+		String styleClass = (String) getStateHelper().eval(PropertyKeys.styleClass, null);
 
 		return com.liferay.faces.util.component.ComponentUtil.concatCssClasses(styleClass, "alloy-input-date-time");
 	}
 
-	@Override
-	public void setStyleClass(String styleClass) {
-		getStateHelper().put(InputDateTimePropertyKeys.styleClass, styleClass);
-	}
-
 	public String getTimeZone() {
-		return (String) getStateHelper().eval(InputDateTimePropertyKeys.timeZone, null);
+		return (String) getStateHelper().eval(InputDateTimePropertyKeys.timeZone, "Greenwich");
 	}
 
 	public void setTimeZone(String timeZone) {

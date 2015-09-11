@@ -21,9 +21,9 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
-import com.liferay.faces.alloy.component.inputfile.InputFile;
-
 import com.liferay.faces.alloy.component.inputfile.internal.InputFileRendererCompat;
+
+import com.liferay.faces.alloy.component.inputfile.InputFile;
 
 
 /**
@@ -44,14 +44,9 @@ public abstract class InputFileRendererBase extends InputFileRendererCompat {
 	protected static final String MULTIPLE = "multiple";
 	protected static final String SHOW_PREVIEW = "showPreview";
 	protected static final String SHOW_PROGRESS = "showProgress";
-	protected static final String STYLE_CLASS = "styleClass";
-
-	// Private Constants
-	private static final String ALLOY_CLASS_NAME = "Uploader";
-	private static final String ALLOY_MODULE_NAME = "uploader";
 
 	// Modules
-	protected static final String[] MODULES = {ALLOY_MODULE_NAME};
+	protected static final String[] MODULES = { "uploader" };
 
 	@Override
 	public void encodeAlloyAttributes(FacesContext facesContext, ResponseWriter responseWriter, UIComponent uiComponent) throws IOException {
@@ -72,7 +67,7 @@ public abstract class InputFileRendererBase extends InputFileRendererCompat {
 
 	@Override
 	public String getAlloyClassName(FacesContext facesContext, UIComponent uiComponent) {
-		return ALLOY_CLASS_NAME;
+		return "Uploader";
 	}
 
 	@Override

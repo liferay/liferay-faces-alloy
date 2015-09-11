@@ -17,8 +17,9 @@ package com.liferay.faces.alloy.component.popover;
 import javax.annotation.Generated;
 import com.liferay.faces.alloy.component.panelgroup.PanelGroupBlockLayout;
 
-import com.liferay.faces.util.component.Styleable;
 import com.liferay.faces.util.component.ClientComponent;
+import com.liferay.faces.util.component.Styleable;
+
 
 /**
  * @author	Bruno Basto
@@ -41,7 +42,6 @@ public abstract class PopoverBase extends PanelGroupBlockLayout implements Style
 		height,
 		hideIconRendered,
 		position,
-		styleClass,
 		width,
 		zIndex
 	}
@@ -119,16 +119,12 @@ public abstract class PopoverBase extends PanelGroupBlockLayout implements Style
 
 	@Override
 	public String getStyleClass() {
-		// getStateHelper().eval(PopoverPropertyKeys.styleClass, null) is called because super.getStyleClass() may return the
-		// STYLE_CLASS_NAME of the super class.
-		String styleClass = (String) getStateHelper().eval(PopoverPropertyKeys.styleClass, null);
+
+		// getStateHelper().eval(PropertyKeys.styleClass, null) is called because
+		// super.getStyleClass() may return the styleClass name of the super class.
+		String styleClass = (String) getStateHelper().eval(PropertyKeys.styleClass, null);
 
 		return com.liferay.faces.util.component.ComponentUtil.concatCssClasses(styleClass, "alloy-popover");
-	}
-
-	@Override
-	public void setStyleClass(String styleClass) {
-		getStateHelper().put(PopoverPropertyKeys.styleClass, styleClass);
 	}
 
 	public String getWidth() {

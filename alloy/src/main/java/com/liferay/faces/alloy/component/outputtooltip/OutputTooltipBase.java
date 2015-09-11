@@ -17,8 +17,9 @@ package com.liferay.faces.alloy.component.outputtooltip;
 import javax.annotation.Generated;
 import com.liferay.faces.alloy.component.outputtext.OutputTextBase;
 
-import com.liferay.faces.util.component.Styleable;
 import com.liferay.faces.util.component.ClientComponent;
+import com.liferay.faces.util.component.Styleable;
+
 
 /**
  * @author	Bruno Basto
@@ -39,7 +40,6 @@ public abstract class OutputTooltipBase extends OutputTextBase implements Stylea
 		headerText,
 		opacity,
 		position,
-		styleClass,
 		zIndex
 	}
 
@@ -100,16 +100,12 @@ public abstract class OutputTooltipBase extends OutputTextBase implements Stylea
 
 	@Override
 	public String getStyleClass() {
-		// getStateHelper().eval(OutputTooltipPropertyKeys.styleClass, null) is called because super.getStyleClass() may return the
-		// STYLE_CLASS_NAME of the super class.
-		String styleClass = (String) getStateHelper().eval(OutputTooltipPropertyKeys.styleClass, null);
+
+		// getStateHelper().eval(PropertyKeys.styleClass, null) is called because
+		// super.getStyleClass() may return the styleClass name of the super class.
+		String styleClass = (String) getStateHelper().eval(PropertyKeys.styleClass, null);
 
 		return com.liferay.faces.util.component.ComponentUtil.concatCssClasses(styleClass, "alloy-output-tooltip");
-	}
-
-	@Override
-	public void setStyleClass(String styleClass) {
-		getStateHelper().put(OutputTooltipPropertyKeys.styleClass, styleClass);
 	}
 
 	public Integer getzIndex() {

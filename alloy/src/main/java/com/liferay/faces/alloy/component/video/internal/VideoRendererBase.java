@@ -14,7 +14,6 @@
 package com.liferay.faces.alloy.component.video.internal;
 //J-
 
-
 import javax.annotation.Generated;
 
 import com.liferay.faces.alloy.component.media.internal.MediaRenderer;

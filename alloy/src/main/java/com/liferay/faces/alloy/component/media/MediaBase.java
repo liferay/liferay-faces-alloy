@@ -17,14 +17,13 @@ package com.liferay.faces.alloy.component.media;
 import javax.annotation.Generated;
 import javax.faces.component.UIComponentBase;
 
-import com.liferay.faces.util.component.Styleable;
 
 /**
  * @author	Bruno Basto
  * @author	Kyle Stiemann
  */
 @Generated(value = "com.liferay.alloy.tools.builder.FacesBuilder")
-public abstract class MediaBase extends UIComponentBase implements Styleable {
+public abstract class MediaBase extends UIComponentBase {
 
 	// Public Constants
 	public static final String COMPONENT_TYPE = "com.liferay.faces.alloy.component.media.Media";
@@ -78,7 +77,6 @@ public abstract class MediaBase extends UIComponentBase implements Styleable {
 		onwaiting,
 		preload,
 		style,
-		styleClass,
 		value
 	}
 
@@ -447,28 +445,12 @@ public abstract class MediaBase extends UIComponentBase implements Styleable {
 		getStateHelper().put(MediaPropertyKeys.preload, preload);
 	}
 
-	@Override
 	public String getStyle() {
 		return (String) getStateHelper().eval(MediaPropertyKeys.style, null);
 	}
 
-	@Override
 	public void setStyle(String style) {
 		getStateHelper().put(MediaPropertyKeys.style, style);
-	}
-
-	@Override
-	public String getStyleClass() {
-		// getStateHelper().eval(MediaPropertyKeys.styleClass, null) is called because super.getStyleClass() may return the
-		// STYLE_CLASS_NAME of the super class.
-		String styleClass = (String) getStateHelper().eval(MediaPropertyKeys.styleClass, null);
-
-		return com.liferay.faces.util.component.ComponentUtil.concatCssClasses(styleClass, "alloy-media");
-	}
-
-	@Override
-	public void setStyleClass(String styleClass) {
-		getStateHelper().put(MediaPropertyKeys.styleClass, styleClass);
 	}
 
 	public Object getValue() {

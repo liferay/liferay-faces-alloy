@@ -13,11 +13,13 @@
  */
 package com.liferay.faces.alloy.component.media;
 
+import com.liferay.faces.util.component.Styleable;
+
 /**
  * @author  Bruno Basto
  * @author  Kyle Stiemann
  */
-public abstract class Media extends MediaBase {
+public abstract class Media extends MediaBase implements Styleable {
 
 	// Public Constants
 	public static final String COMPONENT_FAMILY = "com.liferay.faces.alloy.component.media";

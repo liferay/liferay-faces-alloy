@@ -19,6 +19,7 @@ import javax.faces.component.html.HtmlCommandButton;
 
 import com.liferay.faces.util.component.Styleable;
 
+
 /**
  * @author	Bruno Basto
  * @author	Kyle Stiemann
@@ -38,7 +39,6 @@ public abstract class CommandButtonBase extends HtmlCommandButton implements Sty
 		execute,
 		process,
 		render,
-		styleClass,
 		type,
 		update
 	}
@@ -98,16 +98,12 @@ public abstract class CommandButtonBase extends HtmlCommandButton implements Sty
 
 	@Override
 	public String getStyleClass() {
-		// getStateHelper().eval(CommandButtonPropertyKeys.styleClass, null) is called because super.getStyleClass() may return the
-		// STYLE_CLASS_NAME of the super class.
-		String styleClass = (String) getStateHelper().eval(CommandButtonPropertyKeys.styleClass, null);
+
+		// getStateHelper().eval(PropertyKeys.styleClass, null) is called because
+		// super.getStyleClass() may return the styleClass name of the super class.
+		String styleClass = (String) getStateHelper().eval(PropertyKeys.styleClass, null);
 
 		return com.liferay.faces.util.component.ComponentUtil.concatCssClasses(styleClass, "alloy-command-button");
-	}
-
-	@Override
-	public void setStyleClass(String styleClass) {
-		getStateHelper().put(CommandButtonPropertyKeys.styleClass, styleClass);
 	}
 
 	public String getType() {

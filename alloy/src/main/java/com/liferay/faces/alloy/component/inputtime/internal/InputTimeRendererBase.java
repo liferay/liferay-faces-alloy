@@ -21,9 +21,9 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
-import com.liferay.faces.alloy.component.inputtime.InputTime;
-
 import com.liferay.faces.alloy.component.inputdatetime.internal.InputDateTimeRenderer;
+
+import com.liferay.faces.alloy.component.inputtime.InputTime;
 
 
 /**
@@ -39,22 +39,17 @@ public abstract class InputTimeRendererBase extends InputDateTimeRenderer {
 	protected static final String FILTER_TYPE = "filterType";
 	protected static final String HEIGHT = "height";
 	protected static final String HIGHLIGHTER_TYPE = "highlighterType";
-	protected static final String MASK = "mask";
 	protected static final String MAX_RESULTS = "maxResults";
 	protected static final String MAX_TIME = "maxTime";
 	protected static final String MIN_TIME = "minTime";
 	protected static final String NATIVE_WHEN_MOBILE = "nativeWhenMobile";
+	protected static final String MASK = "mask";
 	protected static final String QUERY_DELAY = "queryDelay";
 	protected static final String SCROLL_INTO_VIEW = "scrollIntoView";
 	protected static final String STEP = "step";
-	protected static final String STYLE_CLASS = "styleClass";
-
-	// Private Constants
-	private static final String ALLOY_CLASS_NAME = "TimePicker";
-	private static final String ALLOY_MODULE_NAME = "aui-timepicker";
 
 	// Modules
-	protected static final String[] MODULES = {ALLOY_MODULE_NAME};
+	protected static final String[] MODULES = { "aui-timepicker" };
 
 	@Override
 	public void encodeAlloyAttributes(FacesContext facesContext, ResponseWriter responseWriter, UIComponent uiComponent) throws IOException {
@@ -75,7 +70,7 @@ public abstract class InputTimeRendererBase extends InputDateTimeRenderer {
 
 	@Override
 	public String getAlloyClassName(FacesContext facesContext, UIComponent uiComponent) {
-		return ALLOY_CLASS_NAME;
+		return "TimePicker";
 	}
 
 	@Override

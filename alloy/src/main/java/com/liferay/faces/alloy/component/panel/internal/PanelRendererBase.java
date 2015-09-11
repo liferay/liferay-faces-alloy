@@ -14,7 +14,6 @@
 package com.liferay.faces.alloy.component.panel.internal;
 //J-
 
-
 import javax.annotation.Generated;
 
 import com.liferay.faces.alloy.component.panelgroup.internal.PanelGroupRendererBase;
@@ -30,6 +29,5 @@ public abstract class PanelRendererBase extends PanelGroupRendererBase {
 	// Protected Constants
 	protected static final String FOOTER_TEXT = "footerText";
 	protected static final String HEADER_TEXT = "headerText";
-	protected static final String STYLE_CLASS = "styleClass";
 }
 //J+
