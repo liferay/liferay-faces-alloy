@@ -14,6 +14,7 @@
 package com.liferay.faces.alloy.component.media.internal;
 
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.util.Map;
 import java.util.Set;
 
@@ -21,6 +22,11 @@ import javax.faces.application.ResourceHandler;
 import javax.faces.context.ResponseWriter;
 
 import com.liferay.faces.alloy.component.media.Media;
+import com.liferay.faces.util.logging.Logger;
+import com.liferay.faces.util.logging.LoggerFactory;
+import com.liferay.faces.util.product.Product;
+import com.liferay.faces.util.product.ProductConstants;
+import com.liferay.faces.util.product.ProductMap;
 
 
 /**
@@ -30,18 +36,79 @@ import com.liferay.faces.alloy.component.media.Media;
  */
 public class MediaRendererCompat extends MediaRendererBase {
 
+	// Logger
+	private static final Logger logger = LoggerFactory.getLogger(MediaRendererCompat.class);
+
+	// Private Constants
+	private static final Product JSF = ProductMap.getInstance().get(ProductConstants.JSF);
+
 	protected void encodeJSF22PassthroughAttributes(Media media, ResponseWriter responseWriter) throws IOException {
 
-		Map<String, Object> passThroughAttributesMap = media.getPassThroughAttributes();
-		Set<String> passThroughAttributes = passThroughAttributesMap.keySet();
+		Method getPassThroughAttributesMethod = null;
 
-		for (String passThroughAttribute : passThroughAttributes) {
-			Object passThroughAttributeValue = passThroughAttributesMap.get(passThroughAttribute);
-			responseWriter.writeAttribute(passThroughAttribute, passThroughAttributeValue, passThroughAttribute);
+		try {
+			getPassThroughAttributesMethod = media.getClass().getMethod("getPassThroughAttributes", new Class[] {});
+		}
+		catch (NoSuchMethodException e) {
+
+			if (isFaces_2_2_OrNewer()) {
+				logger.error(e);
+			}
+		}
+
+		if (getPassThroughAttributesMethod != null) {
+
+			try {
+				Map<String, Object> passThroughAttributesMap = (Map<String, Object>)
+					getPassThroughAttributesMethod.invoke(media, new Object[] {});
+				Set<String> passThroughAttributes = passThroughAttributesMap.keySet();
+
+				for (String passThroughAttribute : passThroughAttributes) {
+					Object passThroughAttributeValue = passThroughAttributesMap.get(passThroughAttribute);
+					responseWriter.writeAttribute(passThroughAttribute, passThroughAttributeValue,
+						passThroughAttribute);
+				}
+			}
+			catch (Exception e) {
+				logger.error(e);
+			}
 		}
 	}
 
 	protected boolean isFacesResourceURL(ResourceHandler resourceHandler, String value) {
-		return resourceHandler.isResourceURL(value);
+
+		boolean facesResourceURL = false;
+		Method isResourceURLMethod = null;
+
+		try {
+			isResourceURLMethod = resourceHandler.getClass().getMethod("isResourceURL", new Class[] {});
+		}
+		catch (NoSuchMethodException e) {
+
+			if (isFaces_2_2_OrNewer()) {
+				logger.error(e);
+			}
+		}
+
+		if (isResourceURLMethod == null) {
+			facesResourceURL = ((value != null) && value.contains("javax.faces.resource"));
+		}
+		else {
+
+			try {
+				facesResourceURL = (Boolean) isResourceURLMethod.invoke(resourceHandler, new Object[] {});
+			}
+			catch (Exception e) {
+				logger.error(e);
+			}
+		}
+
+		return facesResourceURL;
+	}
+
+	protected boolean isFaces_2_2_OrNewer() {
+
+		return JSF.isDetected() &&
+			((JSF.getMajorVersion() > 2) || ((JSF.getMajorVersion() == 2) && (JSF.getMinorVersion() >= 2)));
 	}
 }

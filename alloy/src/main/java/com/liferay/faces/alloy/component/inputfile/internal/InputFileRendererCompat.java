@@ -14,6 +14,9 @@
 package com.liferay.faces.alloy.component.inputfile.internal;
 
 import com.liferay.faces.alloy.render.internal.DelegatingAlloyRendererBase;
+import com.liferay.faces.util.product.Product;
+import com.liferay.faces.util.product.ProductConstants;
+import com.liferay.faces.util.product.ProductMap;
 
 
 /**
@@ -23,11 +26,26 @@ import com.liferay.faces.alloy.render.internal.DelegatingAlloyRendererBase;
  */
 public abstract class InputFileRendererCompat extends DelegatingAlloyRendererBase {
 
+	// Private Constants
+	private static final Product JSF = ProductMap.getInstance().get(ProductConstants.JSF);
+
 	protected InputFileDecoder getInputFileDecoder() {
 
-		// Since running with JSF 2.2 (or higher) need to use the javax.servlet.http.Part (Servlet 3.0) method of
-		// decoding uploaded files. This is because the the @MultipartConfig annotation on the FacesServlet will cause
-		// commons-fileupload to throw exceptions.
-		return new InputFileDecoderPartImpl();
+		if (isFaces_2_2_OrNewer()) {
+
+			// Since running with JSF 2.2 (or higher) need to use the javax.servlet.http.Part (Servlet 3.0) method of
+			// decoding uploaded files. This is because the the @MultipartConfig annotation on the FacesServlet will
+			// cause commons-fileupload to throw exceptions.
+			return new InputFileDecoderPartImpl();
+		}
+		else {
+			return new InputFileDecoderCommonsImpl();
+		}
+	}
+
+	protected boolean isFaces_2_2_OrNewer() {
+
+		return JSF.isDetected() &&
+			((JSF.getMajorVersion() > 2) || ((JSF.getMajorVersion() == 2) && (JSF.getMinorVersion() >= 2)));
 	}
 }

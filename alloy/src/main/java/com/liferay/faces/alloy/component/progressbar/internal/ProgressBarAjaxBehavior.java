@@ -22,6 +22,8 @@ import javax.faces.component.behavior.ClientBehaviorContext;
 import javax.faces.context.FacesContext;
 import javax.faces.render.ClientBehaviorRenderer;
 
+import com.liferay.faces.util.component.behavior.AjaxBehaviorWrapper;
+
 
 /**
  * @author  Kyle Stiemann

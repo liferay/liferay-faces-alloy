@@ -31,6 +31,9 @@ import javax.faces.view.facelets.TagAttributes;
  */
 public class TagAttributesAlloyImpl extends TagAttributes {
 
+	// Private Constants
+	private static final String ELEMENT_NAME = "elementName"; // JSF 2.2+ Renderer.PASSTHROUGH_RENDERER_LOCALNAME_KEY
+
 	// Private Data Members
 	private Map<String, TagAttribute> tagAttributeMap = new HashMap<String, TagAttribute>();
 
@@ -42,7 +45,7 @@ public class TagAttributesAlloyImpl extends TagAttributes {
 
 			String localName = tagAttribute.getLocalName();
 
-			if (!Renderer.PASSTHROUGH_RENDERER_LOCALNAME_KEY.equals(localName)) {
+			if (!ELEMENT_NAME.equals(localName)) {
 				String namespace = tagAttribute.getNamespace();
 				String mapKey = getMapKey(namespace, localName);
 				this.tagAttributeMap.put(mapKey, tagAttribute);
