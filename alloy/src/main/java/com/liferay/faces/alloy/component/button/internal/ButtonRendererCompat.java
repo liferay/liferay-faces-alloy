@@ -15,9 +15,13 @@ package com.liferay.faces.alloy.component.button.internal;
 
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIParameter;
-import javax.faces.component.UIViewAction;
 import javax.faces.component.UIViewParameter;
 
+import com.liferay.faces.util.logging.Logger;
+import com.liferay.faces.util.logging.LoggerFactory;
+import com.liferay.faces.util.product.Product;
+import com.liferay.faces.util.product.ProductConstants;
+import com.liferay.faces.util.product.ProductMap;
 import com.liferay.faces.util.render.DelegatingRendererBase;
 
 
@@ -28,8 +32,47 @@ import com.liferay.faces.util.render.DelegatingRendererBase;
  */
 public abstract class ButtonRendererCompat extends DelegatingRendererBase {
 
+	// Private Constants
+	private static final Product JSF = ProductMap.getInstance().get(ProductConstants.JSF);
+	private static final Class<?> UI_VIEW_ACTION_CLASS;
+
+	// Logger
+	private static final Logger logger = LoggerFactory.getLogger(ButtonRendererCompat.class);
+
+	static {
+
+		Class<?> clazz = null;
+
+		try {
+			clazz = Class.forName("javax.faces.component.UIViewAction");
+		}
+		catch (ClassNotFoundException e) {
+
+			if (isFaces_2_2_OrNewer()) {
+				logger.error(e);
+			}
+		}
+
+		UI_VIEW_ACTION_CLASS = clazz;
+	}
+
+	protected static boolean isFaces_2_2_OrNewer() {
+
+		return JSF.isDetected() &&
+			((JSF.getMajorVersion() > 2) || ((JSF.getMajorVersion() == 2) && (JSF.getMinorVersion() >= 2)));
+	}
+
 	protected boolean isVisualComponent(UIComponent uiComponent) {
-		return (!(uiComponent instanceof UIParameter)) || (!(uiComponent instanceof UIViewAction)) ||
-			(!(uiComponent instanceof UIViewParameter));
+
+		if (UI_VIEW_ACTION_CLASS == null) {
+			return (!(uiComponent instanceof UIParameter)) || (!(uiComponent instanceof UIViewParameter));
+		}
+		else {
+			Class<? extends UIComponent> uiComponentClass = uiComponent.getClass();
+
+			return (!(uiComponent instanceof UIParameter)) ||
+				(!(uiComponentClass.isAssignableFrom(UI_VIEW_ACTION_CLASS))) ||
+				(!(uiComponent instanceof UIViewParameter));
+		}
 	}
 }

@@ -15,6 +15,7 @@ package com.liferay.faces.alloy.component.inputfile.internal;
 
 import java.io.File;
 import java.io.IOException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -50,134 +51,155 @@ public class InputFileDecoderPartImpl extends InputFileDecoderBase {
 		String uploadedFilesFolder = getUploadedFilesFolder(externalContext, location);
 
 		// Using the sessionId, determine a unique folder path and create the path if it does not exist.
-		String sessionId = externalContext.getSessionId(true);
+		String sessionId = null;
+		Method getSessionIdMethod = null;
 
-		// FACES-1452: Non-alpha-numeric characters must be removed order to ensure that the folder will be
-		// created properly.
-		sessionId = sessionId.replaceAll("[^A-Za-z0-9]", "");
-
-		File uploadedFilesPath = new File(uploadedFilesFolder, sessionId);
-
-		if (!uploadedFilesPath.exists()) {
-			uploadedFilesPath.mkdirs();
-		}
-
-		uploadedFileMap = new HashMap<String, List<UploadedFile>>();
-
-		UploadedFileFactory uploadedFileFactory = (UploadedFileFactory) FactoryExtensionFinder.getFactory(
-				UploadedFileFactory.class);
-
-		// Begin parsing the request for file parts:
 		try {
+			getSessionIdMethod = externalContext.getClass().getMethod("getSessionId", new Class[] { boolean.class });
 
-			HttpServletRequest httpServletRequest = (HttpServletRequest) externalContext.getRequest();
-			Collection<Part> parts = httpServletRequest.getParts();
-			int totalFiles = 0;
-
-			// For each part found in the multipart/form-data request:
-			for (Part part : parts) {
-
-				try {
-					totalFiles++;
-
-					// Get field name and file name of the current part.
-					String fieldName = null;
-					String fileName = null;
-					String safeFileName = null;
-
-					String contentDispositionHeader = part.getHeader(HttpHeaders.CONTENT_DISPOSITION);
-					String[] keyValuePairs = contentDispositionHeader.split(";");
-
-					for (String keyValuePair : keyValuePairs) {
-						String trimmedKeyValuePair = keyValuePair.trim();
-
-						if (trimmedKeyValuePair.startsWith("filename")) {
-							int equalsPos = trimmedKeyValuePair.indexOf("=");
-							fileName = trimmedKeyValuePair.substring(equalsPos + 2, trimmedKeyValuePair.length() - 1);
-							safeFileName = stripIllegalCharacters(fileName);
-						}
-						else if (trimmedKeyValuePair.startsWith("name")) {
-							int equalsPos = trimmedKeyValuePair.indexOf("=");
-							fieldName = trimmedKeyValuePair.substring(equalsPos + 2, trimmedKeyValuePair.length() - 1);
-						}
-					}
-
-					if ((fileName != null) && (fileName.length() > 0)) {
-
-						try {
-
-							// Copy the stream of file data to a file.
-							File copiedFile = new File(uploadedFilesPath, safeFileName);
-							String copiedFileAbsolutePath = copiedFile.getAbsolutePath();
-							part.write(copiedFileAbsolutePath);
-
-							// If present, build up a map of headers.
-							Map<String, List<String>> headersMap = new HashMap<String, List<String>>();
-							Collection<String> headerNames = part.getHeaderNames();
-
-							for (String headerName : headerNames) {
-								List<String> headerValues = new ArrayList<String>(part.getHeaders(headerName));
-								headersMap.put(headerName, headerValues);
-							}
-
-							// Get the Content-Type header
-							String contentType = part.getContentType();
-
-							// Get the charset from the Content-Type header
-							String charSet = null;
-
-							if (contentType != null) {
-								keyValuePairs = contentType.split(";");
-
-								for (String keyValuePair : keyValuePairs) {
-									String trimmedKeyValuePair = keyValuePair.trim();
-
-									if (trimmedKeyValuePair.startsWith("charset")) {
-										int equalsPos = trimmedKeyValuePair.indexOf("=");
-										charSet = trimmedKeyValuePair.substring(equalsPos + 2,
-												trimmedKeyValuePair.length() - 1);
-									}
-								}
-							}
-
-							// Put a valid UploadedFile instance into the map that contains all of the
-							// uploaded file's attributes, along with a successful status.
-							Map<String, Object> attributeMap = new HashMap<String, Object>();
-							String id = Long.toString(((long) hashCode()) + System.currentTimeMillis());
-							String message = null;
-							UploadedFile uploadedFile = uploadedFileFactory.getUploadedFile(copiedFileAbsolutePath,
-									attributeMap, charSet, contentType, headersMap, id, message, fileName,
-									part.getSize(), UploadedFile.Status.FILE_SAVED);
-
-							addUploadedFile(uploadedFileMap, fieldName, uploadedFile);
-							logger.debug("Received uploaded file fieldName=[{0}] fileName=[{1}]", fieldName, fileName);
-
-							// Delete temporary file created by the Servlet API.
-							part.delete();
-						}
-						catch (IOException e) {
-							UploadedFile uploadedFile = uploadedFileFactory.getUploadedFile(e);
-							addUploadedFile(uploadedFileMap, fieldName, uploadedFile);
-						}
-					}
-				}
-				catch (Exception e) {
-					logger.error(e);
-
-					UploadedFile uploadedFile = uploadedFileFactory.getUploadedFile(e);
-					String fieldName = Integer.toString(totalFiles);
-					addUploadedFile(uploadedFileMap, fieldName, uploadedFile);
-				}
+			try {
+				sessionId = (String) getSessionIdMethod.invoke(externalContext, new Object[] { true });
+			}
+			catch (Exception e) {
+				logger.error(e);
 			}
 		}
-
-		// If there was an error in parsing the request for file parts, then put a bogus UploadedFile instance in
-		// the map so that the developer can have some idea that something went wrong.
-		catch (Exception e) {
+		catch (NoSuchMethodException e) {
 			logger.error(e);
+		}
 
-			UploadedFile uploadedFile = uploadedFileFactory.getUploadedFile(e);
-			addUploadedFile(uploadedFileMap, "unknown", uploadedFile);
+		if (sessionId != null) {
+
+			// FACES-1452: Non-alpha-numeric characters must be removed order to ensure that the folder will be
+			// created properly.
+			sessionId = sessionId.replaceAll("[^A-Za-z0-9]", "");
+
+			File uploadedFilesPath = new File(uploadedFilesFolder, sessionId);
+
+			if (!uploadedFilesPath.exists()) {
+				uploadedFilesPath.mkdirs();
+			}
+
+			uploadedFileMap = new HashMap<String, List<UploadedFile>>();
+
+			UploadedFileFactory uploadedFileFactory = (UploadedFileFactory) FactoryExtensionFinder.getFactory(
+					UploadedFileFactory.class);
+
+			// Begin parsing the request for file parts:
+			try {
+
+				HttpServletRequest httpServletRequest = (HttpServletRequest) externalContext.getRequest();
+				Collection<Part> parts = httpServletRequest.getParts();
+				int totalFiles = 0;
+
+				// For each part found in the multipart/form-data request:
+				for (Part part : parts) {
+
+					try {
+						totalFiles++;
+
+						// Get field name and file name of the current part.
+						String fieldName = null;
+						String fileName = null;
+						String safeFileName = null;
+
+						String contentDispositionHeader = part.getHeader(HttpHeaders.CONTENT_DISPOSITION);
+						String[] keyValuePairs = contentDispositionHeader.split(";");
+
+						for (String keyValuePair : keyValuePairs) {
+							String trimmedKeyValuePair = keyValuePair.trim();
+
+							if (trimmedKeyValuePair.startsWith("filename")) {
+								int equalsPos = trimmedKeyValuePair.indexOf("=");
+								fileName = trimmedKeyValuePair.substring(equalsPos + 2,
+										trimmedKeyValuePair.length() - 1);
+								safeFileName = stripIllegalCharacters(fileName);
+							}
+							else if (trimmedKeyValuePair.startsWith("name")) {
+								int equalsPos = trimmedKeyValuePair.indexOf("=");
+								fieldName = trimmedKeyValuePair.substring(equalsPos + 2,
+										trimmedKeyValuePair.length() - 1);
+							}
+						}
+
+						if ((fileName != null) && (fileName.length() > 0)) {
+
+							try {
+
+								// Copy the stream of file data to a file.
+								File copiedFile = new File(uploadedFilesPath, safeFileName);
+								String copiedFileAbsolutePath = copiedFile.getAbsolutePath();
+								part.write(copiedFileAbsolutePath);
+
+								// If present, build up a map of headers.
+								Map<String, List<String>> headersMap = new HashMap<String, List<String>>();
+								Collection<String> headerNames = part.getHeaderNames();
+
+								for (String headerName : headerNames) {
+									List<String> headerValues = new ArrayList<String>(part.getHeaders(headerName));
+									headersMap.put(headerName, headerValues);
+								}
+
+								// Get the Content-Type header
+								String contentType = part.getContentType();
+
+								// Get the charset from the Content-Type header
+								String charSet = null;
+
+								if (contentType != null) {
+									keyValuePairs = contentType.split(";");
+
+									for (String keyValuePair : keyValuePairs) {
+										String trimmedKeyValuePair = keyValuePair.trim();
+
+										if (trimmedKeyValuePair.startsWith("charset")) {
+											int equalsPos = trimmedKeyValuePair.indexOf("=");
+											charSet = trimmedKeyValuePair.substring(equalsPos + 2,
+													trimmedKeyValuePair.length() - 1);
+										}
+									}
+								}
+
+								// Put a valid UploadedFile instance into the map that contains all of the
+								// uploaded file's attributes, along with a successful status.
+								Map<String, Object> attributeMap = new HashMap<String, Object>();
+								String id = Long.toString(((long) hashCode()) + System.currentTimeMillis());
+								String message = null;
+								UploadedFile uploadedFile = uploadedFileFactory.getUploadedFile(copiedFileAbsolutePath,
+										attributeMap, charSet, contentType, headersMap, id, message, fileName,
+										part.getSize(), UploadedFile.Status.FILE_SAVED);
+
+								addUploadedFile(uploadedFileMap, fieldName, uploadedFile);
+								logger.debug("Received uploaded file fieldName=[{0}] fileName=[{1}]", fieldName,
+									fileName);
+
+								// Delete temporary file created by the Servlet API.
+								part.delete();
+							}
+							catch (IOException e) {
+								UploadedFile uploadedFile = uploadedFileFactory.getUploadedFile(e);
+								addUploadedFile(uploadedFileMap, fieldName, uploadedFile);
+							}
+						}
+					}
+					catch (Exception e) {
+						logger.error(e);
+
+						UploadedFile uploadedFile = uploadedFileFactory.getUploadedFile(e);
+						String fieldName = Integer.toString(totalFiles);
+						addUploadedFile(uploadedFileMap, fieldName, uploadedFile);
+					}
+				}
+			}
+
+			// If there was an error in parsing the request for file parts, then put a bogus UploadedFile instance in
+			// the map so that the developer can have some idea that something went wrong.
+			catch (Exception e) {
+				logger.error(e);
+
+				UploadedFile uploadedFile = uploadedFileFactory.getUploadedFile(e);
+				addUploadedFile(uploadedFileMap, "unknown", uploadedFile);
+			}
 		}
 
 		return uploadedFileMap;

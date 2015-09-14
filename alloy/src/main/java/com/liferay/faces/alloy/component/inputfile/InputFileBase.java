@@ -15,7 +15,6 @@ package com.liferay.faces.alloy.component.inputfile;
 //J-
 
 import javax.annotation.Generated;
-import javax.faces.component.html.HtmlInputFile;
 
 import com.liferay.faces.util.component.Styleable;
 import com.liferay.faces.util.component.ClientComponent;
@@ -25,7 +24,7 @@ import com.liferay.faces.util.component.ClientComponent;
  * @author	Kyle Stiemann
  */
 @Generated(value = "com.liferay.alloy.tools.builder.FacesBuilder")
-public abstract class InputFileBase extends HtmlInputFile implements Styleable, ClientComponent {
+public abstract class InputFileBase extends com.liferay.faces.util.component.InputFileBase implements Styleable, ClientComponent {
 
 	// Public Constants
 	public static final String COMPONENT_TYPE = "com.liferay.faces.alloy.component.inputfile.InputFile";

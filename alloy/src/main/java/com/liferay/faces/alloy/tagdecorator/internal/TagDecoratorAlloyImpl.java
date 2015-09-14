@@ -15,7 +15,6 @@ package com.liferay.faces.alloy.tagdecorator.internal;
 
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
-import javax.faces.render.Renderer;
 import javax.faces.view.facelets.Tag;
 import javax.faces.view.facelets.TagAttribute;
 import javax.faces.view.facelets.TagAttributes;
@@ -28,6 +27,9 @@ import com.liferay.faces.alloy.config.internal.AlloyWebConfigParam;
  * @author  Kyle Stiemann
  */
 public class TagDecoratorAlloyImpl implements TagDecorator {
+
+	// Private Constants
+	private static final String ELEMENT_NAME = "elementName"; // JSF 2.2+ Renderer.PASSTHROUGH_RENDERER_LOCALNAME_KEY
 
 	@Override
 	public Tag decorate(Tag tag) {
@@ -45,8 +47,9 @@ public class TagDecoratorAlloyImpl implements TagDecorator {
 
 			if ("element".equals(elementName) && (attributes != null)) {
 
+				// JSF 2.2 Constant: Renderer.PASSTHROUGH_RENDERER_LOCALNAME_KEY
 				TagAttribute elementNameAttribute = attributes.get("http://xmlns.jcp.org/jsf/passthrough",
-						Renderer.PASSTHROUGH_RENDERER_LOCALNAME_KEY);
+						ELEMENT_NAME);
 
 				if (elementNameAttribute != null) {
 
