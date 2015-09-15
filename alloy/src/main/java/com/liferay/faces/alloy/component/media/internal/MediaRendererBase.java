@@ -14,7 +14,6 @@
 package com.liferay.faces.alloy.component.media.internal;
 //J-
 
-
 import javax.annotation.Generated;
 
 import com.liferay.faces.alloy.render.internal.PassThroughRenderer;
@@ -74,7 +73,6 @@ public abstract class MediaRendererBase extends PassThroughRenderer {
 	protected static final String ONWAITING = "onwaiting";
 	protected static final String PRELOAD = "preload";
 	protected static final String STYLE = "style";
-	protected static final String STYLE_CLASS = "styleClass";
 	protected static final String VALUE = "value";
 }
 //J+

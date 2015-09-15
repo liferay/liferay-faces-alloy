@@ -19,6 +19,7 @@ import javax.faces.component.html.HtmlCommandLink;
 
 import com.liferay.faces.util.component.Styleable;
 
+
 /**
  * @author	Bruno Basto
  * @author	Kyle Stiemann
@@ -36,7 +37,6 @@ public abstract class CommandLinkBase extends HtmlCommandLink implements Styleab
 		execute,
 		process,
 		render,
-		styleClass,
 		update
 	}
 
@@ -79,16 +79,12 @@ public abstract class CommandLinkBase extends HtmlCommandLink implements Styleab
 
 	@Override
 	public String getStyleClass() {
-		// getStateHelper().eval(CommandLinkPropertyKeys.styleClass, null) is called because super.getStyleClass() may return the
-		// STYLE_CLASS_NAME of the super class.
-		String styleClass = (String) getStateHelper().eval(CommandLinkPropertyKeys.styleClass, null);
+
+		// getStateHelper().eval(PropertyKeys.styleClass, null) is called because
+		// super.getStyleClass() may return the styleClass name of the super class.
+		String styleClass = (String) getStateHelper().eval(PropertyKeys.styleClass, null);
 
 		return com.liferay.faces.util.component.ComponentUtil.concatCssClasses(styleClass, "alloy-command-link");
-	}
-
-	@Override
-	public void setStyleClass(String styleClass) {
-		getStateHelper().put(CommandLinkPropertyKeys.styleClass, styleClass);
 	}
 
 	public String getUpdate() {

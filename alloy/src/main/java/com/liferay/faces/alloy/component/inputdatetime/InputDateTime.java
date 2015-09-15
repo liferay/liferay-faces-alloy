@@ -26,7 +26,6 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.DateTimeConverter;
 
-import com.liferay.faces.util.component.ClientComponent;
 import com.liferay.faces.util.context.MessageContext;
 import com.liferay.faces.util.context.MessageContextFactory;
 import com.liferay.faces.util.factory.FactoryExtensionFinder;
@@ -35,7 +34,7 @@ import com.liferay.faces.util.factory.FactoryExtensionFinder;
 /**
  * @author  Kyle Stiemann
  */
-public abstract class InputDateTime extends InputDateTimeBase implements ClientComponent {
+public abstract class InputDateTime extends InputDateTimeBase {
 
 	protected final void validateValue(FacesContext facesContext, Object newValue, Date minDate, Date maxDate,
 		TimeZone timeZone) {
@@ -208,14 +207,4 @@ public abstract class InputDateTime extends InputDateTimeBase implements ClientC
 	}
 
 	public abstract String getPattern();
-
-	@Override
-	public String getShowOn() {
-		return (String) getStateHelper().eval(InputDateTimePropertyKeys.showOn, "focus");
-	}
-
-	@Override
-	public String getTimeZone() {
-		return (String) getStateHelper().eval(InputDateTimePropertyKeys.timeZone, "Greenwich");
-	}
 }

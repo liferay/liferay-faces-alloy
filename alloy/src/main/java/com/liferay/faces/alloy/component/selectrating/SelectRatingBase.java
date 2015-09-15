@@ -17,23 +17,38 @@ package com.liferay.faces.alloy.component.selectrating;
 import javax.annotation.Generated;
 import com.liferay.faces.alloy.component.selectoneradio.SelectOneRadioBase;
 
-import com.liferay.faces.util.component.Styleable;
 import com.liferay.faces.util.component.ClientComponent;
+
 
 /**
  * @author	Bruno Basto
  * @author	Kyle Stiemann
  */
 @Generated(value = "com.liferay.alloy.tools.builder.FacesBuilder")
-public abstract class SelectRatingBase extends SelectOneRadioBase implements Styleable, ClientComponent {
+public abstract class SelectRatingBase extends SelectOneRadioBase implements ClientComponent {
 
 	// Public Constants
 	public static final String COMPONENT_TYPE = "com.liferay.faces.alloy.component.selectrating.SelectRating";
 	public static final String RENDERER_TYPE = "com.liferay.faces.alloy.component.selectrating.SelectRatingRenderer";
 
+	// Protected Enumerations
+	protected enum SelectRatingPropertyKeys {
+		clientKey
+	}
+
 	public SelectRatingBase() {
 		super();
 		setRendererType(RENDERER_TYPE);
+	}
+
+	@Override
+	public String getClientKey() {
+		return (String) getStateHelper().eval(SelectRatingPropertyKeys.clientKey, null);
+	}
+
+	@Override
+	public void setClientKey(String clientKey) {
+		getStateHelper().put(SelectRatingPropertyKeys.clientKey, clientKey);
 	}
 }
 //J+

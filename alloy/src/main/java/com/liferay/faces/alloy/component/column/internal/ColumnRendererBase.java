@@ -14,7 +14,6 @@
 package com.liferay.faces.alloy.component.column.internal;
 //J-
 
-
 import javax.annotation.Generated;
 
 import javax.faces.render.Renderer;

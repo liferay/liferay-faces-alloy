@@ -21,9 +21,9 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
-import com.liferay.faces.alloy.component.progressbar.ProgressBar;
-
 import com.liferay.faces.alloy.render.internal.AlloyRendererBase;
+
+import com.liferay.faces.alloy.component.progressbar.ProgressBar;
 
 
 /**
@@ -37,22 +37,18 @@ public abstract class ProgressBarRendererBase extends AlloyRendererBase {
 	protected static final String CLIENT_KEY = "clientKey";
 	protected static final String HEIGHT = "height";
 	protected static final String LABEL = "label";
+	protected static final String ORIENTATION = "orientation";
 	protected static final String MAX = "max";
 	protected static final String MIN = "min";
 	protected static final String ONCOMPLETE = "oncomplete";
-	protected static final String ORIENTATION = "orientation";
 	protected static final String POLLING_DELAY = "pollingDelay";
 	protected static final String STYLE = "style";
 	protected static final String STYLE_CLASS = "styleClass";
 	protected static final String VALUE = "value";
 	protected static final String WIDTH = "width";
 
-	// Private Constants
-	private static final String ALLOY_CLASS_NAME = "ProgressBar";
-	private static final String ALLOY_MODULE_NAME = "aui-progressbar";
-
 	// Modules
-	protected static final String[] MODULES = {ALLOY_MODULE_NAME};
+	protected static final String[] MODULES = { "aui-progressbar" };
 
 	@Override
 	public void encodeAlloyAttributes(FacesContext facesContext, ResponseWriter responseWriter, UIComponent uiComponent) throws IOException {
@@ -121,7 +117,7 @@ public abstract class ProgressBarRendererBase extends AlloyRendererBase {
 
 	@Override
 	public String getAlloyClassName(FacesContext facesContext, UIComponent uiComponent) {
-		return ALLOY_CLASS_NAME;
+		return "ProgressBar";
 	}
 
 	@Override

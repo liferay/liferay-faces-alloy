@@ -21,9 +21,9 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
-import com.liferay.faces.alloy.component.popover.Popover;
-
 import com.liferay.faces.alloy.component.overlay.internal.OverlayRendererBase;
+
+import com.liferay.faces.alloy.component.popover.Popover;
 
 
 /**
@@ -42,16 +42,11 @@ public abstract class PopoverRendererBase extends OverlayRendererBase {
 	protected static final String HEIGHT = "height";
 	protected static final String HIDE_ICON_RENDERED = "hideIconRendered";
 	protected static final String POSITION = "position";
-	protected static final String STYLE_CLASS = "styleClass";
 	protected static final String WIDTH = "width";
 	protected static final String Z_INDEX = "zIndex";
 
-	// Private Constants
-	private static final String ALLOY_CLASS_NAME = "Popover";
-	private static final String ALLOY_MODULE_NAME = "aui-popover";
-
 	// Modules
-	protected static final String[] MODULES = {ALLOY_MODULE_NAME};
+	protected static final String[] MODULES = { "aui-popover" };
 
 	@Override
 	public void encodeAlloyAttributes(FacesContext facesContext, ResponseWriter responseWriter, UIComponent uiComponent) throws IOException {
@@ -96,7 +91,7 @@ public abstract class PopoverRendererBase extends OverlayRendererBase {
 
 	@Override
 	public String getAlloyClassName(FacesContext facesContext, UIComponent uiComponent) {
-		return ALLOY_CLASS_NAME;
+		return "Popover";
 	}
 
 	@Override

@@ -19,6 +19,7 @@ import javax.faces.component.html.HtmlInputSecret;
 
 import com.liferay.faces.util.component.Styleable;
 
+
 /**
  * @author	Bruno Basto
  * @author	Kyle Stiemann
@@ -29,11 +30,6 @@ public abstract class InputSecretBase extends HtmlInputSecret implements Styleab
 	// Public Constants
 	public static final String COMPONENT_TYPE = "com.liferay.faces.alloy.component.inputsecret.InputSecret";
 	public static final String RENDERER_TYPE = "com.liferay.faces.alloy.component.inputsecret.InputSecretRenderer";
-
-	// Protected Enumerations
-	protected enum InputSecretPropertyKeys {
-		styleClass
-	}
 
 	public InputSecretBase() {
 		super();
@@ -59,16 +55,12 @@ public abstract class InputSecretBase extends HtmlInputSecret implements Styleab
 
 	@Override
 	public String getStyleClass() {
-		// getStateHelper().eval(InputSecretPropertyKeys.styleClass, null) is called because super.getStyleClass() may return the
-		// STYLE_CLASS_NAME of the super class.
-		String styleClass = (String) getStateHelper().eval(InputSecretPropertyKeys.styleClass, null);
+
+		// getStateHelper().eval(PropertyKeys.styleClass, null) is called because
+		// super.getStyleClass() may return the styleClass name of the super class.
+		String styleClass = (String) getStateHelper().eval(PropertyKeys.styleClass, null);
 
 		return com.liferay.faces.util.component.ComponentUtil.concatCssClasses(styleClass, "alloy-input-secret", "field");
-	}
-
-	@Override
-	public void setStyleClass(String styleClass) {
-		getStateHelper().put(InputSecretPropertyKeys.styleClass, styleClass);
 	}
 }
 //J+

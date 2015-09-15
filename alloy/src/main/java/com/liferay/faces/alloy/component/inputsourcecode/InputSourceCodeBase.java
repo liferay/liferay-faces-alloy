@@ -17,8 +17,9 @@ package com.liferay.faces.alloy.component.inputsourcecode;
 import javax.annotation.Generated;
 import javax.faces.component.html.HtmlInputText;
 
-import com.liferay.faces.util.component.Styleable;
 import com.liferay.faces.util.component.ClientComponent;
+import com.liferay.faces.util.component.Styleable;
+
 
 /**
  * @author	Bruno Basto
@@ -42,7 +43,6 @@ public abstract class InputSourceCodeBase extends HtmlInputText implements Style
 		mode,
 		readOnly,
 		showPrintMargin,
-		styleClass,
 		tabSize,
 		useSoftTabs,
 		useWrapMode,
@@ -147,16 +147,12 @@ public abstract class InputSourceCodeBase extends HtmlInputText implements Style
 
 	@Override
 	public String getStyleClass() {
-		// getStateHelper().eval(InputSourceCodePropertyKeys.styleClass, null) is called because super.getStyleClass() may return the
-		// STYLE_CLASS_NAME of the super class.
-		String styleClass = (String) getStateHelper().eval(InputSourceCodePropertyKeys.styleClass, null);
+
+		// getStateHelper().eval(PropertyKeys.styleClass, null) is called because
+		// super.getStyleClass() may return the styleClass name of the super class.
+		String styleClass = (String) getStateHelper().eval(PropertyKeys.styleClass, null);
 
 		return com.liferay.faces.util.component.ComponentUtil.concatCssClasses(styleClass, "alloy-input-source-code");
-	}
-
-	@Override
-	public void setStyleClass(String styleClass) {
-		getStateHelper().put(InputSourceCodePropertyKeys.styleClass, styleClass);
 	}
 
 	public String getTabSize() {

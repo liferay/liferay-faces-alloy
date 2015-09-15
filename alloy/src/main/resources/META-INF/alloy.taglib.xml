@@ -1,8 +1,8 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<facelet-taglib xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xmlns:vdldoc="http://vdldoc.omnifaces.org"
-	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facelettaglibrary_2_2.xsd http://vdldoc.omnifaces.org https://raw.githubusercontent.com/omnifaces/vdldoc/master/src/main/resources/org/omnifaces/vdldoc/resources/vdldoc.taglib.xml.xsd"
-	version="2.2">
+<facelet-taglib xmlns="http://java.sun.com/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:vdldoc="http://vdldoc.org/vdldoc"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facelettaglibrary_2_0.xsd http://vdldoc.org/vdldoc https://raw.githubusercontent.com/omnifaces/vdldoc/master/src/main/resources/org/omnifaces/vdldoc/resources/vdldoc.taglib.xml.xsd"
+	version="2.0">
 	<description><![CDATA[The Liferay Faces Alloy facelet component tags with the <code>alloy:</code> tag name prefix.]]></description>
 	<namespace>http://liferay.com/faces/alloy</namespace>
 	<function>
@@ -43,13 +43,13 @@
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When true, expanding an item will not collapse the others, allowing multiple items to be visible at the same time. The default value is false.]]></description>
+			<description><![CDATA[When true, expanding an item will not collapse the others, allowing multiple items to be visible at the same time. The default value is <code>false</code>.]]></description>
 			<name>multiple</name>
 			<required>false</required>
 			<type>boolean</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -85,7 +85,8 @@
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/accordion/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -96,7 +97,7 @@
 			<renderer-type>com.liferay.faces.alloy.component.audio.AudioRenderer</renderer-type>
 		</component>
 		<attribute>
-			<description><![CDATA[HTML5 passthrough attribute specifying whether the media will begin playing automatically. Defaults to false.]]></description>
+			<description><![CDATA[HTML5 passthrough attribute specifying whether the media will begin playing automatically. The default value is <code>false</code>.]]></description>
 			<name>autoplay</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -108,25 +109,25 @@
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[HTML5 passthrough attribute specifying whether controls should be rendered for the media. Defaults to false.]]></description>
+			<description><![CDATA[HTML5 passthrough attribute specifying whether controls should be rendered for the media. The default value is <code>false</code>.]]></description>
 			<name>controls</name>
 			<required>false</required>
 			<type>boolean</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When true the component will gracefully degrade to the Adobe&reg; Flash&reg; player for older browsers. Defaults to true. Defaults to true.]]></description>
+			<description><![CDATA[When true the component will gracefully degrade to the Adobe&reg; Flash&reg; player for older browsers. The default value is <code>true</code>.]]></description>
 			<name>degrade</name>
 			<required>false</required>
 			<type>boolean</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[A context-relative path, resource URL, or FacesResource that can be used to retrieve the Adobe&reg; Flash&reg; player. Defaults to the player that comes bundled with AlloyUI. <strong>Note:</strong> The AlloyUI player does not support <code>.ogv</code> or <code>.webm</code> formats.]]></description>
+			<description><![CDATA[A context-relative path, resource URL, or FacesResource that can be used to retrieve the Adobe&reg; Flash&reg; player. The default flash player is the flash player bundled with AlloyUI. <strong>Note:</strong> The AlloyUI player does not support <code>.ogv</code> or <code>.webm</code> formats.]]></description>
 			<name>flashPlayer</name>
 			<required>false</required>
 			<type>java.lang.Object</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[The version of Adobe&reg; Flash&reg; required to play this media. Defaults to <code>"9,0,0,0"</code>.]]></description>
+			<description><![CDATA[The version of Adobe&reg; Flash&reg; required to play this media. The default value is <code>"9,0,0,0"</code>.]]></description>
 			<name>flashPlayerVersion</name>
 			<required>false</required>
 			<type>java.lang.String</type>
@@ -138,13 +139,13 @@
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[HTML5 passthrough attribute specifying whether the media will restart after it has completed playing. Defaults to false.]]></description>
+			<description><![CDATA[HTML5 passthrough attribute specifying whether the media will restart after it has completed playing. The default value is <code>false</code>.]]></description>
 			<name>loop</name>
 			<required>false</required>
 			<type>boolean</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[HTML5 passthrough attribute specifying whether the media will be muted initially. Defaults to false.]]></description>
+			<description><![CDATA[HTML5 passthrough attribute specifying whether the media will be muted initially. The default value is <code>false</code>.]]></description>
 			<name>muted</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -390,7 +391,8 @@
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/audio/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -408,7 +410,7 @@
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When true, the first item in the list will be activated so that users can press TAB or ENTER to select it. Default is <code>true</code>.]]></description>
+			<description><![CDATA[When true, the first item in the list will be activated so that users can press TAB or ENTER to select it. The default value is <code>true</code>.]]></description>
 			<name>activateFirstItem</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -438,7 +440,7 @@
 			<type>javax.faces.component.UIComponent</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When true, the autoComplete list will wrap around allowing users to use keyboard navigation to move from the top of the list to the bottom and vice versa. Defaults to <code>true</code>.]]></description>
+			<description><![CDATA[When true, the autoComplete list will wrap around allowing users to use keyboard navigation to move from the top of the list to the bottom and vice versa. The default value is <code>true</code>.]]></description>
 			<name>circular</name>
 			<required>false</required>
 			<type>java.lang.Boolean</type>
@@ -450,7 +452,7 @@
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[Specifies the type of filter that will be used for the autoComplete results. Valid values include:       <ul>        <li>charMatch</li>        <li>charMatchCase</li>        <li>phraseMatch</li>        <li>phraseMatchCase</li>        <li>startsWith</li>        <li>startsWithCase</li>        <li>subWordMatch</li>        <li>subWordMatchCase</li>        <li>wordMatch</li>        <li>wordMatchCase</li>       </ul>      <strong>Note:</strong> This attribute will be ignored if the <code>serverCustomFilter</code>, <code>serverFilterType</code>, or <code>clientCustomFilter</code> attributes are used.]]></description>
+			<description><![CDATA[Specifies the type of filter that will be used for the autoComplete results. Valid values include:<ul><li>charMatch</li><li>charMatchCase</li><li>phraseMatch</li><li>phraseMatchCase</li><li>startsWith</li><li>startsWithCase</li><li>subWordMatch</li><li>subWordMatchCase</li><li>wordMatch</li><li>wordMatchCase</li></ul><strong>Note:</strong> This attribute will be ignored if the <code>serverCustomFilter</code>, <code>serverFilterType</code>, or <code>clientCustomFilter</code> attributes are used.]]></description>
 			<name>clientFilterType</name>
 			<required>false</required>
 			<type>java.lang.String</type>
@@ -492,7 +494,7 @@
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, the component will be disabled, and the user will be unable to interact with the component.]]></description>
+			<description><![CDATA[When this flag is true, the component will be disabled, and the user will be unable to interact with the component. The default value is <code>false</code>.]]></description>
 			<name>disabled</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -504,7 +506,7 @@
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[Specifies the type of highlighter that will be used for the autoComplete results. Valid values include:       <ul>        <li>charMatch</li>        <li>charMatchCase</li>        <li>phraseMatch</li>        <li>phraseMatchCase</li>        <li>startsWith</li>        <li>startsWithCase</li>        <li>subWordMatch</li>        <li>subWordMatchCase</li>        <li>wordMatch</li>        <li>wordMatchCase</li>       </ul>]]></description>
+			<description><![CDATA[Specifies the type of highlighter that will be used for the autoComplete results. Valid values include:<ul><li>charMatch</li><li>charMatchCase</li><li>phraseMatch</li><li>phraseMatchCase</li><li>startsWith</li><li>startsWithCase</li><li>subWordMatch</li><li>subWordMatchCase</li><li>wordMatch</li><li>wordMatchCase</li></ul>]]></description>
 			<name>highlighterType</name>
 			<required>false</required>
 			<type>java.lang.String</type>
@@ -534,7 +536,7 @@
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When true, the component will perform server-side validation to ensure that the value entered is on the list of completion items. Default is <code>false</code>.]]></description>
+			<description><![CDATA[When true, the component will perform server-side validation to ensure that the value entered is on the list of completion items. The default value is <code>false</code>.]]></description>
 			<name>listItemRequired</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -648,7 +650,7 @@
 			<type>java.lang.Boolean</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -678,7 +680,7 @@
 			<method-signature>java.util.List&lt;java.lang.String&gt; filterResults(java.lang.String, java.util.List&lt;java.lang.String&gt;)</method-signature>
 		</attribute>
 		<attribute>
-			<description><![CDATA[Specifies the type of filter that will be used for the autoComplete results. Valid values include:       <ul>        <li>charMatch</li>        <li>charMatchCase</li>        <li>phraseMatch</li>        <li>phraseMatchCase</li>        <li>startsWith</li>        <li>startsWithCase</li>        <li>subWordMatch</li>        <li>subWordMatchCase</li>        <li>wordMatch</li>        <li>wordMatchCase</li>       </ul>      <strong>Note:</strong> This attribute will be ignored if the <code>serverCustomFilter</code> attribute is used.]]></description>
+			<description><![CDATA[Specifies the type of filter that will be used for the autoComplete results. Valid values include:<ul><li>charMatch</li><li>charMatchCase</li><li>phraseMatch</li><li>phraseMatchCase</li><li>startsWith</li><li>startsWithCase</li><li>subWordMatch</li><li>subWordMatchCase</li><li>wordMatch</li><li>wordMatchCase</li></ul><strong>Note:</strong> This attribute will be ignored if the <code>serverCustomFilter</code> attribute is used.]]></description>
 			<name>serverFilterType</name>
 			<required>false</required>
 			<type>java.lang.String</type>
@@ -708,7 +710,7 @@
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When <code>true</code>, pressing TAB selects the active autoComplete option. Defaults to <code>true</code>.]]></description>
+			<description><![CDATA[When <code>true</code>, pressing TAB selects the active autoComplete option. The default value is <code>true</code>.]]></description>
 			<name>tabSelect</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -751,7 +753,8 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/autocomplete/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -774,7 +777,8 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/body/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -821,7 +825,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Boolean</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, the component will be disabled, and the user will be unable to interact with the component.]]></description>
+			<description><![CDATA[When this flag is true, the component will be disabled, and the user will be unable to interact with the component. The default value is <code>false</code>.]]></description>
 			<name>disabled</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -935,7 +939,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -983,7 +987,8 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Object</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/button/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -1066,7 +1071,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -1084,7 +1089,8 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/buttonrow/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -1095,7 +1101,7 @@ java.lang.Object)</method-signature>
 			<renderer-type>com.liferay.faces.alloy.component.column.ColumnRenderer</renderer-type>
 		</component>
 		<attribute>
-			<description><![CDATA[When this flag is true, clicking on the button will cause the form to be submitted via XmlHttpRequest. The default is true.]]></description>
+			<description><![CDATA[When this flag is true, clicking on the button will cause the form to be submitted via XmlHttpRequest. The default value is <code>true</code>.]]></description>
 			<name>ajax</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -1155,7 +1161,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Integer</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[Synonym for the <code>execute</code> attribute.]]></description>
+			<description><![CDATA[Synonym for the <code>execute</code> attribute. The default value is <code>"@all"</code>.]]></description>
 			<name>process</name>
 			<required>false</required>
 			<type>java.lang.String</type>
@@ -1167,7 +1173,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -1209,7 +1215,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[Synonym for the <code>render</code> attribute.]]></description>
+			<description><![CDATA[Synonym for the <code>render</code> attribute. The default value is <code>"@none"</code>.]]></description>
 			<name>update</name>
 			<required>false</required>
 			<type>java.lang.String</type>
@@ -1221,7 +1227,8 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Integer</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/column/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -1250,7 +1257,7 @@ java.lang.Object)</method-signature>
 			<method-signature>void actionListener(javax.faces.event.ActionEvent)</method-signature>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, clicking on the button will cause the form to be submitted via XmlHttpRequest. The default is true.]]></description>
+			<description><![CDATA[When this flag is true, clicking on the button will cause the form to be submitted via XmlHttpRequest. The default value is <code>true</code>.]]></description>
 			<name>ajax</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -1280,13 +1287,13 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, the component will be disabled, and the user will be unable to interact with the component.]]></description>
+			<description><![CDATA[When this flag is true, the component will be disabled, and the user will be unable to interact with the component. The default value is <code>false</code>.]]></description>
 			<name>disabled</name>
 			<required>false</required>
 			<type>boolean</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[Space-delimited list of component ids that are to participate in the APPLY_REQUEST_VALUES, PROCESS_VALIDATIONS, UPDATE_MODEL_VALUES, and INVOKE_APPLICATION phases of the JSF lifecycle. The following keywords may also appear in the list: <code>@this</code>, <code>@form</code>, <code>@all</code>, <code>@none</code>. The default value is <code>@all</code>.]]></description>
+			<description><![CDATA[Space-delimited list of component ids that are to participate in the APPLY_REQUEST_VALUES, PROCESS_VALIDATIONS, UPDATE_MODEL_VALUES, and INVOKE_APPLICATION phases of the JSF lifecycle. The following keywords may also appear in the list: <code>@this</code>, <code>@form</code>, <code>@all</code>, <code>@none</code>. The default value is <code>"@all"</code>.]]></description>
 			<name>execute</name>
 			<required>false</required>
 			<type>java.lang.String</type>
@@ -1406,7 +1413,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[Synonym for the <code>execute</code> attribute.]]></description>
+			<description><![CDATA[Synonym for the <code>execute</code> attribute. The default value is <code>"@all"</code>.]]></description>
 			<name>process</name>
 			<required>false</required>
 			<type>java.lang.String</type>
@@ -1418,13 +1425,13 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Boolean</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[Space-delimited list of component ids that are to participate in the RENDER_RESPONSE phase of the JSF lifecycle and be re-rendered in the DOM after the response is received from the XmlHttpRequest. The following keywords may also appear in the list: <code>@this</code>, <code>@form</code>, <code>@all</code>, <code>@none</code>. The default value is <code>@none</code>.]]></description>
+			<description><![CDATA[Space-delimited list of component ids that are to participate in the RENDER_RESPONSE phase of the JSF lifecycle and be re-rendered in the DOM after the response is received from the XmlHttpRequest. The following keywords may also appear in the list: <code>@this</code>, <code>@form</code>, <code>@all</code>, <code>@none</code>. The default value is <code>"@none"</code>.]]></description>
 			<name>render</name>
 			<required>false</required>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -1466,7 +1473,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[Synonym for the <code>render</code> attribute.]]></description>
+			<description><![CDATA[Synonym for the <code>render</code> attribute. The default value is <code>"@none"</code>.]]></description>
 			<name>update</name>
 			<required>false</required>
 			<type>java.lang.String</type>
@@ -1478,7 +1485,8 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Object</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/commandbutton/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -1507,7 +1515,7 @@ java.lang.Object)</method-signature>
 			<method-signature>void actionListener(javax.faces.event.ActionEvent)</method-signature>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, clicking on the button will cause the form to be submitted via XmlHttpRequest. The default is true.]]></description>
+			<description><![CDATA[When this flag is true, clicking on the button will cause the form to be submitted via XmlHttpRequest. The default value is <code>true</code>.]]></description>
 			<name>ajax</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -1537,13 +1545,13 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, the component will be disabled, and the user will be unable to interact with the component.]]></description>
+			<description><![CDATA[When this flag is true, the component will be disabled, and the user will be unable to interact with the component. The default value is <code>false</code>.]]></description>
 			<name>disabled</name>
 			<required>false</required>
 			<type>boolean</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[Space-delimited list of component ids that are to participate in the APPLY_REQUEST_VALUES, PROCESS_VALIDATIONS, UPDATE_MODEL_VALUES, and INVOKE_APPLICATION phases of the JSF lifecycle. The following keywords may also appear in the list: <code>@this</code>, <code>@form</code>, <code>@all</code>, <code>@none</code>. The default value is <code>@all</code>.]]></description>
+			<description><![CDATA[Space-delimited list of component ids that are to participate in the APPLY_REQUEST_VALUES, PROCESS_VALIDATIONS, UPDATE_MODEL_VALUES, and INVOKE_APPLICATION phases of the JSF lifecycle. The following keywords may also appear in the list: <code>@this</code>, <code>@form</code>, <code>@all</code>, <code>@none</code>. The default value is <code>"@all"</code>.]]></description>
 			<name>execute</name>
 			<required>false</required>
 			<type>java.lang.String</type>
@@ -1645,7 +1653,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[Synonym for the <code>execute</code> attribute.]]></description>
+			<description><![CDATA[Synonym for the <code>execute</code> attribute. The default value is <code>"@all"</code>.]]></description>
 			<name>process</name>
 			<required>false</required>
 			<type>java.lang.String</type>
@@ -1657,13 +1665,13 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[Space-delimited list of component ids that are to participate in the RENDER_RESPONSE phase of the JSF lifecycle and be re-rendered in the DOM after the response is received from the XmlHttpRequest. The following keywords may also appear in the list: <code>@this</code>, <code>@form</code>, <code>@all</code>, <code>@none</code>. The default value is <code>@none</code>.]]></description>
+			<description><![CDATA[Space-delimited list of component ids that are to participate in the RENDER_RESPONSE phase of the JSF lifecycle and be re-rendered in the DOM after the response is received from the XmlHttpRequest. The following keywords may also appear in the list: <code>@this</code>, <code>@form</code>, <code>@all</code>, <code>@none</code>. The default value is <code>"@none"</code>.]]></description>
 			<name>render</name>
 			<required>false</required>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -1723,7 +1731,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[Synonym for the <code>render</code> attribute.]]></description>
+			<description><![CDATA[Synonym for the <code>render</code> attribute. The default value is <code>"@none"</code>.]]></description>
 			<name>update</name>
 			<required>false</required>
 			<type>java.lang.String</type>
@@ -1735,7 +1743,8 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Object</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/commandlink/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -1758,7 +1767,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -1776,7 +1785,8 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/dataitem/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -1799,7 +1809,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -1817,7 +1827,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[The type of the list to render. Valid values are "unordered", "ordered" and "description". The default is "unordered".]]></description>
+			<description><![CDATA[The type of the list to render. Valid values are "unordered", "ordered" and "description". The default value is <code>"unordered"</code>.]]></description>
 			<name>type</name>
 			<required>false</required>
 			<type>java.lang.String</type>
@@ -1835,7 +1845,8 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/datalist/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -1948,7 +1959,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When true, multiple columns can be selected by the user when the meta key is held down during a left click on a sortable column header. The default is false.]]></description>
+			<description><![CDATA[When true, multiple columns can be selected by the user when the meta key is held down during a left click on a sortable column header. The default value is <code>false</code>.]]></description>
 			<name>multiColumnSort</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -2014,7 +2025,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -2098,7 +2109,8 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/datatable/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -2109,7 +2121,7 @@ java.lang.Object)</method-signature>
 			<renderer-type>com.liferay.faces.alloy.component.dialog.DialogRenderer</renderer-type>
 		</component>
 		<attribute>
-			<description><![CDATA[When true, the component is visible initially. The default is false.]]></description>
+			<description><![CDATA[When true, the component is visible initially. The default value is <code>false</code>.]]></description>
 			<name>autoShow</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -2127,7 +2139,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When true, the overlay window is automatically hidden when the user clicks outside of it. The default is false.]]></description>
+			<description><![CDATA[When true, the overlay window is automatically hidden when the user clicks outside of it. The default value is <code>false</code>.]]></description>
 			<name>dismissible</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -2145,7 +2157,7 @@ java.lang.Object)</method-signature>
 			<type>String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When true, an "x" is placed in the upper right corner that the user can click on to hide/dismiss the overlay window. The default is true.]]></description>
+			<description><![CDATA[When true, an "x" is placed in the upper right corner that the user can click on to hide/dismiss the overlay window. The default value is <code>true</code>.]]></description>
 			<name>hideIconRendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -2157,7 +2169,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When true the user must interact with the child dialog window before continuing to interact with the parent. The default is true.]]></description>
+			<description><![CDATA[When true, the user must interact with the child dialog window before continuing to interact with the parent. The default value is <code>false</code>.]]></description>
 			<name>modal</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -2223,7 +2235,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -2253,7 +2265,8 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Integer</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/dialog/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -2282,7 +2295,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, the label will be rendered before the rendered children.]]></description>
+			<description><![CDATA[When this flag is true, the label will be rendered before the rendered children. The default value is <code>true</code>.]]></description>
 			<name>labelFirst</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -2354,7 +2367,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -2372,7 +2385,8 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/field/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -2389,7 +2403,7 @@ java.lang.Object)</method-signature>
 			<type>javax.faces.component.UIComponent</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, the component will be disabled, and the user will be unable to interact with the component.]]></description>
+			<description><![CDATA[When this flag is true, the component will be disabled, and the user will be unable to interact with the component. The default value is <code>false</code>.]]></description>
 			<name>disabled</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -2467,7 +2481,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -2485,7 +2499,8 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/fieldset/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -2520,7 +2535,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[HTML passthrough attribute that specifies how form-data should be encoded with form submission. Default is "application/x-www-form-urlencoded"]]></description>
+			<description><![CDATA[HTML passthrough attribute that specifies how form-data should be encoded with form submission. The default value is <code>"application/x-www-form-urlencoded"</code>.]]></description>
 			<name>enctype</name>
 			<required>false</required>
 			<type>java.lang.String</type>
@@ -2532,7 +2547,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, view parameters (specified via <code>f:viewParam</code> tags) will be included in the URL rendered in the action attribute.]]></description>
+			<description><![CDATA[When this flag is true, view parameters (specified via <code>f:viewParam</code> tags) will be included in the URL rendered in the action attribute. The default value is <code>false</code>.]]></description>
 			<name>includeViewParams</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -2604,13 +2619,13 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When true, the form will prepend its id to child components. This is true by default.]]></description>
+			<description><![CDATA[When true, the form will prepend its id to child components. The default value is <code>true</code>.]]></description>
 			<name>prependId</name>
 			<required>false</required>
 			<type>boolean</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -2646,7 +2661,8 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/form/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -2687,7 +2703,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -2717,7 +2733,8 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/head/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -2734,7 +2751,7 @@ java.lang.Object)</method-signature>
 			<type>javax.faces.component.UIComponent</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[The color of the icon which this component will render. The default is black. Another option is white.]]></description>
+			<description><![CDATA[The color of the icon which this component will render. Valid values include black (the default) and white.]]></description>
 			<name>color</name>
 			<required>false</required>
 			<type>java.lang.String</type>
@@ -2752,7 +2769,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -2770,7 +2787,8 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/icon/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -2901,7 +2919,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -2955,7 +2973,8 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/image/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -2978,7 +2997,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, the component will hide when an item is selected. The default value is true.]]></description>
+			<description><![CDATA[When this flag is true, the component will hide when an item is selected. The default value is <code>true</code>.]]></description>
 			<name>autoHide</name>
 			<required>false</required>
 			<type>java.lang.Boolean</type>
@@ -3014,7 +3033,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, the component will be disabled, and the user will be unable to interact with the component.]]></description>
+			<description><![CDATA[When this flag is true, the component will be disabled, and the user will be unable to interact with the component. The default value is <code>false</code>.]]></description>
 			<name>disabled</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -3068,7 +3087,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Object</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When true, the component will render an HTML5 <code>&lt;input type="date" /&gt;</code> element on small/mobile displays in order to enable selection of a date with the mobile device's native UI. The default is true.]]></description>
+			<description><![CDATA[When true, the component will render an HTML5 <code>&lt;input type="date" /&gt;</code> element on small/mobile displays in order to enable selection of a date with the mobile device's native UI. The default value is <code>true</code>.]]></description>
 			<name>nativeWhenMobile</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -3158,7 +3177,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[The number of month panes shown in the popup calendar. Valid values are 1 (the default), 2, and 3.]]></description>
+			<description><![CDATA[The number of month panes shown in the popup calendar. Valid values are <code>1</code> (the default), <code>2</code>, and <code>3</code>.]]></description>
 			<name>panes</name>
 			<required>false</required>
 			<type>java.lang.Integer</type>
@@ -3176,7 +3195,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Boolean</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -3200,7 +3219,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[Specifies which event will pop up the picker. Valid values are <code>focus</code> (the default), <code>button</code>, and <code>both</code>.]]></description>
+			<description><![CDATA[Specifies which event will pop up the picker. Valid values are <code>"focus"</code> (the default), <code>"button"</code>, and <code>"both"</code>.]]></description>
 			<name>showOn</name>
 			<required>false</required>
 			<type>java.lang.String</type>
@@ -3230,10 +3249,10 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[The time zone for the built-in DateTimeConverter.]]></description>
+			<description><![CDATA[The time zone of the component. The default value is <code>"Greenwich"</code>.]]></description>
 			<name>timeZone</name>
 			<required>false</required>
-			<type>java.lang.Object</type>
+			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
 			<description><![CDATA[HTML passthrough attribute specifying the title of the element.]]></description>
@@ -3273,7 +3292,8 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Integer</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/inputdate/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -3297,13 +3317,13 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, selected files are appended to the preview table. Otherwise, the preview table is cleared when new files are selected. The default value is false. NOTE: This feature is only available when showProgress=true.]]></description>
+			<description><![CDATA[When this flag is true, selected files are appended to the preview table. Otherwise, the preview table is cleared when new files are selected. NOTE: This feature is only available when showProgress=true. The default value is <code>false</code>.]]></description>
 			<name>appendNewFiles</name>
 			<required>false</required>
 			<type>boolean</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, files are uploaded automatically as soon as they are selected. The default value is false.]]></description>
+			<description><![CDATA[When this flag is true, files are uploaded automatically as soon as they are selected. The default value is <code>false</code>.]]></description>
 			<name>auto</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -3351,7 +3371,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, the component will be disabled, and the user will be unable to interact with the component.]]></description>
+			<description><![CDATA[When this flag is true, the component will be disabled, and the user will be unable to interact with the component. The default value is <code>false</code>.]]></description>
 			<name>disabled</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -3501,7 +3521,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Boolean</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -3525,13 +3545,13 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, a table showing a preview will be rendered when the user selects one or more files. The default value is false.]]></description>
+			<description><![CDATA[When this flag is true, a table showing a preview will be rendered when the user selects one or more files. The default value is <code>false</code>.]]></description>
 			<name>showPreview</name>
 			<required>false</required>
 			<type>boolean</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, a table showing file upload progress will be rendered when the user selects one of more files. The default value is false.]]></description>
+			<description><![CDATA[When this flag is true, a table showing file upload progress will be rendered when the user selects one of more files. The default value is <code>false</code>.]]></description>
 			<name>showProgress</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -3592,7 +3612,8 @@ java.lang.Object)</method-signature>
 			<method-signature>void valueChange(javax.faces.event.ValueChangeEvent)</method-signature>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/inputfile/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -3633,7 +3654,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Boolean</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -3676,7 +3697,8 @@ java.lang.Object)</method-signature>
 			<method-signature>void valueChange(javax.faces.event.ValueChangeEvent)</method-signature>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/inputhidden/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -3729,7 +3751,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, the component will be disabled, and the user will be unable to interact with the component.]]></description>
+			<description><![CDATA[When this flag is true, the component will be disabled, and the user will be unable to interact with the component. The default value is <code>false</code>.]]></description>
 			<name>disabled</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -3855,13 +3877,13 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Boolean</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When true, the value attribute is rendered to the response. The default is false for security purposes.]]></description>
+			<description><![CDATA[When true, the value attribute is rendered to the response. The default value is <code>false</code> for security purposes.]]></description>
 			<name>redisplay</name>
 			<required>false</required>
 			<type>boolean</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -3940,7 +3962,8 @@ java.lang.Object)</method-signature>
 			<method-signature>void valueChange(javax.faces.event.ValueChangeEvent)</method-signature>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/inputsecret/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -4011,13 +4034,13 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[Specifies the maximum number of lines that the editor is to display before a vertical scrollbar appears. Default is 1024.]]></description>
+			<description><![CDATA[Specifies the maximum number of lines that the editor is to display before a vertical scrollbar appears. The default value is <code>1024</code>.]]></description>
 			<name>maxLines</name>
 			<required>false</required>
 			<type>java.lang.Integer</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[Minimum number of lines that the editor is to display. Default is 6.]]></description>
+			<description><![CDATA[Minimum number of lines that the editor is to display. The default value is <code>6</code>.]]></description>
 			<name>minLines</name>
 			<required>false</required>
 			<type>java.lang.Integer</type>
@@ -4029,13 +4052,13 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, the component will be read-only, meaning that the user will be unable to edit the source code text. The default value is false.]]></description>
+			<description><![CDATA[When this flag is true, the component will be read-only, meaning that the user will be unable to edit the source code text. The default value is <code>false</code>.]]></description>
 			<name>readOnly</name>
 			<required>false</required>
 			<type>java.lang.Boolean</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -4053,7 +4076,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, a vertical line will appear that indicates the print margin. The default value is true.]]></description>
+			<description><![CDATA[When this flag is true, a vertical line will appear that indicates the print margin. The default value is <code>true</code>.]]></description>
 			<name>showPrintMargin</name>
 			<required>false</required>
 			<type>java.lang.Boolean</type>
@@ -4077,13 +4100,13 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, the tab key will produce space characters rather than tab characters. The default value is false.]]></description>
+			<description><![CDATA[When this flag is true, the tab key will produce space characters rather than tab characters. The default value is <code>false</code>.]]></description>
 			<name>useSoftTabs</name>
 			<required>false</required>
 			<type>java.lang.Boolean</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, the line will break when it reaches the end of the line. The default value is true.]]></description>
+			<description><![CDATA[When this flag is true, the line will break when it reaches the end of the line. The default value is <code>true</code>.]]></description>
 			<name>useWrapMode</name>
 			<required>false</required>
 			<type>java.lang.Boolean</type>
@@ -4120,7 +4143,8 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/inputsourcecode/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -4173,7 +4197,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, the component will be disabled, and the user will be unable to interact with the component.]]></description>
+			<description><![CDATA[When this flag is true, the component will be disabled, and the user will be unable to interact with the component. The default value is <code>false</code>.]]></description>
 			<name>disabled</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -4299,7 +4323,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Boolean</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -4378,7 +4402,8 @@ java.lang.Object)</method-signature>
 			<method-signature>void valueChange(javax.faces.event.ValueChangeEvent)</method-signature>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/inputtext/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -4425,7 +4450,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, the component will be disabled, and the user will be unable to interact with the component.]]></description>
+			<description><![CDATA[When this flag is true, the component will be disabled, and the user will be unable to interact with the component. The default value is <code>false</code>.]]></description>
 			<name>disabled</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -4551,7 +4576,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Boolean</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -4630,7 +4655,8 @@ java.lang.Object)</method-signature>
 			<method-signature>void valueChange(javax.faces.event.ValueChangeEvent)</method-signature>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/inputtextarea/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -4647,7 +4673,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When true, the first item in the list will be activated so that users can press TAB or ENTER to select it. Default is <code>true</code>.]]></description>
+			<description><![CDATA[When true, the first item in the list will be activated so that users can press TAB or ENTER to select it. The default value is <code>true</code>.]]></description>
 			<name>activateFirstItem</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -4659,7 +4685,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, the component will hide when an item is selected. The default value is true.]]></description>
+			<description><![CDATA[When this flag is true, the component will hide when an item is selected. The default value is <code>true</code>.]]></description>
 			<name>autoHide</name>
 			<required>false</required>
 			<type>java.lang.Boolean</type>
@@ -4671,7 +4697,7 @@ java.lang.Object)</method-signature>
 			<type>javax.faces.component.UIComponent</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When true, the autoComplete list will wrap around allowing users to use keyboard navigation to move from the top of the list to the bottom and vice versa. Defaults to <code>true</code>.]]></description>
+			<description><![CDATA[When true, the autoComplete list will wrap around allowing users to use keyboard navigation to move from the top of the list to the bottom and vice versa. The default value is <code>true</code>.]]></description>
 			<name>circular</name>
 			<required>false</required>
 			<type>java.lang.Boolean</type>
@@ -4701,13 +4727,13 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, the component will be disabled, and the user will be unable to interact with the component.]]></description>
+			<description><![CDATA[When this flag is true, the component will be disabled, and the user will be unable to interact with the component. The default value is <code>false</code>.]]></description>
 			<name>disabled</name>
 			<required>false</required>
 			<type>boolean</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[Specifies the type of filter that will be used for the pickTime's autocompletion. Valid values include:       <ul>        <li>charMatch</li>        <li>charMatchCase</li>        <li>phraseMatch</li>        <li>phraseMatchCase</li>        <li>startsWith</li>        <li>startsWithCase</li>        <li>subWordMatch</li>        <li>subWordMatchCase</li>        <li>wordMatch</li>        <li>wordMatchCase</li>       </ul>]]></description>
+			<description><![CDATA[Specifies the type of filter that will be used for the pickTime's autocompletion. Valid values include:<ul><li>charMatch</li><li>charMatchCase</li><li>phraseMatch</li><li>phraseMatchCase</li><li>startsWith</li><li>startsWithCase</li><li>subWordMatch</li><li>subWordMatchCase</li><li>wordMatch</li><li>wordMatchCase</li></ul>]]></description>
 			<name>filterType</name>
 			<required>false</required>
 			<type>java.lang.String</type>
@@ -4719,7 +4745,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[Specifies the type of filter that will be used for the pickTime's autocomplete highlighter. Valid values include:       <ul>        <li>charMatch</li>        <li>charMatchCase</li>        <li>phraseMatch</li>        <li>phraseMatchCase</li>        <li>startsWith</li>        <li>startsWithCase</li>        <li>subWordMatch</li>        <li>subWordMatchCase</li>        <li>wordMatch</li>        <li>wordMatchCase</li>       </ul>]]></description>
+			<description><![CDATA[Specifies the type of filter that will be used for the pickTime's autocomplete highlighter. Valid values include:<ul><li>charMatch</li><li>charMatchCase</li><li>phraseMatch</li><li>phraseMatchCase</li><li>startsWith</li><li>startsWithCase</li><li>subWordMatch</li><li>subWordMatchCase</li><li>wordMatch</li><li>wordMatchCase</li></ul>]]></description>
 			<name>highlighterType</name>
 			<required>false</required>
 			<type>java.lang.String</type>
@@ -4767,19 +4793,19 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Integer</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[The maximum time that can be selected by the user. <code>maxTime</code> can be of type <code>java.lang.String</code> (of the pattern "HH:mm:ss") or <code>java.util.Date</code>.]]></description>
+			<description><![CDATA[The maximum time that can be selected by the user. <code>maxTime</code> can be of type <code>java.lang.String</code> (of the pattern "HH:mm:ss") or <code>java.util.Date</code>. The default value is <code>"23:59:59"</code>.]]></description>
 			<name>maxTime</name>
 			<required>false</required>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[The minimum time that can be selected by the user. <code>minTime</code> can be of type <code>java.lang.String</code> (of the pattern "HH:mm:ss") or <code>java.util.Date</code>.]]></description>
+			<description><![CDATA[The minimum time that can be selected by the user. <code>minTime</code> can be of type <code>java.lang.String</code> (of the pattern "HH:mm:ss") or <code>java.util.Date</code>. The default value is <code>"00:00:00"</code>.]]></description>
 			<name>minTime</name>
 			<required>false</required>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When true, the component will render an HTML5 <code>&lt;input type="time" /&gt;</code> element on small/mobile displays in order to enable selection of a time with the mobile device's native UI. The default is true.]]></description>
+			<description><![CDATA[When true, the component will render an HTML5 <code>&lt;input type="time" /&gt;</code> element on small/mobile displays in order to enable selection of a time with the mobile device's native UI. The default value is <code>true</code>.]]></description>
 			<name>nativeWhenMobile</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -4869,7 +4895,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[The format of the time that corresponds to patterns described in the javadoc for <code>java.text.SimpleDateFormat</code>. The default is <code>hh:mm a</code>.]]></description>
+			<description><![CDATA[The format of the time that corresponds to patterns described in the javadoc for <code>java.text.SimpleDateFormat</code>. The default value is <code>"hh:mm a"</code>.]]></description>
 			<name>pattern</name>
 			<required>false</required>
 			<type>java.lang.String</type>
@@ -4887,7 +4913,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Boolean</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -4917,7 +4943,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Boolean</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[Specifies which event will pop up the picker. Valid values are <code>focus</code> (the default), <code>button</code>, and <code>both</code>.]]></description>
+			<description><![CDATA[Specifies which event will pop up the picker. Valid values are <code>"focus"</code> (the default), <code>"button"</code>, and <code>"both"</code>.]]></description>
 			<name>showOn</name>
 			<required>false</required>
 			<type>java.lang.String</type>
@@ -4929,7 +4955,7 @@ java.lang.Object)</method-signature>
 			<type>int</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[The step in seconds between each selectable timestamp. The default is 3,600 seconds (or 1 hour).]]></description>
+			<description><![CDATA[The step in seconds between each selectable timestamp. The default value is 3,600 seconds (or 1 hour).]]></description>
 			<name>step</name>
 			<required>false</required>
 			<type>java.lang.Integer</type>
@@ -4953,10 +4979,10 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[The time zone for the built-in DateTimeConverter.]]></description>
+			<description><![CDATA[The time zone of the component. The default value is <code>"Greenwich"</code>.]]></description>
 			<name>timeZone</name>
 			<required>false</required>
-			<type>java.lang.Object</type>
+			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
 			<description><![CDATA[HTML passthrough attribute specifying the title of the element.]]></description>
@@ -4996,7 +5022,8 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Integer</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/inputtime/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -5043,7 +5070,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Boolean</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, the component will be disabled, and the user will be unable to interact with the component.]]></description>
+			<description><![CDATA[When this flag is true, the component will be disabled, and the user will be unable to interact with the component. The default value is <code>false</code>.]]></description>
 			<name>disabled</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -5163,7 +5190,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -5229,7 +5256,8 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Object</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/link/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -5237,7 +5265,7 @@ java.lang.Object)</method-signature>
 		<tag-name>loadConstants</tag-name>
 		<handler-class>com.liferay.faces.alloy.taghandler.LoadConstants</handler-class>
 		<attribute>
-			<description><![CDATA[When true, the imported constants will be cached. Defaults to true.]]></description>
+			<description><![CDATA[When true, the imported constants will be cached. The default value is <code>true</code>.]]></description>
 			<name>cacheable</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -5255,7 +5283,8 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/loadconstants/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -5283,7 +5312,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -5301,7 +5330,8 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/menu/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -5378,7 +5408,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -5390,13 +5420,13 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When true, the value of FacesMessage.getDetail() is rendered. This is true by default.]]></description>
+			<description><![CDATA[When true, the value of FacesMessage.getDetail() is rendered. The default value is <code>true</code>.]]></description>
 			<name>showDetail</name>
 			<required>false</required>
 			<type>boolean</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When true, the value of FacesMessage.getSummary() is rendered. This is true by default.]]></description>
+			<description><![CDATA[When true, the value of FacesMessage.getSummary() is rendered. The default value is <code>true</code>.]]></description>
 			<name>showSummary</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -5420,7 +5450,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When true, the value of FacesMessage.getDetail() rendered as a tooltip. This is false by default.]]></description>
+			<description><![CDATA[When true, the value of FacesMessage.getDetail() rendered as a tooltip. The default value is <code>true</code>.]]></description>
 			<name>tooltip</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -5438,7 +5468,8 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/message/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -5491,7 +5522,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When true, only the global FacesMessages (those that are not associated with a specific component) are displayed. This is false by default.]]></description>
+			<description><![CDATA[When true, only the global FacesMessages (those that are not associated with a specific component) are displayed. The default value is <code>false</code>.]]></description>
 			<name>globalOnly</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -5521,13 +5552,13 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When 'table', an HTML table is rendered and each message appears in a separate table row. When 'list', an HTML unordered list is rendered and each message appears in a separate list item. The default value is 'list'.]]></description>
+			<description><![CDATA[When "table", an HTML table is rendered and each message appears in a separate table row. When "list", an HTML unordered list is rendered and each message appears in a separate list item. The default value is <code>"list"</code>.]]></description>
 			<name>layout</name>
 			<required>false</required>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -5539,13 +5570,13 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When true, the value of FacesMessage.getDetail() is rendered. This is true by default.]]></description>
+			<description><![CDATA[When true, the value of FacesMessage.getDetail() is rendered. The default value is <code>true</code>.]]></description>
 			<name>showDetail</name>
 			<required>false</required>
 			<type>boolean</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When true, the value of FacesMessage.getSummary() is rendered. This is true by default.]]></description>
+			<description><![CDATA[When true, the value of FacesMessage.getSummary() is rendered. The default value is <code>true</code>.]]></description>
 			<name>showSummary</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -5569,7 +5600,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When true, the value of FacesMessage.getDetail() rendered as a tooltip. This is false by default.]]></description>
+			<description><![CDATA[When true, the value of FacesMessage.getDetail() rendered as a tooltip. The default value is <code>true</code>.]]></description>
 			<name>tooltip</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -5587,7 +5618,8 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/messages/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -5616,7 +5648,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When false, markup will not be escaped. This is true by default.]]></description>
+			<description><![CDATA[When false, markup will not be escaped. The default value is <code>true</code>.]]></description>
 			<name>escape</name>
 			<required>false</required>
 			<type>java.lang.String</type>
@@ -5634,7 +5666,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -5670,7 +5702,8 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Object</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/outputformat/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -5705,7 +5738,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When false, markup will not be escaped. This is true by default.]]></description>
+			<description><![CDATA[When false, markup will not be escaped. The default value is <code>true</code>.]]></description>
 			<name>escape</name>
 			<required>false</required>
 			<type>java.lang.String</type>
@@ -5801,7 +5834,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -5843,7 +5876,8 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Object</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/outputlabel/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -5890,7 +5924,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, the component will be disabled, and the user will be unable to interact with the component.]]></description>
+			<description><![CDATA[When this flag is true, the component will be disabled, and the user will be unable to interact with the component. The default value is <code>false</code>.]]></description>
 			<name>disabled</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -5992,7 +6026,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -6058,7 +6092,8 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Object</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/outputlink/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -6093,7 +6128,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When false, markup will not be escaped. This is true by default.]]></description>
+			<description><![CDATA[When false, markup will not be escaped. The default value is <code>true</code>.]]></description>
 			<name>escape</name>
 			<required>false</required>
 			<type>java.lang.String</type>
@@ -6135,7 +6170,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -6171,7 +6206,8 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Object</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/outputremainingchars/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -6212,7 +6248,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -6236,7 +6272,8 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Object</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/outputscript/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -6283,7 +6320,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -6295,7 +6332,8 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Object</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/outputstylesheet/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -6324,7 +6362,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When false, markup will not be escaped. This is true by default.]]></description>
+			<description><![CDATA[When false, markup will not be escaped. The default value is <code>true</code>.]]></description>
 			<name>escape</name>
 			<required>false</required>
 			<type>java.lang.String</type>
@@ -6342,7 +6380,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -6378,7 +6416,8 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Object</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/outputtext/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -6389,7 +6428,7 @@ java.lang.Object)</method-signature>
 			<renderer-type>com.liferay.faces.alloy.component.outputtooltip.OutputTooltipRenderer</renderer-type>
 		</component>
 		<attribute>
-			<description><![CDATA[When true, the component is visible initially. The default is false.]]></description>
+			<description><![CDATA[When true, the component is visible initially. The default value is <code>false</code>.]]></description>
 			<name>autoShow</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -6419,7 +6458,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When false, markup will not be escaped. This is true by default.]]></description>
+			<description><![CDATA[When false, markup will not be escaped. The default value is <code>true</code>.]]></description>
 			<name>escape</name>
 			<required>false</required>
 			<type>java.lang.String</type>
@@ -6455,13 +6494,13 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[Indicates the side of the associated component where the tooltip should appear ("right", "left", "top", "bottom"). Default is "right".]]></description>
+			<description><![CDATA[Indicates the side of the associated component where the tooltip should appear ("right", "left", "top", "bottom"). The default value is <code>"right"</code>.]]></description>
 			<name>position</name>
 			<required>false</required>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -6503,7 +6542,8 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Integer</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/outputtooltip/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -6514,7 +6554,7 @@ java.lang.Object)</method-signature>
 			<renderer-type>com.liferay.faces.alloy.component.paginator.PaginatorRenderer</renderer-type>
 		</component>
 		<attribute>
-			<description><![CDATA[When this flag is true, clicking on the button will cause the form to be submitted via XmlHttpRequest. The default is true.]]></description>
+			<description><![CDATA[When this flag is true, clicking on the button will cause the form to be submitted via XmlHttpRequest. The default value is <code>true</code>.]]></description>
 			<name>ajax</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -6532,13 +6572,13 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[Integer representing the first page number that is to be displayed in the list of page number controls. The default value is 1.]]></description>
+			<description><![CDATA[Integer representing the first page number that is to be displayed in the list of page number controls. The default value is <code>1</code>.]]></description>
 			<name>firstPage</name>
 			<required>false</required>
 			<type>int</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[The label of the control that causes the first page to be displayed. The default value is the &amp;laquo; character code.]]></description>
+			<description><![CDATA[The label of the control that causes the first page to be displayed. The default value is the <code>"&amp;laquo;"</code> character code.]]></description>
 			<name>firstPageLabel</name>
 			<required>false</required>
 			<type>java.lang.String</type>
@@ -6556,31 +6596,31 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[The label of the control that causes the last page to be displayed. The default value is the &amp;raquo; character code.]]></description>
+			<description><![CDATA[The label of the control that causes the last page to be displayed. The default value is the <code>"&amp;raquo;"</code> character code.]]></description>
 			<name>lastPageLabel</name>
 			<required>false</required>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[Integer representing the maximum number of page number controls that will be displayed. The default value is 10.]]></description>
+			<description><![CDATA[Integer representing the maximum number of page number controls that will be displayed. The default value is <code>10</code>.]]></description>
 			<name>maxPageNumberControls</name>
 			<required>false</required>
 			<type>int</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[The label of the control that causes the next page to be displayed. The default value is the &amp;rsaquo; character code.]]></description>
+			<description><![CDATA[The label of the control that causes the next page to be displayed. The default value is the <code>"&amp;rsaquo;"</code> character code.]]></description>
 			<name>nextPageLabel</name>
 			<required>false</required>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[The label of the control that causes the previous page to be displayed. The default value is the &amp;lsaquo; character code.]]></description>
+			<description><![CDATA[The label of the control that causes the previous page to be displayed. The default value is the <code>"&amp;lsaquo;"</code> character code.]]></description>
 			<name>previousPageLabel</name>
 			<required>false</required>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[Synonym for the <code>execute</code> attribute.]]></description>
+			<description><![CDATA[Synonym for the <code>execute</code> attribute. The default value is <code>"@all"</code>.]]></description>
 			<name>process</name>
 			<required>false</required>
 			<type>java.lang.String</type>
@@ -6592,37 +6632,37 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When true, a control will be rendered that will cause the associated UIData component to display the first page . This is true by default.]]></description>
+			<description><![CDATA[When true, a control will be rendered that will cause the associated UIData component to display the first page. The default value is <code>true</code>.]]></description>
 			<name>showFirstPageControl</name>
 			<required>false</required>
 			<type>boolean</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When true, a control will be rendered that will cause the associated UIData component to display the last page. This is true by default.]]></description>
+			<description><![CDATA[When true, a control will be rendered that will cause the associated UIData component to display the last page. The default value is <code>true</code>.]]></description>
 			<name>showLastPageControl</name>
 			<required>false</required>
 			<type>boolean</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When true, a control will be rendered that will cause the associated UIData component to display the next page. This is true by default.]]></description>
+			<description><![CDATA[When true, a control will be rendered that will cause the associated UIData component to display the next page. The default value is <code>true</code>.]]></description>
 			<name>showNextPageControl</name>
 			<required>false</required>
 			<type>boolean</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When true, controls will be rendered for each page number (limited by the maxPageNumberControls attribute). This is true by default.]]></description>
+			<description><![CDATA[When true, controls will be rendered for each page number (limited by the maxPageNumberControls attribute). The default value is <code>true</code>.]]></description>
 			<name>showPageNumberControls</name>
 			<required>false</required>
 			<type>boolean</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When true, a control will be rendered that will cause the associated UIData component to display the previous page. This is true by default.]]></description>
+			<description><![CDATA[When true, a control will be rendered that will cause the associated UIData component to display the previous page. The default value is <code>true</code>.]]></description>
 			<name>showPreviousPageControl</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -6640,13 +6680,13 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When true, a row summary such as "Page 1 of 7." will be displayed based on the <code>results-x-x-of-x-page-x-of-x</code> internationalized language key. This is true by default.]]></description>
+			<description><![CDATA[Specifies the position of the row summary. The row summary will be displayed based on the <code>results-x-x-of-x-page-x-of-x</code> internationalized language key, for example: "Page 1 of 7." The default value is <code>"bottom"</code>.]]></description>
 			<name>summaryPosition</name>
 			<required>false</required>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[Synonym for the <code>render</code> attribute.]]></description>
+			<description><![CDATA[Synonym for the <code>render</code> attribute. The default value is <code>"@none"</code>.]]></description>
 			<name>update</name>
 			<required>false</required>
 			<type>java.lang.String</type>
@@ -6658,7 +6698,8 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Object</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/paginator/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -6693,7 +6734,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[Specifies whether the HTML element rendered by this component will be a <code>span</code> (default) or a <code>div</code>. If the value of this attribute is <code>block</code>, the rendered element will be a <code>div</code>.]]></description>
+			<description><![CDATA[Specifies whether the HTML element rendered by this component will be a <code>span</code> (default) or a <code>div</code>. If the value of this attribute is <code>"block"</code>, the rendered element will be a <code>div</code>.]]></description>
 			<name>layout</name>
 			<required>false</required>
 			<type>java.lang.String</type>
@@ -6759,7 +6800,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -6777,7 +6818,8 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/panel/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -6944,7 +6986,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -6998,7 +7040,8 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/panelgrid/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -7021,7 +7064,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[Specifies whether the HTML element rendered by this component will be a <code>span</code> (default) or a <code>div</code>. If the value of this attribute is <code>block</code>, the rendered element will be a <code>div</code>.]]></description>
+			<description><![CDATA[Specifies whether the HTML element rendered by this component will be a <code>span</code> (default) or a <code>div</code>. If the value of this attribute is <code>"block"</code>, the rendered element will be a <code>div</code>.]]></description>
 			<name>layout</name>
 			<required>false</required>
 			<type>java.lang.String</type>
@@ -7087,7 +7130,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -7105,7 +7148,8 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/panelgroup/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -7116,7 +7160,7 @@ java.lang.Object)</method-signature>
 			<renderer-type>com.liferay.faces.alloy.component.popover.PopoverRenderer</renderer-type>
 		</component>
 		<attribute>
-			<description><![CDATA[When true, the component is visible initially. The default is false.]]></description>
+			<description><![CDATA[When true, the component is visible initially. The default value is <code>false</code>.]]></description>
 			<name>autoShow</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -7134,7 +7178,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When true, the overlay window is automatically hidden when the user clicks outside of it. The default is true.]]></description>
+			<description><![CDATA[When true, the overlay window is automatically hidden when the user clicks outside of it. The default value is <code>true</code>.]]></description>
 			<name>dismissible</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -7158,7 +7202,7 @@ java.lang.Object)</method-signature>
 			<type>String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When true, an "x" is placed in the upper right corner that the user can click on to hide/dismiss the overlay window. The default is true.]]></description>
+			<description><![CDATA[When true, an "x" is placed in the upper right corner that the user can click on to hide/dismiss the overlay window. The default value is <code>true</code>.]]></description>
 			<name>hideIconRendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -7230,13 +7274,13 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[Indicates the side of the associated component where the tooltip should appear ("right", "left", "top", "bottom"). Default is "right".]]></description>
+			<description><![CDATA[Indicates the side of the associated component where the tooltip should appear ("right", "left", "top", "bottom"). The default value is <code>"right"</code>.]]></description>
 			<name>position</name>
 			<required>false</required>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -7266,11 +7310,12 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Integer</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/popover/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
-		<description><![CDATA[<p>ProgressBar is a UIComponent that displays a progress bar and can operate as a server-side or client-side progress indicator.</p>     <p>This component includes a client-side JavaScript API which can be accessed using the <code>clientKey</code> attribute and the <code>Liferay.component()</code> method:     <ul>      <li><code>set()</code> - The <code>set()</code> method can be used to set the client-side value of the component e.g. <code>Liferay.component('progressBar').set('value', value);</code>.</li>      <li><code>start()</code> - The <code>start()</code> method starts polling the server for the value of the component.</li>      <li><code>stop()</code> - The <code>stop()</code> method stops the component's polling of the server.</li>     </ul></p>]]></description>
+		<description><![CDATA[<p>ProgressBar is a UIComponent that displays a progress bar and can operate as a server-side or client-side progress indicator.</p><p>This component includes a client-side JavaScript API which can be accessed using the <code>clientKey</code> attribute and the <code>Liferay.component()</code> method:<ul><li><code>set()</code> - The <code>set()</code> method can be used to set the client-side value of the component e.g. <code>Liferay.component('progressBar').set('value', value);</code>.</li><li><code>start()</code> - The <code>start()</code> method starts polling the server for the value of the component.</li><li><code>stop()</code> - The <code>stop()</code> method stops the component's polling of the server.</li></ul></p>]]></description>
 		<tag-name>progressBar</tag-name>
 		<component>
 			<component-type>com.liferay.faces.alloy.component.progressbar.ProgressBar</component-type>
@@ -7313,13 +7358,13 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[The maximum value that the progress bar can have. Defaults to 100.]]></description>
+			<description><![CDATA[The maximum value that the progress bar can have. The default value is <code>100</code>.]]></description>
 			<name>maxProgress</name>
 			<required>false</required>
 			<type>java.lang.Integer</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[The minimum value that the progress bar can have. Defaults to 0.]]></description>
+			<description><![CDATA[The minimum value that the progress bar can have. The default value is <code>0</code>.]]></description>
 			<name>minProgress</name>
 			<required>false</required>
 			<type>java.lang.Integer</type>
@@ -7331,13 +7376,13 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[The delay (in milliseconds) before dispatching a polling Ajax request after recieving the response of a previous request. Defaults to 3000.]]></description>
+			<description><![CDATA[The delay (in milliseconds) before dispatching a polling Ajax request after recieving the response of a previous request. The default value is <code>3000</code>.]]></description>
 			<name>pollingDelay</name>
 			<required>false</required>
 			<type>java.lang.Integer</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -7355,7 +7400,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[The value of this component, which is typically bound via EL to a model bean property. Defaults to 0.]]></description>
+			<description><![CDATA[The value of this component, which is typically bound via EL to a model bean property. The default value is <code>0</code>.]]></description>
 			<name>value</name>
 			<required>false</required>
 			<type>java.lang.Integer</type>
@@ -7367,7 +7412,8 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/progressbar/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -7395,7 +7441,8 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/resource/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -7412,7 +7459,7 @@ java.lang.Object)</method-signature>
 			<type>javax.faces.component.UIComponent</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, the element will have the CSS class <code>row-fluid</code>. Otherwise, the element will have the CSS class <code>row</code>. The default value is true.]]></description>
+			<description><![CDATA[When this flag is true, the element will have the CSS class <code>row-fluid</code>. Otherwise, the element will have the CSS class <code>row</code>. The default value is <code>true</code>.]]></description>
 			<name>fluid</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -7424,7 +7471,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -7442,7 +7489,8 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/row/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -7483,7 +7531,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, the component will be disabled, and the user will be unable to interact with the component.]]></description>
+			<description><![CDATA[When this flag is true, the component will be disabled, and the user will be unable to interact with the component. The default value is <code>false</code>.]]></description>
 			<name>disabled</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -7603,7 +7651,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Boolean</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -7676,7 +7724,8 @@ java.lang.Object)</method-signature>
 			<method-signature>void valueChange(javax.faces.event.ValueChangeEvent)</method-signature>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/selectbooleancheckbox/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -7723,7 +7772,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, the component will be disabled, and the user will be unable to interact with the component.]]></description>
+			<description><![CDATA[When this flag is true, the component will be disabled, and the user will be unable to interact with the component. The default value is <code>false</code>.]]></description>
 			<name>disabled</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -7861,7 +7910,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Boolean</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -7946,7 +7995,8 @@ java.lang.Object)</method-signature>
 			<method-signature>void valueChange(javax.faces.event.ValueChangeEvent)</method-signature>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/selectmanycheckbox/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -7993,7 +8043,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, the component will be disabled, and the user will be unable to interact with the component.]]></description>
+			<description><![CDATA[When this flag is true, the component will be disabled, and the user will be unable to interact with the component. The default value is <code>false</code>.]]></description>
 			<name>disabled</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -8131,7 +8181,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Boolean</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -8210,7 +8260,8 @@ java.lang.Object)</method-signature>
 			<method-signature>void valueChange(javax.faces.event.ValueChangeEvent)</method-signature>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/selectmanylistbox/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -8257,7 +8308,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, the component will be disabled, and the user will be unable to interact with the component.]]></description>
+			<description><![CDATA[When this flag is true, the component will be disabled, and the user will be unable to interact with the component. The default value is <code>false</code>.]]></description>
 			<name>disabled</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -8395,7 +8446,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Boolean</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -8468,7 +8519,8 @@ java.lang.Object)</method-signature>
 			<method-signature>void valueChange(javax.faces.event.ValueChangeEvent)</method-signature>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/selectmanymenu/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -8509,7 +8561,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, the component will be disabled, and the user will be unable to interact with the component.]]></description>
+			<description><![CDATA[When this flag is true, the component will be disabled, and the user will be unable to interact with the component. The default value is <code>false</code>.]]></description>
 			<name>disabled</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -8647,7 +8699,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Boolean</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -8726,7 +8778,8 @@ java.lang.Object)</method-signature>
 			<method-signature>void valueChange(javax.faces.event.ValueChangeEvent)</method-signature>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/selectonelistbox/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -8767,7 +8820,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, the component will be disabled, and the user will be unable to interact with the component.]]></description>
+			<description><![CDATA[When this flag is true, the component will be disabled, and the user will be unable to interact with the component. The default value is <code>false</code>.]]></description>
 			<name>disabled</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -8905,7 +8958,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Boolean</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -8978,7 +9031,8 @@ java.lang.Object)</method-signature>
 			<method-signature>void valueChange(javax.faces.event.ValueChangeEvent)</method-signature>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/selectonemenu/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -9019,7 +9073,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, the component will be disabled, and the user will be unable to interact with the component.]]></description>
+			<description><![CDATA[When this flag is true, the component will be disabled, and the user will be unable to interact with the component. The default value is <code>false</code>.]]></description>
 			<name>disabled</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -9157,7 +9211,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Boolean</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -9230,7 +9284,8 @@ java.lang.Object)</method-signature>
 			<method-signature>void valueChange(javax.faces.event.ValueChangeEvent)</method-signature>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/selectoneradio/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -9277,19 +9332,13 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Boolean</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[A localized label for this component that is typically only rendered in a FacesMessage when validation fails.]]></description>
-			<name>label</name>
-			<required>false</required>
-			<type>java.lang.String</type>
-		</attribute>
-		<attribute>
 			<description><![CDATA[HTML passthrough attribute specifying the language code used in the element.]]></description>
 			<name>lang</name>
 			<required>false</required>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -9362,7 +9411,8 @@ java.lang.Object)</method-signature>
 			<method-signature>void valueChange(javax.faces.event.ValueChangeEvent)</method-signature>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/selectstarrating/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -9409,19 +9459,13 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Boolean</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[A localized label for this component that is typically only rendered in a FacesMessage when validation fails.]]></description>
-			<name>label</name>
-			<required>false</required>
-			<type>java.lang.String</type>
-		</attribute>
-		<attribute>
 			<description><![CDATA[HTML passthrough attribute specifying the language code used in the element.]]></description>
 			<name>lang</name>
 			<required>false</required>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -9494,7 +9538,8 @@ java.lang.Object)</method-signature>
 			<method-signature>void valueChange(javax.faces.event.ValueChangeEvent)</method-signature>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/selectthumbrating/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -9518,7 +9563,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, the component will be disabled, and the user will be unable to intercat with the component.]]></description>
+			<description><![CDATA[When this flag is true, the component will be disabled, and the user will be unable to intercat with the component. The default value is <code>false</code>.]]></description>
 			<name>disabled</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -9542,7 +9587,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -9560,7 +9605,8 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/tab/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -9595,7 +9641,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value of this attribute is true.]]></description>
+			<description><![CDATA[When this flag is true, this component will be rendered to there response. When false, it will not be rendered to the response. The default value is <code>true</code>.]]></description>
 			<name>rendered</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -9607,7 +9653,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Integer</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When true, this indicates whether or not the tabs will appear vertically. The default value is false.]]></description>
+			<description><![CDATA[When true, this indicates whether or not the tabs will appear vertically. The default value is <code>false.</code>]]></description>
 			<name>stacked</name>
 			<required>false</required>
 			<type>java.lang.Boolean</type>
@@ -9643,7 +9689,8 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/tabview/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -9654,7 +9701,7 @@ java.lang.Object)</method-signature>
 			<renderer-type>com.liferay.faces.alloy.component.video.VideoRenderer</renderer-type>
 		</component>
 		<attribute>
-			<description><![CDATA[HTML5 passthrough attribute specifying whether the media will begin playing automatically. Defaults to false.]]></description>
+			<description><![CDATA[HTML5 passthrough attribute specifying whether the media will begin playing automatically. The default value is <code>false</code>.]]></description>
 			<name>autoplay</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -9666,25 +9713,25 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[HTML5 passthrough attribute specifying whether controls should be rendered for the media. Defaults to false.]]></description>
+			<description><![CDATA[HTML5 passthrough attribute specifying whether controls should be rendered for the media. The default value is <code>false</code>.]]></description>
 			<name>controls</name>
 			<required>false</required>
 			<type>boolean</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When true the component will gracefully degrade to the Adobe&reg; Flash&reg; player for older browsers. Defaults to true. Defaults to true.]]></description>
+			<description><![CDATA[When true the component will gracefully degrade to the Adobe&reg; Flash&reg; player for older browsers. The default value is <code>true</code>.]]></description>
 			<name>degrade</name>
 			<required>false</required>
 			<type>boolean</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[A context-relative path, resource URL, or FacesResource that can be used to retrieve the Adobe&reg; Flash&reg; player. Defaults to the player that comes bundled with AlloyUI. <strong>Note:</strong> The AlloyUI player does not support <code>.ogv</code> or <code>.webm</code> formats.]]></description>
+			<description><![CDATA[A context-relative path, resource URL, or FacesResource that can be used to retrieve the Adobe&reg; Flash&reg; player. The default flash player is the flash player bundled with AlloyUI. <strong>Note:</strong> The AlloyUI player does not support <code>.ogv</code> or <code>.webm</code> formats.]]></description>
 			<name>flashPlayer</name>
 			<required>false</required>
 			<type>java.lang.Object</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[The version of Adobe&reg; Flash&reg; required to play this media. Defaults to <code>"9,0,0,0"</code>.]]></description>
+			<description><![CDATA[The version of Adobe&reg; Flash&reg; required to play this media. The default value is <code>"9,0,0,0"</code>.]]></description>
 			<name>flashPlayerVersion</name>
 			<required>false</required>
 			<type>java.lang.String</type>
@@ -9702,13 +9749,13 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[HTML5 passthrough attribute specifying whether the media will restart after it has completed playing. Defaults to false.]]></description>
+			<description><![CDATA[HTML5 passthrough attribute specifying whether the media will restart after it has completed playing. The default value is <code>false</code>.]]></description>
 			<name>loop</name>
 			<required>false</required>
 			<type>boolean</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[HTML5 passthrough attribute specifying whether the media will be muted initially. Defaults to false.]]></description>
+			<description><![CDATA[HTML5 passthrough attribute specifying whether the media will be muted initially. The default value is <code>false</code>.]]></description>
 			<name>muted</name>
 			<required>false</required>
 			<type>boolean</type>
@@ -9960,7 +10007,8 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:since>4.2.5-ga6</vdldoc:since>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/video/general</vdldoc:example-url>
+			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
 </facelet-taglib>

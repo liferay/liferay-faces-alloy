@@ -19,6 +19,7 @@ import javax.faces.component.html.HtmlColumn;
 
 import com.liferay.faces.util.component.Styleable;
 
+
 /**
  * @author	Bruno Basto
  * @author	Kyle Stiemann
@@ -154,8 +155,9 @@ public abstract class ColumnBase extends HtmlColumn implements Styleable {
 
 	@Override
 	public String getStyleClass() {
-		// getStateHelper().eval(ColumnPropertyKeys.styleClass, null) is called because super.getStyleClass() may return the
-		// STYLE_CLASS_NAME of the super class.
+
+		// getStateHelper().eval(ColumnPropertyKeys.styleClass, null) is called because
+		// super.getStyleClass() may return the styleClass name of the super class.
 		String styleClass = (String) getStateHelper().eval(ColumnPropertyKeys.styleClass, null);
 
 		return com.liferay.faces.util.component.ComponentUtil.concatCssClasses(styleClass, "alloy-column");

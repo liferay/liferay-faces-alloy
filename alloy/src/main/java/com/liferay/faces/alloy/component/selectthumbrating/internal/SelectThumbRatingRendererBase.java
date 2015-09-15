@@ -14,7 +14,6 @@
 package com.liferay.faces.alloy.component.selectthumbrating.internal;
 //J-
 
-
 import javax.annotation.Generated;
 
 import com.liferay.faces.alloy.component.selectrating.internal.SelectRatingRenderer;
@@ -26,9 +25,5 @@ import com.liferay.faces.alloy.component.selectrating.internal.SelectRatingRende
  */
 @Generated(value = "com.liferay.alloy.tools.builder.FacesBuilder")
 public abstract class SelectThumbRatingRendererBase extends SelectRatingRenderer {
-
-	// Protected Constants
-	protected static final String CLIENT_KEY = "clientKey";
-	protected static final String STYLE_CLASS = "styleClass";
 }
 //J+

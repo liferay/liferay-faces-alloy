@@ -21,9 +21,9 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
-import com.liferay.faces.alloy.component.autocomplete.AutoComplete;
-
 import com.liferay.faces.alloy.render.internal.DelegatingAlloyRendererBase;
+
+import com.liferay.faces.alloy.component.autocomplete.AutoComplete;
 
 
 /**
@@ -35,30 +35,25 @@ public abstract class AutoCompleteRendererBase extends DelegatingAlloyRendererBa
 
 	// Protected Constants
 	protected static final String ACTIVATE_FIRST_ITEM = "activateFirstItem";
+	protected static final String SCROLL_INTO_VIEW = "scrollIntoView";
 	protected static final String CIRCULAR = "circular";
+	protected static final String RESULT_FILTERS = "resultFilters";
 	protected static final String CLIENT_FILTER_TYPE = "clientFilterType";
 	protected static final String CLIENT_KEY = "clientKey";
+	protected static final String QUERY_DELAY = "queryDelay";
+	protected static final String QUERY_DELIMITER = "queryDelimiter";
 	protected static final String HEIGHT = "height";
+	protected static final String RESULT_HIGHLIGHTER = "resultHighlighter";
 	protected static final String LIST_ITEM_REQUIRED = "listItemRequired";
 	protected static final String MAX_RESULTS = "maxResults";
 	protected static final String MIN_QUERY_LENGTH = "minQueryLength";
-	protected static final String QUERY_DELAY = "queryDelay";
-	protected static final String QUERY_DELIMITER = "queryDelimiter";
-	protected static final String RESULT_FILTERS = "resultFilters";
-	protected static final String RESULT_HIGHLIGHTER = "resultHighlighter";
-	protected static final String SCROLL_INTO_VIEW = "scrollIntoView";
 	protected static final String SERVER_CUSTOM_FILTER = "serverCustomFilter";
 	protected static final String SERVER_FILTER_TYPE = "serverFilterType";
-	protected static final String STYLE_CLASS = "styleClass";
 	protected static final String TAB_SELECT = "tabSelect";
 	protected static final String WIDTH = "width";
 
-	// Private Constants
-	private static final String ALLOY_CLASS_NAME = "AutoComplete";
-	private static final String ALLOY_MODULE_NAME = "autocomplete";
-
 	// Modules
-	protected static final String[] MODULES = {ALLOY_MODULE_NAME};
+	protected static final String[] MODULES = { "autocomplete" };
 
 	@Override
 	public void encodeAlloyAttributes(FacesContext facesContext, ResponseWriter responseWriter, UIComponent uiComponent) throws IOException {
@@ -183,7 +178,7 @@ public abstract class AutoCompleteRendererBase extends DelegatingAlloyRendererBa
 
 	@Override
 	public String getAlloyClassName(FacesContext facesContext, UIComponent uiComponent) {
-		return ALLOY_CLASS_NAME;
+		return "AutoComplete";
 	}
 
 	@Override

@@ -14,12 +14,11 @@
 package com.liferay.faces.alloy.component.inputhidden.internal;
 //J-
 
-
 import javax.annotation.Generated;
 
-import com.liferay.faces.alloy.component.inputhidden.InputHidden;
-
 import com.liferay.faces.util.render.DelegatingRendererBase;
+
+import com.liferay.faces.alloy.component.inputhidden.InputHidden;
 
 
 /**

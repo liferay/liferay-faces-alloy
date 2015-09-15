@@ -18,14 +18,14 @@ import javax.annotation.Generated;
 import com.liferay.faces.alloy.component.inputdatetime.InputDateTime;
 
 import com.liferay.faces.util.component.Styleable;
-import com.liferay.faces.util.component.ClientComponent;
+
 
 /**
  * @author	Bruno Basto
  * @author	Kyle Stiemann
  */
 @Generated(value = "com.liferay.alloy.tools.builder.FacesBuilder")
-public abstract class InputDateBase extends InputDateTime implements Styleable, ClientComponent {
+public abstract class InputDateBase extends InputDateTime implements Styleable {
 
 	// Public Constants
 	public static final String COMPONENT_TYPE = "com.liferay.faces.alloy.component.inputdate.InputDate";
@@ -37,8 +37,7 @@ public abstract class InputDateBase extends InputDateTime implements Styleable, 
 		minDate,
 		nativeWhenMobile,
 		panes,
-		pattern,
-		styleClass
+		pattern
 	}
 
 	public InputDateBase() {
@@ -88,16 +87,12 @@ public abstract class InputDateBase extends InputDateTime implements Styleable, 
 
 	@Override
 	public String getStyleClass() {
-		// getStateHelper().eval(InputDatePropertyKeys.styleClass, null) is called because super.getStyleClass() may return the
-		// STYLE_CLASS_NAME of the super class.
-		String styleClass = (String) getStateHelper().eval(InputDatePropertyKeys.styleClass, null);
+
+		// getStateHelper().eval(PropertyKeys.styleClass, null) is called because
+		// super.getStyleClass() may return the styleClass name of the super class.
+		String styleClass = (String) getStateHelper().eval(PropertyKeys.styleClass, null);
 
 		return com.liferay.faces.util.component.ComponentUtil.concatCssClasses(styleClass, "alloy-input-date");
-	}
-
-	@Override
-	public void setStyleClass(String styleClass) {
-		getStateHelper().put(InputDatePropertyKeys.styleClass, styleClass);
 	}
 }
 //J+

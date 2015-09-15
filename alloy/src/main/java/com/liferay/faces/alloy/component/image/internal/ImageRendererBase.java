@@ -14,12 +14,11 @@
 package com.liferay.faces.alloy.component.image.internal;
 //J-
 
-
 import javax.annotation.Generated;
 
-import com.liferay.faces.alloy.component.image.Image;
-
 import com.liferay.faces.util.render.DelegatingRendererBase;
+
+import com.liferay.faces.alloy.component.image.Image;
 
 
 /**
@@ -28,9 +27,6 @@ import com.liferay.faces.util.render.DelegatingRendererBase;
  */
 @Generated(value = "com.liferay.alloy.tools.builder.FacesBuilder")
 public abstract class ImageRendererBase extends DelegatingRendererBase {
-
-	// Protected Constants
-	protected static final String STYLE_CLASS = "styleClass";
 
 	@Override
 	public String getDelegateComponentFamily() {

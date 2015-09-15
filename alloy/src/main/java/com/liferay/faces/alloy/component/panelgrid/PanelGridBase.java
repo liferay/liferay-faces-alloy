@@ -19,6 +19,7 @@ import javax.faces.component.html.HtmlPanelGrid;
 
 import com.liferay.faces.util.component.Styleable;
 
+
 /**
  * @author	Bruno Basto
  * @author	Kyle Stiemann
@@ -30,11 +31,6 @@ public abstract class PanelGridBase extends HtmlPanelGrid implements Styleable {
 	public static final String COMPONENT_TYPE = "com.liferay.faces.alloy.component.panelgrid.PanelGrid";
 	public static final String RENDERER_TYPE = "com.liferay.faces.alloy.component.panelgrid.PanelGridRenderer";
 
-	// Protected Enumerations
-	protected enum PanelGridPropertyKeys {
-		styleClass
-	}
-
 	public PanelGridBase() {
 		super();
 		setRendererType(RENDERER_TYPE);
@@ -42,16 +38,12 @@ public abstract class PanelGridBase extends HtmlPanelGrid implements Styleable {
 
 	@Override
 	public String getStyleClass() {
-		// getStateHelper().eval(PanelGridPropertyKeys.styleClass, null) is called because super.getStyleClass() may return the
-		// STYLE_CLASS_NAME of the super class.
-		String styleClass = (String) getStateHelper().eval(PanelGridPropertyKeys.styleClass, null);
+
+		// getStateHelper().eval(PropertyKeys.styleClass, null) is called because
+		// super.getStyleClass() may return the styleClass name of the super class.
+		String styleClass = (String) getStateHelper().eval(PropertyKeys.styleClass, null);
 
 		return com.liferay.faces.util.component.ComponentUtil.concatCssClasses(styleClass, "alloy-panel-grid");
-	}
-
-	@Override
-	public void setStyleClass(String styleClass) {
-		getStateHelper().put(PanelGridPropertyKeys.styleClass, styleClass);
 	}
 }
 //J+

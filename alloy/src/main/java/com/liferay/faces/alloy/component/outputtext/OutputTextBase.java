@@ -19,6 +19,7 @@ import javax.faces.component.html.HtmlOutputText;
 
 import com.liferay.faces.util.component.Styleable;
 
+
 /**
  * @author	Bruno Basto
  * @author	Kyle Stiemann
@@ -30,11 +31,6 @@ public abstract class OutputTextBase extends HtmlOutputText implements Styleable
 	public static final String COMPONENT_TYPE = "com.liferay.faces.alloy.component.outputtext.OutputText";
 	public static final String RENDERER_TYPE = "com.liferay.faces.alloy.component.outputtext.OutputTextRenderer";
 
-	// Protected Enumerations
-	protected enum OutputTextPropertyKeys {
-		styleClass
-	}
-
 	public OutputTextBase() {
 		super();
 		setRendererType(RENDERER_TYPE);
@@ -42,16 +38,12 @@ public abstract class OutputTextBase extends HtmlOutputText implements Styleable
 
 	@Override
 	public String getStyleClass() {
-		// getStateHelper().eval(OutputTextPropertyKeys.styleClass, null) is called because super.getStyleClass() may return the
-		// STYLE_CLASS_NAME of the super class.
-		String styleClass = (String) getStateHelper().eval(OutputTextPropertyKeys.styleClass, null);
+
+		// getStateHelper().eval(PropertyKeys.styleClass, null) is called because
+		// super.getStyleClass() may return the styleClass name of the super class.
+		String styleClass = (String) getStateHelper().eval(PropertyKeys.styleClass, null);
 
 		return com.liferay.faces.util.component.ComponentUtil.concatCssClasses(styleClass, "alloy-output-text");
-	}
-
-	@Override
-	public void setStyleClass(String styleClass) {
-		getStateHelper().put(OutputTextPropertyKeys.styleClass, styleClass);
 	}
 }
 //J+

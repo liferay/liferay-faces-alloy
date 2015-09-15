@@ -21,9 +21,9 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
-import com.liferay.faces.alloy.component.selectrating.SelectRating;
-
 import com.liferay.faces.alloy.render.internal.DelegatingAlloyRendererBase;
+
+import com.liferay.faces.alloy.component.selectrating.SelectRating;
 
 
 /**
@@ -33,12 +33,11 @@ import com.liferay.faces.alloy.render.internal.DelegatingAlloyRendererBase;
 @Generated(value = "com.liferay.alloy.tools.builder.FacesBuilder")
 public abstract class SelectRatingRendererBase extends DelegatingAlloyRendererBase {
 
-	// Private Constants
-	private static final String ALLOY_CLASS_NAME = "Rating";
-	private static final String ALLOY_MODULE_NAME = "aui-rating";
+	// Protected Constants
+	protected static final String CLIENT_KEY = "clientKey";
 
 	// Modules
-	protected static final String[] MODULES = {ALLOY_MODULE_NAME};
+	protected static final String[] MODULES = { "aui-rating" };
 
 	@Override
 	public void encodeAlloyAttributes(FacesContext facesContext, ResponseWriter responseWriter, UIComponent uiComponent) throws IOException {
@@ -51,7 +50,7 @@ public abstract class SelectRatingRendererBase extends DelegatingAlloyRendererBa
 
 	@Override
 	public String getAlloyClassName(FacesContext facesContext, UIComponent uiComponent) {
-		return ALLOY_CLASS_NAME;
+		return "Rating";
 	}
 
 	@Override

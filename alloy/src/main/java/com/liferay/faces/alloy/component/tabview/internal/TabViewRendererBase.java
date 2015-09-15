@@ -21,9 +21,9 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
-import com.liferay.faces.alloy.component.tabview.TabView;
-
 import com.liferay.faces.alloy.render.internal.AlloyRendererBase;
+
+import com.liferay.faces.alloy.component.tabview.TabView;
 
 
 /**
@@ -42,12 +42,8 @@ public abstract class TabViewRendererBase extends AlloyRendererBase {
 	protected static final String STYLE_CLASS = "styleClass";
 	protected static final String WIDTH = "width";
 
-	// Private Constants
-	private static final String ALLOY_CLASS_NAME = "TabView";
-	private static final String ALLOY_MODULE_NAME = "aui-tabview";
-
 	// Modules
-	protected static final String[] MODULES = {ALLOY_MODULE_NAME};
+	protected static final String[] MODULES = { "aui-tabview" };
 
 	@Override
 	public void encodeAlloyAttributes(FacesContext facesContext, ResponseWriter responseWriter, UIComponent uiComponent) throws IOException {
@@ -84,7 +80,7 @@ public abstract class TabViewRendererBase extends AlloyRendererBase {
 
 	@Override
 	public String getAlloyClassName(FacesContext facesContext, UIComponent uiComponent) {
-		return ALLOY_CLASS_NAME;
+		return "TabView";
 	}
 
 	@Override

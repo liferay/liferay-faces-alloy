@@ -17,8 +17,9 @@ package com.liferay.faces.alloy.component.tabview;
 import javax.annotation.Generated;
 import javax.faces.component.UIData;
 
-import com.liferay.faces.util.component.Styleable;
 import com.liferay.faces.util.component.ClientComponent;
+import com.liferay.faces.util.component.Styleable;
+
 
 /**
  * @author	Bruno Basto
@@ -93,8 +94,9 @@ public abstract class TabViewBase extends UIData implements Styleable, ClientCom
 
 	@Override
 	public String getStyleClass() {
-		// getStateHelper().eval(TabViewPropertyKeys.styleClass, null) is called because super.getStyleClass() may return the
-		// STYLE_CLASS_NAME of the super class.
+
+		// getStateHelper().eval(TabViewPropertyKeys.styleClass, null) is called because
+		// super.getStyleClass() may return the styleClass name of the super class.
 		String styleClass = (String) getStateHelper().eval(TabViewPropertyKeys.styleClass, null);
 
 		return com.liferay.faces.util.component.ComponentUtil.concatCssClasses(styleClass, "alloy-tab-view");

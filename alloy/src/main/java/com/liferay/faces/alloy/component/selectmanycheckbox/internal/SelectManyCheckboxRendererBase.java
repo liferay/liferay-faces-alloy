@@ -14,12 +14,11 @@
 package com.liferay.faces.alloy.component.selectmanycheckbox.internal;
 //J-
 
-
 import javax.annotation.Generated;
 
-import com.liferay.faces.alloy.component.selectmanycheckbox.SelectManyCheckbox;
-
 import com.liferay.faces.alloy.component.select.internal.SelectDelegatingRendererBase;
+
+import com.liferay.faces.alloy.component.selectmanycheckbox.SelectManyCheckbox;
 
 
 /**
@@ -28,9 +27,6 @@ import com.liferay.faces.alloy.component.select.internal.SelectDelegatingRendere
  */
 @Generated(value = "com.liferay.alloy.tools.builder.FacesBuilder")
 public abstract class SelectManyCheckboxRendererBase extends SelectDelegatingRendererBase {
-
-	// Protected Constants
-	protected static final String STYLE_CLASS = "styleClass";
 
 	@Override
 	public String getDelegateComponentFamily() {

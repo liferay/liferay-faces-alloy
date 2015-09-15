@@ -21,9 +21,9 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
-import com.liferay.faces.alloy.component.accordion.Accordion;
-
 import com.liferay.faces.alloy.render.internal.AlloyRendererBase;
+
+import com.liferay.faces.alloy.component.accordion.Accordion;
 
 
 /**
@@ -35,17 +35,13 @@ public abstract class AccordionRendererBase extends AlloyRendererBase {
 
 	// Protected Constants
 	protected static final String CLIENT_KEY = "clientKey";
-	protected static final String CLOSE_ALL_ON_EXPAND = "closeAllOnExpand";
+	protected static final String MULTIPLE = "multiple";
 	protected static final String SELECTED_INDEX = "selectedIndex";
 	protected static final String STYLE = "style";
 	protected static final String STYLE_CLASS = "styleClass";
 
-	// Private Constants
-	private static final String ALLOY_CLASS_NAME = "TogglerDelegate";
-	private static final String ALLOY_MODULE_NAME = "aui-toggler";
-
 	// Modules
-	protected static final String[] MODULES = {ALLOY_MODULE_NAME};
+	protected static final String[] MODULES = { "aui-toggler" };
 
 	@Override
 	public void encodeAlloyAttributes(FacesContext facesContext, ResponseWriter responseWriter, UIComponent uiComponent) throws IOException {
@@ -58,7 +54,7 @@ public abstract class AccordionRendererBase extends AlloyRendererBase {
 
 	@Override
 	public String getAlloyClassName(FacesContext facesContext, UIComponent uiComponent) {
-		return ALLOY_CLASS_NAME;
+		return "TogglerDelegate";
 	}
 
 	@Override

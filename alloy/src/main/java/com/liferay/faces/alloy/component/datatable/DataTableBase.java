@@ -17,8 +17,9 @@ package com.liferay.faces.alloy.component.datatable;
 import javax.annotation.Generated;
 import javax.faces.component.html.HtmlDataTable;
 
-import com.liferay.faces.util.component.Styleable;
 import com.liferay.faces.util.component.ClientComponent;
+import com.liferay.faces.util.component.Styleable;
+
 
 /**
  * @author	Bruno Basto
@@ -36,8 +37,7 @@ public abstract class DataTableBase extends HtmlDataTable implements Styleable, 
 		clientKey,
 		multiColumnSort,
 		selectedRowIndexes,
-		selectionMode,
-		styleClass
+		selectionMode
 	}
 
 	public DataTableBase() {
@@ -81,16 +81,12 @@ public abstract class DataTableBase extends HtmlDataTable implements Styleable, 
 
 	@Override
 	public String getStyleClass() {
-		// getStateHelper().eval(DataTablePropertyKeys.styleClass, null) is called because super.getStyleClass() may return the
-		// STYLE_CLASS_NAME of the super class.
-		String styleClass = (String) getStateHelper().eval(DataTablePropertyKeys.styleClass, null);
+
+		// getStateHelper().eval(PropertyKeys.styleClass, null) is called because
+		// super.getStyleClass() may return the styleClass name of the super class.
+		String styleClass = (String) getStateHelper().eval(PropertyKeys.styleClass, null);
 
 		return com.liferay.faces.util.component.ComponentUtil.concatCssClasses(styleClass, "alloy-data-table", "table table-bordered table-hover table-striped");
-	}
-
-	@Override
-	public void setStyleClass(String styleClass) {
-		getStateHelper().put(DataTablePropertyKeys.styleClass, styleClass);
 	}
 }
 //J+
