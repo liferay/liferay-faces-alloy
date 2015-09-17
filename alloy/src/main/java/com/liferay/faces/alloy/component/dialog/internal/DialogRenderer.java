@@ -26,7 +26,10 @@ import javax.faces.context.ResponseWriter;
 import javax.faces.render.FacesRenderer;
 
 import com.liferay.faces.alloy.component.dialog.Dialog;
+import com.liferay.faces.util.client.BrowserSniffer;
+import com.liferay.faces.util.client.BrowserSnifferFactory;
 import com.liferay.faces.util.component.ClientComponent;
+import com.liferay.faces.util.factory.FactoryExtensionFinder;
 
 
 /**
@@ -128,8 +131,12 @@ public class DialogRenderer extends DialogRendererBase {
 	protected void encodeHiddenAttributes(FacesContext facesContext, ResponseWriter responseWriter, Dialog dialog,
 		boolean first) throws IOException {
 
-		// Encode the "centered: true" Alloy attribute.
-		encodeBoolean(responseWriter, "centered", true, first);
+		// Encode the centered Alloy attribute. Only center the dialog if the browser is not mobile due to FACES-2450.
+		BrowserSnifferFactory browserSnifferFactory = (BrowserSnifferFactory) FactoryExtensionFinder.getFactory(
+				BrowserSnifferFactory.class);
+		BrowserSniffer browserSniffer = browserSnifferFactory.getBrowserSniffer(facesContext.getExternalContext());
+		boolean mobile = browserSniffer.isMobile();
+		encodeBoolean(responseWriter, "centered", !mobile, first);
 
 		first = false;
 
