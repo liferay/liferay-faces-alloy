@@ -65,7 +65,7 @@ public class TabViewBackingBean {
 		TabSelectEvent tabSelectEvent = (TabSelectEvent) ajaxBehaviorEvent;
 		FacesContext facesContext = FacesContext.getCurrentInstance();
 		FacesMessage facesMessage = new FacesMessage("Received 'tabSelectEvent' for tab with header '" +
-				tabSelectEvent.getTab().getHeaderText() + "' in the " + tabSelectEvent.getPhaseId().getName() +
+				tabSelectEvent.getTab().getHeaderText() + "' in the " + tabSelectEvent.getPhaseId().toString() +
 				" phase.");
 		facesContext.addMessage(null, facesMessage);
 	}
