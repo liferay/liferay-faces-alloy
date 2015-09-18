@@ -48,4 +48,15 @@ public abstract class InputFileRendererCompat extends DelegatingAlloyRendererBas
 		return JSF.isDetected() &&
 			((JSF.getMajorVersion() > 2) || ((JSF.getMajorVersion() == 2) && (JSF.getMinorVersion() >= 2)));
 	}
+
+	@Override
+	public String getDelegateRendererType() {
+
+		if (isFaces_2_2_OrNewer()) {
+			return "javax.faces.File";
+		}
+		else {
+			return "javax.faces.Text";
+		}
+	}
 }
