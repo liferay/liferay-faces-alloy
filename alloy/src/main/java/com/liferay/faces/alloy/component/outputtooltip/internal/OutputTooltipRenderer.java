@@ -142,8 +142,15 @@ public class OutputTooltipRenderer extends OutputTooltipRendererBase {
 
 		// Encode the "cssClass" Alloy hidden attribute.
 		encodeString(responseWriter, "cssClass", outputTooltip.getStyleClass(), first);
-
 		first = false;
+
+		String headerText = outputTooltip.getHeaderText();
+
+		if (headerText != null) {
+
+			// Setting html to true to stop the tooltip from escaping html in the headerContent.
+			encodeBoolean(responseWriter, "html", true, first);
+		}
 
 		encodeOverlayHiddenAttributes(facesContext, responseWriter, outputTooltip, first);
 	}
