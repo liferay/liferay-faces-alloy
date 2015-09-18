@@ -13,8 +13,13 @@
  */
 package com.liferay.faces.alloy.component.inputfile.internal;
 
+import java.io.IOException;
+
 import javax.faces.context.ResponseWriter;
 
+import com.liferay.faces.util.product.Product;
+import com.liferay.faces.util.product.ProductConstants;
+import com.liferay.faces.util.product.ProductMap;
 import com.liferay.faces.util.render.internal.DelegationResponseWriterBase;
 
 
@@ -25,7 +30,26 @@ import com.liferay.faces.util.render.internal.DelegationResponseWriterBase;
  */
 public abstract class InputFileDelegationResponseWriterCompat extends DelegationResponseWriterBase {
 
+	// Private Constants
+	private static final Product JSF = ProductMap.getInstance().get(ProductConstants.JSF);
+
 	public InputFileDelegationResponseWriterCompat(ResponseWriter responseWriter) {
 		super(responseWriter);
+	}
+
+	@Override
+	public void writeAttribute(String name, Object value, String property) throws IOException {
+
+		if ("type".equals(name) && !isFaces_2_2_OrNewer()) {
+			value = "file";
+		}
+
+		super.writeAttribute(name, value, property);
+	}
+
+	protected boolean isFaces_2_2_OrNewer() {
+
+		return JSF.isDetected() &&
+			((JSF.getMajorVersion() > 2) || ((JSF.getMajorVersion() == 2) && (JSF.getMinorVersion() >= 2)));
 	}
 }

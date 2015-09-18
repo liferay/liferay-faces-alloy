@@ -14,16 +14,13 @@
 package com.liferay.faces.alloy.component.inputfile.internal;
 //J-
 
-import java.io.IOException;
+import com.liferay.faces.alloy.component.inputfile.InputFile;
 
 import javax.annotation.Generated;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
-
-import com.liferay.faces.alloy.component.inputfile.internal.InputFileRendererCompat;
-
-import com.liferay.faces.alloy.component.inputfile.InputFile;
+import java.io.IOException;
 
 
 /**
@@ -86,11 +83,6 @@ public abstract class InputFileRendererBase extends InputFileRendererCompat {
 	@Override
 	public String getDelegateComponentFamily() {
 		return InputFile.COMPONENT_FAMILY;
-	}
-
-	@Override
-	public String getDelegateRendererType() {
-		return "javax.faces.File";
 	}
 }
 //J+
