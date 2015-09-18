@@ -158,7 +158,7 @@ public class DataTableBacking implements Serializable {
 		messageText.append(" ");
 		messageText.append(customer.getLastName());
 		messageText.append("] in the ");
-		messageText.append(facesEvent.getPhaseId().getName());
+		messageText.append(facesEvent.getPhaseId().toString());
 		messageText.append(" phase.");
 
 		FacesMessage facesMessage = new FacesMessage(messageText.toString());
@@ -193,7 +193,7 @@ public class DataTableBacking implements Serializable {
 		}
 
 		messageText.append(" in the ");
-		messageText.append(facesEvent.getPhaseId().getName());
+		messageText.append(facesEvent.getPhaseId().toString());
 		messageText.append(" phase.");
 
 		FacesMessage facesMessage = new FacesMessage(messageText.toString());
