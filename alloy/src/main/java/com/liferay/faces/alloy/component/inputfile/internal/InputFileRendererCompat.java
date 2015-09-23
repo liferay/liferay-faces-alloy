@@ -13,6 +13,7 @@
  */
 package com.liferay.faces.alloy.component.inputfile.internal;
 
+import com.liferay.faces.alloy.component.inputfile.InputFile;
 import com.liferay.faces.alloy.render.internal.DelegatingAlloyRendererBase;
 import com.liferay.faces.util.product.Product;
 import com.liferay.faces.util.product.ProductConstants;
@@ -28,6 +29,22 @@ public abstract class InputFileRendererCompat extends DelegatingAlloyRendererBas
 
 	// Private Constants
 	private static final Product JSF = ProductMap.getInstance().get(ProductConstants.JSF);
+
+	@Override
+	public String getDelegateComponentFamily() {
+		return InputFile.COMPONENT_FAMILY;
+	}
+
+	@Override
+	public String getDelegateRendererType() {
+
+		if (isFaces_2_2_OrNewer()) {
+			return "javax.faces.File";
+		}
+		else {
+			return "javax.faces.Text";
+		}
+	}
 
 	protected InputFileDecoder getInputFileDecoder() {
 
@@ -47,16 +64,5 @@ public abstract class InputFileRendererCompat extends DelegatingAlloyRendererBas
 
 		return JSF.isDetected() &&
 			((JSF.getMajorVersion() > 2) || ((JSF.getMajorVersion() == 2) && (JSF.getMinorVersion() >= 2)));
-	}
-
-	@Override
-	public String getDelegateRendererType() {
-
-		if (isFaces_2_2_OrNewer()) {
-			return "javax.faces.File";
-		}
-		else {
-			return "javax.faces.Text";
-		}
 	}
 }
