@@ -14,13 +14,16 @@
 package com.liferay.faces.alloy.component.inputfile.internal;
 //J-
 
-import com.liferay.faces.alloy.component.inputfile.InputFile;
+import java.io.IOException;
 
 import javax.annotation.Generated;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
-import java.io.IOException;
+
+import com.liferay.faces.alloy.component.inputfile.internal.InputFileRendererCompat;
+
+import com.liferay.faces.alloy.component.inputfile.InputFile;
 
 
 /**
@@ -78,11 +81,6 @@ public abstract class InputFileRendererBase extends InputFileRendererCompat {
 
 	protected void encodeHiddenAttributes(FacesContext facesContext, ResponseWriter responseWriter, InputFile inputFile, boolean first) throws IOException {
 		// no-op
-	}
-
-	@Override
-	public String getDelegateComponentFamily() {
-		return InputFile.COMPONENT_FAMILY;
 	}
 }
 //J+

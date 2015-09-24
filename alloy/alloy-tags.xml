@@ -1266,7 +1266,6 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 		<tag-extension>
 			<alloy-ui-module>uploader</alloy-ui-module>
 			<alloy-ui-name>Uploader</alloy-ui-name>
-			<delegate-renderer-type><![CDATA["javax.faces.File"]]></delegate-renderer-type>
 			<extends-tags>clientComponent inputText</extends-tags>
 			<extra-style-classes>field</extra-style-classes>
 			<parent-class><![CDATA[com.liferay.faces.util.component.InputFileBase]]></parent-class>
