@@ -577,5 +577,28 @@ LFAI = {
 				}
 			}
 		});
+	},
+
+	initDialog: function(dialog) {
+
+		var boundingBox = dialog.get('boundingBox'),
+			onceAfterVisibleChangeEventHandle = dialog.after('visibleChange', function(event) {
+
+			if (event.newVal) {
+
+				var height = boundingBox.getComputedStyle('height'),
+				width = boundingBox.getComputedStyle('width');
+
+				boundingBox.setStyle('top', '50%');
+				boundingBox.setStyle('left', '50%');
+				boundingBox.setStyle('margin-top', LFAI.getCenteredMargin(height));
+				boundingBox.setStyle('margin-left', LFAI.getCenteredMargin(width));
+				onceAfterVisibleChangeEventHandle.detach();
+			}
+		});
+	},
+
+	getCenteredMargin: function(pixels) {
+		return (-1 * (parseInt(pixels, 10)/2.0)) + 'px';
 	}
 };
