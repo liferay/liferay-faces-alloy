@@ -44,7 +44,7 @@ public abstract class RowBase extends UIPanel implements Styleable {
 	}
 
 	/**
-	 * @deprecated No replacement available. In Liferay Faces Alloy 3, all rows will be fluid.
+	 * @deprecated No replacement available. All rows are fluid in Liferay Faces Alloy 3.
 	 */
 	@Deprecated
 	public boolean isFluid() {
@@ -52,7 +52,7 @@ public abstract class RowBase extends UIPanel implements Styleable {
 	}
 
 	/**
-	 * @deprecated No replacement available. In Liferay Faces Alloy 3, all rows will be fluid.
+	 * @deprecated No replacement available. All rows are fluid in Liferay Faces Alloy 3.
 	 */
 	@Deprecated
 	public void setFluid(boolean fluid) {

@@ -7459,7 +7459,7 @@ java.lang.Object)</method-signature>
 			<type>javax.faces.component.UIComponent</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[<strong>Deprecated.</strong> No replacement available. In Liferay Faces Alloy 3, all rows will be fluid.When this flag is true, the element will have the CSS class <code>row-fluid</code>. Otherwise, the element will have the CSS class <code>row</code>. The default value is <code>true</code>.]]></description>
+			<description><![CDATA[<strong>Deprecated.</strong> No replacement available. All rows are fluid in Liferay Faces Alloy 3. When this flag is true, the element will have the CSS class <code>row-fluid</code>. Otherwise, the element will have the CSS class <code>row</code>. The default value is <code>true</code>.]]></description>
 			<name>fluid</name>
 			<required>false</required>
 			<type>boolean</type>
