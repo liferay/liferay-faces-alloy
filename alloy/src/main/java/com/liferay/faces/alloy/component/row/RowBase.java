@@ -33,7 +33,6 @@ public abstract class RowBase extends UIPanel implements Styleable {
 
 	// Protected Enumerations
 	protected enum RowPropertyKeys {
-		fluid,
 		style,
 		styleClass
 	}
@@ -41,14 +40,6 @@ public abstract class RowBase extends UIPanel implements Styleable {
 	public RowBase() {
 		super();
 		setRendererType(RENDERER_TYPE);
-	}
-
-	public boolean isFluid() {
-		return (Boolean) getStateHelper().eval(RowPropertyKeys.fluid, true);
-	}
-
-	public void setFluid(boolean fluid) {
-		getStateHelper().put(RowPropertyKeys.fluid, fluid);
 	}
 
 	@Override

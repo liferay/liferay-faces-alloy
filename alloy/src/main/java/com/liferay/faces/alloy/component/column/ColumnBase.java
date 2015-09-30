@@ -41,6 +41,7 @@ public abstract class ColumnBase extends HtmlColumn implements Styleable {
 		offsetWidth,
 		process,
 		render,
+		size,
 		sortBy,
 		sortOrder,
 		span,
@@ -117,6 +118,14 @@ public abstract class ColumnBase extends HtmlColumn implements Styleable {
 
 	public void setRender(String render) {
 		getStateHelper().put(ColumnPropertyKeys.render, render);
+	}
+
+	public String getSize() {
+		return (String) getStateHelper().eval(ColumnPropertyKeys.size, "medium");
+	}
+
+	public void setSize(String size) {
+		getStateHelper().put(ColumnPropertyKeys.size, size);
 	}
 
 	public Object getSortBy() {

@@ -15,7 +15,6 @@ package com.liferay.faces.alloy.component.row.internal;
 
 import java.io.IOException;
 
-import javax.faces.application.ResourceDependencies;
 import javax.faces.application.ResourceDependency;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -31,17 +30,11 @@ import com.liferay.faces.util.render.RendererUtil;
  */
 //J-
 @FacesRenderer(componentFamily = Row.COMPONENT_FAMILY, rendererType = Row.RENDERER_TYPE)
-@ResourceDependencies(
-	{
-		@ResourceDependency(library = "liferay-faces-reslib", name = "build/aui-css/css/bootstrap.min.css"),
-		@ResourceDependency(library = "liferay-faces-reslib", name = "build/aui-css/css/bootstrap-responsive.min.css")
-	}
-)
+@ResourceDependency(library = "liferay-faces-reslib", name = "build/aui-css/css/bootstrap.min.css")
 //J+
 public class RowRenderer extends RowRendererBase {
 
 	// Private Constants
-	private static final String ROW_FLUID = "row-fluid";
 	private static final String ROW = "row";
 
 	@Override
@@ -52,15 +45,8 @@ public class RowRenderer extends RowRendererBase {
 
 		String clientId = uiComponent.getClientId(facesContext);
 		responseWriter.writeAttribute("id", clientId, null);
-
 		Row row = (Row) uiComponent;
-		String rowClassName = ROW;
-
-		if (row.isFluid()) {
-			rowClassName = ROW_FLUID;
-		}
-
-		RendererUtil.encodeStyleable(responseWriter, row, rowClassName);
+		RendererUtil.encodeStyleable(responseWriter, row, ROW);
 	}
 
 	@Override

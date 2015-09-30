@@ -628,7 +628,7 @@ java.util.List<java.lang.String> filterResults(java.lang.String, java.util.List<
 		</tag-extension>
 	</tag>
 	<tag>
-		<description><![CDATA[Column is a UIColumn component that renders a div with CSS class name <code>span#</code> (for example: <code>span1</code> or <code>span5</code>).]]></description>
+		<description><![CDATA[Column is a UIColumn component that renders a div with CSS class name <code>col-#{size}-#{span}</code> (for example: <code>col-md-1</code> or <code>col-lg-5</code>).]]></description>
 		<tag-name>column</tag-name>
 		<attribute>
 			<attribute-extension>
@@ -665,7 +665,7 @@ java.util.List<java.lang.String> filterResults(java.lang.String, java.util.List<
 			<type><![CDATA[java.lang.String]]></type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When alloy:column is a child of alloy:row, this is the width that the column will be offset by as a unit from 1 to 12. This value is rendered as a CSS class as <code>offset#</code> (for example if offset="4", the CSS class rendered will be <code>offset4</code>). If both the offsetWidth and offset attributes are present, the offsetWidth attribute determines the value of the offset. Please consider using offsetWidth.]]></description>
+			<description><![CDATA[When alloy:column is a child of alloy:row, this is the width that the column will be offset by as a unit from 1 to 12. This value is rendered as a CSS class as <code>col-#{size}-offset-#{offset}</code> (for example if offset="4", the CSS class rendered will be <code>col-#{size}-offset-4</code>). If both the offsetWidth and offset attributes are present, the offsetWidth attribute determines the value of the offset. Please consider using offsetWidth.]]></description>
 			<name>offset</name>
 			<type><![CDATA[java.lang.Integer]]></type>
 		</attribute>
@@ -691,6 +691,14 @@ java.util.List<java.lang.String> filterResults(java.lang.String, java.util.List<
 			<type><![CDATA[boolean]]></type>
 		</attribute>
 		<attribute>
+			<attribute-extension>
+				<default-value><![CDATA["medium"]]></default-value>
+			</attribute-extension>
+			<description><![CDATA[When alloy:column is a child of alloy:row, this is the size of the column. This value is rendered as a CSS class as <code>col-#{size}-#{span}</code> (for example if size="medium", the CSS class rendered will be <code>col-md-#{span}</code>). Valid values include <code>"extra-small"</code> (or <code>"xs"</code>), <code>"small"</code> (or <code>"sm"</code>), <code>"medium"</code> (or <code>"md"</code>), and <code>"large"</code> (or <code>"lg"</code>).]]></description>
+			<name>size</name>
+			<type><![CDATA[java.lang.String]]></type>
+		</attribute>
+		<attribute>
 			<description><![CDATA[When alloy:column is a child of alloy:dataTabe, this is the JavaBean property that is to be used for sorting.]]></description>
 			<name>sortBy</name>
 			<type><![CDATA[java.lang.Object]]></type>
@@ -701,7 +709,7 @@ java.util.List<java.lang.String> filterResults(java.lang.String, java.util.List<
 			<type><![CDATA[java.lang.String]]></type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[When alloy:column is a child of alloy:row, this is the width of this column as a unit from 1 to 12. This value is rendered as a CSS class as <code>span#</code> (for example if span="4", the CSS class rendered will be <code>span4</code>). If both the width and span attributes are present, the width attribute determines the value of the span number. Please consider using width.]]></description>
+			<description><![CDATA[When alloy:column is a child of alloy:row, this is the width of this column as a unit from 1 to 12. This value is rendered as a CSS class as <code>col-#{size}-#{span}</code> (for example if span="4", the CSS class rendered will be <code>col-#{size}-4</code>). If both the width and span attributes are present, the width attribute determines the value of the span number. Please consider using width.]]></description>
 			<name>span</name>
 			<type><![CDATA[java.lang.Integer]]></type>
 		</attribute>
@@ -1026,7 +1034,7 @@ java.util.List<java.lang.String> filterResults(java.lang.String, java.util.List<
 			<type><![CDATA[java.lang.String]]></type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[The icon which this component will render. A list of valid icons can be found at <a href="http://liferay.github.io/alloy-bootstrap/base-css.html#icons" target="_blank">Bootstrap Base CSS</a>. <b>Note:</b> icon names must be specified without the <code>icon-</code> prefix.]]></description>
+			<description><![CDATA[The icon which this component will render. A list of valid icons can be found at <a href="http://getbootstrap.com/components/#glyphicons" target="_blank">Bootstrap Base CSS</a>. <b>Note:</b> icon names must be specified without the <code>glyphicon glyphicon-</code> prefix.]]></description>
 			<name>name</name>
 			<type><![CDATA[java.lang.String]]></type>
 		</attribute>
@@ -2382,14 +2390,6 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 	<tag>
 		<description><![CDATA[Row is a UIPanel component that renders a <code>&lt;div&gt;</code> and is designed to be used in conjunction with alloy:column child component tags.]]></description>
 		<tag-name>row</tag-name>
-		<attribute>
-			<attribute-extension>
-				<default-value><![CDATA[true]]></default-value>
-			</attribute-extension>
-			<description><![CDATA[When this flag is true, the element will have the CSS class <code>row-fluid</code>. Otherwise, the element will have the CSS class <code>row</code>.]]></description>
-			<name>fluid</name>
-			<type><![CDATA[boolean]]></type>
-		</attribute>
 		<tag-extension>
 			<extends-tags>styleable uiComponentBaseInherited</extends-tags>
 			<parent-class><![CDATA[javax.faces.component.UIPanel]]></parent-class>
