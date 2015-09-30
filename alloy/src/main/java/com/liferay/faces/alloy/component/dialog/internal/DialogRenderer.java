@@ -27,10 +27,7 @@ import javax.faces.render.FacesRenderer;
 
 import com.liferay.faces.alloy.component.dialog.Dialog;
 import com.liferay.faces.alloy.render.internal.JavaScriptFragment;
-import com.liferay.faces.util.client.BrowserSniffer;
-import com.liferay.faces.util.client.BrowserSnifferFactory;
 import com.liferay.faces.util.component.ClientComponent;
-import com.liferay.faces.util.factory.FactoryExtensionFinder;
 
 
 /**
@@ -126,6 +123,16 @@ public class DialogRenderer extends DialogRendererBase {
 		JavaScriptFragment dialogJavaScriptFragment = new JavaScriptFragment("dialog");
 		encodeFunctionCall(responseWriter, "LFAI.initDialog", dialogJavaScriptFragment);
 		encodeOverlayJavaScriptCustom(responseWriter, facesContext, dialog, clientKey);
+	}
+
+	@Override
+	public void encodeMarkupBegin(FacesContext facesContext, UIComponent uiComponent) throws IOException {
+		encodeOverlayMarkupBegin(facesContext, uiComponent, "modal-content");
+	}
+
+	@Override
+	public void encodeMarkupEnd(FacesContext facesContext, UIComponent uiComponent) throws IOException {
+		encodeOverlayMarkupEnd(facesContext, uiComponent);
 	}
 
 	@Override

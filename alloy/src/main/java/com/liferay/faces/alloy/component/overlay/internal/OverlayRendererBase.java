@@ -37,72 +37,6 @@ public abstract class OverlayRendererBase extends DelegatingAlloyRendererBase im
 	protected static final String CONTENT_BOX_SUFFIX = "_contentBox";
 	protected static final String OVERLAY_BODY_SUFFIX = "_overlayBody";
 
-	@Override
-	public void encodeMarkupBegin(FacesContext facesContext, UIComponent uiComponent) throws IOException {
-
-		// NOTE: This is currently only used by Dialog and Popover. Tooltip overrides this method.
-
-		// Encode the opening boundingBox <div> tag via delegation. Ensure that the "id" attribute is always written so
-		// that Alloy's JavaScript will be able to locate the boundingBox in the DOM.
-		ResponseWriter responseWriter = facesContext.getResponseWriter();
-		String clientId = uiComponent.getClientId(facesContext);
-		DelegationResponseWriter idDelegationResponseWriter = new IdDelegationResponseWriter(responseWriter, "div",
-				clientId);
-		super.encodeMarkupBegin(facesContext, uiComponent, idDelegationResponseWriter);
-
-		// Encode the opening contentBox <div> tag with a unique id.
-		String contentBoxClientId = clientId.concat(CONTENT_BOX_SUFFIX);
-		responseWriter.startElement("div", null);
-		responseWriter.writeAttribute("id", contentBoxClientId, null);
-
-		// Encode the opening overlayBody <div> tag with a unique id.
-		String overlayBodyClientId = clientId.concat(OVERLAY_BODY_SUFFIX);
-		responseWriter.startElement("div", null);
-		responseWriter.writeAttribute("id", overlayBodyClientId, null);
-	}
-
-	@Override
-	public void encodeMarkupEnd(FacesContext facesContext, UIComponent uiComponent) throws IOException {
-
-		// NOTE: This is currently only used by Dialog and Popover. Tooltip overrides this method.
-
-		// Encode the closing overlayBody </div> tag.
-		ResponseWriter responseWriter = facesContext.getResponseWriter();
-		responseWriter.endElement("div");
-
-		// Encode the closing contentBox </div> tag.
-		responseWriter = facesContext.getResponseWriter();
-		responseWriter.endElement("div");
-
-		// Encode the closing boundingBox </div> tag via delegation.
-		super.encodeMarkupEnd(facesContext, uiComponent);
-	}
-
-	public void encodeOverlayJavaScriptCustom(ResponseWriter responseWriter, FacesContext facesContext,
-		UIComponent overlay, String clientKey) throws IOException {
-
-		// The outermost <div> (which is the boundingBox) was initially styled with "display:none;" in order to prevent
-		// blinking when Alloy's JavaScript attempts to hide the boundingBox. At this point in JavaScript execution,
-		// Alloy is done manipulating the DOM and it is necessary to remove the "display:none;" so that the
-		// dialog will popup correctly.
-		responseWriter.write("A.one('#");
-
-		String clientId = overlay.getClientId(facesContext);
-		String escapedBoundingBoxClientId = escapeClientId(clientId);
-		responseWriter.write(escapedBoundingBoxClientId);
-		responseWriter.write("').setStyle('display',null);");
-
-		Map<String, Object> attributes = overlay.getAttributes();
-		boolean autoShow = (Boolean) attributes.get("autoShow");
-
-		if (autoShow) {
-
-			responseWriter.write("Liferay.component('");
-			responseWriter.write(clientKey);
-			responseWriter.write("').show();");
-		}
-	}
-
 	protected void encodeOverlayDismissible(ResponseWriter responseWriter, UIComponent overlay, String clientKey)
 		throws IOException {
 
@@ -137,6 +71,78 @@ public abstract class OverlayRendererBase extends DelegatingAlloyRendererBase im
 		encodeWidgetRender(responseWriter, first);
 
 		encodeBoolean(responseWriter, "visible", false, first);
+	}
+
+	protected void encodeOverlayJavaScriptCustom(ResponseWriter responseWriter, FacesContext facesContext,
+		UIComponent overlay, String clientKey) throws IOException {
+
+		// The outermost <div> (which is the boundingBox) was initially styled with "display:none;" in order to prevent
+		// blinking when Alloy's JavaScript attempts to hide the boundingBox. At this point in JavaScript execution,
+		// Alloy is done manipulating the DOM and it is necessary to remove the "display:none;" so that the
+		// dialog will popup correctly.
+		responseWriter.write("A.one('#");
+
+		String clientId = overlay.getClientId(facesContext);
+		String escapedBoundingBoxClientId = escapeClientId(clientId);
+		responseWriter.write(escapedBoundingBoxClientId);
+		responseWriter.write("').setStyle('display',null);");
+
+		Map<String, Object> attributes = overlay.getAttributes();
+		boolean autoShow = (Boolean) attributes.get("autoShow");
+
+		if (autoShow) {
+
+			responseWriter.write("Liferay.component('");
+			responseWriter.write(clientKey);
+			responseWriter.write("').show();");
+		}
+	}
+
+	protected void encodeOverlayMarkupBegin(FacesContext facesContext, UIComponent uiComponent) throws IOException {
+		encodeOverlayMarkupBegin(facesContext, uiComponent, null);
+	}
+
+	protected void encodeOverlayMarkupBegin(FacesContext facesContext, UIComponent uiComponent,
+		String contentBoxCSSClasses) throws IOException {
+
+		// NOTE: This is currently only used by Dialog and Popover.
+
+		// Encode the opening boundingBox <div> tag via delegation. Ensure that the "id" attribute is always written so
+		// that Alloy's JavaScript will be able to locate the boundingBox in the DOM.
+		ResponseWriter responseWriter = facesContext.getResponseWriter();
+		String clientId = uiComponent.getClientId(facesContext);
+		DelegationResponseWriter idDelegationResponseWriter = new IdDelegationResponseWriter(responseWriter, "div",
+				clientId);
+		super.encodeMarkupBegin(facesContext, uiComponent, idDelegationResponseWriter);
+
+		// Encode the opening contentBox <div> tag with a unique id.
+		String contentBoxClientId = clientId.concat(CONTENT_BOX_SUFFIX);
+		responseWriter.startElement("div", null);
+		responseWriter.writeAttribute("id", contentBoxClientId, null);
+
+		if ((contentBoxCSSClasses != null) && !contentBoxCSSClasses.equals("")) {
+			responseWriter.writeAttribute("class", contentBoxCSSClasses, null);
+		}
+
+		// Encode the opening overlayBody <div> tag with a unique id.
+		String overlayBodyClientId = clientId.concat(OVERLAY_BODY_SUFFIX);
+		responseWriter.startElement("div", null);
+		responseWriter.writeAttribute("id", overlayBodyClientId, null);
+	}
+
+	protected void encodeOverlayMarkupEnd(FacesContext facesContext, UIComponent uiComponent) throws IOException {
+
+		// NOTE: This is currently only used by Dialog and Popover.
+
+		// Encode the closing overlayBody </div> tag.
+		ResponseWriter responseWriter = facesContext.getResponseWriter();
+		responseWriter.endElement("div");
+
+		// Encode the closing contentBox </div> tag.
+		responseWriter.endElement("div");
+
+		// Encode the closing boundingBox </div> tag via delegation.
+		super.encodeMarkupEnd(facesContext, uiComponent);
 	}
 
 	protected void encodeOverlayZIndex(ResponseWriter responseWriter, UIComponent overlay, Integer zIndex,

@@ -107,6 +107,16 @@ public class PopoverRenderer extends PopoverRendererBase {
 		}
 	}
 
+	@Override
+	public void encodeMarkupBegin(FacesContext facesContext, UIComponent uiComponent) throws IOException {
+		encodeOverlayMarkupBegin(facesContext, uiComponent);
+	}
+
+	@Override
+	public void encodeMarkupEnd(FacesContext facesContext, UIComponent uiComponent) throws IOException {
+		encodeOverlayMarkupEnd(facesContext, uiComponent);
+	}
+
 	protected void encodeAlign(ResponseWriter responseWriter, Popover popover, boolean first) throws IOException {
 
 		encodeNonEscapedObject(responseWriter, ALIGN, "", first);
