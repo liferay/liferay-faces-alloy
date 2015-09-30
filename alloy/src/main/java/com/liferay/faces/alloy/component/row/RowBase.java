@@ -43,10 +43,18 @@ public abstract class RowBase extends UIPanel implements Styleable {
 		setRendererType(RENDERER_TYPE);
 	}
 
+	/**
+	 * @deprecated No replacement available. In Liferay Faces Alloy 3, all rows will be fluid.
+	 */
+	@Deprecated
 	public boolean isFluid() {
 		return (Boolean) getStateHelper().eval(RowPropertyKeys.fluid, true);
 	}
 
+	/**
+	 * @deprecated No replacement available. In Liferay Faces Alloy 3, all rows will be fluid.
+	 */
+	@Deprecated
 	public void setFluid(boolean fluid) {
 		getStateHelper().put(RowPropertyKeys.fluid, fluid);
 	}

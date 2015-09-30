@@ -2385,6 +2385,7 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 		<attribute>
 			<attribute-extension>
 				<default-value><![CDATA[true]]></default-value>
+				<deprecated>No replacement available. In Liferay Faces Alloy 3, all rows will be fluid.</deprecated>
 			</attribute-extension>
 			<description><![CDATA[When this flag is true, the element will have the CSS class <code>row-fluid</code>. Otherwise, the element will have the CSS class <code>row</code>.]]></description>
 			<name>fluid</name>
