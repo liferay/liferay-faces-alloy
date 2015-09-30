@@ -43,7 +43,7 @@ public abstract class MessageBase extends HtmlMessage implements Styleable {
 		// super.getStyleClass() may return the styleClass name of the super class.
 		String styleClass = (String) getStateHelper().eval(PropertyKeys.styleClass, null);
 
-		return com.liferay.faces.util.component.ComponentUtil.concatCssClasses(styleClass, "alloy-message", "help-inline");
+		return com.liferay.faces.util.component.ComponentUtil.concatCssClasses(styleClass, "alloy-message", "help-block");
 	}
 }
 //J+

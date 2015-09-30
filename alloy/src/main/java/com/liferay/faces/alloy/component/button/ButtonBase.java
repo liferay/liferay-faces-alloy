@@ -35,6 +35,7 @@ public abstract class ButtonBase extends HtmlOutcomeTargetButton implements Styl
 	protected enum ButtonPropertyKeys {
 		autofocus,
 		disabled,
+		styleClass,
 		type
 	}
 
@@ -62,11 +63,16 @@ public abstract class ButtonBase extends HtmlOutcomeTargetButton implements Styl
 	@Override
 	public String getStyleClass() {
 
-		// getStateHelper().eval(PropertyKeys.styleClass, null) is called because
+		// getStateHelper().eval(ButtonPropertyKeys.styleClass, null) is called because
 		// super.getStyleClass() may return the styleClass name of the super class.
-		String styleClass = (String) getStateHelper().eval(PropertyKeys.styleClass, null);
+		String styleClass = (String) getStateHelper().eval(ButtonPropertyKeys.styleClass, "btn-default");
 
 		return com.liferay.faces.util.component.ComponentUtil.concatCssClasses(styleClass, "alloy-button");
+	}
+
+	@Override
+	public void setStyleClass(String styleClass) {
+		getStateHelper().put(ButtonPropertyKeys.styleClass, styleClass);
 	}
 
 	public String getType() {

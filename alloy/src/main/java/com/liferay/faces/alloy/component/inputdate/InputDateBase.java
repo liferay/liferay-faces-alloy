@@ -92,7 +92,7 @@ public abstract class InputDateBase extends InputDateTime implements Styleable {
 		// super.getStyleClass() may return the styleClass name of the super class.
 		String styleClass = (String) getStateHelper().eval(PropertyKeys.styleClass, null);
 
-		return com.liferay.faces.util.component.ComponentUtil.concatCssClasses(styleClass, "alloy-input-date");
+		return com.liferay.faces.util.component.ComponentUtil.concatCssClasses(styleClass, "alloy-input-date", "form-inline");
 	}
 }
 //J+

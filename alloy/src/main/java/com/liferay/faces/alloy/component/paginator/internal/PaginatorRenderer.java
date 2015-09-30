@@ -213,10 +213,10 @@ public class PaginatorRenderer extends PaginatorRendererBase implements Componen
 
 			// Encode the starting <div> element that represents the Bootstrap pagination component.
 			responseWriter.startElement("div", uiComponent);
-			responseWriter.writeAttribute("class", "pagination", null);
 
 			// Encode the starting <ul> element that represents the unordered list of pagination controls.
 			responseWriter.startElement("ul", uiComponent);
+			responseWriter.writeAttribute("class", "pagination", null);
 
 			// Determine whether or not parameters need to be namespaced (as in a portlet environment).
 			String namingContainerId = null;

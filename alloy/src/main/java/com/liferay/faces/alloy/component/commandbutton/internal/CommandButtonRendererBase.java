@@ -35,6 +35,7 @@ public abstract class CommandButtonRendererBase extends AbstractButtonRenderer {
 	protected static final String EXECUTE = "execute";
 	protected static final String PROCESS = "process";
 	protected static final String RENDER = "render";
+	protected static final String STYLE_CLASS = "styleClass";
 	protected static final String TYPE = "type";
 	protected static final String UPDATE = "update";
 

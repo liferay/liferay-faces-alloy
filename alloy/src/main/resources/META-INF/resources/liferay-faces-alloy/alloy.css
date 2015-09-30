@@ -46,12 +46,6 @@ div.alloy-dialog div.modal-header span.alloy-overlay-title {
 	font-weight: bold;
 }
 
-/* alloy-input-date / alloy-input-time */
-.alloy-input-date .input-medium,.alloy-input-date .alloy-button,.alloy-input-date .input-medium,
-.alloy-input-time .alloy-button {
-	margin-bottom: 7px;
-}
-
 /* alloy-input-file */
 .alloy-input-file .select-files-box,.alloy-input-file .upload-files-box {
 	display: inline-block;
@@ -208,6 +202,7 @@ a.yui3-menu-label .alloy-icon,li.yui3-menuitem .alloy-icon {
 
 /* yui3-splitbuttonnav: adjust padding to make splitButtons look like other bootstrap buttons */
 div.yui3-splitbuttonnav .yui3-menu-label a.btn {
+	cursor: pointer;
 	padding: 4px 12px;
 }
 
@@ -290,10 +285,6 @@ div.yui3-splitbuttonnav .yui3-menu-label a.btn-warning {
 }
 
 div.yui3-splitbuttonnav .yui3-menu-label a.btn-danger {
-	color: #ffffff;
-}
-
-div.yui3-splitbuttonnav .yui3-menu-label a.btn-inverse {
 	color: #ffffff;
 }
 

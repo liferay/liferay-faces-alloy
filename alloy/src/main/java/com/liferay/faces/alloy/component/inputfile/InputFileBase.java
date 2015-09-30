@@ -156,7 +156,7 @@ public abstract class InputFileBase extends com.liferay.faces.util.component.Inp
 		// super.getStyleClass() may return the styleClass name of the super class.
 		String styleClass = (String) getStateHelper().eval(PropertyKeys.styleClass, null);
 
-		return com.liferay.faces.util.component.ComponentUtil.concatCssClasses(styleClass, "alloy-input-file", "field");
+		return com.liferay.faces.util.component.ComponentUtil.concatCssClasses(styleClass, "alloy-input-file");
 	}
 }
 //J+

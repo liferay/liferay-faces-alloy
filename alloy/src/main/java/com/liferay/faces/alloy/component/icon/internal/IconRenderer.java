@@ -15,6 +15,7 @@ package com.liferay.faces.alloy.component.icon.internal;
 
 import java.io.IOException;
 
+import javax.faces.application.ResourceDependency;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
@@ -28,10 +29,11 @@ import com.liferay.faces.util.render.RendererUtil;
  * @author  Kyle Stiemann
  */
 @FacesRenderer(componentFamily = Icon.COMPONENT_FAMILY, rendererType = Icon.RENDERER_TYPE)
+@ResourceDependency(library = "liferay-faces-reslib", name = "build/aui-css/css/bootstrap.min.css")
 public class IconRenderer extends IconRendererBase {
 
 	// Private Constants
-	private static final String ICON_CLASS_PREFIX = "icon-";
+	private static final String ICON_CLASS_PREFIX = "glyphicon glyphicon-";
 
 	@Override
 	public void encodeBegin(FacesContext facesContext, UIComponent uiComponent) throws IOException {
