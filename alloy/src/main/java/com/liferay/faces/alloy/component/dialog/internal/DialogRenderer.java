@@ -26,6 +26,7 @@ import javax.faces.context.ResponseWriter;
 import javax.faces.render.FacesRenderer;
 
 import com.liferay.faces.alloy.component.dialog.Dialog;
+import com.liferay.faces.alloy.render.internal.JavaScriptFragment;
 import com.liferay.faces.util.client.BrowserSniffer;
 import com.liferay.faces.util.client.BrowserSnifferFactory;
 import com.liferay.faces.util.component.ClientComponent;
@@ -61,6 +62,8 @@ public class DialogRenderer extends DialogRendererBase {
 		if (clientKey == null) {
 			clientKey = clientVarName;
 		}
+
+		encodeLiferayComponentVar(responseWriter, "dialog", clientKey);
 
 		// Prevent scrolling when the show() JavaScript function is called.
 		responseWriter.write("var ");
@@ -100,11 +103,7 @@ public class DialogRenderer extends DialogRendererBase {
 		responseWriter.write("_mask.removeClass('hide') }; ");
 
 		if (!dialog.isHideIconRendered()) {
-			responseWriter.write(LIFERAY_COMPONENT);
-			responseWriter.write("('");
-			responseWriter.write(clientKey);
-			responseWriter.write("')");
-			responseWriter.write(".removeToolbar('header');");
+			responseWriter.write("dialog.removeToolbar('header');");
 		}
 
 		// move the overlayBody div into the modal-body div
@@ -124,21 +123,14 @@ public class DialogRenderer extends DialogRendererBase {
 			encodeOverlayDismissible(responseWriter, dialog, clientKey);
 		}
 
+		JavaScriptFragment dialogJavaScriptFragment = new JavaScriptFragment("dialog");
+		encodeFunctionCall(responseWriter, "LFAI.initDialog", dialogJavaScriptFragment);
 		encodeOverlayJavaScriptCustom(responseWriter, facesContext, dialog, clientKey);
 	}
 
 	@Override
 	protected void encodeHiddenAttributes(FacesContext facesContext, ResponseWriter responseWriter, Dialog dialog,
 		boolean first) throws IOException {
-
-		// Encode the centered Alloy attribute. Only center the dialog if the browser is not mobile due to FACES-2450.
-		BrowserSnifferFactory browserSnifferFactory = (BrowserSnifferFactory) FactoryExtensionFinder.getFactory(
-				BrowserSnifferFactory.class);
-		BrowserSniffer browserSniffer = browserSnifferFactory.getBrowserSniffer(facesContext.getExternalContext());
-		boolean mobile = browserSniffer.isMobile();
-		encodeBoolean(responseWriter, "centered", !mobile, first);
-
-		first = false;
 
 		// contentBox, headerText, render : true, visible
 		encodeOverlayHiddenAttributes(facesContext, responseWriter, dialog, first);
