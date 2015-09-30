@@ -154,6 +154,16 @@
 		</attribute>
 		<attribute>
 			<attribute-extension>
+				<default-value><![CDATA["btn-default"]]></default-value>
+				<override>true</override>
+			</attribute-extension>
+			<description><![CDATA[List of CSS class names (separated by spaces) that are to be rendered within the class attribute.]]></description>
+			<name>styleClass</name>
+			<required>false</required>
+			<type><![CDATA[java.lang.String]]></type>
+		</attribute>
+		<attribute>
+			<attribute-extension>
 				<inherited>true</inherited>
 			</attribute-extension>
 			<description><![CDATA[The value of this component.]]></description>
@@ -161,7 +171,7 @@
 			<type><![CDATA[java.lang.Object]]></type>
 		</attribute>
 		<tag-extension>
-			<extends-tags>altInherited styleableInherited uiComponentBaseInherited</extends-tags>
+			<extends-tags>altInherited styleInherited uiComponentBaseInherited</extends-tags>
 			<generate-java>false</generate-java>
 			<generate-taglib-xml>false</generate-taglib-xml>
 		</tag-extension>
@@ -1158,6 +1168,7 @@ java.util.List<java.lang.String> filterResults(java.lang.String, java.util.List<
 			<alloy-ui-name>DatePicker</alloy-ui-name>
 			<delegate-renderer-type><![CDATA["javax.faces.Text"]]></delegate-renderer-type>
 			<extends-tags>inputDateTimeCommon inputDateTimeInherited</extends-tags>
+			<extra-style-classes>form-inline</extra-style-classes>
 			<parent-class><![CDATA[com.liferay.faces.alloy.component.inputdatetime.InputDateTime]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.alloy.component.inputdatetime.internal.InputDateTimeRenderer]]></renderer-parent-class>
 		</tag-extension>
@@ -1275,7 +1286,6 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 			<alloy-ui-module>uploader</alloy-ui-module>
 			<alloy-ui-name>Uploader</alloy-ui-name>
 			<extends-tags>clientComponent inputText</extends-tags>
-			<extra-style-classes>field</extra-style-classes>
 			<parent-class><![CDATA[com.liferay.faces.util.component.InputFileBase]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.alloy.component.inputfile.internal.InputFileRendererCompat]]></renderer-parent-class>
 		</tag-extension>
@@ -1305,7 +1315,7 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 		<tag-extension>
 			<delegate-renderer-type><![CDATA["javax.faces.Secret"]]></delegate-renderer-type>
 			<extends-tags>altInherited autocompleteInherited disabledInherited inputCommonInherited sizeInherited</extends-tags>
-			<extra-style-classes>field</extra-style-classes>
+			<extra-style-classes>form-control</extra-style-classes>
 			<parent-class><![CDATA[javax.faces.component.html.HtmlInputSecret]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.util.render.DelegatingRendererBase]]></renderer-parent-class>
 		</tag-extension>
@@ -1433,7 +1443,7 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 		<tag-extension>
 			<delegate-renderer-type><![CDATA["javax.faces.Text"]]></delegate-renderer-type>
 			<extends-tags>altInherited autocompleteInherited disabledInherited inputCommonInherited sizeInherited</extends-tags>
-			<extra-style-classes>field</extra-style-classes>
+			<extra-style-classes>form-control</extra-style-classes>
 			<parent-class><![CDATA[javax.faces.component.html.HtmlInputText]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.util.render.DelegatingRendererBase]]></renderer-parent-class>
 		</tag-extension>
@@ -1460,7 +1470,7 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 		<tag-extension>
 			<delegate-renderer-type><![CDATA["javax.faces.Textarea"]]></delegate-renderer-type>
 			<extends-tags>disabledInherited inputCommonInherited</extends-tags>
-			<extra-style-classes>field</extra-style-classes>
+			<extra-style-classes>form-control</extra-style-classes>
 			<parent-class><![CDATA[javax.faces.component.html.HtmlInputTextarea]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.util.render.DelegatingRendererBase]]></renderer-parent-class>
 		</tag-extension>
@@ -1585,6 +1595,7 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 			<alloy-ui-name>TimePicker</alloy-ui-name>
 			<delegate-renderer-type><![CDATA["javax.faces.Text"]]></delegate-renderer-type>
 			<extends-tags>inputDateTimeCommon inputDateTimeInherited</extends-tags>
+			<extra-style-classes>form-inline</extra-style-classes>
 			<parent-class><![CDATA[com.liferay.faces.alloy.component.inputdatetime.InputDateTime]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.alloy.component.inputdatetime.internal.InputDateTimeRenderer]]></renderer-parent-class>
 		</tag-extension>
@@ -1857,7 +1868,7 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 		<tag-extension>
 			<delegate-renderer-type><![CDATA["javax.faces.Message"]]></delegate-renderer-type>
 			<extends-tags>messageCommonInherited</extends-tags>
-			<extra-style-classes>help-inline</extra-style-classes>
+			<extra-style-classes>help-block</extra-style-classes>
 			<parent-class><![CDATA[javax.faces.component.html.HtmlMessage]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.util.render.DelegatingRendererBase]]></renderer-parent-class>
 		</tag-extension>
@@ -2401,7 +2412,6 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 		<tag-extension>
 			<delegate-renderer-type><![CDATA["javax.faces.Checkbox"]]></delegate-renderer-type>
 			<extends-tags>selectCommonInherited</extends-tags>
-			<extra-style-classes>checkbox</extra-style-classes>
 			<parent-class><![CDATA[javax.faces.component.html.HtmlSelectBooleanCheckbox]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.util.render.DelegatingRendererBase]]></renderer-parent-class>
 		</tag-extension>

@@ -102,6 +102,18 @@
 											<include name="aui-datatable-core.css" />
 											<include name="aui-datatable-core-skin.css" />
 										</replace>
+										<replace token="../fonts/glyphicons-halflings-regular.eot" value="#{resource['liferay-faces-reslib:build/aui-css/fonts/glyphicons-halflings-regular.eot']}" dir="${project.build.directory}/classes/META-INF/resources/liferay-faces-reslib/build/aui-css/css">
+											<include name="bootstrap.min.css" />
+										</replace>
+										<replace token="../fonts/glyphicons-halflings-regular.woff" value="#{resource['liferay-faces-reslib:build/aui-css/fonts/glyphicons-halflings-regular.woff']}" dir="${project.build.directory}/classes/META-INF/resources/liferay-faces-reslib/build/aui-css/css">
+											<include name="bootstrap.min.css" />
+										</replace>
+										<replace token="../fonts/glyphicons-halflings-regular.ttf" value="#{resource['liferay-faces-reslib:build/aui-css/fonts/glyphicons-halflings-regular.ttf']}" dir="${project.build.directory}/classes/META-INF/resources/liferay-faces-reslib/build/aui-css/css">
+											<include name="bootstrap.min.css" />
+										</replace>
+										<replace token="../fonts/glyphicons-halflings-regular.svg" value="#{resource['liferay-faces-reslib:build/aui-css/fonts/glyphicons-halflings-regular.svg']}" dir="${project.build.directory}/classes/META-INF/resources/liferay-faces-reslib/build/aui-css/css">
+											<include name="bootstrap.min.css" />
+										</replace>
 									</target>
 								</configuration>
 							</execution>

@@ -957,7 +957,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[List of CSS class names (separated by spaces) that are to be rendered within the class attribute.]]></description>
+			<description><![CDATA[List of CSS class names (separated by spaces) that are to be rendered within the class attribute. The default value is <code>"btn-default"</code>.]]></description>
 			<name>styleClass</name>
 			<required>false</required>
 			<type>java.lang.String</type>
@@ -1455,7 +1455,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
-			<description><![CDATA[List of CSS class names (separated by spaces) that are to be rendered within the class attribute.]]></description>
+			<description><![CDATA[List of CSS class names (separated by spaces) that are to be rendered within the class attribute. The default value is <code>"btn-default"</code>.]]></description>
 			<name>styleClass</name>
 			<required>false</required>
 			<type>java.lang.String</type>

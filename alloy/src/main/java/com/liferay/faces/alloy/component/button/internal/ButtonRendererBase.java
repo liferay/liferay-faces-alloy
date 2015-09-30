@@ -31,6 +31,7 @@ public abstract class ButtonRendererBase extends ButtonRendererCompat {
 	// Protected Constants
 	protected static final String AUTOFOCUS = "autofocus";
 	protected static final String DISABLED = "disabled";
+	protected static final String STYLE_CLASS = "styleClass";
 	protected static final String TYPE = "type";
 
 	@Override

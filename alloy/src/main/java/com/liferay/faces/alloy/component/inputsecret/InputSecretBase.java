@@ -60,7 +60,7 @@ public abstract class InputSecretBase extends HtmlInputSecret implements Styleab
 		// super.getStyleClass() may return the styleClass name of the super class.
 		String styleClass = (String) getStateHelper().eval(PropertyKeys.styleClass, null);
 
-		return com.liferay.faces.util.component.ComponentUtil.concatCssClasses(styleClass, "alloy-input-secret", "field");
+		return com.liferay.faces.util.component.ComponentUtil.concatCssClasses(styleClass, "alloy-input-secret", "form-control");
 	}
 }
 //J+

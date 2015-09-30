@@ -35,7 +35,7 @@ LFAI = {
 					tableRow += '<td class="yui3-datatable-cell">';
 				}
 				else {
-					tableRow += '<td class="yui3-datatable-cell text-error">';
+					tableRow += '<td class="yui3-datatable-cell text-danger">';
 				}
 
 				tableRow += curFile.type + '</td>';
@@ -44,7 +44,7 @@ LFAI = {
 					tableRow += '<td class="yui3-datatable-cell">';
 				}
 				else {
-					tableRow += '<td class="yui3-datatable-cell text-error">';
+					tableRow += '<td class="yui3-datatable-cell text-danger">';
 				}
 
 				tableRow += curFile.size + '</td>';
@@ -169,7 +169,7 @@ LFAI = {
 						tableRow += '<td class="yui3-datatable-cell">';
 					}
 					else {
-						tableRow += '<td class="yui3-datatable-cell text-error">';
+						tableRow += '<td class="yui3-datatable-cell text-danger">';
 					}
 
 					tableRow += curFile.get('type') + '</td>';
@@ -178,7 +178,7 @@ LFAI = {
 						tableRow += '<td class="yui3-datatable-cell">';
 					}
 					else {
-						tableRow += '<td class="yui3-datatable-cell text-error">';
+						tableRow += '<td class="yui3-datatable-cell text-danger">';
 					}
 
 					tableRow += curFile.get('size') + '</td>';

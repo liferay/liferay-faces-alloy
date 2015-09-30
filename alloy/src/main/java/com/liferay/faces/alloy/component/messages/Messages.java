@@ -25,7 +25,7 @@ import com.liferay.faces.util.component.ComponentUtil;
 public class Messages extends MessagesBase {
 
 	// Private Constants
-	private static final String ERROR_CLASS_NAME = "text-error";
+	private static final String ERROR_CLASS_NAME = "text-danger";
 	private static final String FATAL_CLASS_NAME = ERROR_CLASS_NAME;
 	private static final String INFO_CLASS_NAME = "text-info";
 	private static final String WARN_CLASS_NAME = "text-warning";

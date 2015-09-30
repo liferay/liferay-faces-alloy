@@ -43,7 +43,7 @@ public abstract class AbstractButtonRenderer extends ButtonRendererBase {
 	private static final String BUTTON = "button";
 	private static final String DEFAULT_ONBLUR = "this.className=this.className.replace(' btn-focus','');";
 	private static final String DEFAULT_ONFOCUS = "this.className+=' btn-focus';";
-	private static final String DEFAULT_BUTTON_CSS_CLASSES = "yui3-widget btn btn-content";
+	private static final String DEFAULT_BUTTON_CSS_CLASSES = "btn yui3-widget yui3-btn yui3-btn-content";
 	private static final String DISABLED_BUTTON_CSS_CLASSES = "btn-disabled disabled";
 	private static final String FACES_RUNTIME_SRC = "facesRuntimeSrc";
 	private static final String IMAGE = "image";

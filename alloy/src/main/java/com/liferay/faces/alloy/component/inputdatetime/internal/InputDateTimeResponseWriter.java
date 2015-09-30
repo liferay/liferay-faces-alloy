@@ -39,7 +39,7 @@ public class InputDateTimeResponseWriter extends IdDelegationResponseWriter {
 	public void writeAttribute(String name, Object value, String property) throws IOException {
 
 		if ("class".equalsIgnoreCase(name)) {
-			super.writeAttribute(name, "input-medium field", property);
+			super.writeAttribute(name, "form-control", property);
 		}
 		else if (Styleable.STYLE.equalsIgnoreCase(name)) {
 			// no-op because the style attribute is applied to the outermost div instead of the input.

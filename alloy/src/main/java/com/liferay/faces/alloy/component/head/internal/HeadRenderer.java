@@ -41,7 +41,6 @@ import com.liferay.faces.util.product.ProductMap;
 		{
 			@ResourceDependency(library = "liferay-faces-alloy", name = "alloy.css"),
 			@ResourceDependency(library = "liferay-faces-alloy", name = "alloy.js"),
-			@ResourceDependency(library = "liferay-faces-reslib", name = "build/aui-css/css/bootstrap.min.css"),
 			@ResourceDependency(library = "liferay-faces-reslib", name = "build/aui/aui-min.js"),
 			@ResourceDependency(library = "liferay-faces-reslib", name = "liferay.js")
 		}
@@ -56,8 +55,8 @@ public class HeadRenderer extends HeadRendererBase {
 	@Override
 	public void encodeChildren(FacesContext facesContext, UIComponent uiComponent) throws IOException {
 
-		// If Liferay Portal is not detected and bootstrap-responsive.min.css is present in the <head>...</head>
-		// element, then encode a meta tag as a child of the head that will cause bootstrap to behave responsively.
+		// If Liferay Portal is not detected and bootstrap.min.css is present in the <head>...</head> element, then
+		// encode a meta tag as a child of the head that will cause bootstrap to behave responsively.
 		if (!LIFERAY_PORTAL_DETECTED) {
 
 			ComponentResourceFactory componentResourceFactory = (ComponentResourceFactory) FactoryExtensionFinder
@@ -71,8 +70,7 @@ public class HeadRenderer extends HeadRendererBase {
 				String library = componentResource.getLibrary();
 				String name = componentResource.getName();
 
-				if ("liferay-faces-reslib".equals(library) &&
-						"build/aui-css/css/bootstrap-responsive.min.css".equals(name)) {
+				if ("liferay-faces-reslib".equals(library) && "build/aui-css/css/bootstrap.min.css".equals(name)) {
 
 					ResponseWriter responseWriter = facesContext.getResponseWriter();
 					responseWriter.startElement("meta", null);
