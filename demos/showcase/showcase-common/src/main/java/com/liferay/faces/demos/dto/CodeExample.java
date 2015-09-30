@@ -18,7 +18,7 @@ import java.io.Serializable;
 import java.net.URL;
 import java.net.URLConnection;
 
-import javax.faces.application.ProjectStage;
+// JSF 2: import javax.faces.application.ProjectStage;
 import javax.faces.context.FacesContext;
 
 import com.liferay.faces.demos.util.CodeExampleUtil;
@@ -71,8 +71,9 @@ public class CodeExample implements Serializable {
 		FacesContext facesContext = FacesContext.getCurrentInstance();
 
 		if (facesContext != null) {
-			developmentMode = facesContext.isProjectStage(ProjectStage.Development);
-			productionMode = facesContext.isProjectStage(ProjectStage.Production);
+			developmentMode = "development".equalsIgnoreCase(facesContext.getExternalContext().getInitParameter(
+						"javax.faces.PROJECT_STAGE"));
+			productionMode = !developmentMode;
 		}
 
 		if (developmentMode) {

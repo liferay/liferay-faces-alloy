@@ -15,9 +15,10 @@ package com.liferay.faces.demos.bean;
 
 import java.io.Serializable;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.ViewScoped;
+import javax.el.ELContext;
+import javax.el.ELResolver;
+import javax.faces.application.Application;
+import javax.faces.context.FacesContext;
 
 import com.liferay.faces.demos.dto.SelectedComponent;
 import com.liferay.faces.demos.dto.SelectedComponentImpl;
@@ -26,11 +27,15 @@ import com.liferay.faces.util.product.ProductConstants;
 import com.liferay.faces.util.product.ProductMap;
 
 
+// JSF 2: import javax.faces.bean.ManagedBean;
+// JSF 2: import javax.faces.bean.ManagedProperty;
+// JSF 2: import javax.faces.bean.ViewScoped;
+
 /**
  * @author  Neil Griffin
  */
-@ManagedBean
-@ViewScoped
+// JSF 2: @ManagedBean
+// JSF 2: @ViewScoped
 public class ShowcaseModelBean implements Serializable {
 
 	// serialVersionUID
@@ -41,7 +46,7 @@ public class ShowcaseModelBean implements Serializable {
 			ProductConstants.LIFERAY_FACES_BRIDGE).isDetected();
 
 	// Injections
-	@ManagedProperty(name = "listModelBean", value = "#{listModelBean}")
+	// @ManagedProperty(name = "listModelBean", value = "#{listModelBean}")
 	private transient ListModelBean listModelBean;
 
 	// Private Data Members
@@ -64,10 +69,18 @@ public class ShowcaseModelBean implements Serializable {
 		return deploymentType;
 	}
 
+	public ListModelBean getListModelBean() {
+		if (this.listModelBean == null) {
+			this.listModelBean = getLModelBean(FacesContext.getCurrentInstance());
+		}
+
+		return this.listModelBean;
+	}
+
 	public void setListModelBean(ListModelBean listModelBean) {
 		this.listModelBean = listModelBean;
 	}
-
+	
 	public SelectedComponent getSelectedComponent() {
 
 		if (selectedComponent == null) {
@@ -76,7 +89,7 @@ public class ShowcaseModelBean implements Serializable {
 
 			if (viewParameters.isValid()) {
 
-				ShowcaseComponent showcaseComponent = listModelBean.findShowcaseComponent(
+				ShowcaseComponent showcaseComponent = getListModelBean().findShowcaseComponent(
 						viewParameters.getComponentPrefix(), viewParameters.getComponentName());
 
 				selectedComponent = new SelectedComponentImpl(showcaseComponent, viewParameters.getComponentUseCase());
@@ -86,6 +99,19 @@ public class ShowcaseModelBean implements Serializable {
 		return selectedComponent;
 	}
 
+	public void setSelectedComponent(SelectedComponent selectedComponent) {
+		this.selectedComponent = selectedComponent;
+	}
+
+	protected ListModelBean getLModelBean(FacesContext facesContext) {
+
+		Application application = facesContext.getApplication();
+		ELResolver elResolver = application.getELResolver();
+		ELContext elContext = facesContext.getELContext();
+
+		return (ListModelBean) elResolver.getValue(elContext, null, "listModelBean");
+	}
+	
 	public ViewParameters getViewParameters() {
 
 		if (viewParameters == null) {

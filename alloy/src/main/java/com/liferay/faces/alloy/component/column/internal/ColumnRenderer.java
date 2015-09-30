@@ -15,136 +15,111 @@ package com.liferay.faces.alloy.component.column.internal;
 
 import java.io.IOException;
 
-import javax.faces.application.ResourceDependencies;
-import javax.faces.application.ResourceDependency;
 import javax.faces.component.UIComponent;
-import javax.faces.component.html.HtmlDataTable;
-import javax.faces.component.html.HtmlPanelGrid;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
-import javax.faces.event.AbortProcessingException;
-import javax.faces.event.ComponentSystemEvent;
-import javax.faces.event.ComponentSystemEventListener;
-import javax.faces.event.ListenerFor;
-import javax.faces.event.PostAddToViewEvent;
-import javax.faces.render.FacesRenderer;
+import javax.faces.render.Renderer;
 
+import com.liferay.faces.alloy.component.AUICol;
 import com.liferay.faces.alloy.component.column.Column;
-import com.liferay.faces.alloy.component.datatable.DataTable;
-import com.liferay.faces.alloy.render.internal.AlloyRendererUtil;
-import com.liferay.faces.util.render.RendererUtil;
 
 
 /**
- * @author  Kyle Stiemann
+ * @author  Juan Gonzalez
  */
-@FacesRenderer(componentFamily = Column.COMPONENT_FAMILY, rendererType = Column.RENDERER_TYPE)
-@ListenerFor(systemEventClass = PostAddToViewEvent.class, sourceClass = Column.class)
-@ResourceDependencies(
-	{
-		@ResourceDependency(library = "javax.faces", name = "jsf.js"),
-		@ResourceDependency(
-			library = "liferay-faces-reslib", name = "build/aui-css/css/bootstrap.min.css"
-		)
-	}
-)
-public class ColumnRenderer extends ColumnRendererBase implements ComponentSystemEventListener {
+public class ColumnRenderer extends Renderer {
 
-	protected static Integer getColumnUnitSize(Integer width) {
-		return (int) Math.round(Column.COLUMNS * ((double) width / 100));
-	}
+	protected static final String OFFSET = "offset";
 
 	@Override
 	public void encodeBegin(FacesContext facesContext, UIComponent uiComponent) throws IOException {
+		super.encodeBegin(facesContext, uiComponent);
 
 		ResponseWriter responseWriter = facesContext.getResponseWriter();
+		responseWriter.startElement("div", uiComponent);
 
-		UIComponent parent = uiComponent.getParent();
+		String clientId = uiComponent.getClientId(facesContext);
+		responseWriter.writeAttribute("id", clientId, null);
 
-		if (!((parent instanceof HtmlDataTable) || (parent instanceof HtmlPanelGrid))) {
+		Column column = (Column) uiComponent;
+		StringBuilder classNames = new StringBuilder();
 
-			responseWriter.startElement("div", uiComponent);
+		Integer span = column.getSpan();
 
-			String clientId = uiComponent.getClientId(facesContext);
-			responseWriter.writeAttribute("id", clientId, null);
+		if (span != null) {
 
-			Column column = (Column) uiComponent;
-			StringBuilder classNames = new StringBuilder();
-
-			Integer span = column.getSpan();
-
-			if (span != null) {
-
-				if ((span < 1) || (span > Column.COLUMNS)) {
-					throw new IOException("span number must be between 1 and " + Column.COLUMNS);
-				}
+			if ((span < 1) || (span > Column.COLUMNS)) {
+				throw new IOException("span number must be between 1 and " + Column.COLUMNS);
 			}
-
-			Integer width = column.getWidth();
-
-			if (width != null) {
-
-				if ((width < 1) || (width > 100)) {
-					throw new IOException("width must be between 1 and 100");
-				}
-
-				span = getColumnUnitSize(width);
-			}
-
-			classNames.append("span");
-			classNames.append(span);
-
-			Integer offset = column.getOffset();
-
-			if (offset != null) {
-
-				if ((offset < 1) || (offset > Column.COLUMNS)) {
-					throw new IOException("offset must be between 1 and " + Column.COLUMNS);
-				}
-			}
-
-			Integer offsetWidth = column.getOffsetWidth();
-
-			if (offsetWidth != null) {
-
-				if ((offsetWidth < 1) || (offsetWidth > 100)) {
-					throw new IOException("offsetWidth must be between 1 and 100");
-				}
-
-				offset = getColumnUnitSize(offsetWidth);
-			}
-
-			if (offset != null) {
-				classNames.append(" ");
-				classNames.append(OFFSET);
-				classNames.append(offset);
-			}
-
-			RendererUtil.encodeStyleable(responseWriter, column, classNames.toString());
 		}
+
+		Integer width = column.getWidth();
+
+		if (width != null) {
+
+			if ((width < 1) || (width > 100)) {
+				throw new IOException("width must be between 1 and 100");
+			}
+
+			span = getColumnUnitSize(width);
+		}
+
+		classNames.append("span");
+		classNames.append(span);
+
+		Integer offset = column.getOffset();
+
+		if (offset != null) {
+
+			if ((offset < 1) || (offset > Column.COLUMNS)) {
+				throw new IOException("offset must be between 1 and " + Column.COLUMNS);
+			}
+		}
+
+		Integer offsetWidth = column.getOffsetWidth();
+
+		if (offsetWidth != null) {
+
+			if ((offsetWidth < 1) || (offsetWidth > 100)) {
+				throw new IOException("offsetWidth must be between 1 and 100");
+			}
+
+			offset = getColumnUnitSize(offsetWidth);
+		}
+
+		if (offset != null) {
+			classNames.append(" ");
+			classNames.append(OFFSET);
+			classNames.append(offset);
+		}
+
+		String cssClass = column.getCssClass();
+
+		if ((cssClass != null) && (cssClass.length() > 0)) {
+			classNames.append(" ");
+			classNames.append(cssClass);
+		}
+
+		String styleClass = column.getStyleClass();
+
+		if ((styleClass != null) && (styleClass.length() > 0)) {
+			classNames.append(" ");
+			classNames.append(styleClass);
+		}
+
+		responseWriter.writeAttribute("class", classNames.toString(), null);
 	}
 
 	@Override
 	public void encodeEnd(FacesContext facesContext, UIComponent uiComponent) throws IOException {
 
+		super.encodeEnd(facesContext, uiComponent);
+
 		ResponseWriter responseWriter = facesContext.getResponseWriter();
-
-		UIComponent parent = uiComponent.getParent();
-
-		if (!((parent instanceof HtmlDataTable) || (parent instanceof HtmlPanelGrid))) {
-			responseWriter.endElement("div");
-		}
+		responseWriter.endElement("div");
 	}
 
-	@Override
-	public void processEvent(ComponentSystemEvent componentSystemEvent) throws AbortProcessingException {
-
-		Column column = (Column) componentSystemEvent.getComponent();
-		UIComponent parent = column.getParent();
-
-		if ((parent instanceof DataTable) && column.isAjax()) {
-			AlloyRendererUtil.addDefaultAjaxBehavior(column, column.getExecute(), column.getProcess(), "@parent",
-				column.getRender(), column.getUpdate(), "@parent");
-		}
+	protected Integer getColumnUnitSize(Integer width) {
+		return (int) Math.round(AUICol.COLUMNS * ((double) width / 100));
 	}
 }

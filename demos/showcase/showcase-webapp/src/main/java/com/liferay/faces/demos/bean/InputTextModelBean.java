@@ -16,15 +16,15 @@ package com.liferay.faces.demos.bean;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+// JSF2+ import javax.faces.bean.ManagedBean;
+// JSF2+ import javax.faces.bean.RequestScoped;
 
 
 /**
  * @author  Neil Griffin
  */
-@ManagedBean
-@RequestScoped
+// JSF2+ @ManagedBean
+// JSF2+ @RequestScoped
 public class InputTextModelBean {
 
 	private Date date = new GregorianCalendar().getTime();

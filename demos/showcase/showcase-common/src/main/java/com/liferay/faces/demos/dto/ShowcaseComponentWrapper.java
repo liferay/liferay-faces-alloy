@@ -15,13 +15,13 @@ package com.liferay.faces.demos.dto;
 
 import java.util.List;
 
-import javax.faces.FacesWrapper;
+import com.liferay.faces.util.helper.Wrapper;
 
 
 /**
  * @author  Neil Griffin
  */
-public abstract class ShowcaseComponentWrapper implements ShowcaseComponent, FacesWrapper<ShowcaseComponent> {
+public abstract class ShowcaseComponentWrapper implements ShowcaseComponent, Wrapper<ShowcaseComponent> {
 
 	@Override
 	public String getCamelCaseName() {

@@ -16,9 +16,9 @@ package com.liferay.faces.demos.bean;
 import java.util.Date;
 import java.util.List;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.RequestScoped;
+// JSF 2+ import javax.faces.bean.ManagedBean;
+// JSF 2+ import javax.faces.bean.ManagedProperty;
+// JSF 2+ import javax.faces.bean.RequestScoped;
 
 import com.liferay.faces.demos.dto.LiferayBenefit;
 import com.liferay.faces.demos.service.LiferayBenefitService;
@@ -27,8 +27,8 @@ import com.liferay.faces.demos.service.LiferayBenefitService;
 /**
  * @author  Vernon Singleton
  */
-@ManagedBean
-@RequestScoped
+// JSF 2+ @ManagedBean
+// JSF 2+ @RequestScoped
 public class SelectOneModelBean {
 
 	private Long favoriteId;
@@ -36,7 +36,7 @@ public class SelectOneModelBean {
 	private Date date;
 	private String phase;
 
-	@ManagedProperty(name = "liferayBenefitService", value = "#{liferayBenefitService}")
+	// JSF 2+ @ManagedProperty(name = "liferayBenefitService", value = "#{liferayBenefitService}")
 	private LiferayBenefitService liferayBenefitService;
 
 	public Long getBenefitId() {

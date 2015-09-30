@@ -16,8 +16,8 @@ package com.liferay.faces.demos.service;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.faces.bean.ApplicationScoped;
-import javax.faces.bean.ManagedBean;
+// JSF 2: import javax.faces.bean.ApplicationScoped;
+// JSF 2: import javax.faces.bean.ManagedBean;
 
 import com.liferay.faces.demos.dto.LiferayBenefit;
 
@@ -25,8 +25,8 @@ import com.liferay.faces.demos.dto.LiferayBenefit;
 /**
  * @author  Neil Griffin
  */
-@ManagedBean(name = "liferayBenefitService", eager = true)
-@ApplicationScoped
+// JSF 2: @ManagedBean(name = "liferayBenefitService", eager = true)
+// JSF 2: @ApplicationScoped
 public class LiferayBenefitServiceMockImpl implements LiferayBenefitService {
 
 	private static final List<LiferayBenefit> LIFERAY_BENEFITS;

@@ -26,9 +26,9 @@ import java.util.Map.Entry;
 import java.util.Properties;
 import java.util.Set;
 
-import javax.faces.application.ProjectStage;
-import javax.faces.bean.ApplicationScoped;
-import javax.faces.bean.ManagedBean;
+// JSF 2: import javax.faces.application.ProjectStage;
+// JSF 2: import javax.faces.bean.ApplicationScoped;
+// JSF 2: import javax.faces.bean.ManagedBean;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
@@ -48,8 +48,8 @@ import com.liferay.faces.util.product.ProductMap;
 /**
  * @author  Neil Griffin
  */
-@ManagedBean(eager = true)
-@ApplicationScoped
+// JSF 2: @ManagedBean(eager = true)
+// JSF 2: @ApplicationScoped
 public class ListModelBean {
 
 	// Logger
@@ -76,23 +76,12 @@ public class ListModelBean {
 	public ListModelBean() {
 
 		FacesContext startupFacesContext = FacesContext.getCurrentInstance();
-		boolean developmentMode = startupFacesContext.isProjectStage(ProjectStage.Development);
-		boolean systemTestMode = startupFacesContext.isProjectStage(ProjectStage.SystemTest);
-		boolean productionMode = startupFacesContext.isProjectStage(ProjectStage.Production);
+		String projectStage = startupFacesContext.getExternalContext().getInitParameter("javax.faces.PROJECT_STAGE");
+		boolean developmentMode = "development".equalsIgnoreCase(projectStage);
+		boolean systemTestMode = "systemTest".equalsIgnoreCase(projectStage);
+		boolean productionMode = !developmentMode && !systemTestMode;
 		showcaseCategoryList = new ArrayList<String>();
-		showcaseCategoryList.add("buttonlink");
-		showcaseCategoryList.add("data");
-		showcaseCategoryList.add("input");
-		showcaseCategoryList.add("misc");
-		showcaseCategoryList.add("multimedia");
-		showcaseCategoryList.add("output");
-		showcaseCategoryList.add("panel");
-		showcaseCategoryList.add("select");
-
-		if (LIFERAY_PORTAL_DETECTED) {
-			showcaseCategoryList.add("portal");
-		}
-
+		
 		if (LIFERAY_FACES_BRIDGE_DETECTED) {
 			showcaseCategoryList.add("portlet");
 		}
@@ -108,7 +97,6 @@ public class ListModelBean {
 		ClassLoader classLoader = getClass().getClassLoader();
 
 		List<String> namespaces = new ArrayList<String>();
-		namespaces.add("alloy");
 
 		if (LIFERAY_FACES_BRIDGE_DETECTED) {
 			namespaces.add("bridge");
@@ -127,8 +115,6 @@ public class ListModelBean {
 				namespaces.add("aui");
 				namespaces.add("liferay-ui");
 			}
-
-			namespaces.add("portal");
 		}
 
 		if (LIFERAY_FACES_BRIDGE_DETECTED) {
@@ -231,8 +217,7 @@ public class ListModelBean {
 
 								if (sourceFileURL != null) {
 
-									startupFacesContext.getApplication().getProjectStage();
-
+									// startupFacesContext.getApplication().getProjectStage();
 									CodeExample codeExample = CodeExampleUtil.read(sourceFileURL, sourceFileName,
 											productionMode);
 									codeExamples.add(codeExample);

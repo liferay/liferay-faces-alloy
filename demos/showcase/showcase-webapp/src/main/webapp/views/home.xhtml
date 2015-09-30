@@ -1,21 +1,21 @@
-<ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:alloy="http://liferay.com/faces/alloy"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core" template="/WEB-INF/templates/showcase-#{showcaseModelBean.deploymentType}.xhtml">
+	template="/WEB-INF/templates/showcase-#{showcaseModelBean.deploymentType}.xhtml">
 
 	<ui:define name="content">
-		<h:outputStylesheet name="home.css" library="css" />
+		<link rel="stylesheet" type="text/css" href="#{request.contextPath}/resources/css/home.css" />
 		<div class="showcase-home">
-			<alloy:image library="images" name="component-showcase.png" />
+			<h:graphicImage value="/resources/images/component-showcase.png" />
 			<p>
-				<alloy:image library="images" name="laptop.png" style="float: right;" />
+				<h:graphicImage value="/resources/images/laptop.png" style="float: right;" />
 				<a href="https://www.liferay.com/community/liferay-projects/liferay-faces">Liferay Faces</a> is an <strong>umbrella
 					project</strong> that provides support for the JavaServer<sup>TM</sup> Faces (JSF) standard within Liferay Portal. This
 				showcase application demonstrates usage of Facelet component tags provided by the following <strong>sub-projects</strong>:
 			</p>
-			<alloy:panel>
-				<f:facet name="header">
-					<alloy:image library="images" name="liferay-faces-alloy.png" />
-				</f:facet>
+			<h:panelGroup layout="block">
+				<h:panelGroup>
+					<h:graphicImage value="/resources/images/liferay-faces-alloy.png" />
+				</h:panelGroup>
 				<p>
 					The <a href="https://www.liferay.com/community/liferay-projects/liferay-faces/alloy" target="_blank">Liferay
 						Faces Alloy</a> sub-project includes a suite of JSF UI components that utilize <a href="http://alloyui.com/"
@@ -25,11 +25,11 @@
 					The Facelet component tags are prefixed with the <strong>alloy:</strong> namespace and are compatible with <strong>webapp
 						and portlet environments</strong>.
 				</p>
-			</alloy:panel>
-			<alloy:panel>
-				<f:facet name="header">
-					<alloy:image library="images" name="liferay-faces-bridge.png" />
-				</f:facet>
+			</h:panelGroup>
+			<h:panelGroup layout="block">
+				<h:panelGroup>
+					<h:graphicImage value="/resources/images/liferay-faces-bridge.png" />
+				</h:panelGroup>
 				<p>
 					The <a href="https://www.liferay.com/community/liferay-projects/liferay-faces/bridge" target="_blank">Liferay
 						Faces Bridge</a> sub-project includes a <a href="https://www.jcp.org/en/jsr/detail?id=329" target="_blank">JSR 329</a>
@@ -42,11 +42,11 @@
 					The Facelet component tags are prefixed with the <strong>bridge:</strong> and <strong>portlet:</strong> namespaces
 					and are only compatible with <strong>portlet environments</strong>.
 				</p>
-			</alloy:panel>
-			<alloy:panel>
-				<f:facet name="header">
-					<alloy:image library="images" name="liferay-faces-portal.png" />
-				</f:facet>
+			</h:panelGroup>
+			<h:panelGroup layout="block">
+				<h:panelGroup>
+					<h:graphicImage value="/resources/images/liferay-faces-portal.png" />
+				</h:panelGroup>
 				<p>
 					The <a href="https://www.liferay.com/community/liferay-projects/liferay-faces/portal" target="_blank">Liferay
 						Faces Portal</a> sub-project includes JSF utilities, EL keywords, and a suite of JSF UI components for use with <a
@@ -56,7 +56,7 @@
 					The Facelet component tags are prefixed with the <strong>portal:</strong> namespace are only compatible with <strong>Liferay
 						portlet environments</strong>.
 				</p>
-			</alloy:panel>
+			</h:panelGroup>
 		</div>
 	</ui:define>
 

@@ -24,9 +24,14 @@ import java.util.List;
 import java.util.TimeZone;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ApplicationScoped;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ManagedProperty;
+// JSF 2: import javax.faces.bean.ApplicationScoped;
+// JSF 2: import javax.faces.bean.ManagedBean;
+// JSF 2: import javax.faces.bean.ManagedProperty;
+
+import javax.el.ELContext;
+import javax.el.ELResolver;
+import javax.faces.application.Application;
+import javax.faces.context.FacesContext;
 
 import com.liferay.faces.demos.dto.Country;
 import com.liferay.faces.demos.dto.Customer;
@@ -35,8 +40,8 @@ import com.liferay.faces.demos.dto.Customer;
 /**
  * @author  Neil Griffin
  */
-@ApplicationScoped
-@ManagedBean(name = "customerService")
+// JSF 2: @ApplicationScoped
+// JSF 2: @ManagedBean(name = "customerService")
 public class CustomerServiceMockImpl implements CustomerService, Serializable {
 
 	// serialVersionUID
@@ -46,15 +51,15 @@ public class CustomerServiceMockImpl implements CustomerService, Serializable {
 	private List<Customer> allCustomers;
 
 	// Injections
-	@ManagedProperty(value = "#{countryService}")
+	// JSF 2: @ManagedProperty(value = "#{countryService}")
 	private CountryService countryService;
 
 	@PostConstruct
 	public void postConstruct() {
 
-		Country unitedStates = countryService.getCountryByCode("US");
+		Country unitedStates = getCountryService().getCountryByCode("US");
 
-		Country unitedKingdom = countryService.getCountryByCode("UK");
+		Country unitedKingdom = getCountryService().getCountryByCode("UK");
 
 		allCustomers = new ArrayList<Customer>();
 
@@ -236,6 +241,13 @@ public class CustomerServiceMockImpl implements CustomerService, Serializable {
 		this.countryService = countryService;
 	}
 
+	public CountryService getCountryService() {
+		if (countryService == null) {
+			countryService = getCService(FacesContext.getCurrentInstance());
+		}
+		return countryService;
+	}
+	
 	@Override
 	public int getCustomerCount() {
 		return allCustomers.size();
@@ -263,5 +275,14 @@ public class CustomerServiceMockImpl implements CustomerService, Serializable {
 		calendar.set(Calendar.YEAR, year);
 
 		return calendar.getTime();
+	}
+	
+	protected CountryService getCService(FacesContext facesContext) {
+
+		Application application = facesContext.getApplication();
+		ELResolver elResolver = application.getELResolver();
+		ELContext elContext = facesContext.getELContext();
+
+		return (CountryService) elResolver.getValue(elContext, null, "countryService");
 	}
 }

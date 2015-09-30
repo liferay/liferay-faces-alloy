@@ -13,13 +13,90 @@
  */
 package com.liferay.faces.alloy.component.row;
 
-import javax.faces.component.FacesComponent;
+import javax.el.ValueExpression;
+import javax.faces.component.UIPanel;
+import javax.faces.context.FacesContext;
 
 
 /**
- * @author  Kyle Stiemann
+ * @author  Juan Gonzalez
  */
-@FacesComponent(value = Row.COMPONENT_TYPE)
-public class Row extends RowBase {
-	// Initial Generation
+public class Row extends UIPanel {
+
+	// Public Constants
+	public static final String FLUID = "fluid";
+	public static final String RENDERER_TYPE = "com.liferay.faces.alloy.component.row.internal.RowRenderer";
+
+	// Private Constants
+	private static final String CSS_CLASS = "cssClass";
+	private static final String STYLE_CLASS = "styleClass";
+	public static final String STYLE_CLASS_NAME = "alloy-row";
+
+	// Private Data Members
+	private String cssClass;
+	private Boolean fluid;
+	private String styleClass;
+
+	public String getCssClass() {
+
+		if (cssClass == null) {
+			ValueExpression valueExpression = getValueExpression(CSS_CLASS);
+
+			if (valueExpression != null) {
+				cssClass = (String) valueExpression.getValue(FacesContext.getCurrentInstance().getELContext());
+			}
+		}
+
+		return cssClass;
+	}
+
+	public void setCssClass(String cssClass) {
+		this.cssClass = cssClass;
+	}
+
+	public Boolean isFluid() {
+
+		if (fluid == null) {
+			ValueExpression valueExpression = getValueExpression(FLUID);
+
+			if (valueExpression != null) {
+				fluid = (Boolean) valueExpression.getValue(FacesContext.getCurrentInstance().getELContext());
+			}
+			else {
+				fluid = Boolean.TRUE;
+			}
+		}
+
+		return fluid;
+	}
+
+	public void setFluid(Boolean fluid) {
+		this.fluid = fluid;
+	}
+
+	@Override
+	public String getRendererType() {
+		return RENDERER_TYPE;
+	}
+
+	public String getStyleClass() {
+
+		if (styleClass == null) {
+			ValueExpression valueExpression = getValueExpression(STYLE_CLASS);
+
+			styleClass = "";
+
+			if (valueExpression != null) {
+				styleClass = (String) valueExpression.getValue(FacesContext.getCurrentInstance().getELContext());
+			}
+
+			styleClass = styleClass.concat(STYLE_CLASS_NAME);
+		}
+
+		return styleClass;
+	}
+
+	public void setStyleClass(String styleClass) {
+		this.styleClass = styleClass;
+	}
 }

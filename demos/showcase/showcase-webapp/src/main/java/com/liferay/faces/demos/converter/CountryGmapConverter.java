@@ -22,7 +22,7 @@ import javax.el.ELResolver;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
-import javax.faces.convert.FacesConverter;
+// JSF 2: import javax.faces.convert.FacesConverter;
 
 import com.liferay.faces.demos.dto.Country;
 import com.liferay.faces.demos.service.CountryService;
@@ -31,7 +31,7 @@ import com.liferay.faces.demos.service.CountryService;
 /**
  * @author  Vernon Singleton
  */
-@FacesConverter(value = "com.liferay.faces.demos.converter.CountryGmapConverter")
+// JSF 2: @FacesConverter(value = "com.liferay.faces.demos.converter.CountryGmapConverter")
 public class CountryGmapConverter implements Converter {
 
 	// Private Data Members

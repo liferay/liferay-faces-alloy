@@ -15,30 +15,18 @@ package com.liferay.faces.alloy.component.row.internal;
 
 import java.io.IOException;
 
-import javax.faces.application.ResourceDependencies;
-import javax.faces.application.ResourceDependency;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
-import javax.faces.render.FacesRenderer;
+import javax.faces.render.Renderer;
 
 import com.liferay.faces.alloy.component.row.Row;
-import com.liferay.faces.util.render.RendererUtil;
 
 
 /**
- * @author  Kyle Stiemann
+ * @author  Juan Gonzalez
  */
-//J-
-@FacesRenderer(componentFamily = Row.COMPONENT_FAMILY, rendererType = Row.RENDERER_TYPE)
-@ResourceDependencies(
-	{
-		@ResourceDependency(library = "liferay-faces-reslib", name = "build/aui-css/css/bootstrap.min.css"),
-		@ResourceDependency(library = "liferay-faces-reslib", name = "build/aui-css/css/bootstrap-responsive.min.css")
-	}
-)
-//J+
-public class RowRenderer extends RowRendererBase {
+public class RowRenderer extends Renderer {
 
 	// Private Constants
 	private static final String ROW_FLUID = "row-fluid";
@@ -47,20 +35,38 @@ public class RowRenderer extends RowRendererBase {
 	@Override
 	public void encodeBegin(FacesContext facesContext, UIComponent uiComponent) throws IOException {
 
+		Row row = (Row) uiComponent;
+
 		ResponseWriter responseWriter = facesContext.getResponseWriter();
 		responseWriter.startElement("div", uiComponent);
 
-		String clientId = uiComponent.getClientId(facesContext);
-		responseWriter.writeAttribute("id", clientId, null);
+		String id = uiComponent.getClientId(facesContext);
+		responseWriter.writeAttribute("id", id, null);
 
-		Row row = (Row) uiComponent;
-		String rowClassName = ROW;
+		StringBuilder classNames = new StringBuilder();
 
 		if (row.isFluid()) {
-			rowClassName = ROW_FLUID;
+			classNames = classNames.append(ROW_FLUID);
+		}
+		else {
+			classNames.append(ROW);
 		}
 
-		RendererUtil.encodeStyleable(responseWriter, row, rowClassName);
+		String cssClass = row.getCssClass();
+
+		if ((cssClass != null) && (cssClass.length() > 0)) {
+			classNames.append(" ");
+			classNames.append(cssClass);
+		}
+
+		String styleClass = row.getStyleClass();
+
+		if ((styleClass != null) && (styleClass.length() > 0)) {
+			classNames.append(" ");
+			classNames.append(styleClass);
+		}
+
+		responseWriter.writeAttribute("class", classNames.toString(), null);
 	}
 
 	@Override

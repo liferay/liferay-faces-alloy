@@ -13,19 +13,20 @@
  */
 package com.liferay.faces.demos.bean;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
-import javax.validation.constraints.Pattern;
+// JSF 2+ import javax.faces.bean.ManagedBean;
+// JSF 2+ import javax.faces.bean.RequestScoped;
+// JSF 2+ import javax.validation.constraints.Past;
+// JSF 2+ import javax.validation.constraints.Size;
 
 
 /**
  * @author  Juan Gonzalez
  */
-@ManagedBean
-@RequestScoped
+// JSF 2+ @ManagedBean
+// JSF 2+ @RequestScoped
 public class ValidationModelBean {
 
-	@Pattern(regexp = ".+[@].+[.].+")
+	// JSF 2+ @Pattern(regexp = ".+[@].+[.].+")
 	private String email;
 	private Double doubleNumber;
 	private Long longNumber;

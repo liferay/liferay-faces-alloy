@@ -5,46 +5,11 @@
 	<parent>
 		<groupId>com.liferay.faces.alloy</groupId>
 		<artifactId>liferay-faces-alloy-parent</artifactId>
-		<version>2.0.0-SNAPSHOT</version>
+		<version>1.0.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>liferay-faces-alloy</artifactId>
 	<name>Liferay Faces Alloy</name>
 
-	<build>
-		<plugins>
-			<plugin>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<executions>
-					<execution>
-						<phase>process-resources</phase>
-						<goals>
-							<goal>run</goal>
-						</goals>
-						<configuration>
-							<target>
-								<copy file="${basedir}/../reslib/target/classes/META-INF/yui3-bsd-license.txt" tofile="${project.build.directory}/classes/META-INF/resources/liferay-faces-alloy/yui/yui3-bsd-license.txt" />
-								<copy file="${basedir}/../reslib/target/classes/META-INF/resources/liferay-faces-reslib/build/text-data-wordbreak/text-data-wordbreak.js" tofile="${project.build.directory}/classes/META-INF/resources/liferay-faces-alloy/yui/autocomplete/text-data-wordbreak.js" />
-								<copy file="${basedir}/../reslib/target/classes/META-INF/alloyui-bsd-license.md" tofile="${project.build.directory}/classes/META-INF/resources/liferay-faces-alloy/aui/alloyui-bsd-license.md" />
-								<copy file="${basedir}/../reslib/target/classes/META-INF/resources/liferay-faces-reslib/build/aui-video/assets/player.swf" tofile="${project.build.directory}/classes/META-INF/resources/liferay-faces-alloy/aui/video/player.swf" />
-								<copy file="${basedir}/../reslib/target/classes/META-INF/resources/liferay-faces-reslib/build/aui-audio/assets/player.swf" tofile="${project.build.directory}/classes/META-INF/resources/liferay-faces-alloy/aui/audio/player.swf" />
-							</target>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-			<plugin>
-				<groupId>net.alchim31.maven</groupId>
-				<artifactId>yuicompressor-maven-plugin</artifactId>
-				<executions>
-					<execution>
-						<goals>
-							<goal>compress</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-		</plugins>
-	</build>
 	<dependencies>
 		<!-- BEGIN: Only required for file upload -->
 		<dependency>
@@ -59,25 +24,20 @@
 		</dependency>
 		<!-- END: Only required for file upload -->
 		<dependency>
-			<groupId>com.sun.faces</groupId>
-			<artifactId>jsf-api</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
 			<groupId>javax.el</groupId>
-			<artifactId>javax.el-api</artifactId>
+			<artifactId>el-api</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>javax.faces</groupId>
-			<artifactId>javax.faces-api</artifactId>
+			<artifactId>jsf-api</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
+			<artifactId>servlet-api</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>javax.servlet.jsp</groupId>
-			<artifactId>javax.servlet.jsp-api</artifactId>
+			<artifactId>jsp-api</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.liferay.faces.util</groupId>

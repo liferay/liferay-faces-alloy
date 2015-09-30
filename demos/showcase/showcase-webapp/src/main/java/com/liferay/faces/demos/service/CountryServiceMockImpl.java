@@ -20,8 +20,10 @@ import java.util.List;
 import java.util.Map;
 
 import javax.annotation.PostConstruct;
-import javax.faces.bean.ApplicationScoped;
-import javax.faces.bean.ManagedBean;
+// JSF 2: import javax.faces.bean.ApplicationScoped;
+// JSF 2: import javax.faces.bean.ManagedBean;
+
+import javax.faces.model.SelectItem;
 
 import com.liferay.faces.demos.dto.Country;
 
@@ -29,8 +31,8 @@ import com.liferay.faces.demos.dto.Country;
 /**
  * @author  Neil Griffin
  */
-@ApplicationScoped
-@ManagedBean(name = "countryService")
+// JSF 2: @ApplicationScoped
+// JSF 2: @ManagedBean(name = "countryService")
 public class CountryServiceMockImpl implements CountryService, Serializable {
 
 	// serialVersionUID
@@ -62,6 +64,20 @@ public class CountryServiceMockImpl implements CountryService, Serializable {
 		return countryList;
 	}
 
+	@Override
+	public List<SelectItem> getAllCountriesSelectItems() {
+		List<SelectItem> items = new ArrayList<SelectItem>();
+		if (countryList != null) {
+			for (Country country : countryList) {
+				SelectItem item = new SelectItem();
+				item.setLabel(country.getCountryName());
+				item.setValue(country);
+				items.add(item);
+			}
+		}
+		return items;
+	}
+	
 	@Override
 	public Country getCountryByCode(String countryCode) {
 
