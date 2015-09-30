@@ -27,7 +27,6 @@ import javax.faces.render.Renderer;
 public abstract class RowRendererBase extends Renderer {
 
 	// Protected Constants
-	protected static final String FLUID = "fluid";
 	protected static final String STYLE = "style";
 	protected static final String STYLE_CLASS = "styleClass";
 }
