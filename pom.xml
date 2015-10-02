@@ -95,6 +95,7 @@
 		<full.version>${project.version} (${timestamp} AD)</full.version>
 		<hibernate.validator.version>5.1.3.Final</hibernate.validator.version>
 		<jstl.version>1.2</jstl.version>
+		<liferay.faces.util.version>2.0.0-SNAPSHOT</liferay.faces.util.version>
 		<log4j.version>1.2.14</log4j.version>
 		<mojarra.version>2.1.29-04</mojarra.version>
 		<myfaces.version>UNSUPPORTED</myfaces.version>
@@ -312,6 +313,14 @@
 			</properties>
 		</profile>
 		<profile>
+			<id>jsf22</id>
+			<properties>
+				<faces.spec.version>2.2</faces.spec.version>
+				<liferay.faces.util.version>3.0.0-SNAPSHOT</liferay.faces.util.version>
+				<mojarra.version>2.2.12</mojarra.version>
+			</properties>
+		</profile>
+		<profile>
 			<id>mojarra</id>
 			<activation>
 				<activeByDefault>true</activeByDefault>
@@ -387,7 +396,7 @@
 			<dependency>
 				<groupId>com.liferay.faces.util</groupId>
 				<artifactId>liferay-faces-util</artifactId>
-				<version>2.0.0-SNAPSHOT</version>
+				<version>${liferay.faces.util.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>com.sun.faces</groupId>
