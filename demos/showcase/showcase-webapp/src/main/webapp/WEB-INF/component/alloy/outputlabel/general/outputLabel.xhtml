@@ -7,7 +7,7 @@
 			<showcase:example renderedCheckbox="true">
 				<alloy:messages globalOnly="true" layout="table" />
 				<!-- Note: Please consider using alloy:field instead of alloy:panelGroup and alloy:outputLabel -->
-				<alloy:panelGroup id="container" layout="block">
+				<alloy:panelGroup id="container" layout="block" styleClass="form-inline">
 					<alloy:outputLabel for="firstName" rendered="#{showcaseModelBean.selectedComponent.rendered}"
 						value="#{i18n['first-name']}" />
 					<alloy:inputText id="firstName" required="true" value="#{fieldModelBean.firstName}">

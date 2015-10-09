@@ -51,7 +51,7 @@ div.alloy-dialog div.modal-header span.alloy-overlay-title {
 	display: inline-block;
 }
 
-.aui .alloy-input-file-button-hidden,.alloy-input-file-button-hidden {
+.alloy-input-file-button-hidden {
 	display: none;
 }
 
@@ -379,4 +379,9 @@ div.yui3-splitbuttonnav .yui3-menu-label span.btn-disabled {
 	.alloy-progress-bar .vertical {
 		-ms-filter:"progid:DXImageTransform.Microsoft.BasicImage(Rotation=2)";
 	}
+}
+
+/* alloy-tabview */
+.tab-content > .active {
+	overflow: auto;
 }

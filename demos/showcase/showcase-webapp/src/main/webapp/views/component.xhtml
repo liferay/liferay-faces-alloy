@@ -48,12 +48,12 @@
 				<c:set var="showcaseComponentSuite" value="portal" />
 				<c:set var="showcaseSourceContainer" value="portlet" />
 			</c:if>
-			<alloy:button styleClass="btn-mini"
+			<alloy:button styleClass="btn-default btn-xs"
 				onclick="window.open('https://github.com/liferay/liferay-faces-#{showcaseComponentSuite}/edit/master/demos/showcase/showcase-#{showcaseSourceContainer}/src/main/webapp/WEB-INF/component/#{selectedComponentPrefix}/#{selectedComponentLowerCaseName}/#{selectedComponentUseCaseName}/#{selectedComponentCamelCaseName}.xhtml');">
 				<alloy:icon name="github" styleClass="showcase-btn-icon" />
 				<alloy:outputText value="#{i18n['improve-this-example']}!" />
 			</alloy:button>
-			<alloy:button styleClass="btn-mini"
+			<alloy:button styleClass="btn-default btn-xs"
 				onclick="window.open('https://issues.liferay.com/secure/CreateIssue.jspa?pid=12081&amp;issuetype=4');">
 				<alloy:outputText value="#{i18n['request-a-new-example']}" />
 			</alloy:button>

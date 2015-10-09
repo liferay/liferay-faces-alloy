@@ -20,7 +20,7 @@
 							<alloy:outputText styleClass="category-name" value="#{i18n[showcaseCategory]}" />
 						</alloy:panelGroup>
 					</f:facet>
-					<alloy:dataList styleClass="nav nav-list"
+					<alloy:dataList styleClass="nav"
 						value="#{listModelBean.showcaseCategoryMap[showcaseCategory]}" var="showcaseComponent">
 						<alloy:dataItem styleClass="#{(selectedComponentKey == showcaseComponent.key) ? 'active' : ''}">
 							<alloy:link outcome="component" value="#{showcaseComponent}">
@@ -30,7 +30,7 @@
 								<alloy:icon name="chevron-right" />
 							</alloy:link>
 							<ui:fragment rendered="#{selectedComponentKey == showcaseComponent.key}">
-								<alloy:dataList styleClass="nav nav-list" value="#{selectedComponent.useCases}"
+								<alloy:dataList styleClass="nav" value="#{selectedComponent.useCases}"
 									var="useCase">
 										<alloy:dataItem styleClass="#{(selectedComponentUseCaseName == useCase.name) ? 'active' : ''}"
 											style="white-space: nowrap;">
@@ -48,7 +48,7 @@
 				</alloy:tab>
 			</alloy:accordion>
 		</alloy:column>
-		<alloy:column style="margin-left: 4px;" width="#{browserSniffer.ipad ? '70' : '75'}">
+		<alloy:column width="#{browserSniffer.ipad ? '70' : '75'}">
 			<alloy:panelGroup layout="block" styleClass="showcase-container">
 				<ui:insert name="content" />
 			</alloy:panelGroup>

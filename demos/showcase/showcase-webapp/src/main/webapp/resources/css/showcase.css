@@ -110,7 +110,6 @@
 }
 
 .showcase-example .alloy-column {
-	background-color: #eee;
 	line-height: 40px;
 	margin-top: 2px;
 	margin-bottom: 2px;
@@ -127,31 +126,35 @@
 	text-align: center;
 }
 
-.aui .nav-list>li>a {
+.aui .nav .nav {
+	padding-left: 15px;
+}
+
+.aui .nav>li>a.alloy-link {
 	padding: 0px 0px 0px 30px;
 	white-space: nowrap;
 }
 
-.aui .nav-list>li>a>.alloy-icon {
+.aui .nav>li>a>.alloy-icon {
 	margin-left: 4px;
 	text-decoration: none;
 }
 
-.aui .nav-list>.active>a,.aui .nav-list>.active>a:hover {
+.aui .nav>.active>a.alloy-link,.aui .nav>.active>a.alloy-link:hover {
 	text-shadow: none;
 }
 
-.aui .nav-list>li>a:hover {
+.aui .nav>li>a.alloy-link:hover {
 	text-decoration: underline;
 }
 
-.aui .nav-list .nav-list>li>a {
+.aui .nav .nav>li>a.alloy-link {
 	background-color: transparent;
 	font-size: 0.9em;
 	white-space: nowrap;
 }
 
-.aui .nav-list .nav-list>.active>a {
+.aui .nav .nav>.active>a.alloy-link {
 	color: #000000;
 	font-weight: bold;
 	text-shadow: none;
@@ -169,7 +172,7 @@
 	color: #999999;
 }
 
-.aui .nav-list>li a,.aui .nav-list>li a:hover,.aui .nav-list>li.active a,.aui .nav-list>li.active a:hover,.aui .nav-list .nav-list>li>a:hover {
+.aui .nav>li a.alloy-link,.aui .nav>li a.alloy-link:hover,.aui .nav>li.active a.alloy-link,.aui .nav>li.active a.alloy-link:hover,.aui .nav .nav>li>a.alloy-link:hover {
 	background-color: transparent;
 	color: #0058ba;
 }
@@ -182,4 +185,16 @@
 .showcase-audio {
 	height: 27px;
 	width: 300px;
+}
+
+.aui .alloy-body>.row, .aui.alloy-body>.row {
+	margin-right: 0px;
+}
+
+.aui .alloy-output-text.pad-left {
+	padding-left: 15px;
+}
+
+.aui .alloy-select-many-listbox, .aui .alloy-select-many-menu, .aui .alloy-select-one-listbox, .aui .alloy-select-one-menu {
+	display: block;
 }
