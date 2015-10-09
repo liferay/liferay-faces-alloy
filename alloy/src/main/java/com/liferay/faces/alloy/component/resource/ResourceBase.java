@@ -26,6 +26,7 @@ import javax.faces.component.UIComponentBase;
 public abstract class ResourceBase extends UIComponentBase {
 
 	// Public Constants
+	public static final String COMPONENT_FAMILY = "com.liferay.faces.alloy.component.resource";
 	public static final String COMPONENT_TYPE = "com.liferay.faces.alloy.component.resource.Resource";
 
 	// Protected Enumerations
@@ -38,6 +39,11 @@ public abstract class ResourceBase extends UIComponentBase {
 	public ResourceBase() {
 		super();
 		setRendererType("");
+	}
+
+	@Override
+	public String getFamily() {
+		return COMPONENT_FAMILY;
 	}
 
 	public String getContentType() {
