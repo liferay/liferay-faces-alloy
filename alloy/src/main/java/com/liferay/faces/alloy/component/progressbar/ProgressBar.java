@@ -35,9 +35,6 @@ import javax.faces.event.FacesEvent;
 @FacesComponent(value = ProgressBar.COMPONENT_TYPE)
 public class ProgressBar extends ProgressBarBase implements ClientBehaviorHolder {
 
-	// Public Constants
-	public static final String COMPONENT_FAMILY = "com.liferay.faces.alloy.component.progressbar";
-
 	// Private Constants
 	private static final Collection<String> EVENT_NAMES = Collections.unmodifiableCollection(Arrays.asList(
 				"progressComplete", "poll"));
@@ -74,10 +71,5 @@ public class ProgressBar extends ProgressBarBase implements ClientBehaviorHolder
 	@Override
 	public Collection<String> getEventNames() {
 		return EVENT_NAMES;
-	}
-
-	@Override
-	public String getFamily() {
-		return COMPONENT_FAMILY;
 	}
 }

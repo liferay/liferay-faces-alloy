@@ -22,12 +22,5 @@ import javax.faces.component.FacesComponent;
  */
 @FacesComponent(value = Resource.COMPONENT_TYPE)
 public class Resource extends ResourceBase {
-
-	// Public Constants
-	public static final String COMPONENT_FAMILY = "com.liferay.faces.alloy.component.resource";
-
-	@Override
-	public String getFamily() {
-		return COMPONENT_FAMILY;
-	}
+	// Initial Generation
 }

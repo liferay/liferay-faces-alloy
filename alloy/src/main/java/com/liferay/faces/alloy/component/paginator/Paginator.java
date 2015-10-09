@@ -29,9 +29,6 @@ import javax.faces.component.behavior.ClientBehaviorHolder;
 @FacesComponent(value = Paginator.COMPONENT_TYPE)
 public class Paginator extends PaginatorBase implements ClientBehaviorHolder {
 
-	// Public Constants
-	public static final String COMPONENT_FAMILY = "com.liferay.faces.alloy.component.paginator";
-
 	// Private Constants
 	private static final Collection<String> EVENT_NAMES = Collections.unmodifiableCollection(Arrays.asList("action"));
 
@@ -61,11 +58,6 @@ public class Paginator extends PaginatorBase implements ClientBehaviorHolder {
 		}
 
 		return execute;
-	}
-
-	@Override
-	public String getFamily() {
-		return COMPONENT_FAMILY;
 	}
 
 	@Override

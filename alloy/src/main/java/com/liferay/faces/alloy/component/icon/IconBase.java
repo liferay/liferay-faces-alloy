@@ -28,6 +28,7 @@ import com.liferay.faces.util.component.Styleable;
 public abstract class IconBase extends UIComponentBase implements Styleable {
 
 	// Public Constants
+	public static final String COMPONENT_FAMILY = "com.liferay.faces.alloy.component.icon";
 	public static final String COMPONENT_TYPE = "com.liferay.faces.alloy.component.icon.Icon";
 	public static final String RENDERER_TYPE = "com.liferay.faces.alloy.component.icon.IconRenderer";
 
@@ -42,6 +43,11 @@ public abstract class IconBase extends UIComponentBase implements Styleable {
 	public IconBase() {
 		super();
 		setRendererType(RENDERER_TYPE);
+	}
+
+	@Override
+	public String getFamily() {
+		return COMPONENT_FAMILY;
 	}
 
 	public String getColor() {
