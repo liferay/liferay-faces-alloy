@@ -28,6 +28,7 @@ import com.liferay.faces.util.component.Styleable;
 public abstract class PaginatorBase extends UIComponentBase implements Styleable {
 
 	// Public Constants
+	public static final String COMPONENT_FAMILY = "com.liferay.faces.alloy.component.paginator";
 	public static final String COMPONENT_TYPE = "com.liferay.faces.alloy.component.paginator.Paginator";
 	public static final String RENDERER_TYPE = "com.liferay.faces.alloy.component.paginator.PaginatorRenderer";
 
@@ -58,6 +59,11 @@ public abstract class PaginatorBase extends UIComponentBase implements Styleable
 	public PaginatorBase() {
 		super();
 		setRendererType(RENDERER_TYPE);
+	}
+
+	@Override
+	public String getFamily() {
+		return COMPONENT_FAMILY;
 	}
 
 	public boolean isAjax() {

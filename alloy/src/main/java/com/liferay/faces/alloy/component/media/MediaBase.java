@@ -26,6 +26,7 @@ import javax.faces.component.UIComponentBase;
 public abstract class MediaBase extends UIComponentBase {
 
 	// Public Constants
+	public static final String COMPONENT_FAMILY = "com.liferay.faces.alloy.component.media";
 	public static final String COMPONENT_TYPE = "com.liferay.faces.alloy.component.media.Media";
 	public static final String RENDERER_TYPE = "com.liferay.faces.alloy.component.media.MediaRenderer";
 
@@ -83,6 +84,11 @@ public abstract class MediaBase extends UIComponentBase {
 	public MediaBase() {
 		super();
 		setRendererType(RENDERER_TYPE);
+	}
+
+	@Override
+	public String getFamily() {
+		return COMPONENT_FAMILY;
 	}
 
 	public boolean isAutoplay() {

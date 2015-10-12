@@ -21,12 +21,5 @@ import javax.faces.component.FacesComponent;
  */
 @FacesComponent(value = Icon.COMPONENT_TYPE)
 public class Icon extends IconBase {
-
-	// Public Constants
-	public static final String COMPONENT_FAMILY = "com.liferay.faces.alloy.component.icon";
-
-	@Override
-	public String getFamily() {
-		return COMPONENT_FAMILY;
-	}
+	// Initial Generation
 }

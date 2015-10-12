@@ -29,6 +29,7 @@ import com.liferay.faces.util.component.Styleable;
 public abstract class ProgressBarBase extends UIComponentBase implements Styleable, ClientComponent {
 
 	// Public Constants
+	public static final String COMPONENT_FAMILY = "com.liferay.faces.alloy.component.progressbar";
 	public static final String COMPONENT_TYPE = "com.liferay.faces.alloy.component.progressbar.ProgressBar";
 	public static final String RENDERER_TYPE = "com.liferay.faces.alloy.component.progressbar.ProgressBarRenderer";
 
@@ -51,6 +52,11 @@ public abstract class ProgressBarBase extends UIComponentBase implements Styleab
 	public ProgressBarBase() {
 		super();
 		setRendererType(RENDERER_TYPE);
+	}
+
+	@Override
+	public String getFamily() {
+		return COMPONENT_FAMILY;
 	}
 
 	@Override
