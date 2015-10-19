@@ -14,7 +14,7 @@
 
 	<modules>
 		<module>showcase-common</module>
-		<module>showcase-webapp</module>
+		<module>alloy-showcase-webapp</module>
 	</modules>
 
 	<build>
