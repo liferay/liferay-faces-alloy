@@ -7,8 +7,8 @@
 		<artifactId>liferay-faces-alloy-parent</artifactId>
 		<version>2.0.0-SNAPSHOT</version>
 	</parent>
-	<artifactId>liferay-faces-reslib</artifactId>
-	<name>Liferay Faces Resource Library</name>
+	<artifactId>liferay-faces-alloy-reslib</artifactId>
+	<name>Liferay Faces Alloy Resource Library</name>
 
 	<dependencies>
 		<dependency>
@@ -30,7 +30,7 @@
 			<id>reslib</id>
 			<activation>
 				<file>
-					<exists>src/main/resources/META-INF/resources/liferay-faces-reslib/liferay.js</exists>
+					<exists>src/main/resources/META-INF/resources/liferay-faces-alloy-reslib/liferay.js</exists>
 				</file>
 			</activation>
 			<build>
@@ -68,37 +68,37 @@
 									<target>
 										<echo message="Running with reslib profile ..." />
 										<move file="${project.build.directory}/classes/META-INF/resources/alloy-${alloyui.version}/LICENSE.md" tofile="${project.build.directory}/classes/META-INF/alloyui-bsd-license.md" />
-										<move file="${project.build.directory}/classes/META-INF/resources/alloy-${alloyui.version}/build" todir="${project.build.directory}/classes/META-INF/resources/liferay-faces-reslib" />
+										<move file="${project.build.directory}/classes/META-INF/resources/alloy-${alloyui.version}/build" todir="${project.build.directory}/classes/META-INF/resources/liferay-faces-alloy-reslib" />
 										<delete dir="${project.build.directory}/classes/META-INF/resources/alloy-${alloyui.version}" />
-										<replace token="../img/" value="#{resource['liferay-faces-reslib:build/aui-css/img/" dir="${project.build.directory}/classes/META-INF/resources/liferay-faces-reslib/build/aui-css/css">
+										<replace token="../img/" value="#{resource['liferay-faces-alloy-reslib:build/aui-css/img/" dir="${project.build.directory}/classes/META-INF/resources/liferay-faces-alloy-reslib/build/aui-css/css">
 											<include name="bootstrap.min.css" />
 										</replace>
-										<replace token=".png)" value=".png']})" dir="${project.build.directory}/classes/META-INF/resources/liferay-faces-reslib/build/aui-css/css">
+										<replace token=".png)" value=".png']})" dir="${project.build.directory}/classes/META-INF/resources/liferay-faces-alloy-reslib/build/aui-css/css">
 											<include name="bootstrap.min.css" />
 										</replace>
 										<!-- for dialog -->
-										<replace token="url(arrows.png)" value="url(#{resource['liferay-faces-reslib:build/resize-base/assets/skins/sam/arrows.png']})" dir="${project.build.directory}/classes/META-INF/resources/liferay-faces-reslib/build/resize-base/assets/skins/sam">
+										<replace token="url(arrows.png)" value="url(#{resource['liferay-faces-alloy-reslib:build/resize-base/assets/skins/sam/arrows.png']})" dir="${project.build.directory}/classes/META-INF/resources/liferay-faces-alloy-reslib/build/resize-base/assets/skins/sam">
 											<include name="resize-base.css" />
 										</replace>
 										<!-- menus -->
-										<replace token="url(vertical-menu-submenu-indicator.png)" value="url(#{resource['liferay-faces-reslib:build/node-menunav/assets/skins/sam/vertical-menu-submenu-indicator.png']})" dir="${project.build.directory}/classes/META-INF/resources/liferay-faces-reslib/build/node-menunav/assets/skins/sam">
+										<replace token="url(vertical-menu-submenu-indicator.png)" value="url(#{resource['liferay-faces-alloy-reslib:build/node-menunav/assets/skins/sam/vertical-menu-submenu-indicator.png']})" dir="${project.build.directory}/classes/META-INF/resources/liferay-faces-alloy-reslib/build/node-menunav/assets/skins/sam">
 											<include name="node-menunav-skin.css" />
 										</replace>
-										<replace token="url(vertical-menu-submenu-indicator.png)" value="url(#{resource['liferay-faces-reslib:build/node-menunav/assets/skins/sam/vertical-menu-submenu-indicator.png']})" dir="${project.build.directory}/classes/META-INF/resources/liferay-faces-reslib/build/node-menunav/assets/skins/sam">
+										<replace token="url(vertical-menu-submenu-indicator.png)" value="url(#{resource['liferay-faces-alloy-reslib:build/node-menunav/assets/skins/sam/vertical-menu-submenu-indicator.png']})" dir="${project.build.directory}/classes/META-INF/resources/liferay-faces-alloy-reslib/build/node-menunav/assets/skins/sam">
 											<include name="node-menunav.css" />
 										</replace>
-										<replace token="url(../../../../assets/skins/sam/sprite.png)" value="url(#{resource['liferay-faces-reslib:build/aui-color-palette/assets/skins/sam/sprite.png']})" dir="${project.build.directory}/classes/META-INF/resources/liferay-faces-reslib/build/node-menunav/assets/skins/sam">
+										<replace token="url(../../../../assets/skins/sam/sprite.png)" value="url(#{resource['liferay-faces-alloy-reslib:build/aui-color-palette/assets/skins/sam/sprite.png']})" dir="${project.build.directory}/classes/META-INF/resources/liferay-faces-alloy-reslib/build/node-menunav/assets/skins/sam">
 											<include name="node-menunav-skin.css" />
 										</replace>
-										<replace token="url(../../../../assets/skins/sam/sprite.png)" value="url(#{resource['liferay-faces-reslib:build/aui-color-palette/assets/skins/sam/sprite.png']})" dir="${project.build.directory}/classes/META-INF/resources/liferay-faces-reslib/build/node-menunav/assets/skins/sam">
+										<replace token="url(../../../../assets/skins/sam/sprite.png)" value="url(#{resource['liferay-faces-alloy-reslib:build/aui-color-palette/assets/skins/sam/sprite.png']})" dir="${project.build.directory}/classes/META-INF/resources/liferay-faces-alloy-reslib/build/node-menunav/assets/skins/sam">
 											<include name="node-menunav.css" />
 										</replace>
 										<!-- dataTable -->
-										<replace token="url(sort-arrow-sprite.png)" value="url(#{resource['liferay-faces-reslib:build/aui-datatable-core/assets/skins/sam/sort-arrow-sprite.png']})" dir="${project.build.directory}/classes/META-INF/resources/liferay-faces-reslib/build/aui-datatable-core/assets/skins/sam">
+										<replace token="url(sort-arrow-sprite.png)" value="url(#{resource['liferay-faces-alloy-reslib:build/aui-datatable-core/assets/skins/sam/sort-arrow-sprite.png']})" dir="${project.build.directory}/classes/META-INF/resources/liferay-faces-alloy-reslib/build/aui-datatable-core/assets/skins/sam">
 											<include name="aui-datatable-core.css" />
 											<include name="aui-datatable-core-skin.css" />
 										</replace>
-										<replace token="url(sort-arrow-sprite-ie.png)" value="url(#{resource['liferay-faces-reslib:build/aui-datatable-core/assets/skins/sam/sort-arrow-sprite-ie.png']})" dir="${project.build.directory}/classes/META-INF/resources/liferay-faces-reslib/build/aui-datatable-core/assets/skins/sam">
+										<replace token="url(sort-arrow-sprite-ie.png)" value="url(#{resource['liferay-faces-alloy-reslib:build/aui-datatable-core/assets/skins/sam/sort-arrow-sprite-ie.png']})" dir="${project.build.directory}/classes/META-INF/resources/liferay-faces-alloy-reslib/build/aui-datatable-core/assets/skins/sam">
 											<include name="aui-datatable-core.css" />
 											<include name="aui-datatable-core-skin.css" />
 										</replace>
@@ -126,7 +126,7 @@
 								<configuration>
 									<target>
 										<echo message="Running with development profile ..." />
-										<replace token="root: 'build/'," value="root: 'build/', filter: 'raw'," dir="${project.build.directory}/classes/META-INF/resources/liferay-faces-reslib">
+										<replace token="root: 'build/'," value="root: 'build/', filter: 'raw'," dir="${project.build.directory}/classes/META-INF/resources/liferay-faces-alloy-reslib">
 											<include name="liferay.js" />
 										</replace>
 									</target>

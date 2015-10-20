@@ -60,7 +60,7 @@ import com.liferay.faces.util.render.RendererUtil;
 @ResourceDependencies(
 	{
 		@ResourceDependency(library = "javax.faces", name = "jsf.js"),
-		@ResourceDependency(library = "liferay-faces-reslib", name = "build/aui-css/css/bootstrap.min.css")
+		@ResourceDependency(library = "liferay-faces-alloy-reslib", name = "build/aui-css/css/bootstrap.min.css")
 	}
 )
 //J+

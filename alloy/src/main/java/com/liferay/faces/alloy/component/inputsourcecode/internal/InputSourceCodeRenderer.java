@@ -36,9 +36,9 @@ import com.liferay.faces.util.render.internal.HiddenTextResponseWriter;
 @FacesRenderer(componentFamily = InputSourceCode.COMPONENT_FAMILY, rendererType = InputSourceCode.RENDERER_TYPE)
 @ResourceDependencies(
 	{
-		@ResourceDependency(library = "liferay-faces-reslib", name = "build/aui-css/css/bootstrap.min.css"),
-		@ResourceDependency(library = "liferay-faces-reslib", name = "build/aui/aui-min.js"),
-		@ResourceDependency(library = "liferay-faces-reslib", name = "liferay.js")
+		@ResourceDependency(library = "liferay-faces-alloy-reslib", name = "build/aui-css/css/bootstrap.min.css"),
+		@ResourceDependency(library = "liferay-faces-alloy-reslib", name = "build/aui/aui-min.js"),
+		@ResourceDependency(library = "liferay-faces-alloy-reslib", name = "liferay.js")
 	}
 )
 //J+

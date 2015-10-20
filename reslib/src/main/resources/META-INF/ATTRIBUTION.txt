@@ -1,4 +1,4 @@
-The AlloyUI project is packaged with the liferay-faces-reslib.jar dependency
+The AlloyUI project is packaged with the liferay-faces-alloy-reslib.jar dependency
 and is subject to the license terms found in the alloyui-bsd-license.md file.
 ------------------------------------------------------------------------------
 The AlloyUI project packages YUI3 which is subject to the license terms found

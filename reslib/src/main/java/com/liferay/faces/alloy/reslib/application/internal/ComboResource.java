@@ -11,7 +11,7 @@
  * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
  * details.
  */
-package com.liferay.faces.reslib.application.internal;
+package com.liferay.faces.alloy.reslib.application.internal;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -48,7 +48,7 @@ public class ComboResource extends Resource {
 	private static final Logger logger = LoggerFactory.getLogger(ComboResource.class);
 
 	// Private Constants
-	private static final String RESOURCE_PATH_BASE = "META-INF/resources/liferay-faces-reslib/";
+	private static final String RESOURCE_PATH_BASE = "META-INF/resources/liferay-faces-alloy-reslib/";
 
 	// Private Data Members
 	private List<String> modulePaths;
