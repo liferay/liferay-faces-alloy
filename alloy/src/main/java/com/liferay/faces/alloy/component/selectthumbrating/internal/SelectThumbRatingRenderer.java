@@ -30,9 +30,9 @@ import com.liferay.faces.alloy.component.selectthumbrating.SelectThumbRating;
 @FacesRenderer(componentFamily = SelectThumbRating.COMPONENT_FAMILY, rendererType = SelectThumbRating.RENDERER_TYPE)
 @ResourceDependencies(
 	{
-		@ResourceDependency(library = "liferay-faces-reslib", name = "build/aui-css/css/bootstrap.min.css"),
-		@ResourceDependency(library = "liferay-faces-reslib", name = "build/aui/aui-min.js"),
-		@ResourceDependency(library = "liferay-faces-reslib", name = "liferay.js")
+		@ResourceDependency(library = "liferay-faces-alloy-reslib", name = "build/aui-css/css/bootstrap.min.css"),
+		@ResourceDependency(library = "liferay-faces-alloy-reslib", name = "build/aui/aui-min.js"),
+		@ResourceDependency(library = "liferay-faces-alloy-reslib", name = "liferay.js")
 	}
 )
 //J+

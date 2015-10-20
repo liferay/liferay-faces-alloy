@@ -41,8 +41,8 @@ import com.liferay.faces.util.product.ProductMap;
 		{
 			@ResourceDependency(library = "liferay-faces-alloy", name = "alloy.css"),
 			@ResourceDependency(library = "liferay-faces-alloy", name = "alloy.js"),
-			@ResourceDependency(library = "liferay-faces-reslib", name = "build/aui/aui-min.js"),
-			@ResourceDependency(library = "liferay-faces-reslib", name = "liferay.js")
+			@ResourceDependency(library = "liferay-faces-alloy-reslib", name = "build/aui/aui-min.js"),
+			@ResourceDependency(library = "liferay-faces-alloy-reslib", name = "liferay.js")
 		}
 	)
 //J+
@@ -70,7 +70,7 @@ public class HeadRenderer extends HeadRendererBase {
 				String library = componentResource.getLibrary();
 				String name = componentResource.getName();
 
-				if ("liferay-faces-reslib".equals(library) && "build/aui-css/css/bootstrap.min.css".equals(name)) {
+				if ("liferay-faces-alloy-reslib".equals(library) && "build/aui-css/css/bootstrap.min.css".equals(name)) {
 
 					ResponseWriter responseWriter = facesContext.getResponseWriter();
 					responseWriter.startElement("meta", null);

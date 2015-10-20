@@ -30,7 +30,7 @@ import com.liferay.faces.util.render.RendererUtil;
  */
 //J-
 @FacesRenderer(componentFamily = Row.COMPONENT_FAMILY, rendererType = Row.RENDERER_TYPE)
-@ResourceDependency(library = "liferay-faces-reslib", name = "build/aui-css/css/bootstrap.min.css")
+@ResourceDependency(library = "liferay-faces-alloy-reslib", name = "build/aui-css/css/bootstrap.min.css")
 //J+
 public class RowRenderer extends RowRendererBase {
 

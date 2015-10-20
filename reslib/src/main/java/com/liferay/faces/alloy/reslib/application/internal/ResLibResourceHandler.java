@@ -11,7 +11,7 @@
  * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
  * details.
  */
-package com.liferay.faces.reslib.application.internal;
+package com.liferay.faces.alloy.reslib.application.internal;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -28,7 +28,7 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.liferay.faces.reslib.config.ResLibConfigParam;
+import com.liferay.faces.alloy.reslib.config.ResLibConfigParam;
 import com.liferay.faces.util.HttpHeaders;
 import com.liferay.faces.util.application.ResourceHandlerWrapperBase;
 import com.liferay.faces.util.config.ApplicationConfig;
@@ -48,7 +48,7 @@ import com.liferay.faces.util.product.ProductMap;
 public class ResLibResourceHandler extends ResourceHandlerWrapperBase {
 
 	// Public Constants
-	public static final String LIBRARY_NAME = "liferay-faces-reslib";
+	public static final String LIBRARY_NAME = "liferay-faces-alloy-reslib";
 
 	// Private Constants
 	private static final String LIFERAY_JS = "liferay.js";
