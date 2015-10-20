@@ -46,42 +46,87 @@ public abstract class AccordionBase extends UIData implements Styleable, ClientC
 		setRendererType(RENDERER_TYPE);
 	}
 
+	/**
+	 * <code>clientKey</code> attribute description:
+	 * <br /><br />
+	 * The key name that can be used to reference the component on the client.
+	 */
 	@Override
 	public String getClientKey() {
 		return (String) getStateHelper().eval(AccordionPropertyKeys.clientKey, null);
 	}
 
+	/**
+	 * <code>clientKey</code> attribute description:
+	 * <br /><br />
+	 * The key name that can be used to reference the component on the client.
+	 */
 	@Override
 	public void setClientKey(String clientKey) {
 		getStateHelper().put(AccordionPropertyKeys.clientKey, clientKey);
 	}
 
+	/**
+	 * <code>multiple</code> attribute description:
+	 * <br /><br />
+	 * When true, expanding an item will not collapse the others, allowing multiple items to be visible at the same time.
+	 */
 	public boolean isMultiple() {
 		return (Boolean) getStateHelper().eval(AccordionPropertyKeys.multiple, false);
 	}
 
+	/**
+	 * <code>multiple</code> attribute description:
+	 * <br /><br />
+	 * When true, expanding an item will not collapse the others, allowing multiple items to be visible at the same time.
+	 */
 	public void setMultiple(boolean multiple) {
 		getStateHelper().put(AccordionPropertyKeys.multiple, multiple);
 	}
 
+	/**
+	 * <code>selectedIndex</code> attribute description:
+	 * <br /><br />
+	 * Integer representing the zero-based index representing the selected tab.
+	 */
 	public Integer getSelectedIndex() {
 		return (Integer) getStateHelper().eval(AccordionPropertyKeys.selectedIndex, null);
 	}
 
+	/**
+	 * <code>selectedIndex</code> attribute description:
+	 * <br /><br />
+	 * Integer representing the zero-based index representing the selected tab.
+	 */
 	public void setSelectedIndex(Integer selectedIndex) {
 		getStateHelper().put(AccordionPropertyKeys.selectedIndex, selectedIndex);
 	}
 
+	/**
+	 * <code>style</code> attribute description:
+	 * <br /><br />
+	 * HTML passthrough attribute specifying the css style of the element.
+	 */
 	@Override
 	public String getStyle() {
 		return (String) getStateHelper().eval(AccordionPropertyKeys.style, null);
 	}
 
+	/**
+	 * <code>style</code> attribute description:
+	 * <br /><br />
+	 * HTML passthrough attribute specifying the css style of the element.
+	 */
 	@Override
 	public void setStyle(String style) {
 		getStateHelper().put(AccordionPropertyKeys.style, style);
 	}
 
+	/**
+	 * <code>styleClass</code> attribute description:
+	 * <br /><br />
+	 * List of CSS class names (separated by spaces) that are to be rendered within the class attribute.
+	 */
 	@Override
 	public String getStyleClass() {
 
@@ -92,6 +137,11 @@ public abstract class AccordionBase extends UIData implements Styleable, ClientC
 		return com.liferay.faces.util.component.ComponentUtil.concatCssClasses(styleClass, "alloy-accordion");
 	}
 
+	/**
+	 * <code>styleClass</code> attribute description:
+	 * <br /><br />
+	 * List of CSS class names (separated by spaces) that are to be rendered within the class attribute.
+	 */
 	@Override
 	public void setStyleClass(String styleClass) {
 		getStateHelper().put(AccordionPropertyKeys.styleClass, styleClass);

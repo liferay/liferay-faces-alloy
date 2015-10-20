@@ -42,6 +42,11 @@ public abstract class AudioBase extends Media implements Styleable {
 		setRendererType(RENDERER_TYPE);
 	}
 
+	/**
+	 * <code>styleClass</code> attribute description:
+	 * <br /><br />
+	 * List of CSS class names (separated by spaces) that are to be rendered within the class attribute.
+	 */
 	@Override
 	public String getStyleClass() {
 
@@ -52,15 +57,30 @@ public abstract class AudioBase extends Media implements Styleable {
 		return com.liferay.faces.util.component.ComponentUtil.concatCssClasses(styleClass, "alloy-audio");
 	}
 
+	/**
+	 * <code>styleClass</code> attribute description:
+	 * <br /><br />
+	 * List of CSS class names (separated by spaces) that are to be rendered within the class attribute.
+	 */
 	@Override
 	public void setStyleClass(String styleClass) {
 		getStateHelper().put(AudioPropertyKeys.styleClass, styleClass);
 	}
 
+	/**
+	 * <code>volume</code> attribute description:
+	 * <br /><br />
+	 * HTML5 passthrough attribute specifying the initial volume of the player.
+	 */
 	public String getVolume() {
 		return (String) getStateHelper().eval(AudioPropertyKeys.volume, null);
 	}
 
+	/**
+	 * <code>volume</code> attribute description:
+	 * <br /><br />
+	 * HTML5 passthrough attribute specifying the initial volume of the player.
+	 */
 	public void setVolume(String volume) {
 		getStateHelper().put(AudioPropertyKeys.volume, volume);
 	}

@@ -41,11 +41,21 @@ public abstract class SelectRatingBase extends SelectOneRadioBase implements Cli
 		setRendererType(RENDERER_TYPE);
 	}
 
+	/**
+	 * <code>clientKey</code> attribute description:
+	 * <br /><br />
+	 * The key name that can be used to reference the component on the client.
+	 */
 	@Override
 	public String getClientKey() {
 		return (String) getStateHelper().eval(SelectRatingPropertyKeys.clientKey, null);
 	}
 
+	/**
+	 * <code>clientKey</code> attribute description:
+	 * <br /><br />
+	 * The key name that can be used to reference the component on the client.
+	 */
 	@Override
 	public void setClientKey(String clientKey) {
 		getStateHelper().put(SelectRatingPropertyKeys.clientKey, clientKey);

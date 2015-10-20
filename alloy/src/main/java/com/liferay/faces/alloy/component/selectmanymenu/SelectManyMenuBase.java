@@ -36,6 +36,11 @@ public abstract class SelectManyMenuBase extends HtmlSelectManyMenu implements S
 		setRendererType(RENDERER_TYPE);
 	}
 
+	/**
+	 * <code>label</code> attribute description:
+	 * <br /><br />
+	 * A localized label for this component that is typically only rendered in a FacesMessage when validation fails.
+	 */
 	@Override
 	public String getLabel() {
 
@@ -53,6 +58,11 @@ public abstract class SelectManyMenuBase extends HtmlSelectManyMenu implements S
 		return label;
 	}
 
+	/**
+	 * <code>styleClass</code> attribute description:
+	 * <br /><br />
+	 * List of CSS class names (separated by spaces) that are to be rendered within the class attribute.
+	 */
 	@Override
 	public String getStyleClass() {
 

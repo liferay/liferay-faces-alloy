@@ -42,22 +42,47 @@ public abstract class PanelBase extends PanelGroupBlockLayout implements Styleab
 		setRendererType(RENDERER_TYPE);
 	}
 
+	/**
+	 * <code>footerText</code> attribute description:
+	 * <br /><br />
+	 * The text to place in the footer of the component.
+	 */
 	public String getFooterText() {
 		return (String) getStateHelper().eval(PanelPropertyKeys.footerText, null);
 	}
 
+	/**
+	 * <code>footerText</code> attribute description:
+	 * <br /><br />
+	 * The text to place in the footer of the component.
+	 */
 	public void setFooterText(String footerText) {
 		getStateHelper().put(PanelPropertyKeys.footerText, footerText);
 	}
 
+	/**
+	 * <code>headerText</code> attribute description:
+	 * <br /><br />
+	 * The text to place in the header of the component.
+	 */
 	public String getHeaderText() {
 		return (String) getStateHelper().eval(PanelPropertyKeys.headerText, null);
 	}
 
+	/**
+	 * <code>headerText</code> attribute description:
+	 * <br /><br />
+	 * The text to place in the header of the component.
+	 */
 	public void setHeaderText(String headerText) {
 		getStateHelper().put(PanelPropertyKeys.headerText, headerText);
 	}
 
+	/**
+	 * <code>styleClass</code> attribute description:
+	 * <br /><br />
+	 * List of CSS class names (separated by spaces) that are to be rendered within the class attribute.
+	 */
 	@Override
 	public String getStyleClass() {
 
