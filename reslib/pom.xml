@@ -7,7 +7,7 @@
 		<artifactId>liferay-faces-alloy-parent</artifactId>
 		<version>3.0.0-SNAPSHOT</version>
 	</parent>
-	<artifactId>liferay-faces-reslib</artifactId>
+	<artifactId>liferay-faces-alloy-reslib</artifactId>
 	<name>Liferay Faces Resource Library</name>
 
 	<dependencies>
