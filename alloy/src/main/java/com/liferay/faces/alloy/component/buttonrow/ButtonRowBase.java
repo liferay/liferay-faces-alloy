@@ -36,6 +36,11 @@ public abstract class ButtonRowBase extends HtmlPanelGroup implements Styleable 
 		setRendererType(RENDERER_TYPE);
 	}
 
+	/**
+	 * <code>styleClass</code> attribute description:
+	 * <br /><br />
+	 * List of CSS class names (separated by spaces) that are to be rendered within the class attribute.
+	 */
 	@Override
 	public String getStyleClass() {
 

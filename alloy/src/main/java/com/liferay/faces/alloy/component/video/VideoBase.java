@@ -44,22 +44,47 @@ public abstract class VideoBase extends Media implements Styleable {
 		setRendererType(RENDERER_TYPE);
 	}
 
+	/**
+	 * <code>height</code> attribute description:
+	 * <br /><br />
+	 * The height (in pixels) of the video, this attribute will also be applied to the Adobe&reg; Flash&reg; player's <code>&lt;object&gt;</code> tag.
+	 */
 	public String getHeight() {
 		return (String) getStateHelper().eval(VideoPropertyKeys.height, null);
 	}
 
+	/**
+	 * <code>height</code> attribute description:
+	 * <br /><br />
+	 * The height (in pixels) of the video, this attribute will also be applied to the Adobe&reg; Flash&reg; player's <code>&lt;object&gt;</code> tag.
+	 */
 	public void setHeight(String height) {
 		getStateHelper().put(VideoPropertyKeys.height, height);
 	}
 
+	/**
+	 * <code>poster</code> attribute description:
+	 * <br /><br />
+	 * A context-relative path, resource URL, or <code>FacesResource</code> that can be used to retrieve the poster image.
+	 */
 	public Object getPoster() {
 		return (Object) getStateHelper().eval(VideoPropertyKeys.poster, null);
 	}
 
+	/**
+	 * <code>poster</code> attribute description:
+	 * <br /><br />
+	 * A context-relative path, resource URL, or <code>FacesResource</code> that can be used to retrieve the poster image.
+	 */
 	public void setPoster(Object poster) {
 		getStateHelper().put(VideoPropertyKeys.poster, poster);
 	}
 
+	/**
+	 * <code>styleClass</code> attribute description:
+	 * <br /><br />
+	 * List of CSS class names (separated by spaces) that are to be rendered within the class attribute.
+	 */
 	@Override
 	public String getStyleClass() {
 
@@ -70,15 +95,30 @@ public abstract class VideoBase extends Media implements Styleable {
 		return com.liferay.faces.util.component.ComponentUtil.concatCssClasses(styleClass, "alloy-video");
 	}
 
+	/**
+	 * <code>styleClass</code> attribute description:
+	 * <br /><br />
+	 * List of CSS class names (separated by spaces) that are to be rendered within the class attribute.
+	 */
 	@Override
 	public void setStyleClass(String styleClass) {
 		getStateHelper().put(VideoPropertyKeys.styleClass, styleClass);
 	}
 
+	/**
+	 * <code>width</code> attribute description:
+	 * <br /><br />
+	 * The width (in pixels) of the video, this attribute will also be applied to the Adobe&reg; Flash&reg; player's <code>&lt;object&gt;</code> tag.
+	 */
 	public String getWidth() {
 		return (String) getStateHelper().eval(VideoPropertyKeys.width, null);
 	}
 
+	/**
+	 * <code>width</code> attribute description:
+	 * <br /><br />
+	 * The width (in pixels) of the video, this attribute will also be applied to the Adobe&reg; Flash&reg; player's <code>&lt;object&gt;</code> tag.
+	 */
 	public void setWidth(String width) {
 		getStateHelper().put(VideoPropertyKeys.width, width);
 	}

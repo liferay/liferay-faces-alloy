@@ -41,26 +41,56 @@ public abstract class OutputStylesheetBase extends UIOutput {
 		setRendererType(RENDERER_TYPE);
 	}
 
+	/**
+	 * <code>library</code> attribute description:
+	 * <br /><br />
+	 * The name of the library which contains the resource.
+	 */
 	public String getLibrary() {
 		return (String) getStateHelper().eval(OutputStylesheetPropertyKeys.library, null);
 	}
 
+	/**
+	 * <code>library</code> attribute description:
+	 * <br /><br />
+	 * The name of the library which contains the resource.
+	 */
 	public void setLibrary(String library) {
 		getStateHelper().put(OutputStylesheetPropertyKeys.library, library);
 	}
 
+	/**
+	 * <code>media</code> attribute description:
+	 * <br /><br />
+	 * HTML passthrough attribute specifying the media type of the element.
+	 */
 	public String getMedia() {
 		return (String) getStateHelper().eval(OutputStylesheetPropertyKeys.media, null);
 	}
 
+	/**
+	 * <code>media</code> attribute description:
+	 * <br /><br />
+	 * HTML passthrough attribute specifying the media type of the element.
+	 */
 	public void setMedia(String media) {
 		getStateHelper().put(OutputStylesheetPropertyKeys.media, media);
 	}
 
+	/**
+	 * <code>name</code> attribute description:
+	 * <br /><br />
+	 * The name of the resource file to be included on the page.
+	 */
 	public String getName() {
 		return (String) getStateHelper().eval(OutputStylesheetPropertyKeys.name, null);
 	}
 
+	/**
+	 * <code>name</code> attribute description:
+	 * <br /><br />
+	 * The name of the resource file to be included on the page.
+	 */
 	public void setName(String name) {
 		getStateHelper().put(OutputStylesheetPropertyKeys.name, name);
 	}

@@ -43,16 +43,31 @@ public abstract class DataListBase extends UIData implements Styleable {
 		setRendererType(RENDERER_TYPE);
 	}
 
+	/**
+	 * <code>style</code> attribute description:
+	 * <br /><br />
+	 * HTML passthrough attribute specifying the css style of the element.
+	 */
 	@Override
 	public String getStyle() {
 		return (String) getStateHelper().eval(DataListPropertyKeys.style, null);
 	}
 
+	/**
+	 * <code>style</code> attribute description:
+	 * <br /><br />
+	 * HTML passthrough attribute specifying the css style of the element.
+	 */
 	@Override
 	public void setStyle(String style) {
 		getStateHelper().put(DataListPropertyKeys.style, style);
 	}
 
+	/**
+	 * <code>styleClass</code> attribute description:
+	 * <br /><br />
+	 * List of CSS class names (separated by spaces) that are to be rendered within the class attribute.
+	 */
 	@Override
 	public String getStyleClass() {
 
@@ -63,15 +78,30 @@ public abstract class DataListBase extends UIData implements Styleable {
 		return com.liferay.faces.util.component.ComponentUtil.concatCssClasses(styleClass, "alloy-data-list");
 	}
 
+	/**
+	 * <code>styleClass</code> attribute description:
+	 * <br /><br />
+	 * List of CSS class names (separated by spaces) that are to be rendered within the class attribute.
+	 */
 	@Override
 	public void setStyleClass(String styleClass) {
 		getStateHelper().put(DataListPropertyKeys.styleClass, styleClass);
 	}
 
+	/**
+	 * <code>type</code> attribute description:
+	 * <br /><br />
+	 * The type of the list to render. Valid values are "unordered", "ordered" and "description".
+	 */
 	public String getType() {
 		return (String) getStateHelper().eval(DataListPropertyKeys.type, "unordered");
 	}
 
+	/**
+	 * <code>type</code> attribute description:
+	 * <br /><br />
+	 * The type of the list to render. Valid values are "unordered", "ordered" and "description".
+	 */
 	public void setType(String type) {
 		getStateHelper().put(DataListPropertyKeys.type, type);
 	}

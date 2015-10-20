@@ -46,26 +46,56 @@ public abstract class ResourceBase extends UIComponentBase {
 		return COMPONENT_FAMILY;
 	}
 
+	/**
+	 * <code>contentType</code> attribute description:
+	 * <br /><br />
+	 * The content type of the resource.
+	 */
 	public String getContentType() {
 		return (String) getStateHelper().eval(ResourcePropertyKeys.contentType, null);
 	}
 
+	/**
+	 * <code>contentType</code> attribute description:
+	 * <br /><br />
+	 * The content type of the resource.
+	 */
 	public void setContentType(String contentType) {
 		getStateHelper().put(ResourcePropertyKeys.contentType, contentType);
 	}
 
+	/**
+	 * <code>library</code> attribute description:
+	 * <br /><br />
+	 * The name of the library which contains the resource.
+	 */
 	public String getLibrary() {
 		return (String) getStateHelper().eval(ResourcePropertyKeys.library, null);
 	}
 
+	/**
+	 * <code>library</code> attribute description:
+	 * <br /><br />
+	 * The name of the library which contains the resource.
+	 */
 	public void setLibrary(String library) {
 		getStateHelper().put(ResourcePropertyKeys.library, library);
 	}
 
+	/**
+	 * <code>name</code> attribute description:
+	 * <br /><br />
+	 * The name of the resource file to be included on the page.
+	 */
 	public String getName() {
 		return (String) getStateHelper().eval(ResourcePropertyKeys.name, null);
 	}
 
+	/**
+	 * <code>name</code> attribute description:
+	 * <br /><br />
+	 * The name of the resource file to be included on the page.
+	 */
 	public void setName(String name) {
 		getStateHelper().put(ResourcePropertyKeys.name, name);
 	}
