@@ -44,6 +44,10 @@ public abstract class RowBase extends UIPanel implements Styleable {
 	}
 
 	/**
+	 * <code>fluid</code> attribute description:
+	 * <br /><br />
+	 * When this flag is true, the element will have the CSS class <code>row-fluid</code>. Otherwise, the element will have the CSS class <code>row</code>.
+	 *
 	 * @deprecated No replacement available. All rows are fluid in Liferay Faces Alloy 3.
 	 */
 	@Deprecated
@@ -52,6 +56,10 @@ public abstract class RowBase extends UIPanel implements Styleable {
 	}
 
 	/**
+	 * <code>fluid</code> attribute description:
+	 * <br /><br />
+	 * When this flag is true, the element will have the CSS class <code>row-fluid</code>. Otherwise, the element will have the CSS class <code>row</code>.
+	 *
 	 * @deprecated No replacement available. All rows are fluid in Liferay Faces Alloy 3.
 	 */
 	@Deprecated
@@ -59,16 +67,31 @@ public abstract class RowBase extends UIPanel implements Styleable {
 		getStateHelper().put(RowPropertyKeys.fluid, fluid);
 	}
 
+	/**
+	 * <code>style</code> attribute description:
+	 * <br /><br />
+	 * HTML passthrough attribute specifying the css style of the element.
+	 */
 	@Override
 	public String getStyle() {
 		return (String) getStateHelper().eval(RowPropertyKeys.style, null);
 	}
 
+	/**
+	 * <code>style</code> attribute description:
+	 * <br /><br />
+	 * HTML passthrough attribute specifying the css style of the element.
+	 */
 	@Override
 	public void setStyle(String style) {
 		getStateHelper().put(RowPropertyKeys.style, style);
 	}
 
+	/**
+	 * <code>styleClass</code> attribute description:
+	 * <br /><br />
+	 * List of CSS class names (separated by spaces) that are to be rendered within the class attribute.
+	 */
 	@Override
 	public String getStyleClass() {
 
@@ -79,6 +102,11 @@ public abstract class RowBase extends UIPanel implements Styleable {
 		return com.liferay.faces.util.component.ComponentUtil.concatCssClasses(styleClass, "alloy-row");
 	}
 
+	/**
+	 * <code>styleClass</code> attribute description:
+	 * <br /><br />
+	 * List of CSS class names (separated by spaces) that are to be rendered within the class attribute.
+	 */
 	@Override
 	public void setStyleClass(String styleClass) {
 		getStateHelper().put(RowPropertyKeys.styleClass, styleClass);

@@ -43,22 +43,47 @@ public abstract class ButtonBase extends HtmlOutcomeTargetButton implements Styl
 		setRendererType(RENDERER_TYPE);
 	}
 
+	/**
+	 * <code>autofocus</code> attribute description:
+	 * <br /><br />
+	 * HTML passthrough attribute specifying whether or not the component should automatically recieve focus on the initial page load.
+	 */
 	public Boolean getAutofocus() {
 		return (Boolean) getStateHelper().eval(ButtonPropertyKeys.autofocus, null);
 	}
 
+	/**
+	 * <code>autofocus</code> attribute description:
+	 * <br /><br />
+	 * HTML passthrough attribute specifying whether or not the component should automatically recieve focus on the initial page load.
+	 */
 	public void setAutofocus(Boolean autofocus) {
 		getStateHelper().put(ButtonPropertyKeys.autofocus, autofocus);
 	}
 
+	/**
+	 * <code>disabled</code> attribute description:
+	 * <br /><br />
+	 * When this flag is true, the component will be disabled, and the user will be unable to interact with the component.
+	 */
 	public boolean isDisabled() {
 		return (Boolean) getStateHelper().eval(ButtonPropertyKeys.disabled, false);
 	}
 
+	/**
+	 * <code>disabled</code> attribute description:
+	 * <br /><br />
+	 * When this flag is true, the component will be disabled, and the user will be unable to interact with the component.
+	 */
 	public void setDisabled(boolean disabled) {
 		getStateHelper().put(ButtonPropertyKeys.disabled, disabled);
 	}
 
+	/**
+	 * <code>styleClass</code> attribute description:
+	 * <br /><br />
+	 * List of CSS class names (separated by spaces) that are to be rendered within the class attribute.
+	 */
 	@Override
 	public String getStyleClass() {
 
@@ -69,10 +94,20 @@ public abstract class ButtonBase extends HtmlOutcomeTargetButton implements Styl
 		return com.liferay.faces.util.component.ComponentUtil.concatCssClasses(styleClass, "alloy-button");
 	}
 
+	/**
+	 * <code>type</code> attribute description:
+	 * <br /><br />
+	 * The type of the button: button (default), submit, or reset.
+	 */
 	public String getType() {
 		return (String) getStateHelper().eval(ButtonPropertyKeys.type, null);
 	}
 
+	/**
+	 * <code>type</code> attribute description:
+	 * <br /><br />
+	 * The type of the button: button (default), submit, or reset.
+	 */
 	public void setType(String type) {
 		getStateHelper().put(ButtonPropertyKeys.type, type);
 	}

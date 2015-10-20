@@ -45,40 +45,85 @@ public abstract class DataTableBase extends HtmlDataTable implements Styleable, 
 		setRendererType(RENDERER_TYPE);
 	}
 
+	/**
+	 * <code>clientKey</code> attribute description:
+	 * <br /><br />
+	 * The key name that can be used to reference the component on the client.
+	 */
 	@Override
 	public String getClientKey() {
 		return (String) getStateHelper().eval(DataTablePropertyKeys.clientKey, null);
 	}
 
+	/**
+	 * <code>clientKey</code> attribute description:
+	 * <br /><br />
+	 * The key name that can be used to reference the component on the client.
+	 */
 	@Override
 	public void setClientKey(String clientKey) {
 		getStateHelper().put(DataTablePropertyKeys.clientKey, clientKey);
 	}
 
+	/**
+	 * <code>multiColumnSort</code> attribute description:
+	 * <br /><br />
+	 * When true, multiple columns can be selected by the user when the meta key is held down during a left click on a sortable column header.
+	 */
 	public boolean isMultiColumnSort() {
 		return (Boolean) getStateHelper().eval(DataTablePropertyKeys.multiColumnSort, false);
 	}
 
+	/**
+	 * <code>multiColumnSort</code> attribute description:
+	 * <br /><br />
+	 * When true, multiple columns can be selected by the user when the meta key is held down during a left click on a sortable column header.
+	 */
 	public void setMultiColumnSort(boolean multiColumnSort) {
 		getStateHelper().put(DataTablePropertyKeys.multiColumnSort, multiColumnSort);
 	}
 
+	/**
+	 * <code>selectedRowIndexes</code> attribute description:
+	 * <br /><br />
+	 * Comma-delimited list of row indexes that indicate which rows are selected.
+	 */
 	public String getSelectedRowIndexes() {
 		return (String) getStateHelper().eval(DataTablePropertyKeys.selectedRowIndexes, null);
 	}
 
+	/**
+	 * <code>selectedRowIndexes</code> attribute description:
+	 * <br /><br />
+	 * Comma-delimited list of row indexes that indicate which rows are selected.
+	 */
 	public void setSelectedRowIndexes(String selectedRowIndexes) {
 		getStateHelper().put(DataTablePropertyKeys.selectedRowIndexes, selectedRowIndexes);
 	}
 
+	/**
+	 * <code>selectionMode</code> attribute description:
+	 * <br /><br />
+	 * Indicates the type of row selection. Valid values are <code>"checkbox"</code>, <code>"radio"</code>.
+	 */
 	public String getSelectionMode() {
 		return (String) getStateHelper().eval(DataTablePropertyKeys.selectionMode, null);
 	}
 
+	/**
+	 * <code>selectionMode</code> attribute description:
+	 * <br /><br />
+	 * Indicates the type of row selection. Valid values are <code>"checkbox"</code>, <code>"radio"</code>.
+	 */
 	public void setSelectionMode(String selectionMode) {
 		getStateHelper().put(DataTablePropertyKeys.selectionMode, selectionMode);
 	}
 
+	/**
+	 * <code>styleClass</code> attribute description:
+	 * <br /><br />
+	 * List of CSS class names (separated by spaces) that are to be rendered within the class attribute.
+	 */
 	@Override
 	public String getStyleClass() {
 

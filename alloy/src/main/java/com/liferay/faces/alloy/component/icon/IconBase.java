@@ -50,32 +50,67 @@ public abstract class IconBase extends UIComponentBase implements Styleable {
 		return COMPONENT_FAMILY;
 	}
 
+	/**
+	 * <code>color</code> attribute description:
+	 * <br /><br />
+	 * The color of the icon which this component will render. Valid values include black (the default) and white.
+	 */
 	public String getColor() {
 		return (String) getStateHelper().eval(IconPropertyKeys.color, null);
 	}
 
+	/**
+	 * <code>color</code> attribute description:
+	 * <br /><br />
+	 * The color of the icon which this component will render. Valid values include black (the default) and white.
+	 */
 	public void setColor(String color) {
 		getStateHelper().put(IconPropertyKeys.color, color);
 	}
 
+	/**
+	 * <code>name</code> attribute description:
+	 * <br /><br />
+	 * The icon which this component will render. A list of valid icons can be found at <a href="http://liferay.github.io/alloy-bootstrap/base-css.html#icons" target="_blank">Bootstrap Base CSS</a>. <b>Note:</b> icon names must be specified without the <code>icon-</code> prefix.
+	 */
 	public String getName() {
 		return (String) getStateHelper().eval(IconPropertyKeys.name, null);
 	}
 
+	/**
+	 * <code>name</code> attribute description:
+	 * <br /><br />
+	 * The icon which this component will render. A list of valid icons can be found at <a href="http://liferay.github.io/alloy-bootstrap/base-css.html#icons" target="_blank">Bootstrap Base CSS</a>. <b>Note:</b> icon names must be specified without the <code>icon-</code> prefix.
+	 */
 	public void setName(String name) {
 		getStateHelper().put(IconPropertyKeys.name, name);
 	}
 
+	/**
+	 * <code>style</code> attribute description:
+	 * <br /><br />
+	 * HTML passthrough attribute specifying the css style of the element.
+	 */
 	@Override
 	public String getStyle() {
 		return (String) getStateHelper().eval(IconPropertyKeys.style, null);
 	}
 
+	/**
+	 * <code>style</code> attribute description:
+	 * <br /><br />
+	 * HTML passthrough attribute specifying the css style of the element.
+	 */
 	@Override
 	public void setStyle(String style) {
 		getStateHelper().put(IconPropertyKeys.style, style);
 	}
 
+	/**
+	 * <code>styleClass</code> attribute description:
+	 * <br /><br />
+	 * List of CSS class names (separated by spaces) that are to be rendered within the class attribute.
+	 */
 	@Override
 	public String getStyleClass() {
 
@@ -86,6 +121,11 @@ public abstract class IconBase extends UIComponentBase implements Styleable {
 		return com.liferay.faces.util.component.ComponentUtil.concatCssClasses(styleClass, "alloy-icon");
 	}
 
+	/**
+	 * <code>styleClass</code> attribute description:
+	 * <br /><br />
+	 * List of CSS class names (separated by spaces) that are to be rendered within the class attribute.
+	 */
 	@Override
 	public void setStyleClass(String styleClass) {
 		getStateHelper().put(IconPropertyKeys.styleClass, styleClass);

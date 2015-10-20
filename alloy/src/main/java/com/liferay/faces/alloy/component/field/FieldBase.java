@@ -42,22 +42,47 @@ public abstract class FieldBase extends PanelGroupBlockLayout implements Styleab
 		setRendererType(RENDERER_TYPE);
 	}
 
+	/**
+	 * <code>label</code> attribute description:
+	 * <br /><br />
+	 * The text value for the rendered &lt;label&gt; element.
+	 */
 	public String getLabel() {
 		return (String) getStateHelper().eval(FieldPropertyKeys.label, null);
 	}
 
+	/**
+	 * <code>label</code> attribute description:
+	 * <br /><br />
+	 * The text value for the rendered &lt;label&gt; element.
+	 */
 	public void setLabel(String label) {
 		getStateHelper().put(FieldPropertyKeys.label, label);
 	}
 
+	/**
+	 * <code>labelFirst</code> attribute description:
+	 * <br /><br />
+	 * When this flag is true, the label will be rendered before the rendered children.
+	 */
 	public boolean isLabelFirst() {
 		return (Boolean) getStateHelper().eval(FieldPropertyKeys.labelFirst, true);
 	}
 
+	/**
+	 * <code>labelFirst</code> attribute description:
+	 * <br /><br />
+	 * When this flag is true, the label will be rendered before the rendered children.
+	 */
 	public void setLabelFirst(boolean labelFirst) {
 		getStateHelper().put(FieldPropertyKeys.labelFirst, labelFirst);
 	}
 
+	/**
+	 * <code>styleClass</code> attribute description:
+	 * <br /><br />
+	 * List of CSS class names (separated by spaces) that are to be rendered within the class attribute.
+	 */
 	@Override
 	public String getStyleClass() {
 
