@@ -93,9 +93,9 @@
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
-			<groupId>${project.groupId}</groupId>
+			<groupId>com.liferay.faces.util</groupId>
 			<artifactId>showcase-common</artifactId>
-			<version>${project.version}</version>
+			<version>${liferay.faces.util.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>org.jboss.seam</groupId>
