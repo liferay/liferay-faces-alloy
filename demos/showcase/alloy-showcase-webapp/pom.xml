@@ -90,9 +90,9 @@
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>${project.groupId}</groupId>
+			<groupId>com.liferay.faces.util</groupId>
 			<artifactId>showcase-common</artifactId>
-			<version>${project.version}</version>
+			<version>${liferay.faces.util.version}</version>
 		</dependency>
 		<dependency>
 			<groupId>log4j</groupId>
