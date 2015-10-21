@@ -11,7 +11,7 @@
 	<artifactId>alloy-showcase-webapp</artifactId>
 	<packaging>war</packaging>
 	<name>Alloy Showcase Webapp</name>
-	<description>This plugin is the Liferay Faces Showcase demo webapp.</description>
+	<description>This plugin is the Liferay Faces Alloy Showcase demo webapp.</description>
 
 	<profiles>
 		<profile>
