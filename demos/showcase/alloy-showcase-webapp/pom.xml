@@ -10,7 +10,7 @@
 	</parent>
 	<artifactId>alloy-showcase-webapp</artifactId>
 	<packaging>war</packaging>
-	<name>Showcase Webapp</name>
+	<name>Alloy Showcase Webapp</name>
 	<description>This plugin is the Liferay Faces Showcase demo webapp.</description>
 
 	<profiles>
