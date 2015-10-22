@@ -28,6 +28,6 @@ public class AlloyTest {
 	@Test
 	public void firstTest() {
 
-		Assert.assertTrue(1 == 1);
+		Assert.assertTrue(2 == 1);
 	}
 }
