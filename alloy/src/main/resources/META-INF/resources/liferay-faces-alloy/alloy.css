@@ -46,6 +46,10 @@ div.alloy-dialog div.modal-header span.alloy-overlay-title {
 	font-weight: bold;
 }
 
+div.alloy-dialog div.modal-body > div {
+	height: 100%;
+}
+
 /* alloy-input-date / alloy-input-time */
 .alloy-input-date .input-medium,.alloy-input-date .alloy-button,.alloy-input-date .input-medium,
 .alloy-input-time .alloy-button {

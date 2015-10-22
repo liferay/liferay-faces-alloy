@@ -582,6 +582,8 @@ LFAI = {
 	initDialog: function(dialog) {
 
 		var boundingBox = dialog.get('boundingBox'),
+			boundingBoxEscapedClientId = LFA.escapeClientId(boundingBox.get('id')),
+			modalBody = boundingBox.one('#' + boundingBoxEscapedClientId + '_contentBox > .modal-body'),
 			onceAfterVisibleChangeEventHandle = dialog.after('visibleChange', function(event) {
 
 			if (event.newVal) {
@@ -593,6 +595,11 @@ LFAI = {
 				boundingBox.setStyle('left', '50%');
 				boundingBox.setStyle('margin-top', LFAI.getCenteredMargin(height));
 				boundingBox.setStyle('margin-left', LFAI.getCenteredMargin(width));
+
+				// Fix FACES-2394 by setting height to 100% (instead of 0px) and unsetting max-height, so that modal
+				// content fills the dialog's body.
+				modalBody.setStyle('height', '100%');
+				modalBody.setStyle('max-height', null);
 				onceAfterVisibleChangeEventHandle.detach();
 			}
 		});
