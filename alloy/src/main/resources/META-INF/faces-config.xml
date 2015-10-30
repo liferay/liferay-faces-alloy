@@ -6,19 +6,11 @@
 
 	<name>LiferayFacesAlloy</name>
 	<factory>
-		<partial-view-context-factory>com.liferay.faces.alloy.context.internal.PartialViewContextFactoryAlloyImpl</partial-view-context-factory>
 		<factory-extension>
 			<util:component-resource-factory>com.liferay.faces.alloy.application.internal.ComponentResourceFactoryAlloyImpl</util:component-resource-factory>
 			<util:message-context-factory>com.liferay.faces.alloy.context.internal.MessageContextFactoryAlloyImpl</util:message-context-factory>
+			<util:script-encoder-factory>com.liferay.faces.alloy.render.internal.ScriptEncoderFactoryAlloyImpl</util:script-encoder-factory>
 		</factory-extension>
 	</factory>
-	<render-kit>
-		<renderer>
-			<description>Overrides the BodyRenderer that comes with the JSF implementation</description>
-			<component-family>javax.faces.Output</component-family>
-			<renderer-type>javax.faces.Body</renderer-type>
-			<renderer-class>com.liferay.faces.alloy.component.body.internal.BodyRenderer</renderer-class>
-		</renderer>
-	</render-kit>
 
 </faces-config>

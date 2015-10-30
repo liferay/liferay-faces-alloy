@@ -87,47 +87,6 @@ public class AlloyRendererUtil {
 		}
 	}
 
-	public static void writeScripts(ResponseWriter responseWriter, List<Script> scripts, BrowserSniffer browserSniffer)
-		throws IOException {
-
-		Set<String> allModules = new TreeSet<String>();
-		List<AlloyScript> alloyScripts = new ArrayList<AlloyScript>();
-		List<Script> basicScripts = new ArrayList<Script>();
-
-		for (Script script : scripts) {
-
-			if (script instanceof AlloyScript) {
-
-				AlloyScript alloyScript = (AlloyScript) script;
-				final String[] modules = alloyScript.getModules();
-				Collections.addAll(allModules, modules);
-				alloyScripts.add(alloyScript);
-			}
-			else {
-				basicScripts.add(script);
-			}
-		}
-
-		for (Script script : basicScripts) {
-			responseWriter.write(script.getSourceCode());
-		}
-
-		if (!alloyScripts.isEmpty()) {
-
-			String alloyBeginScript = getAlloyBeginScript(allModules.toArray(new String[] {}), browserSniffer);
-			responseWriter.write(alloyBeginScript);
-
-			for (AlloyScript alloyScript : alloyScripts) {
-
-				responseWriter.write("(function(){");
-				responseWriter.write(alloyScript.getSourceCode());
-				responseWriter.write("})();");
-			}
-
-			responseWriter.write("});");
-		}
-	}
-
 	public static String getAlloyBeginScript(String[] modules, BrowserSniffer browserSniffer) {
 		return getAlloyBeginScript(modules, null, browserSniffer);
 	}
