@@ -23,13 +23,12 @@ import java.util.TreeSet;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
-import static com.liferay.faces.alloy.render.internal.AlloyRendererUtil.getAlloyBeginScript;
+import com.liferay.faces.alloy.render.internal.AlloyRendererUtil;
 import com.liferay.faces.util.client.AlloyScript;
 import com.liferay.faces.util.client.BrowserSniffer;
 import com.liferay.faces.util.client.BrowserSnifferFactory;
 import com.liferay.faces.util.client.Script;
 import com.liferay.faces.util.client.ScriptEncoder;
-import com.liferay.faces.util.context.FacesRequestContext;
 import com.liferay.faces.util.factory.FactoryExtensionFinder;
 
 
@@ -39,10 +38,36 @@ import com.liferay.faces.util.factory.FactoryExtensionFinder;
 public class ScriptEncoderAlloyImpl implements ScriptEncoder {
 
 	@Override
-	public void encodeScripts(ResponseWriter responseWriter) throws IOException {
+	public void encodeScript(FacesContext facesContext, Script script) throws IOException {
 
-		FacesRequestContext facesRequestContext = FacesRequestContext.getCurrentInstance();
-		List<Script> scripts = facesRequestContext.getScripts();
+		if (script instanceof AlloyScript) {
+
+			AlloyScript alloyScript = (AlloyScript) script;
+			BrowserSnifferFactory browserSnifferFactory = (BrowserSnifferFactory) FactoryExtensionFinder.getFactory(
+					BrowserSnifferFactory.class);
+			BrowserSniffer browserSniffer = browserSnifferFactory.getBrowserSniffer(facesContext.getExternalContext());
+			String[] modules = alloyScript.getModules();
+			String alloyBeginScript = AlloyRendererUtil.getAlloyBeginScript(modules, browserSniffer);
+			ResponseWriter responseWriter = facesContext.getResponseWriter();
+			responseWriter.write(alloyBeginScript);
+			encodeScript(facesContext, alloyScript.getSourceCode());
+			responseWriter.write("});");
+		}
+		else {
+			encodeScript(facesContext, script.getSourceCode());
+		}
+	}
+
+	@Override
+	public void encodeScript(FacesContext facesContext, String script) throws IOException {
+
+		ResponseWriter responseWriter = facesContext.getResponseWriter();
+		encodeScript(responseWriter, script);
+	}
+
+	@Override
+	public void encodeScripts(FacesContext facesContext, List<Script> scripts) throws IOException {
+
 		Set<String> allModules = new TreeSet<String>();
 		List<AlloyScript> alloyScripts = new ArrayList<AlloyScript>();
 		List<Script> basicScripts = new ArrayList<Script>();
@@ -61,27 +86,33 @@ public class ScriptEncoderAlloyImpl implements ScriptEncoder {
 			}
 		}
 
+		ResponseWriter responseWriter = facesContext.getResponseWriter();
+
 		for (Script script : basicScripts) {
-			responseWriter.write(script.getSourceCode());
+			encodeScript(responseWriter, script.getSourceCode());
 		}
 
 		if (!alloyScripts.isEmpty()) {
 
 			BrowserSnifferFactory browserSnifferFactory = (BrowserSnifferFactory) FactoryExtensionFinder.getFactory(
 					BrowserSnifferFactory.class);
-			FacesContext facesContext = FacesContext.getCurrentInstance();
 			BrowserSniffer browserSniffer = browserSnifferFactory.getBrowserSniffer(facesContext.getExternalContext());
-			String alloyBeginScript = getAlloyBeginScript(allModules.toArray(new String[] {}), browserSniffer);
+			String alloyBeginScript = AlloyRendererUtil.getAlloyBeginScript(allModules.toArray(new String[] {}),
+					browserSniffer);
 			responseWriter.write(alloyBeginScript);
 
 			for (AlloyScript alloyScript : alloyScripts) {
-
-				responseWriter.write("(function(){");
-				responseWriter.write(alloyScript.getSourceCode());
-				responseWriter.write("})();");
+				encodeScript(responseWriter, alloyScript.getSourceCode());
 			}
 
 			responseWriter.write("});");
 		}
+	}
+
+	private void encodeScript(ResponseWriter responseWriter, String script) throws IOException {
+
+		responseWriter.write("(function(){");
+		responseWriter.write(script);
+		responseWriter.write("})();");
 	}
 }
