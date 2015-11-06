@@ -14,20 +14,15 @@
 package com.liferay.faces.alloy.component.head.internal;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.faces.application.ResourceDependencies;
 import javax.faces.application.ResourceDependency;
 import javax.faces.component.UIComponent;
-import javax.faces.component.UIViewRoot;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 import javax.faces.render.FacesRenderer;
 
 import com.liferay.faces.alloy.component.head.Head;
-import com.liferay.faces.util.application.ComponentResource;
-import com.liferay.faces.util.application.ComponentResourceFactory;
-import com.liferay.faces.util.factory.FactoryExtensionFinder;
 import com.liferay.faces.util.product.ProductConstants;
 import com.liferay.faces.util.product.ProductMap;
 
@@ -41,6 +36,7 @@ import com.liferay.faces.util.product.ProductMap;
 		{
 			@ResourceDependency(library = "liferay-faces-alloy", name = "alloy.css"),
 			@ResourceDependency(library = "liferay-faces-alloy", name = "alloy.js"),
+			@ResourceDependency(library = "liferay-faces-alloy-reslib", name = "build/aui-css/css/bootstrap.min.css"),
 			@ResourceDependency(library = "liferay-faces-alloy-reslib", name = "build/aui/aui-min.js"),
 			@ResourceDependency(library = "liferay-faces-alloy-reslib", name = "liferay.js")
 		}
@@ -55,32 +51,15 @@ public class HeadRenderer extends HeadRendererBase {
 	@Override
 	public void encodeChildren(FacesContext facesContext, UIComponent uiComponent) throws IOException {
 
-		// If Liferay Portal is not detected and bootstrap.min.css is present in the <head>...</head> element, then
-		// encode a meta tag as a child of the head that will cause bootstrap to behave responsively.
+		// If Liferay Portal is not detected, then encode a meta tag as a child of the head that will cause bootstrap
+		// to behave responsively.
 		if (!LIFERAY_PORTAL_DETECTED) {
 
-			ComponentResourceFactory componentResourceFactory = (ComponentResourceFactory) FactoryExtensionFinder
-				.getFactory(ComponentResourceFactory.class);
-			UIViewRoot uiViewRoot = facesContext.getViewRoot();
-			List<UIComponent> componentResources = uiViewRoot.getComponentResources(facesContext, "head");
-
-			for (UIComponent resource : componentResources) {
-
-				ComponentResource componentResource = componentResourceFactory.getComponentResource(resource);
-				String library = componentResource.getLibrary();
-				String name = componentResource.getName();
-
-				if ("liferay-faces-alloy-reslib".equals(library) && "build/aui-css/css/bootstrap.min.css".equals(name)) {
-
-					ResponseWriter responseWriter = facesContext.getResponseWriter();
-					responseWriter.startElement("meta", null);
-					responseWriter.writeAttribute("name", "viewport", null);
-					responseWriter.writeAttribute("content", "width=device-width,initial-scale=1", null);
-					responseWriter.endElement("meta");
-
-					break;
-				}
-			}
+			ResponseWriter responseWriter = facesContext.getResponseWriter();
+			responseWriter.startElement("meta", null);
+			responseWriter.writeAttribute("name", "viewport", null);
+			responseWriter.writeAttribute("content", "width=device-width,initial-scale=1", null);
+			responseWriter.endElement("meta");
 		}
 
 		super.encodeChildren(facesContext, uiComponent);
