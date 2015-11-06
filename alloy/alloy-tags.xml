@@ -208,6 +208,19 @@
 		</tag-extension>
 	</tag>
 	<tag>
+		<tag-name>headBodyCommon</tag-name>
+		<attribute>
+			<description><![CDATA[HTML passthrough attribute specifying the XML namespace used in the element. <strong>Note:</strong> In a portlet evironment, this attribute will not be written.]]></description>
+			<name>xmlns</name>
+			<type><![CDATA[java.lang.String]]></type>
+		</attribute>
+		<tag-extension>
+			<extends-tags>binding dir lang</extends-tags>
+			<generate-java>false</generate-java>
+			<generate-taglib-xml>false</generate-taglib-xml>
+		</tag-extension>
+	</tag>
+	<tag>
 		<tag-name>inputCommon</tag-name>
 		<attribute>
 			<description><![CDATA[HTML passthrough attribute specifying the maximum length of characters allowed in the element.]]></description>
@@ -604,9 +617,27 @@ java.util.List<java.lang.String> filterResults(java.lang.String, java.util.List<
 	<tag>
 		<description><![CDATA[Body is a UIOutput that renders a <code>&lt;body&gt;</code> element for webapps and a <code>&lt;div&gt;</code> for portlets. Since it extends HtmlBody, it supports all the features of h:body.]]></description>
 		<tag-name>body</tag-name>
+		<attribute>
+			<attribute-extension>
+				<inherited>true</inherited>
+			</attribute-extension>
+			<description><![CDATA[Javascript to execute when a load event occurs. <strong>Note:</strong> In a portlet evironment, this attribute will not be written.]]></description>
+			<name>onload</name>
+			<required>false</required>
+			<type><![CDATA[java.lang.String]]></type>
+		</attribute>
+		<attribute>
+			<attribute-extension>
+				<inherited>true</inherited>
+			</attribute-extension>
+			<description><![CDATA[Javascript to execute when a unload event occurs. <strong>Note:</strong> In a portlet evironment, this attribute will not be written.]]></description>
+			<name>onunload</name>
+			<required>false</required>
+			<type><![CDATA[java.lang.String]]></type>
+		</attribute>
 		<tag-extension>
 			<delegate-renderer-type><![CDATA["javax.faces.Body"]]></delegate-renderer-type>
-			<extends-tags>styleableInherited</extends-tags>
+			<extends-tags>headBodyCommonInherited keyboardDOMEventsInherited mouseDOMEventsInherited styleableInherited titleInherited</extends-tags>
 			<parent-class><![CDATA[javax.faces.component.html.HtmlBody]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.util.render.DelegatingRendererBase]]></renderer-parent-class>
 		</tag-extension>
@@ -1004,33 +1035,9 @@ java.util.List<java.lang.String> filterResults(java.lang.String, java.util.List<
 	<tag>
 		<description><![CDATA[Head is a UIOutput that renders a <code>&lt;head&gt;</code> element for webapps, but not for portlets. In the case of portlets, the presence of alloy:head informs the JSF portlet bridge that JSF resources with target="head" should be included in the <code>&lt;head&gt;</code> element rendered by the portal. Since it extends HtmlHead, it supports all the features of h:head.]]></description>
 		<tag-name>head</tag-name>
-		<attribute>
-			<attribute-extension>
-				<inherited>true</inherited>
-			</attribute-extension>
-			<description><![CDATA[HTML passthrough attribute specifying the reading direction for the element For example, right to left (RTL), or left to right (LTR).]]></description>
-			<name>dir</name>
-			<type><![CDATA[java.lang.String]]></type>
-		</attribute>
-		<attribute>
-			<attribute-extension>
-				<inherited>true</inherited>
-			</attribute-extension>
-			<description><![CDATA[HTML passthrough attribute specifying the language code used in the element.]]></description>
-			<name>lang</name>
-			<type><![CDATA[java.lang.String]]></type>
-		</attribute>
-		<attribute>
-			<attribute-extension>
-				<inherited>true</inherited>
-			</attribute-extension>
-			<description><![CDATA[HTML passthrough attribute specifying the XML namespace used in the element.]]></description>
-			<name>xmlns</name>
-			<type><![CDATA[java.lang.String]]></type>
-		</attribute>
 		<tag-extension>
 			<delegate-renderer-type><![CDATA["javax.faces.Head"]]></delegate-renderer-type>
-			<extends-tags>styleable uiOutputInherited</extends-tags>
+			<extends-tags>headBodyCommonInherited</extends-tags>
 			<parent-class><![CDATA[javax.faces.component.html.HtmlHead]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.util.render.DelegatingRendererBase]]></renderer-parent-class>
 		</tag-extension>
