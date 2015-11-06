@@ -28,10 +28,6 @@ import com.liferay.faces.alloy.component.head.Head;
 @Generated(value = "com.liferay.alloy.tools.builder.FacesBuilder")
 public abstract class HeadRendererBase extends DelegatingRendererBase {
 
-	// Protected Constants
-	protected static final String STYLE = "style";
-	protected static final String STYLE_CLASS = "styleClass";
-
 	@Override
 	public String getDelegateComponentFamily() {
 		return Head.COMPONENT_FAMILY;
