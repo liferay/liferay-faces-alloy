@@ -1,7 +1,0 @@
-
-	<dependencies>
-		<dependency>
-			<groupId>com.sun.facelets</groupId>
-			<artifactId>jsf-facelets</artifactId>
-		</dependency>
-	</dependencies>

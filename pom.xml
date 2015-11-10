@@ -76,7 +76,6 @@
 
 	<modules>
 		<module>alloy</module>
-		<module>demos</module>
 	</modules>
 
 	<properties>
