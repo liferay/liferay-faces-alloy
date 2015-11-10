@@ -6,6 +6,7 @@ faces-config.pageflow
 issues/lsv
 navigation-rule.NavData
 nb-configuration.xml
+overlays
 rebel.xml
 target
 *.sh
