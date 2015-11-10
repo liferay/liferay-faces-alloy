@@ -6,7 +6,7 @@
 
 	<factory>
 		<factory-extension>
-			<util:message-context-factory>com.liferay.faces.demos.context.ShowcaseMessageContextFactory</util:message-context-factory>
+			<util:message-context-factory>com.liferay.faces.showcase.context.ShowcaseMessageContextFactory</util:message-context-factory>
 		</factory-extension>
 	</factory>
 	<lifecycle>
