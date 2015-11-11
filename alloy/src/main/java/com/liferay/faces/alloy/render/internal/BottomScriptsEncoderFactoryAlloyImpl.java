@@ -13,8 +13,8 @@
  */
 package com.liferay.faces.alloy.render.internal;
 
-import com.liferay.faces.util.client.ScriptEncoder;
-import com.liferay.faces.util.client.ScriptEncoderFactory;
+import com.liferay.faces.util.client.BottomScriptsEncoder;
+import com.liferay.faces.util.client.BottomScriptsEncoderFactory;
 import com.liferay.faces.util.product.ProductConstants;
 import com.liferay.faces.util.product.ProductMap;
 
@@ -22,7 +22,7 @@ import com.liferay.faces.util.product.ProductMap;
 /**
  * @author  Kyle Stiemann
  */
-public class ScriptEncoderFactoryAlloyImpl extends ScriptEncoderFactory {
+public class BottomScriptsEncoderFactoryAlloyImpl extends BottomScriptsEncoderFactory {
 
 	// Private Constants
 	private static final boolean LIFERAY_FACES_BRIDGE_DETECTED = ProductMap.getInstance().get(
@@ -31,29 +31,29 @@ public class ScriptEncoderFactoryAlloyImpl extends ScriptEncoderFactory {
 		.isDetected();
 
 	// Private Members;
-	ScriptEncoderFactory wrappedScriptEncoderFactory;
+	BottomScriptsEncoderFactory wrappedBottomScriptsEncoderFactory;
 
-	public ScriptEncoderFactoryAlloyImpl(ScriptEncoderFactory wrappedScriptEncoderFactory) {
-		this.wrappedScriptEncoderFactory = wrappedScriptEncoderFactory;
+	public BottomScriptsEncoderFactoryAlloyImpl(BottomScriptsEncoderFactory wrappedBottomScriptEncoderFactory) {
+		this.wrappedBottomScriptsEncoderFactory = wrappedBottomScriptEncoderFactory;
 	}
 
 	@Override
-	public ScriptEncoder getScriptEncoder() {
+	public BottomScriptsEncoder getBottomScriptsEncoder() {
 
-		ScriptEncoder scriptEncoder;
+		BottomScriptsEncoder bottomScriptsEncoder;
 
 		if (LIFERAY_PORTAL_DETECTED && LIFERAY_FACES_BRIDGE_DETECTED) {
-			scriptEncoder = wrappedScriptEncoderFactory.getScriptEncoder();
+			bottomScriptsEncoder = wrappedBottomScriptsEncoderFactory.getBottomScriptsEncoder();
 		}
 		else {
-			scriptEncoder = new ScriptEncoderAlloyImpl();
+			bottomScriptsEncoder = new BottomScriptsEncoderAlloyImpl();
 		}
 
-		return scriptEncoder;
+		return bottomScriptsEncoder;
 	}
 
 	@Override
-	public ScriptEncoderFactory getWrapped() {
-		return wrappedScriptEncoderFactory;
+	public BottomScriptsEncoderFactory getWrapped() {
+		return wrappedBottomScriptsEncoderFactory;
 	}
 }
