@@ -13,8 +13,8 @@
  */
 package com.liferay.faces.alloy.render.internal;
 
-import com.liferay.faces.util.client.ScriptEncoder;
-import com.liferay.faces.util.client.ScriptEncoderFactory;
+import com.liferay.faces.util.client.ScriptsEncoder;
+import com.liferay.faces.util.client.ScriptsEncoderFactory;
 import com.liferay.faces.util.product.ProductConstants;
 import com.liferay.faces.util.product.ProductMap;
 
@@ -22,7 +22,7 @@ import com.liferay.faces.util.product.ProductMap;
 /**
  * @author  Kyle Stiemann
  */
-public class ScriptEncoderFactoryAlloyImpl extends ScriptEncoderFactory {
+public class ScriptsEncoderFactoryAlloyImpl extends ScriptsEncoderFactory {
 
 	// Private Constants
 	private static final boolean LIFERAY_FACES_BRIDGE_DETECTED = ProductMap.getInstance().get(
@@ -31,29 +31,25 @@ public class ScriptEncoderFactoryAlloyImpl extends ScriptEncoderFactory {
 		.isDetected();
 
 	// Private Members;
-	ScriptEncoderFactory wrappedScriptEncoderFactory;
+	ScriptsEncoderFactory wrappedScriptsEncoderFactory;
 
-	public ScriptEncoderFactoryAlloyImpl(ScriptEncoderFactory wrappedScriptEncoderFactory) {
-		this.wrappedScriptEncoderFactory = wrappedScriptEncoderFactory;
+	public ScriptsEncoderFactoryAlloyImpl(ScriptsEncoderFactory wrappedScriptEncoderFactory) {
+		this.wrappedScriptsEncoderFactory = wrappedScriptEncoderFactory;
 	}
 
 	@Override
-	public ScriptEncoder getScriptEncoder() {
-
-		ScriptEncoder scriptEncoder;
+	public ScriptsEncoder getScriptsEncoder() {
 
 		if (LIFERAY_PORTAL_DETECTED && LIFERAY_FACES_BRIDGE_DETECTED) {
-			scriptEncoder = wrappedScriptEncoderFactory.getScriptEncoder();
+			return wrappedScriptsEncoderFactory.getScriptsEncoder();
 		}
 		else {
-			scriptEncoder = new ScriptEncoderAlloyImpl();
+			return new ScriptsEncoderAlloyImpl();
 		}
-
-		return scriptEncoder;
 	}
 
 	@Override
-	public ScriptEncoderFactory getWrapped() {
-		return wrappedScriptEncoderFactory;
+	public ScriptsEncoderFactory getWrapped() {
+		return wrappedScriptsEncoderFactory;
 	}
 }
