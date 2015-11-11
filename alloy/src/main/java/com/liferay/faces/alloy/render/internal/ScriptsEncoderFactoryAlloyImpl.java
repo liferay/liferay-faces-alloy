@@ -40,16 +40,12 @@ public class ScriptsEncoderFactoryAlloyImpl extends ScriptsEncoderFactory {
 	@Override
 	public ScriptsEncoder getScriptsEncoder() {
 
-		ScriptsEncoder ScriptsEncoder;
-
 		if (LIFERAY_PORTAL_DETECTED && LIFERAY_FACES_BRIDGE_DETECTED) {
-			ScriptsEncoder = wrappedScriptsEncoderFactory.getScriptsEncoder();
+			return wrappedScriptsEncoderFactory.getScriptsEncoder();
 		}
 		else {
-			ScriptsEncoder = new ScriptsEncoderAlloyImpl();
+			return new ScriptsEncoderAlloyImpl();
 		}
-
-		return ScriptsEncoder;
 	}
 
 	@Override
