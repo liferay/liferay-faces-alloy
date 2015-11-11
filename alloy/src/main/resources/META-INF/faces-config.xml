@@ -9,7 +9,7 @@
 		<factory-extension>
 			<util:component-resource-factory>com.liferay.faces.alloy.application.internal.ComponentResourceFactoryAlloyImpl</util:component-resource-factory>
 			<util:message-context-factory>com.liferay.faces.alloy.context.internal.MessageContextFactoryAlloyImpl</util:message-context-factory>
-			<util:script-encoder-factory>com.liferay.faces.alloy.render.internal.ScriptEncoderFactoryAlloyImpl</util:script-encoder-factory>
+			<util:scripts-encoder-factory>com.liferay.faces.alloy.render.internal.ScriptsEncoderFactoryAlloyImpl</util:scripts-encoder-factory>
 		</factory-extension>
 	</factory>
 
