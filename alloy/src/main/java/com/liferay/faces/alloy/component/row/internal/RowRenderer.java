@@ -45,6 +45,7 @@ public class RowRenderer extends RowRendererBase {
 
 		String clientId = uiComponent.getClientId(facesContext);
 		responseWriter.writeAttribute("id", clientId, null);
+
 		Row row = (Row) uiComponent;
 		RendererUtil.encodeStyleable(responseWriter, row, ROW);
 	}

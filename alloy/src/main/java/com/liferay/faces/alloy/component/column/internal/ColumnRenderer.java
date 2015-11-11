@@ -73,6 +73,7 @@ public class ColumnRenderer extends ColumnRendererBase implements ComponentSyste
 
 			String size = column.getSize();
 			size = getColumnCSSClassSize(size);
+
 			Integer span = column.getSpan();
 
 			if (span != null) {
