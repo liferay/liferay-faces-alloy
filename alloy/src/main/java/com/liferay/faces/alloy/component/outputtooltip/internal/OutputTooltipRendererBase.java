@@ -15,6 +15,7 @@ package com.liferay.faces.alloy.component.outputtooltip.internal;
 //J-
 
 import java.io.IOException;
+import java.util.Set;
 
 import javax.annotation.Generated;
 import javax.faces.component.UIComponent;
@@ -41,9 +42,6 @@ public abstract class OutputTooltipRendererBase extends OverlayRendererBase {
 	protected static final String OPACITY = "opacity";
 	protected static final String POSITION = "position";
 	protected static final String Z_INDEX = "zIndex";
-
-	// Modules
-	protected static final String[] MODULES = { "aui-tooltip" };
 
 	@Override
 	public void encodeAlloyAttributes(FacesContext facesContext, ResponseWriter responseWriter, UIComponent uiComponent) throws IOException {
@@ -92,8 +90,11 @@ public abstract class OutputTooltipRendererBase extends OverlayRendererBase {
 	}
 
 	@Override
-	protected String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
-		return MODULES;
+	protected Set<String> getModules(FacesContext facesContext, UIComponent uiComponent) {
+
+		Set<String> modules = super.getModules(facesContext, uiComponent);
+		modules.add("aui-tooltip");
+		return modules;
 	}
 
 	protected void encodeTrigger(ResponseWriter responseWriter, OutputTooltip outputTooltip, String for_, boolean first) throws IOException {

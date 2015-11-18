@@ -15,6 +15,7 @@ package com.liferay.faces.alloy.component.inputdate.internal;
 //J-
 
 import java.io.IOException;
+import java.util.Set;
 
 import javax.annotation.Generated;
 import javax.faces.component.UIComponent;
@@ -39,9 +40,6 @@ public abstract class InputDateRendererBase extends InputDateTimeRenderer {
 	protected static final String NATIVE_WHEN_MOBILE = "nativeWhenMobile";
 	protected static final String PANES = "panes";
 	protected static final String MASK = "mask";
-
-	// Modules
-	protected static final String[] MODULES = { "aui-datepicker" };
 
 	@Override
 	public void encodeAlloyAttributes(FacesContext facesContext, ResponseWriter responseWriter, UIComponent uiComponent) throws IOException {
@@ -74,8 +72,11 @@ public abstract class InputDateRendererBase extends InputDateTimeRenderer {
 	}
 
 	@Override
-	protected String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
-		return MODULES;
+	protected Set<String> getModules(FacesContext facesContext, UIComponent uiComponent) {
+
+		Set<String> modules = super.getModules(facesContext, uiComponent);
+		modules.add("aui-datepicker");
+		return modules;
 	}
 
 	protected void encodePanes(ResponseWriter responseWriter, InputDate inputDate, Integer panes, boolean first) throws IOException {

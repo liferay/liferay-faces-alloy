@@ -16,6 +16,7 @@ package com.liferay.faces.alloy.component.nodemenunav.internal;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -33,12 +34,7 @@ import com.liferay.faces.util.render.internal.DelegationResponseWriter;
 public abstract class NodeMenuNavRendererBase extends DelegatingAlloyRendererBase {
 
 	// Private constants
-	private static final String ALLOY_MODULE_NAME = "node-menunav"; // Needed when yui="false"
 	private static final String COLON_OPTIONS = ":options";
-
-	// Needed when yui="false"
-	// Modules
-	protected static final String[] MODULES = { ALLOY_MODULE_NAME };
 
 	// Needed when yui="false"
 	@Override
@@ -318,8 +314,12 @@ public abstract class NodeMenuNavRendererBase extends DelegatingAlloyRendererBas
 
 	// Needed when yui="false"
 	@Override
-	protected String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
-		return MODULES;
+	protected Set<String> getModules(FacesContext facesContext, UIComponent uiComponent) {
+
+		Set<String> modules = super.getModules(facesContext, uiComponent);
+		modules.add("node-menunav");
+
+		return modules;
 	}
 
 	@Override

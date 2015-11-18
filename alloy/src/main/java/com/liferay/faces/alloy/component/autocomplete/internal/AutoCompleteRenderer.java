@@ -15,10 +15,10 @@ package com.liferay.faces.alloy.component.autocomplete.internal;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 
 import javax.el.ELContext;
 import javax.el.MethodExpression;
@@ -350,7 +350,7 @@ public class AutoCompleteRenderer extends AutoCompleteRendererBase {
 				encodeFunctionCall(bufferedScriptResponseWriter, "LFAI.setAutoCompleteServerResults",
 					liferayComponentJavaScriptFragment, resultArrayStringBuilder, hiddenClientId);
 
-				String[] modules = getModules(facesContext, uiComponent);
+				Set<String> modules = getModules(facesContext, uiComponent);
 				renderScript(facesContext, bufferedScriptResponseWriter.toString(), modules);
 			}
 			else {
@@ -426,9 +426,9 @@ public class AutoCompleteRenderer extends AutoCompleteRendererBase {
 	}
 
 	@Override
-	protected String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
+	protected Set<String> getModules(FacesContext facesContext, UIComponent uiComponent) {
 
-		List<String> modules = new ArrayList<String>(Arrays.asList(MODULES));
+		Set<String> modules = super.getModules(facesContext, uiComponent);
 		AutoComplete autoComplete = (AutoComplete) uiComponent;
 		String clientFilterType = autoComplete.getClientFilterType();
 		String clientCustomFilter = autoComplete.getClientCustomFilter();
@@ -453,6 +453,6 @@ public class AutoCompleteRenderer extends AutoCompleteRendererBase {
 			modules.add(NODE_EVENT_SIMULATE);
 		}
 
-		return modules.toArray(new String[] {});
+		return modules;
 	}
 }

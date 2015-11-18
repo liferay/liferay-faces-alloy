@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 
 import javax.faces.application.Application;
 import javax.faces.application.ResourceDependencies;
@@ -65,9 +66,6 @@ public class InputFileRenderer extends InputFileRendererBase {
 	// Private Constants
 	private static final boolean LIFERAY_FACES_BRIDGE_DETECTED = ProductMap.getInstance().get(
 			ProductConstants.LIFERAY_FACES_BRIDGE).isDetected();
-
-	// Protected Constants
-	protected static final String[] MODULES = { "uploader", "aui-datatable", "datatype-xml" };
 
 	@Override
 	public void decode(FacesContext facesContext, UIComponent uiComponent) {
@@ -426,8 +424,13 @@ public class InputFileRenderer extends InputFileRendererBase {
 	}
 
 	@Override
-	protected String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
-		return MODULES;
+	protected Set<String> getModules(FacesContext facesContext, UIComponent uiComponent) {
+
+		Set<String> modules = super.getModules(facesContext, uiComponent);
+		modules.add("aui-datatable");
+		modules.add("datatype-xml");
+
+		return modules;
 	}
 
 	protected String getParentFormClientId(UIComponent uiComponent) {

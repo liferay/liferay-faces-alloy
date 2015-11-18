@@ -15,6 +15,7 @@ package com.liferay.faces.alloy.component.inputtime.internal;
 //J-
 
 import java.io.IOException;
+import java.util.Set;
 
 import javax.annotation.Generated;
 import javax.faces.component.UIComponent;
@@ -48,9 +49,6 @@ public abstract class InputTimeRendererBase extends InputDateTimeRenderer {
 	protected static final String SCROLL_INTO_VIEW = "scrollIntoView";
 	protected static final String STEP = "step";
 
-	// Modules
-	protected static final String[] MODULES = { "aui-timepicker" };
-
 	@Override
 	public void encodeAlloyAttributes(FacesContext facesContext, ResponseWriter responseWriter, UIComponent uiComponent) throws IOException {
 
@@ -74,8 +72,11 @@ public abstract class InputTimeRendererBase extends InputDateTimeRenderer {
 	}
 
 	@Override
-	protected String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
-		return MODULES;
+	protected Set<String> getModules(FacesContext facesContext, UIComponent uiComponent) {
+
+		Set<String> modules = super.getModules(facesContext, uiComponent);
+		modules.add("aui-timepicker");
+		return modules;
 	}
 
 	protected void encodeMask(ResponseWriter responseWriter, InputTime inputTime, String pattern, boolean first) throws IOException {

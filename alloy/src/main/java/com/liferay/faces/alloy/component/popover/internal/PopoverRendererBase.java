@@ -15,6 +15,7 @@ package com.liferay.faces.alloy.component.popover.internal;
 //J-
 
 import java.io.IOException;
+import java.util.Set;
 
 import javax.annotation.Generated;
 import javax.faces.component.UIComponent;
@@ -44,9 +45,6 @@ public abstract class PopoverRendererBase extends OverlayRendererBase {
 	protected static final String POSITION = "position";
 	protected static final String WIDTH = "width";
 	protected static final String Z_INDEX = "zIndex";
-
-	// Modules
-	protected static final String[] MODULES = { "aui-popover" };
 
 	@Override
 	public void encodeAlloyAttributes(FacesContext facesContext, ResponseWriter responseWriter, UIComponent uiComponent) throws IOException {
@@ -95,8 +93,11 @@ public abstract class PopoverRendererBase extends OverlayRendererBase {
 	}
 
 	@Override
-	protected String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
-		return MODULES;
+	protected Set<String> getModules(FacesContext facesContext, UIComponent uiComponent) {
+
+		Set<String> modules = super.getModules(facesContext, uiComponent);
+		modules.add("aui-popover");
+		return modules;
 	}
 
 	protected void encodeHeight(ResponseWriter responseWriter, Popover popover, String height, boolean first) throws IOException {

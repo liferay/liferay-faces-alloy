@@ -73,9 +73,6 @@ public class DataTableRenderer extends DataTableRendererBase {
 	// Logger
 	private static final Logger logger = LoggerFactory.getLogger(DataTableRenderer.class);
 
-	// Private Data Members
-	private static final String[] MODULES = { "aui-datatable", "node-event-simulate" };
-
 	@Override
 	public void decodeClientState(FacesContext facesContext, UIComponent uiComponent) {
 
@@ -919,8 +916,12 @@ public class DataTableRenderer extends DataTableRendererBase {
 	}
 
 	@Override
-	protected String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
-		return MODULES;
+	protected Set<String> getModules(FacesContext facesContext, UIComponent uiComponent) {
+
+		Set<String> modules = super.getModules(facesContext, uiComponent);
+		modules.add("node-event-simulate");
+
+		return modules;
 	}
 
 	@Override

@@ -15,6 +15,7 @@ package com.liferay.faces.alloy.component.autocomplete.internal;
 //J-
 
 import java.io.IOException;
+import java.util.Set;
 
 import javax.annotation.Generated;
 import javax.faces.component.UIComponent;
@@ -51,9 +52,6 @@ public abstract class AutoCompleteRendererBase extends DelegatingAlloyRendererBa
 	protected static final String SERVER_FILTER_TYPE = "serverFilterType";
 	protected static final String TAB_SELECT = "tabSelect";
 	protected static final String WIDTH = "width";
-
-	// Modules
-	protected static final String[] MODULES = { "autocomplete" };
 
 	@Override
 	public void encodeAlloyAttributes(FacesContext facesContext, ResponseWriter responseWriter, UIComponent uiComponent) throws IOException {
@@ -182,8 +180,11 @@ public abstract class AutoCompleteRendererBase extends DelegatingAlloyRendererBa
 	}
 
 	@Override
-	protected String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
-		return MODULES;
+	protected Set<String> getModules(FacesContext facesContext, UIComponent uiComponent) {
+
+		Set<String> modules = super.getModules(facesContext, uiComponent);
+		modules.add("autocomplete");
+		return modules;
 	}
 
 	protected void encodeActivateFirstItem(ResponseWriter responseWriter, AutoComplete autoComplete, Boolean activateFirstItem, boolean first) throws IOException {

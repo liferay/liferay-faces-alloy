@@ -15,6 +15,7 @@ package com.liferay.faces.alloy.component.datatable.internal;
 //J-
 
 import java.io.IOException;
+import java.util.Set;
 
 import javax.annotation.Generated;
 import javax.faces.component.UIComponent;
@@ -39,9 +40,6 @@ public abstract class DataTableRendererBase extends AlloyRendererBase {
 	protected static final String SELECTED_ROW_INDEXES = "selectedRowIndexes";
 	protected static final String SELECTION_MODE = "selectionMode";
 
-	// Modules
-	protected static final String[] MODULES = { "aui-datatable" };
-
 	@Override
 	public void encodeAlloyAttributes(FacesContext facesContext, ResponseWriter responseWriter, UIComponent uiComponent) throws IOException {
 
@@ -57,8 +55,11 @@ public abstract class DataTableRendererBase extends AlloyRendererBase {
 	}
 
 	@Override
-	protected String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
-		return MODULES;
+	protected Set<String> getModules(FacesContext facesContext, UIComponent uiComponent) {
+
+		Set<String> modules = super.getModules(facesContext, uiComponent);
+		modules.add("aui-datatable");
+		return modules;
 	}
 
 	protected void encodeHiddenAttributes(FacesContext facesContext, ResponseWriter responseWriter, DataTable dataTable, boolean first) throws IOException {

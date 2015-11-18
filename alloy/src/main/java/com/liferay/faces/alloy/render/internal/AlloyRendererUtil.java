@@ -13,7 +13,6 @@
  */
 package com.liferay.faces.alloy.render.internal;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
@@ -21,22 +20,16 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
-import java.util.TreeSet;
 
 import javax.faces.application.Application;
 import javax.faces.component.behavior.AjaxBehavior;
 import javax.faces.component.behavior.ClientBehavior;
 import javax.faces.component.behavior.ClientBehaviorHolder;
 import javax.faces.context.FacesContext;
-import javax.faces.context.ResponseWriter;
 
-import com.liferay.faces.util.client.AlloyScript;
 import com.liferay.faces.util.client.BrowserSniffer;
-import com.liferay.faces.util.client.Script;
 import com.liferay.faces.util.logging.Logger;
 import com.liferay.faces.util.logging.LoggerFactory;
-import com.liferay.faces.util.product.ProductConstants;
-import com.liferay.faces.util.product.ProductMap;
 
 
 /**
@@ -46,12 +39,6 @@ public class AlloyRendererUtil {
 
 	// Logger
 	private static final Logger logger = LoggerFactory.getLogger(AlloyRendererUtil.class);
-
-	// Private Constants
-	private static final boolean LIFERAY_FACES_BRIDGE_DETECTED = ProductMap.getInstance().get(
-			ProductConstants.LIFERAY_FACES_BRIDGE).isDetected();
-	private static final boolean LIFERAY_PORTAL_DETECTED = ProductMap.getInstance().get(ProductConstants.LIFERAY_PORTAL)
-		.isDetected();
 
 	public static void addDefaultAjaxBehavior(ClientBehaviorHolder clientBehaviorHolder, String execute, String process,
 		String defaultExecute, String render, String update, String defaultRender) {
@@ -87,15 +74,15 @@ public class AlloyRendererUtil {
 		}
 	}
 
-	public static String getAlloyBeginScript(String[] modules, BrowserSniffer browserSniffer) {
+	public static String getAlloyBeginScript(Set<String> modules, BrowserSniffer browserSniffer) {
 		return getAlloyBeginScript(modules, null, browserSniffer);
 	}
 
-	public static String getAlloyBeginScript(String[] modules, String config, BrowserSniffer browserSniffer) {
+	public static String getAlloyBeginScript(Set<String> modules, String config, BrowserSniffer browserSniffer) {
 		return getAlloyBeginScript(modules, config, browserSniffer.getMajorVersion(), browserSniffer.isIe());
 	}
 
-	private static String getAlloyBeginScript(String[] modules, String config, float browserMajorVersion,
+	private static String getAlloyBeginScript(Set<String> modules, String config, float browserMajorVersion,
 		boolean browserIE) {
 
 		StringBuilder stringBuilder = new StringBuilder();
@@ -120,13 +107,14 @@ public class AlloyRendererUtil {
 		stringBuilder.append(loadMethod);
 		stringBuilder.append("(");
 
-		if (modules != null) {
+		List<String> sortedModules = new ArrayList<String>(modules);
+		Collections.sort(sortedModules);
 
-			for (String module : modules) {
-				stringBuilder.append("'");
-				stringBuilder.append(module.trim());
-				stringBuilder.append("',");
-			}
+		for (String module : sortedModules) {
+
+			stringBuilder.append("'");
+			stringBuilder.append(module.trim());
+			stringBuilder.append("',");
 		}
 
 		stringBuilder.append("function(A){");

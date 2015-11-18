@@ -15,6 +15,7 @@ package com.liferay.faces.alloy.component.accordion.internal;
 //J-
 
 import java.io.IOException;
+import java.util.Set;
 
 import javax.annotation.Generated;
 import javax.faces.component.UIComponent;
@@ -40,9 +41,6 @@ public abstract class AccordionRendererBase extends AlloyRendererBase {
 	protected static final String STYLE = "style";
 	protected static final String STYLE_CLASS = "styleClass";
 
-	// Modules
-	protected static final String[] MODULES = { "aui-toggler" };
-
 	@Override
 	public void encodeAlloyAttributes(FacesContext facesContext, ResponseWriter responseWriter, UIComponent uiComponent) throws IOException {
 
@@ -58,8 +56,11 @@ public abstract class AccordionRendererBase extends AlloyRendererBase {
 	}
 
 	@Override
-	protected String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
-		return MODULES;
+	protected Set<String> getModules(FacesContext facesContext, UIComponent uiComponent) {
+
+		Set<String> modules = super.getModules(facesContext, uiComponent);
+		modules.add("aui-toggler");
+		return modules;
 	}
 
 	protected void encodeHiddenAttributes(FacesContext facesContext, ResponseWriter responseWriter, Accordion accordion, boolean first) throws IOException {

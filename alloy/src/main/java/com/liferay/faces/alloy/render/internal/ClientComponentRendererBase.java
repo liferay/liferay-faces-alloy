@@ -14,6 +14,8 @@
 package com.liferay.faces.alloy.render.internal;
 
 import java.io.IOException;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -104,7 +106,7 @@ public abstract class ClientComponentRendererBase extends Renderer implements Cl
 		encodeJavaScriptCustom(facesContext, uiComponent);
 		encodeJavaScriptEnd(facesContext, uiComponent);
 
-		String[] modules = null;
+		Set<String> modules = null;
 
 		if (!isSandboxed(facesContext, uiComponent)) {
 			modules = getModules(facesContext, uiComponent);
@@ -114,13 +116,13 @@ public abstract class ClientComponentRendererBase extends Renderer implements Cl
 		facesContext.setResponseWriter(responseWriter);
 	}
 
-	protected void renderScript(FacesContext facesContext, String bufferedScriptString, String[] modules) {
+	protected void renderScript(FacesContext facesContext, String bufferedScriptString, Set<String> modules) {
 
 		Script script;
 		ScriptFactory scriptFactory = (ScriptFactory) FactoryExtensionFinder.getFactory(ScriptFactory.class);
 
 		if (modules != null) {
-			script = scriptFactory.getAlloyScript(bufferedScriptString, modules);
+			script = scriptFactory.getScript(bufferedScriptString, modules, Script.Type.ALLOY);
 		}
 		else {
 			script = scriptFactory.getScript(bufferedScriptString);
@@ -134,8 +136,8 @@ public abstract class ClientComponentRendererBase extends Renderer implements Cl
 		return false;
 	}
 
-	protected String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
-		return null;
+	protected Set<String> getModules(FacesContext facesContext, UIComponent uiComponent) {
+		return new HashSet<String>();
 	}
 
 	protected boolean isAjax(FacesContext facesContext) {

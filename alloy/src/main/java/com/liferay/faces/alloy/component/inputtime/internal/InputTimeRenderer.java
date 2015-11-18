@@ -16,11 +16,11 @@ package com.liferay.faces.alloy.component.inputtime.internal;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 import java.util.TimeZone;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -33,7 +33,6 @@ import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 import javax.faces.render.FacesRenderer;
 
-import com.liferay.faces.alloy.component.inputdatetime.InputDateTime;
 import com.liferay.faces.alloy.component.inputdatetime.internal.InputDateTimeResponseWriter;
 import com.liferay.faces.alloy.component.inputtime.InputTime;
 import com.liferay.faces.alloy.render.internal.JavaScriptFragment;
@@ -372,27 +371,22 @@ public class InputTimeRenderer extends InputTimeRendererBase {
 	}
 
 	@Override
-	protected String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
-		return getModules(MODULES, facesContext, uiComponent);
-	}
+	protected Set<String> getModules(FacesContext facesContext, UIComponent uiComponent) {
 
-	@Override
-	protected List<String> getModules(List<String> modules, FacesContext facesContext, InputDateTime inputDateTime) {
-
-		List<String> inputTimeModules = new ArrayList<String>(modules);
-		InputTime inputTime = (InputTime) inputDateTime;
+		Set<String> modules = getModules("aui-timepicker", facesContext, uiComponent);
+		InputTime inputTime = (InputTime) uiComponent;
 		String filterType = inputTime.getFilterType();
 
 		if ((filterType != null) && (filterType.length() > 0)) {
-			inputTimeModules.add("autocomplete-filters");
+			modules.add("autocomplete-filters");
 		}
 
 		String highlighterType = inputTime.getHighlighterType();
 
 		if ((highlighterType != null) && (highlighterType.length() > 0)) {
-			inputTimeModules.add("autocomplete-highlighters");
+			modules.add("autocomplete-highlighters");
 		}
 
-		return inputTimeModules;
+		return modules;
 	}
 }

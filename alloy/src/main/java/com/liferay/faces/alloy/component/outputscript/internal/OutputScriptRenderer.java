@@ -14,6 +14,9 @@
 package com.liferay.faces.alloy.component.outputscript.internal;
 
 import java.io.IOException;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
@@ -74,7 +77,9 @@ public class OutputScriptRenderer extends OutputScriptRendererBase {
 				ScriptFactory scriptFactory = (ScriptFactory) FactoryExtensionFinder.getFactory(ScriptFactory.class);
 
 				if ((use != null) && (use.length() > 0)) {
-					script = scriptFactory.getAlloyScript(bufferedScriptString, use.split(","));
+
+					Set<String> modules = getModules(use);
+					script = scriptFactory.getScript(bufferedScriptString, modules, Script.Type.ALLOY);
 				}
 				else {
 					script = scriptFactory.getScript(bufferedScriptString);
@@ -94,8 +99,8 @@ public class OutputScriptRenderer extends OutputScriptRendererBase {
 				ResponseWriter responseWriter = facesContext.getResponseWriter();
 
 				// In order to determine the exact YUI sandbox string to write, the modules and browser information
-				// must be passed to RendererUtil.getAlloyBeginScript().
-				String[] modules = use.split(",");
+				// must be passed to RendererUtil.getAlloyBeginScript().;
+				Set<String> modules = getModules(use);
 				BrowserSnifferFactory browserSnifferFactory = (BrowserSnifferFactory) FactoryExtensionFinder.getFactory(
 						BrowserSnifferFactory.class);
 				BrowserSniffer browserSniffer = browserSnifferFactory.getBrowserSniffer(
@@ -111,5 +116,14 @@ public class OutputScriptRenderer extends OutputScriptRendererBase {
 				super.encodeChildren(facesContext, uiComponent);
 			}
 		}
+	}
+
+	private Set<String> getModules(String use) {
+
+		String[] modulesArray = use.split(",");
+		Set<String> modules = new HashSet<String>();
+		Collections.addAll(modules, modulesArray);
+
+		return modules;
 	}
 }

@@ -14,6 +14,7 @@
 package com.liferay.faces.alloy.render.internal;
 
 import java.io.IOException;
+import java.util.Set;
 
 import javax.faces.component.UIComponent;
 import javax.faces.component.UINamingContainer;
@@ -123,7 +124,7 @@ import com.liferay.faces.util.factory.FactoryExtensionFinder;
 	}
 
 	/* package-private */ static void encodeJavaScriptBegin(FacesContext facesContext, UIComponent uiComponent, AlloyRenderer alloyRenderer,
-		String[] modules, boolean ajax, boolean sandboxed) throws IOException {
+		Set<String> modules, boolean ajax, boolean sandboxed) throws IOException {
 
 		ResponseWriter responseWriter = facesContext.getResponseWriter();
 
