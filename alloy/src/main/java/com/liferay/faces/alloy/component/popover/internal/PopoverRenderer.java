@@ -14,9 +14,6 @@
 package com.liferay.faces.alloy.component.popover.internal;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import javax.faces.application.ProjectStage;
 import javax.faces.application.ResourceDependencies;
@@ -29,6 +26,7 @@ import javax.faces.render.FacesRenderer;
 import com.liferay.faces.alloy.component.button.Button;
 import com.liferay.faces.alloy.component.popover.Popover;
 import com.liferay.faces.util.component.ClientComponent;
+import com.liferay.faces.util.helper.StringHelper;
 import com.liferay.faces.util.logging.Logger;
 import com.liferay.faces.util.logging.LoggerFactory;
 
@@ -164,14 +162,13 @@ public class PopoverRenderer extends PopoverRendererBase {
 	@Override
 	protected String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
 
-		String[] modulesArray = super.getModules(facesContext, uiComponent);
-		List<String> modules = new ArrayList<String>(Arrays.asList(modulesArray));
+		String[] modules = super.getModules(facesContext, uiComponent);
 		Popover popover = (Popover) uiComponent;
 
 		if (popover.isDismissible()) {
-			modules.add("event-move");
+			modules = StringHelper.append(modules, "event-move");
 		}
 
-		return modules.toArray(new String[] {});
+		return modules;
 	}
 }

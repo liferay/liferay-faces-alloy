@@ -74,7 +74,9 @@ public class OutputScriptRenderer extends OutputScriptRendererBase {
 				ScriptFactory scriptFactory = (ScriptFactory) FactoryExtensionFinder.getFactory(ScriptFactory.class);
 
 				if ((use != null) && (use.length() > 0)) {
-					script = scriptFactory.getAlloyScript(bufferedScriptString, use.split(","));
+
+					String[] modules = use.split(",");
+					script = scriptFactory.getScript(bufferedScriptString, modules, Script.Type.ALLOY);
 				}
 				else {
 					script = scriptFactory.getScript(bufferedScriptString);
@@ -94,13 +96,13 @@ public class OutputScriptRenderer extends OutputScriptRendererBase {
 				ResponseWriter responseWriter = facesContext.getResponseWriter();
 
 				// In order to determine the exact YUI sandbox string to write, the modules and browser information
-				// must be passed to RendererUtil.getAlloyBeginScript().
+				// must be passed to RendererUtil.getAlloyBeginScript().;
 				String[] modules = use.split(",");
 				BrowserSnifferFactory browserSnifferFactory = (BrowserSnifferFactory) FactoryExtensionFinder.getFactory(
 						BrowserSnifferFactory.class);
 				BrowserSniffer browserSniffer = browserSnifferFactory.getBrowserSniffer(
 						facesContext.getExternalContext());
-				String alloyBeginScript = AlloyRendererUtil.getAlloyBeginScript(modules, browserSniffer);
+				String alloyBeginScript = AlloyRendererUtil.getAlloyBeginScript(modules, null, browserSniffer);
 				OutputScriptResponseWriter outputScriptResponseWriter = new OutputScriptResponseWriter(responseWriter,
 						alloyBeginScript);
 				super.encodeChildren(facesContext, uiComponent, outputScriptResponseWriter);
