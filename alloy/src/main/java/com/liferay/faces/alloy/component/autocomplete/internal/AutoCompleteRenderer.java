@@ -15,7 +15,6 @@ package com.liferay.faces.alloy.component.autocomplete.internal;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -37,6 +36,7 @@ import com.liferay.faces.alloy.component.autocomplete.AutoComplete;
 import com.liferay.faces.alloy.render.internal.JavaScriptFragment;
 import com.liferay.faces.util.component.ClientComponent;
 import com.liferay.faces.util.component.Styleable;
+import com.liferay.faces.util.helper.StringHelper;
 import com.liferay.faces.util.render.RendererUtil;
 import com.liferay.faces.util.render.internal.BufferedScriptResponseWriter;
 
@@ -428,7 +428,7 @@ public class AutoCompleteRenderer extends AutoCompleteRendererBase {
 	@Override
 	protected String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
 
-		List<String> modules = new ArrayList<String>(Arrays.asList(MODULES));
+		String[] modules = MODULES;
 		AutoComplete autoComplete = (AutoComplete) uiComponent;
 		String clientFilterType = autoComplete.getClientFilterType();
 		String clientCustomFilter = autoComplete.getClientCustomFilter();
@@ -437,22 +437,22 @@ public class AutoCompleteRenderer extends AutoCompleteRendererBase {
 		// "autocomplete-filters" module.
 		if (!isServerFilteringEnabled(autoComplete) && (clientFilterType != null) && (clientFilterType.length() > 0) &&
 				(clientCustomFilter == null)) {
-			modules.add(AUTOCOMPLETE_FILTERS);
+			modules = StringHelper.append(modules, AUTOCOMPLETE_FILTERS);
 		}
 
 		String highlighterType = autoComplete.getHighlighterType();
 
 		if (highlighterType != null) {
-			modules.add(AUTOCOMPLETE_HIGHLIGHTERS);
+			modules = StringHelper.append(modules, AUTOCOMPLETE_HIGHLIGHTERS);
 		}
 
 		Map<String, List<ClientBehavior>> clientBehaviorMap = autoComplete.getClientBehaviors();
 		List<ClientBehavior> valueChangeClientBehaviors = clientBehaviorMap.get(VALUE_CHANGE);
 
 		if ((valueChangeClientBehaviors != null) && !valueChangeClientBehaviors.isEmpty()) {
-			modules.add(NODE_EVENT_SIMULATE);
+			modules = StringHelper.append(modules, NODE_EVENT_SIMULATE);
 		}
 
-		return modules.toArray(new String[] {});
+		return modules;
 	}
 }

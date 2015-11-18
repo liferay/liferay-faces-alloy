@@ -14,9 +14,6 @@
 package com.liferay.faces.alloy.component.inputdatetime.internal;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
@@ -38,6 +35,7 @@ import com.liferay.faces.util.client.BrowserSnifferFactory;
 import com.liferay.faces.util.component.ClientComponent;
 import com.liferay.faces.util.component.Styleable;
 import com.liferay.faces.util.factory.FactoryExtensionFinder;
+import com.liferay.faces.util.helper.StringHelper;
 import com.liferay.faces.util.render.RendererUtil;
 
 
@@ -252,36 +250,28 @@ public abstract class InputDateTimeRenderer extends InputDateTimeRendererBase {
 	protected abstract InputDateTimeResponseWriter getInputDateTimeResponseWriter(ResponseWriter responseWriter,
 		String inputClientId, boolean nativeInputDateTime);
 
-	protected abstract List<String> getModules(List<String> modules, FacesContext facesContext,
-		InputDateTime inputDateTime);
+	protected String[] getModules(String defaultModule, FacesContext facesContext, UIComponent uiComponent) {
 
-	protected String[] getModules(String[] defaultModules, FacesContext facesContext, UIComponent uiComponent) {
-
-		List<String> modules = new ArrayList<String>();
+		String[] modules = new String[] { defaultModule };
 		BrowserSnifferFactory browserSnifferFactory = (BrowserSnifferFactory) FactoryExtensionFinder.getFactory(
 				BrowserSnifferFactory.class);
 		BrowserSniffer browserSniffer = browserSnifferFactory.getBrowserSniffer(facesContext.getExternalContext());
 		InputDateTime inputDateTime = (InputDateTime) uiComponent;
 
 		if (isNative(browserSniffer, inputDateTime)) {
-			String nativeAlloyModuleName = defaultModules[0].concat("-native");
-			modules.add(nativeAlloyModuleName);
+			modules[0] = defaultModule.concat("-native");
 		}
 		else {
-
-			modules.addAll(Arrays.asList(defaultModules));
 
 			Map<String, List<ClientBehavior>> clientBehaviorMap = inputDateTime.getClientBehaviors();
 			List<ClientBehavior> valueChangeClientBehaviors = clientBehaviorMap.get(VALUE_CHANGE);
 
 			if ((valueChangeClientBehaviors != null) && !valueChangeClientBehaviors.isEmpty()) {
-				modules.add(NODE_EVENT_SIMULATE);
+				modules = StringHelper.append(modules, NODE_EVENT_SIMULATE);
 			}
-
-			modules = getModules(Collections.unmodifiableList(modules), facesContext, inputDateTime);
 		}
 
-		return modules.toArray(new String[] {});
+		return modules;
 	}
 
 	@Override

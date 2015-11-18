@@ -14,9 +14,6 @@
 package com.liferay.faces.alloy.component.dialog.internal;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import javax.faces.application.ResourceDependencies;
 import javax.faces.application.ResourceDependency;
@@ -28,6 +25,7 @@ import javax.faces.render.FacesRenderer;
 import com.liferay.faces.alloy.component.dialog.Dialog;
 import com.liferay.faces.alloy.render.internal.JavaScriptFragment;
 import com.liferay.faces.util.component.ClientComponent;
+import com.liferay.faces.util.helper.StringHelper;
 
 
 /**
@@ -152,14 +150,13 @@ public class DialogRenderer extends DialogRendererBase {
 	@Override
 	protected String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
 
-		String[] modulesArray = super.getModules(facesContext, uiComponent);
-		List<String> modules = new ArrayList<String>(Arrays.asList(modulesArray));
+		String[] modules = MODULES;
 		Dialog dialog = (Dialog) uiComponent;
 
 		if (!dialog.isModal() && dialog.isDismissible()) {
-			modules.add("event-move");
+			modules = StringHelper.append(modules, "event-move");
 		}
 
-		return modules.toArray(new String[] {});
+		return modules;
 	}
 }

@@ -33,12 +33,11 @@ import com.liferay.faces.util.render.internal.DelegationResponseWriter;
 public abstract class NodeMenuNavRendererBase extends DelegatingAlloyRendererBase {
 
 	// Private constants
-	private static final String ALLOY_MODULE_NAME = "node-menunav"; // Needed when yui="false"
 	private static final String COLON_OPTIONS = ":options";
 
 	// Needed when yui="false"
 	// Modules
-	protected static final String[] MODULES = { ALLOY_MODULE_NAME };
+	protected static final String[] MODULES = { "node-menunav" };
 
 	// Needed when yui="false"
 	@Override

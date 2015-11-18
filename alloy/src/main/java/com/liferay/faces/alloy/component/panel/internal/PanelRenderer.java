@@ -15,7 +15,6 @@ package com.liferay.faces.alloy.component.panel.internal;
 
 import java.io.IOException;
 
-import javax.faces.application.ResourceDependency;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
