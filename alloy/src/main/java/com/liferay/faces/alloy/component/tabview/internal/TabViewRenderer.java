@@ -59,11 +59,7 @@ import com.liferay.faces.util.render.RendererUtil;
 public class TabViewRenderer extends TabViewRendererBase {
 
 	// Private Constants
-	private static final String NAV_NAV_TABS = "nav nav-tabs";
 	private static final String SELECTED_TAB_HEADER_CLASSES = "tab yui3-widget active tab-selected";
-	private static final String SELECTION_CHANGE = "selectionChange";
-	private static final String SRC_NODE = "srcNode";
-	private static final String TAB_CONTENT = "tab-content";
 	private static final String UNSELECTED_TAB_HEADER_CLASSES = "tab yui3-widget";
 
 	// Logger
@@ -93,16 +89,12 @@ public class TabViewRenderer extends TabViewRendererBase {
 		Object value = tabView.getValue();
 		String var = tabView.getVar();
 		boolean iterateOverDataModel = ((value != null) && (var != null));
-		Tab prototypeChildTab = null;
-
-		if (uiComponent instanceof TabView) {
-			prototypeChildTab = TabUtil.getFirstChildTab(tabView);
-		}
+		Tab prototypeChildTab = TabUtil.getFirstChildTab(tabView);
 
 		// Encode the starting <ul> unordered list element that represents the list of clickable tabs.
 		ResponseWriter responseWriter = facesContext.getResponseWriter();
 		responseWriter.startElement("ul", tabView);
-		RendererUtil.encodeStyleable(responseWriter, tabView, NAV_NAV_TABS);
+		responseWriter.writeAttribute("class", "nav nav-tabs", null);
 
 		if (iterateOverDataModel) {
 
@@ -146,7 +138,7 @@ public class TabViewRenderer extends TabViewRendererBase {
 
 		// Encode the starting <div> element that represents the content for the selected tab.
 		responseWriter.startElement("div", uiComponent);
-		RendererUtil.encodeStyleable(responseWriter, (Styleable) uiComponent, TAB_CONTENT);
+		responseWriter.writeAttribute("class", "tab-content", null);
 
 		// Encode the content for each tab.
 		if ((iterateOverDataModel) && (prototypeChildTab != null)) {
@@ -231,7 +223,7 @@ public class TabViewRenderer extends TabViewRendererBase {
 		// tabViewExample_tabViewForm_j_idt73.after('selectionChange', function(event){
 		responseWriter.write(clientVarName);
 		responseWriter.write(".after('"); // begin call to "after" method
-		responseWriter.write(SELECTION_CHANGE);
+		responseWriter.write("selectionChange");
 		responseWriter.write("', function(event){ "); // begin function to call after selectionChange
 
 		// var hidden = document.getElementById('tabViewExample:tabViewForm:j_idt73selectedIndex');
@@ -328,7 +320,7 @@ public class TabViewRenderer extends TabViewRendererBase {
 
 		first = false;
 
-		encodeClientId(responseWriter, SRC_NODE, tabView.getClientId(facesContext), first);
+		encodeClientId(responseWriter, "srcNode", tabView.getClientId(facesContext), first);
 	}
 
 	protected void encodeTabListItem(FacesContext facesContext, ResponseWriter responseWriter, Tab tab,
@@ -368,7 +360,7 @@ public class TabViewRenderer extends TabViewRendererBase {
 
 		// Otherwise, render the label of the specified tab.
 		else {
-			String headerText = (String) tab.getHeaderText();
+			String headerText = tab.getHeaderText();
 
 			if (headerText != null) {
 				responseWriter.write(headerText);
