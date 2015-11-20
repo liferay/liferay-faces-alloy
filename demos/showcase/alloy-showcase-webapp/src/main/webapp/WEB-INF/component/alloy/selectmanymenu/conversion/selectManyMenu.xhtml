@@ -1,6 +1,6 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:alloy="http://liferay.com/faces/alloy"
 	xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:showcase="http://java.sun.com/jsf/composite/showcase" template="/WEB-INF/templates/component-1col-60.xhtml">
+	xmlns:showcase="http://liferay.com/faces/showcase" template="/WEB-INF/templates/component-1col-60.xhtml">
 
 	<ui:define name="col1">
 		<alloy:form>
@@ -14,19 +14,21 @@
 					<f:selectItem itemLabel="July 4, 1776 AD" itemValue="07/04/1776 AD" />
 					<f:selectItem itemLabel="July 14, 1789 AD" itemValue="07/14/1789 AD" />
 				</alloy:selectManyMenu>
-				<showcase:note iconSize="small" value="#{i18n['note-chromium-issue-4579']}" />
+				<showcase:note smallIcon="true">
+					<alloy:outputText escape="false" value="#{i18n['note-chromium-issue-4579']}" />
+				</showcase:note>
 				<hr />
 				<alloy:commandButton action="#{selectManyBackingBean.submitAnswer}" render="@form"
 					value="#{i18n['submit']}" />
 			</showcase:example>
-			<showcase:outputModel>
+			<showcase:results label="#{i18n['model-value']}">
 				<ui:repeat id="modelValue" value="#{selectManyModelBean.dates}" var="date">
 					<alloy:outputText value="#{date}">
 						<f:convertDateTime pattern="MMM d, yyyy G" />
 					</alloy:outputText>
 					<br />
 				</ui:repeat>
-			</showcase:outputModel>
+			</showcase:results>
 		</alloy:form>
 	</ui:define>
 

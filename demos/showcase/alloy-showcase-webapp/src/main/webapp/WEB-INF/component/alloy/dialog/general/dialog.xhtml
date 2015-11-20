@@ -1,5 +1,5 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:alloy="http://liferay.com/faces/alloy"
-	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:showcase="http://java.sun.com/jsf/composite/showcase"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:showcase="http://liferay.com/faces/showcase"
 	template="/WEB-INF/templates/component-4col.xhtml">
 
 	<ui:define name="col1">
@@ -17,9 +17,9 @@
 					<alloy:button onclick="Liferay.component('dialogKey1').hide();" value="#{i18n['cancel']}" />
 				</alloy:dialog>
 			</showcase:example>
-			<showcase:outputModel>
+			<showcase:results label="#{i18n['model-value']}">
 				<alloy:outputText value="#{dialogModelBean.text}" />
-			</showcase:outputModel>
+			</showcase:results>
 		</alloy:form>
 	</ui:define>
 
@@ -38,9 +38,9 @@
 					<alloy:button onclick="Liferay.component('dialogKey2').hide();" value="#{i18n['cancel']}" />
 				</alloy:dialog>
 			</showcase:example>
-			<showcase:outputModel>
+			<showcase:results label="#{i18n['model-value']}">
 				<alloy:outputText value="#{dialogModelBean.text}" />
-			</showcase:outputModel>
+			</showcase:results>
 		</alloy:form>
 	</ui:define>
 
@@ -59,9 +59,9 @@
 					<alloy:button onclick="Liferay.component('dialogKey3').hide();" value="#{i18n['cancel']}" />
 				</alloy:dialog>
 			</showcase:example>
-			<showcase:outputModel>
+			<showcase:results label="#{i18n['model-value']}">
 				<alloy:outputText value="#{dialogModelBean.text}" />
-			</showcase:outputModel>
+			</showcase:results>
 		</alloy:form>
 	</ui:define>
 

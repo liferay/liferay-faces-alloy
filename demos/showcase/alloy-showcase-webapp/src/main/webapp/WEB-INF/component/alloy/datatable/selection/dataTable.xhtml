@@ -1,10 +1,10 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:alloy="http://liferay.com/faces/alloy"
 	xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:showcase="http://java.sun.com/jsf/composite/showcase" template="/WEB-INF/templates/component-1col-80.xhtml">
+	xmlns:showcase="http://liferay.com/faces/showcase" template="/WEB-INF/templates/component-1col-80.xhtml">
 
 	<ui:define name="col1">
 		<alloy:form id="exampleForm">
-			<showcase:example id="example">
+			<showcase:example>
 				<alloy:messages id="feedback" layout="table" globalOnly="true" />
 				<alloy:field label="#{i18n['selection-mode']}">
 					<alloy:selectOneMenu value="#{dataTableBacking.selectionMode}"
@@ -38,7 +38,7 @@
 					<f:facet name="footer">
 						<alloy:commandButton actionListener="#{dataTableBacking.determineSelectedCustomers}">
 							<alloy:outputText value="#{i18n['show-selected-customers-as-feedback']}" />
-							<f:ajax execute="customers @this" render=":exampleForm:example:feedback" />
+							<f:ajax execute="customers @this" render=":exampleForm:feedback" />
 						</alloy:commandButton>
 						<alloy:commandButton actionListener="#{dataTableBacking.determineSelectedCustomers}">
 							<alloy:outputText value="#{i18n['show-selected-customers-in-modal-dialog']}" />

@@ -1,15 +1,15 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:alloy="http://liferay.com/faces/alloy"
 	xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:showcase="http://java.sun.com/jsf/composite/showcase" template="/WEB-INF/templates/component-1col-60.xhtml">
+	xmlns:showcase="http://liferay.com/faces/showcase" template="/WEB-INF/templates/component-1col-60.xhtml">
 
 	<ui:define name="col1">
-		<showcase:example id="example">
+		<showcase:example>
 			<alloy:form id="exampleForm">
 				<alloy:dataList styleClass="unstyled" value="#{dataListModelBean.liferayBenefits}" var="liferayBenefit">
 					<alloy:dataItem>
 						<alloy:icon name="search" />
 						<alloy:commandLink onclick="Liferay.component('dialogKey').show()"
-							render=":example:exampleForm:dialogContents" value="#{liferayBenefit.label}">
+							render=":exampleForm:dialogContents" value="#{liferayBenefit.label}">
 							<f:setPropertyActionListener value="#{liferayBenefit}"
 								target="#{dataListModelBean.selectedLiferayBenefit}" />
 						</alloy:commandLink>

@@ -1,9 +1,9 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:alloy="http://liferay.com/faces/alloy"
 	xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:showcase="http://java.sun.com/jsf/composite/showcase" template="/WEB-INF/templates/component-1col-60.xhtml">
+	xmlns:showcase="http://liferay.com/faces/showcase" template="/WEB-INF/templates/component-1col-60.xhtml">
 
 	<ui:define name="col1">
-		<alloy:form id="myForm">
+		<alloy:form>
 			<showcase:example description="#{i18n['alloy-field-general-example-1']}" renderedCheckbox="true">
 				<alloy:messages globalOnly="true" layout="table" />
 				<alloy:field id="field" label="#{i18n['first-name']}"
@@ -18,9 +18,9 @@
 				<alloy:commandButton action="#{fieldBackingBean.submit}" render="@form"
 					value="#{i18n['submit-and-re-render-form']}" />
 			</showcase:example>
-			<showcase:outputModel id="outputModel">
+			<showcase:results label="#{i18n['model-value']}">
 				<alloy:outputText id="modelValue" value="#{fieldModelBean.firstName}" />
-			</showcase:outputModel>
+			</showcase:results>
 		</alloy:form>
 	</ui:define>
 

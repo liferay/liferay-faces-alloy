@@ -1,10 +1,10 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:alloy="http://liferay.com/faces/alloy"
-	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:showcase="http://java.sun.com/jsf/composite/showcase"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:showcase="http://liferay.com/faces/showcase"
 	template="/WEB-INF/templates/component-2col.xhtml">
 
 	<ui:define name="col1">
 		<!-- Example 1: Default usage with dismissible="true" -->
-		<alloy:form id="myForm1">
+		<alloy:form>
 			<showcase:example description="#{i18n['alloy-popover-general-example-1']}" number="1">
 				<alloy:button id="myButton1" onclick="Liferay.component('popover1').toggle();"
 					value="#{i18n['click-here-to-toggle-the-popover-and-click-outside-the-popover-to-hide']}" />
@@ -18,15 +18,15 @@
 					<alloy:button onclick="Liferay.component('popover1').hide();" value="#{i18n['cancel']}" />
 				</alloy:popover>
 			</showcase:example>
-			<showcase:outputModel id="outputModel">
+			<showcase:results label="#{i18n['model-value']}">
 				<alloy:outputText id="modelValue" value="#{popoverModelBean.text1}" />
-			</showcase:outputModel>
+			</showcase:results>
 		</alloy:form>
 	</ui:define>
 
 	<ui:define name="col2">
 		<!-- Example 2: Alternate usage with dismissible="false" -->
-		<alloy:form id="myForm2">
+		<alloy:form>
 			<showcase:example description="#{i18n['alloy-popover-general-example-2']}" number="2">
 				<alloy:button id="myButton2" onclick="Liferay.component('popover2').show();"
 					value="#{i18n['click-here-to-show-the-popover']}" />
@@ -41,9 +41,9 @@
 					<alloy:button onclick="Liferay.component('popover2').hide();" value="#{i18n['cancel']}" />
 				</alloy:popover>
 			</showcase:example>
-			<showcase:outputModel id="outputModel">
+			<showcase:results label="#{i18n['model-value']}">
 				<alloy:outputText id="modelValue" value="#{popoverModelBean.text2}" />
-			</showcase:outputModel>
+			</showcase:results>
 		</alloy:form>
 	</ui:define>
 
