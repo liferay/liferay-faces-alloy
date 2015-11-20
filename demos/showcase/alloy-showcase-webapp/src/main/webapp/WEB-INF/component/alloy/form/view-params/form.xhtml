@@ -1,5 +1,5 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:alloy="http://liferay.com/faces/alloy"
-	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:showcase="http://java.sun.com/jsf/composite/showcase"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:showcase="http://liferay.com/faces/showcase"
 	template="/WEB-INF/templates/component-1col-80.xhtml">
 
 	<ui:define name="col1">
@@ -14,9 +14,9 @@
 			<showcase:example>
 				<alloy:outputText escape="false" value="#{i18n['form-action-attribute-view-params-description']}" />
 			</showcase:example>
-			<showcase:outputAttribute>
+			<showcase:results label="#{i18n['attribute-value']}">
 				<alloy:outputText id="attributeValue" binding="#{attributeValue}" />
-			</showcase:outputAttribute>
+			</showcase:results>
 		</alloy:form>
 	</ui:define>
 

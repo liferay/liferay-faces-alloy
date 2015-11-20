@@ -1,6 +1,6 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:alloy="http://liferay.com/faces/alloy"
 	xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:showcase="http://java.sun.com/jsf/composite/showcase" template="/WEB-INF/templates/component-1col-60.xhtml">
+	xmlns:showcase="http://liferay.com/faces/showcase" template="/WEB-INF/templates/component-1col-60.xhtml">
 
 	<ui:define name="col1">
 		<alloy:form>
@@ -18,14 +18,14 @@
 				<alloy:commandButton action="#{selectManyBackingBean.submitAnswer}" render="@form"
 					value="#{i18n['submit']}" />
 			</showcase:example>
-			<showcase:outputModel>
+			<showcase:results label="#{i18n['model-value']}">
 				<ui:repeat id="modelValue" value="#{selectManyModelBean.dates}" var="date">
 					<alloy:outputText value="#{date}">
 						<f:convertDateTime pattern="MMM d, yyyy G" />
 					</alloy:outputText>
 					<br />
 				</ui:repeat>
-			</showcase:outputModel>
+			</showcase:results>
 		</alloy:form>
 	</ui:define>
 

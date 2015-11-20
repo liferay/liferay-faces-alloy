@@ -1,15 +1,15 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:alloy="http://liferay.com/faces/alloy"
 	xmlns:f="http://java.sun.com/jsf/core" xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:showcase="http://java.sun.com/jsf/composite/showcase">
+	xmlns:showcase="http://liferay.com/faces/showcase">
 
-	<showcase:example id="example">
+	<showcase:example>
 		<alloy:form id="exampleForm">
 			<alloy:messages id="feedback" globalOnly="true" layout="table" />
 			<alloy:accordion selectedIndex="#{accordionBackingBean.defaultSelectedIndex}">
 				<f:ajax event="tabCollapse" listener="#{accordionBackingBean.tabCollapseListener}"
-					render=":example:exampleForm:feedback" />
+					render=":exampleForm:feedback" />
 				<f:ajax event="tabExpand" listener="#{accordionBackingBean.tabExpandListener}"
-					render=":example:exampleForm:feedback" />
+					render=":exampleForm:feedback" />
 				<alloy:tab headerText="Compatible">
 					<alloy:image library="images" name="icon-compatible.png" />
 					<span>Liferay lets you reuse the enterprise software and skills you already have in-house.</span>

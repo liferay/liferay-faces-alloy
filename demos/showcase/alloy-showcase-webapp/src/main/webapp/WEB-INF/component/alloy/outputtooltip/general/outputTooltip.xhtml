@@ -1,5 +1,5 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:alloy="http://liferay.com/faces/alloy"
-	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:showcase="http://java.sun.com/jsf/composite/showcase"
+	xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:showcase="http://liferay.com/faces/showcase"
 	template="/WEB-INF/templates/component-4col.xhtml">
 
 	<ui:define name="col1">
@@ -16,17 +16,17 @@
 	<ui:define name="col2">
 		<!-- Example 2: Specifying tooltip text via the associated component's title attribute -->
 		<showcase:example description="#{i18n['alloy-outputtooltip-general-example-2']}" number="2">
-			<alloy:inputText id="myText" title="#{i18n['text-from-title-attribute']}"
+			<alloy:inputText id="myText1" title="#{i18n['text-from-title-attribute']}"
 				value="#{i18n['position-mouse-cursor-here']}" />
-			<alloy:outputTooltip for="myText" />
+			<alloy:outputTooltip for="myText1" />
 		</showcase:example>
 	</ui:define>
 
 	<ui:define name="col3">
 		<!-- Example 3: Specifying children, headerText, opacity="0.5" and position="bottom" -->
 		<showcase:example description="#{i18n['alloy-outputtooltip-general-example-3']}" number="3">
-			<alloy:outputText id="myText" value="#{i18n['position-mouse-cursor-here']}" />
-			<alloy:outputTooltip for="myText" headerText="#{i18n['header-text']}" opacity="0.5" position="bottom"
+			<alloy:outputText id="myText2" value="#{i18n['position-mouse-cursor-here']}" />
+			<alloy:outputTooltip for="myText2" headerText="#{i18n['header-text']}" opacity="0.5" position="bottom"
 				styleClass="tooltip-help" zIndex="0">
 				<alloy:image value="#{resource['images:liferay-faces-logo-small.png']}" />
 			</alloy:outputTooltip>
