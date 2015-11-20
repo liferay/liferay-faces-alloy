@@ -14,9 +14,7 @@
 package com.liferay.faces.alloy.component.dialog.internal;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.Set;
 
 import javax.faces.application.ResourceDependencies;
 import javax.faces.application.ResourceDependency;
@@ -150,16 +148,15 @@ public class DialogRenderer extends DialogRendererBase {
 	}
 
 	@Override
-	protected String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
+	protected Set<String> getModules(FacesContext facesContext, UIComponent uiComponent) {
 
-		String[] modulesArray = super.getModules(facesContext, uiComponent);
-		List<String> modules = new ArrayList<String>(Arrays.asList(modulesArray));
+		Set<String> modules = super.getModules(facesContext, uiComponent);
 		Dialog dialog = (Dialog) uiComponent;
 
 		if (!dialog.isModal() && dialog.isDismissible()) {
 			modules.add("event-move");
 		}
 
-		return modules.toArray(new String[] {});
+		return modules;
 	}
 }

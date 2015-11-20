@@ -15,6 +15,7 @@ package com.liferay.faces.alloy.component.outputremainingchars.internal;
 //J-
 
 import java.io.IOException;
+import java.util.Set;
 
 import javax.annotation.Generated;
 import javax.faces.component.UIComponent;
@@ -39,9 +40,6 @@ public abstract class OutputRemainingCharsRendererBase extends DelegatingAlloyRe
 	protected static final String MAX_LENGTH = "maxLength";
 	protected static final String ONCE_MAXLENGTH_REACHED = "onceMaxlengthReached";
 	protected static final String ON_MAXLENGTH_REACHED = "onMaxlengthReached";
-
-	// Modules
-	protected static final String[] MODULES = { "aui-char-counter" };
 
 	@Override
 	public void encodeAlloyAttributes(FacesContext facesContext, ResponseWriter responseWriter, UIComponent uiComponent) throws IOException {
@@ -74,8 +72,11 @@ public abstract class OutputRemainingCharsRendererBase extends DelegatingAlloyRe
 	}
 
 	@Override
-	protected String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
-		return MODULES;
+	protected Set<String> getModules(FacesContext facesContext, UIComponent uiComponent) {
+
+		Set<String> modules = super.getModules(facesContext, uiComponent);
+		modules.add("aui-char-counter");
+		return modules;
 	}
 
 	protected void encodeInput(ResponseWriter responseWriter, OutputRemainingChars outputRemainingChars, String for_, boolean first) throws IOException {

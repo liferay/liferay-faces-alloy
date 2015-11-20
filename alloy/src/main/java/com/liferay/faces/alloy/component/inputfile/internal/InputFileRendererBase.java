@@ -15,6 +15,7 @@ package com.liferay.faces.alloy.component.inputfile.internal;
 //J-
 
 import java.io.IOException;
+import java.util.Set;
 
 import javax.annotation.Generated;
 import javax.faces.component.UIComponent;
@@ -45,9 +46,6 @@ public abstract class InputFileRendererBase extends InputFileRendererCompat {
 	protected static final String SHOW_PREVIEW = "showPreview";
 	protected static final String SHOW_PROGRESS = "showProgress";
 
-	// Modules
-	protected static final String[] MODULES = { "uploader" };
-
 	@Override
 	public void encodeAlloyAttributes(FacesContext facesContext, ResponseWriter responseWriter, UIComponent uiComponent) throws IOException {
 
@@ -71,8 +69,11 @@ public abstract class InputFileRendererBase extends InputFileRendererCompat {
 	}
 
 	@Override
-	protected String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
-		return MODULES;
+	protected Set<String> getModules(FacesContext facesContext, UIComponent uiComponent) {
+
+		Set<String> modules = super.getModules(facesContext, uiComponent);
+		modules.add("uploader");
+		return modules;
 	}
 
 	protected void encodeAppendNewFiles(ResponseWriter responseWriter, InputFile inputFile, Boolean appendNewFiles, boolean first) throws IOException {

@@ -15,11 +15,11 @@ package com.liferay.faces.alloy.component.inputdate.internal;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 import java.util.TimeZone;
 
 import javax.faces.application.ResourceDependencies;
@@ -31,7 +31,6 @@ import javax.faces.context.ResponseWriter;
 import javax.faces.render.FacesRenderer;
 
 import com.liferay.faces.alloy.component.inputdate.InputDate;
-import com.liferay.faces.alloy.component.inputdatetime.InputDateTime;
 import com.liferay.faces.alloy.component.inputdatetime.internal.InputDateTimeResponseWriter;
 import com.liferay.faces.alloy.render.internal.JavaScriptFragment;
 import com.liferay.faces.util.client.BrowserSniffer;
@@ -291,21 +290,17 @@ public class InputDateRenderer extends InputDateRendererBase {
 	}
 
 	@Override
-	protected String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
-		return getModules(MODULES, facesContext, uiComponent);
-	}
+	protected Set<String> getModules(FacesContext facesContext, UIComponent uiComponent) {
 
-	@Override
-	protected List<String> getModules(List<String> modules, FacesContext facesContext, InputDateTime inputDateTime) {
+		Set<String> modules = getModules("aui-datepicker", facesContext, uiComponent);
 
-		InputDate inputDate = (InputDate) inputDateTime;
+		InputDate inputDate = (InputDate) uiComponent;
 		String showOn = inputDate.getShowOn();
-		List<String> modulesList = new ArrayList<String>(modules);
 
 		if ("button".equals(showOn)) {
-			modulesList.add("aui-datatype-date-parse");
+			modules.add("aui-datatype-date-parse");
 		}
 
-		return modulesList;
+		return modules;
 	}
 }

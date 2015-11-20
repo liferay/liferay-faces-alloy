@@ -15,6 +15,7 @@ package com.liferay.faces.alloy.component.dialog.internal;
 //J-
 
 import java.io.IOException;
+import java.util.Set;
 
 import javax.annotation.Generated;
 import javax.faces.component.UIComponent;
@@ -43,9 +44,6 @@ public abstract class DialogRendererBase extends OverlayRendererBase {
 	protected static final String MODAL = "modal";
 	protected static final String WIDTH = "width";
 	protected static final String Z_INDEX = "zIndex";
-
-	// Modules
-	protected static final String[] MODULES = { "aui-modal" };
 
 	@Override
 	public void encodeAlloyAttributes(FacesContext facesContext, ResponseWriter responseWriter, UIComponent uiComponent) throws IOException {
@@ -94,8 +92,11 @@ public abstract class DialogRendererBase extends OverlayRendererBase {
 	}
 
 	@Override
-	protected String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
-		return MODULES;
+	protected Set<String> getModules(FacesContext facesContext, UIComponent uiComponent) {
+
+		Set<String> modules = super.getModules(facesContext, uiComponent);
+		modules.add("aui-modal");
+		return modules;
 	}
 
 	protected void encodeHeight(ResponseWriter responseWriter, Dialog dialog, String height, boolean first) throws IOException {

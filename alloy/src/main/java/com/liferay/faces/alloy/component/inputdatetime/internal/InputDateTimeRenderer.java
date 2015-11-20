@@ -14,12 +14,10 @@
 package com.liferay.faces.alloy.component.inputdatetime.internal;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Set;
 
 import javax.faces.FactoryFinder;
 import javax.faces.application.Application;
@@ -252,24 +250,21 @@ public abstract class InputDateTimeRenderer extends InputDateTimeRendererBase {
 	protected abstract InputDateTimeResponseWriter getInputDateTimeResponseWriter(ResponseWriter responseWriter,
 		String inputClientId, boolean nativeInputDateTime);
 
-	protected abstract List<String> getModules(List<String> modules, FacesContext facesContext,
-		InputDateTime inputDateTime);
+	protected Set<String> getModules(String defaultModule, FacesContext facesContext, UIComponent uiComponent) {
 
-	protected String[] getModules(String[] defaultModules, FacesContext facesContext, UIComponent uiComponent) {
-
-		List<String> modules = new ArrayList<String>();
+		Set<String> modules = super.getModules(facesContext, uiComponent);
 		BrowserSnifferFactory browserSnifferFactory = (BrowserSnifferFactory) FactoryExtensionFinder.getFactory(
 				BrowserSnifferFactory.class);
 		BrowserSniffer browserSniffer = browserSnifferFactory.getBrowserSniffer(facesContext.getExternalContext());
 		InputDateTime inputDateTime = (InputDateTime) uiComponent;
 
 		if (isNative(browserSniffer, inputDateTime)) {
-			String nativeAlloyModuleName = defaultModules[0].concat("-native");
+			String nativeAlloyModuleName = defaultModule.concat("-native");
 			modules.add(nativeAlloyModuleName);
 		}
 		else {
 
-			modules.addAll(Arrays.asList(defaultModules));
+			modules.add(defaultModule);
 
 			Map<String, List<ClientBehavior>> clientBehaviorMap = inputDateTime.getClientBehaviors();
 			List<ClientBehavior> valueChangeClientBehaviors = clientBehaviorMap.get(VALUE_CHANGE);
@@ -277,11 +272,9 @@ public abstract class InputDateTimeRenderer extends InputDateTimeRendererBase {
 			if ((valueChangeClientBehaviors != null) && !valueChangeClientBehaviors.isEmpty()) {
 				modules.add(NODE_EVENT_SIMULATE);
 			}
-
-			modules = getModules(Collections.unmodifiableList(modules), facesContext, inputDateTime);
 		}
 
-		return modules.toArray(new String[] {});
+		return modules;
 	}
 
 	@Override

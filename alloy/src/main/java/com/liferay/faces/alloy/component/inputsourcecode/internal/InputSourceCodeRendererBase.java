@@ -15,6 +15,7 @@ package com.liferay.faces.alloy.component.inputsourcecode.internal;
 //J-
 
 import java.io.IOException;
+import java.util.Set;
 
 import javax.annotation.Generated;
 import javax.faces.component.UIComponent;
@@ -48,9 +49,6 @@ public abstract class InputSourceCodeRendererBase extends DelegatingAlloyRendere
 	protected static final String USE_WRAP_MODE = "useWrapMode";
 	protected static final String VALUE = "value";
 	protected static final String WIDTH = "width";
-
-	// Modules
-	protected static final String[] MODULES = { "aui-ace-editor" };
 
 	@Override
 	public void encodeAlloyAttributes(FacesContext facesContext, ResponseWriter responseWriter, UIComponent uiComponent) throws IOException {
@@ -155,8 +153,11 @@ public abstract class InputSourceCodeRendererBase extends DelegatingAlloyRendere
 	}
 
 	@Override
-	protected String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
-		return MODULES;
+	protected Set<String> getModules(FacesContext facesContext, UIComponent uiComponent) {
+
+		Set<String> modules = super.getModules(facesContext, uiComponent);
+		modules.add("aui-ace-editor");
+		return modules;
 	}
 
 	protected void encodeHeight(ResponseWriter responseWriter, InputSourceCode inputSourceCode, String height, boolean first) throws IOException {

@@ -15,6 +15,7 @@ package com.liferay.faces.alloy.component.selectrating.internal;
 //J-
 
 import java.io.IOException;
+import java.util.Set;
 
 import javax.annotation.Generated;
 import javax.faces.component.UIComponent;
@@ -36,9 +37,6 @@ public abstract class SelectRatingRendererBase extends DelegatingAlloyRendererBa
 	// Protected Constants
 	protected static final String CLIENT_KEY = "clientKey";
 
-	// Modules
-	protected static final String[] MODULES = { "aui-rating" };
-
 	@Override
 	public void encodeAlloyAttributes(FacesContext facesContext, ResponseWriter responseWriter, UIComponent uiComponent) throws IOException {
 
@@ -54,8 +52,11 @@ public abstract class SelectRatingRendererBase extends DelegatingAlloyRendererBa
 	}
 
 	@Override
-	protected String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
-		return MODULES;
+	protected Set<String> getModules(FacesContext facesContext, UIComponent uiComponent) {
+
+		Set<String> modules = super.getModules(facesContext, uiComponent);
+		modules.add("aui-rating");
+		return modules;
 	}
 
 	protected void encodeHiddenAttributes(FacesContext facesContext, ResponseWriter responseWriter, SelectRating selectRating, boolean first) throws IOException {
