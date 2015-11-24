@@ -883,7 +883,7 @@ java.util.List<java.lang.String> filterResults(java.lang.String, java.util.List<
 			<type><![CDATA[java.lang.String]]></type>
 		</attribute>
 		<tag-extension>
-			<alloy-ui-modules>aui-datatable, node-event-simulate</alloy-ui-modules>
+			<alloy-ui-modules>aui-datatable,node-event-simulate</alloy-ui-modules>
 			<extends-tags>clientComponent htmlCommonEventsInherited htmlPassthroughInherited htmlTableInherited uiDataInherited</extends-tags>
 			<extra-style-classes>table table-bordered table-hover table-striped</extra-style-classes>
 			<parent-class><![CDATA[javax.faces.component.html.HtmlDataTable]]></parent-class>
@@ -1290,7 +1290,7 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 			<type><![CDATA[boolean]]></type>
 		</attribute>
 		<tag-extension>
-			<alloy-ui-modules>uploader, aui-datatable, datatype-xml</alloy-ui-modules>
+			<alloy-ui-modules>uploader,aui-datatable,datatype-xml</alloy-ui-modules>
 			<alloy-ui-name>Uploader</alloy-ui-name>
 			<extends-tags>clientComponent inputText</extends-tags>
 			<parent-class><![CDATA[com.liferay.faces.util.component.InputFileBase]]></parent-class>
