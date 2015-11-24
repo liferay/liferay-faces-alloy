@@ -16,7 +16,6 @@ package com.liferay.faces.alloy.component.inputtime.internal;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -33,13 +32,13 @@ import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 import javax.faces.render.FacesRenderer;
 
-import com.liferay.faces.alloy.component.inputdatetime.InputDateTime;
 import com.liferay.faces.alloy.component.inputdatetime.internal.InputDateTimeResponseWriter;
 import com.liferay.faces.alloy.component.inputtime.InputTime;
 import com.liferay.faces.alloy.render.internal.JavaScriptFragment;
 import com.liferay.faces.util.client.BrowserSniffer;
 import com.liferay.faces.util.client.BrowserSnifferFactory;
 import com.liferay.faces.util.factory.FactoryExtensionFinder;
+import com.liferay.faces.util.helper.StringHelper;
 
 
 /**
@@ -373,26 +372,21 @@ public class InputTimeRenderer extends InputTimeRendererBase {
 
 	@Override
 	protected String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
-		return getModules(MODULES, facesContext, uiComponent);
-	}
 
-	@Override
-	protected List<String> getModules(List<String> modules, FacesContext facesContext, InputDateTime inputDateTime) {
-
-		List<String> inputTimeModules = new ArrayList<String>(modules);
-		InputTime inputTime = (InputTime) inputDateTime;
+		String[] modules = getModules(MODULES[0], facesContext, uiComponent);
+		InputTime inputTime = (InputTime) uiComponent;
 		String filterType = inputTime.getFilterType();
 
 		if ((filterType != null) && (filterType.length() > 0)) {
-			inputTimeModules.add("autocomplete-filters");
+			modules = StringHelper.append(modules, "autocomplete-filters");
 		}
 
 		String highlighterType = inputTime.getHighlighterType();
 
 		if ((highlighterType != null) && (highlighterType.length() > 0)) {
-			inputTimeModules.add("autocomplete-highlighters");
+			modules = StringHelper.append(modules, "autocomplete-highlighters");
 		}
 
-		return inputTimeModules;
+		return modules;
 	}
 }

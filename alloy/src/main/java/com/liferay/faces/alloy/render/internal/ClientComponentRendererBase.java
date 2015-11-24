@@ -120,7 +120,7 @@ public abstract class ClientComponentRendererBase extends Renderer implements Cl
 		ScriptFactory scriptFactory = (ScriptFactory) FactoryExtensionFinder.getFactory(ScriptFactory.class);
 
 		if (modules != null) {
-			script = scriptFactory.getAlloyScript(bufferedScriptString, modules);
+			script = scriptFactory.getScript(bufferedScriptString, modules, Script.Type.ALLOY);
 		}
 		else {
 			script = scriptFactory.getScript(bufferedScriptString);
@@ -134,9 +134,7 @@ public abstract class ClientComponentRendererBase extends Renderer implements Cl
 		return false;
 	}
 
-	protected String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
-		return null;
-	}
+	protected abstract String[] getModules(FacesContext facesContext, UIComponent uiComponent);
 
 	protected boolean isAjax(FacesContext facesContext) {
 		return facesContext.getPartialViewContext().isAjaxRequest();

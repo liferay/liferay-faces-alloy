@@ -46,7 +46,7 @@ public abstract class InputFileRendererBase extends InputFileRendererCompat {
 	protected static final String SHOW_PROGRESS = "showProgress";
 
 	// Modules
-	protected static final String[] MODULES = { "uploader" };
+	protected static final String[] MODULES = { "uploader", "aui-datatable", "datatype-xml" };
 
 	@Override
 	public void encodeAlloyAttributes(FacesContext facesContext, ResponseWriter responseWriter, UIComponent uiComponent) throws IOException {

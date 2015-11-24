@@ -14,9 +14,6 @@
 package com.liferay.faces.alloy.component.dialog.internal;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import javax.faces.application.ResourceDependencies;
 import javax.faces.application.ResourceDependency;
@@ -27,10 +24,8 @@ import javax.faces.render.FacesRenderer;
 
 import com.liferay.faces.alloy.component.dialog.Dialog;
 import com.liferay.faces.alloy.render.internal.JavaScriptFragment;
-import com.liferay.faces.util.client.BrowserSniffer;
-import com.liferay.faces.util.client.BrowserSnifferFactory;
 import com.liferay.faces.util.component.ClientComponent;
-import com.liferay.faces.util.factory.FactoryExtensionFinder;
+import com.liferay.faces.util.helper.StringHelper;
 
 
 /**
@@ -129,6 +124,16 @@ public class DialogRenderer extends DialogRendererBase {
 	}
 
 	@Override
+	public void encodeMarkupBegin(FacesContext facesContext, UIComponent uiComponent) throws IOException {
+		encodeOverlayMarkupBegin(facesContext, uiComponent, "modal-content");
+	}
+
+	@Override
+	public void encodeMarkupEnd(FacesContext facesContext, UIComponent uiComponent) throws IOException {
+		encodeOverlayMarkupEnd(facesContext, uiComponent);
+	}
+
+	@Override
 	protected void encodeHiddenAttributes(FacesContext facesContext, ResponseWriter responseWriter, Dialog dialog,
 		boolean first) throws IOException {
 
@@ -145,14 +150,13 @@ public class DialogRenderer extends DialogRendererBase {
 	@Override
 	protected String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
 
-		String[] modulesArray = super.getModules(facesContext, uiComponent);
-		List<String> modules = new ArrayList<String>(Arrays.asList(modulesArray));
+		String[] modules = MODULES;
 		Dialog dialog = (Dialog) uiComponent;
 
 		if (!dialog.isModal() && dialog.isDismissible()) {
-			modules.add("event-move");
+			modules = StringHelper.append(modules, "event-move");
 		}
 
-		return modules.toArray(new String[] {});
+		return modules;
 	}
 }

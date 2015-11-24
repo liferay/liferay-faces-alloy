@@ -15,7 +15,6 @@ package com.liferay.faces.alloy.render.internal;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
@@ -23,7 +22,6 @@ import java.util.TreeSet;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
-import com.liferay.faces.util.client.AlloyScript;
 import com.liferay.faces.util.client.BrowserSniffer;
 import com.liferay.faces.util.client.BrowserSnifferFactory;
 import com.liferay.faces.util.client.Script;
@@ -56,18 +54,26 @@ public class ScriptsEncoderAlloyImpl implements ScriptsEncoder {
 	private void encodeScripts(FacesContext facesContext, ResponseWriter responseWriter, List<Script> scripts)
 		throws IOException {
 
-		Set<String> allModules = new TreeSet<String>();
-		List<AlloyScript> alloyScripts = new ArrayList<AlloyScript>();
+		Set<String> sortedModules = new TreeSet<String>();
+		List<Script> alloyScripts = new ArrayList<Script>();
 		List<Script> basicScripts = new ArrayList<Script>();
 
 		for (Script script : scripts) {
 
-			if (script instanceof AlloyScript) {
+			Script.Type type = script.getType();
 
-				AlloyScript alloyScript = (AlloyScript) script;
-				final String[] modules = alloyScript.getModules();
-				Collections.addAll(allModules, modules);
-				alloyScripts.add(alloyScript);
+			if (Script.Type.ALLOY.equals(type)) {
+
+				String[] modules = script.getModules();
+
+				if (modules != null) {
+
+					for (String module : modules) {
+						sortedModules.add(module.trim());
+					}
+				}
+
+				alloyScripts.add(script);
 			}
 			else {
 				basicScripts.add(script);
@@ -83,11 +89,10 @@ public class ScriptsEncoderAlloyImpl implements ScriptsEncoder {
 			BrowserSnifferFactory browserSnifferFactory = (BrowserSnifferFactory) FactoryExtensionFinder.getFactory(
 					BrowserSnifferFactory.class);
 			BrowserSniffer browserSniffer = browserSnifferFactory.getBrowserSniffer(facesContext.getExternalContext());
-			String alloyBeginScript = AlloyRendererUtil.getAlloyBeginScript(allModules.toArray(new String[] {}),
-					browserSniffer);
+			String alloyBeginScript = AlloyRendererUtil.getAlloyBeginScript(sortedModules, null, browserSniffer);
 			responseWriter.write(alloyBeginScript);
 
-			for (AlloyScript alloyScript : alloyScripts) {
+			for (Script alloyScript : alloyScripts) {
 
 				responseWriter.write("(function(){");
 				responseWriter.write(alloyScript.getSourceCode());

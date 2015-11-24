@@ -40,7 +40,7 @@ public abstract class DataTableRendererBase extends AlloyRendererBase {
 	protected static final String SELECTION_MODE = "selectionMode";
 
 	// Modules
-	protected static final String[] MODULES = { "aui-datatable" };
+	protected static final String[] MODULES = { "aui-datatable", "node-event-simulate" };
 
 	@Override
 	public void encodeAlloyAttributes(FacesContext facesContext, ResponseWriter responseWriter, UIComponent uiComponent) throws IOException {

@@ -392,7 +392,7 @@
 			<type><![CDATA[java.lang.Integer]]></type>
 		</attribute>
 		<tag-extension>
-			<alloy-ui-module>aui-toggler</alloy-ui-module>
+			<alloy-ui-modules>aui-toggler</alloy-ui-modules>
 			<alloy-ui-name>TogglerDelegate</alloy-ui-name>
 			<extends-tags>clientComponent styleable uiComponentBaseInherited uiDataInherited</extends-tags>
 			<parent-class><![CDATA[javax.faces.component.UIData]]></parent-class>
@@ -597,7 +597,7 @@ java.util.List<java.lang.String> filterResults(java.lang.String, java.util.List<
 			<type><![CDATA[java.lang.String]]></type>
 		</attribute>
 		<tag-extension>
-			<alloy-ui-module>autocomplete</alloy-ui-module>
+			<alloy-ui-modules>autocomplete</alloy-ui-modules>
 			<delegate-renderer-type><![CDATA["javax.faces.Text"]]></delegate-renderer-type>
 			<extends-tags>clientComponent facesMessageLabelTaglibXMLOnly inputText</extends-tags>
 			<parent-class><![CDATA[com.liferay.faces.alloy.component.inputtext.InputTextBase]]></parent-class>
@@ -865,7 +865,7 @@ java.util.List<java.lang.String> filterResults(java.lang.String, java.util.List<
 			<type><![CDATA[java.lang.String]]></type>
 		</attribute>
 		<tag-extension>
-			<alloy-ui-module>aui-datatable</alloy-ui-module>
+			<alloy-ui-modules>aui-datatable, node-event-simulate</alloy-ui-modules>
 			<extends-tags>clientComponent htmlCommonEventsInherited htmlPassthroughInherited htmlTableInherited uiDataInherited</extends-tags>
 			<extra-style-classes>table table-bordered table-hover table-striped</extra-style-classes>
 			<parent-class><![CDATA[javax.faces.component.html.HtmlDataTable]]></parent-class>
@@ -893,7 +893,7 @@ java.util.List<java.lang.String> filterResults(java.lang.String, java.util.List<
 			<type><![CDATA[boolean]]></type>
 		</attribute>
 		<tag-extension>
-			<alloy-ui-module>aui-modal</alloy-ui-module>
+			<alloy-ui-modules>aui-modal</alloy-ui-modules>
 			<alloy-ui-name>Modal</alloy-ui-name>
 			<delegate-renderer-type><![CDATA["javax.faces.Group"]]></delegate-renderer-type>
 			<extends-tags>dialogPopoverCommon htmlCommonEventsInherited overlayCommon</extends-tags>
@@ -1153,7 +1153,7 @@ java.util.List<java.lang.String> filterResults(java.lang.String, java.util.List<
 			<type><![CDATA[java.lang.String]]></type>
 		</attribute>
 		<tag-extension>
-			<alloy-ui-module>aui-datepicker</alloy-ui-module>
+			<alloy-ui-modules>aui-datepicker</alloy-ui-modules>
 			<alloy-ui-name>DatePicker</alloy-ui-name>
 			<delegate-renderer-type><![CDATA["javax.faces.Text"]]></delegate-renderer-type>
 			<extends-tags>inputDateTimeCommon inputDateTimeInherited</extends-tags>
@@ -1271,7 +1271,7 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 			<type><![CDATA[boolean]]></type>
 		</attribute>
 		<tag-extension>
-			<alloy-ui-module>uploader</alloy-ui-module>
+			<alloy-ui-modules>uploader, aui-datatable, datatype-xml</alloy-ui-modules>
 			<alloy-ui-name>Uploader</alloy-ui-name>
 			<extends-tags>clientComponent inputText</extends-tags>
 			<extra-style-classes>field</extra-style-classes>
@@ -1418,7 +1418,7 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 			<type><![CDATA[java.lang.String]]></type>
 		</attribute>
 		<tag-extension>
-			<alloy-ui-module>aui-ace-editor</alloy-ui-module>
+			<alloy-ui-modules>aui-ace-editor</alloy-ui-modules>
 			<alloy-ui-name>AceEditor</alloy-ui-name>
 			<delegate-renderer-type><![CDATA["javax.faces.Text"]]></delegate-renderer-type>
 			<extends-tags>clientComponent facesMessageLabelInherited styleableInherited uiInputInherited</extends-tags>
@@ -1580,7 +1580,7 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 			<type><![CDATA[java.lang.Integer]]></type>
 		</attribute>
 		<tag-extension>
-			<alloy-ui-module>aui-timepicker</alloy-ui-module>
+			<alloy-ui-modules>aui-timepicker</alloy-ui-modules>
 			<alloy-ui-name>TimePicker</alloy-ui-name>
 			<delegate-renderer-type><![CDATA["javax.faces.Text"]]></delegate-renderer-type>
 			<extends-tags>inputDateTimeCommon inputDateTimeInherited</extends-tags>
@@ -1967,7 +1967,7 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 			<type><![CDATA[java.lang.String]]></type>
 		</attribute>
 		<tag-extension>
-			<alloy-ui-module>aui-char-counter</alloy-ui-module>
+			<alloy-ui-modules>aui-char-counter</alloy-ui-modules>
 			<alloy-ui-name>CharCounter</alloy-ui-name>
 			<delegate-renderer-type><![CDATA["javax.faces.Text"]]></delegate-renderer-type>
 			<extends-tags>clientComponent outputTextInherited</extends-tags>
@@ -2053,7 +2053,7 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 			<type><![CDATA[java.lang.String]]></type>
 		</attribute>
 		<tag-extension>
-			<alloy-ui-module>aui-tooltip</alloy-ui-module>
+			<alloy-ui-modules>aui-tooltip</alloy-ui-modules>
 			<alloy-ui-name>Tooltip</alloy-ui-name>
 			<delegate-renderer-type><![CDATA["javax.faces.Text"]]></delegate-renderer-type>
 			<extends-tags>outputText outputTooltipPopoverCommon</extends-tags>
@@ -2267,7 +2267,7 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 			<type><![CDATA[java.lang.String]]></type>
 		</attribute>
 		<tag-extension>
-			<alloy-ui-module>aui-popover</alloy-ui-module>
+			<alloy-ui-modules>aui-popover</alloy-ui-modules>
 			<delegate-renderer-type><![CDATA["javax.faces.Group"]]></delegate-renderer-type>
 			<extends-tags>dialogPopoverCommon htmlCommonEventsInherited outputTooltipPopoverCommon</extends-tags>
 			<parent-class><![CDATA[com.liferay.faces.alloy.component.panelgroup.PanelGroupBlockLayout]]></parent-class>
@@ -2357,7 +2357,7 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 			<type><![CDATA[java.lang.String]]></type>
 		</attribute>
 		<tag-extension>
-			<alloy-ui-module>aui-progressbar</alloy-ui-module>
+			<alloy-ui-modules>aui-progressbar</alloy-ui-modules>
 			<extends-tags>clientComponent styleable uiComponentBaseInherited</extends-tags>
 			<renderer-parent-class><![CDATA[com.liferay.faces.alloy.render.internal.AlloyRendererBase]]></renderer-parent-class>
 		</tag-extension>
@@ -2551,7 +2551,7 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 			<type><![CDATA[java.lang.String]]></type>
 		</attribute>
 		<tag-extension>
-			<alloy-ui-module>aui-rating</alloy-ui-module>
+			<alloy-ui-modules>aui-rating</alloy-ui-modules>
 			<alloy-ui-name>Rating</alloy-ui-name>
 			<delegate-renderer-type><![CDATA["javax.faces.Radio"]]></delegate-renderer-type>
 			<extends-tags>clientComponent uiComponentBaseInherited uiInputInherited</extends-tags>
@@ -2643,7 +2643,7 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 			<type><![CDATA[java.lang.String]]></type>
 		</attribute>
 		<tag-extension>
-			<alloy-ui-module>aui-tabview</alloy-ui-module>
+			<alloy-ui-modules>aui-tabview</alloy-ui-modules>
 			<extends-tags>clientComponent styleable uiComponentBaseInherited uiDataInherited</extends-tags>
 			<parent-class><![CDATA[javax.faces.component.UIData]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.alloy.render.internal.AlloyRendererBase]]></renderer-parent-class>

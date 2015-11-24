@@ -38,6 +38,7 @@ import com.liferay.faces.util.context.MessageContext;
 import com.liferay.faces.util.context.MessageContextFactory;
 import com.liferay.faces.util.context.map.MultiPartFormData;
 import com.liferay.faces.util.factory.FactoryExtensionFinder;
+import com.liferay.faces.util.helper.StringHelper;
 import com.liferay.faces.util.model.UploadedFile;
 import com.liferay.faces.util.product.ProductConstants;
 import com.liferay.faces.util.product.ProductMap;
@@ -65,9 +66,6 @@ public class InputFileRenderer extends InputFileRendererBase {
 	// Private Constants
 	private static final boolean LIFERAY_FACES_BRIDGE_DETECTED = ProductMap.getInstance().get(
 			ProductConstants.LIFERAY_FACES_BRIDGE).isDetected();
-
-	// Protected Constants
-	protected static final String[] MODULES = { "uploader", "aui-datatable", "datatype-xml" };
 
 	@Override
 	public void decode(FacesContext facesContext, UIComponent uiComponent) {
@@ -423,11 +421,6 @@ public class InputFileRenderer extends InputFileRendererBase {
 				MessageContextFactory.class);
 
 		return messageContextFactory.getMessageContext();
-	}
-
-	@Override
-	protected String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
-		return MODULES;
 	}
 
 	protected String getParentFormClientId(UIComponent uiComponent) {
