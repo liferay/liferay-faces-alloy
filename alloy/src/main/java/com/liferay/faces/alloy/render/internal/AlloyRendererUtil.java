@@ -13,11 +13,8 @@
  */
 package com.liferay.faces.alloy.render.internal;
 
-import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -28,15 +25,10 @@ import javax.faces.component.behavior.AjaxBehavior;
 import javax.faces.component.behavior.ClientBehavior;
 import javax.faces.component.behavior.ClientBehaviorHolder;
 import javax.faces.context.FacesContext;
-import javax.faces.context.ResponseWriter;
 
-import com.liferay.faces.util.client.AlloyScript;
 import com.liferay.faces.util.client.BrowserSniffer;
-import com.liferay.faces.util.client.Script;
 import com.liferay.faces.util.logging.Logger;
 import com.liferay.faces.util.logging.LoggerFactory;
-import com.liferay.faces.util.product.ProductConstants;
-import com.liferay.faces.util.product.ProductMap;
 
 
 /**
@@ -46,12 +38,6 @@ public class AlloyRendererUtil {
 
 	// Logger
 	private static final Logger logger = LoggerFactory.getLogger(AlloyRendererUtil.class);
-
-	// Private Constants
-	private static final boolean LIFERAY_FACES_BRIDGE_DETECTED = ProductMap.getInstance().get(
-			ProductConstants.LIFERAY_FACES_BRIDGE).isDetected();
-	private static final boolean LIFERAY_PORTAL_DETECTED = ProductMap.getInstance().get(ProductConstants.LIFERAY_PORTAL)
-		.isDetected();
 
 	public static void addDefaultAjaxBehavior(ClientBehaviorHolder clientBehaviorHolder, String execute, String process,
 		String defaultExecute, String render, String update, String defaultRender) {
@@ -87,32 +73,39 @@ public class AlloyRendererUtil {
 		}
 	}
 
-	public static String getAlloyBeginScript(String[] modules, BrowserSniffer browserSniffer) {
-		return getAlloyBeginScript(modules, null, browserSniffer);
+	public static String getAlloyBeginScript(String[] modules, String yuiConfig, BrowserSniffer browserSniffer) {
+
+		Set<String> sortedModules = new TreeSet<String>();
+
+		if (modules != null) {
+
+			for (String module : modules) {
+				sortedModules.add(module.trim());
+			}
+		}
+
+		return getAlloyBeginScript(sortedModules, yuiConfig, browserSniffer);
 	}
 
-	public static String getAlloyBeginScript(String[] modules, String config, BrowserSniffer browserSniffer) {
-		return getAlloyBeginScript(modules, config, browserSniffer.getMajorVersion(), browserSniffer.isIe());
-	}
-
-	private static String getAlloyBeginScript(String[] modules, String config, float browserMajorVersion,
-		boolean browserIE) {
+	public static String getAlloyBeginScript(Set<String> sortedModules, String yuiConfig,
+		BrowserSniffer browserSniffer) {
 
 		StringBuilder stringBuilder = new StringBuilder();
 		String loadMethod = "use";
+		boolean browserIE = browserSniffer.isIe();
+		float browserMajorVersion = browserSniffer.getMajorVersion();
 
 		if (browserIE && (browserMajorVersion < 8)) {
 			loadMethod = "ready";
 		}
 
 		// If there is config render a YUI sandbox to avoid using the preconfigured AUI sandbox in Liferay Portal.
-		if ((config != null) && (config.length() > 0)) {
+		if ((yuiConfig != null) && (yuiConfig.length() > 0)) {
 
 			stringBuilder.append("YUI(");
-			stringBuilder.append(config);
+			stringBuilder.append(yuiConfig);
 		}
 		else {
-
 			stringBuilder.append("AUI(");
 		}
 
@@ -120,13 +113,11 @@ public class AlloyRendererUtil {
 		stringBuilder.append(loadMethod);
 		stringBuilder.append("(");
 
-		if (modules != null) {
+		for (String module : sortedModules) {
 
-			for (String module : modules) {
-				stringBuilder.append("'");
-				stringBuilder.append(module.trim());
-				stringBuilder.append("',");
-			}
+			stringBuilder.append("'");
+			stringBuilder.append(module);
+			stringBuilder.append("',");
 		}
 
 		stringBuilder.append("function(A){");

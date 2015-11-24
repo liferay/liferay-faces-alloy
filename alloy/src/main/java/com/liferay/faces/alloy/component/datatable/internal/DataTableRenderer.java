@@ -48,6 +48,7 @@ import com.liferay.faces.alloy.component.datatable.RowSelectRangeEvent;
 import com.liferay.faces.alloy.component.outputtext.OutputText;
 import com.liferay.faces.alloy.render.internal.JavaScriptFragment;
 import com.liferay.faces.util.helper.BooleanHelper;
+import com.liferay.faces.util.helper.StringHelper;
 import com.liferay.faces.util.logging.Logger;
 import com.liferay.faces.util.logging.LoggerFactory;
 import com.liferay.faces.util.model.SortCriterion;
@@ -72,9 +73,6 @@ public class DataTableRenderer extends DataTableRendererBase {
 
 	// Logger
 	private static final Logger logger = LoggerFactory.getLogger(DataTableRenderer.class);
-
-	// Private Data Members
-	private static final String[] MODULES = { "aui-datatable", "node-event-simulate" };
 
 	@Override
 	public void decodeClientState(FacesContext facesContext, UIComponent uiComponent) {
@@ -916,11 +914,6 @@ public class DataTableRenderer extends DataTableRendererBase {
 		}
 
 		return clientBehaviorScript;
-	}
-
-	@Override
-	protected String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
-		return MODULES;
 	}
 
 	@Override
