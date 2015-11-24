@@ -13,6 +13,9 @@
  */
 package com.liferay.faces.alloy.render.internal;
 
+import java.util.Set;
+import java.util.TreeSet;
+
 import com.liferay.faces.util.client.BrowserSniffer;
 
 
@@ -21,32 +24,41 @@ import com.liferay.faces.util.client.BrowserSniffer;
  */
 public class AlloyRendererUtil {
 
-	public static String getAlloyBeginScript(String[] modules, BrowserSniffer browserSniffer) {
-		return getAlloyBeginScript(modules, null, browserSniffer);
+	public static String getAlloyBeginScript(String[] modules, String yuiConfig, BrowserSniffer browserSniffer) {
+
+		Set<String> sortedModules = null;
+
+		if (modules != null) {
+
+			sortedModules = new TreeSet<String>();
+
+			for (String module : modules) {
+				sortedModules.add(module.trim());
+			}
+		}
+
+		return getAlloyBeginScript(sortedModules, yuiConfig, browserSniffer);
 	}
 
-	public static String getAlloyBeginScript(String[] modules, String config, BrowserSniffer browserSniffer) {
-		return getAlloyBeginScript(modules, config, browserSniffer.getMajorVersion(), browserSniffer.isIe());
-	}
-
-	private static String getAlloyBeginScript(String[] modules, String config, float browserMajorVersion,
-		boolean browserIE) {
+	public static String getAlloyBeginScript(Set<String> sortedModules, String yuiConfig,
+		BrowserSniffer browserSniffer) {
 
 		StringBuilder stringBuilder = new StringBuilder();
 		String loadMethod = "use";
+		boolean browserIE = browserSniffer.isIe();
+		float browserMajorVersion = browserSniffer.getMajorVersion();
 
 		if (browserIE && (browserMajorVersion < 8)) {
 			loadMethod = "ready";
 		}
 
 		// If there is config render a YUI sandbox to avoid using the preconfigured AUI sandbox in Liferay Portal.
-		if ((config != null) && (config.length() > 0)) {
+		if ((yuiConfig != null) && (yuiConfig.length() > 0)) {
 
 			stringBuilder.append("YUI(");
-			stringBuilder.append(config);
+			stringBuilder.append(yuiConfig);
 		}
 		else {
-
 			stringBuilder.append("AUI(");
 		}
 
@@ -54,11 +66,12 @@ public class AlloyRendererUtil {
 		stringBuilder.append(loadMethod);
 		stringBuilder.append("(");
 
-		if (modules != null) {
+		if (sortedModules != null) {
 
-			for (String module : modules) {
+			for (String module : sortedModules) {
+
 				stringBuilder.append("'");
-				stringBuilder.append(module.trim());
+				stringBuilder.append(module);
 				stringBuilder.append("',");
 			}
 		}

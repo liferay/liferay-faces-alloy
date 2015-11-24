@@ -103,7 +103,7 @@ public class ScriptRenderer extends ScriptRendererCompat {
 						BrowserSnifferFactory.class);
 				BrowserSniffer browserSniffer = browserSnifferFactory.getBrowserSniffer(
 						facesContext.getExternalContext());
-				String alloyBeginScript = AlloyRendererUtil.getAlloyBeginScript(useArray, browserSniffer);
+				String alloyBeginScript = AlloyRendererUtil.getAlloyBeginScript(useArray, null, browserSniffer);
 				responseWriter.write(alloyBeginScript);
 			}
 		}
@@ -139,7 +139,7 @@ public class ScriptRenderer extends ScriptRendererCompat {
 				script = scriptFactory.getScript(scriptSourceCode);
 			}
 			else {
-				script = scriptFactory.getAlloyScript(scriptSourceCode, new String[] { use });
+				script = scriptFactory.getScript(scriptSourceCode, new String[] { use }, Script.Type.ALLOY);
 			}
 
 			addScriptToBottomOfPage(script);
