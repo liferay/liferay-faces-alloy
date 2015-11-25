@@ -124,16 +124,6 @@ public class DialogRenderer extends DialogRendererBase {
 	}
 
 	@Override
-	public void encodeMarkupBegin(FacesContext facesContext, UIComponent uiComponent) throws IOException {
-		encodeOverlayMarkupBegin(facesContext, uiComponent, "modal-content");
-	}
-
-	@Override
-	public void encodeMarkupEnd(FacesContext facesContext, UIComponent uiComponent) throws IOException {
-		encodeOverlayMarkupEnd(facesContext, uiComponent);
-	}
-
-	@Override
 	protected void encodeHiddenAttributes(FacesContext facesContext, ResponseWriter responseWriter, Dialog dialog,
 		boolean first) throws IOException {
 
