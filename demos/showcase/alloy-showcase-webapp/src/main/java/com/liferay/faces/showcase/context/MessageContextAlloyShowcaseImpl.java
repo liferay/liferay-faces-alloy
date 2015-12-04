@@ -11,33 +11,23 @@
  * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
  * details.
  */
-package com.liferay.faces.alloy.context.internal;
-
-import java.text.MessageFormat;
-import java.util.Locale;
-import java.util.Map;
-import java.util.MissingResourceException;
-import java.util.ResourceBundle;
-import java.util.concurrent.ConcurrentHashMap;
+package com.liferay.faces.showcase.context;
 
 import com.liferay.faces.util.context.MessageContext;
 import com.liferay.faces.util.context.MessageContextBundleBase;
-import com.liferay.faces.util.context.MessageContextWrapper;
-import com.liferay.faces.util.logging.Logger;
-import com.liferay.faces.util.logging.LoggerFactory;
 
 
 /**
  * @author  Neil Griffin
  */
-public class MessageContextAlloyImpl extends MessageContextBundleBase {
+public class MessageContextAlloyShowcaseImpl extends MessageContextBundleBase {
 
-	public MessageContextAlloyImpl(MessageContext messageContext) {
+	public MessageContextAlloyShowcaseImpl(MessageContext messageContext) {
 		super(messageContext);
 	}
 
 	@Override
 	public String getBundleKey() {
-		return "i18n-alloy";
+		return "i18n-alloy-tags";
 	}
 }
