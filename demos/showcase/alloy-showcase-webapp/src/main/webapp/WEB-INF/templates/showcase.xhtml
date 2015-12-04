@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:alloy="http://liferay.com/faces/alloy"
 	xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html" xmlns:ui="http://java.sun.com/jsf/facelets">
+	xmlns:h="http://java.sun.com/jsf/html"  xmlns:showcase="http://liferay.com/faces/showcase"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
 	<c:set value="#{showcaseModelBean.selectedComponent}" var="selectedComponent" />
 	<c:set value="#{selectedComponent.key}" var="selectedComponentKey" />
 	<c:set value="#{selectedComponent.useCaseName}" var="selectedComponentUseCaseName" />
@@ -9,10 +10,10 @@
 	<alloy:row>
 		<alloy:column styleClass="showcase-nav-col" width="#{browserSniffer.ipad ? '30' : '25'}">
 			<alloy:link outcome="home">
-				<alloy:image library="images" name="alloy-logo-nav.png" styleClass="logo" />
+				<alloy:image library="images" name="logo-nav.png" styleClass="logo" />
 			</alloy:link>
-			<alloy:accordion selectedIndex="#{selectedComponent.categoryIndex}" value="#{listModelBean.showcaseCategories}"
-				var="showcaseCategory">
+			<alloy:accordion selectedIndex="#{selectedComponent.categoryIndex}" styleClass="showcase-accordion"
+				value="#{listModelBean.showcaseCategories}" var="showcaseCategory">
 				<alloy:tab>
 					<f:facet name="header">
 						<alloy:panelGroup layout="block">
@@ -49,12 +50,12 @@
 			</alloy:accordion>
 		</alloy:column>
 		<alloy:column width="#{browserSniffer.ipad ? '70' : '75'}">
-			<alloy:panelGroup layout="block" styleClass="showcase-container">
+			<showcase:container>
 				<ui:insert name="content" />
-			</alloy:panelGroup>
-			<alloy:panelGroup layout="block" styleClass="showcase-container showcase-info">
+			</showcase:container>
+			<showcase:container styleClass="showcase-info">
 				<alloy:outputText escape="false" value="#{listModelBean.dependencyInfo}" />
-			</alloy:panelGroup>
+			</showcase:container>
 		</alloy:column>
 	</alloy:row>
 </ui:composition>
