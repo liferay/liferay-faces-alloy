@@ -59,6 +59,7 @@ div.alloy-dialog div.modal-body > div {
 /* alloy-input-file */
 .alloy-input-file .select-files-box,.alloy-input-file .upload-files-box {
 	display: inline-block;
+	vertical-align: top;
 }
 
 .aui .alloy-input-file-button-hidden,.alloy-input-file-button-hidden {
