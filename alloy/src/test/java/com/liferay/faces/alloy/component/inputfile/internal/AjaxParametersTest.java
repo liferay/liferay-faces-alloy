@@ -59,7 +59,7 @@ public class AjaxParametersTest {
 		Assert.assertTrue(ajaxParameters.getExecute().equals(""));
 		Assert.assertTrue(ajaxParameters.getRender().equals(""));
 
-		// Test that the presence of @non removes all others.
+		// Test that the presence of @none removes all others.
 		ajaxParameters = newAjaxParameters(clientId, formClientId, "@this @none @form", "@this @none @form");
 		Assert.assertTrue(ajaxParameters.getExecute().equals(""));
 		Assert.assertTrue(ajaxParameters.getRender().equals(""));
