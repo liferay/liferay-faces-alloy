@@ -17,16 +17,22 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
+import javax.faces.component.UIComponent;
 import javax.faces.component.behavior.AjaxBehavior;
 import javax.faces.component.behavior.ClientBehavior;
 
 import com.liferay.faces.alloy.component.inputfile.InputFile;
+import com.liferay.faces.util.logging.Logger;
+import com.liferay.faces.util.logging.LoggerFactory;
 
 
 /**
  * @author  Neil Griffin
  */
 public class AjaxParameters {
+
+	// Logger
+	private static final Logger logger = LoggerFactory.getLogger(AjaxParameters.class);
 
 	// Private Data Members
 	private String execute;
@@ -141,7 +147,21 @@ public class AjaxParameters {
 									buf.append(" ");
 								}
 
-								buf.append(renderId);
+								if (renderId.startsWith("@")) {
+									buf.append(renderId);
+								}
+								else {
+
+									UIComponent renderComponent = inputFile.findComponent(renderId);
+
+									if (renderComponent != null) {
+										String renderComponentClientId = renderComponent.getClientId();
+										buf.append(renderComponentClientId);
+									}
+									else {
+										logger.error("Unable to find component renderId=[{0}]", renderId);
+									}
+								}
 							}
 						}
 					}

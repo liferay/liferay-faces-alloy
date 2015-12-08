@@ -89,7 +89,7 @@ LFAI = {
 					requestParams[namingContainerId + 'javax.faces.partial.ajax'] = 'true';
 					requestParams[namingContainerId + 'javax.faces.partial.event'] = 'click';
 					requestParams[namingContainerId + 'javax.faces.partial.execute'] = execute;
-					requestParams[namingContainerId + 'javax.faces.partial.render'] = '';
+					requestParams[namingContainerId + 'javax.faces.partial.render'] = render;
 					requestParams[namingContainerId + 'javax.faces.source'] = clientId;
 					requestParams[namingContainerId + 'javax.faces.ViewState'] = viewStateNode.get(
 						'value');
