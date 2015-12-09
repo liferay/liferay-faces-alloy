@@ -13,6 +13,7 @@
  */
 package com.liferay.faces.alloy.component.inputfile.internal;
 
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -26,6 +27,8 @@ import com.liferay.faces.util.config.ConfiguredServlet;
 import com.liferay.faces.util.config.MultiPartConfig;
 import com.liferay.faces.util.config.WebConfig;
 import com.liferay.faces.util.config.WebConfigParam;
+import com.liferay.faces.util.logging.Logger;
+import com.liferay.faces.util.logging.LoggerFactory;
 import com.liferay.faces.util.model.UploadedFile;
 
 
@@ -33,6 +36,9 @@ import com.liferay.faces.util.model.UploadedFile;
  * @author  Neil Griffin
  */
 public abstract class InputFileDecoderBase implements InputFileDecoder {
+
+	// Logger
+	private static final Logger logger = LoggerFactory.getLogger(InputFileDecoderPartImpl.class);
 
 	// Private Constants
 	private static final String FACES_SERVLET_FQCN = FacesServlet.class.getName();
@@ -110,5 +116,22 @@ public abstract class InputFileDecoderBase implements InputFileDecoder {
 		}
 
 		return uploadedFilesDir;
+	}
+
+	protected String getSessionId(ExternalContext externalContext) {
+
+		String sessionId = null;
+
+		try {
+			Object session = externalContext.getSession(true);
+
+			Method getIdMethod = session.getClass().getMethod("getId", new Class[] {});
+			sessionId = (String) getIdMethod.invoke(session, new Object[] {});
+		}
+		catch (Exception e) {
+			logger.error(e);
+		}
+
+		return sessionId;
 	}
 }

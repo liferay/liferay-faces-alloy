@@ -6,13 +6,13 @@
 
 		<showcase:example>
 			<!-- The enclosing form must have enctype="multipart/form-data" in order for files to upload correctly. -->
-			<alloy:form enctype="multipart/form-data" includeViewParams="false">
-					<alloy:messages globalOnly="true" layout="table" />
-					<alloy:inputFile fileUploadListener="#{inputFileBackingBean.handleFileUpload}" />
-					<hr />
+			<alloy:form enctype="multipart/form-data" includeViewParams="true">
+				<alloy:messages globalOnly="true" layout="table" />
+				<alloy:inputFile fileUploadListener="#{inputFileBackingBean.handleFileUpload}" />
+				<hr />
 
-					<!-- Note: ajax="true" works in JSF 2.2 -->
-					<alloy:commandButton ajax="false" value="#{i18n['submit']}" />
+				<!-- Note: ajax="true" works in JSF 2.2 -->
+				<alloy:commandButton ajax="false" value="#{i18n['submit']}" />
 			</alloy:form>
 		</showcase:example>
 		<alloy:form id="resultsForm" includeViewParams="true">

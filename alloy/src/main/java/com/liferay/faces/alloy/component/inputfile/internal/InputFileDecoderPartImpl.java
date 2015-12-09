@@ -24,7 +24,9 @@ import java.util.Map;
 
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import com.liferay.faces.util.HttpHeaders;
@@ -51,22 +53,7 @@ public class InputFileDecoderPartImpl extends InputFileDecoderBase {
 		String uploadedFilesFolder = getUploadedFilesFolder(externalContext, location);
 
 		// Using the sessionId, determine a unique folder path and create the path if it does not exist.
-		String sessionId = null;
-		Method getSessionIdMethod = null;
-
-		try {
-			getSessionIdMethod = externalContext.getClass().getMethod("getSessionId", new Class[] { boolean.class });
-
-			try {
-				sessionId = (String) getSessionIdMethod.invoke(externalContext, new Object[] { true });
-			}
-			catch (Exception e) {
-				logger.error(e);
-			}
-		}
-		catch (NoSuchMethodException e) {
-			logger.error(e);
-		}
+		String sessionId = getSessionId(externalContext);
 
 		if (sessionId != null) {
 
