@@ -6,7 +6,7 @@
 
 		<showcase:example description="#{i18n['alloy-inputfile-validation-example']}">
 			<!-- The enclosing form must have enctype="multipart/form-data" in order for files to upload correctly. -->
-			<alloy:form enctype="multipart/form-data">
+			<alloy:form enctype="multipart/form-data" includeViewParams="true">
 				<alloy:messages layout="table" />
 				<alloy:inputFile contentTypes="application/pdf,image/png"
 					fileUploadListener="#{inputFileBackingBean.handleFileUpload}" maxFileSize="600000"

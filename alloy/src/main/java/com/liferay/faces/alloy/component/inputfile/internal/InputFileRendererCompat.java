@@ -13,6 +13,14 @@
  */
 package com.liferay.faces.alloy.component.inputfile.internal;
 
+import java.util.Map;
+
+import javax.faces.context.ExternalContext;
+import javax.faces.context.FacesContext;
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import com.liferay.faces.alloy.component.inputfile.InputFile;
 import com.liferay.faces.alloy.render.internal.DelegatingAlloyRendererBase;
 import com.liferay.faces.util.product.Product;
@@ -46,23 +54,43 @@ public abstract class InputFileRendererCompat extends DelegatingAlloyRendererBas
 		}
 	}
 
-	protected InputFileDecoder getInputFileDecoder() {
-
-		if (isFaces_2_2_OrNewer()) {
-
-			// Since running with JSF 2.2 (or higher) need to use the javax.servlet.http.Part (Servlet 3.0) method of
-			// decoding uploaded files. This is because the the @MultipartConfig annotation on the FacesServlet will
-			// cause commons-fileupload to throw exceptions.
-			return new InputFileDecoderPartImpl();
-		}
-		else {
-			return new InputFileDecoderCommonsImpl();
-		}
-	}
-
 	protected boolean isFaces_2_2_OrNewer() {
 
 		return JSF.isDetected() &&
 			((JSF.getMajorVersion() > 2) || ((JSF.getMajorVersion() == 2) && (JSF.getMinorVersion() >= 2)));
+	}
+
+	protected InputFileDecoder getWebappInputFileDecoder(FacesContext facesContext) {
+
+		// If running with JSF 2.2 (or higher), then the javax.servlet.http.Part (Servlet 3.0) mechanism for decoding
+		// uploaded files must be used. This is because the the @MultipartConfig annotation on the FacesServlet will
+		// cause commons-fileupload to throw exceptions.
+		if (isFaces_2_2_OrNewer()) {
+			return new InputFileDecoderPartImpl();
+		}
+
+		// Otherwise,
+		else {
+
+			// If running Servlet 3.0 (or newer) then the javax.servlet.http.Part (Servlet 3.0) mechanism for
+			// decoding uploaded files must be used. However, this might be restricted to plain JSF 2.1 Tomcat
+			// webapps (and not other servers). Not sure why this is necessary since the default value of the Tomcat
+			// config param allowCasualMultipartParsing is false, meaning, Tomcat should only use the
+			// javax.servlet.http.Part mechanism when it detectes the presence of the @MultipartConfig annotation on
+			// the FacesServlet. https://tomcat.apache.org/tomcat-7.0-doc/config/context.html
+			ExternalContext externalContext = facesContext.getExternalContext();
+			HttpServletRequest httpServletRequest = (HttpServletRequest) externalContext.getRequest();
+			ServletContext servletContext = httpServletRequest.getServletContext();
+			int servletContextMajorVersion = servletContext.getMajorVersion();
+
+			if (servletContextMajorVersion >= 3) {
+				return new InputFileDecoderPartImpl();
+			}
+
+			// Otherwise, use commons-fileupload.
+			else {
+				return new InputFileDecoderCommonsImpl();
+			}
+		}
 	}
 }

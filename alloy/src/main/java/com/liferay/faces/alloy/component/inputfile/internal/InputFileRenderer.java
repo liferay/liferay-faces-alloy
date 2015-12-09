@@ -454,7 +454,7 @@ public class InputFileRenderer extends InputFileRendererBase {
 			}
 		}
 		else {
-			InputFileDecoder inputFileDecoder = getInputFileDecoder();
+			InputFileDecoder inputFileDecoder = getWebappInputFileDecoder(facesContext);
 			uploadedFileMap = inputFileDecoder.decode(facesContext, location);
 		}
 

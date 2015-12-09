@@ -236,21 +236,4 @@ public class InputFileDecoderCommonsImpl extends InputFileDecoderBase {
 
 		return uploadedFileMap;
 	}
-
-	protected String getSessionId(ExternalContext externalContext) {
-
-		String sessionId = null;
-
-		try {
-			Object session = externalContext.getSession(true);
-
-			Method getIdMethod = session.getClass().getMethod("getId", new Class[] {});
-			sessionId = (String) getIdMethod.invoke(session, new Object[] {});
-		}
-		catch (Exception e) {
-			logger.error(e);
-		}
-
-		return sessionId;
-	}
 }
