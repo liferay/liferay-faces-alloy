@@ -14,7 +14,7 @@
 	<name>Liferay Faces Alloy Demos</name>
 
 	<modules>
-		<module>showcase</module>
+		<module>alloy-showcase-webapp</module>
 	</modules>
 
 	<profiles>
