@@ -13,6 +13,10 @@
 	<name>Alloy Showcase Webapp</name>
 	<description>This plugin is the Liferay Faces Alloy Showcase demo webapp.</description>
 
+	<properties>
+		<test.patterns>**/*Test.java,**/Test*.java,**/*TestCase.java</test.patterns>
+	</properties>
+
 	<profiles>
 		<profile>
 			<id>prettyfaces</id>
@@ -22,6 +26,27 @@
 					<artifactId>prettyfaces-jsf2</artifactId>
 				</dependency>
 			</dependencies>
+		</profile>
+		<profile>
+			<id>integration</id>
+			<properties>
+				<test.patterns>**/*Test.java,**/Test*.java,**/*TestCase.java,**/*Tester.java</test.patterns>
+				<integration.container>tomcat</integration.container>
+				<integration.host>localhost</integration.host>
+				<integration.port>8080</integration.port>
+				<integration.base.url>http://${integration.host}:${integration.port}</integration.base.url>
+				<integration.context>/${project.artifactId}-${project.version}/web/guest/showcase/-/component/alloy/</integration.context>
+				<integration.sign.in.context></integration.sign.in.context>
+				<integration.browser>phantomjs</integration.browser>
+			</properties>
+		</profile>
+		<profile>
+			<id>liferay</id>
+			<properties>
+				<integration.container>liferay</integration.container>
+				<integration.context>/group/bridge-demos/alloy-showcase/-/component/</integration.context>
+				<integration.sign.in.context>/web/guest/home</integration.sign.in.context>
+			</properties>
 		</profile>
 	</profiles>
 
@@ -51,6 +76,30 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<configuration>
+					<systemPropertyVariables>
+						<runningWithMavenSurefirePlugin>true</runningWithMavenSurefirePlugin>
+						<integrationHost>${integration.host}</integrationHost>
+						<integrationPort>${integration.port}</integrationPort>
+						<integrationContext>${integration.context}</integrationContext>
+						<integrationBrowser>${integration.browser}</integrationBrowser>
+						<integrationContainer>${integration.container}</integrationContainer>
+						<integrationSignInContext>${integration.sign.in.context}</integrationSignInContext>
+					</systemPropertyVariables>
+					<properties>
+						<property>
+							<name>listener</name>
+							<value>com.liferay.faces.test.showcase.TestSuiteListener</value>
+						</property>
+					</properties>
+					<includes>
+						<include>${test.patterns}</include>
+					</includes>
+				</configuration>
+			</plugin>
 		</plugins>
 		<resources>
 			<resource>
@@ -70,6 +119,26 @@
 	</build>
 
 	<dependencies>
+
+		<!-- Integration test dependencies. -->
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>junit</groupId>
+			<artifactId>junit</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.codeborne</groupId>
+			<artifactId>phantomjsdriver</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-chrome-driver</artifactId>
+		</dependency>
+		<!-- End integration test dependencies. -->
+
 		<dependency>
 			<groupId>com.liferay.faces.alloy</groupId>
 			<artifactId>liferay-faces-alloy</artifactId>
