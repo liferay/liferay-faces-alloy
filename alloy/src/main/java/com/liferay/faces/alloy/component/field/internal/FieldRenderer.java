@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.faces.component.UIComponent;
+import javax.faces.component.UIViewRoot;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 import javax.faces.render.FacesRenderer;
@@ -63,7 +64,6 @@ public class FieldRenderer extends FieldRendererBase {
 			UIComponent checkboxLabelFacetChild = getSelectBooleanCheckboxLabelFacetChild(labelFacet);
 
 			if (checkboxLabelFacetChild != null) {
-
 				String checkboxClientId = checkboxLabelFacetChild.getClientId(facesContext);
 				responseWriter.writeAttribute("for", checkboxClientId, null);
 			}
@@ -78,21 +78,20 @@ public class FieldRenderer extends FieldRendererBase {
 		responseWriter.endElement(LABEL);
 	}
 
-	private UIComponent getSelectBooleanCheckboxLabelFacetChild(UIComponent uiComponent) {
+	private UIComponent getSelectBooleanCheckboxLabelFacetChild(UIComponent labelFacet) {
 
-		UIComponent labelFacet = uiComponent.getFacet("label");
 		UIComponent selectBooleanCheckboxChild = null;
 
-		if (labelFacet != null) {
+		if (labelFacet instanceof SelectBooleanCheckbox) {
+			selectBooleanCheckboxChild = labelFacet;
+		}
+		else if (labelFacet.getChildCount() > 0) {
 
-			if (labelFacet instanceof SelectBooleanCheckbox) {
-				selectBooleanCheckboxChild = labelFacet;
-			}
-			else if (labelFacet.getChildCount() > 0) {
+			List<UIComponent> children = labelFacet.getChildren();
 
-				List<UIComponent> children = labelFacet.getChildren();
+			for (UIComponent child : children) {
 
-				for (UIComponent child : children) {
+				if (child instanceof SelectBooleanCheckbox) {
 
 					selectBooleanCheckboxChild = child;
 
