@@ -22,6 +22,7 @@ import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 import javax.faces.convert.ConverterException;
 import javax.faces.render.FacesRenderer;
+import javax.faces.view.facelets.FacetHandler;
 
 import com.liferay.faces.alloy.component.field.Field;
 import com.liferay.faces.alloy.component.selectbooleancheckbox.SelectBooleanCheckbox;
@@ -61,9 +62,7 @@ public class SelectBooleanCheckboxRenderer extends SelectBooleanCheckboxRenderer
 	@Override
 	public void encodeEnd(FacesContext facesContext, UIComponent uiComponent) throws IOException {
 
-		UIComponent parent = uiComponent.getParent();
-
-		if (parent instanceof Field) {
+		if (isInsideFieldLabelFacet(uiComponent)) {
 
 			// Force the JSF runtime to output the "id" attribute so that the FieldRenderer can encode a label
 			// element with a "for" attribute that associates the label with this checkbox.
@@ -90,5 +89,52 @@ public class SelectBooleanCheckboxRenderer extends SelectBooleanCheckboxRenderer
 		}
 
 		return convertedValue;
+	}
+
+	/*
+	 * See
+	 * http://stackoverflow.com/questions/34274934/how-can-i-determine-whether-a-component-is-inside-a-certain-facet/34274935
+	 * for more details.
+	 */
+	private boolean isInsideFieldLabelFacet(UIComponent uiComponent) {
+
+		boolean insideFieldLabelFacet = false;
+		UIComponent parent = uiComponent.getParent();
+
+		if (parent != null) {
+
+			// In Section 9.2.3 of the JSF spec, it states that when a facet is created, the first component in it
+			// should be named as the facet. If no other components are added to the Field's label facet, then the
+			// checkbox will be the label facet, so...
+			if (parent instanceof Field) {
+
+				UIComponent labelFacet = parent.getFacet("label");
+
+				// Check if the checkbox is the Field's label facet.
+				if ((labelFacet != null) && labelFacet.equals(uiComponent)) {
+					insideFieldLabelFacet = true;
+				}
+			}
+
+			// Otherwise, according to
+			// https://github.com/javaserverfaces/mojarra/blob/2.1.4/jsf-ri/src/main/java/com/sun/faces/facelets/tag/jsf/ComponentSupport.java#L512,
+			// the facet will be a component, so...
+			else {
+
+				UIComponent grandparent = parent.getParent();
+
+				if ((grandparent != null) && (grandparent instanceof Field)) {
+
+					UIComponent labelFacet = grandparent.getFacet("label");
+
+					// Check if the checkbox's parent is the label facet.
+					if ((labelFacet != null) && labelFacet.equals(parent)) {
+						insideFieldLabelFacet = true;
+					}
+				}
+			}
+		}
+
+		return insideFieldLabelFacet;
 	}
 }
