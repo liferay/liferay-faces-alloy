@@ -23,6 +23,7 @@ import javax.faces.render.FacesRenderer;
 
 import com.liferay.faces.alloy.component.field.Field;
 import com.liferay.faces.alloy.component.selectbooleancheckbox.SelectBooleanCheckbox;
+import javax.faces.component.UIViewRoot;
 
 
 /**
@@ -60,12 +61,19 @@ public class FieldRenderer extends FieldRendererBase {
 
 		if (labelFacet != null) {
 
-			UIComponent checkboxLabelFacetChild = getSelectBooleanCheckboxLabelFacetChild(labelFacet);
+			SelectBooleanCheckbox checkboxLabelFacetChild = getSelectBooleanCheckboxLabelFacetChild(labelFacet);
 
 			if (checkboxLabelFacetChild != null) {
 
-				String checkboxClientId = checkboxLabelFacetChild.getClientId(facesContext);
-				responseWriter.writeAttribute("for", checkboxClientId, null);
+				String checkboxId = checkboxLabelFacetChild.getId();
+				boolean checkboxHasGeneratedId = (checkboxId == null || checkboxId.startsWith(UIViewRoot.UNIQUE_ID_PREFIX));
+				boolean checkboxHasClientBehaviors = !checkboxLabelFacetChild.getClientBehaviors().isEmpty();
+				boolean checkboxIdRendered = !checkboxHasGeneratedId || checkboxHasClientBehaviors;
+
+				if (checkboxIdRendered) {
+					String checkboxClientId = checkboxLabelFacetChild.getClientId(facesContext);
+					responseWriter.writeAttribute("for", checkboxClientId, null);
+				}
 			}
 
 			labelFacet.encodeAll(facesContext);
@@ -78,24 +86,22 @@ public class FieldRenderer extends FieldRendererBase {
 		responseWriter.endElement(LABEL);
 	}
 
-	private UIComponent getSelectBooleanCheckboxLabelFacetChild(UIComponent uiComponent) {
+	private SelectBooleanCheckbox getSelectBooleanCheckboxLabelFacetChild(UIComponent labelFacet) {
 
-		UIComponent labelFacet = uiComponent.getFacet("label");
-		UIComponent selectBooleanCheckboxChild = null;
+		SelectBooleanCheckbox selectBooleanCheckboxChild = null;
 
-		if (labelFacet != null) {
+		if (labelFacet instanceof SelectBooleanCheckbox) {
+			selectBooleanCheckboxChild = (SelectBooleanCheckbox) labelFacet;
+		}
+		else if (labelFacet.getChildCount() > 0) {
 
-			if (labelFacet instanceof SelectBooleanCheckbox) {
-				selectBooleanCheckboxChild = labelFacet;
-			}
-			else if (labelFacet.getChildCount() > 0) {
+			List<UIComponent> children = labelFacet.getChildren();
 
-				List<UIComponent> children = labelFacet.getChildren();
+			for (UIComponent child : children) {
 
-				for (UIComponent child : children) {
+				if (child instanceof SelectBooleanCheckbox) {
 
-					selectBooleanCheckboxChild = child;
-
+					selectBooleanCheckboxChild = (SelectBooleanCheckbox) child;
 					break;
 				}
 			}
