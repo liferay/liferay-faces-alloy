@@ -24,7 +24,7 @@
 					<alloy:dataList styleClass="nav"
 						value="#{listModelBean.showcaseCategoryMap[showcaseCategory]}" var="showcaseComponent">
 						<alloy:dataItem styleClass="#{(selectedComponentKey == showcaseComponent.key) ? 'active' : ''}">
-							<alloy:link outcome="component" value="#{showcaseComponent}">
+							<alloy:link styleClass="showcase-link" outcome="component" value="#{showcaseComponent}">
 								<f:param name="componentPrefix" value="#{showcaseComponent.prefix}" />
 								<f:param name="componentName" value="#{showcaseComponent.lowerCaseName}" />
 								<f:param name="componentUseCase" value="general" />
@@ -35,7 +35,7 @@
 									var="useCase">
 										<alloy:dataItem styleClass="#{(selectedComponentUseCaseName == useCase.name) ? 'active' : ''}"
 											style="white-space: nowrap;">
-											<alloy:link value="#{i18n[useCase.name]}">
+											<alloy:link styleClass="showcase-link" value="#{i18n[useCase.name]}">
 												<f:param name="componentPrefix" value="#{selectedComponent.prefix}" />
 												<f:param name="componentName" value="#{selectedComponent.lowerCaseName}" />
 												<f:param name="componentUseCase" value="#{useCase.name}" />
