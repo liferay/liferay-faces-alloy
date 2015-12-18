@@ -36,10 +36,8 @@ import com.liferay.faces.util.render.internal.BufferedScriptResponseWriter;
 /**
  * @author  Kyle Stiemann
  */
-//J-
 @FacesRenderer(componentFamily = OutputScript.COMPONENT_FAMILY, rendererType = OutputScript.RENDERER_TYPE)
 @ListenerFor(systemEventClass = PostAddToViewEvent.class)
-//J+
 public class OutputScriptRenderer extends OutputScriptRendererBase {
 
 	@Override

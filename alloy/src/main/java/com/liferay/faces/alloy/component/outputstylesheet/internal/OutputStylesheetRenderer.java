@@ -23,10 +23,8 @@ import com.liferay.faces.alloy.component.outputstylesheet.OutputStylesheet;
 /**
  * @author  Kyle Stiemann
  */
-//J-
 @FacesRenderer(componentFamily = OutputStylesheet.COMPONENT_FAMILY, rendererType = OutputStylesheet.RENDERER_TYPE)
 @ListenerFor(systemEventClass = PostAddToViewEvent.class)
-//J+
 public class OutputStylesheetRenderer extends OutputStylesheetRendererBase {
 	// Initial Generation
 }
