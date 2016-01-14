@@ -5,13 +5,12 @@
 	<ui:define name="col1">
 		<alloy:form>
 			<showcase:example renderedCheckbox="true" requiredCheckbox="true">
-				<alloy:field>
+				<alloy:field label="#{i18n['agree']}">
 					<f:facet name="label">
 						<alloy:selectBooleanCheckbox id="checkbox"
 							rendered="#{showcaseModelBean.selectedComponent.rendered}"
 							required="#{showcaseModelBean.selectedComponent.required}"
 							value="#{selectBooleanCheckboxModelBean.agree}" />
-						#{i18n['agree']}
 					</f:facet>
 					<alloy:outputText styleClass="pad-left" value="#{i18n['i-agree-to-the-terms-of-the-license-agreement']}" />
 					<br />
