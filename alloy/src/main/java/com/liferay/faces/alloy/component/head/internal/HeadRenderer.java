@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2015 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-2016 Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -15,6 +15,7 @@ package com.liferay.faces.alloy.component.head.internal;
 
 import java.io.IOException;
 import java.util.List;
+import java.util.Map;
 
 import javax.faces.application.ResourceDependencies;
 import javax.faces.application.ResourceDependency;
@@ -25,8 +26,6 @@ import javax.faces.context.ResponseWriter;
 import javax.faces.render.FacesRenderer;
 
 import com.liferay.faces.alloy.component.head.Head;
-import com.liferay.faces.util.application.ComponentResource;
-import com.liferay.faces.util.application.ComponentResourceFactory;
 import com.liferay.faces.util.factory.FactoryExtensionFinder;
 import com.liferay.faces.util.product.ProductConstants;
 import com.liferay.faces.util.product.ProductMap;
@@ -60,16 +59,14 @@ public class HeadRenderer extends HeadRendererBase {
 		// element, then encode a meta tag as a child of the head that will cause bootstrap to behave responsively.
 		if (!LIFERAY_PORTAL_DETECTED) {
 
-			ComponentResourceFactory componentResourceFactory = (ComponentResourceFactory) FactoryExtensionFinder
-				.getFactory(ComponentResourceFactory.class);
 			UIViewRoot uiViewRoot = facesContext.getViewRoot();
 			List<UIComponent> componentResources = uiViewRoot.getComponentResources(facesContext, "head");
 
-			for (UIComponent resource : componentResources) {
+			for (UIComponent componentResource : componentResources) {
 
-				ComponentResource componentResource = componentResourceFactory.getComponentResource(resource);
-				String library = componentResource.getLibrary();
-				String name = componentResource.getName();
+				Map<String, Object> attributes = componentResource.getAttributes();
+				String library = (String) attributes.get("library");
+				String name = (String) attributes.get("name");
 
 				if ("liferay-faces-alloy-reslib".equals(library) &&
 						"build/aui-css/css/bootstrap-responsive.min.css".equals(name)) {

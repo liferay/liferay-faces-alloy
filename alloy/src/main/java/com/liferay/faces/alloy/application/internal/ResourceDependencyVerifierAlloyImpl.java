@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2015 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-2016 Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -40,6 +40,8 @@ public class ResourceDependencyVerifierAlloyImpl extends ResourceDependencyVerif
 				"build/aui/aui-min.js"));
 		LIFERAY_PORTAL_INCLUDED_RESOURCE_IDS.add(ResourceUtil.getResourceDependencyId("liferay-faces-alloy-reslib",
 				"build/aui-css/css/bootstrap.min.css"));
+		LIFERAY_PORTAL_INCLUDED_RESOURCE_IDS.add(ResourceUtil.getResourceDependencyId("liferay-faces-alloy-reslib",
+				"build/aui-css/css/bootstrap-responsive.min.css"));
 		LIFERAY_PORTAL_INCLUDED_RESOURCE_IDS.add(ResourceUtil.getResourceDependencyId("liferay-faces-alloy-reslib",
 				"liferay.js"));
 	}
