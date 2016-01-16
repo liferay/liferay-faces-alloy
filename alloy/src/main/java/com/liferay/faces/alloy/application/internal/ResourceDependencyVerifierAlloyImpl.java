@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2016 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-2015 Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -20,6 +20,7 @@ import javax.faces.component.UIComponent;
 
 import com.liferay.faces.util.application.ResourceDependencyVerifier;
 import com.liferay.faces.util.application.ResourceDependencyVerifierWrapper;
+import com.liferay.faces.util.application.ResourceUtil;
 import com.liferay.faces.util.product.ProductConstants;
 import com.liferay.faces.util.product.ProductMap;
 
@@ -35,11 +36,12 @@ public class ResourceDependencyVerifierAlloyImpl extends ResourceDependencyVerif
 	private static final Set<String> LIFERAY_PORTAL_INCLUDED_RESOURCE_IDS = new HashSet<String>();
 
 	static {
-		LIFERAY_PORTAL_INCLUDED_RESOURCE_IDS.add(getResourceDependencyId("liferay-faces-alloy-reslib",
+		LIFERAY_PORTAL_INCLUDED_RESOURCE_IDS.add(ResourceUtil.getResourceDependencyId("liferay-faces-alloy-reslib",
 				"build/aui/aui-min.js"));
-		LIFERAY_PORTAL_INCLUDED_RESOURCE_IDS.add(getResourceDependencyId("liferay-faces-alloy-reslib",
+		LIFERAY_PORTAL_INCLUDED_RESOURCE_IDS.add(ResourceUtil.getResourceDependencyId("liferay-faces-alloy-reslib",
 				"build/aui-css/css/bootstrap.min.css"));
-		LIFERAY_PORTAL_INCLUDED_RESOURCE_IDS.add(getResourceDependencyId("liferay-faces-alloy-reslib", "liferay.js"));
+		LIFERAY_PORTAL_INCLUDED_RESOURCE_IDS.add(ResourceUtil.getResourceDependencyId("liferay-faces-alloy-reslib",
+				"liferay.js"));
 	}
 
 	// Private Members
@@ -55,7 +57,8 @@ public class ResourceDependencyVerifierAlloyImpl extends ResourceDependencyVerif
 		boolean resourceDependencySatisfied;
 
 		if (LIFERAY_PORTAL_DETECTED &&
-				LIFERAY_PORTAL_INCLUDED_RESOURCE_IDS.contains(getResourceDependencyId(componentResource))) {
+				LIFERAY_PORTAL_INCLUDED_RESOURCE_IDS.contains(
+					ResourceUtil.getResourceDependencyId(componentResource))) {
 			resourceDependencySatisfied = true;
 		}
 		else {
