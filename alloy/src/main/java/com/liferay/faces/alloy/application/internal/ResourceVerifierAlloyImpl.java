@@ -42,6 +42,8 @@ public class ResourceVerifierAlloyImpl extends ResourceVerifierWrapper {
 		LIFERAY_PORTAL_INCLUDED_RESOURCE_IDS.add(ResourceUtil.getResourceId("liferay-faces-alloy-reslib",
 				"build/aui-css/css/bootstrap.min.css"));
 		LIFERAY_PORTAL_INCLUDED_RESOURCE_IDS.add(ResourceUtil.getResourceId("liferay-faces-alloy-reslib",
+				"build/aui-css/css/bootstrap-responsive.min.css"));
+		LIFERAY_PORTAL_INCLUDED_RESOURCE_IDS.add(ResourceUtil.getResourceId("liferay-faces-alloy-reslib",
 				"liferay.js"));
 	}
 
