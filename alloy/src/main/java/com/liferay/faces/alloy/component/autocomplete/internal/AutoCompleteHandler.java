@@ -46,7 +46,7 @@ public class AutoCompleteHandler extends ComponentHandler {
 		return metaRuleset;
 	}
 
-	protected class AutoCompleteMethodRule extends MetaRule {
+	private static class AutoCompleteMethodRule extends MetaRule {
 
 		@Override
 		public Metadata applyRule(String name, TagAttribute tagAttribute, MetadataTarget metadataTarget) {
