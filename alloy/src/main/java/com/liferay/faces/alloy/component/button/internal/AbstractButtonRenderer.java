@@ -296,9 +296,9 @@ public abstract class AbstractButtonRenderer extends ButtonRendererBase {
 		return uiChildCount;
 	}
 
-	protected static final class NodeMenuNavFactory {
+	private static final class NodeMenuNavFactory {
 
-		public static UIComponent getNodeMenuNav(UIComponent uiComponent) {
+		private static UIComponent getNodeMenuNav(UIComponent uiComponent) {
 
 			String componentName = uiComponent.getClass().getName();
 
