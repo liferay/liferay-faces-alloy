@@ -13,32 +13,27 @@
  */
 package com.liferay.faces.alloy.reslib.application.internal;
 
-import java.io.IOException;
-
 import javax.faces.application.Resource;
 import javax.faces.application.ResourceHandler;
-import javax.faces.context.FacesContext;
-
-import com.liferay.faces.util.io.Filterable;
-import com.liferay.faces.util.io.ResourceOutputStream;
+import javax.faces.context.ExternalContext;
 
 
 /**
- * @author  Neil Griffin
+ * @author  Kyle Stiemann
  */
-public class ExpressionResourceOutputStream extends ResourceOutputStream implements Filterable {
+/* package-private */ class ExpressionUtil {
 
 	// Private Constants
 	private static final String RESOURCE_TOKEN_BEGIN = "#{resource['";
 	private static final String RESOURCE_TOKEN_END = "']}";
 
-	public ExpressionResourceOutputStream(Resource resource, int size) {
-		super(resource, size);
+	// Prevent instantiation since this is a static utility class.
+	private ExpressionUtil() {
+		throw new AssertionError();
 	}
 
-	public void filter() throws IOException {
-
-		String text = toString();
+	/* package-priavte */ static String filterExpressions(String text, ResourceHandler resourceHandlerChain,
+		ExternalContext externalContext) {
 
 		int startPos = text.indexOf(RESOURCE_TOKEN_BEGIN);
 
@@ -52,15 +47,15 @@ public class ExpressionResourceOutputStream extends ResourceOutputStream impleme
 					String[] resourceTokens = resourcePair.split(":");
 					String libraryName = resourceTokens[0];
 					String resourceName = resourceTokens[1];
-					FacesContext facesContext = FacesContext.getCurrentInstance();
-					ResourceHandler resourceHandlerChain = facesContext.getApplication().getResourceHandler();
 					Resource resource = resourceHandlerChain.createResource(resourceName, libraryName);
 
 					if (resource != null) {
+
 						String requestPath = resource.getRequestPath();
 
 						if (requestPath != null) {
-							String resourceURL = facesContext.getExternalContext().encodeResourceURL(requestPath);
+
+							String resourceURL = externalContext.encodeResourceURL(requestPath);
 							text = text.substring(0, startPos) + resourceURL +
 								text.substring(finishPos + RESOURCE_TOKEN_END.length());
 						}
@@ -71,7 +66,6 @@ public class ExpressionResourceOutputStream extends ResourceOutputStream impleme
 			startPos = text.indexOf(RESOURCE_TOKEN_BEGIN);
 		}
 
-		reset();
-		write(text.getBytes());
+		return text;
 	}
 }

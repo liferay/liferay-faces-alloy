@@ -23,6 +23,7 @@ import java.util.Set;
 
 import javax.faces.application.Resource;
 import javax.faces.application.ResourceHandler;
+import javax.faces.application.ResourceHandlerWrapper;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpServletRequest;
@@ -30,11 +31,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.liferay.faces.alloy.reslib.config.ResLibConfigParam;
 import com.liferay.faces.util.HttpHeaders;
-import com.liferay.faces.util.application.ResourceHandlerWrapperBase;
 import com.liferay.faces.util.config.ApplicationConfig;
 import com.liferay.faces.util.config.ConfiguredServletMapping;
 import com.liferay.faces.util.config.FacesConfig;
-import com.liferay.faces.util.io.ResourceOutputStream;
 import com.liferay.faces.util.product.ProductConstants;
 import com.liferay.faces.util.product.ProductMap;
 
@@ -45,7 +44,7 @@ import com.liferay.faces.util.product.ProductMap;
  *
  * @author  Neil Griffin
  */
-public class ResLibResourceHandler extends ResourceHandlerWrapperBase {
+public class ResLibResourceHandler extends ResourceHandlerWrapper {
 
 	// Public Constants
 	public static final String LIBRARY_NAME = "liferay-faces-alloy-reslib";
@@ -67,87 +66,135 @@ public class ResLibResourceHandler extends ResourceHandlerWrapperBase {
 		PROTECTED_PARAMTERS.add("t");
 	}
 
-	public ResLibResourceHandler(ResourceHandler resourceHandler) {
-		super(resourceHandler);
+	// Private Members
+	private ResourceHandler wrappedResourceHandler;
+
+	public ResLibResourceHandler(ResourceHandler wrappedResourceHandler) {
+		this.wrappedResourceHandler = wrappedResourceHandler;
+	}
+
+	@Override
+	public Resource createResource(String resourceName) {
+
+		Resource resource;
+
+		if (!LIFERAY_PORTAL_DETECTED) {
+
+			if (ComboResource.RESOURCE_NAME.equals(resourceName)) {
+
+				FacesContext facesContext = FacesContext.getCurrentInstance();
+				ExternalContext externalContext = facesContext.getExternalContext();
+				List<String> modulePaths = getModulePaths(externalContext);
+				resource = new ComboResource(modulePaths);
+			}
+			else if (ScriptResource.RESOURCE_NAME.equals(resourceName)) {
+
+				FacesContext facesContext = FacesContext.getCurrentInstance();
+				ExternalContext externalContext = facesContext.getExternalContext();
+				List<String> modulePaths = getModulePaths(externalContext);
+				String scriptModulePath = "";
+
+				if (modulePaths.size() > 0) {
+					scriptModulePath = modulePaths.get(0);
+				}
+
+				resource = new ScriptResource(scriptModulePath);
+			}
+			else {
+
+				resource = super.createResource(resourceName);
+
+				if (LIFERAY_JS.equals(resourceName)) {
+					resource = new FilteredResourceExpressionImpl(resource);
+				}
+			}
+		}
+		else {
+			resource = super.createResource(resourceName);
+		}
+
+		return resource;
 	}
 
 	@Override
 	public Resource createResource(String resourceName, String libraryName) {
 
+		Resource resource;
+
 		if (!LIFERAY_PORTAL_DETECTED && LIBRARY_NAME.equals(libraryName)) {
 
-			if (ComboResource.RESOURCE_NAME.equals(resourceName)) {
-				return new ComboResource();
-			}
-			else if (ScriptResource.RESOURCE_NAME.equals(resourceName)) {
-				return new ScriptResource();
+			if (ComboResource.RESOURCE_NAME.equals(resourceName) || ScriptResource.RESOURCE_NAME.equals(resourceName)) {
+				resource = createResource(resourceName);
 			}
 			else {
-				return super.createResource(resourceName, libraryName);
+
+				resource = super.createResource(resourceName, libraryName);
+
+				if (LIFERAY_JS.equals(resourceName)) {
+					resource = new FilteredResourceExpressionImpl(resource);
+				}
 			}
 		}
 		else {
-			return super.createResource(resourceName, libraryName);
+			resource = super.createResource(resourceName, libraryName);
 		}
+
+		return resource;
+	}
+
+	@Override
+	public Resource createResource(String resourceName, String libraryName, String contentType) {
+
+		Resource resource;
+
+		if (!LIFERAY_PORTAL_DETECTED && LIBRARY_NAME.equals(libraryName)) {
+
+			if (ComboResource.RESOURCE_NAME.equals(resourceName) || ScriptResource.RESOURCE_NAME.equals(resourceName)) {
+				resource = createResource(resourceName);
+			}
+			else {
+
+				resource = super.createResource(resourceName, libraryName, contentType);
+
+				if (LIFERAY_JS.equals(resourceName)) {
+					resource = new FilteredResourceExpressionImpl(resource);
+				}
+			}
+		}
+		else {
+			resource = super.createResource(resourceName, libraryName, contentType);
+		}
+
+		return resource;
 	}
 
 	@Override
 	public void handleResourceRequest(FacesContext facesContext) throws IOException {
 
 		if (LIFERAY_PORTAL_DETECTED) {
-			getWrapped().handleResourceRequest(facesContext);
+			super.handleResourceRequest(facesContext);
 		}
 		else {
+
 			ExternalContext externalContext = facesContext.getExternalContext();
 			Map<String, String> requestParameterMap = externalContext.getRequestParameterMap();
 			String libraryName = requestParameterMap.get("ln");
+			String resourceName = getResourceName(externalContext);
 
-			if (LIBRARY_NAME.equals(libraryName)) {
+			// If the resource that is to be rendered is a combo or script module resource and the module paths
+			// extensions are invalid, then the resource cannot be found.
+			if (LIBRARY_NAME.equals(libraryName) &&
+					(ComboResource.RESOURCE_NAME.equals(resourceName) ||
+						ScriptResource.RESOURCE_NAME.equals(resourceName)) &&
+					!areModulePathsExtensionsValid(externalContext)) {
 
-				String resourceName = getResourceName(externalContext);
-
-				// If the resource that is to be rendered is "liferay.js" then let this resource handler have an
-				// opportunity to expand EL expressions before writing the contents of the resource to the response.
-				if (LIFERAY_JS.equals(resourceName)) {
-					Resource resource = createResource(resourceName, libraryName);
-					handleResource(facesContext, resource);
-				}
-
-				// Otherwise, if the resource that is to be rendered is a combo or script module resource, then let this
-				// resource handler write the contents of the resource to the response.
-				else if (ComboResource.RESOURCE_NAME.equals(resourceName) ||
-						ScriptResource.RESOURCE_NAME.equals(resourceName)) {
-
-					List<String> modulePaths = getModulePaths(externalContext);
-					boolean modulePathExtensionsValid = validateModulePathExtensions(externalContext, modulePaths);
-
-					if ((modulePaths.size() > 0) && (modulePathExtensionsValid)) {
-
-						if (ComboResource.RESOURCE_NAME.equals(resourceName)) {
-							ComboResource comboResource = (ComboResource) createResource(resourceName, libraryName);
-							comboResource.setModulePaths(modulePaths);
-							handleResource(facesContext, comboResource);
-						}
-						else {
-							ScriptResource scriptResource = (ScriptResource) createResource(resourceName, libraryName);
-							scriptResource.setModulePath(modulePaths.get(0));
-							handleResource(facesContext, scriptResource);
-						}
-					}
-					else {
-						externalContext.setResponseHeader(HttpHeaders.CACHE_CONTROL,
-							HttpHeaders.CACHE_CONTROL_NO_CACHE_VALUE);
-						externalContext.setResponseStatus(HttpServletResponse.SC_NOT_FOUND);
-					}
-				}
-				else {
-					getWrapped().handleResourceRequest(facesContext);
-				}
+				externalContext.setResponseHeader(HttpHeaders.CACHE_CONTROL, HttpHeaders.CACHE_CONTROL_NO_CACHE_VALUE);
+				externalContext.setResponseStatus(HttpServletResponse.SC_NOT_FOUND);
 			}
 
 			// Otherwise, pass responsibility for handling the resource to the resource-handler delegation chain.
 			else {
-				getWrapped().handleResourceRequest(facesContext);
+				super.handleResourceRequest(facesContext);
 			}
 		}
 	}
@@ -163,33 +210,41 @@ public class ResLibResourceHandler extends ResourceHandlerWrapperBase {
 		}
 	}
 
-	protected boolean validateModulePathExtensions(ExternalContext externalContext, List<String> modulePaths) {
-		String[] comboAllowedFileExtensions = ResLibConfigParam.ComboAllowedFileExtensions.getStringValue(
-				externalContext).split(",");
+	protected boolean areModulePathsExtensionsValid(ExternalContext externalContext) {
 
-		boolean modulePathExtensionsValid = true;
+		List<String> modulePaths = getModulePaths(externalContext);
+		boolean modulePathsExtensionsValid = false;
 
-		for (String modulePath : modulePaths) {
+		if (modulePaths.size() > 0) {
 
-			boolean validFileExtension = false;
+			String[] comboAllowedFileExtensions = ResLibConfigParam.ComboAllowedFileExtensions.getStringValue(
+					externalContext).split(",");
+			modulePathsExtensionsValid = true;
 
-			for (String comboAllowedFileExtension : comboAllowedFileExtensions) {
+			for (String modulePath : modulePaths) {
 
-				if (modulePath.endsWith(comboAllowedFileExtension)) {
-					validFileExtension = true;
+				boolean validFileExtension = false;
+
+				for (String comboAllowedFileExtension : comboAllowedFileExtensions) {
+
+					if (modulePath.endsWith(comboAllowedFileExtension)) {
+
+						validFileExtension = true;
+
+						break;
+					}
+				}
+
+				if (!validFileExtension) {
+
+					modulePathsExtensionsValid = false;
 
 					break;
 				}
 			}
-
-			if (!validFileExtension) {
-				modulePathExtensionsValid = false;
-
-				break;
-			}
 		}
 
-		return modulePathExtensionsValid;
+		return modulePathsExtensionsValid;
 	}
 
 	protected List<String> getModulePaths(ExternalContext externalContext) {
@@ -259,19 +314,7 @@ public class ResLibResourceHandler extends ResourceHandlerWrapperBase {
 	}
 
 	@Override
-	protected ResourceOutputStream getResourceOutputStream(Resource resource, int size) {
-
-		String resourceName = resource.getResourceName();
-
-		// If the specified resource is "liferay.js" then filter the output stream so that #{resource['...']}
-		// expressions will be expanded.
-		if (LIFERAY_JS.equals(resourceName) || ComboResource.RESOURCE_NAME.equals(resourceName)) {
-			return new ExpressionResourceOutputStream(resource, size);
-		}
-
-		// Otherwise, return a normal resource output stream.
-		else {
-			return super.getResourceOutputStream(resource, size);
-		}
+	public ResourceHandler getWrapped() {
+		return wrappedResourceHandler;
 	}
 }
