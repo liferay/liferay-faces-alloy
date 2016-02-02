@@ -13,6 +13,7 @@
  */
 package com.liferay.faces.alloy.component.commandbutton.internal;
 
+import javax.faces.application.ResourceDependencies;
 import javax.faces.application.ResourceDependency;
 import javax.faces.event.AbortProcessingException;
 import javax.faces.event.ComponentSystemEvent;
@@ -28,9 +29,19 @@ import com.liferay.faces.alloy.render.internal.AlloyRendererUtil;
 /**
  * @author  Kyle Stiemann
  */
+//J-
 @FacesRenderer(componentFamily = CommandButton.COMPONENT_FAMILY, rendererType = CommandButton.RENDERER_TYPE)
 @ListenerFor(systemEventClass = PostAddToViewEvent.class, sourceClass = CommandButton.class)
-@ResourceDependency(library = "javax.faces", name = "jsf.js")
+@ResourceDependencies(
+	{
+		@ResourceDependency(library = "liferay-faces-alloy", name = "alloy.css"),
+		@ResourceDependency(library = "liferay-faces-alloy-reslib", name = "build/aui-css/css/bootstrap.min.css"),
+		@ResourceDependency(library = "liferay-faces-alloy-reslib", name = "build/aui/aui-min.js"),
+		@ResourceDependency(library = "liferay-faces-alloy-reslib", name = "liferay.js"),
+		@ResourceDependency(library = "javax.faces", name = "jsf.js")
+	}
+)
+//J+
 public class CommandButtonRenderer extends CommandButtonRendererBase implements ComponentSystemEventListener {
 
 	@Override

@@ -47,7 +47,6 @@ import com.liferay.faces.util.render.RendererUtil;
 @ResourceDependencies(
 	{
 		@ResourceDependency(library = "liferay-faces-alloy", name = "alloy.css"),
-		@ResourceDependency(library = "liferay-faces-alloy", name = "alloy.js"),
 		@ResourceDependency(library = "liferay-faces-alloy-reslib", name = "build/aui-css/css/bootstrap.min.css"),
 		@ResourceDependency(library = "liferay-faces-alloy-reslib", name = "build/aui/aui-min.js"),
 		@ResourceDependency(library = "liferay-faces-alloy-reslib", name = "liferay.js")
