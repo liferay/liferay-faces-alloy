@@ -105,7 +105,7 @@ public class ComboResource extends Resource {
 			logger.debug("resourcePath=[{0}] resourceURL=[{1}]", resourcePath, resourceURL);
 
 			InputStream inputStream = resourceURL.openStream();
-			String resourceText = ResourceUtil.toString(inputStream, "UTF-8");
+			String resourceText = ResourceUtil.toString(inputStream, "UTF-8", 1024);
 
 			if (ContentTypes.TEXT_CSS.equals(contentType)) {
 				resourceText = ExpressionUtil.filterExpressions(resourceText, resourceHandlerChain, externalContext);
