@@ -40,7 +40,9 @@ public class ScriptResource extends Resource {
 	private String modulePath;
 	private String requestPath;
 
-	public ScriptResource() {
+	public ScriptResource(String modulePath) {
+
+		this.modulePath = modulePath;
 		setLibraryName(ResLibResourceHandler.LIBRARY_NAME);
 		setResourceName(RESOURCE_NAME);
 		setContentType(ContentTypes.TEXT_JAVASCRIPT);
@@ -66,10 +68,6 @@ public class ScriptResource extends Resource {
 		}
 
 		return internalResource;
-	}
-
-	public void setModulePath(String modulePath) {
-		this.modulePath = modulePath;
 	}
 
 	@Override

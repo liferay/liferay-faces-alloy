@@ -23,14 +23,17 @@ import java.nio.ByteBuffer;
 import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 import java.nio.channels.WritableByteChannel;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
 import javax.faces.application.Resource;
 import javax.faces.application.ResourceHandler;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
 import com.liferay.faces.util.ContentTypes;
+import com.liferay.faces.util.application.ResourceUtil;
 import com.liferay.faces.util.logging.Logger;
 import com.liferay.faces.util.logging.LoggerFactory;
 
@@ -54,7 +57,9 @@ public class ComboResource extends Resource {
 	private List<String> modulePaths;
 	private String requestPath;
 
-	public ComboResource() {
+	public ComboResource(List<String> modulePaths) {
+
+		this.modulePaths = modulePaths;
 		setLibraryName(ResLibResourceHandler.LIBRARY_NAME);
 		setResourceName(RESOURCE_NAME);
 	}
@@ -62,50 +67,6 @@ public class ComboResource extends Resource {
 	@Override
 	public boolean userAgentNeedsUpdate(FacesContext facesContext) {
 		return true;
-	}
-
-	protected void writeModuleBytes(String modulePath, OutputStream outputStream) throws IOException {
-
-		String resourcePath = RESOURCE_PATH_BASE + modulePath;
-		URL resourceURL = ComboResource.class.getClassLoader().getResource(resourcePath);
-
-		logger.debug("resourcePath=[{0}] resourceURL=[{1}]", resourcePath, resourceURL);
-
-		ReadableByteChannel readableByteChannel = null;
-		WritableByteChannel writableByteChannel = null;
-		ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
-
-		InputStream inputStream = resourceURL.openStream();
-
-		if (inputStream != null) {
-
-			int responseContentLength = 0;
-			readableByteChannel = Channels.newChannel(inputStream);
-			writableByteChannel = Channels.newChannel(outputStream);
-
-			int bytesRead = readableByteChannel.read(byteBuffer);
-
-			int bytesWritten = 0;
-
-			while (bytesRead != -1) {
-				byteBuffer.rewind();
-				byteBuffer.limit(bytesRead);
-
-				do {
-					bytesWritten += writableByteChannel.write(byteBuffer);
-				}
-				while (bytesWritten < responseContentLength);
-
-				byteBuffer.clear();
-				responseContentLength += bytesRead;
-				bytesRead = readableByteChannel.read(byteBuffer);
-			}
-
-			inputStream.close();
-		}
-		else {
-			logger.error("Unable to locate resourcePath=[{0}] resourceURL=[{1}]", resourcePath, resourceURL);
-		}
 	}
 
 	@Override
@@ -130,27 +91,37 @@ public class ComboResource extends Resource {
 	@Override
 	public InputStream getInputStream() throws IOException {
 
-		ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream();
+		StringBuilder comboResourceText = new StringBuilder();
+		String contentType = getContentType();
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+		ResourceHandler resourceHandlerChain = facesContext.getApplication().getResourceHandler();
+		ExternalContext externalContext = facesContext.getExternalContext();
 
 		for (String modulePath : modulePaths) {
 
-			writeModuleBytes(modulePath, byteArrayOutputStream);
+			String resourcePath = RESOURCE_PATH_BASE + modulePath;
+			URL resourceURL = ComboResource.class.getClassLoader().getResource(resourcePath);
+
+			logger.debug("resourcePath=[{0}] resourceURL=[{1}]", resourcePath, resourceURL);
+
+			InputStream inputStream = resourceURL.openStream();
+			String resourceText = ResourceUtil.toString(inputStream, "UTF-8");
+
+			if (ContentTypes.TEXT_CSS.equals(contentType)) {
+				resourceText = ExpressionUtil.filterExpressions(resourceText, resourceHandlerChain, externalContext);
+			}
+
+			comboResourceText.append(resourceText);
 		}
 
-		byte[] byteArray = byteArrayOutputStream.toByteArray();
-		ByteArrayInputStream byteArrayInputStream = new ByteArrayInputStream(byteArray);
-
-		return byteArrayInputStream;
-	}
-
-	public void setModulePaths(List<String> modulePaths) {
-		this.modulePaths = modulePaths;
+		return ResourceUtil.toInputStream(comboResourceText.toString(), "UTF-8");
 	}
 
 	@Override
 	public String getRequestPath() {
 
 		if (requestPath == null) {
+
 			FacesContext facesContext = FacesContext.getCurrentInstance();
 			ResourceHandler resourceHandlerChain = facesContext.getApplication().getResourceHandler();
 			Resource dummyResource = resourceHandlerChain.createResource(DUMMY_RESOURCE_NAME, getLibraryName());
@@ -163,7 +134,7 @@ public class ComboResource extends Resource {
 
 	@Override
 	public Map<String, String> getResponseHeaders() {
-		return null;
+		return Collections.EMPTY_MAP;
 	}
 
 	@Override
