@@ -36,7 +36,7 @@
 			<plugin>
 				<artifactId>maven-war-plugin</artifactId>
 				<configuration>
-					<dependentWarExcludes>**/h-tags*,**/component/h/**/*,**/images/jsf*.png</dependentWarExcludes>
+					<dependentWarExcludes>**/h-tags*,**/component/h/**/*,**/images/jsf*.png,WEB-INF/lib/*</dependentWarExcludes>
 				</configuration>
 			</plugin>
 			<plugin>
