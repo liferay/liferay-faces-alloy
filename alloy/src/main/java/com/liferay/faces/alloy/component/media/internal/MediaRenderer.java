@@ -437,14 +437,15 @@ public abstract class MediaRenderer extends MediaRendererCompat {
 	}
 
 	private String getEncodedResourceURL(FacesContext facesContext, ResourceHandler resourceHandler,
-		Application application, String name) {
+		Application application, String resourceURL) {
 
-		String encodedResourceURL = name;
+		String encodedResourceURL = resourceURL;
 
-		if (!isFacesResourceURL(resourceHandler, name)) {
+		if (!isEncodedResourceURL(resourceHandler, encodedResourceURL)) {
 
 			ViewHandler viewHandler = application.getViewHandler();
-			String resourceURL = viewHandler.getResourceURL(facesContext, name);
+			resourceURL = viewHandler.getResourceURL(facesContext, resourceURL);
+
 			ExternalContext externalContext = facesContext.getExternalContext();
 			encodedResourceURL = externalContext.encodeResourceURL(resourceURL);
 		}

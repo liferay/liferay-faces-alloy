@@ -75,13 +75,13 @@ public class MediaRendererCompat extends MediaRendererBase {
 		}
 	}
 
-	protected boolean isFacesResourceURL(ResourceHandler resourceHandler, String value) {
+	protected boolean isEncodedResourceURL(ResourceHandler resourceHandler, String value) {
 
 		boolean facesResourceURL = false;
 		Method isResourceURLMethod = null;
 
 		try {
-			isResourceURLMethod = resourceHandler.getClass().getMethod("isResourceURL", new Class[] {});
+			isResourceURLMethod = resourceHandler.getClass().getMethod("isResourceURL", new Class[] { String.class });
 		}
 		catch (NoSuchMethodException e) {
 
@@ -96,7 +96,7 @@ public class MediaRendererCompat extends MediaRendererBase {
 		else {
 
 			try {
-				facesResourceURL = (Boolean) isResourceURLMethod.invoke(resourceHandler, new Object[] {});
+				facesResourceURL = (Boolean) isResourceURLMethod.invoke(resourceHandler, new Object[] { value });
 			}
 			catch (Exception e) {
 				logger.error(e);
