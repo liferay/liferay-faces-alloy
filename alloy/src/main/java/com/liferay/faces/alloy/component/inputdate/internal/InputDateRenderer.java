@@ -34,7 +34,6 @@ import com.liferay.faces.alloy.component.inputdatetime.internal.InputDateTimeRes
 import com.liferay.faces.alloy.render.internal.JavaScriptFragment;
 import com.liferay.faces.util.client.BrowserSniffer;
 import com.liferay.faces.util.client.BrowserSnifferFactory;
-import com.liferay.faces.util.factory.FactoryExtensionFinder;
 import com.liferay.faces.util.helper.StringHelper;
 
 
@@ -89,9 +88,8 @@ public class InputDateRenderer extends InputDateRendererBase {
 	@Override
 	public void encodeJavaScriptCustom(FacesContext facesContext, UIComponent uiComponent) throws IOException {
 
-		BrowserSnifferFactory browserSnifferFactory = (BrowserSnifferFactory) FactoryExtensionFinder.getFactory(
-				BrowserSnifferFactory.class);
-		BrowserSniffer browserSniffer = browserSnifferFactory.getBrowserSniffer(facesContext.getExternalContext());
+		BrowserSniffer browserSniffer = BrowserSnifferFactory.getBrowserSnifferInstance(
+				facesContext.getExternalContext());
 		InputDate inputDate = (InputDate) uiComponent;
 		String showOn = inputDate.getShowOn();
 
@@ -239,9 +237,8 @@ public class InputDateRenderer extends InputDateRendererBase {
 	protected void encodeHiddenAttributes(FacesContext facesContext, ResponseWriter responseWriter, InputDate inputDate,
 		boolean first) throws IOException {
 
-		BrowserSnifferFactory browserSnifferFactory = (BrowserSnifferFactory) FactoryExtensionFinder.getFactory(
-				BrowserSnifferFactory.class);
-		BrowserSniffer browserSniffer = browserSnifferFactory.getBrowserSniffer(facesContext.getExternalContext());
+		BrowserSniffer browserSniffer = BrowserSnifferFactory.getBrowserSnifferInstance(
+				facesContext.getExternalContext());
 
 		if (!isNative(browserSniffer, inputDate)) {
 
@@ -266,9 +263,8 @@ public class InputDateRenderer extends InputDateRendererBase {
 	public String getAlloyClassName(FacesContext facesContext, UIComponent uiComponent) {
 
 		String alloyClassName = super.getAlloyClassName(facesContext, uiComponent);
-		BrowserSnifferFactory browserSnifferFactory = (BrowserSnifferFactory) FactoryExtensionFinder.getFactory(
-				BrowserSnifferFactory.class);
-		BrowserSniffer browserSniffer = browserSnifferFactory.getBrowserSniffer(facesContext.getExternalContext());
+		BrowserSniffer browserSniffer = BrowserSnifferFactory.getBrowserSnifferInstance(
+				facesContext.getExternalContext());
 		InputDate inputDate = (InputDate) uiComponent;
 
 		if (isNative(browserSniffer, inputDate)) {

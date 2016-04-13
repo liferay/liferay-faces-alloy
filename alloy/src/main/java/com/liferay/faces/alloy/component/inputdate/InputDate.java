@@ -26,7 +26,6 @@ import javax.faces.context.FacesContext;
 
 import com.liferay.faces.util.client.BrowserSniffer;
 import com.liferay.faces.util.client.BrowserSnifferFactory;
-import com.liferay.faces.util.factory.FactoryExtensionFinder;
 
 
 /**
@@ -105,9 +104,8 @@ public class InputDate extends InputDateBase {
 
 		String datePattern;
 		FacesContext facesContext = FacesContext.getCurrentInstance();
-		BrowserSnifferFactory browserSnifferFactory = (BrowserSnifferFactory) FactoryExtensionFinder.getFactory(
-				BrowserSnifferFactory.class);
-		BrowserSniffer browserSniffer = browserSnifferFactory.getBrowserSniffer(facesContext.getExternalContext());
+		BrowserSniffer browserSniffer = BrowserSnifferFactory.getBrowserSnifferInstance(
+				facesContext.getExternalContext());
 
 		if (browserSniffer.isMobile() && isNativeWhenMobile()) {
 			datePattern = DEFAULT_HTML5_DATE_PATTERN;

@@ -23,7 +23,6 @@ import javax.faces.render.Renderer;
 import com.liferay.faces.util.client.Script;
 import com.liferay.faces.util.client.ScriptFactory;
 import com.liferay.faces.util.context.FacesRequestContext;
-import com.liferay.faces.util.factory.FactoryExtensionFinder;
 import com.liferay.faces.util.render.internal.BufferedScriptResponseWriter;
 
 
@@ -117,13 +116,12 @@ public abstract class ClientComponentRendererBase extends Renderer implements Cl
 	protected void renderScript(FacesContext facesContext, String bufferedScriptString, String[] modules) {
 
 		Script script;
-		ScriptFactory scriptFactory = (ScriptFactory) FactoryExtensionFinder.getFactory(ScriptFactory.class);
 
 		if (modules != null) {
-			script = scriptFactory.getScript(bufferedScriptString, modules, Script.Type.ALLOY);
+			script = ScriptFactory.getScriptInstance(bufferedScriptString, modules, Script.Type.ALLOY);
 		}
 		else {
-			script = scriptFactory.getScript(bufferedScriptString);
+			script = ScriptFactory.getScriptInstance(bufferedScriptString);
 		}
 
 		FacesRequestContext facesRequestContext = FacesRequestContext.getCurrentInstance();

@@ -38,7 +38,6 @@ import com.liferay.faces.util.context.MessageContext;
 import com.liferay.faces.util.context.MessageContextFactory;
 import com.liferay.faces.util.context.map.MultiPartFormData;
 import com.liferay.faces.util.factory.FactoryExtensionFinder;
-import com.liferay.faces.util.helper.StringHelper;
 import com.liferay.faces.util.model.UploadedFile;
 import com.liferay.faces.util.product.ProductConstants;
 import com.liferay.faces.util.product.ProductMap;
@@ -143,7 +142,8 @@ public class InputFileRenderer extends InputFileRendererBase {
 			String execute = ajaxParameters.getExecute();
 			String render = ajaxParameters.getRender();
 
-			String notStartedMessage = getMessageContext().getMessage(locale, "not-started");
+			MessageContext messageContext = MessageContextFactory.getMessageContextInstance();
+			String notStartedMessage = messageContext.getMessage(locale, "not-started");
 			JavaScriptFragment clientComponent = new JavaScriptFragment("Liferay.component('" + clientKey + "')");
 			encodeFunctionCall(responseWriter, "LFAI.initProgressUploader", alloyNamespace, clientComponent,
 				contentTypes, clientId, formClientId, namingContainerId, inputFile.isAuto(), execute, render,
@@ -244,7 +244,8 @@ public class InputFileRenderer extends InputFileRendererBase {
 
 		// selectFilesButton
 		Locale locale = facesContext.getViewRoot().getLocale();
-		String chooseFiles = getMessageContext().getMessage(locale, "choose-files");
+		MessageContext messageContext = MessageContextFactory.getMessageContextInstance();
+		String chooseFiles = messageContext.getMessage(locale, "choose-files");
 		StringBuilder selectFilesButtonScript = new StringBuilder();
 		selectFilesButtonScript.append(
 			"A.Node.create(\"<button type='button' class='alloy-button' role='button' aria-label='");
@@ -413,14 +414,6 @@ public class InputFileRenderer extends InputFileRendererBase {
 	public Object getConvertedValue(FacesContext facesContext, UIComponent uiComponent, Object submittedValue)
 		throws ConverterException {
 		return submittedValue;
-	}
-
-	protected MessageContext getMessageContext() {
-
-		MessageContextFactory messageContextFactory = (MessageContextFactory) FactoryExtensionFinder.getFactory(
-				MessageContextFactory.class);
-
-		return messageContextFactory.getMessageContext();
 	}
 
 	protected String getParentFormClientId(UIComponent uiComponent) {
