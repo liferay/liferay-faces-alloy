@@ -108,9 +108,12 @@ public class AccordionRenderer extends AccordionRendererBase {
 				for (int i = 0; i < rowCount; i++) {
 					accordion.setRowIndex(i);
 
-					boolean selected = ((selectedIndex != null) && (i == selectedIndex));
-					encodeHeader(facesContext, responseWriter, uiComponent, prototypeChildTab, selected);
-					encodeContent(facesContext, responseWriter, uiComponent, prototypeChildTab, selected);
+					if (prototypeChildTab.isRendered()) {
+
+						boolean selected = ((selectedIndex != null) && (i == selectedIndex));
+						encodeHeader(facesContext, responseWriter, uiComponent, prototypeChildTab, selected);
+						encodeContent(facesContext, responseWriter, uiComponent, prototypeChildTab, selected);
+					}
 				}
 
 				accordion.setRowIndex(-1);
