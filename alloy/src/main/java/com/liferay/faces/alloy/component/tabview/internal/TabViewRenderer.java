@@ -104,8 +104,11 @@ public class TabViewRenderer extends TabViewRendererBase {
 				for (int i = 0; i < rowCount; i++) {
 					tabView.setRowIndex(i);
 
-					boolean selected = ((selectedIndex != null) && (i == selectedIndex));
-					encodeTabListItem(facesContext, responseWriter, prototypeChildTab, selected);
+					if (prototypeChildTab.isRendered()) {
+
+						boolean selected = ((selectedIndex != null) && (i == selectedIndex));
+						encodeTabListItem(facesContext, responseWriter, prototypeChildTab, selected);
+					}
 				}
 
 				tabView.setRowIndex(-1);
