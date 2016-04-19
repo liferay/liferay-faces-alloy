@@ -31,7 +31,6 @@ import com.liferay.faces.alloy.component.media.Media;
 import com.liferay.faces.util.application.FacesResource;
 import com.liferay.faces.util.client.BrowserSniffer;
 import com.liferay.faces.util.client.BrowserSnifferFactory;
-import com.liferay.faces.util.factory.FactoryExtensionFinder;
 import com.liferay.faces.util.logging.Logger;
 import com.liferay.faces.util.logging.LoggerFactory;
 import com.liferay.faces.util.render.RendererUtil;
@@ -311,9 +310,8 @@ public abstract class MediaRenderer extends MediaRendererCompat {
 	protected void encodeFlashPlayer(FacesContext facesContext, ResponseWriter responseWriter, Media media,
 		String mediaResourceURL) throws IOException {
 
-		BrowserSnifferFactory browserSnifferFactory = (BrowserSnifferFactory) FactoryExtensionFinder.getFactory(
-				BrowserSnifferFactory.class);
-		BrowserSniffer browserSniffer = browserSnifferFactory.getBrowserSniffer(facesContext.getExternalContext());
+		BrowserSniffer browserSniffer = BrowserSnifferFactory.getBrowserSnifferInstance(
+				facesContext.getExternalContext());
 		boolean browserIE = browserSniffer.isIe();
 		responseWriter.startElement("object", null);
 		encodeMediaSize(responseWriter, media);

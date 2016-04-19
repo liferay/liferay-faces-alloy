@@ -26,7 +26,6 @@ import javax.faces.event.FacesEvent;
 
 import com.liferay.faces.util.context.MessageContext;
 import com.liferay.faces.util.context.MessageContextFactory;
-import com.liferay.faces.util.factory.FactoryExtensionFinder;
 import com.liferay.faces.util.logging.Logger;
 import com.liferay.faces.util.logging.LoggerFactory;
 import com.liferay.faces.util.model.UploadedFile;
@@ -70,9 +69,7 @@ public class InputFile extends InputFileBase {
 		if ((maxFileSize != null) || (contentTypeSet != null)) {
 
 			Locale locale = facesContext.getViewRoot().getLocale();
-			MessageContextFactory messageContextFactory = (MessageContextFactory) FactoryExtensionFinder.getFactory(
-					MessageContextFactory.class);
-			MessageContext messageContext = messageContextFactory.getMessageContext();
+			MessageContext messageContext = MessageContextFactory.getMessageContextInstance();
 			String clientId = getClientId(facesContext);
 			@SuppressWarnings("unchecked")
 			List<UploadedFile> uploadedFiles = (List<UploadedFile>) value;

@@ -37,7 +37,6 @@ import com.liferay.faces.alloy.component.inputtime.InputTime;
 import com.liferay.faces.alloy.render.internal.JavaScriptFragment;
 import com.liferay.faces.util.client.BrowserSniffer;
 import com.liferay.faces.util.client.BrowserSnifferFactory;
-import com.liferay.faces.util.factory.FactoryExtensionFinder;
 import com.liferay.faces.util.helper.StringHelper;
 
 
@@ -136,9 +135,8 @@ public class InputTimeRenderer extends InputTimeRendererBase {
 
 		ResponseWriter responseWriter = facesContext.getResponseWriter();
 
-		BrowserSnifferFactory browserSnifferFactory = (BrowserSnifferFactory) FactoryExtensionFinder.getFactory(
-				BrowserSnifferFactory.class);
-		BrowserSniffer browserSniffer = browserSnifferFactory.getBrowserSniffer(facesContext.getExternalContext());
+		BrowserSniffer browserSniffer = BrowserSnifferFactory.getBrowserSnifferInstance(
+				facesContext.getExternalContext());
 
 		if (isNative(browserSniffer, inputTime)) {
 
@@ -321,9 +319,8 @@ public class InputTimeRenderer extends InputTimeRendererBase {
 	protected void encodeHiddenAttributes(FacesContext facesContext, ResponseWriter responseWriter, InputTime inputTime,
 		boolean first) throws IOException {
 
-		BrowserSnifferFactory browserSnifferFactory = (BrowserSnifferFactory) FactoryExtensionFinder.getFactory(
-				BrowserSnifferFactory.class);
-		BrowserSniffer browserSniffer = browserSnifferFactory.getBrowserSniffer(facesContext.getExternalContext());
+		BrowserSniffer browserSniffer = BrowserSnifferFactory.getBrowserSnifferInstance(
+				facesContext.getExternalContext());
 
 		if (!isNative(browserSniffer, inputTime)) {
 
@@ -347,9 +344,8 @@ public class InputTimeRenderer extends InputTimeRendererBase {
 	public String getAlloyClassName(FacesContext facesContext, UIComponent uiComponent) {
 
 		String alloyClassName = super.getAlloyClassName(facesContext, uiComponent);
-		BrowserSnifferFactory browserSnifferFactory = (BrowserSnifferFactory) FactoryExtensionFinder.getFactory(
-				BrowserSnifferFactory.class);
-		BrowserSniffer browserSniffer = browserSnifferFactory.getBrowserSniffer(facesContext.getExternalContext());
+		BrowserSniffer browserSniffer = BrowserSnifferFactory.getBrowserSnifferInstance(
+				facesContext.getExternalContext());
 		InputTime inputTime = (InputTime) uiComponent;
 
 		if (isNative(browserSniffer, inputTime)) {

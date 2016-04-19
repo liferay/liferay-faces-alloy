@@ -22,7 +22,6 @@ import com.liferay.faces.alloy.component.inputdate.InputDate;
 import com.liferay.faces.alloy.component.inputtime.InputTime;
 import com.liferay.faces.util.context.MessageContext;
 import com.liferay.faces.util.context.MessageContextFactory;
-import com.liferay.faces.util.factory.FactoryExtensionFinder;
 
 
 /**
@@ -32,9 +31,7 @@ public class AlloyValidatorHelper {
 
 	public static String getMessage(FacesContext facesContext, InputDate inputDate, String messageId) {
 
-		MessageContextFactory messageContextFactory = (MessageContextFactory) FactoryExtensionFinder.getFactory(
-				MessageContextFactory.class);
-		MessageContext messageContext = messageContextFactory.getMessageContext();
+		MessageContext messageContext = MessageContextFactory.getMessageContextInstance();
 		Object localeObject = inputDate.getLocale(facesContext);
 		Locale locale = getObjectAsLocale(localeObject);
 
@@ -43,9 +40,7 @@ public class AlloyValidatorHelper {
 
 	public static String getMessage(FacesContext facesContext, InputTime inputTime, String messageId) {
 
-		MessageContextFactory messageContextFactory = (MessageContextFactory) FactoryExtensionFinder.getFactory(
-				MessageContextFactory.class);
-		final MessageContext messageContext = messageContextFactory.getMessageContext();
+		final MessageContext messageContext = MessageContextFactory.getMessageContextInstance();
 		final Object localeObject = inputTime.getLocale(facesContext);
 		Locale locale = getObjectAsLocale(localeObject);
 

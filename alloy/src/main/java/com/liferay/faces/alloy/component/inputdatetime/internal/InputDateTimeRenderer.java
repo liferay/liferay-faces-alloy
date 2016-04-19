@@ -34,7 +34,6 @@ import com.liferay.faces.util.client.BrowserSniffer;
 import com.liferay.faces.util.client.BrowserSnifferFactory;
 import com.liferay.faces.util.component.ClientComponent;
 import com.liferay.faces.util.component.Styleable;
-import com.liferay.faces.util.factory.FactoryExtensionFinder;
 import com.liferay.faces.util.helper.StringHelper;
 import com.liferay.faces.util.render.RendererUtil;
 
@@ -72,9 +71,8 @@ public abstract class InputDateTimeRenderer extends InputDateTimeRendererBase {
 
 		// Start the encoding of the text input by delegating to the renderer from the JSF runtime.
 		String inputClientId = clientId.concat(INPUT_SUFFIX);
-		BrowserSnifferFactory browserSnifferFactory = (BrowserSnifferFactory) FactoryExtensionFinder.getFactory(
-				BrowserSnifferFactory.class);
-		BrowserSniffer browserSniffer = browserSnifferFactory.getBrowserSniffer(facesContext.getExternalContext());
+		BrowserSniffer browserSniffer = BrowserSnifferFactory.getBrowserSnifferInstance(
+				facesContext.getExternalContext());
 		InputDateTime inputDateTime = (InputDateTime) uiComponent;
 		InputDateTimeResponseWriter inputDateTimeResponseWriter = getInputDateTimeResponseWriter(responseWriter,
 				inputClientId, isNative(browserSniffer, inputDateTime));
@@ -87,9 +85,8 @@ public abstract class InputDateTimeRenderer extends InputDateTimeRendererBase {
 		ResponseWriter responseWriter = facesContext.getResponseWriter();
 		String clientId = uiComponent.getClientId(facesContext);
 		String inputClientId = clientId.concat(INPUT_SUFFIX);
-		BrowserSnifferFactory browserSnifferFactory = (BrowserSnifferFactory) FactoryExtensionFinder.getFactory(
-				BrowserSnifferFactory.class);
-		BrowserSniffer browserSniffer = browserSnifferFactory.getBrowserSniffer(facesContext.getExternalContext());
+		BrowserSniffer browserSniffer = BrowserSnifferFactory.getBrowserSnifferInstance(
+				facesContext.getExternalContext());
 		InputDateTime inputDateTime = (InputDateTime) uiComponent;
 		InputDateTimeResponseWriter inputDateTimeResponseWriter = getInputDateTimeResponseWriter(responseWriter,
 				inputClientId, isNative(browserSniffer, inputDateTime));
@@ -253,9 +250,8 @@ public abstract class InputDateTimeRenderer extends InputDateTimeRendererBase {
 	protected String[] getModules(String defaultModule, FacesContext facesContext, UIComponent uiComponent) {
 
 		String[] modules = new String[] { defaultModule };
-		BrowserSnifferFactory browserSnifferFactory = (BrowserSnifferFactory) FactoryExtensionFinder.getFactory(
-				BrowserSnifferFactory.class);
-		BrowserSniffer browserSniffer = browserSnifferFactory.getBrowserSniffer(facesContext.getExternalContext());
+		BrowserSniffer browserSniffer = BrowserSnifferFactory.getBrowserSnifferInstance(
+				facesContext.getExternalContext());
 		InputDateTime inputDateTime = (InputDateTime) uiComponent;
 
 		if (isNative(browserSniffer, inputDateTime)) {

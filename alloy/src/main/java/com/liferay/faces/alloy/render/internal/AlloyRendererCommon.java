@@ -23,7 +23,6 @@ import javax.faces.context.ResponseWriter;
 import com.liferay.faces.util.client.BrowserSniffer;
 import com.liferay.faces.util.client.BrowserSnifferFactory;
 import com.liferay.faces.util.component.ClientComponent;
-import com.liferay.faces.util.factory.FactoryExtensionFinder;
 
 
 /**
@@ -130,9 +129,8 @@ import com.liferay.faces.util.factory.FactoryExtensionFinder;
 		if (sandboxed) {
 
 			String yuiConfig = alloyRenderer.getYUIConfig(facesContext, responseWriter, uiComponent);
-			BrowserSnifferFactory browserSnifferFactory = (BrowserSnifferFactory) FactoryExtensionFinder.getFactory(
-					BrowserSnifferFactory.class);
-			BrowserSniffer browserSniffer = browserSnifferFactory.getBrowserSniffer(facesContext.getExternalContext());
+			BrowserSniffer browserSniffer = BrowserSnifferFactory.getBrowserSnifferInstance(
+					facesContext.getExternalContext());
 			String alloyBeginScript = AlloyRendererUtil.getAlloyBeginScript(modules, yuiConfig, browserSniffer);
 			responseWriter.write(alloyBeginScript);
 		}

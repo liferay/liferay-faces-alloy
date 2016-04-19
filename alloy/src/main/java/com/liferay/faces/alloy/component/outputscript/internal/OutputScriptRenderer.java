@@ -29,7 +29,6 @@ import com.liferay.faces.util.client.BrowserSnifferFactory;
 import com.liferay.faces.util.client.Script;
 import com.liferay.faces.util.client.ScriptFactory;
 import com.liferay.faces.util.context.FacesRequestContext;
-import com.liferay.faces.util.factory.FactoryExtensionFinder;
 import com.liferay.faces.util.render.internal.BufferedScriptResponseWriter;
 
 
@@ -71,15 +70,14 @@ public class OutputScriptRenderer extends OutputScriptRendererBase {
 
 				Script script;
 				String bufferedScriptString = bufferedScriptResponseWriter.toString();
-				ScriptFactory scriptFactory = (ScriptFactory) FactoryExtensionFinder.getFactory(ScriptFactory.class);
 
 				if ((use != null) && (use.length() > 0)) {
 
 					String[] modules = use.split(",");
-					script = scriptFactory.getScript(bufferedScriptString, modules, Script.Type.ALLOY);
+					script = ScriptFactory.getScriptInstance(bufferedScriptString, modules, Script.Type.ALLOY);
 				}
 				else {
-					script = scriptFactory.getScript(bufferedScriptString);
+					script = ScriptFactory.getScriptInstance(bufferedScriptString);
 				}
 
 				// Render the script at the bottom of the page immediately before the closing </body> tag.
@@ -98,9 +96,7 @@ public class OutputScriptRenderer extends OutputScriptRendererBase {
 				// In order to determine the exact YUI sandbox string to write, the modules and browser information
 				// must be passed to RendererUtil.getAlloyBeginScript().
 				String[] modules = use.split(",");
-				BrowserSnifferFactory browserSnifferFactory = (BrowserSnifferFactory) FactoryExtensionFinder.getFactory(
-						BrowserSnifferFactory.class);
-				BrowserSniffer browserSniffer = browserSnifferFactory.getBrowserSniffer(
+				BrowserSniffer browserSniffer = BrowserSnifferFactory.getBrowserSnifferInstance(
 						facesContext.getExternalContext());
 				String alloyBeginScript = AlloyRendererUtil.getAlloyBeginScript(modules, null, browserSniffer);
 				OutputScriptResponseWriter outputScriptResponseWriter = new OutputScriptResponseWriter(responseWriter,

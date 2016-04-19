@@ -26,7 +26,6 @@ import com.liferay.faces.util.client.BrowserSniffer;
 import com.liferay.faces.util.client.BrowserSnifferFactory;
 import com.liferay.faces.util.client.Script;
 import com.liferay.faces.util.client.ScriptsEncoder;
-import com.liferay.faces.util.factory.FactoryExtensionFinder;
 
 
 /**
@@ -86,9 +85,8 @@ public class ScriptsEncoderAlloyImpl implements ScriptsEncoder {
 
 		if (!alloyScripts.isEmpty()) {
 
-			BrowserSnifferFactory browserSnifferFactory = (BrowserSnifferFactory) FactoryExtensionFinder.getFactory(
-					BrowserSnifferFactory.class);
-			BrowserSniffer browserSniffer = browserSnifferFactory.getBrowserSniffer(facesContext.getExternalContext());
+			BrowserSniffer browserSniffer = BrowserSnifferFactory.getBrowserSnifferInstance(
+					facesContext.getExternalContext());
 			String alloyBeginScript = AlloyRendererUtil.getAlloyBeginScript(sortedModules, null, browserSniffer);
 			responseWriter.write(alloyBeginScript);
 

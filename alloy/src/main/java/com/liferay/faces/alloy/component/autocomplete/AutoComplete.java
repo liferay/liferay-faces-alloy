@@ -37,7 +37,6 @@ import javax.faces.model.SelectItem;
 
 import com.liferay.faces.util.context.MessageContext;
 import com.liferay.faces.util.context.MessageContextFactory;
-import com.liferay.faces.util.factory.FactoryExtensionFinder;
 
 
 /**
@@ -67,9 +66,8 @@ public class AutoComplete extends AutoCompleteBase implements ClientBehaviorHold
 					facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, validatorMessage, validatorMessage);
 				}
 				else {
-					MessageContextFactory messageContextFactory = (MessageContextFactory) FactoryExtensionFinder
-						.getFactory(MessageContextFactory.class);
-					MessageContext messageContext = messageContextFactory.getMessageContext();
+
+					MessageContext messageContext = MessageContextFactory.getMessageContextInstance();
 					UIViewRoot viewRoot = facesContext.getViewRoot();
 					Locale locale = viewRoot.getLocale();
 					String message = messageContext.getMessage(locale, UISelectOne.INVALID_MESSAGE_ID);
