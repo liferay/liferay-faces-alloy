@@ -16,63 +16,20 @@ package com.liferay.faces.alloy.render.internal;
 import java.io.IOException;
 
 import javax.faces.component.UIComponent;
-import javax.faces.component.UINamingContainer;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
 import com.liferay.faces.util.client.BrowserSniffer;
 import com.liferay.faces.util.client.BrowserSnifferFactory;
+import com.liferay.faces.util.client.Script;
 import com.liferay.faces.util.component.ClientComponent;
+import com.liferay.faces.util.render.BufferedScriptResponseWriter;
 
 
 /**
  * @author  Kyle Stiemann
  */
 /* package-private */ class AlloyRendererCommon {
-
-	// Private Constants
-	private static final String A_DOT = "A.";
-	private static final String DESTROY = "destroy";
-	private static final String IF = "if";
-	private static final String JAVA_SCRIPT_HEX_PREFIX = "\\x";
-	private static final String NEW = "new";
-	private static final String BACKSLASH_COLON = "\\\\:";
-	private static final String REGEX_COLON = "[:]";
-	private static final char[] _HEX_DIGITS = {
-			'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'
-		};
-
-	/* package-private */ static void encodeBoolean(ResponseWriter responseWriter, String attributeName, Boolean attributeValue,
-		boolean first) throws IOException {
-
-		if (!first) {
-			responseWriter.write(",");
-		}
-
-		responseWriter.write(attributeName);
-		responseWriter.write(":");
-		responseWriter.write(attributeValue.toString());
-	}
-
-	/* package-private */ static void encodeClientId(ResponseWriter responseWriter, String attributeName, String clientId, boolean first)
-		throws IOException {
-
-		String escapedClientId = "#" + clientId.replaceAll(REGEX_COLON, BACKSLASH_COLON);
-		encodeString(responseWriter, attributeName, escapedClientId, first);
-	}
-
-	/* package-private */ static void encodeClientId(ResponseWriter responseWriter, String attributeName, String clientId,
-		UIComponent uiComponent, boolean first) throws IOException {
-
-		UIComponent forComponent = uiComponent.findComponent(clientId);
-		String escapedClientId = clientId;
-
-		if (forComponent != null) {
-			escapedClientId = forComponent.getClientId();
-		}
-
-		encodeClientId(responseWriter, attributeName, escapedClientId, first);
-	}
 
 	/* package-private */ static void encodeEventCallback(ResponseWriter responseWriter, String varName, String methodName,
 		String eventName, String callback) throws IOException {
@@ -86,43 +43,31 @@ import com.liferay.faces.util.component.ClientComponent;
 		responseWriter.write("});");
 	}
 
-	/* package-private */ static void encodeFunctionCall(ResponseWriter responseWriter, String functionName, Object... parameters)
+	/* package-private */ static void encodeJavaScript(FacesContext facesContext, UIComponent uiComponent, AlloyRenderer alloyRenderer)
 		throws IOException {
 
-		responseWriter.write(functionName);
-		responseWriter.write("(");
+		ResponseWriter responseWriter = facesContext.getResponseWriter();
 
-		boolean first = true;
+		BufferedScriptResponseWriter bufferedScriptResponseWriter = new BufferedScriptResponseWriter();
+		facesContext.setResponseWriter(bufferedScriptResponseWriter);
 
-		for (Object parameter : parameters) {
+		alloyRenderer.encodeJavaScriptBegin(facesContext, uiComponent);
+		alloyRenderer.encodeJavaScriptMain(facesContext, uiComponent);
+		alloyRenderer.encodeJavaScriptCustom(facesContext, uiComponent);
+		alloyRenderer.encodeJavaScriptEnd(facesContext, uiComponent);
 
-			if (first) {
-				first = false;
-			}
-			else {
-				responseWriter.write(",");
-			}
+		String[] modules = null;
 
-			encodeFunctionParameter(responseWriter, parameter);
+		if (!alloyRenderer.isSandboxed(facesContext, uiComponent)) {
+			modules = alloyRenderer.getModules(facesContext, uiComponent);
 		}
 
-		responseWriter.write(");");
-	}
-
-	/* package-private */ static void encodeInteger(ResponseWriter responseWriter, String attributeName, Integer attributeValue,
-		boolean first) throws IOException {
-
-		if (!first) {
-			responseWriter.write(",");
-		}
-
-		responseWriter.write(attributeName);
-		responseWriter.write(":");
-		responseWriter.write(attributeValue.toString());
+		alloyRenderer.renderScript(facesContext, bufferedScriptResponseWriter.toString(), modules, Script.Type.ALLOY);
+		facesContext.setResponseWriter(responseWriter);
 	}
 
 	/* package-private */ static void encodeJavaScriptBegin(FacesContext facesContext, UIComponent uiComponent, AlloyRenderer alloyRenderer,
-		String[] modules, boolean ajax, boolean sandboxed) throws IOException {
+		String[] modules, boolean sandboxed) throws IOException {
 
 		ResponseWriter responseWriter = facesContext.getResponseWriter();
 
@@ -135,30 +80,27 @@ import com.liferay.faces.util.component.ClientComponent;
 			responseWriter.write(alloyBeginScript);
 		}
 
-		if (ajax && (uiComponent instanceof ClientComponent)) {
+		if (facesContext.getPartialViewContext().isAjaxRequest() && (uiComponent instanceof ClientComponent)) {
 
 			ClientComponent clientComponent = (ClientComponent) uiComponent;
-			String clientVarName = getClientVarName(facesContext, clientComponent);
+			String clientVarName = alloyRenderer.getClientVarName(facesContext, clientComponent);
 			String clientKey = clientComponent.getClientKey();
 
 			if (clientKey == null) {
 				clientKey = clientVarName;
 			}
 
-			encodeLiferayComponentVar(responseWriter, clientVarName, clientKey);
-			responseWriter.write(IF);
-			responseWriter.write("(");
+			encodeLiferayComponentVar(responseWriter, clientVarName, clientKey, alloyRenderer);
+			responseWriter.write("if(");
 			responseWriter.write(clientVarName);
 			responseWriter.write("){");
 			responseWriter.write(clientVarName);
-			responseWriter.write(".");
-			responseWriter.write(DESTROY);
-			responseWriter.write("();}");
+			responseWriter.write(".destroy();}");
 		}
 	}
 
-	/* package-private */ static void encodeJavaScriptEnd(FacesContext facesContext, UIComponent uiComponent, boolean ajax,
-		boolean sandboxed) throws IOException {
+	/* package-private */ static void encodeJavaScriptEnd(FacesContext facesContext, UIComponent uiComponent, boolean sandboxed)
+		throws IOException {
 
 		ResponseWriter responseWriter = facesContext.getResponseWriter();
 
@@ -195,21 +137,18 @@ import com.liferay.faces.util.component.ClientComponent;
 		String clientKey = clientComponent.getClientKey();
 
 		if (clientKey == null) {
-			clientKey = getClientVarName(facesContext, clientComponent);
+			clientKey = alloyRenderer.getClientVarName(facesContext, clientComponent);
 		}
 
 		// Begin encoding JavaScript to create the Alloy JavaScript component and put it in the Liferay.component map.
-		responseWriter.write(AlloyRenderer.LIFERAY_COMPONENT);
-		responseWriter.write("('");
+		responseWriter.write("Liferay.component('");
 
-		String escapedClientKey = escapeJavaScript(clientKey);
+		String escapedClientKey = alloyRenderer.escapeJavaScript(clientKey);
 		responseWriter.write(escapedClientKey);
 		responseWriter.write("',");
 
 		// Write Alloy JavaScript component.
-		responseWriter.write(NEW);
-		responseWriter.write(" ");
-		responseWriter.write(A_DOT);
+		responseWriter.write("new A.");
 		responseWriter.write(alloyClassName);
 		responseWriter.write("({");
 		alloyRenderer.encodeAlloyAttributes(facesContext, responseWriter, uiComponent);
@@ -219,166 +158,23 @@ import com.liferay.faces.util.component.ClientComponent;
 		responseWriter.write(");");
 	}
 
-	/* package-private */ static void encodeLiferayComponent(ResponseWriter responseWriter, String clientKey) throws IOException {
-
-		responseWriter.write(AlloyRenderer.LIFERAY_COMPONENT);
-		responseWriter.write("('");
-
-		String escapedClientKey = escapeJavaScript(clientKey);
-		responseWriter.write(escapedClientKey);
-		responseWriter.write("')");
-	}
-
-	/* package-private */ static void encodeLiferayComponentVar(ResponseWriter responseWriter, String clientVarName, String clientKey)
-		throws IOException {
+	/* package-private */ static void encodeLiferayComponentVar(ResponseWriter responseWriter, String clientVarName, String clientKey,
+		AlloyRenderer alloyRenderer) throws IOException {
 
 		responseWriter.write("var ");
 		responseWriter.write(clientVarName);
 		responseWriter.write("=");
-		encodeLiferayComponent(responseWriter, clientKey);
+		encodeLiferayComponent(responseWriter, clientKey, alloyRenderer);
 		responseWriter.write(";");
 	}
 
-	/* package-private */ static void encodeNonEscapedObject(ResponseWriter responseWriter, String attributeName, Object attributeValue,
-		boolean first) throws IOException {
+	private static void encodeLiferayComponent(ResponseWriter responseWriter, String clientKey,
+		AlloyRenderer alloyRenderer) throws IOException {
 
-		if (!first) {
-			responseWriter.write(",");
-		}
+		responseWriter.write("Liferay.component('");
 
-		responseWriter.write(attributeName);
-		responseWriter.write(":");
-		responseWriter.write(attributeValue.toString());
-	}
-
-	/* package-private */ static void encodeString(ResponseWriter responseWriter, String attributeName, Object attributeValue,
-		boolean first) throws IOException {
-
-		String escapedAttributeValue = escapeJavaScript(attributeValue.toString());
-
-		if (!first) {
-			responseWriter.write(",");
-		}
-
-		responseWriter.write(attributeName);
-		responseWriter.write(":'");
-		responseWriter.write(escapedAttributeValue);
-		responseWriter.write("'");
-	}
-
-	/* package-private */ static void encodeWidgetRender(ResponseWriter responseWriter, boolean first) throws IOException {
-		encodeBoolean(responseWriter, "render", true, first);
-	}
-
-	// TODO el method
-	/* package-private */ static String escapeClientId(String clientId) {
-
-		String escapedClientId = clientId;
-
-		if (escapedClientId != null) {
-
-			escapedClientId = escapedClientId.replaceAll(REGEX_COLON, BACKSLASH_COLON);
-			escapedClientId = escapeJavaScript(escapedClientId);
-		}
-
-		return escapedClientId;
-	}
-
-	/* package-private */ static String escapeJavaScript(String javaScript) {
-
-		StringBuilder stringBuilder = new StringBuilder();
-		char[] javaScriptCharArray = javaScript.toCharArray();
-
-		for (char character : javaScriptCharArray) {
-
-			if ((character > 255) || Character.isLetterOrDigit(character)) {
-
-				stringBuilder.append(character);
-			}
-			else {
-				stringBuilder.append(JAVA_SCRIPT_HEX_PREFIX);
-
-				String hexString = toHexString(character);
-
-				if (hexString.length() == 1) {
-					stringBuilder.append("0");
-				}
-
-				stringBuilder.append(hexString);
-			}
-		}
-
-		if (stringBuilder.length() != javaScript.length()) {
-			javaScript = stringBuilder.toString();
-		}
-
-		return javaScript;
-	}
-
-	private static void encodeFunctionParameter(ResponseWriter responseWriter, Object parameter) throws IOException {
-
-		if (parameter == null) {
-			responseWriter.write("null");
-		}
-		else {
-
-			if (parameter instanceof Object[]) {
-				Object[] parameterItems = (Object[]) parameter;
-
-				if (parameterItems.length == 0) {
-					responseWriter.write("[]");
-				}
-				else {
-					responseWriter.write("[");
-
-					boolean firstIndex = true;
-
-					for (Object parameterItem : parameterItems) {
-
-						if (firstIndex) {
-							firstIndex = false;
-						}
-						else {
-							responseWriter.write(",");
-						}
-
-						encodeFunctionParameter(responseWriter, parameterItem);
-					}
-
-					responseWriter.write("]");
-				}
-			}
-			else if (parameter instanceof String) {
-				responseWriter.write("'" + parameter.toString() + "'");
-			}
-			else {
-				responseWriter.write(parameter.toString());
-			}
-		}
-	}
-
-	private static String toHexString(int i) {
-		char[] buffer = new char[8];
-
-		int index = 8;
-
-		do {
-			buffer[--index] = _HEX_DIGITS[i & 15];
-
-			i >>>= 4;
-		}
-		while (i != 0);
-
-		return new String(buffer, index, 8 - index);
-	}
-
-	/* package-private */ static String getClientVarName(FacesContext facesContext, ClientComponent clientComponent) {
-
-		char separatorChar = UINamingContainer.getSeparatorChar(facesContext);
-		String clientId = clientComponent.getClientId();
-		String regex = "[" + separatorChar + "]";
-		String clientVarName = clientId.replaceAll(regex, "_");
-
-		return clientVarName;
+		String escapedClientKey = alloyRenderer.escapeJavaScript(clientKey);
+		responseWriter.write(escapedClientKey);
+		responseWriter.write("')");
 	}
 }

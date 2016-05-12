@@ -19,7 +19,9 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
+import com.liferay.faces.util.client.Script;
 import com.liferay.faces.util.component.ClientComponent;
+import com.liferay.faces.util.render.ClientComponentRendererBase;
 import com.liferay.faces.util.render.RendererUtil;
 
 
@@ -44,19 +46,19 @@ public abstract class AlloyRendererBase extends ClientComponentRendererBase impl
 	@Override
 	public void encodeBoolean(ResponseWriter responseWriter, String attributeName, Boolean attributeValue,
 		boolean first) throws IOException {
-		AlloyRendererCommon.encodeBoolean(responseWriter, attributeName, attributeValue, first);
+		encodeBooleanProperty(responseWriter, attributeName, attributeValue, first);
 	}
 
 	@Override
 	public void encodeClientId(ResponseWriter responseWriter, String attributeName, String clientId, boolean first)
 		throws IOException {
-		AlloyRendererCommon.encodeClientId(responseWriter, attributeName, clientId, first);
+		encodeClientIdProperty(responseWriter, attributeName, clientId, first);
 	}
 
 	@Override
 	public void encodeClientId(ResponseWriter responseWriter, String attributeName, String clientId,
 		UIComponent uiComponent, boolean first) throws IOException {
-		AlloyRendererCommon.encodeClientId(responseWriter, attributeName, clientId, uiComponent, first);
+		encodeClientIdProperty(responseWriter, attributeName, clientId, uiComponent, first);
 	}
 
 	@Override
@@ -66,21 +68,15 @@ public abstract class AlloyRendererBase extends ClientComponentRendererBase impl
 	}
 
 	@Override
-	public void encodeFunctionCall(ResponseWriter responseWriter, String functionName, Object... parameters)
-		throws IOException {
-		AlloyRendererCommon.encodeFunctionCall(responseWriter, functionName, parameters);
-	}
-
-	@Override
 	public void encodeInteger(ResponseWriter responseWriter, String attributeName, Integer attributeValue,
 		boolean first) throws IOException {
-		AlloyRendererCommon.encodeInteger(responseWriter, attributeName, attributeValue, first);
+		encodeIntegerProperty(responseWriter, attributeName, attributeValue, first);
 	}
 
 	@Override
 	public void encodeJavaScriptBegin(FacesContext facesContext, UIComponent uiComponent) throws IOException {
 		AlloyRendererCommon.encodeJavaScriptBegin(facesContext, uiComponent, this,
-			getModules(facesContext, uiComponent), isAjax(facesContext), isSandboxed(facesContext, uiComponent));
+			getModules(facesContext, uiComponent), isSandboxed(facesContext, uiComponent));
 	}
 
 	@Override
@@ -90,8 +86,7 @@ public abstract class AlloyRendererBase extends ClientComponentRendererBase impl
 
 	@Override
 	public void encodeJavaScriptEnd(FacesContext facesContext, UIComponent uiComponent) throws IOException {
-		AlloyRendererCommon.encodeJavaScriptEnd(facesContext, uiComponent, isAjax(facesContext),
-			isSandboxed(facesContext, uiComponent));
+		AlloyRendererCommon.encodeJavaScriptEnd(facesContext, uiComponent, isSandboxed(facesContext, uiComponent));
 	}
 
 	@Override
@@ -103,39 +98,50 @@ public abstract class AlloyRendererBase extends ClientComponentRendererBase impl
 	@Override
 	public void encodeLiferayComponentVar(ResponseWriter responseWriter, String clientVarName, String clientKey)
 		throws IOException {
-		AlloyRendererCommon.encodeLiferayComponentVar(responseWriter, clientVarName, clientKey);
+		AlloyRendererCommon.encodeLiferayComponentVar(responseWriter, clientVarName, clientKey, this);
 	}
 
 	@Override
 	public void encodeNonEscapedObject(ResponseWriter responseWriter, String attributeName, Object attributeValue,
 		boolean first) throws IOException {
-		AlloyRendererCommon.encodeNonEscapedObject(responseWriter, attributeName, attributeValue, first);
+		encodeNonEscapedObjectProperty(responseWriter, attributeName, attributeValue, first);
 	}
 
 	@Override
 	public void encodeString(ResponseWriter responseWriter, String attributeName, Object attributeValue, boolean first)
 		throws IOException {
-		AlloyRendererCommon.encodeString(responseWriter, attributeName, attributeValue, first);
+		encodeStringProperty(responseWriter, attributeName, attributeValue, first);
 	}
 
 	@Override
 	public void encodeWidgetRender(ResponseWriter responseWriter, boolean first) throws IOException {
-		AlloyRendererCommon.encodeWidgetRender(responseWriter, first);
-	}
-
-	@Override
-	public String escapeClientId(String clientId) {
-		return AlloyRendererCommon.escapeClientId(clientId);
+		encodeBoolean(responseWriter, "render", true, first);
 	}
 
 	@Override
 	public String escapeJavaScript(String javaScript) {
-		return AlloyRendererCommon.escapeJavaScript(javaScript);
+		return super.escapeJavaScript(javaScript);
+	}
+
+	@Override
+	public void renderScript(FacesContext facesContext, String bufferedScriptString, String[] modules,
+		Script.Type scriptType) {
+		super.renderScript(facesContext, bufferedScriptString, modules, scriptType);
+	}
+
+	@Override
+	protected void encodeJavaScript(FacesContext facesContext, UIComponent uiComponent) throws IOException {
+		AlloyRendererCommon.encodeJavaScript(facesContext, uiComponent, this);
 	}
 
 	@Override
 	public String getClientVarName(FacesContext facesContext, ClientComponent clientComponent) {
-		return AlloyRendererCommon.getClientVarName(facesContext, clientComponent);
+		return super.getClientVarName(facesContext, clientComponent);
+	}
+
+	@Override
+	public boolean isSandboxed(FacesContext facesContext, UIComponent uiComponent) {
+		return false;
 	}
 
 	@Override

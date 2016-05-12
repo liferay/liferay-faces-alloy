@@ -170,8 +170,7 @@ public class AccordionRenderer extends AccordionRendererBase {
 		// JavaScript attempts to hide the div. At this point in JavaScript execution, Alloy is done manipulating the
 		// DOM and it is necessary to set the style back to "display:block;" so that the component will be visible.
 		ResponseWriter responseWriter = facesContext.getResponseWriter();
-		responseWriter.write(A_DOT_ONE);
-		responseWriter.write("('");
+		responseWriter.write("A.one('");
 
 		String clientId = uiComponent.getClientId(facesContext);
 		String escapedClientId = "#" + escapeClientId(clientId);

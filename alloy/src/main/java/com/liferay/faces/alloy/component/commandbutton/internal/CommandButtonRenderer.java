@@ -23,7 +23,7 @@ import javax.faces.event.PostAddToViewEvent;
 import javax.faces.render.FacesRenderer;
 
 import com.liferay.faces.alloy.component.commandbutton.CommandButton;
-import com.liferay.faces.alloy.render.internal.AlloyRendererUtil;
+import com.liferay.faces.util.render.RendererUtil;
 
 
 /**
@@ -50,8 +50,8 @@ public class CommandButtonRenderer extends CommandButtonRendererBase implements 
 		CommandButton commandButton = (CommandButton) componentSystemEvent.getComponent();
 
 		if (commandButton.isAjax()) {
-			AlloyRendererUtil.addDefaultAjaxBehavior(commandButton, commandButton.getExecute(),
-				commandButton.getProcess(), "@all", commandButton.getRender(), commandButton.getUpdate(), "@none");
+			RendererUtil.addDefaultAjaxBehavior(commandButton, commandButton.getExecute(), commandButton.getProcess(),
+				"@all", commandButton.getRender(), commandButton.getUpdate(), "@none");
 		}
 	}
 }

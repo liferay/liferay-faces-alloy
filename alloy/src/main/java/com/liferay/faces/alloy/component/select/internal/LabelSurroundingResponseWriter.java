@@ -19,8 +19,7 @@ import java.util.Map;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.ResponseWriter;
-
-import com.liferay.faces.util.render.internal.DelegationResponseWriterBase;
+import javax.faces.context.ResponseWriterWrapper;
 
 
 /**
@@ -31,7 +30,7 @@ import com.liferay.faces.util.render.internal.DelegationResponseWriterBase;
  *
  * @author  Kyle Stiemann
  */
-public class LabelSurroundingResponseWriter extends DelegationResponseWriterBase {
+public class LabelSurroundingResponseWriter extends ResponseWriterWrapper {
 
 	// Private Data Members
 	private String cssClass;
@@ -39,10 +38,11 @@ public class LabelSurroundingResponseWriter extends DelegationResponseWriterBase
 	private boolean inputMovedInsideLabel = false;
 	private boolean writingInput = false;
 	private boolean writingLabel = false;
+	private ResponseWriter wrappedResponseWriter;
 
 	public LabelSurroundingResponseWriter(ResponseWriter responseWriter, String cssClass) {
 
-		super(responseWriter);
+		this.wrappedResponseWriter = responseWriter;
 		this.cssClass = cssClass;
 	}
 
@@ -123,5 +123,10 @@ public class LabelSurroundingResponseWriter extends DelegationResponseWriterBase
 		}
 
 		super.writeText(text, component, property);
+	}
+
+	@Override
+	public ResponseWriter getWrapped() {
+		return wrappedResponseWriter;
 	}
 }

@@ -17,9 +17,9 @@ import java.io.IOException;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.ResponseWriter;
+import javax.faces.context.ResponseWriterWrapper;
 
-import com.liferay.faces.util.render.internal.DelegationResponseWriter;
-import com.liferay.faces.util.render.internal.DelegationResponseWriterBase;
+import com.liferay.faces.alloy.component.commandlink.CommandLink;
 
 
 /**
@@ -29,14 +29,15 @@ import com.liferay.faces.util.render.internal.DelegationResponseWriterBase;
  *
  * @author  Neil Griffin
  */
-public class CommandLinkResponseWriter extends DelegationResponseWriterBase {
+public class CommandLinkResponseWriter extends ResponseWriterWrapper {
 
 	// Private Data Members
 	private int anchorCount;
 	private boolean hasChildren;
+	private ResponseWriter wrappedResponseWriter;
 
 	public CommandLinkResponseWriter(ResponseWriter responseWriter, boolean hasChildren) {
-		super(responseWriter);
+		this.wrappedResponseWriter = responseWriter;
 		this.hasChildren = hasChildren;
 	}
 
@@ -66,5 +67,10 @@ public class CommandLinkResponseWriter extends DelegationResponseWriterBase {
 		if (!(hasChildren && (anchorCount == 1))) {
 			super.writeText(text, component, property);
 		}
+	}
+
+	@Override
+	public ResponseWriter getWrapped() {
+		return wrappedResponseWriter;
 	}
 }

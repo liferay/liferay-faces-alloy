@@ -72,8 +72,7 @@ public class PopoverRenderer extends PopoverRendererBase {
 		if (popover.isHideIconRendered()) {
 
 			// Add an "x" toolbar icon so that the popover can be hidden just like alloy:dialog can.
-			responseWriter.write(LIFERAY_COMPONENT);
-			responseWriter.write("('");
+			responseWriter.write("Liferay.component('");
 			responseWriter.write(clientKey);
 			responseWriter.write(
 				"').addToolbar([{cssClass:'close',label:'\u00D7',on:{click:function(event){Liferay.component('");
@@ -161,7 +160,7 @@ public class PopoverRenderer extends PopoverRendererBase {
 	}
 
 	@Override
-	protected String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
+	public String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
 
 		String[] modules = MODULES;
 		Popover popover = (Popover) uiComponent;

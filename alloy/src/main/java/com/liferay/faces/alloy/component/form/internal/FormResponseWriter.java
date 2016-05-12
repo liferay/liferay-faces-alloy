@@ -16,20 +16,20 @@ package com.liferay.faces.alloy.component.form.internal;
 import java.io.IOException;
 
 import javax.faces.context.ResponseWriter;
-
-import com.liferay.faces.util.render.internal.DelegationResponseWriterBase;
+import javax.faces.context.ResponseWriterWrapper;
 
 
 /**
  * @author  Neil Griffin
  */
-public class FormResponseWriter extends DelegationResponseWriterBase {
+public class FormResponseWriter extends ResponseWriterWrapper {
 
 	// Private Data Members
 	private String encodedActionURL;
+	private ResponseWriter wrappedResponseWriter;
 
 	public FormResponseWriter(ResponseWriter responseWriter, String encodedActionURL) {
-		super(responseWriter);
+		this.wrappedResponseWriter = responseWriter;
 		this.encodedActionURL = encodedActionURL;
 	}
 
@@ -41,5 +41,10 @@ public class FormResponseWriter extends DelegationResponseWriterBase {
 		}
 
 		super.writeAttribute(name, value, property);
+	}
+
+	@Override
+	public ResponseWriter getWrapped() {
+		return wrappedResponseWriter;
 	}
 }

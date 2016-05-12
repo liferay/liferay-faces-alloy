@@ -34,10 +34,10 @@ import javax.faces.render.FacesRenderer;
 
 import com.liferay.faces.alloy.component.inputdatetime.internal.InputDateTimeResponseWriter;
 import com.liferay.faces.alloy.component.inputtime.InputTime;
-import com.liferay.faces.alloy.render.internal.JavaScriptFragment;
 import com.liferay.faces.util.client.BrowserSniffer;
 import com.liferay.faces.util.client.BrowserSnifferFactory;
 import com.liferay.faces.util.helper.StringHelper;
+import com.liferay.faces.util.render.JavaScriptFragment;
 
 
 /**
@@ -367,7 +367,7 @@ public class InputTimeRenderer extends InputTimeRendererBase {
 	}
 
 	@Override
-	protected String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
+	public String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
 
 		String[] modules = getModules(MODULES[0], facesContext, uiComponent);
 		InputTime inputTime = (InputTime) uiComponent;

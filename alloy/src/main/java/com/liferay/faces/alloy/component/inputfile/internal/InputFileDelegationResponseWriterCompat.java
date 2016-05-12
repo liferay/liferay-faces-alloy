@@ -16,11 +16,11 @@ package com.liferay.faces.alloy.component.inputfile.internal;
 import java.io.IOException;
 
 import javax.faces.context.ResponseWriter;
+import javax.faces.context.ResponseWriterWrapper;
 
 import com.liferay.faces.util.product.Product;
 import com.liferay.faces.util.product.ProductConstants;
 import com.liferay.faces.util.product.ProductMap;
-import com.liferay.faces.util.render.internal.DelegationResponseWriterBase;
 
 
 /**
@@ -28,13 +28,16 @@ import com.liferay.faces.util.render.internal.DelegationResponseWriterBase;
  *
  * @author  Neil Griffin
  */
-public abstract class InputFileDelegationResponseWriterCompat extends DelegationResponseWriterBase {
+public abstract class InputFileDelegationResponseWriterCompat extends ResponseWriterWrapper {
 
 	// Private Constants
 	private static final Product JSF = ProductMap.getInstance().get(ProductConstants.JSF);
 
+	// Private Members
+	private ResponseWriter wrappedResponseWriter;
+
 	public InputFileDelegationResponseWriterCompat(ResponseWriter responseWriter) {
-		super(responseWriter);
+		this.wrappedResponseWriter = responseWriter;
 	}
 
 	@Override
@@ -51,5 +54,10 @@ public abstract class InputFileDelegationResponseWriterCompat extends Delegation
 
 		return JSF.isDetected() &&
 			((JSF.getMajorVersion() > 2) || ((JSF.getMajorVersion() == 2) && (JSF.getMinorVersion() >= 2)));
+	}
+
+	@Override
+	public ResponseWriter getWrapped() {
+		return wrappedResponseWriter;
 	}
 }

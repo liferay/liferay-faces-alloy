@@ -195,8 +195,7 @@ public class TabViewRenderer extends TabViewRendererBase {
 
 		// A.one('#tabViewExample\x5c\x3atabViewForm\x5c\x3aj\x5fidt73')._node['style'].display = 'block';
 		ResponseWriter responseWriter = facesContext.getResponseWriter();
-		responseWriter.write(A_DOT_ONE);
-		responseWriter.write("('");
+		responseWriter.write("A.one('");
 
 		String clientId = uiComponent.getClientId(facesContext);
 		String escapedClientId = "#" + escapeClientId(clientId);
