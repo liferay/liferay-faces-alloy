@@ -46,12 +46,13 @@ import com.liferay.faces.alloy.component.datatable.RowDeselectRangeEvent;
 import com.liferay.faces.alloy.component.datatable.RowSelectEvent;
 import com.liferay.faces.alloy.component.datatable.RowSelectRangeEvent;
 import com.liferay.faces.alloy.component.outputtext.OutputText;
-import com.liferay.faces.alloy.render.internal.JavaScriptFragment;
+import com.liferay.faces.util.component.ComponentUtil;
 import com.liferay.faces.util.helper.BooleanHelper;
 import com.liferay.faces.util.logging.Logger;
 import com.liferay.faces.util.logging.LoggerFactory;
 import com.liferay.faces.util.model.SortCriterion;
 import com.liferay.faces.util.model.Sortable;
+import com.liferay.faces.util.render.JavaScriptFragment;
 import com.liferay.faces.util.render.RendererUtil;
 
 
@@ -204,9 +205,9 @@ public class DataTableRenderer extends DataTableRendererBase {
 		if ("checkbox".equals(selectionMode) || "radio".equals(selectionMode)) {
 
 			String dataTableClientId = dataTable.getClientId(facesContext);
-			String escapedDataTableClientId = escapeClientId(dataTableClientId);
+			String escapedDataTableClientId = ComponentUtil.escapeClientId(dataTableClientId);
 			String hiddenFieldClientId = dataTableClientId.concat("_selectedRowIndexes");
-			String escapedHiddenFieldClientId = escapeClientId(hiddenFieldClientId);
+			String escapedHiddenFieldClientId = ComponentUtil.escapeClientId(hiddenFieldClientId);
 			ResponseWriter responseWriter = facesContext.getResponseWriter();
 
 			// rowSelect
@@ -229,7 +230,7 @@ public class DataTableRenderer extends DataTableRendererBase {
 
 				// Register the onclick event callback for the "Select All" checkbox.
 				String selectAllCheckboxClientId = dataTableClientId.concat("_selectAll");
-				String escapedSelectAllCheckboxClientId = escapeClientId(selectAllCheckboxClientId);
+				String escapedSelectAllCheckboxClientId = ComponentUtil.escapeClientId(selectAllCheckboxClientId);
 				encodeFunctionCall(responseWriter, "LFAI.initDataTableSelectAllCheckbox", 'A', escapedDataTableClientId,
 					escapedSelectAllCheckboxClientId, rowSelectRangeClientBehaviorScript,
 					rowDeselectRangeClientBehaviorScript);

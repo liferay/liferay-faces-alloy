@@ -34,10 +34,12 @@ import javax.faces.render.FacesRenderer;
 
 import com.liferay.faces.alloy.component.inputdatetime.internal.InputDateTimeResponseWriter;
 import com.liferay.faces.alloy.component.inputtime.InputTime;
-import com.liferay.faces.alloy.render.internal.JavaScriptFragment;
 import com.liferay.faces.util.client.BrowserSniffer;
 import com.liferay.faces.util.client.BrowserSnifferFactory;
+import com.liferay.faces.util.component.ComponentUtil;
 import com.liferay.faces.util.helper.StringHelper;
+import com.liferay.faces.util.render.JavaScriptFragment;
+import com.liferay.faces.util.render.RendererUtil;
 
 
 /**
@@ -209,7 +211,7 @@ public class InputTimeRenderer extends InputTimeRendererBase {
 
 				Date time = new Date(milliseconds);
 				String dateString = simpleDateFormat.format(time);
-				String escapedDateString = escapeJavaScript(dateString);
+				String escapedDateString = RendererUtil.escapeJavaScript(dateString);
 
 				responseWriter.write("'");
 				responseWriter.write(escapedDateString);
@@ -297,7 +299,7 @@ public class InputTimeRenderer extends InputTimeRendererBase {
 
 			String clientId = inputTime.getClientId(facesContext);
 			String inputClientId = clientId.concat(INPUT_SUFFIX);
-			String escapedInputClientId = escapeClientId(inputClientId);
+			String escapedInputClientId = ComponentUtil.escapeClientId(inputClientId);
 			boolean selectable = true;
 			JavaScriptFragment time = null;
 
@@ -367,7 +369,7 @@ public class InputTimeRenderer extends InputTimeRendererBase {
 	}
 
 	@Override
-	protected String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
+	public String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
 
 		String[] modules = getModules(MODULES[0], facesContext, uiComponent);
 		InputTime inputTime = (InputTime) uiComponent;

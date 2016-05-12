@@ -22,9 +22,9 @@ import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
 import com.liferay.faces.alloy.render.internal.DelegatingAlloyRendererBase;
-import com.liferay.faces.alloy.render.internal.JavaScriptFragment;
-import com.liferay.faces.util.render.internal.DelegationResponseWriter;
-import com.liferay.faces.util.render.internal.IdDelegationResponseWriter;
+import com.liferay.faces.util.component.ComponentUtil;
+import com.liferay.faces.util.render.IdResponseWriter;
+import com.liferay.faces.util.render.JavaScriptFragment;
 
 
 /**
@@ -83,7 +83,7 @@ public abstract class OverlayRendererBase extends DelegatingAlloyRendererBase im
 		responseWriter.write("A.one('#");
 
 		String clientId = overlay.getClientId(facesContext);
-		String escapedBoundingBoxClientId = escapeClientId(clientId);
+		String escapedBoundingBoxClientId = ComponentUtil.escapeClientId(clientId);
 		responseWriter.write(escapedBoundingBoxClientId);
 		responseWriter.write("').setStyle('display',null);");
 
@@ -111,8 +111,7 @@ public abstract class OverlayRendererBase extends DelegatingAlloyRendererBase im
 		// that Alloy's JavaScript will be able to locate the boundingBox in the DOM.
 		ResponseWriter responseWriter = facesContext.getResponseWriter();
 		String clientId = uiComponent.getClientId(facesContext);
-		DelegationResponseWriter idDelegationResponseWriter = new IdDelegationResponseWriter(responseWriter, "div",
-				clientId);
+		ResponseWriter idDelegationResponseWriter = new IdResponseWriter(responseWriter, "div", clientId);
 		super.encodeMarkupBegin(facesContext, uiComponent, idDelegationResponseWriter);
 
 		// Encode the opening contentBox <div> tag with a unique id.

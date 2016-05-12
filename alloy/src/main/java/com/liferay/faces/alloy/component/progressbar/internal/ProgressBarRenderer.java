@@ -29,11 +29,11 @@ import javax.faces.context.ResponseWriter;
 import javax.faces.render.FacesRenderer;
 
 import com.liferay.faces.alloy.component.progressbar.ProgressBar;
-import com.liferay.faces.alloy.render.internal.JavaScriptFragment;
 import com.liferay.faces.util.component.Styleable;
 import com.liferay.faces.util.context.FacesRequestContext;
+import com.liferay.faces.util.render.BufferedScriptResponseWriter;
+import com.liferay.faces.util.render.JavaScriptFragment;
 import com.liferay.faces.util.render.RendererUtil;
-import com.liferay.faces.util.render.internal.BufferedScriptResponseWriter;
 
 
 /**
@@ -61,6 +61,48 @@ public class ProgressBarRenderer extends ProgressBarRendererBase {
 	private static final String TOKEN = "{0}";
 	private static final String VALUE_CHANGE = "valueChange";
 	private static final String VERTICAL = "vertical";
+
+	/**
+	 * This method is being overridden in order to set the value of the progressBar when server-side polling occurs.
+	 * Otherwise, this method simply calls super.encodeJavaScript() in order to render the component normally.
+	 */
+	@Override
+	public void encodeJavaScript(FacesContext facesContext, UIComponent uiComponent) throws IOException {
+
+		if (isAjaxPolling(facesContext, uiComponent)) {
+
+			ProgressBar progressBar = (ProgressBar) uiComponent;
+			String clientVarName = getClientVarName(facesContext, progressBar);
+			String clientKey = progressBar.getClientKey();
+
+			if (clientKey == null) {
+				clientKey = clientVarName;
+			}
+
+			// Buffer all JavaScript so that it is rendered in the <eval> section of the partial response.
+			BufferedScriptResponseWriter bufferedScriptResponseWriter = new BufferedScriptResponseWriter();
+			String clientId = progressBar.getClientId(facesContext);
+			String hiddenClientId = clientId.concat(HIDDEN_SUFFIX);
+
+			//J-
+			//	Liferay.component('clientKey')
+			//J+
+			JavaScriptFragment liferayComponent = new JavaScriptFragment("Liferay.component('" + clientKey + "')");
+			Integer value = progressBar.getValue();
+
+			//J-
+			//	LFAI.setProgressBarServerValue('hiddenClientId', Liferay.component('clientKey'), value);
+			//J+
+			encodeFunctionCall(bufferedScriptResponseWriter, "LFAI.setProgressBarServerValue", hiddenClientId,
+				liferayComponent, value);
+
+			FacesRequestContext facesRequestContext = FacesRequestContext.getCurrentInstance();
+			facesRequestContext.addScript(bufferedScriptResponseWriter.toString());
+		}
+		else {
+			super.encodeJavaScript(facesContext, uiComponent);
+		}
+	}
 
 	@Override
 	public void encodeJavaScriptCustom(FacesContext facesContext, UIComponent uiComponent) throws IOException {
@@ -312,7 +354,7 @@ public class ProgressBarRenderer extends ProgressBarRendererBase {
 		//J+
 		if ((label != null) && label.contains(TOKEN)) {
 
-			String escapedLabel = escapeJavaScript(label);
+			String escapedLabel = RendererUtil.escapeJavaScript(label);
 			encodeNonEscapedObject(responseWriter, VALUE_CHANGE,
 				"function(event){this.set('label','".concat(escapedLabel).concat(
 					"'.replace(LFAI.TOKEN_REGEX, event.newVal));}"), onFirst);
@@ -321,48 +363,6 @@ public class ProgressBarRenderer extends ProgressBarRendererBase {
 
 		// Finish encoding event listeners that occur on the event.
 		responseWriter.write("}");
-	}
-
-	/**
-	 * This method is being overridden in order to set the value of the progressBar when server-side polling occurs.
-	 * Otherwise, this method simply calls super.encodeJavaScript() in order to render the component normally.
-	 */
-	@Override
-	protected void encodeJavaScript(FacesContext facesContext, UIComponent uiComponent) throws IOException {
-
-		if (isAjaxPolling(facesContext, uiComponent)) {
-
-			ProgressBar progressBar = (ProgressBar) uiComponent;
-			String clientVarName = getClientVarName(facesContext, progressBar);
-			String clientKey = progressBar.getClientKey();
-
-			if (clientKey == null) {
-				clientKey = clientVarName;
-			}
-
-			// Buffer all JavaScript so that it is rendered in the <eval> section of the partial response.
-			BufferedScriptResponseWriter bufferedScriptResponseWriter = new BufferedScriptResponseWriter();
-			String clientId = progressBar.getClientId(facesContext);
-			String hiddenClientId = clientId.concat(HIDDEN_SUFFIX);
-
-			//J-
-			//	Liferay.component('clientKey')
-			//J+
-			JavaScriptFragment liferayComponent = new JavaScriptFragment("Liferay.component('" + clientKey + "')");
-			Integer value = progressBar.getValue();
-
-			//J-
-			//	LFAI.setProgressBarServerValue('hiddenClientId', Liferay.component('clientKey'), value);
-			//J+
-			encodeFunctionCall(bufferedScriptResponseWriter, "LFAI.setProgressBarServerValue", hiddenClientId,
-				liferayComponent, value);
-
-			FacesRequestContext facesRequestContext = FacesRequestContext.getCurrentInstance();
-			facesRequestContext.addScript(bufferedScriptResponseWriter.toString());
-		}
-		else {
-			super.encodeJavaScript(facesContext, uiComponent);
-		}
 	}
 
 	@Override
@@ -396,7 +396,7 @@ public class ProgressBarRenderer extends ProgressBarRendererBase {
 
 		boolean polling = false;
 
-		if (isServerPollingEnabled(uiComponent) && isAjax(facesContext)) {
+		if (isServerPollingEnabled(uiComponent) && facesContext.getPartialViewContext().isAjaxRequest()) {
 
 			ExternalContext externalContext = facesContext.getExternalContext();
 			Map<String, String> requestParameterMap = externalContext.getRequestParameterMap();

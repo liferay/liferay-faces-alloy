@@ -18,13 +18,13 @@ import java.io.IOException;
 import javax.faces.context.ResponseWriter;
 
 import com.liferay.faces.util.component.Styleable;
-import com.liferay.faces.util.render.internal.IdDelegationResponseWriter;
+import com.liferay.faces.util.render.IdResponseWriter;
 
 
 /**
  * @author  Kyle Stiemann
  */
-public class InputDateTimeResponseWriter extends IdDelegationResponseWriter {
+public class InputDateTimeResponseWriter extends IdResponseWriter {
 
 	// Private Data Members
 	private boolean nativeInputDateTime;

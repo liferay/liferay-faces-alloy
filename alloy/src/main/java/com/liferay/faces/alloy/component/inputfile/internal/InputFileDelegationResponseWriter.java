@@ -19,7 +19,6 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.ResponseWriter;
 
 import com.liferay.faces.alloy.component.inputfile.InputFile;
-import com.liferay.faces.util.render.internal.DelegationResponseWriter;
 
 
 /**

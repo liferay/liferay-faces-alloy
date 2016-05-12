@@ -19,7 +19,9 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
+import com.liferay.faces.util.client.Script;
 import com.liferay.faces.util.component.ClientComponent;
+import com.liferay.faces.util.render.ClientComponentRenderer;
 
 
 /**
@@ -28,10 +30,8 @@ import com.liferay.faces.util.component.ClientComponent;
 public interface AlloyRenderer extends ClientComponentRenderer {
 
 	// Public Constants
-	public static final String A_DOT_ONE = "A.one";
 	public static final String BOUNDING_BOX = "boundingBox";
 	public static final String CONTENT_BOX = "contentBox";
-	public static final String LIFERAY_COMPONENT = "Liferay.component";
 	public static final String LIFERAY_Z_INDEX_OVERLAY = "Liferay.zIndex.OVERLAY";
 	public static final String LIFERAY_Z_INDEX_TOOLTIP = "Liferay.zIndex.TOOLTIP";
 
@@ -52,11 +52,16 @@ public interface AlloyRenderer extends ClientComponentRenderer {
 	public void encodeEventCallback(ResponseWriter responseWriter, String varName, String methodName, String eventName,
 		String callback) throws IOException;
 
-	public void encodeFunctionCall(ResponseWriter responseWriter, String functionName, Object... parameters)
-		throws IOException;
-
 	public void encodeInteger(ResponseWriter responseWriter, String attributeName, Integer attributeValue,
 		boolean first) throws IOException;
+
+	public void encodeJavaScriptBegin(FacesContext facesContext, UIComponent uiComponent) throws IOException;
+
+	public void encodeJavaScriptCustom(FacesContext facesContext, UIComponent uiComponent) throws IOException;
+
+	public void encodeJavaScriptEnd(FacesContext facesContext, UIComponent uiComponent) throws IOException;
+
+	public void encodeJavaScriptMain(FacesContext facesContext, UIComponent uiComponent) throws IOException;
 
 	public void encodeLiferayComponentVar(ResponseWriter responseWriter, String clientVarName, String clientKey)
 		throws IOException;
@@ -69,13 +74,16 @@ public interface AlloyRenderer extends ClientComponentRenderer {
 
 	public void encodeWidgetRender(ResponseWriter responseWriter, boolean first) throws IOException;
 
-	public String escapeClientId(String clientId);
-
-	public String escapeJavaScript(String javaScript);
+	public void renderScript(FacesContext facesContext, String bufferedScriptString, String[] modules,
+		Script.Type scriptType);
 
 	public String getAlloyClassName(FacesContext facesContext, UIComponent uiComponent);
 
 	public String getClientVarName(FacesContext facesContext, ClientComponent clientComponent);
+
+	public boolean isSandboxed(FacesContext facesContext, UIComponent uiComponent);
+
+	public String[] getModules(FacesContext facesContext, UIComponent uiComponent);
 
 	public String getYUIConfig(FacesContext facesContext, ResponseWriter responseWriter, UIComponent uiComponent)
 		throws IOException;

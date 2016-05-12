@@ -23,9 +23,10 @@ import javax.faces.context.ResponseWriter;
 import javax.faces.render.FacesRenderer;
 
 import com.liferay.faces.alloy.component.dialog.Dialog;
-import com.liferay.faces.alloy.render.internal.JavaScriptFragment;
 import com.liferay.faces.util.component.ClientComponent;
+import com.liferay.faces.util.component.ComponentUtil;
 import com.liferay.faces.util.helper.StringHelper;
+import com.liferay.faces.util.render.JavaScriptFragment;
 
 
 /**
@@ -89,7 +90,7 @@ public class DialogRenderer extends DialogRendererBase {
 		responseWriter.write("var " + clientKey + "_mask=A.one('#");
 
 		String clientId = dialog.getClientId(facesContext);
-		String escapedBoundingBoxClientId = escapeClientId(clientId);
+		String escapedBoundingBoxClientId = ComponentUtil.escapeClientId(clientId);
 		responseWriter.write(escapedBoundingBoxClientId);
 		responseWriter.write("').ancestor().one('.hide');");
 		responseWriter.write("if (");
@@ -104,10 +105,10 @@ public class DialogRenderer extends DialogRendererBase {
 
 		// move the overlayBody div into the modal-body div
 		String overlayBodyClientId = clientId.concat(OVERLAY_BODY_SUFFIX);
-		String escapedOverlayBodyClientId = escapeClientId(overlayBodyClientId);
+		String escapedOverlayBodyClientId = ComponentUtil.escapeClientId(overlayBodyClientId);
 
 		String contentBoxClientId = clientId.concat(CONTENT_BOX_SUFFIX);
-		String escapedContentBoxClientId = escapeClientId(contentBoxClientId);
+		String escapedContentBoxClientId = ComponentUtil.escapeClientId(contentBoxClientId);
 
 		responseWriter.write("A.one('#");
 		responseWriter.write(escapedOverlayBodyClientId);
@@ -149,7 +150,7 @@ public class DialogRenderer extends DialogRendererBase {
 	}
 
 	@Override
-	protected String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
+	public String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
 
 		String[] modules = MODULES;
 		Dialog dialog = (Dialog) uiComponent;
