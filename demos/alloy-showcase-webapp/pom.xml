@@ -3,12 +3,12 @@
 
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>com.liferay.faces.alloy.demos</groupId>
-		<artifactId>liferay-faces-alloy-demos</artifactId>
+		<groupId>com.liferay.faces.demo</groupId>
+		<artifactId>com.liferay.faces.demo.alloy.parent</artifactId>
 		<version>3.0.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
 	</parent>
-	<artifactId>alloy-showcase-webapp</artifactId>
+	<artifactId>com.liferay.faces.demo.alloy.showcase.webapp</artifactId>
 	<packaging>war</packaging>
 	<name>Alloy Showcase Webapp</name>
 	<description>This plugin is the Liferay Faces Alloy Showcase demo webapp.</description>
@@ -71,30 +71,30 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>com.liferay.faces.alloy</groupId>
-			<artifactId>liferay-faces-alloy</artifactId>
+			<groupId>com.liferay.faces</groupId>
+			<artifactId>com.liferay.faces.alloy</artifactId>
 			<version>${project.version}</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.liferay.faces.alloy</groupId>
-			<artifactId>liferay-faces-alloy-reslib</artifactId>
+			<groupId>com.liferay.faces</groupId>
+			<artifactId>com.liferay.faces.alloy.reslib</artifactId>
 			<version>${project.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>com.liferay.faces.showcase</groupId>
-			<artifactId>showcase-common</artifactId>
+			<groupId>com.liferay.faces.demo</groupId>
+			<artifactId>com.liferay.faces.demo.showcase.common</artifactId>
 			<version>${liferay.faces.showcase.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>com.liferay.faces.showcase</groupId>
-			<artifactId>jsf-showcase-webapp</artifactId>
+			<groupId>com.liferay.faces.demo</groupId>
+			<artifactId>com.liferay.faces.demo.jsf.showcase.webapp</artifactId>
 			<version>${liferay.faces.showcase.version}</version>
 			<type>war</type>
 		</dependency>
 		<dependency>
-			<groupId>com.liferay.faces.showcase</groupId>
-			<artifactId>jsf-showcase-webapp</artifactId>
+			<groupId>com.liferay.faces.demo</groupId>
+			<artifactId>com.liferay.faces.demo.jsf.showcase.webapp</artifactId>
 			<version>${liferay.faces.showcase.version}</version>
 			<type>warpath</type>
 		</dependency>
