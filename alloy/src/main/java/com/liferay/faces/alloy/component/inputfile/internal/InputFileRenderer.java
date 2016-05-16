@@ -33,7 +33,6 @@ import javax.faces.render.FacesRenderer;
 
 import com.liferay.faces.alloy.component.inputfile.FileUploadEvent;
 import com.liferay.faces.alloy.component.inputfile.InputFile;
-import com.liferay.faces.alloy.render.internal.JavaScriptFragment;
 import com.liferay.faces.util.context.MessageContext;
 import com.liferay.faces.util.context.MessageContextFactory;
 import com.liferay.faces.util.context.map.MultiPartFormData;
@@ -41,8 +40,8 @@ import com.liferay.faces.util.factory.FactoryExtensionFinder;
 import com.liferay.faces.util.model.UploadedFile;
 import com.liferay.faces.util.product.ProductConstants;
 import com.liferay.faces.util.product.ProductMap;
+import com.liferay.faces.util.render.JavaScriptFragment;
 import com.liferay.faces.util.render.RendererUtil;
-import com.liferay.faces.util.render.internal.DelegationResponseWriter;
 
 
 /**
@@ -223,7 +222,7 @@ public class InputFileRenderer extends InputFileRendererBase {
 		// Otherwise, delegate writing of the entire <input type="file"...> ... </input> element to the delegate
 		// renderer.
 		else {
-			DelegationResponseWriter delegationResponseWriter = new InputFileDelegationResponseWriter(responseWriter,
+			ResponseWriter delegationResponseWriter = new InputFileDelegationResponseWriter(responseWriter,
 					inputFile.isAuto());
 			super.encodeMarkupEnd(facesContext, uiComponent, delegationResponseWriter);
 		}
@@ -260,7 +259,7 @@ public class InputFileRenderer extends InputFileRendererBase {
 		throws IOException {
 
 		// Delegate writing of the entire <input type="file"...> ... </input> element to the delegate renderer.
-		DelegationResponseWriter delegationResponseWriter = new InputFileDelegationResponseWriter(responseWriter,
+		ResponseWriter delegationResponseWriter = new InputFileDelegationResponseWriter(responseWriter,
 				inputFile.isAuto());
 		super.encodeMarkupEnd(facesContext, inputFile, delegationResponseWriter);
 

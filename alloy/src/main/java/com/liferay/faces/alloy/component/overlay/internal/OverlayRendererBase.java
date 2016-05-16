@@ -22,9 +22,8 @@ import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
 import com.liferay.faces.alloy.render.internal.DelegatingAlloyRendererBase;
-import com.liferay.faces.alloy.render.internal.JavaScriptFragment;
-import com.liferay.faces.util.render.internal.DelegationResponseWriter;
-import com.liferay.faces.util.render.internal.IdDelegationResponseWriter;
+import com.liferay.faces.util.render.IdDelegationResponseWriter;
+import com.liferay.faces.util.render.JavaScriptFragment;
 
 
 /**
@@ -111,8 +110,7 @@ public abstract class OverlayRendererBase extends DelegatingAlloyRendererBase im
 		// that Alloy's JavaScript will be able to locate the boundingBox in the DOM.
 		ResponseWriter responseWriter = facesContext.getResponseWriter();
 		String clientId = uiComponent.getClientId(facesContext);
-		DelegationResponseWriter idDelegationResponseWriter = new IdDelegationResponseWriter(responseWriter, "div",
-				clientId);
+		ResponseWriter idDelegationResponseWriter = new IdDelegationResponseWriter(responseWriter, "div", clientId);
 		super.encodeMarkupBegin(facesContext, uiComponent, idDelegationResponseWriter);
 
 		// Encode the opening contentBox <div> tag with a unique id.

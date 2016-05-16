@@ -23,9 +23,9 @@ import javax.faces.context.ResponseWriter;
 import javax.faces.render.FacesRenderer;
 
 import com.liferay.faces.alloy.component.dialog.Dialog;
-import com.liferay.faces.alloy.render.internal.JavaScriptFragment;
 import com.liferay.faces.util.component.ClientComponent;
 import com.liferay.faces.util.helper.StringHelper;
+import com.liferay.faces.util.render.JavaScriptFragment;
 
 
 /**
@@ -149,7 +149,7 @@ public class DialogRenderer extends DialogRendererBase {
 	}
 
 	@Override
-	protected String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
+	public String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
 
 		String[] modules = MODULES;
 		Dialog dialog = (Dialog) uiComponent;

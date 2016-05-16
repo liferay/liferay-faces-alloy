@@ -29,11 +29,11 @@ import javax.faces.context.ResponseWriter;
 import javax.faces.render.FacesRenderer;
 
 import com.liferay.faces.alloy.component.progressbar.ProgressBar;
-import com.liferay.faces.alloy.render.internal.JavaScriptFragment;
 import com.liferay.faces.util.component.Styleable;
 import com.liferay.faces.util.context.FacesRequestContext;
+import com.liferay.faces.util.render.BufferedScriptResponseWriter;
+import com.liferay.faces.util.render.JavaScriptFragment;
 import com.liferay.faces.util.render.RendererUtil;
-import com.liferay.faces.util.render.internal.BufferedScriptResponseWriter;
 
 
 /**
@@ -396,7 +396,7 @@ public class ProgressBarRenderer extends ProgressBarRendererBase {
 
 		boolean polling = false;
 
-		if (isServerPollingEnabled(uiComponent) && isAjax(facesContext)) {
+		if (isServerPollingEnabled(uiComponent) && facesContext.getPartialViewContext().isAjaxRequest()) {
 
 			ExternalContext externalContext = facesContext.getExternalContext();
 			Map<String, String> requestParameterMap = externalContext.getRequestParameterMap();

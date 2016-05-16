@@ -26,7 +26,7 @@ import javax.faces.view.facelets.FacetHandler;
 
 import com.liferay.faces.alloy.component.field.Field;
 import com.liferay.faces.alloy.component.selectbooleancheckbox.SelectBooleanCheckbox;
-import com.liferay.faces.util.render.internal.IdDelegationResponseWriter;
+import com.liferay.faces.util.render.IdDelegationResponseWriter;
 
 
 /**

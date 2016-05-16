@@ -27,8 +27,7 @@ import javax.faces.event.PostAddToViewEvent;
 import javax.faces.render.FacesRenderer;
 
 import com.liferay.faces.alloy.component.commandlink.CommandLink;
-import com.liferay.faces.alloy.render.internal.AlloyRendererUtil;
-import com.liferay.faces.util.render.internal.DelegationResponseWriter;
+import com.liferay.faces.util.render.RendererUtil;
 
 
 /**
@@ -43,7 +42,7 @@ public class CommandLinkRenderer extends CommandLinkRendererBase implements Comp
 	public void encodeBegin(FacesContext facesContext, UIComponent uiComponent) throws IOException {
 
 		ResponseWriter responseWriter = facesContext.getResponseWriter();
-		DelegationResponseWriter delegationResponseWriter = new CommandLinkResponseWriter(responseWriter,
+		ResponseWriter delegationResponseWriter = new CommandLinkResponseWriter(responseWriter,
 				(uiComponent.getChildCount() > 0));
 		super.encodeBegin(facesContext, uiComponent, delegationResponseWriter);
 	}
@@ -54,8 +53,8 @@ public class CommandLinkRenderer extends CommandLinkRendererBase implements Comp
 		CommandLink commandLink = (CommandLink) componentSystemEvent.getComponent();
 
 		if (commandLink.isAjax()) {
-			AlloyRendererUtil.addDefaultAjaxBehavior(commandLink, commandLink.getExecute(), commandLink.getProcess(),
-				"@all", commandLink.getRender(), commandLink.getUpdate(), "@none");
+			RendererUtil.addDefaultAjaxBehavior(commandLink, commandLink.getExecute(), commandLink.getProcess(), "@all",
+				commandLink.getRender(), commandLink.getUpdate(), "@none");
 		}
 	}
 }

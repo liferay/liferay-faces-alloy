@@ -33,12 +33,13 @@ import javax.faces.context.ResponseWriter;
 import javax.faces.render.FacesRenderer;
 
 import com.liferay.faces.alloy.component.autocomplete.AutoComplete;
-import com.liferay.faces.alloy.render.internal.JavaScriptFragment;
+import com.liferay.faces.util.client.Script;
 import com.liferay.faces.util.component.ClientComponent;
 import com.liferay.faces.util.component.Styleable;
 import com.liferay.faces.util.helper.StringHelper;
+import com.liferay.faces.util.render.BufferedScriptResponseWriter;
+import com.liferay.faces.util.render.JavaScriptFragment;
 import com.liferay.faces.util.render.RendererUtil;
-import com.liferay.faces.util.render.internal.BufferedScriptResponseWriter;
 
 
 /**
@@ -259,7 +260,7 @@ public class AutoCompleteRenderer extends AutoCompleteRendererBase {
 		AutoComplete autoComplete = (AutoComplete) uiComponent;
 
 		// If the developer has specified a server-side filtering during Ajax, then
-		if (isServerFilteringEnabled(autoComplete) && isAjax(facesContext)) {
+		if (isServerFilteringEnabled(autoComplete) && facesContext.getPartialViewContext().isAjaxRequest()) {
 
 			// If the user has specified a query, then
 			ExternalContext externalContext = facesContext.getExternalContext();
@@ -351,7 +352,7 @@ public class AutoCompleteRenderer extends AutoCompleteRendererBase {
 					liferayComponentJavaScriptFragment, resultArrayStringBuilder, hiddenClientId);
 
 				String[] modules = getModules(facesContext, uiComponent);
-				renderScript(facesContext, bufferedScriptResponseWriter.toString(), modules);
+				renderScript(facesContext, bufferedScriptResponseWriter.toString(), modules, Script.Type.ALLOY);
 			}
 			else {
 				super.encodeJavaScript(facesContext, uiComponent);
@@ -413,7 +414,7 @@ public class AutoCompleteRenderer extends AutoCompleteRendererBase {
 
 		boolean querying = false;
 
-		if (isServerFilteringEnabled(uiComponent) || isAjax(facesContext)) {
+		if (isServerFilteringEnabled(uiComponent) || facesContext.getPartialViewContext().isAjaxRequest()) {
 
 			ExternalContext externalContext = facesContext.getExternalContext();
 			Map<String, String> requestParameterMap = externalContext.getRequestParameterMap();
@@ -426,7 +427,7 @@ public class AutoCompleteRenderer extends AutoCompleteRendererBase {
 	}
 
 	@Override
-	protected String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
+	public String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
 
 		String[] modules = MODULES;
 		AutoComplete autoComplete = (AutoComplete) uiComponent;

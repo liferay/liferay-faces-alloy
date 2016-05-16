@@ -29,7 +29,6 @@ import javax.faces.render.FacesRenderer;
 import javax.faces.view.ViewMetadata;
 
 import com.liferay.faces.alloy.component.form.Form;
-import com.liferay.faces.util.render.internal.DelegationResponseWriter;
 
 
 /**
@@ -97,8 +96,7 @@ public class FormRenderer extends FormRendererBase {
 			ExternalContext externalContext = facesContext.getExternalContext();
 			String encodedActionURL = externalContext.encodeActionURL(actionURLBuilder.toString());
 			ResponseWriter responseWriter = facesContext.getResponseWriter();
-			DelegationResponseWriter delegationResponseWriter = new FormResponseWriter(responseWriter,
-					encodedActionURL);
+			ResponseWriter delegationResponseWriter = new FormResponseWriter(responseWriter, encodedActionURL);
 			super.encodeBegin(facesContext, uiComponent, delegationResponseWriter);
 		}
 		else {

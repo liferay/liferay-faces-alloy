@@ -25,8 +25,7 @@ import javax.faces.render.FacesRenderer;
 
 import com.liferay.faces.alloy.component.inputsourcecode.InputSourceCode;
 import com.liferay.faces.util.component.ClientComponent;
-import com.liferay.faces.util.render.internal.DelegationResponseWriter;
-import com.liferay.faces.util.render.internal.HiddenTextResponseWriter;
+import com.liferay.faces.util.render.HiddenTextResponseWriter;
 
 
 /**
@@ -101,7 +100,7 @@ public class InputSourceCodeRenderer extends InputSourceCodeRendererBase {
 		responseWriter.endElement("div");
 
 		// Start the encoding of the hidden text input by delegating to the renderer from the JSF runtime.
-		DelegationResponseWriter delegationResponseWriter = getDelegationResponseWriter(facesContext, uiComponent);
+		ResponseWriter delegationResponseWriter = getDelegationResponseWriter(facesContext, uiComponent);
 		super.encodeMarkupBegin(facesContext, uiComponent, delegationResponseWriter);
 	}
 
@@ -109,7 +108,7 @@ public class InputSourceCodeRenderer extends InputSourceCodeRendererBase {
 	public void encodeMarkupEnd(FacesContext facesContext, UIComponent uiComponent) throws IOException {
 
 		// Finish the encoding of the hidden text input by delegating to the renderer from the JSF runtime.
-		DelegationResponseWriter delegationResponseWriter = getDelegationResponseWriter(facesContext, uiComponent);
+		ResponseWriter delegationResponseWriter = getDelegationResponseWriter(facesContext, uiComponent);
 		super.encodeMarkupEnd(facesContext, uiComponent, delegationResponseWriter);
 
 		// Finish the encoding of the outermost </div> element.
@@ -136,7 +135,7 @@ public class InputSourceCodeRenderer extends InputSourceCodeRendererBase {
 		return uiComponent.getClientId(facesContext) + separatorChar + BOUNDING_BOX;
 	}
 
-	public DelegationResponseWriter getDelegationResponseWriter(FacesContext facesContext, UIComponent uiComponent) {
+	public ResponseWriter getDelegationResponseWriter(FacesContext facesContext, UIComponent uiComponent) {
 
 		ResponseWriter responseWriter = facesContext.getResponseWriter();
 		String hiddenInputClientId = getHiddenInputClientId(facesContext, uiComponent);

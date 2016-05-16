@@ -30,7 +30,6 @@ import com.liferay.faces.util.component.Styleable;
 import com.liferay.faces.util.logging.Logger;
 import com.liferay.faces.util.logging.LoggerFactory;
 import com.liferay.faces.util.render.RendererUtil;
-import com.liferay.faces.util.render.internal.DelegationResponseWriter;
 
 
 /**
@@ -117,7 +116,7 @@ public class OutputTooltipRenderer extends OutputTooltipRendererBase {
 
 		// Create a response writer that will ignore the opening and closing "span" element tags along with the "id",
 		// "style", and "class" attributes.
-		DelegationResponseWriter delegationResponseWriter = new OutputTooltipResponseWriter(responseWriter, clientId);
+		ResponseWriter delegationResponseWriter = new OutputTooltipResponseWriter(responseWriter, clientId);
 
 		// The delegation renderer provided by the JSF runtime does not attempt to encode the opening <span> tag during
 		// of encodeBegin(FacesContext, UIComponent). Instead, the entire <span>...</span> element is encoded during

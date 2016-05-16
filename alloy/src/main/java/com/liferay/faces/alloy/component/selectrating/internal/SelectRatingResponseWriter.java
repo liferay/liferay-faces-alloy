@@ -17,9 +17,9 @@ import java.io.IOException;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.ResponseWriter;
+import javax.faces.context.ResponseWriterWrapper;
 
 import com.liferay.faces.util.component.Styleable;
-import com.liferay.faces.util.render.internal.DelegationResponseWriterBase;
 
 
 //J-
@@ -41,7 +41,7 @@ import com.liferay.faces.util.render.internal.DelegationResponseWriterBase;
 /**
  * @author  Vernon Singleton
  */
-public class SelectRatingResponseWriter extends DelegationResponseWriterBase {
+public class SelectRatingResponseWriter extends ResponseWriterWrapper {
 
 	// Public constants.
 	public static final int NO_SELECTION_INDEX = -1;
@@ -53,9 +53,10 @@ public class SelectRatingResponseWriter extends DelegationResponseWriterBase {
 	private String onClick;
 	private long selectedIndex;
 	private Object title;
+	private ResponseWriter wrappedResponseWriter;
 
 	public SelectRatingResponseWriter(ResponseWriter responseWriter) {
-		super(responseWriter);
+		this.wrappedResponseWriter = responseWriter;
 		this.index = NO_SELECTION_INDEX;
 		this.selectedIndex = NO_SELECTION_INDEX;
 	}
@@ -140,5 +141,10 @@ public class SelectRatingResponseWriter extends DelegationResponseWriterBase {
 
 	public void setSelectedIndex(long selectedIndex) {
 		this.selectedIndex = selectedIndex;
+	}
+
+	@Override
+	public ResponseWriter getWrapped() {
+		return wrappedResponseWriter;
 	}
 }
