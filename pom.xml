@@ -77,7 +77,7 @@
 	<modules>
 		<module>reslib</module>
 		<module>alloy</module>
-		<module>demos</module>
+		<module>demo</module>
 	</modules>
 
 	<properties>
