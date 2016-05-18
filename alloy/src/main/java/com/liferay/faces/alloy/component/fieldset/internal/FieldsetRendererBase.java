@@ -16,7 +16,7 @@ package com.liferay.faces.alloy.component.fieldset.internal;
 
 import javax.annotation.Generated;
 
-import com.liferay.faces.alloy.render.internal.PassThroughRenderer;
+import com.liferay.faces.util.render.PassThroughRenderer;
 
 
 /**

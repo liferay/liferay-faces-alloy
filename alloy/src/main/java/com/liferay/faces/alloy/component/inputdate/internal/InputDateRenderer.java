@@ -31,10 +31,12 @@ import javax.faces.render.FacesRenderer;
 
 import com.liferay.faces.alloy.component.inputdate.InputDate;
 import com.liferay.faces.alloy.component.inputdatetime.internal.InputDateTimeResponseWriter;
-import com.liferay.faces.alloy.render.internal.JavaScriptFragment;
 import com.liferay.faces.util.client.BrowserSniffer;
 import com.liferay.faces.util.client.BrowserSnifferFactory;
+import com.liferay.faces.util.component.ComponentUtil;
 import com.liferay.faces.util.helper.StringHelper;
+import com.liferay.faces.util.render.JavaScriptFragment;
+import com.liferay.faces.util.render.RendererUtil;
 
 
 /**
@@ -141,7 +143,7 @@ public class InputDateRenderer extends InputDateRendererBase {
 
 				String clientId = inputDate.getClientId(facesContext);
 				String inputClientId = clientId.concat(INPUT_SUFFIX);
-				String escapedInputClientId = escapeClientId(inputClientId);
+				String escapedInputClientId = ComponentUtil.escapeClientId(inputClientId);
 
 				encodeFunctionCall(responseWriter, "LFAI.initDatePickerShowOnButton", 'A', escapedInputClientId,
 					liferayComponent);
@@ -192,7 +194,7 @@ public class InputDateRenderer extends InputDateRendererBase {
 
 			String clientId = inputDate.getClientId(facesContext);
 			String inputClientId = clientId.concat(INPUT_SUFFIX);
-			String escapedInputClientId = escapeClientId(inputClientId);
+			String escapedInputClientId = ComponentUtil.escapeClientId(inputClientId);
 			JavaScriptFragment selectable = new JavaScriptFragment("this._canBeSelected(event.date)");
 			JavaScriptFragment date = null;
 
@@ -202,7 +204,7 @@ public class InputDateRenderer extends InputDateRendererBase {
 				// attached to the input.
 				String datePattern = inputDate.getPattern();
 				String mask = getMaskFromDatePattern(datePattern);
-				String escapedMask = escapeJavaScript(mask);
+				String escapedMask = RendererUtil.escapeJavaScript(mask);
 				date = new JavaScriptFragment("A.Date.format(event.date,{format:'".concat(escapedMask).concat("'})"));
 			}
 
@@ -286,7 +288,7 @@ public class InputDateRenderer extends InputDateRendererBase {
 	}
 
 	@Override
-	protected String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
+	public String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
 
 		String[] modules = getModules(MODULES[0], facesContext, uiComponent);
 

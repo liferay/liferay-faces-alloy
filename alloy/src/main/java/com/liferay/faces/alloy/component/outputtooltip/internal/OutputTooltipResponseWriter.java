@@ -17,9 +17,9 @@ import java.io.IOException;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.ResponseWriter;
+import javax.faces.context.ResponseWriterWrapper;
 
 import com.liferay.faces.util.component.Styleable;
-import com.liferay.faces.util.render.internal.DelegationResponseWriterBase;
 
 
 /**
@@ -27,10 +27,13 @@ import com.liferay.faces.util.render.internal.DelegationResponseWriterBase;
  *
  * @author  Vernon Singleton
  */
-public class OutputTooltipResponseWriter extends DelegationResponseWriterBase {
+public class OutputTooltipResponseWriter extends ResponseWriterWrapper {
+
+	// Private Members
+	private ResponseWriter wrappedResponseWriter;
 
 	public OutputTooltipResponseWriter(ResponseWriter responseWriter, String idValue) {
-		super(responseWriter);
+		this.wrappedResponseWriter = responseWriter;
 	}
 
 	@Override
@@ -62,5 +65,10 @@ public class OutputTooltipResponseWriter extends DelegationResponseWriterBase {
 		if (!"id".equals(name) && !Styleable.STYLE.equals(name) && !Styleable.STYLE_CLASS.equals(name)) {
 			super.writeAttribute(name, value, property);
 		}
+	}
+
+	@Override
+	public ResponseWriter getWrapped() {
+		return wrappedResponseWriter;
 	}
 }
