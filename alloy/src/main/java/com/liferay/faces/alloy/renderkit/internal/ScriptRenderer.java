@@ -29,7 +29,7 @@ import com.liferay.faces.util.client.ScriptFactory;
 import com.liferay.faces.util.factory.FactoryExtensionFinder;
 import com.liferay.faces.util.logging.Logger;
 import com.liferay.faces.util.logging.LoggerFactory;
-import com.liferay.faces.util.render.internal.BufferedScriptResponseWriter;
+import com.liferay.faces.util.render.BufferedScriptResponseWriter;
 
 
 /**
