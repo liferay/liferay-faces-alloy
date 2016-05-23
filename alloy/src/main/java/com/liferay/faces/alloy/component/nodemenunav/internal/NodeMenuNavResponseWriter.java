@@ -17,23 +17,23 @@ import java.io.IOException;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.ResponseWriter;
-
-import com.liferay.faces.util.render.internal.DelegationResponseWriterBase;
+import javax.faces.context.ResponseWriterWrapper;
 
 
 /**
  * @author  Vernon Singleton
  */
-public class NodeMenuNavResponseWriter extends DelegationResponseWriterBase {
+public class NodeMenuNavResponseWriter extends ResponseWriterWrapper {
 
 	// Private data members
 	private boolean disabled;
 	private String clientId;
 	private String styleClass;
+	private ResponseWriter wrappedResponseWriter;
 
 	public NodeMenuNavResponseWriter(ResponseWriter responseWriter, boolean disabled, String clientId,
 		String styleClass) {
-		super(responseWriter);
+		this.wrappedResponseWriter = responseWriter;
 		this.clientId = clientId;
 		this.disabled = disabled;
 		this.styleClass = styleClass;
@@ -66,5 +66,10 @@ public class NodeMenuNavResponseWriter extends DelegationResponseWriterBase {
 		if (!disabled) {
 			super.writeURIAttribute(name, value, property);
 		}
+	}
+
+	@Override
+	public ResponseWriter getWrapped() {
+		return wrappedResponseWriter;
 	}
 }

@@ -22,17 +22,19 @@ import java.io.IOException;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.ResponseWriter;
-
-import com.liferay.faces.util.render.internal.DelegationResponseWriterBase;
+import javax.faces.context.ResponseWriterWrapper;
 
 
 /**
  * @author  Kyle Stiemann
  */
-public class TableSuppressingResponseWriter extends DelegationResponseWriterBase {
+public class TableSuppressingResponseWriter extends ResponseWriterWrapper {
+
+	// Private Members
+	private ResponseWriter wrappedResponseWriter;
 
 	public TableSuppressingResponseWriter(ResponseWriter responseWriter) {
-		super(responseWriter);
+		this.wrappedResponseWriter = responseWriter;
 	}
 
 	@Override
@@ -61,5 +63,10 @@ public class TableSuppressingResponseWriter extends DelegationResponseWriterBase
 		else {
 			super.startElement(name, component);
 		}
+	}
+
+	@Override
+	public ResponseWriter getWrapped() {
+		return wrappedResponseWriter;
 	}
 }

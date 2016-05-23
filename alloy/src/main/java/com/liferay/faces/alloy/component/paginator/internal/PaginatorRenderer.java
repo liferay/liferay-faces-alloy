@@ -41,7 +41,6 @@ import javax.faces.render.FacesRenderer;
 import com.liferay.faces.alloy.component.commandlink.CommandLink;
 import com.liferay.faces.alloy.component.outputtext.OutputText;
 import com.liferay.faces.alloy.component.paginator.Paginator;
-import com.liferay.faces.alloy.render.internal.AlloyRendererUtil;
 import com.liferay.faces.util.component.Styleable;
 import com.liferay.faces.util.context.MessageContext;
 import com.liferay.faces.util.context.MessageContextFactory;
@@ -308,7 +307,7 @@ public class PaginatorRenderer extends PaginatorRendererBase implements Componen
 		Paginator paginator = (Paginator) componentSystemEvent.getComponent();
 
 		if (paginator.isAjax()) {
-			AlloyRendererUtil.addDefaultAjaxBehavior(paginator, paginator.getExecute(), paginator.getProcess(), "@this",
+			RendererUtil.addDefaultAjaxBehavior(paginator, paginator.getExecute(), paginator.getProcess(), "@this",
 				paginator.getRender(), paginator.getUpdate(), "@this @for");
 		}
 	}

@@ -31,6 +31,7 @@ import com.liferay.faces.alloy.component.tab.Tab;
 import com.liferay.faces.alloy.component.tab.TabSelectEvent;
 import com.liferay.faces.alloy.component.tab.TabUtil;
 import com.liferay.faces.alloy.component.tabview.TabView;
+import com.liferay.faces.util.component.ComponentUtil;
 import com.liferay.faces.util.component.Styleable;
 import com.liferay.faces.util.helper.IntegerHelper;
 import com.liferay.faces.util.logging.Logger;
@@ -195,11 +196,10 @@ public class TabViewRenderer extends TabViewRendererBase {
 
 		// A.one('#tabViewExample\x5c\x3atabViewForm\x5c\x3aj\x5fidt73')._node['style'].display = 'block';
 		ResponseWriter responseWriter = facesContext.getResponseWriter();
-		responseWriter.write(A_DOT_ONE);
-		responseWriter.write("('");
+		responseWriter.write("A.one('");
 
 		String clientId = uiComponent.getClientId(facesContext);
-		String escapedClientId = "#" + escapeClientId(clientId);
+		String escapedClientId = "#" + ComponentUtil.escapeClientId(clientId);
 		responseWriter.write(escapedClientId);
 		responseWriter.write("')._node['style'].display='block';");
 

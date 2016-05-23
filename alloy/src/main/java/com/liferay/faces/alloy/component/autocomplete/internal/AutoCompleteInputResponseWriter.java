@@ -18,17 +18,17 @@ import java.io.IOException;
 import javax.faces.context.ResponseWriter;
 
 import com.liferay.faces.util.component.Styleable;
-import com.liferay.faces.util.render.internal.IdDelegationResponseWriter;
+import com.liferay.faces.util.render.IdResponseWriter;
 
 
 /**
  * The purpose of this response writer is to prevent the JSF runtime from writing the "style" and "styleClass"
- * attributes on the autocomplete input. Since it extends {@link IdDelegationResponseWriter} it also ensures that the
- * JSF runtime writes a specific value for the "id" attribute.
+ * attributes on the autocomplete input. Since it extends {@link IdResponseWriter} it also ensures that the JSF runtime
+ * writes a specific value for the "id" attribute.
  *
  * @author  Kyle Stiemann
  */
-public class AutoCompleteInputResponseWriter extends IdDelegationResponseWriter {
+public class AutoCompleteInputResponseWriter extends IdResponseWriter {
 
 	public AutoCompleteInputResponseWriter(ResponseWriter responseWriter, String idElement, String idValue) {
 		super(responseWriter, idElement, idValue);

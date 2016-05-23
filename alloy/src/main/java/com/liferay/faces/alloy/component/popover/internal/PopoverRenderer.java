@@ -26,6 +26,7 @@ import javax.faces.render.FacesRenderer;
 import com.liferay.faces.alloy.component.button.Button;
 import com.liferay.faces.alloy.component.popover.Popover;
 import com.liferay.faces.util.component.ClientComponent;
+import com.liferay.faces.util.component.ComponentUtil;
 import com.liferay.faces.util.helper.StringHelper;
 import com.liferay.faces.util.logging.Logger;
 import com.liferay.faces.util.logging.LoggerFactory;
@@ -72,8 +73,7 @@ public class PopoverRenderer extends PopoverRendererBase {
 		if (popover.isHideIconRendered()) {
 
 			// Add an "x" toolbar icon so that the popover can be hidden just like alloy:dialog can.
-			responseWriter.write(LIFERAY_COMPONENT);
-			responseWriter.write("('");
+			responseWriter.write("Liferay.component('");
 			responseWriter.write(clientKey);
 			responseWriter.write(
 				"').addToolbar([{cssClass:'close',label:'\u00D7',on:{click:function(event){Liferay.component('");
@@ -84,10 +84,10 @@ public class PopoverRenderer extends PopoverRendererBase {
 		// Move the overlayBody div into the popover-content div.
 		String clientId = popover.getClientId(facesContext);
 		String overlayBodyClientId = clientId.concat(OVERLAY_BODY_SUFFIX);
-		String escapedOverlayBodyClientId = escapeClientId(overlayBodyClientId);
+		String escapedOverlayBodyClientId = ComponentUtil.escapeClientId(overlayBodyClientId);
 
 		String contentBoxClientId = clientId.concat(CONTENT_BOX_SUFFIX);
-		String escapedContentBoxClientId = escapeClientId(contentBoxClientId);
+		String escapedContentBoxClientId = ComponentUtil.escapeClientId(contentBoxClientId);
 
 		responseWriter.write("A.one('#");
 		responseWriter.write(escapedOverlayBodyClientId);
@@ -151,7 +151,7 @@ public class PopoverRenderer extends PopoverRendererBase {
 	}
 
 	@Override
-	protected String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
+	public String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
 
 		String[] modules = MODULES;
 		Popover popover = (Popover) uiComponent;

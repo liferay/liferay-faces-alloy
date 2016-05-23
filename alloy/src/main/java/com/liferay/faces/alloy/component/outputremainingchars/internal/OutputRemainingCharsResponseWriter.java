@@ -17,25 +17,25 @@ import java.io.IOException;
 
 import javax.faces.component.UIComponent;
 import javax.faces.context.ResponseWriter;
-
-import com.liferay.faces.util.render.internal.DelegationResponseWriterBase;
+import javax.faces.context.ResponseWriterWrapper;
 
 
 /**
  * @author  Neil Griffin
  * @author  Vernon Singleton
  */
-public class OutputRemainingCharsResponseWriter extends DelegationResponseWriterBase {
+public class OutputRemainingCharsResponseWriter extends ResponseWriterWrapper {
 
 	// Private Data Members
 	private String counterInnerSpanId;
 	private UIComponent uiComponent;
 	private String remainingChars;
+	private ResponseWriter wrappedResponseWriter;
 
 	public OutputRemainingCharsResponseWriter(ResponseWriter responseWriter, UIComponent uiComponent,
 		String counterInnerSpanId, String remainingChars) {
 
-		super(responseWriter);
+		this.wrappedResponseWriter = responseWriter;
 		this.uiComponent = uiComponent;
 		this.counterInnerSpanId = counterInnerSpanId;
 		this.remainingChars = remainingChars;
@@ -110,6 +110,11 @@ public class OutputRemainingCharsResponseWriter extends DelegationResponseWriter
 		else {
 			super.write(post.toCharArray());
 		}
+	}
+
+	@Override
+	public ResponseWriter getWrapped() {
+		return wrappedResponseWriter;
 	}
 
 }

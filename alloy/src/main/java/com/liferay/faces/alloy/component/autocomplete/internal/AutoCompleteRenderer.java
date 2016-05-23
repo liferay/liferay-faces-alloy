@@ -33,12 +33,13 @@ import javax.faces.context.ResponseWriter;
 import javax.faces.render.FacesRenderer;
 
 import com.liferay.faces.alloy.component.autocomplete.AutoComplete;
-import com.liferay.faces.alloy.render.internal.JavaScriptFragment;
+import com.liferay.faces.util.client.Script;
 import com.liferay.faces.util.component.ClientComponent;
 import com.liferay.faces.util.component.Styleable;
 import com.liferay.faces.util.helper.StringHelper;
+import com.liferay.faces.util.render.BufferedScriptResponseWriter;
+import com.liferay.faces.util.render.JavaScriptFragment;
 import com.liferay.faces.util.render.RendererUtil;
-import com.liferay.faces.util.render.internal.BufferedScriptResponseWriter;
 
 
 /**
@@ -71,6 +72,120 @@ public class AutoCompleteRenderer extends AutoCompleteRendererBase {
 	private static final String VALUE_CHANGE = "valueChange";
 	private static final String VALUE_CHANGE_SCRIPT =
 		"{select: function(event) {this.get('inputNode').simulate('change');}}";
+
+	/**
+	 * This method is being overridden in order to allow server-side filtering of autoComplete items when server-side
+	 * filtering is enabled during an Ajax request and there is a query. Otherwise, this method simply calls
+	 * super.encodeJavaScript() in order to render the component normally.
+	 */
+	@Override
+	public void encodeJavaScript(FacesContext facesContext, UIComponent uiComponent) throws IOException {
+
+		AutoComplete autoComplete = (AutoComplete) uiComponent;
+
+		// If the developer has specified a server-side filtering during Ajax, then
+		if (isServerFilteringEnabled(autoComplete) && facesContext.getPartialViewContext().isAjaxRequest()) {
+
+			// If the user has specified a query, then
+			ExternalContext externalContext = facesContext.getExternalContext();
+			Map<String, String> requestParameterMap = externalContext.getRequestParameterMap();
+			String clientId = uiComponent.getClientId(facesContext);
+			String hiddenClientId = clientId + HIDDEN_SUFFIX;
+			String query = requestParameterMap.get(hiddenClientId);
+
+			if ((query != null) && (query.length() > 0)) {
+
+				// Get the entire list of completion items.
+				List<String> items = autoComplete.getAllItems(facesContext);
+
+				// If the developer has specified a serverCustomFilter, then call their custom filtering method.
+				MethodExpression serverCustomFilter = autoComplete.getServerCustomFilter();
+
+				if (serverCustomFilter != null) {
+					items = invokeServerCustomFilter(facesContext.getELContext(), serverCustomFilter, query, items);
+				}
+
+				// Otherwise, if the developer has specified a serverFilterType, then call the corresponding filtering
+				// method.
+				else {
+
+					String serverFilterType = autoComplete.getServerFilterType();
+
+					if (serverFilterType != null) {
+
+						Locale locale = facesContext.getViewRoot().getLocale();
+						AutoCompleteFilterFactory autoCompleteFilterFactory = new AutoCompleteFilterFactoryImpl();
+						AutoCompleteFilter autoCompleteFilter = autoCompleteFilterFactory.getAutoCompleteFilter(
+								serverFilterType);
+
+						if (autoCompleteFilter != null) {
+							boolean caseSensitive = serverFilterType.contains("Case");
+							items = autoCompleteFilter.doFilter(query, items, caseSensitive, locale);
+						}
+						else {
+							throw new IOException(serverFilterType + " is not a valid serverFilterType.");
+						}
+					}
+				}
+
+				// Build up a fragment of JavaScript that gets the client-side component.
+				ClientComponent clientComponent = (ClientComponent) uiComponent;
+				String clientVarName = getClientVarName(facesContext, clientComponent);
+				String clientKey = clientComponent.getClientKey();
+
+				if (clientKey == null) {
+					clientKey = clientVarName;
+				}
+
+				//J-
+				// Liferay.component('clientKey')
+				//J+
+				JavaScriptFragment liferayComponentJavaScriptFragment = new JavaScriptFragment("Liferay.component('" +
+						clientKey + "')");
+
+				// Build up a fragment of JavaScript that contains an array of the results.
+
+				//J-
+				// ['item1', 'item2', 'item3', ... 'itemN']
+				//J+
+				StringBuilder resultArrayStringBuilder = new StringBuilder();
+
+				resultArrayStringBuilder.append("[");
+
+				for (int i = 0; i < items.size(); i++) {
+
+					if (i > 0) {
+						resultArrayStringBuilder.append(",");
+					}
+
+					resultArrayStringBuilder.append("'");
+					resultArrayStringBuilder.append(items.get(i));
+					resultArrayStringBuilder.append("'");
+				}
+
+				resultArrayStringBuilder.append("]");
+
+				// Buffer all JavaScript so that it is rendered in the <eval> section of the partial response.
+				BufferedScriptResponseWriter bufferedScriptResponseWriter = new BufferedScriptResponseWriter();
+
+				//J-
+				// LFAI.recieveAutoCompleteResults(Liferay.component('clientKey'), ['item1', 'item2', 'item3'],
+				//		'hiddenClientId')
+				//J+
+				encodeFunctionCall(bufferedScriptResponseWriter, "LFAI.setAutoCompleteServerResults",
+					liferayComponentJavaScriptFragment, resultArrayStringBuilder, hiddenClientId);
+
+				String[] modules = getModules(facesContext, uiComponent);
+				renderScript(facesContext, bufferedScriptResponseWriter.toString(), modules, Script.Type.ALLOY);
+			}
+			else {
+				super.encodeJavaScript(facesContext, uiComponent);
+			}
+		}
+		else {
+			super.encodeJavaScript(facesContext, uiComponent);
+		}
+	}
 
 	@Override
 	public void encodeJavaScriptCustom(FacesContext facesContext, UIComponent uiComponent) throws IOException {
@@ -248,120 +363,6 @@ public class AutoCompleteRenderer extends AutoCompleteRendererBase {
 		}
 	}
 
-	/**
-	 * This method is being overridden in order to allow server-side filtering of autoComplete items when server-side
-	 * filtering is enabled during an Ajax request and there is a query. Otherwise, this method simply calls
-	 * super.encodeJavaScript() in order to render the component normally.
-	 */
-	@Override
-	protected void encodeJavaScript(FacesContext facesContext, UIComponent uiComponent) throws IOException {
-
-		AutoComplete autoComplete = (AutoComplete) uiComponent;
-
-		// If the developer has specified a server-side filtering during Ajax, then
-		if (isServerFilteringEnabled(autoComplete) && isAjax(facesContext)) {
-
-			// If the user has specified a query, then
-			ExternalContext externalContext = facesContext.getExternalContext();
-			Map<String, String> requestParameterMap = externalContext.getRequestParameterMap();
-			String clientId = uiComponent.getClientId(facesContext);
-			String hiddenClientId = clientId + HIDDEN_SUFFIX;
-			String query = requestParameterMap.get(hiddenClientId);
-
-			if ((query != null) && (query.length() > 0)) {
-
-				// Get the entire list of completion items.
-				List<String> items = autoComplete.getAllItems(facesContext);
-
-				// If the developer has specified a serverCustomFilter, then call their custom filtering method.
-				MethodExpression serverCustomFilter = autoComplete.getServerCustomFilter();
-
-				if (serverCustomFilter != null) {
-					items = invokeServerCustomFilter(facesContext.getELContext(), serverCustomFilter, query, items);
-				}
-
-				// Otherwise, if the developer has specified a serverFilterType, then call the corresponding filtering
-				// method.
-				else {
-
-					String serverFilterType = autoComplete.getServerFilterType();
-
-					if (serverFilterType != null) {
-
-						Locale locale = facesContext.getViewRoot().getLocale();
-						AutoCompleteFilterFactory autoCompleteFilterFactory = new AutoCompleteFilterFactoryImpl();
-						AutoCompleteFilter autoCompleteFilter = autoCompleteFilterFactory.getAutoCompleteFilter(
-								serverFilterType);
-
-						if (autoCompleteFilter != null) {
-							boolean caseSensitive = serverFilterType.contains("Case");
-							items = autoCompleteFilter.doFilter(query, items, caseSensitive, locale);
-						}
-						else {
-							throw new IOException(serverFilterType + " is not a valid serverFilterType.");
-						}
-					}
-				}
-
-				// Build up a fragment of JavaScript that gets the client-side component.
-				ClientComponent clientComponent = (ClientComponent) uiComponent;
-				String clientVarName = getClientVarName(facesContext, clientComponent);
-				String clientKey = clientComponent.getClientKey();
-
-				if (clientKey == null) {
-					clientKey = clientVarName;
-				}
-
-				//J-
-				// Liferay.component('clientKey')
-				//J+
-				JavaScriptFragment liferayComponentJavaScriptFragment = new JavaScriptFragment("Liferay.component('" +
-						clientKey + "')");
-
-				// Build up a fragment of JavaScript that contains an array of the results.
-
-				//J-
-				// ['item1', 'item2', 'item3', ... 'itemN']
-				//J+
-				StringBuilder resultArrayStringBuilder = new StringBuilder();
-
-				resultArrayStringBuilder.append("[");
-
-				for (int i = 0; i < items.size(); i++) {
-
-					if (i > 0) {
-						resultArrayStringBuilder.append(",");
-					}
-
-					resultArrayStringBuilder.append("'");
-					resultArrayStringBuilder.append(items.get(i));
-					resultArrayStringBuilder.append("'");
-				}
-
-				resultArrayStringBuilder.append("]");
-
-				// Buffer all JavaScript so that it is rendered in the <eval> section of the partial response.
-				BufferedScriptResponseWriter bufferedScriptResponseWriter = new BufferedScriptResponseWriter();
-
-				//J-
-				// LFAI.recieveAutoCompleteResults(Liferay.component('clientKey'), ['item1', 'item2', 'item3'],
-				//		'hiddenClientId')
-				//J+
-				encodeFunctionCall(bufferedScriptResponseWriter, "LFAI.setAutoCompleteServerResults",
-					liferayComponentJavaScriptFragment, resultArrayStringBuilder, hiddenClientId);
-
-				String[] modules = getModules(facesContext, uiComponent);
-				renderScript(facesContext, bufferedScriptResponseWriter.toString(), modules);
-			}
-			else {
-				super.encodeJavaScript(facesContext, uiComponent);
-			}
-		}
-		else {
-			super.encodeJavaScript(facesContext, uiComponent);
-		}
-	}
-
 	@Override
 	protected void encodeQueryDelimiter(ResponseWriter responseWriter, AutoComplete autoComplete, String delimiter,
 		boolean first) throws IOException {
@@ -413,7 +414,7 @@ public class AutoCompleteRenderer extends AutoCompleteRendererBase {
 
 		boolean querying = false;
 
-		if (isServerFilteringEnabled(uiComponent) || isAjax(facesContext)) {
+		if (isServerFilteringEnabled(uiComponent) || facesContext.getPartialViewContext().isAjaxRequest()) {
 
 			ExternalContext externalContext = facesContext.getExternalContext();
 			Map<String, String> requestParameterMap = externalContext.getRequestParameterMap();
@@ -426,7 +427,7 @@ public class AutoCompleteRenderer extends AutoCompleteRendererBase {
 	}
 
 	@Override
-	protected String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
+	public String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
 
 		String[] modules = MODULES;
 		AutoComplete autoComplete = (AutoComplete) uiComponent;

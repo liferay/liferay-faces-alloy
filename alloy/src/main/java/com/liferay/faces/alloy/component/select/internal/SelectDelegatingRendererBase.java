@@ -20,7 +20,6 @@ import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
 import com.liferay.faces.util.render.DelegatingRendererBase;
-import com.liferay.faces.util.render.internal.DelegationResponseWriter;
 
 
 /**
@@ -62,9 +61,9 @@ public abstract class SelectDelegatingRendererBase extends DelegatingRendererBas
 		super.encodeEnd(facesContext, uiComponent, getSelectDelegationResponseWriter(responseWriter));
 	}
 
-	private DelegationResponseWriter getSelectDelegationResponseWriter(ResponseWriter responseWriter) {
+	private ResponseWriter getSelectDelegationResponseWriter(ResponseWriter responseWriter) {
 
-		DelegationResponseWriter delegationResponseWriter = new TableSuppressingResponseWriter(responseWriter);
+		ResponseWriter delegationResponseWriter = new TableSuppressingResponseWriter(responseWriter);
 		delegationResponseWriter = new LabelSurroundingResponseWriter(delegationResponseWriter, getSelectType());
 
 		return delegationResponseWriter;

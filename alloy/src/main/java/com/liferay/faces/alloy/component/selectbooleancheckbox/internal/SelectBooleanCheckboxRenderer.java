@@ -25,7 +25,7 @@ import javax.faces.render.FacesRenderer;
 
 import com.liferay.faces.alloy.component.field.Field;
 import com.liferay.faces.alloy.component.selectbooleancheckbox.SelectBooleanCheckbox;
-import com.liferay.faces.util.render.internal.IdDelegationResponseWriter;
+import com.liferay.faces.util.render.IdResponseWriter;
 
 
 /**
@@ -68,8 +68,8 @@ public class SelectBooleanCheckboxRenderer extends SelectBooleanCheckboxRenderer
 			// Force the JSF runtime to output the "id" attribute so that the FieldRenderer can encode a label
 			// element with a "for" attribute that associates the label with this checkbox.
 			ResponseWriter responseWriter = facesContext.getResponseWriter();
-			IdDelegationResponseWriter idDelegationResponseWriter = new IdDelegationResponseWriter(responseWriter,
-					"input", uiComponent.getClientId(facesContext));
+			IdResponseWriter idDelegationResponseWriter = new IdResponseWriter(responseWriter, "input",
+					uiComponent.getClientId(facesContext));
 			super.encodeEnd(facesContext, uiComponent, idDelegationResponseWriter);
 		}
 		else {

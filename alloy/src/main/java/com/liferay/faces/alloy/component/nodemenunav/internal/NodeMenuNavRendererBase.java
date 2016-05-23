@@ -23,8 +23,8 @@ import javax.faces.context.ResponseWriter;
 
 import com.liferay.faces.alloy.component.menu.Menu;
 import com.liferay.faces.alloy.render.internal.DelegatingAlloyRendererBase;
+import com.liferay.faces.util.component.ComponentUtil;
 import com.liferay.faces.util.component.Styleable;
-import com.liferay.faces.util.render.internal.DelegationResponseWriter;
 
 
 /**
@@ -71,7 +71,8 @@ public abstract class NodeMenuNavRendererBase extends DelegatingAlloyRendererBas
 
 		if (!disabled) {
 
-			String escapedOptionsDivId = escapeClientId(getDefaultOptionsId(facesContext, uiComponent) + ":0");
+			String escapedOptionsDivId = ComponentUtil.escapeClientId(getDefaultOptionsId(facesContext, uiComponent) +
+					":0");
 
 			// AlloyRendererUtil.LIFERAY_Z_INDEX_OVERLAY
 			responseWriter.write("A.one('#");
@@ -93,10 +94,10 @@ public abstract class NodeMenuNavRendererBase extends DelegatingAlloyRendererBas
 
 		ResponseWriter responseWriter = facesContext.getResponseWriter();
 		String clientId = uiComponent.getClientId(facesContext);
-		String escapeClientId = escapeClientId(clientId);
+		String escapedClientId = ComponentUtil.escapeClientId(clientId);
 
 		responseWriter.write("A.one('#");
-		responseWriter.write(escapeClientId);
+		responseWriter.write(escapedClientId);
 		responseWriter.write("').plug(A.Plugin.NodeMenuNav,{autoSubmenuDisplay:false,mouseOutHideDelay:0});");
 	}
 
@@ -158,7 +159,7 @@ public abstract class NodeMenuNavRendererBase extends DelegatingAlloyRendererBas
 		boolean disabled = (Boolean) attributes.get("disabled");
 		Styleable styleable = (Styleable) uiComponent;
 		String styleClass = styleable.getStyleClass();
-		DelegationResponseWriter delegationResponseWriter = new NodeMenuNavResponseWriter(responseWriter, disabled,
+		ResponseWriter delegationResponseWriter = new NodeMenuNavResponseWriter(responseWriter, disabled,
 				uiComponent.getClientId(facesContext), styleClass);
 
 		//J-
@@ -274,8 +275,7 @@ public abstract class NodeMenuNavRendererBase extends DelegatingAlloyRendererBas
 			responseWriter.writeAttribute("class", "yui3-menuitem", "class");
 
 			ResponseWriter originalResponseWriter = facesContext.getResponseWriter();
-			DelegationResponseWriter delegationResponseWriter = new NodeMenuNavMenuResponseWriter(
-					originalResponseWriter);
+			ResponseWriter delegationResponseWriter = new NodeMenuNavMenuResponseWriter(originalResponseWriter);
 			facesContext.setResponseWriter(delegationResponseWriter);
 			child.encodeAll(facesContext);
 			facesContext.setResponseWriter(originalResponseWriter);
@@ -317,7 +317,7 @@ public abstract class NodeMenuNavRendererBase extends DelegatingAlloyRendererBas
 
 	// Needed when yui="false"
 	@Override
-	protected String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
+	public String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
 		return MODULES;
 	}
 
