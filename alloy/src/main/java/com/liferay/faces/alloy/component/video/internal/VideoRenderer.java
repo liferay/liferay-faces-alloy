@@ -30,6 +30,7 @@ import com.liferay.faces.alloy.component.video.Video;
 /**
  * @author  Kyle Stiemann
  */
+
 //J-
 @FacesRenderer(componentFamily = Video.COMPONENT_FAMILY, rendererType = Video.RENDERER_TYPE)
 //J+

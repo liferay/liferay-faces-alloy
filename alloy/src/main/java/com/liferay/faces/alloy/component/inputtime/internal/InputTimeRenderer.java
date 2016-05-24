@@ -45,6 +45,7 @@ import com.liferay.faces.util.render.RendererUtil;
 /**
  * @author  Kyle Stiemann
  */
+
 //J-
 @FacesRenderer(componentFamily = InputTime.COMPONENT_FAMILY, rendererType = InputTime.RENDERER_TYPE)
 @ResourceDependencies(
@@ -222,6 +223,46 @@ public class InputTimeRenderer extends InputTimeRendererBase {
 		}
 	}
 
+	@Override
+	public String getAlloyClassName(FacesContext facesContext, UIComponent uiComponent) {
+
+		String alloyClassName = super.getAlloyClassName(facesContext, uiComponent);
+		BrowserSniffer browserSniffer = BrowserSnifferFactory.getBrowserSnifferInstance(
+				facesContext.getExternalContext());
+		InputTime inputTime = (InputTime) uiComponent;
+
+		if (isNative(browserSniffer, inputTime)) {
+			alloyClassName = alloyClassName.concat("Native");
+		}
+
+		return alloyClassName;
+	}
+
+	@Override
+	public String getButtonIconName() {
+		return "time";
+	}
+
+	@Override
+	public String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
+
+		String[] modules = getModules(MODULES[0], facesContext, uiComponent);
+		InputTime inputTime = (InputTime) uiComponent;
+		String filterType = inputTime.getFilterType();
+
+		if ((filterType != null) && (filterType.length() > 0)) {
+			modules = StringHelper.append(modules, "autocomplete-filters");
+		}
+
+		String highlighterType = inputTime.getHighlighterType();
+
+		if ((highlighterType != null) && (highlighterType.length() > 0)) {
+			modules = StringHelper.append(modules, "autocomplete-highlighters");
+		}
+
+		return modules;
+	}
+
 	protected void encodeAutocomplete(FacesContext facesContext, ResponseWriter responseWriter, InputTime inputTime,
 		boolean first) throws IOException {
 
@@ -343,48 +384,8 @@ public class InputTimeRenderer extends InputTimeRendererBase {
 	}
 
 	@Override
-	public String getAlloyClassName(FacesContext facesContext, UIComponent uiComponent) {
-
-		String alloyClassName = super.getAlloyClassName(facesContext, uiComponent);
-		BrowserSniffer browserSniffer = BrowserSnifferFactory.getBrowserSnifferInstance(
-				facesContext.getExternalContext());
-		InputTime inputTime = (InputTime) uiComponent;
-
-		if (isNative(browserSniffer, inputTime)) {
-			alloyClassName = alloyClassName.concat("Native");
-		}
-
-		return alloyClassName;
-	}
-
-	@Override
-	public String getButtonIconName() {
-		return "time";
-	}
-
-	@Override
 	protected InputDateTimeResponseWriter getInputDateTimeResponseWriter(ResponseWriter responseWriter,
 		String inputClientId, boolean nativeInputTime) {
 		return new InputTimeResponseWriter(responseWriter, inputClientId, nativeInputTime);
-	}
-
-	@Override
-	public String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
-
-		String[] modules = getModules(MODULES[0], facesContext, uiComponent);
-		InputTime inputTime = (InputTime) uiComponent;
-		String filterType = inputTime.getFilterType();
-
-		if ((filterType != null) && (filterType.length() > 0)) {
-			modules = StringHelper.append(modules, "autocomplete-filters");
-		}
-
-		String highlighterType = inputTime.getHighlighterType();
-
-		if ((highlighterType != null) && (highlighterType.length() > 0)) {
-			modules = StringHelper.append(modules, "autocomplete-highlighters");
-		}
-
-		return modules;
 	}
 }

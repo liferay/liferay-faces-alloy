@@ -47,6 +47,20 @@ public class AccordionBackingBean {
 		}
 	}
 
+	public Accordion getAccordion() {
+		return accordion;
+	}
+
+	public int getDefaultSelectedIndex() {
+		return 2; // The "Powerful Integration" tab is selected by default.
+	}
+
+	public void setAccordion(Accordion accordion) {
+
+		// Injected via alloy:accordion binding attribute
+		this.accordion = accordion;
+	}
+
 	public void submit() {
 
 		try {
@@ -80,19 +94,5 @@ public class AccordionBackingBean {
 				tabExpandEvent.getTab().getHeaderText() + "' in the " + tabExpandEvent.getPhaseId().toString() +
 				" phase.");
 		facesContext.addMessage(null, facesMessage);
-	}
-
-	public Accordion getAccordion() {
-		return accordion;
-	}
-
-	public void setAccordion(Accordion accordion) {
-
-		// Injected via alloy:accordion binding attribute
-		this.accordion = accordion;
-	}
-
-	public int getDefaultSelectedIndex() {
-		return 2; // The "Powerful Integration" tab is selected by default.
 	}
 }

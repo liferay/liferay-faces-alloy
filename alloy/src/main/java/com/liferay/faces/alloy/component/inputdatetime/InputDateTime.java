@@ -35,56 +35,7 @@ import com.liferay.faces.util.context.MessageContextFactory;
  */
 public abstract class InputDateTime extends InputDateTimeBase {
 
-	protected final void validateValue(FacesContext facesContext, Object newValue, Date minDate, Date maxDate,
-		TimeZone timeZone) {
-
-		String pattern = getPattern();
-		Date submittedDate = getObjectAsDate(newValue, pattern, timeZone);
-
-		try {
-
-			// To determine if the submitted value is valid, check if it falls between the minimum date and
-			// the maximum date.
-			if (submittedDate.before(minDate) || submittedDate.after(maxDate)) {
-
-				setValid(false);
-
-				String validatorMessage = getValidatorMessage();
-				FacesMessage facesMessage;
-
-				if (validatorMessage != null) {
-					facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, validatorMessage, validatorMessage);
-				}
-				else {
-					SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
-					simpleDateFormat.setTimeZone(timeZone);
-
-					String minDateString = simpleDateFormat.format(minDate);
-					String maxDateString = simpleDateFormat.format(maxDate);
-					Locale locale = getObjectAsLocale(getLocale(facesContext));
-					MessageContext messageContext = MessageContextFactory.getMessageContextInstance();
-					String message = messageContext.getMessage(locale, "please-enter-a-value-between-x-and-x",
-							minDateString, maxDateString);
-					facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, message, message);
-				}
-
-				String clientId = getClientId(facesContext);
-				facesContext.addMessage(clientId, facesMessage);
-			}
-			else {
-				setValid(true);
-			}
-		}
-		catch (FacesException e) {
-
-			setValid(false);
-
-			String message = e.getMessage();
-			FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, message, message);
-			String clientId = getClientId(facesContext);
-			facesContext.addMessage(clientId, facesMessage);
-		}
-	}
+	public abstract String getPattern();
 
 	@Override
 	public Converter getConverter() {
@@ -203,5 +154,54 @@ public abstract class InputDateTime extends InputDateTimeBase {
 		return locale;
 	}
 
-	public abstract String getPattern();
+	protected final void validateValue(FacesContext facesContext, Object newValue, Date minDate, Date maxDate,
+		TimeZone timeZone) {
+
+		String pattern = getPattern();
+		Date submittedDate = getObjectAsDate(newValue, pattern, timeZone);
+
+		try {
+
+			// To determine if the submitted value is valid, check if it falls between the minimum date and
+			// the maximum date.
+			if (submittedDate.before(minDate) || submittedDate.after(maxDate)) {
+
+				setValid(false);
+
+				String validatorMessage = getValidatorMessage();
+				FacesMessage facesMessage;
+
+				if (validatorMessage != null) {
+					facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, validatorMessage, validatorMessage);
+				}
+				else {
+					SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+					simpleDateFormat.setTimeZone(timeZone);
+
+					String minDateString = simpleDateFormat.format(minDate);
+					String maxDateString = simpleDateFormat.format(maxDate);
+					Locale locale = getObjectAsLocale(getLocale(facesContext));
+					MessageContext messageContext = MessageContextFactory.getMessageContextInstance();
+					String message = messageContext.getMessage(locale, "please-enter-a-value-between-x-and-x",
+							minDateString, maxDateString);
+					facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, message, message);
+				}
+
+				String clientId = getClientId(facesContext);
+				facesContext.addMessage(clientId, facesMessage);
+			}
+			else {
+				setValid(true);
+			}
+		}
+		catch (FacesException e) {
+
+			setValid(false);
+
+			String message = e.getMessage();
+			FacesMessage facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, message, message);
+			String clientId = getClientId(facesContext);
+			facesContext.addMessage(clientId, facesMessage);
+		}
+	}
 }

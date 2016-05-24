@@ -38,6 +38,32 @@ public class InputDate extends InputDateBase {
 	public static final String DEFAULT_HTML5_DATE_PATTERN = "yyyy-MM-dd";
 
 	@Override
+	public String getPattern() {
+
+		String datePattern;
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+		BrowserSniffer browserSniffer = BrowserSnifferFactory.getBrowserSnifferInstance(
+				facesContext.getExternalContext());
+
+		if (browserSniffer.isMobile() && isNativeWhenMobile()) {
+			datePattern = DEFAULT_HTML5_DATE_PATTERN;
+		}
+		else {
+
+			datePattern = super.getPattern();
+
+			if (datePattern == null) {
+
+				// Provide a default datePattern based on the locale.
+				Object locale = getLocale();
+				datePattern = getDefaultDatePattern(locale);
+			}
+		}
+
+		return datePattern;
+	}
+
+	@Override
 	protected void validateValue(FacesContext facesContext, Object newValue) {
 
 		super.validateValue(facesContext, newValue);
@@ -97,31 +123,5 @@ public class InputDate extends InputDateBase {
 				locale);
 
 		return simpleDateFormat.toPattern();
-	}
-
-	@Override
-	public String getPattern() {
-
-		String datePattern;
-		FacesContext facesContext = FacesContext.getCurrentInstance();
-		BrowserSniffer browserSniffer = BrowserSnifferFactory.getBrowserSnifferInstance(
-				facesContext.getExternalContext());
-
-		if (browserSniffer.isMobile() && isNativeWhenMobile()) {
-			datePattern = DEFAULT_HTML5_DATE_PATTERN;
-		}
-		else {
-
-			datePattern = super.getPattern();
-
-			if (datePattern == null) {
-
-				// Provide a default datePattern based on the locale.
-				Object locale = getLocale();
-				datePattern = getDefaultDatePattern(locale);
-			}
-		}
-
-		return datePattern;
 	}
 }

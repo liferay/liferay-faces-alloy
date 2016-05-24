@@ -44,6 +44,16 @@ public class TabView extends TabViewBase implements ClientBehaviorHolder {
 				TabSelectEvent.TAB_SELECT));
 
 	@Override
+	public String getDefaultEventName() {
+		return TabSelectEvent.TAB_SELECT;
+	}
+
+	@Override
+	public Collection<String> getEventNames() {
+		return EVENT_NAMES;
+	}
+
+	@Override
 	public void queueEvent(FacesEvent facesEvent) {
 
 		// This method is called by the AjaxBehavior renderer's decode() method. If the specified event is an ajax
@@ -92,15 +102,5 @@ public class TabView extends TabViewBase implements ClientBehaviorHolder {
 		}
 
 		super.queueEvent(facesEvent);
-	}
-
-	@Override
-	public String getDefaultEventName() {
-		return TabSelectEvent.TAB_SELECT;
-	}
-
-	@Override
-	public Collection<String> getEventNames() {
-		return EVENT_NAMES;
 	}
 }

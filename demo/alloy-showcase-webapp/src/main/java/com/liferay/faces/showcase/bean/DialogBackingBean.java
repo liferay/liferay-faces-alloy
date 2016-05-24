@@ -33,11 +33,11 @@ public class DialogBackingBean {
 	@ManagedProperty(name = "dialogModelBean", value = "#{dialogModelBean}")
 	private DialogModelBean dialogModelBean;
 
-	public void submit() {
-		logger.info("submit: text = " + dialogModelBean.getText());
-	}
-
 	public void setDialogModelBean(DialogModelBean dialogModelBean) {
 		this.dialogModelBean = dialogModelBean;
+	}
+
+	public void submit() {
+		logger.info("submit: text = " + dialogModelBean.getText());
 	}
 }

@@ -40,6 +40,10 @@ public class ProgressBarBacking implements Serializable {
 
 	private Integer progress = 0;
 
+	public int getProgress() {
+		return progress;
+	}
+
 	public void incrementProgress() {
 		progress = progress + 10;
 	}
@@ -60,10 +64,6 @@ public class ProgressBarBacking implements Serializable {
 
 	public void resetProgress() {
 		progress = 0;
-	}
-
-	public int getProgress() {
-		return progress;
 	}
 
 }

@@ -98,6 +98,20 @@ public class TagAttributesAlloyImpl extends TagAttributes {
 		return tagAttributeList.toArray(new TagAttribute[tagAttributeList.size()]);
 	}
 
+	@Override
+	public String[] getNamespaces() {
+
+		Set<String> namespaceSet = new HashSet<String>();
+		Set<Entry<String, TagAttribute>> entrySet = tagAttributeMap.entrySet();
+
+		for (Entry<String, TagAttribute> mapEntry : entrySet) {
+			TagAttribute tagAttribute = mapEntry.getValue();
+			namespaceSet.add(tagAttribute.getNamespace());
+		}
+
+		return namespaceSet.toArray(new String[namespaceSet.size()]);
+	}
+
 	private String getMapKey(String namespace, String localName) {
 		String mapKey = namespace;
 
@@ -112,19 +126,5 @@ public class TagAttributesAlloyImpl extends TagAttributes {
 		}
 
 		return mapKey;
-	}
-
-	@Override
-	public String[] getNamespaces() {
-
-		Set<String> namespaceSet = new HashSet<String>();
-		Set<Entry<String, TagAttribute>> entrySet = tagAttributeMap.entrySet();
-
-		for (Entry<String, TagAttribute> mapEntry : entrySet) {
-			TagAttribute tagAttribute = mapEntry.getValue();
-			namespaceSet.add(tagAttribute.getNamespace());
-		}
-
-		return namespaceSet.toArray(new String[namespaceSet.size()]);
 	}
 }

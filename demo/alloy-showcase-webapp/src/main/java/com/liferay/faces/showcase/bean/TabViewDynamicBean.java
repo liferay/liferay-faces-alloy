@@ -34,16 +34,28 @@ public class TabViewDynamicBean implements Serializable {
 	private boolean openSource = true;
 	private boolean powerfulIntegration = true;
 
-	public void setCompatible(boolean compatible) {
-		this.compatible = compatible;
-	}
-
 	public boolean isCompatible() {
 		return compatible;
 	}
 
+	public boolean isEnterpriseReady() {
+		return enterpriseReady;
+	}
+
+	public boolean isLightweight() {
+		return lightweight;
+	}
+
 	public boolean isOpenSource() {
 		return openSource;
+	}
+
+	public boolean isPowerfulIntegration() {
+		return powerfulIntegration;
+	}
+
+	public void setCompatible(boolean compatible) {
+		this.compatible = compatible;
 	}
 
 	public void setEnterpriseReady(boolean enterpriseReady) {
@@ -54,23 +66,11 @@ public class TabViewDynamicBean implements Serializable {
 		this.lightweight = lightweight;
 	}
 
-	public boolean isPowerfulIntegration() {
-		return powerfulIntegration;
-	}
-
 	public void setOpenSource(boolean openSource) {
 		this.openSource = openSource;
 	}
 
 	public void setPowerfulIntegration(boolean powerfulIntegration) {
 		this.powerfulIntegration = powerfulIntegration;
-	}
-
-	public boolean isLightweight() {
-		return lightweight;
-	}
-
-	public boolean isEnterpriseReady() {
-		return enterpriseReady;
 	}
 }

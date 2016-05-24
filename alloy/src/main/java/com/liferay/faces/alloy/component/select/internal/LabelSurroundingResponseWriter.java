@@ -63,6 +63,11 @@ public class LabelSurroundingResponseWriter extends ResponseWriterWrapper {
 	}
 
 	@Override
+	public ResponseWriter getWrapped() {
+		return wrappedResponseWriter;
+	}
+
+	@Override
 	public void startElement(String name, UIComponent component) throws IOException {
 
 		if ("input".equals(name)) {
@@ -123,10 +128,5 @@ public class LabelSurroundingResponseWriter extends ResponseWriterWrapper {
 		}
 
 		super.writeText(text, component, property);
-	}
-
-	@Override
-	public ResponseWriter getWrapped() {
-		return wrappedResponseWriter;
 	}
 }

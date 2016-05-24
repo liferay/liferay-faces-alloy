@@ -35,6 +35,7 @@ import com.liferay.faces.util.render.RendererUtil;
 /**
  * @author  Vernon Singleton
  */
+
 //J-
 @FacesRenderer(componentFamily = OutputTooltip.COMPONENT_FAMILY, rendererType = OutputTooltip.RENDERER_TYPE)
 @ResourceDependencies(

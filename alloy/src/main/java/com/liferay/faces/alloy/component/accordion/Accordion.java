@@ -45,6 +45,33 @@ public class Accordion extends AccordionBase implements ClientBehaviorHolder {
 				TabCollapseEvent.TAB_COLLAPSE, TabExpandEvent.TAB_EXPAND));
 
 	@Override
+	public String getDefaultEventName() {
+		return TabExpandEvent.TAB_EXPAND;
+	}
+
+	@Override
+	public Collection<String> getEventNames() {
+		return EVENT_NAMES;
+	}
+
+	@Override
+	public String getStyle() {
+
+		String style = super.getStyle();
+
+		// Initially style the outermost <div> with "display:none;" in order to prevent blinking when Alloy's
+		// JavaScript attempts to hide the contentBox.
+		if (style == null) {
+			style = "display:none;";
+		}
+		else {
+			style = style + ";display:none;";
+		}
+
+		return style;
+	}
+
+	@Override
 	public void queueEvent(FacesEvent facesEvent) {
 
 		// This method is called by the AjaxBehavior renderer's decode() method. If the specified event is an ajax
@@ -99,32 +126,5 @@ public class Accordion extends AccordionBase implements ClientBehaviorHolder {
 		}
 
 		super.queueEvent(facesEvent);
-	}
-
-	@Override
-	public String getDefaultEventName() {
-		return TabExpandEvent.TAB_EXPAND;
-	}
-
-	@Override
-	public Collection<String> getEventNames() {
-		return EVENT_NAMES;
-	}
-
-	@Override
-	public String getStyle() {
-
-		String style = super.getStyle();
-
-		// Initially style the outermost <div> with "display:none;" in order to prevent blinking when Alloy's
-		// JavaScript attempts to hide the contentBox.
-		if (style == null) {
-			style = "display:none;";
-		}
-		else {
-			style = style + ";display:none;";
-		}
-
-		return style;
 	}
 }

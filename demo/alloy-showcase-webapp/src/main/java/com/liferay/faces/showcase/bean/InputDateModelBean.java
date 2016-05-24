@@ -40,10 +40,6 @@ public class InputDateModelBean {
 		return birthday;
 	}
 
-	public void setBirthday(Date birthday) {
-		this.birthday = birthday;
-	}
-
 	public String getFormattedMaxDate() {
 		DateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy");
 
@@ -87,5 +83,9 @@ public class InputDateModelBean {
 		}
 
 		return minDate;
+	}
+
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
 	}
 }

@@ -45,46 +45,6 @@ import com.liferay.faces.util.context.MessageContextFactory;
 @FacesComponent(value = AutoComplete.COMPONENT_TYPE)
 public class AutoComplete extends AutoCompleteBase implements ClientBehaviorHolder {
 
-	@Override
-	protected void validateValue(FacesContext facesContext, Object newValue) {
-
-		super.validateValue(facesContext, newValue);
-
-		if (isListItemRequired() && isValid()) {
-
-			List<String> unfilteredResults = getAllItems(facesContext);
-			String newValueAsString = (String) newValue;
-
-			if (!unfilteredResults.contains(newValueAsString)) {
-
-				setValid(false);
-
-				String validatorMessage = getValidatorMessage();
-				FacesMessage facesMessage;
-
-				if (validatorMessage != null) {
-					facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, validatorMessage, validatorMessage);
-				}
-				else {
-
-					MessageContext messageContext = MessageContextFactory.getMessageContextInstance();
-					UIViewRoot viewRoot = facesContext.getViewRoot();
-					Locale locale = viewRoot.getLocale();
-					String message = messageContext.getMessage(locale, UISelectOne.INVALID_MESSAGE_ID);
-
-					if (message != null) {
-						message = MessageFormat.format(message, getLabel());
-					}
-
-					facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, message, message);
-				}
-
-				String clientId = getClientId(facesContext);
-				facesContext.addMessage(clientId, facesMessage);
-			}
-		}
-	}
-
 	public final List<String> getAllItems(FacesContext facesContext) {
 
 		List<String> allItems = new ArrayList<String>();
@@ -173,6 +133,46 @@ public class AutoComplete extends AutoCompleteBase implements ClientBehaviorHold
 	@Override
 	public String getAutocomplete() {
 		return (String) getStateHelper().eval(PropertyKeys.autocomplete, "off");
+	}
+
+	@Override
+	protected void validateValue(FacesContext facesContext, Object newValue) {
+
+		super.validateValue(facesContext, newValue);
+
+		if (isListItemRequired() && isValid()) {
+
+			List<String> unfilteredResults = getAllItems(facesContext);
+			String newValueAsString = (String) newValue;
+
+			if (!unfilteredResults.contains(newValueAsString)) {
+
+				setValid(false);
+
+				String validatorMessage = getValidatorMessage();
+				FacesMessage facesMessage;
+
+				if (validatorMessage != null) {
+					facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, validatorMessage, validatorMessage);
+				}
+				else {
+
+					MessageContext messageContext = MessageContextFactory.getMessageContextInstance();
+					UIViewRoot viewRoot = facesContext.getViewRoot();
+					Locale locale = viewRoot.getLocale();
+					String message = messageContext.getMessage(locale, UISelectOne.INVALID_MESSAGE_ID);
+
+					if (message != null) {
+						message = MessageFormat.format(message, getLabel());
+					}
+
+					facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, message, message);
+				}
+
+				String clientId = getClientId(facesContext);
+				facesContext.addMessage(clientId, facesMessage);
+			}
+		}
 	}
 
 	private String getItemValue(FacesContext facesContext, UISelectItems uiSelectItems, Object item) {

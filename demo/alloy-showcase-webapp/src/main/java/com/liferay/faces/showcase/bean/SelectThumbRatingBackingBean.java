@@ -33,11 +33,11 @@ public class SelectThumbRatingBackingBean {
 	@ManagedProperty(name = "selectThumbRatingModelBean", value = "#{selectThumbRatingModelBean}")
 	private SelectThumbRatingModelBean selectThumbRatingModelBean;
 
-	public void submit() {
-		logger.info("submit: selectThumbRatingModelBean.getLike() = " + selectThumbRatingModelBean.getLike());
-	}
-
 	public void setSelectThumbRatingModelBean(SelectThumbRatingModelBean selectThumbRatingModelBean) {
 		this.selectThumbRatingModelBean = selectThumbRatingModelBean;
+	}
+
+	public void submit() {
+		logger.info("submit: selectThumbRatingModelBean.getLike() = " + selectThumbRatingModelBean.getLike());
 	}
 }

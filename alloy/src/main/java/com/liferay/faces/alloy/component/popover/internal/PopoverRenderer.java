@@ -35,6 +35,7 @@ import com.liferay.faces.util.logging.LoggerFactory;
 /**
  * @author  Vernon Singleton
  */
+
 //J-
 @FacesRenderer(componentFamily = Popover.COMPONENT_FAMILY, rendererType = Popover.RENDERER_TYPE)
 @ResourceDependencies(
@@ -106,6 +107,19 @@ public class PopoverRenderer extends PopoverRendererBase {
 		}
 	}
 
+	@Override
+	public String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
+
+		String[] modules = MODULES;
+		Popover popover = (Popover) uiComponent;
+
+		if (popover.isDismissible()) {
+			modules = StringHelper.append(modules, "event-move");
+		}
+
+		return modules;
+	}
+
 	protected void encodeAlign(ResponseWriter responseWriter, Popover popover, boolean first) throws IOException {
 
 		encodeNonEscapedObject(responseWriter, ALIGN, "", first);
@@ -148,18 +162,5 @@ public class PopoverRenderer extends PopoverRendererBase {
 	protected void encodeZIndex(ResponseWriter responseWriter, Popover popover, Integer zIndex, boolean first)
 		throws IOException {
 		encodeOverlayZIndex(responseWriter, popover, zIndex, LIFERAY_Z_INDEX_OVERLAY, first);
-	}
-
-	@Override
-	public String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
-
-		String[] modules = MODULES;
-		Popover popover = (Popover) uiComponent;
-
-		if (popover.isDismissible()) {
-			modules = StringHelper.append(modules, "event-move");
-		}
-
-		return modules;
 	}
 }

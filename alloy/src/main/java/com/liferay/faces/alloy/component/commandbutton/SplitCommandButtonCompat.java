@@ -79,12 +79,6 @@ public abstract class SplitCommandButtonCompat extends CommandLinkBase {
 		return passThroughAttributes;
 	}
 
-	protected boolean isFaces_2_2_OrNewer() {
-
-		return JSF.isDetected() &&
-			((JSF.getMajorVersion() > 2) || ((JSF.getMajorVersion() == 2) && (JSF.getMinorVersion() >= 2)));
-	}
-
 	public String getRole() {
 
 		Method getRoleMethod = null;
@@ -142,5 +136,11 @@ public abstract class SplitCommandButtonCompat extends CommandLinkBase {
 				logger.error(e);
 			}
 		}
+	}
+
+	protected boolean isFaces_2_2_OrNewer() {
+
+		return JSF.isDetected() &&
+			((JSF.getMajorVersion() > 2) || ((JSF.getMajorVersion() == 2) && (JSF.getMinorVersion() >= 2)));
 	}
 }

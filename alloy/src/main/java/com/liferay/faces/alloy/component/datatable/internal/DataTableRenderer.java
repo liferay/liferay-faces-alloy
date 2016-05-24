@@ -59,6 +59,7 @@ import com.liferay.faces.util.render.RendererUtil;
 /**
  * @author  Neil Griffin
  */
+
 //J-
 @FacesRenderer(componentFamily = DataTable.COMPONENT_FAMILY, rendererType = DataTable.RENDERER_TYPE)
 @ResourceDependencies(
@@ -287,6 +288,11 @@ public class DataTableRenderer extends DataTableRendererBase {
 		// Encode the closing <table> element that represents the alloy:table.
 		ResponseWriter responseWriter = facesContext.getResponseWriter();
 		responseWriter.endElement("table");
+	}
+
+	@Override
+	public boolean getRendersChildren() {
+		return true;
 	}
 
 	protected void decodeRowSelection(Map<String, String> requestParameterMap, DataTable dataTable,
@@ -916,11 +922,6 @@ public class DataTableRenderer extends DataTableRendererBase {
 		}
 
 		return clientBehaviorScript;
-	}
-
-	@Override
-	public boolean getRendersChildren() {
-		return true;
 	}
 
 	protected JavaScriptFragment getRowEventClientBehaviorScript(FacesContext facesContext, DataTable dataTable,

@@ -33,6 +33,10 @@ public class InputSourceCodeBackingBean {
 	@ManagedProperty(name = "inputSourceCodeModelBean", value = "#{inputSourceCodeModelBean}")
 	private InputSourceCodeModelBean inputSourceCodeModelBean;
 
+	public void setInputSourceCodeModelBean(InputSourceCodeModelBean inputSourceCodeModelBean) {
+		this.inputSourceCodeModelBean = inputSourceCodeModelBean;
+	}
+
 	public void submit() {
 
 		String source = inputSourceCodeModelBean.getSourceCode();
@@ -42,9 +46,5 @@ public class InputSourceCodeBackingBean {
 		}
 
 		logger.info("You entered text: " + source);
-	}
-
-	public void setInputSourceCodeModelBean(InputSourceCodeModelBean inputSourceCodeModelBean) {
-		this.inputSourceCodeModelBean = inputSourceCodeModelBean;
 	}
 }

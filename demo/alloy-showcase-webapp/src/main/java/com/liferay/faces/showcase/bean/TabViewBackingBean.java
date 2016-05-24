@@ -46,6 +46,20 @@ public class TabViewBackingBean {
 		}
 	}
 
+	public int getDefaultSelectedIndex() {
+		return 2; // The "Powerful Integration" tab is selected by default.
+	}
+
+	public TabView getTabView() {
+		return tabView;
+	}
+
+	public void setTabView(TabView tabView) {
+
+		// Injected via alloy:tabView binding attribute
+		this.tabView = tabView;
+	}
+
 	public void submit() {
 
 		try {
@@ -68,19 +82,5 @@ public class TabViewBackingBean {
 				tabSelectEvent.getTab().getHeaderText() + "' in the " + tabSelectEvent.getPhaseId().toString() +
 				" phase.");
 		facesContext.addMessage(null, facesMessage);
-	}
-
-	public int getDefaultSelectedIndex() {
-		return 2; // The "Powerful Integration" tab is selected by default.
-	}
-
-	public TabView getTabView() {
-		return tabView;
-	}
-
-	public void setTabView(TabView tabView) {
-
-		// Injected via alloy:tabView binding attribute
-		this.tabView = tabView;
 	}
 }

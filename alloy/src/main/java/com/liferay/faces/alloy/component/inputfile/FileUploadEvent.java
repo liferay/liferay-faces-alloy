@@ -38,9 +38,8 @@ public class FileUploadEvent extends FacesEvent {
 		this.uploadedFile = uploadedFile;
 	}
 
-	@Override
-	public void processListener(FacesListener facesListener) {
-		throw new UnsupportedOperationException();
+	public UploadedFile getUploadedFile() {
+		return uploadedFile;
 	}
 
 	@Override
@@ -48,7 +47,8 @@ public class FileUploadEvent extends FacesEvent {
 		return false;
 	}
 
-	public UploadedFile getUploadedFile() {
-		return uploadedFile;
+	@Override
+	public void processListener(FacesListener facesListener) {
+		throw new UnsupportedOperationException();
 	}
 }

@@ -300,12 +300,21 @@ public abstract class MediaRenderer extends MediaRendererCompat {
 		responseWriter.endElement("div");
 	}
 
+	@Override
+	public boolean getRendersChildren() {
+		return true;
+	}
+
 	protected abstract void encodeCustomMediaAttributes(FacesContext facesContext, ResponseWriter responseWriter,
 		Media media) throws IOException;
 
 	protected abstract void encodeFlashPlayerChildren(FacesContext facesContext, ResponseWriter responseWriter,
 		Media media, String mediaResourceURL, ResourceHandler resourceHandler, Application application,
 		boolean defaultFlashPlayer) throws IOException;
+
+	protected abstract String getDefaultFlashPlayerName();
+
+	protected abstract String getMediaType();
 
 	protected void encodeFlashPlayer(FacesContext facesContext, ResponseWriter responseWriter, Media media,
 		String mediaResourceURL) throws IOException {
@@ -401,8 +410,6 @@ public abstract class MediaRenderer extends MediaRendererCompat {
 		responseWriter.endElement("source");
 	}
 
-	protected abstract String getDefaultFlashPlayerName();
-
 	protected String getEncodedResourceURL(FacesContext facesContext, ResourceHandler resourceHandler,
 		Application application, Object value) {
 
@@ -434,6 +441,14 @@ public abstract class MediaRenderer extends MediaRendererCompat {
 		return encodedResourceURL;
 	}
 
+	protected String getHeight(Media media) {
+		return null;
+	}
+
+	protected String getWidth(Media media) {
+		return null;
+	}
+
 	private String getEncodedResourceURL(FacesContext facesContext, ResourceHandler resourceHandler,
 		Application application, String resourceURL) {
 
@@ -449,20 +464,5 @@ public abstract class MediaRenderer extends MediaRendererCompat {
 		}
 
 		return encodedResourceURL;
-	}
-
-	protected String getHeight(Media media) {
-		return null;
-	}
-
-	protected abstract String getMediaType();
-
-	@Override
-	public boolean getRendersChildren() {
-		return true;
-	}
-
-	protected String getWidth(Media media) {
-		return null;
 	}
 }

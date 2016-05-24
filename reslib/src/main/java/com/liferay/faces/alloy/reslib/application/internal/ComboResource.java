@@ -65,11 +65,6 @@ public class ComboResource extends Resource {
 	}
 
 	@Override
-	public boolean userAgentNeedsUpdate(FacesContext facesContext) {
-		return true;
-	}
-
-	@Override
 	public String getContentType() {
 
 		String contentType = ContentTypes.TEXT_PLAIN;
@@ -140,5 +135,10 @@ public class ComboResource extends Resource {
 	@Override
 	public URL getURL() {
 		return null;
+	}
+
+	@Override
+	public boolean userAgentNeedsUpdate(FacesContext facesContext) {
+		return true;
 	}
 }

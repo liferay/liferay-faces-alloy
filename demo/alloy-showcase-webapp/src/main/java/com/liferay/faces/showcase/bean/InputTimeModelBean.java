@@ -35,10 +35,6 @@ public class InputTimeModelBean {
 		return highlighterType;
 	}
 
-	public void setHighlighterType(String highlighterType) {
-		this.highlighterType = highlighterType;
-	}
-
 	public Locale getLocale() {
 
 		if (locale == null) {
@@ -50,6 +46,10 @@ public class InputTimeModelBean {
 
 	public Date getTime() {
 		return time;
+	}
+
+	public void setHighlighterType(String highlighterType) {
+		this.highlighterType = highlighterType;
 	}
 
 	public void setTime(Date time) {

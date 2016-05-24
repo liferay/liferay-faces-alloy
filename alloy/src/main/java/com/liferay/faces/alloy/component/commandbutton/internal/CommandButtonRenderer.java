@@ -29,6 +29,7 @@ import com.liferay.faces.util.render.RendererUtil;
 /**
  * @author  Kyle Stiemann
  */
+
 //J-
 @FacesRenderer(componentFamily = CommandButton.COMPONENT_FAMILY, rendererType = CommandButton.RENDERER_TYPE)
 @ListenerFor(systemEventClass = PostAddToViewEvent.class, sourceClass = CommandButton.class)

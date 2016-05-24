@@ -110,6 +110,40 @@ public class DataTableBacking implements Serializable {
 		}
 	}
 
+	public List<Customer> getCustomerDataModel() {
+
+		if (customerDataModel == null) {
+			customerDataModel = customerService.getAllCustomers();
+		}
+
+		return customerDataModel;
+	}
+
+	public DataModel getCustomerOnDemandDataModel() {
+
+		if (customerOnDemandDataModel == null) {
+			customerOnDemandDataModel = new CustomerOnDemandDataModel(getRowsPerPage());
+		}
+
+		return customerOnDemandDataModel;
+	}
+
+	public int getRowsPerPage() {
+		return rowsPerPage;
+	}
+
+	public List<Customer> getSelectedCustomers() {
+		return selectedCustomers;
+	}
+
+	public String getSelectionMode() {
+		return selectionMode;
+	}
+
+	public String getSummaryPosition() {
+		return summaryPosition;
+	}
+
 	public void modeSwitch(ValueChangeEvent valueChangeEvent) {
 		UISelectOne selectOneMenu = (UISelectOne) valueChangeEvent.getSource();
 		DataTable customerDataTable = (DataTable) selectOneMenu.findComponent("customers");
@@ -143,6 +177,24 @@ public class DataTableBacking implements Serializable {
 		// When using JSF 2.2, this cast is unnecessary, and the method can take the RowSelectRangeEvent directly.
 		RowSelectRangeEvent rowSelectRangeEvent = (RowSelectRangeEvent) ajaxBehaviorEvent;
 		addFacesMessage(rowSelectRangeEvent, rowSelectRangeEvent.getRowIndexes(), rowSelectRangeEvent.getRowDataList());
+	}
+
+	public void setCustomerService(CustomerService customerService) {
+
+		// Injected via @ManagedProperty annotation.
+		this.customerService = customerService;
+	}
+
+	public void setRowsPerPage(int rowsPerPage) {
+		this.rowsPerPage = rowsPerPage;
+	}
+
+	public void setSelectionMode(String selectionMode) {
+		this.selectionMode = selectionMode;
+	}
+
+	public void setSummaryPosition(String summaryPosition) {
+		this.summaryPosition = summaryPosition;
 	}
 
 	protected void addFacesMessage(FacesEvent facesEvent, int rowIndex, Customer customer) {
@@ -198,57 +250,5 @@ public class DataTableBacking implements Serializable {
 
 		FacesMessage facesMessage = new FacesMessage(messageText.toString());
 		facesContext.addMessage(null, facesMessage);
-	}
-
-	public List<Customer> getCustomerDataModel() {
-
-		if (customerDataModel == null) {
-			customerDataModel = customerService.getAllCustomers();
-		}
-
-		return customerDataModel;
-	}
-
-	public DataModel getCustomerOnDemandDataModel() {
-
-		if (customerOnDemandDataModel == null) {
-			customerOnDemandDataModel = new CustomerOnDemandDataModel(getRowsPerPage());
-		}
-
-		return customerOnDemandDataModel;
-	}
-
-	public void setCustomerService(CustomerService customerService) {
-
-		// Injected via @ManagedProperty annotation.
-		this.customerService = customerService;
-	}
-
-	public int getRowsPerPage() {
-		return rowsPerPage;
-	}
-
-	public void setRowsPerPage(int rowsPerPage) {
-		this.rowsPerPage = rowsPerPage;
-	}
-
-	public List<Customer> getSelectedCustomers() {
-		return selectedCustomers;
-	}
-
-	public String getSelectionMode() {
-		return selectionMode;
-	}
-
-	public void setSelectionMode(String selectionMode) {
-		this.selectionMode = selectionMode;
-	}
-
-	public String getSummaryPosition() {
-		return summaryPosition;
-	}
-
-	public void setSummaryPosition(String summaryPosition) {
-		this.summaryPosition = summaryPosition;
 	}
 }

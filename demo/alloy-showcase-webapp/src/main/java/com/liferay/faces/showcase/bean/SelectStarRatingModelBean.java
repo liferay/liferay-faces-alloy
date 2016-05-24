@@ -40,20 +40,20 @@ public class SelectStarRatingModelBean {
 		return benefitId;
 	}
 
-	public void setBenefitId(Long benefitId) {
-		this.benefitId = benefitId;
-	}
-
 	public Long getFavoriteId() {
 		return favoriteId;
 	}
 
-	public void setFavoriteId(Long favoriteId) {
-		this.favoriteId = favoriteId;
-	}
-
 	public List<LiferayBenefit> getLiferayBenefits() {
 		return liferayBenefitService.getLiferayBenefits();
+	}
+
+	public void setBenefitId(Long benefitId) {
+		this.benefitId = benefitId;
+	}
+
+	public void setFavoriteId(Long favoriteId) {
+		this.favoriteId = favoriteId;
 	}
 
 	public void setLiferayBenefitService(LiferayBenefitService liferayBenefitService) {

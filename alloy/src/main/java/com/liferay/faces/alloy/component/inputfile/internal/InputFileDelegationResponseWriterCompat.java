@@ -41,6 +41,11 @@ public abstract class InputFileDelegationResponseWriterCompat extends ResponseWr
 	}
 
 	@Override
+	public ResponseWriter getWrapped() {
+		return wrappedResponseWriter;
+	}
+
+	@Override
 	public void writeAttribute(String name, Object value, String property) throws IOException {
 
 		if ("type".equals(name) && !isFaces_2_2_OrNewer()) {
@@ -54,10 +59,5 @@ public abstract class InputFileDelegationResponseWriterCompat extends ResponseWr
 
 		return JSF.isDetected() &&
 			((JSF.getMajorVersion() > 2) || ((JSF.getMajorVersion() == 2) && (JSF.getMinorVersion() >= 2)));
-	}
-
-	@Override
-	public ResponseWriter getWrapped() {
-		return wrappedResponseWriter;
 	}
 }

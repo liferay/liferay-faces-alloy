@@ -48,6 +48,15 @@ public class ButtonResponseWriter extends ResponseWriterWrapper {
 		}
 	}
 
+	public String getSrc() {
+		return src;
+	}
+
+	@Override
+	public ResponseWriter getWrapped() {
+		return wrappedResponseWriter;
+	}
+
 	@Override
 	public void startElement(String name, UIComponent uiComponent) throws IOException {
 
@@ -86,14 +95,5 @@ public class ButtonResponseWriter extends ResponseWriterWrapper {
 		else {
 			super.writeURIAttribute(name, value, property);
 		}
-	}
-
-	public String getSrc() {
-		return src;
-	}
-
-	@Override
-	public ResponseWriter getWrapped() {
-		return wrappedResponseWriter;
 	}
 }

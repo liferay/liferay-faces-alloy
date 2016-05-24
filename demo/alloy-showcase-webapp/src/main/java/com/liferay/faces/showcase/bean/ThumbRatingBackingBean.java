@@ -33,11 +33,11 @@ public class ThumbRatingBackingBean {
 	@ManagedProperty(name = "thumbRatingModelBean", value = "#{thumbRatingModelBean}")
 	private ThumbRatingModelBean thumbRatingModelBean;
 
-	public void submit() {
-		logger.info("submit: thumbRatingModelBean.getLike() = " + thumbRatingModelBean.getLike());
-	}
-
 	public void setThumbRatingModelBean(ThumbRatingModelBean thumbRatingModelBean) {
 		this.thumbRatingModelBean = thumbRatingModelBean;
+	}
+
+	public void submit() {
+		logger.info("submit: thumbRatingModelBean.getLike() = " + thumbRatingModelBean.getLike());
 	}
 }

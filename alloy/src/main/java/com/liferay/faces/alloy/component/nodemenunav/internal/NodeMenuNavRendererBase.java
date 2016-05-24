@@ -301,10 +301,6 @@ public abstract class NodeMenuNavRendererBase extends DelegatingAlloyRendererBas
 		return null;
 	}
 
-	protected String getDefaultOptionsId(FacesContext facesContext, UIComponent uiComponent) {
-		return uiComponent.getClientId(facesContext) + COLON_OPTIONS;
-	}
-
 	@Override
 	public String getDelegateComponentFamily() {
 		return null;
@@ -324,5 +320,9 @@ public abstract class NodeMenuNavRendererBase extends DelegatingAlloyRendererBas
 	@Override
 	public boolean getRendersChildren() {
 		return true;
+	}
+
+	protected String getDefaultOptionsId(FacesContext facesContext, UIComponent uiComponent) {
+		return uiComponent.getClientId(facesContext) + COLON_OPTIONS;
 	}
 }

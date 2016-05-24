@@ -77,6 +77,23 @@ public class SelectRatingResponseWriter extends ResponseWriterWrapper {
 		}
 	}
 
+	public String getOnClick() {
+		return onClick;
+	}
+
+	public long getSelectedIndex() {
+		return selectedIndex;
+	}
+
+	@Override
+	public ResponseWriter getWrapped() {
+		return wrappedResponseWriter;
+	}
+
+	public void setSelectedIndex(long selectedIndex) {
+		this.selectedIndex = selectedIndex;
+	}
+
 	@Override
 	public void startElement(String name, UIComponent component) throws IOException {
 
@@ -129,22 +146,5 @@ public class SelectRatingResponseWriter extends ResponseWriterWrapper {
 		if (labelElement) {
 			title = text;
 		}
-	}
-
-	public String getOnClick() {
-		return onClick;
-	}
-
-	public long getSelectedIndex() {
-		return selectedIndex;
-	}
-
-	public void setSelectedIndex(long selectedIndex) {
-		this.selectedIndex = selectedIndex;
-	}
-
-	@Override
-	public ResponseWriter getWrapped() {
-		return wrappedResponseWriter;
 	}
 }

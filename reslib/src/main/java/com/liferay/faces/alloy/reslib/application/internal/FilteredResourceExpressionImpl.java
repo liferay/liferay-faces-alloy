@@ -38,6 +38,11 @@ public class FilteredResourceExpressionImpl extends FilteredResourceBase {
 	}
 
 	@Override
+	public Resource getWrapped() {
+		return wrappedResource;
+	}
+
+	@Override
 	protected String filter(String text) {
 
 		FacesContext facesContext = FacesContext.getCurrentInstance();
@@ -45,10 +50,5 @@ public class FilteredResourceExpressionImpl extends FilteredResourceBase {
 		ExternalContext externalContext = facesContext.getExternalContext();
 
 		return ExpressionUtil.filterExpressions(text, resourceHandlerChain, externalContext);
-	}
-
-	@Override
-	public Resource getWrapped() {
-		return wrappedResource;
 	}
 }

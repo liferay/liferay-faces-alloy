@@ -45,6 +45,36 @@ public class DataTable extends DataTableBase implements ClientBehaviorHolder {
 				RowDeselectRangeEvent.ROW_DESELECT_RANGE));
 
 	@Override
+	public String getDefaultEventName() {
+		return RowSelectEvent.ROW_SELECT;
+	}
+
+	@Override
+	public Collection<String> getEventNames() {
+		return EVENT_NAMES;
+	}
+
+	public List<Object> getRowDataList(int[] rowIndexes) {
+
+		List<Object> rowDataList = null;
+
+		if (rowIndexes != null) {
+
+			int originalRowIndex = getRowIndex();
+			rowDataList = new ArrayList<Object>(rowIndexes.length);
+
+			for (int rowIndex : rowIndexes) {
+				setRowIndex(rowIndex);
+				rowDataList.add(getRowData());
+			}
+
+			setRowIndex(originalRowIndex);
+		}
+
+		return rowDataList;
+	}
+
+	@Override
 	public void queueEvent(FacesEvent facesEvent) {
 
 		// This method is called by the AjaxBehavior renderer's decode() method. If the specified event is an ajax
@@ -109,6 +139,11 @@ public class DataTable extends DataTableBase implements ClientBehaviorHolder {
 		getAttributes().put("oldRows", getRows());
 	}
 
+	@Override
+	public void setValueExpression(String name, ValueExpression binding) {
+		super.setValueExpression(name, binding);
+	}
+
 	public final int[] toIntArray(String commaDelimitedValue) {
 
 		int[] intArray = null;
@@ -130,40 +165,5 @@ public class DataTable extends DataTableBase implements ClientBehaviorHolder {
 		}
 
 		return intArray;
-	}
-
-	@Override
-	public String getDefaultEventName() {
-		return RowSelectEvent.ROW_SELECT;
-	}
-
-	@Override
-	public Collection<String> getEventNames() {
-		return EVENT_NAMES;
-	}
-
-	public List<Object> getRowDataList(int[] rowIndexes) {
-
-		List<Object> rowDataList = null;
-
-		if (rowIndexes != null) {
-
-			int originalRowIndex = getRowIndex();
-			rowDataList = new ArrayList<Object>(rowIndexes.length);
-
-			for (int rowIndex : rowIndexes) {
-				setRowIndex(rowIndex);
-				rowDataList.add(getRowData());
-			}
-
-			setRowIndex(originalRowIndex);
-		}
-
-		return rowDataList;
-	}
-
-	@Override
-	public void setValueExpression(String name, ValueExpression binding) {
-		super.setValueExpression(name, binding);
 	}
 }

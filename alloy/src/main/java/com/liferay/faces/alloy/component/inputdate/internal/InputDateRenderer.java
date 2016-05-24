@@ -42,6 +42,7 @@ import com.liferay.faces.util.render.RendererUtil;
 /**
  * @author  Kyle Stiemann
  */
+
 //J-
 @FacesRenderer(componentFamily = InputDate.COMPONENT_FAMILY, rendererType = InputDate.RENDERER_TYPE)
 @ResourceDependencies(
@@ -149,6 +150,41 @@ public class InputDateRenderer extends InputDateRendererBase {
 					liferayComponent);
 			}
 		}
+	}
+
+	@Override
+	public String getAlloyClassName(FacesContext facesContext, UIComponent uiComponent) {
+
+		String alloyClassName = super.getAlloyClassName(facesContext, uiComponent);
+		BrowserSniffer browserSniffer = BrowserSnifferFactory.getBrowserSnifferInstance(
+				facesContext.getExternalContext());
+		InputDate inputDate = (InputDate) uiComponent;
+
+		if (isNative(browserSniffer, inputDate)) {
+			alloyClassName = alloyClassName.concat("Native");
+		}
+
+		return alloyClassName;
+	}
+
+	@Override
+	public String getButtonIconName() {
+		return "calendar";
+	}
+
+	@Override
+	public String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
+
+		String[] modules = getModules(MODULES[0], facesContext, uiComponent);
+
+		InputDate inputDate = (InputDate) uiComponent;
+		String showOn = inputDate.getShowOn();
+
+		if ("button".equals(showOn)) {
+			modules = StringHelper.append(modules, "aui-datatype-date-parse");
+		}
+
+		return modules;
 	}
 
 	protected void encodeCalendar(FacesContext facesContext, ResponseWriter responseWriter, InputDate inputDate,
@@ -262,43 +298,8 @@ public class InputDateRenderer extends InputDateRendererBase {
 	}
 
 	@Override
-	public String getAlloyClassName(FacesContext facesContext, UIComponent uiComponent) {
-
-		String alloyClassName = super.getAlloyClassName(facesContext, uiComponent);
-		BrowserSniffer browserSniffer = BrowserSnifferFactory.getBrowserSnifferInstance(
-				facesContext.getExternalContext());
-		InputDate inputDate = (InputDate) uiComponent;
-
-		if (isNative(browserSniffer, inputDate)) {
-			alloyClassName = alloyClassName.concat("Native");
-		}
-
-		return alloyClassName;
-	}
-
-	@Override
-	public String getButtonIconName() {
-		return "calendar";
-	}
-
-	@Override
 	protected InputDateTimeResponseWriter getInputDateTimeResponseWriter(ResponseWriter responseWriter,
 		String inputClientId, boolean nativeInputDate) {
 		return new InputDateResponseWriter(responseWriter, inputClientId, nativeInputDate);
-	}
-
-	@Override
-	public String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
-
-		String[] modules = getModules(MODULES[0], facesContext, uiComponent);
-
-		InputDate inputDate = (InputDate) uiComponent;
-		String showOn = inputDate.getShowOn();
-
-		if ("button".equals(showOn)) {
-			modules = StringHelper.append(modules, "aui-datatype-date-parse");
-		}
-
-		return modules;
 	}
 }

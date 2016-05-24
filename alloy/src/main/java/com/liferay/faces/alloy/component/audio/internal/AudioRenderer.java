@@ -31,6 +31,7 @@ import com.liferay.faces.alloy.component.media.Media;
  * @author  Bruno Basto
  * @author  Kyle Stiemann
  */
+
 //J-
 @FacesRenderer(componentFamily = Audio.COMPONENT_FAMILY, rendererType = Audio.RENDERER_TYPE)
 //J+

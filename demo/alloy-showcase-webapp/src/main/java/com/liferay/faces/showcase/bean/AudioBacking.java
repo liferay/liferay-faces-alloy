@@ -46,17 +46,8 @@ public class AudioBacking {
 	private FacesResource oggAudio;
 	private List<FacesResource> audios;
 
-	@PostConstruct
-	public void postConstruct() {
-		audios = audioService.getAllAudios();
-	}
-
 	public List<FacesResource> getAudios() {
 		return audios;
-	}
-
-	public void setAudioService(AudioService audioService) {
-		this.audioService = audioService;
 	}
 
 	public String getEncodedMp3ResourceURL() throws UnsupportedEncodingException {
@@ -83,5 +74,14 @@ public class AudioBacking {
 		}
 
 		return oggAudio;
+	}
+
+	@PostConstruct
+	public void postConstruct() {
+		audios = audioService.getAllAudios();
+	}
+
+	public void setAudioService(AudioService audioService) {
+		this.audioService = audioService;
 	}
 }

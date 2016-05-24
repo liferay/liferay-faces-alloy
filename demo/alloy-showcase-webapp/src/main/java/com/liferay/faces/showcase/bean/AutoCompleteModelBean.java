@@ -39,12 +39,12 @@ public class AutoCompleteModelBean {
 		return liferayBenefitService.getLiferayBenefits();
 	}
 
-	public void setLiferayBenefitService(LiferayBenefitService liferayBenefitService) {
-		this.liferayBenefitService = liferayBenefitService;
-	}
-
 	public String getText() {
 		return text;
+	}
+
+	public void setLiferayBenefitService(LiferayBenefitService liferayBenefitService) {
+		this.liferayBenefitService = liferayBenefitService;
 	}
 
 	public void setText(String text) {

@@ -38,16 +38,8 @@ public class InputSourceCodeModelBean {
 		return mode;
 	}
 
-	public void setMode(String mode) {
-		this.mode = mode;
-	}
-
 	public String getSourceCode() {
 		return sourceCode;
-	}
-
-	public void setSourceCode(String sourceCode) {
-		this.sourceCode = sourceCode;
 	}
 
 	public String getSourceText() {
@@ -68,6 +60,14 @@ public class InputSourceCodeModelBean {
 		}
 
 		return sourceText;
+	}
+
+	public void setMode(String mode) {
+		this.mode = mode;
+	}
+
+	public void setSourceCode(String sourceCode) {
+		this.sourceCode = sourceCode;
 	}
 
 	public void setSourceText(String sourceText) {

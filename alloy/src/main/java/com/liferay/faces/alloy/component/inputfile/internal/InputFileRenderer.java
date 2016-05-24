@@ -47,6 +47,7 @@ import com.liferay.faces.util.render.RendererUtil;
 /**
  * @author  Neil Griffin
  */
+
 //J-
 @FacesRenderer(componentFamily = InputFile.COMPONENT_FAMILY, rendererType = InputFile.RENDERER_TYPE)
 @ResourceDependencies(
@@ -229,6 +230,12 @@ public class InputFileRenderer extends InputFileRendererBase {
 	}
 
 	@Override
+	public Object getConvertedValue(FacesContext facesContext, UIComponent uiComponent, Object submittedValue)
+		throws ConverterException {
+		return submittedValue;
+	}
+
+	@Override
 	protected void encodeHiddenAttributes(FacesContext facesContext, ResponseWriter responseWriter, InputFile inputFile,
 		boolean first) throws IOException {
 
@@ -386,35 +393,6 @@ public class InputFileRenderer extends InputFileRendererBase {
 		responseWriter.endElement("div");
 	}
 
-	protected JavaScriptFragment toJavaScriptArray(String[] items) {
-
-		StringBuilder buf = new StringBuilder("[");
-
-		if (items != null) {
-
-			for (int i = 0; i < items.length; i++) {
-
-				if (i > 0) {
-					buf.append(",");
-				}
-
-				buf.append("'");
-				buf.append(items[i].trim());
-				buf.append("'");
-			}
-		}
-
-		buf.append("]");
-
-		return new JavaScriptFragment(buf.toString());
-	}
-
-	@Override
-	public Object getConvertedValue(FacesContext facesContext, UIComponent uiComponent, Object submittedValue)
-		throws ConverterException {
-		return submittedValue;
-	}
-
 	protected String getParentFormClientId(UIComponent uiComponent) {
 
 		String parentFormClientId = null;
@@ -451,5 +429,28 @@ public class InputFileRenderer extends InputFileRendererBase {
 		}
 
 		return uploadedFileMap;
+	}
+
+	protected JavaScriptFragment toJavaScriptArray(String[] items) {
+
+		StringBuilder buf = new StringBuilder("[");
+
+		if (items != null) {
+
+			for (int i = 0; i < items.length; i++) {
+
+				if (i > 0) {
+					buf.append(",");
+				}
+
+				buf.append("'");
+				buf.append(items[i].trim());
+				buf.append("'");
+			}
+		}
+
+		buf.append("]");
+
+		return new JavaScriptFragment(buf.toString());
 	}
 }

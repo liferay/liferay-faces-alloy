@@ -41,6 +41,11 @@ public class OutputRemainingCharsResponseWriter extends ResponseWriterWrapper {
 		this.remainingChars = remainingChars;
 	}
 
+	@Override
+	public ResponseWriter getWrapped() {
+		return wrappedResponseWriter;
+	}
+
 	// Mojarra will call this method to write the value when escape="false"
 	@Override
 	public void write(String text) throws IOException {
@@ -110,11 +115,6 @@ public class OutputRemainingCharsResponseWriter extends ResponseWriterWrapper {
 		else {
 			super.write(post.toCharArray());
 		}
-	}
-
-	@Override
-	public ResponseWriter getWrapped() {
-		return wrappedResponseWriter;
 	}
 
 }

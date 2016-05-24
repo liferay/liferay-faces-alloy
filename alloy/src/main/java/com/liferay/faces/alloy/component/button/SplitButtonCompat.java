@@ -46,6 +46,97 @@ public abstract class SplitButtonCompat extends LinkBase {
 	// Protected Data Members
 	protected Button wrappedButton;
 
+	public Map<String, Object> getPassThroughAttributes(boolean create) {
+
+		if (passThroughAttributes == null) {
+			passThroughAttributes = new HashMap<String, Object>();
+		}
+
+		Method getPassThroughAttributesMethod = null;
+
+		try {
+			Class<? extends Button> wrappedButtonClass = wrappedButton.getClass();
+			getPassThroughAttributesMethod = wrappedButtonClass.getMethod("getPassThroughAttributes",
+					new Class[] { boolean.class });
+		}
+		catch (NoSuchMethodException e) {
+
+			if (isFaces_2_2_OrNewer()) {
+				logger.error(e);
+			}
+		}
+
+		if (getPassThroughAttributesMethod != null) {
+
+			try {
+				passThroughAttributes = (Map<String, Object>) getPassThroughAttributesMethod.invoke(wrappedButton,
+						new Object[] { create });
+			}
+			catch (Exception e) {
+				logger.error(e);
+			}
+		}
+
+		return passThroughAttributes;
+	}
+
+	public String getRole() {
+
+		Method getRoleMethod = null;
+
+		Class<? extends Button> wrappedButtonClass = wrappedButton.getClass();
+
+		try {
+			getRoleMethod = wrappedButtonClass.getMethod("getRole", new Class[] {});
+		}
+		catch (NoSuchMethodException e) {
+
+			if (isFaces_2_2_OrNewer()) {
+				logger.error(e);
+			}
+		}
+
+		if (getRoleMethod != null) {
+
+			try {
+				role = (String) getRoleMethod.invoke(wrappedButton, new Object[] {});
+			}
+			catch (Exception e) {
+				logger.error(e);
+			}
+		}
+
+		return role;
+	}
+
+	public boolean isDisableClientWindow() {
+
+		Method isDisableClientWindowMethod = null;
+
+		try {
+			Class<? extends Button> wrappedButtonClass = wrappedButton.getClass();
+			isDisableClientWindowMethod = wrappedButtonClass.getMethod("isDisableClientWindow", new Class[] {});
+		}
+		catch (NoSuchMethodException e) {
+
+			if (isFaces_2_2_OrNewer()) {
+				logger.error(e);
+			}
+		}
+
+		if (isDisableClientWindowMethod != null) {
+
+			try {
+				disableClientWindow = (Boolean) isDisableClientWindowMethod.invoke(wrappedButton, new Object[] {});
+			}
+			catch (Exception e) {
+				logger.error(e);
+			}
+		}
+
+		return disableClientWindow;
+	}
+
 	public void resetValue() {
 
 		Method resetValueMethod = null;
@@ -102,75 +193,6 @@ public abstract class SplitButtonCompat extends LinkBase {
 		}
 	}
 
-	public Map<String, Object> getPassThroughAttributes(boolean create) {
-
-		if (passThroughAttributes == null) {
-			passThroughAttributes = new HashMap<String, Object>();
-		}
-
-		Method getPassThroughAttributesMethod = null;
-
-		try {
-			Class<? extends Button> wrappedButtonClass = wrappedButton.getClass();
-			getPassThroughAttributesMethod = wrappedButtonClass.getMethod("getPassThroughAttributes",
-					new Class[] { boolean.class });
-		}
-		catch (NoSuchMethodException e) {
-
-			if (isFaces_2_2_OrNewer()) {
-				logger.error(e);
-			}
-		}
-
-		if (getPassThroughAttributesMethod != null) {
-
-			try {
-				passThroughAttributes = (Map<String, Object>) getPassThroughAttributesMethod.invoke(wrappedButton,
-						new Object[] { create });
-			}
-			catch (Exception e) {
-				logger.error(e);
-			}
-		}
-
-		return passThroughAttributes;
-	}
-
-	protected boolean isFaces_2_2_OrNewer() {
-
-		return JSF.isDetected() &&
-			((JSF.getMajorVersion() > 2) || ((JSF.getMajorVersion() == 2) && (JSF.getMinorVersion() >= 2)));
-	}
-
-	public String getRole() {
-
-		Method getRoleMethod = null;
-
-		Class<? extends Button> wrappedButtonClass = wrappedButton.getClass();
-
-		try {
-			getRoleMethod = wrappedButtonClass.getMethod("getRole", new Class[] {});
-		}
-		catch (NoSuchMethodException e) {
-
-			if (isFaces_2_2_OrNewer()) {
-				logger.error(e);
-			}
-		}
-
-		if (getRoleMethod != null) {
-
-			try {
-				role = (String) getRoleMethod.invoke(wrappedButton, new Object[] {});
-			}
-			catch (Exception e) {
-				logger.error(e);
-			}
-		}
-
-		return role;
-	}
-
 	public void setRole(String role) {
 
 		Method setRoleMethod = null;
@@ -201,31 +223,9 @@ public abstract class SplitButtonCompat extends LinkBase {
 		}
 	}
 
-	public boolean isDisableClientWindow() {
+	protected boolean isFaces_2_2_OrNewer() {
 
-		Method isDisableClientWindowMethod = null;
-
-		try {
-			Class<? extends Button> wrappedButtonClass = wrappedButton.getClass();
-			isDisableClientWindowMethod = wrappedButtonClass.getMethod("isDisableClientWindow", new Class[] {});
-		}
-		catch (NoSuchMethodException e) {
-
-			if (isFaces_2_2_OrNewer()) {
-				logger.error(e);
-			}
-		}
-
-		if (isDisableClientWindowMethod != null) {
-
-			try {
-				disableClientWindow = (Boolean) isDisableClientWindowMethod.invoke(wrappedButton, new Object[] {});
-			}
-			catch (Exception e) {
-				logger.error(e);
-			}
-		}
-
-		return disableClientWindow;
+		return JSF.isDetected() &&
+			((JSF.getMajorVersion() > 2) || ((JSF.getMajorVersion() == 2) && (JSF.getMinorVersion() >= 2)));
 	}
 }
