@@ -47,6 +47,11 @@ public class OutputTooltipResponseWriter extends ResponseWriterWrapper {
 	}
 
 	@Override
+	public ResponseWriter getWrapped() {
+		return wrappedResponseWriter;
+	}
+
+	@Override
 	public void startElement(String name, UIComponent component) throws IOException {
 
 		// Prevent the JSF runtime from opening the <span> tag since the
@@ -65,10 +70,5 @@ public class OutputTooltipResponseWriter extends ResponseWriterWrapper {
 		if (!"id".equals(name) && !Styleable.STYLE.equals(name) && !Styleable.STYLE_CLASS.equals(name)) {
 			super.writeAttribute(name, value, property);
 		}
-	}
-
-	@Override
-	public ResponseWriter getWrapped() {
-		return wrappedResponseWriter;
 	}
 }

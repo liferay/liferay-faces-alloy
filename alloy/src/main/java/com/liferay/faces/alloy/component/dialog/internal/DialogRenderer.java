@@ -32,6 +32,7 @@ import com.liferay.faces.util.render.JavaScriptFragment;
 /**
  * @author  Vernon Singleton
  */
+
 //J-
 @FacesRenderer(componentFamily = Dialog.COMPONENT_FAMILY, rendererType = Dialog.RENDERER_TYPE)
 @ResourceDependencies(
@@ -136,6 +137,19 @@ public class DialogRenderer extends DialogRendererBase {
 	}
 
 	@Override
+	public String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
+
+		String[] modules = MODULES;
+		Dialog dialog = (Dialog) uiComponent;
+
+		if (!dialog.isModal() && dialog.isDismissible()) {
+			modules = StringHelper.append(modules, "event-move");
+		}
+
+		return modules;
+	}
+
+	@Override
 	protected void encodeHiddenAttributes(FacesContext facesContext, ResponseWriter responseWriter, Dialog dialog,
 		boolean first) throws IOException {
 
@@ -147,18 +161,5 @@ public class DialogRenderer extends DialogRendererBase {
 	protected void encodeZIndex(ResponseWriter responseWriter, Dialog dialog, Integer zIndex, boolean first)
 		throws IOException {
 		encodeOverlayZIndex(responseWriter, dialog, zIndex, LIFERAY_Z_INDEX_OVERLAY, first);
-	}
-
-	@Override
-	public String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
-
-		String[] modules = MODULES;
-		Dialog dialog = (Dialog) uiComponent;
-
-		if (!dialog.isModal() && dialog.isDismissible()) {
-			modules = StringHelper.append(modules, "event-move");
-		}
-
-		return modules;
 	}
 }

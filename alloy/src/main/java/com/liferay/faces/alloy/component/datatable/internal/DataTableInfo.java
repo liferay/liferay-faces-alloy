@@ -66,15 +66,15 @@ public class DataTableInfo {
 		}
 	}
 
+	public int getTotalRenderedColumns() {
+		return totalRenderedColumns;
+	}
+
 	public boolean isFooterFacetPresentInColumn() {
 		return footerFacetPresentInColumn;
 	}
 
 	public boolean isHeaderFacetOrTextPresentInColumn() {
 		return headerFacetOrTextPresentInColumn;
-	}
-
-	public int getTotalRenderedColumns() {
-		return totalRenderedColumns;
 	}
 }

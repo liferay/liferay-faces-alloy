@@ -61,6 +61,8 @@ public abstract class SelectDelegatingRendererBase extends DelegatingRendererBas
 		super.encodeEnd(facesContext, uiComponent, getSelectDelegationResponseWriter(responseWriter));
 	}
 
+	protected abstract String getSelectType();
+
 	private ResponseWriter getSelectDelegationResponseWriter(ResponseWriter responseWriter) {
 
 		ResponseWriter delegationResponseWriter = new TableSuppressingResponseWriter(responseWriter);
@@ -68,6 +70,4 @@ public abstract class SelectDelegatingRendererBase extends DelegatingRendererBas
 
 		return delegationResponseWriter;
 	}
-
-	protected abstract String getSelectType();
 }

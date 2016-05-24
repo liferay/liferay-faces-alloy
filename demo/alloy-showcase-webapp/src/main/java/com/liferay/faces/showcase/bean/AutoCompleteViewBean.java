@@ -35,12 +35,12 @@ public class AutoCompleteViewBean implements Serializable {
 		return clientFilterType;
 	}
 
-	public void setClientFilterType(String clientFilterType) {
-		this.clientFilterType = clientFilterType;
-	}
-
 	public String getServerFilterType() {
 		return serverFilterType;
+	}
+
+	public void setClientFilterType(String clientFilterType) {
+		this.clientFilterType = clientFilterType;
 	}
 
 	public void setServerFilterType(String serverFilterType) {

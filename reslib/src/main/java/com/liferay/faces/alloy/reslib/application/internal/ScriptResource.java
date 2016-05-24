@@ -49,25 +49,8 @@ public class ScriptResource extends Resource {
 	}
 
 	@Override
-	public boolean userAgentNeedsUpdate(FacesContext facesContext) {
-		return getInternalResource().userAgentNeedsUpdate(facesContext);
-	}
-
-	@Override
 	public InputStream getInputStream() throws IOException {
 		return getInternalResource().getInputStream();
-	}
-
-	protected Resource getInternalResource() {
-
-		if (internalResource == null) {
-			FacesContext facesContext = FacesContext.getCurrentInstance();
-			ResourceHandler resourceHandlerChain = facesContext.getApplication().getResourceHandler();
-			String resourceName = BASE_PATH + modulePath;
-			internalResource = resourceHandlerChain.createResource(resourceName, ResLibResourceHandler.LIBRARY_NAME);
-		}
-
-		return internalResource;
 	}
 
 	@Override
@@ -92,5 +75,22 @@ public class ScriptResource extends Resource {
 	@Override
 	public URL getURL() {
 		return null;
+	}
+
+	@Override
+	public boolean userAgentNeedsUpdate(FacesContext facesContext) {
+		return getInternalResource().userAgentNeedsUpdate(facesContext);
+	}
+
+	protected Resource getInternalResource() {
+
+		if (internalResource == null) {
+			FacesContext facesContext = FacesContext.getCurrentInstance();
+			ResourceHandler resourceHandlerChain = facesContext.getApplication().getResourceHandler();
+			String resourceName = BASE_PATH + modulePath;
+			internalResource = resourceHandlerChain.createResource(resourceName, ResLibResourceHandler.LIBRARY_NAME);
+		}
+
+		return internalResource;
 	}
 }

@@ -22,6 +22,7 @@ import com.liferay.faces.alloy.component.nodemenunav.internal.NodeMenuNavRendere
 /**
  * @author  Vernon Singleton
  */
+
 //J-
 @FacesRenderer(componentFamily = SplitButton.COMPONENT_FAMILY, rendererType = SplitButton.RENDERER_TYPE)
 //J+

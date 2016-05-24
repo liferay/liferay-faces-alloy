@@ -52,6 +52,11 @@ public class TableSuppressingResponseWriter extends ResponseWriterWrapper {
 	}
 
 	@Override
+	public ResponseWriter getWrapped() {
+		return wrappedResponseWriter;
+	}
+
+	@Override
 	public void startElement(String name, UIComponent component) throws IOException {
 
 		if ("table".equals(name)) {
@@ -63,10 +68,5 @@ public class TableSuppressingResponseWriter extends ResponseWriterWrapper {
 		else {
 			super.startElement(name, component);
 		}
-	}
-
-	@Override
-	public ResponseWriter getWrapped() {
-		return wrappedResponseWriter;
 	}
 }

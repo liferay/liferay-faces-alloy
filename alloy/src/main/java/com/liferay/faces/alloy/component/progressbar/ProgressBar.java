@@ -40,6 +40,16 @@ public class ProgressBar extends ProgressBarBase implements ClientBehaviorHolder
 				"progressComplete", "poll"));
 
 	@Override
+	public String getDefaultEventName() {
+		return "poll";
+	}
+
+	@Override
+	public Collection<String> getEventNames() {
+		return EVENT_NAMES;
+	}
+
+	@Override
 	public void queueEvent(FacesEvent facesEvent) {
 
 		if (facesEvent instanceof AjaxBehaviorEvent) {
@@ -61,15 +71,5 @@ public class ProgressBar extends ProgressBarBase implements ClientBehaviorHolder
 		}
 
 		super.queueEvent(facesEvent);
-	}
-
-	@Override
-	public String getDefaultEventName() {
-		return "poll";
-	}
-
-	@Override
-	public Collection<String> getEventNames() {
-		return EVENT_NAMES;
 	}
 }

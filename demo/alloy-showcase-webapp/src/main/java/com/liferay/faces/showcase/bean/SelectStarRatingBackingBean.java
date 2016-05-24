@@ -33,11 +33,11 @@ public class SelectStarRatingBackingBean {
 	@ManagedProperty(name = "selectStarRatingModelBean", value = "#{selectStarRatingModelBean}")
 	private SelectStarRatingModelBean selectStarRatingModelBean;
 
-	public void submit() {
-		logger.info("submit: selectStarRatingModelBean.getFavoriteId() = " + selectStarRatingModelBean.getFavoriteId());
-	}
-
 	public void setSelectStarRatingModelBean(SelectStarRatingModelBean selectStarRatingModelBean) {
 		this.selectStarRatingModelBean = selectStarRatingModelBean;
+	}
+
+	public void submit() {
+		logger.info("submit: selectStarRatingModelBean.getFavoriteId() = " + selectStarRatingModelBean.getFavoriteId());
 	}
 }

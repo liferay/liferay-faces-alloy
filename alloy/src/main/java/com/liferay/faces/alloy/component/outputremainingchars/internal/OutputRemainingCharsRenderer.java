@@ -30,6 +30,7 @@ import com.liferay.faces.alloy.component.outputremainingchars.OutputRemainingCha
 /**
  * @author  Vernon Singleton
  */
+
 //J-
 @FacesRenderer(
 	componentFamily = OutputRemainingChars.COMPONENT_FAMILY, rendererType = OutputRemainingChars.RENDERER_TYPE

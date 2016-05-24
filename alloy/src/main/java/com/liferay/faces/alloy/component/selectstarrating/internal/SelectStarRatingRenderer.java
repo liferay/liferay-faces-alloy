@@ -23,6 +23,7 @@ import com.liferay.faces.alloy.component.selectstarrating.SelectStarRating;
 /**
  * @author  Vernon Singleton
  */
+
 //J-
 @FacesRenderer(componentFamily = SelectStarRating.COMPONENT_FAMILY, rendererType = SelectStarRating.RENDERER_TYPE)
 @ResourceDependencies(

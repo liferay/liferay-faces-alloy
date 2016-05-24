@@ -40,6 +40,7 @@ import com.liferay.faces.util.render.RendererUtil;
  * @author  Bruno Basto
  * @author  Kyle Stiemann
  */
+
 //J-
 @FacesRenderer(componentFamily = ProgressBar.COMPONENT_FAMILY, rendererType = ProgressBar.RENDERER_TYPE)
 @ResourceDependencies(
@@ -383,15 +384,6 @@ public class ProgressBarRenderer extends ProgressBarRendererBase {
 		}
 	}
 
-	private boolean isServerPollingEnabled(UIComponent uiComponent) {
-
-		ProgressBar progressBar = (ProgressBar) uiComponent;
-		Map<String, List<ClientBehavior>> clientBehaviorMap = progressBar.getClientBehaviors();
-		List<ClientBehavior> clientBehaviorsForPolling = clientBehaviorMap.get("poll");
-
-		return ((clientBehaviorsForPolling != null) && !clientBehaviorsForPolling.isEmpty());
-	}
-
 	private boolean isAjaxPolling(FacesContext facesContext, UIComponent uiComponent) {
 
 		boolean polling = false;
@@ -406,5 +398,14 @@ public class ProgressBarRenderer extends ProgressBarRendererBase {
 		}
 
 		return polling;
+	}
+
+	private boolean isServerPollingEnabled(UIComponent uiComponent) {
+
+		ProgressBar progressBar = (ProgressBar) uiComponent;
+		Map<String, List<ClientBehavior>> clientBehaviorMap = progressBar.getClientBehaviors();
+		List<ClientBehavior> clientBehaviorsForPolling = clientBehaviorMap.get("poll");
+
+		return ((clientBehaviorsForPolling != null) && !clientBehaviorsForPolling.isEmpty());
 	}
 }

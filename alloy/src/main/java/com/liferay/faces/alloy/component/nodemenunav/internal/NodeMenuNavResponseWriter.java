@@ -40,6 +40,11 @@ public class NodeMenuNavResponseWriter extends ResponseWriterWrapper {
 	}
 
 	@Override
+	public ResponseWriter getWrapped() {
+		return wrappedResponseWriter;
+	}
+
+	@Override
 	public void writeAttribute(String name, Object value, String property) throws IOException {
 
 		if ("class".equals(name)) {
@@ -66,10 +71,5 @@ public class NodeMenuNavResponseWriter extends ResponseWriterWrapper {
 		if (!disabled) {
 			super.writeURIAttribute(name, value, property);
 		}
-	}
-
-	@Override
-	public ResponseWriter getWrapped() {
-		return wrappedResponseWriter;
 	}
 }

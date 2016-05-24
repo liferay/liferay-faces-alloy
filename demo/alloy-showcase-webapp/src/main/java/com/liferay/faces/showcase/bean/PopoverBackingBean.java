@@ -33,12 +33,12 @@ public class PopoverBackingBean {
 	@ManagedProperty(name = "popoverModelBean", value = "#{popoverModelBean}")
 	private PopoverModelBean popoverModelBean;
 
+	public void setPopoverModelBean(PopoverModelBean popoverModelBean) {
+		this.popoverModelBean = popoverModelBean;
+	}
+
 	public void submit() {
 		logger.info("submit: text1 = " + popoverModelBean.getText1());
 		logger.info("submit: text2 = " + popoverModelBean.getText2());
-	}
-
-	public void setPopoverModelBean(PopoverModelBean popoverModelBean) {
-		this.popoverModelBean = popoverModelBean;
 	}
 }

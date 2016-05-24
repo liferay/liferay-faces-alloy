@@ -52,6 +52,11 @@ public class CommandLinkResponseWriter extends ResponseWriterWrapper {
 	}
 
 	@Override
+	public ResponseWriter getWrapped() {
+		return wrappedResponseWriter;
+	}
+
+	@Override
 	public void startElement(String name, UIComponent component) throws IOException {
 
 		if ("a".equals(name)) {
@@ -67,10 +72,5 @@ public class CommandLinkResponseWriter extends ResponseWriterWrapper {
 		if (!(hasChildren && (anchorCount == 1))) {
 			super.writeText(text, component, property);
 		}
-	}
-
-	@Override
-	public ResponseWriter getWrapped() {
-		return wrappedResponseWriter;
 	}
 }

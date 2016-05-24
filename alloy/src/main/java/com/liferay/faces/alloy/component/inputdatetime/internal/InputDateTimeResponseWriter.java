@@ -35,6 +35,10 @@ public class InputDateTimeResponseWriter extends IdResponseWriter {
 		this.nativeInputDateTime = nativeInputDateTime;
 	}
 
+	public boolean isNative() {
+		return nativeInputDateTime;
+	}
+
 	@Override
 	public void writeAttribute(String name, Object value, String property) throws IOException {
 
@@ -47,9 +51,5 @@ public class InputDateTimeResponseWriter extends IdResponseWriter {
 		else {
 			super.writeAttribute(name, value, property);
 		}
-	}
-
-	public boolean isNative() {
-		return nativeInputDateTime;
 	}
 }

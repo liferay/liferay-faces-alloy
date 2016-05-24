@@ -46,11 +46,6 @@ public class VideoBacking {
 	private FacesResource ogvVideo;
 	private List<FacesResource> videos;
 
-	@PostConstruct
-	public void postConstruct() {
-		videos = videoService.getAllVideos();
-	}
-
 	public String getEncodedMp4ResourceURL() throws UnsupportedEncodingException {
 
 		if (encodedMp4ResourceURL == null) {
@@ -79,6 +74,11 @@ public class VideoBacking {
 
 	public List<FacesResource> getVideos() {
 		return videos;
+	}
+
+	@PostConstruct
+	public void postConstruct() {
+		videos = videoService.getAllVideos();
 	}
 
 	public void setVideoService(VideoService videoService) {

@@ -36,6 +36,30 @@ public class TabViewWizardBean implements Serializable {
 	private String firstName;
 	private String lastName;
 
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public Integer getSelectedTabIndex() {
+		return selectedTabIndex;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public void setSelectedTabIndex(Integer selectedTabIndex) {
+		this.selectedTabIndex = selectedTabIndex;
+	}
+
 	public void tabSelectListener(AjaxBehaviorEvent ajaxBehaviorEvent) {
 
 		// When using JSF 2.2, this cast is unnecessary, and the method can take the TabSelectEvent directly.
@@ -45,29 +69,5 @@ public class TabViewWizardBean implements Serializable {
 		// phases of the JSF lifecycle and jump immediately to RENDER_RESPONSE.
 		FacesContext facesContext = FacesContext.getCurrentInstance();
 		facesContext.renderResponse();
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public Integer getSelectedTabIndex() {
-		return selectedTabIndex;
-	}
-
-	public void setSelectedTabIndex(Integer selectedTabIndex) {
-		this.selectedTabIndex = selectedTabIndex;
 	}
 }

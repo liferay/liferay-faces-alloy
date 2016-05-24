@@ -243,22 +243,6 @@ public abstract class AbstractButtonRenderer extends ButtonRendererBase {
 		}
 	}
 
-	protected boolean hasMenu(UIComponent uiComponent) {
-		boolean hasMenu = false;
-		List<UIComponent> children = uiComponent.getChildren();
-
-		for (UIComponent child : children) {
-
-			if (child instanceof Menu) {
-				hasMenu = true;
-
-				break;
-			}
-		}
-
-		return hasMenu;
-	}
-
 	@Override
 	public Object getConvertedValue(FacesContext facesContext, UIComponent uiComponent, Object submittedValue)
 		throws ConverterException {
@@ -294,6 +278,22 @@ public abstract class AbstractButtonRenderer extends ButtonRendererBase {
 		}
 
 		return uiChildCount;
+	}
+
+	protected boolean hasMenu(UIComponent uiComponent) {
+		boolean hasMenu = false;
+		List<UIComponent> children = uiComponent.getChildren();
+
+		for (UIComponent child : children) {
+
+			if (child instanceof Menu) {
+				hasMenu = true;
+
+				break;
+			}
+		}
+
+		return hasMenu;
 	}
 
 	private static final class NodeMenuNavFactory {

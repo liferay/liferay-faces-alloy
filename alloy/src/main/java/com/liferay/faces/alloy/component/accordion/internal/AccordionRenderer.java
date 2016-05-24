@@ -43,6 +43,7 @@ import com.liferay.faces.util.render.RendererUtil;
 /**
  * @author  Vernon Singleton
  */
+
 //J-
 @FacesRenderer(componentFamily = Accordion.COMPONENT_FAMILY, rendererType = Accordion.RENDERER_TYPE)
 @ResourceDependencies(
@@ -306,6 +307,11 @@ public class AccordionRenderer extends AccordionRendererBase {
 		responseWriter.endElement("div");
 	}
 
+	@Override
+	public boolean getRendersChildren() {
+		return true;
+	}
+
 	protected void encodeContent(FacesContext facesContext, ResponseWriter responseWriter, UIComponent uiComponent,
 		Tab tab, boolean selected) throws IOException {
 
@@ -403,10 +409,5 @@ public class AccordionRenderer extends AccordionRendererBase {
 
 		// expanded: false
 		encodeBoolean(responseWriter, EXPANDED, false, first);
-	}
-
-	@Override
-	public boolean getRendersChildren() {
-		return true;
 	}
 }

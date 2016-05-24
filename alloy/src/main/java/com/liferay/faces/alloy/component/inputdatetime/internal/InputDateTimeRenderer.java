@@ -155,6 +155,46 @@ public abstract class InputDateTimeRenderer extends InputDateTimeRendererBase {
 		responseWriter.endElement("div");
 	}
 
+	@Override
+	public String getYUIConfig(FacesContext facesContext, ResponseWriter responseWriter, UIComponent uiComponent)
+		throws IOException {
+
+		InputDateTime inputDateTime = (InputDateTime) uiComponent;
+		Locale locale = inputDateTime.getObjectAsLocale(inputDateTime.getLocale(facesContext));
+
+		StringBuilder stringBuilder = new StringBuilder();
+		stringBuilder.append("{lang:");
+
+		// RFC 1766 requires the subtags of locales to be delimited by hyphens rather than underscores.
+		// http://www.faqs.org/rfcs/rfc1766.html
+		stringBuilder.append("'");
+
+		String localeString = locale.toString().replaceAll("_", "-");
+		stringBuilder.append(localeString);
+		stringBuilder.append("'}");
+
+		return stringBuilder.toString();
+	}
+
+	@Override
+	public boolean isSandboxed(FacesContext facesContext, UIComponent uiComponent) {
+
+		// In order to support the "lang" attribute of the YUI object, it is necessary to determine if the user has
+		// specified a locale other than that of the server or view root. If so, then the javascript must be rendered
+		// inline.
+		InputDateTime inputDateTime = (InputDateTime) uiComponent;
+		Locale locale = inputDateTime.getObjectAsLocale(inputDateTime.getLocale(facesContext));
+		UIViewRoot viewRoot = facesContext.getViewRoot();
+		Locale viewRootLocale = viewRoot.getLocale();
+
+		return !locale.equals(viewRootLocale);
+	}
+
+	protected abstract String getButtonIconName();
+
+	protected abstract InputDateTimeResponseWriter getInputDateTimeResponseWriter(ResponseWriter responseWriter,
+		String inputClientId, boolean nativeInputDateTime);
+
 	protected void encodeHiddenAttributesInputDateTime(FacesContext facesContext, ResponseWriter responseWriter,
 		InputDateTime inputDateTime, boolean first) throws IOException {
 
@@ -224,29 +264,6 @@ public abstract class InputDateTimeRenderer extends InputDateTimeRendererBase {
 		return "_" + inputDateClientVarName + BUTTON_SUFFIX;
 	}
 
-	protected abstract String getButtonIconName();
-
-	@Override
-	public boolean isSandboxed(FacesContext facesContext, UIComponent uiComponent) {
-
-		// In order to support the "lang" attribute of the YUI object, it is necessary to determine if the user has
-		// specified a locale other than that of the server or view root. If so, then the javascript must be rendered
-		// inline.
-		InputDateTime inputDateTime = (InputDateTime) uiComponent;
-		Locale locale = inputDateTime.getObjectAsLocale(inputDateTime.getLocale(facesContext));
-		UIViewRoot viewRoot = facesContext.getViewRoot();
-		Locale viewRootLocale = viewRoot.getLocale();
-
-		return !locale.equals(viewRootLocale);
-	}
-
-	protected boolean isNative(BrowserSniffer browserSniffer, InputDateTime inputDateTime) {
-		return browserSniffer.isMobile() && inputDateTime.isNativeWhenMobile();
-	}
-
-	protected abstract InputDateTimeResponseWriter getInputDateTimeResponseWriter(ResponseWriter responseWriter,
-		String inputClientId, boolean nativeInputDateTime);
-
 	protected String[] getModules(String defaultModule, FacesContext facesContext, UIComponent uiComponent) {
 
 		String[] modules = new String[] { defaultModule };
@@ -270,24 +287,7 @@ public abstract class InputDateTimeRenderer extends InputDateTimeRendererBase {
 		return modules;
 	}
 
-	@Override
-	public String getYUIConfig(FacesContext facesContext, ResponseWriter responseWriter, UIComponent uiComponent)
-		throws IOException {
-
-		InputDateTime inputDateTime = (InputDateTime) uiComponent;
-		Locale locale = inputDateTime.getObjectAsLocale(inputDateTime.getLocale(facesContext));
-
-		StringBuilder stringBuilder = new StringBuilder();
-		stringBuilder.append("{lang:");
-
-		// RFC 1766 requires the subtags of locales to be delimited by hyphens rather than underscores.
-		// http://www.faqs.org/rfcs/rfc1766.html
-		stringBuilder.append("'");
-
-		String localeString = locale.toString().replaceAll("_", "-");
-		stringBuilder.append(localeString);
-		stringBuilder.append("'}");
-
-		return stringBuilder.toString();
+	protected boolean isNative(BrowserSniffer browserSniffer, InputDateTime inputDateTime) {
+		return browserSniffer.isMobile() && inputDateTime.isNativeWhenMobile();
 	}
 }

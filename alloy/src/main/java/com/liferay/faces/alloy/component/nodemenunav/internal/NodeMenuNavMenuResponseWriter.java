@@ -37,6 +37,11 @@ public class NodeMenuNavMenuResponseWriter extends ResponseWriterWrapper {
 	}
 
 	@Override
+	public ResponseWriter getWrapped() {
+		return wrappedResponseWriter;
+	}
+
+	@Override
 	public void startElement(String name, UIComponent component) throws IOException {
 
 		if (parentName == null) {
@@ -89,10 +94,5 @@ public class NodeMenuNavMenuResponseWriter extends ResponseWriterWrapper {
 		}
 
 		super.writeText(text, property);
-	}
-
-	@Override
-	public ResponseWriter getWrapped() {
-		return wrappedResponseWriter;
 	}
 }

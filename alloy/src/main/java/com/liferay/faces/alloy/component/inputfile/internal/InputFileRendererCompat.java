@@ -54,12 +54,6 @@ public abstract class InputFileRendererCompat extends DelegatingAlloyRendererBas
 		}
 	}
 
-	protected boolean isFaces_2_2_OrNewer() {
-
-		return JSF.isDetected() &&
-			((JSF.getMajorVersion() > 2) || ((JSF.getMajorVersion() == 2) && (JSF.getMinorVersion() >= 2)));
-	}
-
 	protected InputFileDecoder getWebappInputFileDecoder(FacesContext facesContext) {
 
 		// If running with JSF 2.2 (or higher), then the javax.servlet.http.Part (Servlet 3.0) mechanism for decoding
@@ -92,5 +86,11 @@ public abstract class InputFileRendererCompat extends DelegatingAlloyRendererBas
 				return new InputFileDecoderCommonsImpl();
 			}
 		}
+	}
+
+	protected boolean isFaces_2_2_OrNewer() {
+
+		return JSF.isDetected() &&
+			((JSF.getMajorVersion() > 2) || ((JSF.getMajorVersion() == 2) && (JSF.getMinorVersion() >= 2)));
 	}
 }

@@ -45,6 +45,7 @@ import com.liferay.faces.util.render.RendererUtil;
 /**
  * @author  Kyle Stiemann
  */
+
 //J-
 @FacesRenderer(componentFamily = AutoComplete.COMPONENT_FAMILY, rendererType = AutoComplete.RENDERER_TYPE)
 @ResourceDependencies(
@@ -285,6 +286,37 @@ public class AutoCompleteRenderer extends AutoCompleteRendererBase {
 	}
 
 	@Override
+	public String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
+
+		String[] modules = MODULES;
+		AutoComplete autoComplete = (AutoComplete) uiComponent;
+		String clientFilterType = autoComplete.getClientFilterType();
+		String clientCustomFilter = autoComplete.getClientCustomFilter();
+
+		// If the developer has specified client-side built-in filtering and does not have a custom filter, add the
+		// "autocomplete-filters" module.
+		if (!isServerFilteringEnabled(autoComplete) && (clientFilterType != null) && (clientFilterType.length() > 0) &&
+				(clientCustomFilter == null)) {
+			modules = StringHelper.append(modules, AUTOCOMPLETE_FILTERS);
+		}
+
+		String highlighterType = autoComplete.getHighlighterType();
+
+		if (highlighterType != null) {
+			modules = StringHelper.append(modules, AUTOCOMPLETE_HIGHLIGHTERS);
+		}
+
+		Map<String, List<ClientBehavior>> clientBehaviorMap = autoComplete.getClientBehaviors();
+		List<ClientBehavior> valueChangeClientBehaviors = clientBehaviorMap.get(VALUE_CHANGE);
+
+		if ((valueChangeClientBehaviors != null) && !valueChangeClientBehaviors.isEmpty()) {
+			modules = StringHelper.append(modules, NODE_EVENT_SIMULATE);
+		}
+
+		return modules;
+	}
+
+	@Override
 	protected void encodeClientFilterType(ResponseWriter responseWriter, AutoComplete autoComplete,
 		String clientFilterType, boolean first) throws IOException {
 
@@ -392,24 +424,6 @@ public class AutoCompleteRenderer extends AutoCompleteRendererBase {
 		return (List<String>) methodExpression.invoke(elContext, params);
 	}
 
-	protected boolean isServerFilteringEnabled(AutoComplete autoComplete) {
-
-		MethodExpression serverCustomFilter = autoComplete.getServerCustomFilter();
-		String serverFilterType = autoComplete.getServerFilterType();
-		String clientCustomFitler = autoComplete.getClientCustomFilter();
-		String clientFilterType = autoComplete.getClientFilterType();
-
-		return (serverCustomFilter != null) || (serverFilterType != null) ||
-			((clientCustomFitler == null) && (clientFilterType == null));
-	}
-
-	protected boolean isServerFilteringEnabled(UIComponent uiComponent) {
-
-		AutoComplete autoComplete = (AutoComplete) uiComponent;
-
-		return isServerFilteringEnabled(autoComplete);
-	}
-
 	protected boolean isAjaxFiltering(FacesContext facesContext, UIComponent uiComponent) {
 
 		boolean querying = false;
@@ -426,34 +440,21 @@ public class AutoCompleteRenderer extends AutoCompleteRendererBase {
 		return querying;
 	}
 
-	@Override
-	public String[] getModules(FacesContext facesContext, UIComponent uiComponent) {
+	protected boolean isServerFilteringEnabled(AutoComplete autoComplete) {
 
-		String[] modules = MODULES;
-		AutoComplete autoComplete = (AutoComplete) uiComponent;
+		MethodExpression serverCustomFilter = autoComplete.getServerCustomFilter();
+		String serverFilterType = autoComplete.getServerFilterType();
+		String clientCustomFitler = autoComplete.getClientCustomFilter();
 		String clientFilterType = autoComplete.getClientFilterType();
-		String clientCustomFilter = autoComplete.getClientCustomFilter();
 
-		// If the developer has specified client-side built-in filtering and does not have a custom filter, add the
-		// "autocomplete-filters" module.
-		if (!isServerFilteringEnabled(autoComplete) && (clientFilterType != null) && (clientFilterType.length() > 0) &&
-				(clientCustomFilter == null)) {
-			modules = StringHelper.append(modules, AUTOCOMPLETE_FILTERS);
-		}
+		return (serverCustomFilter != null) || (serverFilterType != null) ||
+			((clientCustomFitler == null) && (clientFilterType == null));
+	}
 
-		String highlighterType = autoComplete.getHighlighterType();
+	protected boolean isServerFilteringEnabled(UIComponent uiComponent) {
 
-		if (highlighterType != null) {
-			modules = StringHelper.append(modules, AUTOCOMPLETE_HIGHLIGHTERS);
-		}
+		AutoComplete autoComplete = (AutoComplete) uiComponent;
 
-		Map<String, List<ClientBehavior>> clientBehaviorMap = autoComplete.getClientBehaviors();
-		List<ClientBehavior> valueChangeClientBehaviors = clientBehaviorMap.get(VALUE_CHANGE);
-
-		if ((valueChangeClientBehaviors != null) && !valueChangeClientBehaviors.isEmpty()) {
-			modules = StringHelper.append(modules, NODE_EVENT_SIMULATE);
-		}
-
-		return modules;
+		return isServerFilteringEnabled(autoComplete);
 	}
 }

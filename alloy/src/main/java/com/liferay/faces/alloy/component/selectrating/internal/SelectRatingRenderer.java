@@ -245,6 +245,11 @@ public class SelectRatingRenderer extends SelectRatingRendererBase {
 	}
 
 	@Override
+	public boolean getRendersChildren() {
+		return true;
+	}
+
+	@Override
 	protected void encodeHiddenAttributes(FacesContext facesContext, ResponseWriter responseWriter,
 		SelectRating selectRating, boolean first) throws IOException {
 
@@ -257,10 +262,5 @@ public class SelectRatingRenderer extends SelectRatingRendererBase {
 		// render : true
 		encodeWidgetRender(responseWriter, first);
 
-	}
-
-	@Override
-	public boolean getRendersChildren() {
-		return true;
 	}
 }

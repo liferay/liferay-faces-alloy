@@ -169,6 +169,11 @@ public class ResLibResourceHandler extends ResourceHandlerWrapper {
 	}
 
 	@Override
+	public ResourceHandler getWrapped() {
+		return wrappedResourceHandler;
+	}
+
+	@Override
 	public void handleResourceRequest(FacesContext facesContext) throws IOException {
 
 		if (LIFERAY_PORTAL_DETECTED) {
@@ -311,10 +316,5 @@ public class ResLibResourceHandler extends ResourceHandlerWrapper {
 		}
 
 		return resourceName;
-	}
-
-	@Override
-	public ResourceHandler getWrapped() {
-		return wrappedResourceHandler;
 	}
 }

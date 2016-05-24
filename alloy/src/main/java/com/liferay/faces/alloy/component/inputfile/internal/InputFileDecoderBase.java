@@ -58,25 +58,6 @@ public abstract class InputFileDecoderBase implements InputFileDecoder {
 		uploadedFiles.add(uploadedFile);
 	}
 
-	protected String stripIllegalCharacters(String fileName) {
-
-		// FACES-64: Need to strip out invalid characters.
-		// http://technet.microsoft.com/en-us/library/cc956689.aspx
-		String strippedFileName = fileName;
-
-		if (fileName != null) {
-
-			int pos = fileName.lastIndexOf(".");
-			strippedFileName = fileName.replaceAll("[\\\\/\\[\\]:|<>+;=.?\"]", "-");
-
-			if (pos > 0) {
-				strippedFileName = strippedFileName.substring(0, pos) + "." + strippedFileName.substring(pos + 1);
-			}
-		}
-
-		return strippedFileName;
-	}
-
 	protected MultiPartConfig getFacesServletMultiPartConfig(ExternalContext externalContext) {
 
 		MultiPartConfig facesServletMultiPartConfig = null;
@@ -95,6 +76,23 @@ public abstract class InputFileDecoderBase implements InputFileDecoder {
 		}
 
 		return facesServletMultiPartConfig;
+	}
+
+	protected String getSessionId(ExternalContext externalContext) {
+
+		String sessionId = null;
+
+		try {
+			Object session = externalContext.getSession(true);
+
+			Method getIdMethod = session.getClass().getMethod("getId", new Class[] {});
+			sessionId = (String) getIdMethod.invoke(session, new Object[] {});
+		}
+		catch (Exception e) {
+			logger.error(e);
+		}
+
+		return sessionId;
 	}
 
 	protected String getUploadedFilesFolder(ExternalContext externalContext, String location) {
@@ -118,20 +116,22 @@ public abstract class InputFileDecoderBase implements InputFileDecoder {
 		return uploadedFilesDir;
 	}
 
-	protected String getSessionId(ExternalContext externalContext) {
+	protected String stripIllegalCharacters(String fileName) {
 
-		String sessionId = null;
+		// FACES-64: Need to strip out invalid characters.
+		// http://technet.microsoft.com/en-us/library/cc956689.aspx
+		String strippedFileName = fileName;
 
-		try {
-			Object session = externalContext.getSession(true);
+		if (fileName != null) {
 
-			Method getIdMethod = session.getClass().getMethod("getId", new Class[] {});
-			sessionId = (String) getIdMethod.invoke(session, new Object[] {});
+			int pos = fileName.lastIndexOf(".");
+			strippedFileName = fileName.replaceAll("[\\\\/\\[\\]:|<>+;=.?\"]", "-");
+
+			if (pos > 0) {
+				strippedFileName = strippedFileName.substring(0, pos) + "." + strippedFileName.substring(pos + 1);
+			}
 		}
-		catch (Exception e) {
-			logger.error(e);
-		}
 
-		return sessionId;
+		return strippedFileName;
 	}
 }

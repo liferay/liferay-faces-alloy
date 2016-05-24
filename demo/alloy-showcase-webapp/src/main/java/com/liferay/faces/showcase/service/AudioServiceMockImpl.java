@@ -37,6 +37,11 @@ public class AudioServiceMockImpl implements AudioService, Serializable {
 	// Private Data Members
 	private List<FacesResource> audioList;
 
+	@Override
+	public List<FacesResource> getAllAudios() {
+		return audioList;
+	}
+
 	@PostConstruct
 	public void postConstruct() {
 		audioList = new ArrayList<FacesResource>();
@@ -45,10 +50,5 @@ public class AudioServiceMockImpl implements AudioService, Serializable {
 		audioList.add(new FacesResource("audios", "over-the-rainbow.wav"));
 		audioList.add(new FacesResource("audios", "over-the-rainbow.webm"));
 		audioList.add(new FacesResource("audios", "over-the-rainbow.ogg"));
-	}
-
-	@Override
-	public List<FacesResource> getAllAudios() {
-		return audioList;
 	}
 }

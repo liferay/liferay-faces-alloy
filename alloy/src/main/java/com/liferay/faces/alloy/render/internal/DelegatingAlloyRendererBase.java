@@ -122,14 +122,14 @@ public abstract class DelegatingAlloyRendererBase extends DelegatingClientCompon
 	}
 
 	@Override
-	public void renderScript(FacesContext facesContext, String bufferedScriptString, String[] modules,
-		Script.Type scriptType) {
-		super.renderScript(facesContext, bufferedScriptString, modules, scriptType);
+	public String getClientVarName(FacesContext facesContext, ClientComponent clientComponent) {
+		return super.getClientVarName(facesContext, clientComponent);
 	}
 
 	@Override
-	public String getClientVarName(FacesContext facesContext, ClientComponent clientComponent) {
-		return super.getClientVarName(facesContext, clientComponent);
+	public String getYUIConfig(FacesContext facesContext, ResponseWriter responseWriter, UIComponent uiComponent)
+		throws IOException {
+		return null;
 	}
 
 	@Override
@@ -138,8 +138,8 @@ public abstract class DelegatingAlloyRendererBase extends DelegatingClientCompon
 	}
 
 	@Override
-	public String getYUIConfig(FacesContext facesContext, ResponseWriter responseWriter, UIComponent uiComponent)
-		throws IOException {
-		return null;
+	public void renderScript(FacesContext facesContext, String bufferedScriptString, String[] modules,
+		Script.Type scriptType) {
+		super.renderScript(facesContext, bufferedScriptString, modules, scriptType);
 	}
 }

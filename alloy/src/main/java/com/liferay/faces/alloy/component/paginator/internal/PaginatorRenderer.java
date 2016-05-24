@@ -52,6 +52,7 @@ import com.liferay.faces.util.render.RendererUtil;
 /**
  * @author  Neil Griffin
  */
+
 //J-
 @FacesRenderer(componentFamily = Paginator.COMPONENT_FAMILY, rendererType = Paginator.RENDERER_TYPE)
 @ListenerFor(systemEventClass = PostAddToViewEvent.class, sourceClass = Paginator.class)

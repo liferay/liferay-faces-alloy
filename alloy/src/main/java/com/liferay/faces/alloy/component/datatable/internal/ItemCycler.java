@@ -40,10 +40,6 @@ public class ItemCycler {
 		}
 	}
 
-	public void reset() {
-		nextItemIndex = 0;
-	}
-
 	public String getNextItem() {
 
 		String nextItem = null;
@@ -59,5 +55,9 @@ public class ItemCycler {
 		}
 
 		return nextItem;
+	}
+
+	public void reset() {
+		nextItemIndex = 0;
 	}
 }

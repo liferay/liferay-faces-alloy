@@ -21,6 +21,7 @@ import com.liferay.faces.alloy.component.dataitem.DataItem;
 /**
  * @author  Vernon Singleton
  */
+
 //J-
 @FacesRenderer(componentFamily = DataItem.COMPONENT_FAMILY, rendererType = DataItem.RENDERER_TYPE)
 //J+

@@ -32,6 +32,7 @@ import com.liferay.faces.util.render.HiddenTextResponseWriter;
 /**
  * @author  Neil Griffin
  */
+
 //J-
 @FacesRenderer(componentFamily = InputSourceCode.COMPONENT_FAMILY, rendererType = InputSourceCode.RENDERER_TYPE)
 @ResourceDependencies(
@@ -117,6 +118,14 @@ public class InputSourceCodeRenderer extends InputSourceCodeRendererBase {
 		responseWriter.endElement("div");
 	}
 
+	public ResponseWriter getDelegationResponseWriter(FacesContext facesContext, UIComponent uiComponent) {
+
+		ResponseWriter responseWriter = facesContext.getResponseWriter();
+		String hiddenInputClientId = getHiddenInputClientId(facesContext, uiComponent);
+
+		return new HiddenTextResponseWriter(responseWriter, hiddenInputClientId);
+	}
+
 	@Override
 	protected void encodeHiddenAttributes(FacesContext facesContext, ResponseWriter responseWriter,
 		InputSourceCode inputSourceCode, boolean first) throws IOException {
@@ -134,14 +143,6 @@ public class InputSourceCodeRenderer extends InputSourceCodeRendererBase {
 		char separatorChar = UINamingContainer.getSeparatorChar(facesContext);
 
 		return uiComponent.getClientId(facesContext) + separatorChar + BOUNDING_BOX;
-	}
-
-	public ResponseWriter getDelegationResponseWriter(FacesContext facesContext, UIComponent uiComponent) {
-
-		ResponseWriter responseWriter = facesContext.getResponseWriter();
-		String hiddenInputClientId = getHiddenInputClientId(facesContext, uiComponent);
-
-		return new HiddenTextResponseWriter(responseWriter, hiddenInputClientId);
 	}
 
 	protected String getHiddenInputClientId(FacesContext facesContext, UIComponent uiComponent) {

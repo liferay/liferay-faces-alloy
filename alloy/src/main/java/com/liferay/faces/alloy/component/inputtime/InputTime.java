@@ -40,6 +40,24 @@ public class InputTime extends InputTimeBase {
 	private static final String MIN_MAX_TIME_PATTERN = "HH:mm:ss";
 
 	@Override
+	public String getPattern() {
+
+		String timePattern;
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+		BrowserSniffer browserSniffer = BrowserSnifferFactory.getBrowserSnifferInstance(
+				facesContext.getExternalContext());
+
+		if (browserSniffer.isMobile() && isNativeWhenMobile()) {
+			timePattern = DEFAULT_HTML5_TIME_PATTERN;
+		}
+		else {
+			timePattern = super.getPattern();
+		}
+
+		return timePattern;
+	}
+
+	@Override
 	protected void validateValue(FacesContext facesContext, Object newValue) {
 
 		super.validateValue(facesContext, newValue);
@@ -66,23 +84,5 @@ public class InputTime extends InputTimeBase {
 				throw facesException;
 			}
 		}
-	}
-
-	@Override
-	public String getPattern() {
-
-		String timePattern;
-		FacesContext facesContext = FacesContext.getCurrentInstance();
-		BrowserSniffer browserSniffer = BrowserSnifferFactory.getBrowserSnifferInstance(
-				facesContext.getExternalContext());
-
-		if (browserSniffer.isMobile() && isNativeWhenMobile()) {
-			timePattern = DEFAULT_HTML5_TIME_PATTERN;
-		}
-		else {
-			timePattern = super.getPattern();
-		}
-
-		return timePattern;
 	}
 }

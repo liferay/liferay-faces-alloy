@@ -23,6 +23,7 @@ import com.liferay.faces.alloy.component.button.Button;
 /**
  * @author  Kyle Stiemann
  */
+
 //J-
 @FacesRenderer(componentFamily = Button.COMPONENT_FAMILY, rendererType = Button.RENDERER_TYPE)
 @ResourceDependencies(

@@ -74,17 +74,17 @@ public interface AlloyRenderer extends ClientComponentRenderer {
 
 	public void encodeWidgetRender(ResponseWriter responseWriter, boolean first) throws IOException;
 
-	public void renderScript(FacesContext facesContext, String bufferedScriptString, String[] modules,
-		Script.Type scriptType);
-
 	public String getAlloyClassName(FacesContext facesContext, UIComponent uiComponent);
 
 	public String getClientVarName(FacesContext facesContext, ClientComponent clientComponent);
-
-	public boolean isSandboxed(FacesContext facesContext, UIComponent uiComponent);
 
 	public String[] getModules(FacesContext facesContext, UIComponent uiComponent);
 
 	public String getYUIConfig(FacesContext facesContext, ResponseWriter responseWriter, UIComponent uiComponent)
 		throws IOException;
+
+	public boolean isSandboxed(FacesContext facesContext, UIComponent uiComponent);
+
+	public void renderScript(FacesContext facesContext, String bufferedScriptString, String[] modules,
+		Script.Type scriptType);
 }

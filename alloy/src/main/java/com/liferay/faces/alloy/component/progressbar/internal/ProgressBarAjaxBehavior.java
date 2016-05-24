@@ -51,28 +51,6 @@ public class ProgressBarAjaxBehavior extends AjaxBehaviorWrapper {
 		this.pollingOnerrorExecutableCallback = getExecutableCallback(pollingOnerrorCallback);
 	}
 
-	private String getExecutableCallback(String callback) {
-
-		String executableCallback;
-
-		if (callback == null) {
-			executableCallback = "";
-		}
-
-		// Otherwise if the developer specified function is anonymous, surround it with parentheses and append
-		// "(data)" so that it is executed.
-		else if (callback.startsWith("function(")) {
-			executableCallback = "(".concat(callback).concat(")(data)");
-		}
-
-		// Otherwise, append "(data)" so that the developer specified function is executed.
-		else {
-			executableCallback = callback.concat("(data)");
-		}
-
-		return executableCallback;
-	}
-
 	@Override
 	public Collection<String> getExecute() {
 
@@ -164,5 +142,27 @@ public class ProgressBarAjaxBehavior extends AjaxBehaviorWrapper {
 	@Override
 	public AjaxBehavior getWrapped() {
 		return ajaxBehavior;
+	}
+
+	private String getExecutableCallback(String callback) {
+
+		String executableCallback;
+
+		if (callback == null) {
+			executableCallback = "";
+		}
+
+		// Otherwise if the developer specified function is anonymous, surround it with parentheses and append
+		// "(data)" so that it is executed.
+		else if (callback.startsWith("function(")) {
+			executableCallback = "(".concat(callback).concat(")(data)");
+		}
+
+		// Otherwise, append "(data)" so that the developer specified function is executed.
+		else {
+			executableCallback = callback.concat("(data)");
+		}
+
+		return executableCallback;
 	}
 }

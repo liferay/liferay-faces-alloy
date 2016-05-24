@@ -45,6 +45,7 @@ import com.liferay.faces.util.render.RendererUtil;
  * @author  Neil Griffin
  * @author  Vernon Singleton
  */
+
 //J-
 @FacesRenderer(componentFamily = TabView.COMPONENT_FAMILY, rendererType = TabView.RENDERER_TYPE)
 @ResourceDependencies(
@@ -315,6 +316,11 @@ public class TabViewRenderer extends TabViewRendererBase {
 	}
 
 	@Override
+	public boolean getRendersChildren() {
+		return true;
+	}
+
+	@Override
 	protected void encodeHiddenAttributes(FacesContext facesContext, ResponseWriter responseWriter, TabView tabView,
 		boolean first) throws IOException {
 
@@ -371,10 +377,5 @@ public class TabViewRenderer extends TabViewRendererBase {
 
 		responseWriter.endElement("a");
 		responseWriter.endElement("li");
-	}
-
-	@Override
-	public boolean getRendersChildren() {
-		return true;
 	}
 }

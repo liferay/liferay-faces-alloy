@@ -43,6 +43,11 @@ public class OutputScriptResponseWriter extends ResponseWriterWrapper {
 	}
 
 	@Override
+	public ResponseWriter getWrapped() {
+		return wrappedResponseWriter;
+	}
+
+	@Override
 	public void writeText(Object text, String property) throws IOException {
 
 		if (firstWriteText) {
@@ -51,10 +56,5 @@ public class OutputScriptResponseWriter extends ResponseWriterWrapper {
 		}
 
 		super.writeText(text, property);
-	}
-
-	@Override
-	public ResponseWriter getWrapped() {
-		return wrappedResponseWriter;
 	}
 }

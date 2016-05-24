@@ -39,12 +39,12 @@ public class DataListModelBean {
 		return liferayBenefitService.getLiferayBenefits();
 	}
 
-	public void setLiferayBenefitService(LiferayBenefitService liferayBenefitService) {
-		this.liferayBenefitService = liferayBenefitService;
-	}
-
 	public LiferayBenefit getSelectedLiferayBenefit() {
 		return selectedLiferayBenefit;
+	}
+
+	public void setLiferayBenefitService(LiferayBenefitService liferayBenefitService) {
+		this.liferayBenefitService = liferayBenefitService;
 	}
 
 	public void setSelectedLiferayBenefit(LiferayBenefit selectedLiferayBenefit) {

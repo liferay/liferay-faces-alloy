@@ -27,6 +27,7 @@ import com.liferay.faces.alloy.component.panel.Panel;
  * @author  Bruno Basto
  * @author  Kyle Stiemann
  */
+
 //J-
 @FacesRenderer(componentFamily = Panel.COMPONENT_FAMILY, rendererType = Panel.RENDERER_TYPE)
 //J+
