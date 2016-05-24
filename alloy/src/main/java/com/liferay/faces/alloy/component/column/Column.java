@@ -56,10 +56,6 @@ public class Column extends UIPanel {
 		return cssClass;
 	}
 
-	public void setCssClass(String cssClass) {
-		this.cssClass = cssClass;
-	}
-
 	public Integer getOffset() {
 
 		if (offset == null) {
@@ -73,10 +69,6 @@ public class Column extends UIPanel {
 		return offset;
 	}
 
-	public void setOffset(Integer offset) {
-		this.offset = offset;
-	}
-
 	public Integer getOffsetWidth() {
 
 		if (offsetWidth == null) {
@@ -88,10 +80,6 @@ public class Column extends UIPanel {
 		}
 
 		return offsetWidth;
-	}
-
-	public void setOffsetWidth(Integer offsetWidth) {
-		this.offsetWidth = offsetWidth;
 	}
 
 	@Override
@@ -115,10 +103,6 @@ public class Column extends UIPanel {
 		return span;
 	}
 
-	public void setSpan(Integer span) {
-		this.span = span;
-	}
-
 	public String getStyleClass() {
 
 		if (styleClass == null) {
@@ -136,10 +120,6 @@ public class Column extends UIPanel {
 		return styleClass;
 	}
 
-	public void setStyleClass(String styleClass) {
-		this.styleClass = styleClass;
-	}
-
 	public Integer getWidth() {
 
 		if (width == null) {
@@ -151,6 +131,26 @@ public class Column extends UIPanel {
 		}
 
 		return width;
+	}
+
+	public void setCssClass(String cssClass) {
+		this.cssClass = cssClass;
+	}
+
+	public void setOffset(Integer offset) {
+		this.offset = offset;
+	}
+
+	public void setOffsetWidth(Integer offsetWidth) {
+		this.offsetWidth = offsetWidth;
+	}
+
+	public void setSpan(Integer span) {
+		this.span = span;
+	}
+
+	public void setStyleClass(String styleClass) {
+		this.styleClass = styleClass;
 	}
 
 	public void setWidth(Integer width) {

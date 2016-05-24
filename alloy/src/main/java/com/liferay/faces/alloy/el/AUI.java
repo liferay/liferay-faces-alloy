@@ -59,6 +59,10 @@ public class AUI {
 		return instance;
 	}
 
+	public int getLiferayBuildNumber() {
+		return liferayBuildNumber;
+	}
+
 	public boolean isProvided() {
 
 		if (provided == null) {
@@ -66,9 +70,5 @@ public class AUI {
 		}
 
 		return provided;
-	}
-
-	public int getLiferayBuildNumber() {
-		return liferayBuildNumber;
 	}
 }

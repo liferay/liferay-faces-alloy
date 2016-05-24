@@ -50,30 +50,6 @@ public class Row extends UIPanel {
 		return cssClass;
 	}
 
-	public void setCssClass(String cssClass) {
-		this.cssClass = cssClass;
-	}
-
-	public Boolean isFluid() {
-
-		if (fluid == null) {
-			ValueExpression valueExpression = getValueExpression(FLUID);
-
-			if (valueExpression != null) {
-				fluid = (Boolean) valueExpression.getValue(FacesContext.getCurrentInstance().getELContext());
-			}
-			else {
-				fluid = Boolean.TRUE;
-			}
-		}
-
-		return fluid;
-	}
-
-	public void setFluid(Boolean fluid) {
-		this.fluid = fluid;
-	}
-
 	@Override
 	public String getRendererType() {
 		return RENDERER_TYPE;
@@ -94,6 +70,30 @@ public class Row extends UIPanel {
 		}
 
 		return styleClass;
+	}
+
+	public Boolean isFluid() {
+
+		if (fluid == null) {
+			ValueExpression valueExpression = getValueExpression(FLUID);
+
+			if (valueExpression != null) {
+				fluid = (Boolean) valueExpression.getValue(FacesContext.getCurrentInstance().getELContext());
+			}
+			else {
+				fluid = Boolean.TRUE;
+			}
+		}
+
+		return fluid;
+	}
+
+	public void setCssClass(String cssClass) {
+		this.cssClass = cssClass;
+	}
+
+	public void setFluid(Boolean fluid) {
+		this.fluid = fluid;
 	}
 
 	public void setStyleClass(String styleClass) {

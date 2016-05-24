@@ -33,6 +33,11 @@ public class AUIRowTag extends AUIComponentELTag {
 		return "com.liferay.faces.alloy.AUIRow";
 	}
 
+	@Override
+	public String getRendererType() {
+		return AUIRow.RENDERER_TYPE;
+	}
+
 	public void setFluid(ValueExpression fluid) {
 		this.fluid = fluid;
 	}
@@ -44,10 +49,5 @@ public class AUIRowTag extends AUIComponentELTag {
 		if (fluid != null) {
 			uiComponent.setValueExpression(AUIRow.FLUID, fluid);
 		}
-	}
-
-	@Override
-	public String getRendererType() {
-		return AUIRow.RENDERER_TYPE;
 	}
 }

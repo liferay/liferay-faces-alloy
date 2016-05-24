@@ -50,8 +50,22 @@ public class AUIRow extends AUIPanel implements NamingContainer {
 		return cssClass;
 	}
 
-	public void setCssClass(String cssClass) {
-		this.cssClass = cssClass;
+	@Override
+	public String getRendererType() {
+		return RENDERER_TYPE;
+	}
+
+	public String getStyleClass() {
+
+		if (styleClass == null) {
+			ValueExpression valueExpression = getValueExpression(STYLE_CLASS);
+
+			if (valueExpression != null) {
+				styleClass = (String) valueExpression.getValue(FacesContext.getCurrentInstance().getELContext());
+			}
+		}
+
+		return styleClass;
 	}
 
 	public Boolean isFluid() {
@@ -70,26 +84,12 @@ public class AUIRow extends AUIPanel implements NamingContainer {
 		return fluid;
 	}
 
+	public void setCssClass(String cssClass) {
+		this.cssClass = cssClass;
+	}
+
 	public void setFluid(Boolean fluid) {
 		this.fluid = fluid;
-	}
-
-	@Override
-	public String getRendererType() {
-		return RENDERER_TYPE;
-	}
-
-	public String getStyleClass() {
-
-		if (styleClass == null) {
-			ValueExpression valueExpression = getValueExpression(STYLE_CLASS);
-
-			if (valueExpression != null) {
-				styleClass = (String) valueExpression.getValue(FacesContext.getCurrentInstance().getELContext());
-			}
-		}
-
-		return styleClass;
 	}
 
 	public void setStyleClass(String styleClass) {

@@ -38,6 +38,11 @@ public class AUIColTag extends AUIComponentELTag {
 		return "com.liferay.faces.alloy.AUICol";
 	}
 
+	@Override
+	public String getRendererType() {
+		return AUICol.RENDERER_TYPE;
+	}
+
 	public void setFirst(ValueExpression first) {
 		this.first = first;
 	}
@@ -52,6 +57,14 @@ public class AUIColTag extends AUIComponentELTag {
 
 	public void setOffsetWidth(ValueExpression offsetWidth) {
 		this.offsetWidth = offsetWidth;
+	}
+
+	public void setSpan(ValueExpression span) {
+		this.span = span;
+	}
+
+	public void setWidth(ValueExpression width) {
+		this.width = width;
 	}
 
 	@Override
@@ -82,18 +95,5 @@ public class AUIColTag extends AUIComponentELTag {
 		if (width != null) {
 			uiComponent.setValueExpression(AUICol.WIDTH, width);
 		}
-	}
-
-	@Override
-	public String getRendererType() {
-		return AUICol.RENDERER_TYPE;
-	}
-
-	public void setSpan(ValueExpression span) {
-		this.span = span;
-	}
-
-	public void setWidth(ValueExpression width) {
-		this.width = width;
 	}
 }

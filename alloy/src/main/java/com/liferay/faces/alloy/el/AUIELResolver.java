@@ -54,23 +54,6 @@ public class AUIELResolver extends ELResolver {
 		FEATURE_DESCRIPTORS.add(featureDescriptor);
 	}
 
-	protected Object resolveProperty(ELContext elContext, Object base, String property) {
-		return null;
-	}
-
-	protected Object resolveVariable(ELContext elContext, String varName) {
-		Object value = null;
-
-		if (varName != null) {
-
-			if (varName.equals(VAR_NAME_AUI)) {
-				value = AUI.getInstance();
-			}
-		}
-
-		return value;
-	}
-
 	@Override
 	public Class<?> getCommonPropertyType(ELContext elContext, Object base) {
 		Class<?> commonPropertyType = null;
@@ -133,6 +116,11 @@ public class AUIELResolver extends ELResolver {
 	}
 
 	@Override
+	public boolean isReadOnly(ELContext elContext, Object base, Object property) {
+		return true;
+	}
+
+	@Override
 	public void setValue(ELContext elContext, Object base, Object property, Object value) {
 
 		if (elContext == null) {
@@ -142,9 +130,21 @@ public class AUIELResolver extends ELResolver {
 		}
 	}
 
-	@Override
-	public boolean isReadOnly(ELContext elContext, Object base, Object property) {
-		return true;
+	protected Object resolveProperty(ELContext elContext, Object base, String property) {
+		return null;
+	}
+
+	protected Object resolveVariable(ELContext elContext, String varName) {
+		Object value = null;
+
+		if (varName != null) {
+
+			if (varName.equals(VAR_NAME_AUI)) {
+				value = AUI.getInstance();
+			}
+		}
+
+		return value;
 	}
 
 }

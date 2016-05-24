@@ -30,6 +30,10 @@ public abstract class ScriptRendererCompat extends Renderer {
 		// Unsupported for JSF 1.2 due to the lack of FacesRequestContext
 	}
 
+	protected boolean isAjaxRequest(FacesContext facesContext) {
+		return false; // Ajax not supported with JSF 1.2
+	}
+
 	protected boolean isBottomOfPageSupported() {
 
 		// Unsupported for JSF 1.2 due to the lack of FacesRequestContext
@@ -40,9 +44,5 @@ public abstract class ScriptRendererCompat extends Renderer {
 
 		// Must always be inline for JSF 1.2 due to the lack of FacesRequestContext
 		return true;
-	}
-
-	protected boolean isAjaxRequest(FacesContext facesContext) {
-		return false; // Ajax not supported with JSF 1.2
 	}
 }

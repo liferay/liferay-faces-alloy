@@ -26,6 +26,14 @@ public abstract class AUIComponentELTag extends UIComponentELTag {
 	private javax.el.ValueExpression cssClass;
 	private javax.el.ValueExpression styleClass;
 
+	public javax.el.ValueExpression getCssClass() {
+		return cssClass;
+	}
+
+	public javax.el.ValueExpression getStyleClass() {
+		return styleClass;
+	}
+
 	@Override
 	public void release() {
 		super.release();
@@ -33,12 +41,12 @@ public abstract class AUIComponentELTag extends UIComponentELTag {
 		this.styleClass = null;
 	}
 
-	public javax.el.ValueExpression getCssClass() {
-		return cssClass;
-	}
-
 	public void setCssClass(javax.el.ValueExpression cssClass) {
 		this.cssClass = cssClass;
+	}
+
+	public void setStyleClass(javax.el.ValueExpression styleClass) {
+		this.styleClass = styleClass;
 	}
 
 	@Override
@@ -52,14 +60,6 @@ public abstract class AUIComponentELTag extends UIComponentELTag {
 		if (styleClass != null) {
 			uiComponent.setValueExpression("styleClass", styleClass);
 		}
-	}
-
-	public javax.el.ValueExpression getStyleClass() {
-		return styleClass;
-	}
-
-	public void setStyleClass(javax.el.ValueExpression styleClass) {
-		this.styleClass = styleClass;
 	}
 
 }

@@ -60,18 +60,6 @@ public class AUICol extends AUIPanel implements NamingContainer {
 		return cssClass;
 	}
 
-	public void setCssClass(String cssClass) {
-		this.cssClass = cssClass;
-	}
-
-	public void setFirst(Boolean first) {
-		this.first = first;
-	}
-
-	public void setLast(Boolean last) {
-		this.last = last;
-	}
-
 	public Integer getOffset() {
 
 		if (offset == null) {
@@ -85,10 +73,6 @@ public class AUICol extends AUIPanel implements NamingContainer {
 		return offset;
 	}
 
-	public void setOffset(Integer offset) {
-		this.offset = offset;
-	}
-
 	public Integer getOffsetWidth() {
 
 		if (offsetWidth == null) {
@@ -100,10 +84,6 @@ public class AUICol extends AUIPanel implements NamingContainer {
 		}
 
 		return offsetWidth;
-	}
-
-	public void setOffsetWidth(Integer offsetWidth) {
-		this.offsetWidth = offsetWidth;
 	}
 
 	@Override
@@ -127,10 +107,6 @@ public class AUICol extends AUIPanel implements NamingContainer {
 		return span;
 	}
 
-	public void setSpan(Integer span) {
-		this.span = span;
-	}
-
 	public String getStyleClass() {
 
 		if (styleClass == null) {
@@ -144,8 +120,17 @@ public class AUICol extends AUIPanel implements NamingContainer {
 		return styleClass;
 	}
 
-	public void setStyleClass(String styleClass) {
-		this.styleClass = styleClass;
+	public Integer getWidth() {
+
+		if (width == null) {
+			ValueExpression valueExpression = getValueExpression(WIDTH);
+
+			if (valueExpression != null) {
+				width = (Integer) valueExpression.getValue(FacesContext.getCurrentInstance().getELContext());
+			}
+		}
+
+		return width;
 	}
 
 	public Boolean isFirst() {
@@ -180,17 +165,32 @@ public class AUICol extends AUIPanel implements NamingContainer {
 		return last;
 	}
 
-	public Integer getWidth() {
+	public void setCssClass(String cssClass) {
+		this.cssClass = cssClass;
+	}
 
-		if (width == null) {
-			ValueExpression valueExpression = getValueExpression(WIDTH);
+	public void setFirst(Boolean first) {
+		this.first = first;
+	}
 
-			if (valueExpression != null) {
-				width = (Integer) valueExpression.getValue(FacesContext.getCurrentInstance().getELContext());
-			}
-		}
+	public void setLast(Boolean last) {
+		this.last = last;
+	}
 
-		return width;
+	public void setOffset(Integer offset) {
+		this.offset = offset;
+	}
+
+	public void setOffsetWidth(Integer offsetWidth) {
+		this.offsetWidth = offsetWidth;
+	}
+
+	public void setSpan(Integer span) {
+		this.span = span;
+	}
+
+	public void setStyleClass(String styleClass) {
+		this.styleClass = styleClass;
 	}
 
 	public void setWidth(Integer width) {

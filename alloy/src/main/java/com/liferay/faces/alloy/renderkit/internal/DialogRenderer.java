@@ -113,6 +113,11 @@ public class DialogRenderer extends Renderer {
 		responseWriter.endElement("script");
 	}
 
+	@Override
+	public boolean getRendersChildren() {
+		return true;
+	}
+
 	protected void writeBooleanAttribute(ResponseWriter responseWriter, Map<String, Object> attributes, String name,
 		boolean defaultValue, boolean lastAttribute) throws IOException {
 		String value = Boolean.toString(BooleanHelper.toBoolean(attributes.get(name), defaultValue));
@@ -146,11 +151,6 @@ public class DialogRenderer extends Renderer {
 		String defaultValue, boolean lastAttribute, boolean quote) throws IOException {
 		String value = StringHelper.toString(attributes.get(name), defaultValue);
 		writeStringAttribute(responseWriter, name, value, lastAttribute, quote);
-	}
-
-	@Override
-	public boolean getRendersChildren() {
-		return true;
 	}
 
 }

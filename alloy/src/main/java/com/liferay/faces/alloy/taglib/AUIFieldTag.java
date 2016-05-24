@@ -24,18 +24,23 @@ public class AUIFieldTag extends AUIComponentELTag {
 	private javax.el.ValueExpression label;
 
 	@Override
-	public void release() {
-		super.release();
-		this.label = null;
-	}
-
-	@Override
 	public String getComponentType() {
 		return "com.liferay.faces.alloy.AUIField";
 	}
 
 	public javax.el.ValueExpression getLabel() {
 		return label;
+	}
+
+	@Override
+	public String getRendererType() {
+		return "com.liferay.faces.alloy.renderkit.internal.FieldRenderer";
+	}
+
+	@Override
+	public void release() {
+		super.release();
+		this.label = null;
 	}
 
 	public void setLabel(javax.el.ValueExpression label) {
@@ -46,11 +51,6 @@ public class AUIFieldTag extends AUIComponentELTag {
 	protected void setProperties(UIComponent uiComponent) {
 		super.setProperties(uiComponent);
 		uiComponent.setValueExpression("label", label);
-	}
-
-	@Override
-	public String getRendererType() {
-		return "com.liferay.faces.alloy.renderkit.internal.FieldRenderer";
 	}
 
 }

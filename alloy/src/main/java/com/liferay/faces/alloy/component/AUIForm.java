@@ -92,6 +92,10 @@ public class AUIForm extends UIForm {
 			return value;
 		}
 
+		public boolean isEmpty() {
+			return wrappedAttributes.isEmpty();
+		}
+
 		public Set<String> keySet() {
 			return wrappedAttributes.keySet();
 		}
@@ -114,10 +118,6 @@ public class AUIForm extends UIForm {
 
 		public Collection<Object> values() {
 			return wrappedAttributes.values();
-		}
-
-		public boolean isEmpty() {
-			return wrappedAttributes.isEmpty();
 		}
 	}
 }

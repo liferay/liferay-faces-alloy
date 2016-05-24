@@ -34,6 +34,11 @@ public class SanitizingResponseWriter extends ResponseWriterWrapper {
 	}
 
 	@Override
+	public ResponseWriter getWrapped() {
+		return wrappedResponseWriter;
+	}
+
+	@Override
 	public void write(char[] cbuf, int off, int len) throws IOException {
 
 		if (cbuf != null) {
@@ -75,11 +80,6 @@ public class SanitizingResponseWriter extends ResponseWriterWrapper {
 
 //      System.err.println("!@#$ sanitize after=[" + sanitizedValue + "]");
 		return sanitizedValue;
-	}
-
-	@Override
-	public ResponseWriter getWrapped() {
-		return wrappedResponseWriter;
 	}
 
 }
