@@ -21,8 +21,7 @@ import com.liferay.faces.alloy.component.link.LinkBase;
 import com.liferay.faces.util.logging.Logger;
 import com.liferay.faces.util.logging.LoggerFactory;
 import com.liferay.faces.util.product.Product;
-import com.liferay.faces.util.product.ProductConstants;
-import com.liferay.faces.util.product.ProductMap;
+import com.liferay.faces.util.product.ProductFactory;
 
 
 /**
@@ -36,7 +35,7 @@ public abstract class SplitButtonCompat extends LinkBase {
 	private static final Logger logger = LoggerFactory.getLogger(SplitButtonCompat.class);
 
 	// Private Constants
-	private static final Product JSF = ProductMap.getInstance().get(ProductConstants.JSF);
+	private static final Product JSF = ProductFactory.getProduct(Product.Name.JSF);
 
 	// Private Data Members
 	private boolean disableClientWindow;
