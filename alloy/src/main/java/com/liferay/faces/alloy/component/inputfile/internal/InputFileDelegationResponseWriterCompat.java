@@ -19,8 +19,7 @@ import javax.faces.context.ResponseWriter;
 import javax.faces.context.ResponseWriterWrapper;
 
 import com.liferay.faces.util.product.Product;
-import com.liferay.faces.util.product.ProductConstants;
-import com.liferay.faces.util.product.ProductMap;
+import com.liferay.faces.util.product.ProductFactory;
 
 
 /**
@@ -31,7 +30,7 @@ import com.liferay.faces.util.product.ProductMap;
 public abstract class InputFileDelegationResponseWriterCompat extends ResponseWriterWrapper {
 
 	// Private Constants
-	private static final Product JSF = ProductMap.getInstance().get(ProductConstants.JSF);
+	private static final Product JSF = ProductFactory.getProduct(Product.Name.JSF);
 
 	// Private Members
 	private ResponseWriter wrappedResponseWriter;

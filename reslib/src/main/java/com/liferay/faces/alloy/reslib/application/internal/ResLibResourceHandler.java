@@ -34,8 +34,8 @@ import com.liferay.faces.util.HttpHeaders;
 import com.liferay.faces.util.config.ApplicationConfig;
 import com.liferay.faces.util.config.ConfiguredServletMapping;
 import com.liferay.faces.util.config.FacesConfig;
-import com.liferay.faces.util.product.ProductConstants;
-import com.liferay.faces.util.product.ProductMap;
+import com.liferay.faces.util.product.Product;
+import com.liferay.faces.util.product.ProductFactory;
 
 
 /**
@@ -51,7 +51,7 @@ public class ResLibResourceHandler extends ResourceHandlerWrapper {
 
 	// Private Constants
 	private static final String LIFERAY_JS = "liferay.js";
-	private static final boolean LIFERAY_PORTAL_DETECTED = ProductMap.getInstance().get(ProductConstants.LIFERAY_PORTAL)
+	private static final boolean LIFERAY_PORTAL_DETECTED = ProductFactory.getProduct(Product.Name.LIFERAY_PORTAL)
 		.isDetected();
 	private static final String MINIFIER_TYPE = "minifierType";
 	private static final Set<String> PROTECTED_PARAMTERS;

@@ -24,8 +24,7 @@ import javax.servlet.http.HttpSession;
 import com.liferay.faces.alloy.component.inputfile.InputFile;
 import com.liferay.faces.alloy.render.internal.DelegatingAlloyRendererBase;
 import com.liferay.faces.util.product.Product;
-import com.liferay.faces.util.product.ProductConstants;
-import com.liferay.faces.util.product.ProductMap;
+import com.liferay.faces.util.product.ProductFactory;
 
 
 /**
@@ -36,7 +35,7 @@ import com.liferay.faces.util.product.ProductMap;
 public abstract class InputFileRendererCompat extends DelegatingAlloyRendererBase {
 
 	// Private Constants
-	private static final Product JSF = ProductMap.getInstance().get(ProductConstants.JSF);
+	private static final Product JSF = ProductFactory.getProduct(Product.Name.JSF);
 
 	@Override
 	public String getDelegateComponentFamily() {

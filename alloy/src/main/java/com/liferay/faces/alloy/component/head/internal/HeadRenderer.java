@@ -26,9 +26,8 @@ import javax.faces.context.ResponseWriter;
 import javax.faces.render.FacesRenderer;
 
 import com.liferay.faces.alloy.component.head.Head;
-import com.liferay.faces.util.factory.FactoryExtensionFinder;
-import com.liferay.faces.util.product.ProductConstants;
-import com.liferay.faces.util.product.ProductMap;
+import com.liferay.faces.util.product.Product;
+import com.liferay.faces.util.product.ProductFactory;
 
 
 /**
@@ -50,7 +49,7 @@ import com.liferay.faces.util.product.ProductMap;
 public class HeadRenderer extends HeadRendererBase {
 
 	// Private Constants
-	private static final boolean LIFERAY_PORTAL_DETECTED = ProductMap.getInstance().get(ProductConstants.LIFERAY_PORTAL)
+	private static final boolean LIFERAY_PORTAL_DETECTED = ProductFactory.getProduct(Product.Name.LIFERAY_PORTAL)
 		.isDetected();
 
 	@Override
