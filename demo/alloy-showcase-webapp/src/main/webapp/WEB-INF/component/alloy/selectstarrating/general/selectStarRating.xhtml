@@ -6,7 +6,7 @@
 		<alloy:form>
 			<showcase:example renderedCheckbox="true" requiredCheckbox="true">
 				<alloy:field label="#{i18n['rating']}">
-					<alloy:selectStarRating id="starRating" rendered="#{showcaseModelBean.selectedComponent.rendered}"
+					<alloy:selectStarRating id="selectStarRating" rendered="#{showcaseModelBean.selectedComponent.rendered}"
 						required="#{showcaseModelBean.selectedComponent.required}"
 						value="#{selectStarRatingModelBean.favoriteId}">
 						<f:selectItem itemLabel="Compatible" itemValue="1" />
@@ -15,7 +15,7 @@
 						<f:selectItem itemLabel="Lightweight" itemValue="4" />
 						<f:selectItem itemLabel="Open Source" itemValue="5" />
 					</alloy:selectStarRating>
-					<alloy:message for="starRating" />
+					<alloy:message for="selectStarRating" />
 				</alloy:field>
 				<hr />
 				<alloy:commandButton action="#{selectStarRatingBackingBean.submit}" render="@form"

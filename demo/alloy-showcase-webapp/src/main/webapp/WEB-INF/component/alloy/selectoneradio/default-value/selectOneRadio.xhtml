@@ -6,7 +6,7 @@
 		<alloy:form>
 			<showcase:example>
 				<alloy:outputLabel value="#{i18n['favorite-liferay-benefit']}" />
-				<alloy:selectOneRadio value="#{selectOneModelBean.benefitId}">
+				<alloy:selectOneRadio id="selectOneRadio" value="#{selectOneModelBean.benefitId}">
 					<f:converter converterId="javax.faces.Long" />
 					<f:selectItem itemLabel="Compatible" itemValue="1" />
 					<f:selectItem itemLabel="Enterprise Ready" itemValue="2" />

@@ -7,7 +7,7 @@
 			<showcase:example description="#{i18n['conversion-to-a-date-using-f-convertdatetime']}">
 				<alloy:outputLabel value="#{i18n['which-of-the-following-dates-are-in-the-18th-century']}" />
 				<alloy:messages globalOnly="true" styleClass="feedback" />
-				<alloy:selectManyCheckbox value="#{selectManyModelBean.dates}">
+				<alloy:selectManyCheckbox id="selectManyCheckbox" value="#{selectManyModelBean.dates}">
 					<f:convertDateTime pattern="MM/dd/yyyy G" />
 					<f:selectItem itemLabel="April 5, 33 AD" itemValue="04/05/0033 AD" />
 					<f:selectItem itemLabel="October 31, 1517 AD" itemValue="10/31/1517 AD" />
@@ -19,12 +19,13 @@
 					value="#{i18n['submit']}" />
 			</showcase:example>
 			<showcase:results label="#{i18n['model-value']}">
-				<ui:repeat id="modelValue" value="#{selectManyModelBean.dates}" var="date">
-					<alloy:outputText value="#{date}">
-						<f:convertDateTime pattern="MMM d, yyyy G" />
-					</alloy:outputText>
-					<br />
-				</ui:repeat>
+				<alloy:panelGroup id="modelValue">
+					<ui:repeat value="#{selectManyModelBean.dates}" var="date">
+						<alloy:outputText value="#{date}">
+							<f:convertDateTime pattern="MMM d, yyyy G" />
+						</alloy:outputText><br />
+					</ui:repeat>
+				</alloy:panelGroup>
 			</showcase:results>
 		</alloy:form>
 	</ui:define>

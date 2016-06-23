@@ -6,7 +6,7 @@
 		<alloy:form>
 			<showcase:example>
 				<alloy:outputLabel value="#{i18n['favorite-liferay-benefit']}" />
-				<alloy:selectOneMenu value="#{selectOneModelBean.favoriteId}">
+				<alloy:selectOneMenu id="selectOneMenu" value="#{selectOneModelBean.favoriteId}">
 					<f:selectItems value="#{selectOneModelBean.liferayBenefits}" var="benefit" itemValue="#{benefit.id}"
 						itemLabel="#{benefit.label}" />
 				</alloy:selectOneMenu>

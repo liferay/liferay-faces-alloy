@@ -5,13 +5,13 @@
 	<ui:define name="col1">
 		<alloy:form>
 			<showcase:example>
-				<alloy:selectBooleanCheckbox value="#{selectBooleanCheckboxModelBean.agree}">
+				<alloy:selectBooleanCheckbox id="checkbox" value="#{selectBooleanCheckboxModelBean.agree}">
 					<f:ajax render="@form" />
 				</alloy:selectBooleanCheckbox>
 				<alloy:outputText value="#{i18n['i-agree-to-the-terms-of-the-license-agreement']}" />
 			</showcase:example>
 			<showcase:results label="#{i18n['model-value']}">
-				<alloy:outputText value="#{selectBooleanCheckboxModelBean.agree}" />
+				<alloy:outputText id="modelValue" value="#{selectBooleanCheckboxModelBean.agree}" />
 			</showcase:results>
 		</alloy:form>
 	</ui:define>

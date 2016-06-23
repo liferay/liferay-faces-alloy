@@ -5,8 +5,8 @@
 	<ui:define name="col1">
 		<alloy:form>
 			<showcase:example>
-				<alloy:outputLabel for="thumbRating" value="#{i18n['rating']}" />
-				<alloy:selectThumbRating id="thumbRating" value="#{selectThumbRatingModelBean.like}">
+				<alloy:outputLabel for="selectThumbRating" value="#{i18n['rating']}" />
+				<alloy:selectThumbRating id="selectThumbRating" value="#{selectThumbRatingModelBean.like}">
 					<f:selectItem itemLabel="#{i18n['like']}" itemValue="true" />
 					<f:selectItem itemLabel="#{i18n['dislike']}" itemValue="false" />
 					<f:ajax render="@form" />
