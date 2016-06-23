@@ -5,8 +5,8 @@
 	<ui:define name="col1">
 		<alloy:form>
 			<showcase:example>
-				<alloy:outputLabel for="starRating" value="#{i18n['rating']}" />
-				<alloy:selectStarRating id="starRating" value="#{selectStarRatingModelBean.benefitId}"
+				<alloy:outputLabel for="selectStarRating" value="#{i18n['rating']}" />
+				<alloy:selectStarRating id="selectStarRating" value="#{selectStarRatingModelBean.benefitId}"
 					label="#{i18n['rating']}:">
 					<f:converter converterId="javax.faces.Long" />
 					<f:selectItem itemLabel="Compatible" itemValue="1" />

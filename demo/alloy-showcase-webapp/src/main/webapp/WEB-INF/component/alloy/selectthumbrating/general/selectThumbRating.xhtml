@@ -6,13 +6,13 @@
 		<alloy:form>
 			<showcase:example requiredCheckbox="true" renderedCheckbox="true">
 				<alloy:field label="#{i18n['rating']}">
-					<alloy:selectThumbRating id="thumbRating" rendered="#{showcaseModelBean.selectedComponent.rendered}"
+					<alloy:selectThumbRating id="selectThumbRating" rendered="#{showcaseModelBean.selectedComponent.rendered}"
 						required="#{showcaseModelBean.selectedComponent.required}"
 						value="#{selectThumbRatingModelBean.like}">
 						<f:selectItem itemLabel="#{i18n['like']}" itemValue="true" />
 						<f:selectItem itemLabel="#{i18n['dislike']}" itemValue="false" />
 					</alloy:selectThumbRating>
-					<alloy:message for="thumbRating" />
+					<alloy:message for="selectThumbRating" />
 				</alloy:field>
 				<hr />
 				<alloy:commandButton render="@form" value="#{i18n['submit']}" />

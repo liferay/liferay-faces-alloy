@@ -14,10 +14,8 @@
 						<alloy:message for="hidden1" />
 					</alloy:field>
 				</showcase:container>
-				<alloy:button onclick="document.getElementById('#{inputHidden1.clientId}').value=this.value;"
-					value="#{inputHiddenModelBean.testDate1}">
-					<alloy:outputText value="#{i18n['copy-a-date-to-the-value-of-the-hidden-input']}" />
-				</alloy:button>
+				<alloy:button onclick="document.getElementById('#{inputHidden1.clientId}').value='#{inputHiddenModelBean.testDate1}';"
+					value="#{i18n['copy-a-date-to-the-value-of-the-hidden-input']}" />
 				<alloy:button onclick="document.getElementById('#{inputHidden1.clientId}').value='';"
 					value="#{i18n['clear-the-value-of-the-hidden-input']}" />
 				<hr />
@@ -46,10 +44,8 @@
 						<alloy:message for="hidden2" />
 					</alloy:field>
 				</showcase:container>
-				<alloy:button onclick="document.getElementById('#{inputHidden2.clientId}').value=this.value;"
-					value="#{inputHiddenModelBean.testDate2}">
-					<alloy:outputText value="#{i18n['copy-a-date-to-the-value-of-the-hidden-input']}" />
-				</alloy:button>
+				<alloy:button onclick="document.getElementById('#{inputHidden2.clientId}').value='#{inputHiddenModelBean.testDate2}';"
+					value="#{i18n['copy-a-date-to-the-value-of-the-hidden-input']}" />
 				<alloy:button onclick="document.getElementById('#{inputHidden2.clientId}').value='';"
 					value="#{i18n['clear-the-value-of-the-hidden-input']}" />
 				<hr />

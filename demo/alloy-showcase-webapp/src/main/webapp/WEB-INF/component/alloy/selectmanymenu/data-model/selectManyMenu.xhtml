@@ -6,7 +6,7 @@
 		<alloy:form>
 			<showcase:example>
 				<alloy:outputLabel value="#{i18n['favorite-liferay-benefit']}" />
-				<alloy:selectManyMenu value="#{selectManyModelBean.favoriteIds}">
+				<alloy:selectManyMenu id="selectManyMenu" value="#{selectManyModelBean.favoriteIds}">
 					<f:selectItems value="#{selectManyModelBean.liferayBenefits}" var="benefit"
 						itemValue="#{benefit.id}"
 						itemLabel="#{benefit.label}" />
@@ -19,10 +19,11 @@
 					value="#{i18n['submit']}" />
 			</showcase:example>
 			<showcase:results label="#{i18n['model-value']}">
-				<ui:repeat id="modelValue" value="#{selectManyModelBean.favoriteIds}" var="favoriteId">
-					<alloy:outputText value="#{favoriteId}" />
-					<br />
-				</ui:repeat>
+				<alloy:panelGroup id="modelValue">
+					<ui:repeat value="#{selectManyModelBean.favoriteIds}" var="favoriteId">
+						<alloy:outputText value="#{favoriteId}" /><br />
+					</ui:repeat>
+				</alloy:panelGroup>
 			</showcase:results>
 		</alloy:form>
 	</ui:define>

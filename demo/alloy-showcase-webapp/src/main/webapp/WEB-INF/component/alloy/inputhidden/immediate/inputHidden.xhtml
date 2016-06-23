@@ -22,6 +22,9 @@
 				<alloy:commandButton action="#{inputHiddenBackingBean.submit}" render="@form"
 					value="#{i18n['submit']}" />
 			</showcase:example>
+			<showcase:results label="#{i18n['model-value']}">
+				<alloy:outputText id="modelValue" value="#{inputHiddenModelBean.text}" />
+			</showcase:results>
 		</alloy:form>
 	</ui:define>
 
@@ -44,6 +47,9 @@
 				<alloy:commandButton action="#{inputHiddenBackingBean.submit}" render="@form"
 					value="#{i18n['submit']}" />
 			</showcase:example>
+			<showcase:results label="#{i18n['model-value']}">
+				<alloy:outputText id="modelValue" value="#{inputHiddenModelBean.text}" />
+			</showcase:results>
 		</alloy:form>
 	</ui:define>
 

@@ -8,7 +8,7 @@
 			<showcase:example description="#{i18n['valuechangelistener-execution-when-immediate-is-true']}" number="1">
 				<alloy:outputLabel value="#{i18n['favorite-liferay-benefit']}" />
 				<alloy:messages globalOnly="true" styleClass="feedback" />
-				<alloy:selectManyListbox immediate="true" value="#{selectManyModelBean.favoriteIds}"
+				<alloy:selectManyListbox id="selectManyListbox" immediate="true" value="#{selectManyModelBean.favoriteIds}"
 					valueChangeListener="#{selectManyBackingBean.valueChangeListener}">
 					<f:selectItem itemLabel="Compatible" itemValue="1" />
 					<f:selectItem itemLabel="Enterprise Ready" itemValue="2" />
@@ -20,10 +20,11 @@
 				<alloy:commandButton render="@form" value="#{i18n['submit']}" />
 			</showcase:example>
 			<showcase:results label="#{i18n['model-value']}">
-				<ui:repeat id="modelValue" value="#{selectManyModelBean.favoriteIds}" var="favoriteId">
-					<alloy:outputText value="#{favoriteId}" />
-					<br />
-				</ui:repeat>
+				<alloy:panelGroup id="modelValue">
+					<ui:repeat value="#{selectManyModelBean.favoriteIds}" var="favoriteId">
+						<alloy:outputText value="#{favoriteId}" /><br />
+					</ui:repeat>
+				</alloy:panelGroup>
 			</showcase:results>
 		</alloy:form>
 	</ui:define>
@@ -34,7 +35,7 @@
 			<showcase:example description="#{i18n['valuechangelistener-execution-when-immediate-is-false']}" number="2">
 				<alloy:outputLabel value="#{i18n['favorite-liferay-benefit']}" />
 				<alloy:messages globalOnly="true" styleClass="feedback" />
-				<alloy:selectManyListbox value="#{selectManyModelBean.favoriteIds}"
+				<alloy:selectManyListbox id="selectManyListbox" value="#{selectManyModelBean.favoriteIds}"
 					valueChangeListener="#{selectManyBackingBean.valueChangeListener}">
 					<f:selectItem itemLabel="Compatible" itemValue="1" />
 					<f:selectItem itemLabel="Enterprise Ready" itemValue="2" />
@@ -46,10 +47,11 @@
 				<alloy:commandButton render="@form" value="#{i18n['submit']}" />
 			</showcase:example>
 			<showcase:results label="#{i18n['model-value']}">
-				<ui:repeat id="modelValue" value="#{selectManyModelBean.favoriteIds}" var="favoriteId">
-					<alloy:outputText value="#{favoriteId}" />
-					<br />
-				</ui:repeat>
+				<alloy:panelGroup id="modelValue">
+					<ui:repeat value="#{selectManyModelBean.favoriteIds}" var="favoriteId">
+						<alloy:outputText value="#{favoriteId}" /><br />
+					</ui:repeat>
+				</alloy:panelGroup>
 			</showcase:results>
 		</alloy:form>
 	</ui:define>
