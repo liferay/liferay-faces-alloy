@@ -5,12 +5,11 @@
 		<showcase:example styleClass="editableAceEditor">
 			<alloy:outputLabel for="inputSourceCode" value="#{i18n['source-code']}" />
 			<alloy:inputSourceCode id="inputSourceCode" height="100" mode="xml"
-				rendered="#{showcaseModelBean.selectedComponent.rendered}"
 				required="#{showcaseModelBean.selectedComponent.required}" width="100%"
 				value="#{inputSourceCodeModelBean.sourceText}" />
-			<alloy:message for="inputSourceCode" />
+			<alloy:message id="message" for="inputSourceCode" />
 			<hr />
-			<alloy:commandButton action="#{inputSourceCodeBackingBean.submit}" render="@form"
+			<alloy:commandButton action="#{inputSourceCodeBackingBean.submit}" render="modelValue message"
 				value="#{i18n['submit']}" />
 		</showcase:example>
 		<showcase:results label="#{i18n['model-value']}">
