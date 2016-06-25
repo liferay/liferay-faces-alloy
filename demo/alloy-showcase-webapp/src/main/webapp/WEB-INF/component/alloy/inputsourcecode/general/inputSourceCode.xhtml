@@ -4,21 +4,21 @@
 
 	<alloy:form>
 		<showcase:example renderedCheckbox="true" requiredCheckbox="true" styleClass="editableAceEditor">
-			<alloy:selectOneMenu value="#{inputSourceCodeModelBean.mode}">
+			<alloy:selectOneMenu
+				onchange="Liferay.component('inputSourceCode').set('mode', this.options[this.selectedIndex].value)">
 				<f:selectItem itemLabel="Java" itemValue="java" />
 				<f:selectItem itemLabel="JSON" itemValue="json" />
 				<f:selectItem itemLabel="XML" itemValue="xml" />
-				<f:ajax render="componentField modelValue" />
 			</alloy:selectOneMenu>
 			<alloy:field id="componentField" label="#{i18n['source-code']}">
-				<alloy:inputSourceCode id="inputSourceCode" height="100" maxLines="15" mode="#{inputSourceCodeModelBean.mode}"
-					rendered="#{showcaseModelBean.selectedComponent.rendered}"
+				<alloy:inputSourceCode id="inputSourceCode" clientKey="inputSourceCode" height="100" maxLines="15"
+					mode="java" rendered="#{showcaseModelBean.selectedComponent.rendered}"
 					required="#{showcaseModelBean.selectedComponent.required}" width="100%"
 					value="#{inputSourceCodeModelBean.sourceCode}" />
-				<alloy:message for="inputSourceCode" />
+				<alloy:message id="message" for="inputSourceCode" />
 			</alloy:field>
 			<hr />
-			<alloy:commandButton action="#{inputSourceCodeBackingBean.submit}" render="@form"
+			<alloy:commandButton action="#{inputSourceCodeBackingBean.submit}" render="modelValue message"
 				value="#{i18n['submit']}" />
 		</showcase:example>
 		<showcase:results label="#{i18n['model-value']}">

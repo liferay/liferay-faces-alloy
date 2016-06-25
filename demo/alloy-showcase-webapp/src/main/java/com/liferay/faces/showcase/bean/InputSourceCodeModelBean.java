@@ -25,18 +25,8 @@ import javax.faces.context.FacesContext;
 @RequestScoped
 public class InputSourceCodeModelBean {
 
-	private String mode;
 	private String sourceCode;
 	private String sourceText;
-
-	public String getMode() {
-
-		if (mode == null) {
-			mode = "java";
-		}
-
-		return mode;
-	}
 
 	public String getSourceCode() {
 		return sourceCode;
@@ -60,10 +50,6 @@ public class InputSourceCodeModelBean {
 		}
 
 		return sourceText;
-	}
-
-	public void setMode(String mode) {
-		this.mode = mode;
 	}
 
 	public void setSourceCode(String sourceCode) {
