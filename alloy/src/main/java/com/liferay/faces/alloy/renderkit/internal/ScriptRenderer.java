@@ -21,7 +21,6 @@ import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
 import com.liferay.faces.alloy.render.internal.AlloyRendererUtil;
-import com.liferay.faces.util.ContentTypes;
 import com.liferay.faces.util.client.BrowserSniffer;
 import com.liferay.faces.util.client.BrowserSnifferFactory;
 import com.liferay.faces.util.client.Script;
@@ -92,7 +91,7 @@ public class ScriptRenderer extends ScriptRendererCompat {
 
 			ResponseWriter responseWriter = facesContext.getResponseWriter();
 			responseWriter.startElement("script", uiComponent);
-			responseWriter.writeAttribute("type", ContentTypes.TEXT_JAVASCRIPT, null);
+			responseWriter.writeAttribute("type", "text/javascript", null);
 			responseWriter.write("// <![CDATA[\n");
 
 			inlineUse = (String) attributes.get(USE);
@@ -139,7 +138,7 @@ public class ScriptRenderer extends ScriptRendererCompat {
 				script = scriptFactory.getScript(scriptSourceCode);
 			}
 			else {
-				script = scriptFactory.getScript(scriptSourceCode, new String[] { use }, Script.Type.ALLOY);
+				script = scriptFactory.getScript(scriptSourceCode, new String[] { use }, Script.ModulesType.ALLOY);
 			}
 
 			addScriptToBottomOfPage(script);
