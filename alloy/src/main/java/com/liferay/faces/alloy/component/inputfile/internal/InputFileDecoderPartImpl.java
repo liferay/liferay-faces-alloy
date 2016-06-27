@@ -29,7 +29,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
-import com.liferay.faces.util.HttpHeaders;
 import com.liferay.faces.util.factory.FactoryExtensionFinder;
 import com.liferay.faces.util.logging.Logger;
 import com.liferay.faces.util.logging.LoggerFactory;
@@ -90,7 +89,7 @@ public class InputFileDecoderPartImpl extends InputFileDecoderBase {
 						String fileName = null;
 						String safeFileName = null;
 
-						String contentDispositionHeader = part.getHeader(HttpHeaders.CONTENT_DISPOSITION);
+						String contentDispositionHeader = part.getHeader("Content-Disposition");
 						String[] keyValuePairs = contentDispositionHeader.split(";");
 
 						for (String keyValuePair : keyValuePairs) {

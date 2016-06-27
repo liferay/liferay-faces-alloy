@@ -63,7 +63,8 @@ import com.liferay.faces.util.render.RendererUtil;
 			modules = alloyRenderer.getModules(facesContext, uiComponent);
 		}
 
-		alloyRenderer.renderScript(facesContext, bufferedScriptResponseWriter.toString(), modules, Script.Type.ALLOY);
+		alloyRenderer.renderScript(facesContext, bufferedScriptResponseWriter.toString(), modules,
+			Script.ModulesType.ALLOY);
 		facesContext.setResponseWriter(responseWriter);
 	}
 

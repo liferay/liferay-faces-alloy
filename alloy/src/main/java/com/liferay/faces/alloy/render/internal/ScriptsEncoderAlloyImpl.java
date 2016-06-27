@@ -59,9 +59,9 @@ public class ScriptsEncoderAlloyImpl implements ScriptsEncoder {
 
 		for (Script script : scripts) {
 
-			Script.Type type = script.getType();
+			Script.ModulesType modulesType = script.getModulesType();
 
-			if (Script.Type.ALLOY.equals(type)) {
+			if (Script.ModulesType.ALLOY.equals(modulesType)) {
 
 				String[] modules = script.getModules();
 

@@ -86,5 +86,5 @@ public interface AlloyRenderer extends ClientComponentRenderer {
 	public boolean isSandboxed(FacesContext facesContext, UIComponent uiComponent);
 
 	public void renderScript(FacesContext facesContext, String bufferedScriptString, String[] modules,
-		Script.Type scriptType);
+		Script.ModulesType scriptType);
 }

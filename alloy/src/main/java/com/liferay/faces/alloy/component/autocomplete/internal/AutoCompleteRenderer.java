@@ -177,7 +177,7 @@ public class AutoCompleteRenderer extends AutoCompleteRendererBase {
 					liferayComponentJavaScriptFragment, resultArrayStringBuilder, hiddenClientId);
 
 				String[] modules = getModules(facesContext, uiComponent);
-				renderScript(facesContext, bufferedScriptResponseWriter.toString(), modules, Script.Type.ALLOY);
+				renderScript(facesContext, bufferedScriptResponseWriter.toString(), modules, Script.ModulesType.ALLOY);
 			}
 			else {
 				super.encodeJavaScript(facesContext, uiComponent);
