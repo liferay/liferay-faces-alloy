@@ -30,7 +30,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.liferay.faces.alloy.reslib.config.ResLibConfigParam;
-import com.liferay.faces.util.HttpHeaders;
 import com.liferay.faces.util.config.ApplicationConfig;
 import com.liferay.faces.util.config.ConfiguredServletMapping;
 import com.liferay.faces.util.config.FacesConfig;
@@ -193,7 +192,7 @@ public class ResLibResourceHandler extends ResourceHandlerWrapper {
 						ScriptResource.RESOURCE_NAME.equals(resourceName)) &&
 					!areModulePathsExtensionsValid(externalContext)) {
 
-				externalContext.setResponseHeader(HttpHeaders.CACHE_CONTROL, HttpHeaders.CACHE_CONTROL_NO_CACHE_VALUE);
+				externalContext.setResponseHeader("Cache-Control", "private, no-cache, no-store, must-revalidate");
 				externalContext.setResponseStatus(HttpServletResponse.SC_NOT_FOUND);
 			}
 
