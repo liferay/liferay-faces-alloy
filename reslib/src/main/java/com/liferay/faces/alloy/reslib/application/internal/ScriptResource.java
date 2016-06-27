@@ -22,8 +22,6 @@ import javax.faces.application.Resource;
 import javax.faces.application.ResourceHandler;
 import javax.faces.context.FacesContext;
 
-import com.liferay.faces.util.ContentTypes;
-
 
 /**
  * @author  Neil Griffin
@@ -45,7 +43,7 @@ public class ScriptResource extends Resource {
 		this.modulePath = modulePath;
 		setLibraryName(ResLibResourceHandler.LIBRARY_NAME);
 		setResourceName(RESOURCE_NAME);
-		setContentType(ContentTypes.TEXT_JAVASCRIPT);
+		setContentType("text/javascript");
 	}
 
 	@Override

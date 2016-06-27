@@ -75,7 +75,7 @@ public class OutputScriptRenderer extends OutputScriptRendererBase {
 				if ((use != null) && (use.length() > 0)) {
 
 					String[] modules = use.split(",");
-					script = ScriptFactory.getScriptInstance(bufferedScriptString, modules, Script.Type.ALLOY);
+					script = ScriptFactory.getScriptInstance(bufferedScriptString, modules, Script.ModulesType.ALLOY);
 				}
 				else {
 					script = ScriptFactory.getScriptInstance(bufferedScriptString);

@@ -32,7 +32,6 @@ import javax.faces.application.ResourceHandler;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
-import com.liferay.faces.util.ContentTypes;
 import com.liferay.faces.util.application.ResourceUtil;
 import com.liferay.faces.util.logging.Logger;
 import com.liferay.faces.util.logging.LoggerFactory;
@@ -67,16 +66,16 @@ public class ComboResource extends Resource {
 	@Override
 	public String getContentType() {
 
-		String contentType = ContentTypes.TEXT_PLAIN;
+		String contentType = "text/plain";
 
 		if ((modulePaths != null) && (modulePaths.size() > 0)) {
 			String firstModulePath = modulePaths.get(0);
 
 			if (firstModulePath.endsWith(".css")) {
-				contentType = ContentTypes.TEXT_CSS;
+				contentType = "text/css";
 			}
 			else if (firstModulePath.endsWith(".js")) {
-				contentType = ContentTypes.TEXT_JAVASCRIPT;
+				contentType = "text/javascript";
 			}
 		}
 
@@ -102,7 +101,7 @@ public class ComboResource extends Resource {
 			InputStream inputStream = resourceURL.openStream();
 			String resourceText = ResourceUtil.toString(inputStream, "UTF-8", 1024);
 
-			if (ContentTypes.TEXT_CSS.equals(contentType)) {
+			if ("text/css".equals(contentType)) {
 				resourceText = ExpressionUtil.filterExpressions(resourceText, resourceHandlerChain, externalContext);
 			}
 
