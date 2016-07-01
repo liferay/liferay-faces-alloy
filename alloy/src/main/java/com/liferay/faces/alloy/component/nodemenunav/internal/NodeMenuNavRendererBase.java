@@ -271,15 +271,17 @@ public abstract class NodeMenuNavRendererBase extends DelegatingAlloyRendererBas
 
 		for (UIComponent child : children) {
 
-			responseWriter.startElement("li", uiComponent);
-			responseWriter.writeAttribute("class", "yui3-menuitem", "class");
+			if (child.isRendered()) {
+				responseWriter.startElement("li", uiComponent);
+				responseWriter.writeAttribute("class", "yui3-menuitem", "class");
 
-			ResponseWriter originalResponseWriter = facesContext.getResponseWriter();
-			ResponseWriter delegationResponseWriter = new NodeMenuNavMenuResponseWriter(originalResponseWriter);
-			facesContext.setResponseWriter(delegationResponseWriter);
-			child.encodeAll(facesContext);
-			facesContext.setResponseWriter(originalResponseWriter);
-			responseWriter.endElement("li");
+				ResponseWriter originalResponseWriter = facesContext.getResponseWriter();
+				ResponseWriter delegationResponseWriter = new NodeMenuNavMenuResponseWriter(originalResponseWriter);
+				facesContext.setResponseWriter(delegationResponseWriter);
+				child.encodeAll(facesContext);
+				facesContext.setResponseWriter(originalResponseWriter);
+				responseWriter.endElement("li");
+			}
 		}
 
 		responseWriter.endElement("ul");
