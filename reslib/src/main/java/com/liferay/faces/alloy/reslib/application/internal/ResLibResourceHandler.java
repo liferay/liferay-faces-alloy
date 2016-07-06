@@ -15,11 +15,9 @@ package com.liferay.faces.alloy.reslib.application.internal;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 
 import javax.faces.application.Resource;
 import javax.faces.application.ResourceHandler;
@@ -52,18 +50,6 @@ public class ResLibResourceHandler extends ResourceHandlerWrapper {
 	private static final String LIFERAY_JS = "liferay.js";
 	private static final boolean LIFERAY_PORTAL_DETECTED = ProductFactory.getProduct(Product.Name.LIFERAY_PORTAL)
 		.isDetected();
-	private static final String MINIFIER_TYPE = "minifierType";
-	private static final Set<String> PROTECTED_PARAMTERS;
-
-	static {
-		PROTECTED_PARAMTERS = new HashSet<String>();
-		PROTECTED_PARAMTERS.add("b");
-		PROTECTED_PARAMTERS.add("browserId");
-		PROTECTED_PARAMTERS.add("languageId");
-		PROTECTED_PARAMTERS.add("ln");
-		PROTECTED_PARAMTERS.add(MINIFIER_TYPE);
-		PROTECTED_PARAMTERS.add("t");
-	}
 
 	// Private Members
 	private ResourceHandler wrappedResourceHandler;
@@ -257,10 +243,10 @@ public class ResLibResourceHandler extends ResourceHandlerWrapper {
 		Iterator<String> requestParameterNames = externalContext.getRequestParameterNames();
 
 		while (requestParameterNames.hasNext()) {
-			String paramterName = requestParameterNames.next();
+			String parameterName = requestParameterNames.next();
 
-			if (!PROTECTED_PARAMTERS.contains(paramterName)) {
-				modulePaths.add(paramterName);
+			if (parameterName.startsWith("build/")) {
+				modulePaths.add(parameterName);
 			}
 		}
 
