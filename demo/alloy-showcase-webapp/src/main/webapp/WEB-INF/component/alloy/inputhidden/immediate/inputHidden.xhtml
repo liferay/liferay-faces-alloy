@@ -6,13 +6,14 @@
 		<!-- Example 1: ValueChangeListener execution when immediate is true -->
 		<alloy:form>
 			<showcase:example description="#{i18n['valuechangelistener-execution-when-immediate-is-true']}" number="1">
-				<alloy:messages globalOnly="true" styleClass="feedback" />
 				<showcase:container>
 					<alloy:outputText value="#{i18n['this-is-a-div-that-contains-a-hidden-input']}" />
-					<alloy:inputHidden id="hidden1" binding="#{inputHidden1}" immediate="true"
-						value="#{inputHiddenModelBean.text}"
-						valueChangeListener="#{inputHiddenBackingBean.valueChangeListener}" />
-					<alloy:message for="hidden1" />
+					<alloy:field>
+						<alloy:messages globalOnly="true" styleClass="feedback" />
+						<alloy:inputHidden id="hidden1" binding="#{inputHidden1}" immediate="true"
+							value="#{inputHiddenModelBean.text}"
+							valueChangeListener="#{inputHiddenBackingBean.valueChangeListener}" />
+					</alloy:field>
 				</showcase:container>
 				<alloy:button onclick="document.getElementById('#{inputHidden1.clientId}').value='1234';"
 					value="#{i18n['copy-1234-to-the-value-of-the-hidden-input']}" />
@@ -32,12 +33,13 @@
 		<!-- Example 2: ValueChangeListener execution when immediate is false (the default) -->
 		<alloy:form>
 			<showcase:example description="#{i18n['valuechangelistener-execution-when-immediate-is-false']}" number="2">
-				<alloy:messages globalOnly="true" styleClass="feedback" />
 				<showcase:container>
 					<alloy:outputText value="#{i18n['this-is-a-div-that-contains-a-hidden-input']}" />
-					<alloy:inputHidden id="hidden2" binding="#{inputHidden2}" value="#{inputHiddenModelBean.text}"
-						valueChangeListener="#{inputHiddenBackingBean.valueChangeListener}" />
-					<alloy:message for="hidden2" />
+					<alloy:field>
+						<alloy:messages globalOnly="true" styleClass="feedback" />
+						<alloy:inputHidden id="hidden2" binding="#{inputHidden2}" value="#{inputHiddenModelBean.text}"
+							valueChangeListener="#{inputHiddenBackingBean.valueChangeListener}" />
+					</alloy:field>
 				</showcase:container>
 				<alloy:button onclick="document.getElementById('#{inputHidden2.clientId}').value='1234';"
 					value="#{i18n['copy-1234-to-the-value-of-the-hidden-input']}" />

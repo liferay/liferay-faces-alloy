@@ -1,7 +1,7 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:alloy="http://liferay.com/faces/alloy"
 	xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:h="http://java.sun.com/jsf/html" xmlns:showcase="http://liferay.com/faces/showcase"
-	xmlns:ui="http://java.sun.com/jsf/facelets" template="/WEB-INF/templates/showcase-#{showcaseModelBean.deploymentType}.xhtml">
+	xmlns:showcase="http://liferay.com/faces/showcase" xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/WEB-INF/templates/showcase-#{showcaseModelBean.deploymentType}.xhtml">
 
 	<ui:define name="content">
 		<f:metadata>
@@ -13,7 +13,8 @@
 				<f:converter converterId="com.liferay.faces.showcase.converter.CountryConverter" />
 			</f:viewParam>
 		</f:metadata>
-		<h:outputStylesheet name="component.css" library="css" />
+		<ui:include src="styling.xhtml" />
+		<alloy:outputStylesheet name="component.css" library="css" />
 		<c:set value="#{showcaseModelBean.selectedComponent}" var="selectedComponent" />
 		<c:set value="#{selectedComponent.camelCaseName}" var="selectedComponentCamelCaseName" />
 		<c:set value="#{selectedComponent.lowerCaseName}" var="selectedComponentLowerCaseName" />
