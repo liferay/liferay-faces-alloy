@@ -78,7 +78,7 @@
 	</converter>
 	<factory>
 		<factory-extension>
-			<util:message-context-factory>com.liferay.faces.alloy.context.internal.MessageContextFactoryAlloyImpl</util:message-context-factory>
+			<util:i18n-factory>com.liferay.faces.alloy.i18n.internal.I18nFactoryAlloyImpl</util:i18n-factory>
 		</factory-extension>
 	</factory>
 	<render-kit>

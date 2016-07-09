@@ -20,9 +20,9 @@ import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 import java.util.concurrent.ConcurrentHashMap;
 
-import com.liferay.faces.util.context.MessageContext;
-import com.liferay.faces.util.context.MessageContextBundleBase;
-import com.liferay.faces.util.context.MessageContextWrapper;
+import com.liferay.faces.util.i18n.I18n;
+import com.liferay.faces.util.i18n.I18nBundleBase;
+import com.liferay.faces.util.i18n.I18nWrapper;
 import com.liferay.faces.util.logging.Logger;
 import com.liferay.faces.util.logging.LoggerFactory;
 
@@ -30,10 +30,10 @@ import com.liferay.faces.util.logging.LoggerFactory;
 /**
  * @author  Neil Griffin
  */
-public class MessageContextAlloyImpl extends MessageContextBundleBase {
+public class I18nAlloyImpl extends I18nBundleBase {
 
-	public MessageContextAlloyImpl(MessageContext messageContext) {
-		super(messageContext);
+	public I18nAlloyImpl(I18n i18n) {
+		super(i18n);
 	}
 
 	@Override
