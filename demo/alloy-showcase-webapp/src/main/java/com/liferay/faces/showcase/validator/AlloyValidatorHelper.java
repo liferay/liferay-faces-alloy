@@ -20,8 +20,8 @@ import javax.faces.context.FacesContext;
 
 import com.liferay.faces.alloy.component.inputdate.InputDate;
 import com.liferay.faces.alloy.component.inputtime.InputTime;
-import com.liferay.faces.util.context.MessageContext;
-import com.liferay.faces.util.context.MessageContextFactory;
+import com.liferay.faces.util.i18n.I18n;
+import com.liferay.faces.util.i18n.I18nFactory;
 
 
 /**
@@ -31,20 +31,20 @@ public class AlloyValidatorHelper {
 
 	public static String getMessage(FacesContext facesContext, InputDate inputDate, String messageId) {
 
-		MessageContext messageContext = MessageContextFactory.getMessageContextInstance();
+		I18n i18n = I18nFactory.getI18nInstance();
 		Object localeObject = inputDate.getLocale(facesContext);
 		Locale locale = getObjectAsLocale(localeObject);
 
-		return messageContext.getMessage(locale, messageId);
+		return i18n.getMessage(facesContext, locale, messageId);
 	}
 
 	public static String getMessage(FacesContext facesContext, InputTime inputTime, String messageId) {
 
-		final MessageContext messageContext = MessageContextFactory.getMessageContextInstance();
+		final I18n i18n = I18nFactory.getI18nInstance();
 		final Object localeObject = inputTime.getLocale(facesContext);
 		Locale locale = getObjectAsLocale(localeObject);
 
-		return messageContext.getMessage(locale, messageId);
+		return i18n.getMessage(facesContext, locale, messageId);
 	}
 
 	public static Locale getObjectAsLocale(Object localeAsObject) throws FacesException {

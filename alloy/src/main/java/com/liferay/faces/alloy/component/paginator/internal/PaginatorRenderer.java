@@ -42,8 +42,8 @@ import com.liferay.faces.alloy.component.commandlink.CommandLink;
 import com.liferay.faces.alloy.component.outputtext.OutputText;
 import com.liferay.faces.alloy.component.paginator.Paginator;
 import com.liferay.faces.util.component.Styleable;
-import com.liferay.faces.util.context.MessageContext;
-import com.liferay.faces.util.context.MessageContextFactory;
+import com.liferay.faces.util.i18n.I18n;
+import com.liferay.faces.util.i18n.I18nFactory;
 import com.liferay.faces.util.logging.Logger;
 import com.liferay.faces.util.logging.LoggerFactory;
 import com.liferay.faces.util.render.RendererUtil;
@@ -195,8 +195,8 @@ public class PaginatorRenderer extends PaginatorRendererBase implements Componen
 		String summaryPosition = paginator.getSummaryPosition();
 
 		if ("top".equals(summaryPosition)) {
-			encodeSummary(responseWriter, paginator, summaryPosition, locale, first, curPage, rows, rowCount,
-				pageCount);
+			encodeSummary(facesContext, responseWriter, paginator, summaryPosition, locale, first, curPage, rows,
+				rowCount, pageCount);
 		}
 
 		// If any of the pagination controls are the be encoded, then
@@ -219,8 +219,8 @@ public class PaginatorRenderer extends PaginatorRendererBase implements Componen
 			// If the summary is to be positioned on the left of the pagination controls, then encode the
 			// summary.
 			if ("left".equals(summaryPosition)) {
-				encodeSummary(responseWriter, paginator, summaryPosition, locale, first, curPage, rows, rowCount,
-					pageCount);
+				encodeSummary(facesContext, responseWriter, paginator, summaryPosition, locale, first, curPage, rows,
+					rowCount, pageCount);
 			}
 
 			// Encode the "First Page" pagination control.
@@ -276,8 +276,8 @@ public class PaginatorRenderer extends PaginatorRendererBase implements Componen
 
 			// If the summary is to be positioned on the right of the pagination controls, then encode the summary.
 			if ("right".equals(summaryPosition)) {
-				encodeSummary(responseWriter, paginator, summaryPosition, locale, first, curPage, rows, rowCount,
-					pageCount);
+				encodeSummary(facesContext, responseWriter, paginator, summaryPosition, locale, first, curPage, rows,
+					rowCount, pageCount);
 			}
 
 			// Encode the closing </div> element that represents the unordered list of pagination controls.
@@ -289,8 +289,8 @@ public class PaginatorRenderer extends PaginatorRendererBase implements Componen
 
 		// If the summary is to be positioned beneath the pagination controls, then encode the summary.
 		if ("bottom".equals(summaryPosition)) {
-			encodeSummary(responseWriter, paginator, summaryPosition, locale, first, curPage, rows, rowCount,
-				pageCount);
+			encodeSummary(facesContext, responseWriter, paginator, summaryPosition, locale, first, curPage, rows,
+				rowCount, pageCount);
 		}
 	}
 
@@ -371,8 +371,9 @@ public class PaginatorRenderer extends PaginatorRendererBase implements Componen
 			enabled, false);
 	}
 
-	protected void encodeSummary(ResponseWriter responseWriter, Paginator paginator, String summaryPostion,
-		Locale locale, int first, int curPageNumber, int rows, int rowCount, int pageCount) throws IOException {
+	protected void encodeSummary(FacesContext facesContext, ResponseWriter responseWriter, Paginator paginator,
+		String summaryPostion, Locale locale, int first, int curPageNumber, int rows, int rowCount, int pageCount)
+		throws IOException {
 
 		// If the paginator is to appear above or below the pagination controls, then
 		boolean encodePaginationDiv = ("top".equals(summaryPostion) || "bottom".equals(summaryPostion));
@@ -390,8 +391,8 @@ public class PaginatorRenderer extends PaginatorRendererBase implements Componen
 		int paginatorLast = Math.min(first + rows, rowCount);
 
 		// Get an internationalized message that contains the pagination summary.
-		MessageContext messageContext = MessageContextFactory.getMessageContextInstance();
-		String message = messageContext.getMessage(locale, "results-x-x-of-x-page-x-of-x", paginatorFirst,
+		I18n i18n = I18nFactory.getI18nInstance();
+		String message = i18n.getMessage(facesContext, locale, "results-x-x-of-x-page-x-of-x", paginatorFirst,
 				paginatorLast, rowCount, curPageNumber, pageCount);
 
 		// Encode a list item inside the Bootstrap pagination component that contains the pagination summary message.

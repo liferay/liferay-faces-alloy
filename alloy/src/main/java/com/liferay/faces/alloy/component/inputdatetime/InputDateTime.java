@@ -26,8 +26,8 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.DateTimeConverter;
 
-import com.liferay.faces.util.context.MessageContext;
-import com.liferay.faces.util.context.MessageContextFactory;
+import com.liferay.faces.util.i18n.I18n;
+import com.liferay.faces.util.i18n.I18nFactory;
 
 
 /**
@@ -181,8 +181,8 @@ public abstract class InputDateTime extends InputDateTimeBase {
 					String minDateString = simpleDateFormat.format(minDate);
 					String maxDateString = simpleDateFormat.format(maxDate);
 					Locale locale = getObjectAsLocale(getLocale(facesContext));
-					MessageContext messageContext = MessageContextFactory.getMessageContextInstance();
-					String message = messageContext.getMessage(locale, "please-enter-a-value-between-x-and-x",
+					I18n i18n = I18nFactory.getI18nInstance();
+					String message = i18n.getMessage(facesContext, locale, "please-enter-a-value-between-x-and-x",
 							minDateString, maxDateString);
 					facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, message, message);
 				}

@@ -35,8 +35,8 @@ import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.model.SelectItem;
 
-import com.liferay.faces.util.context.MessageContext;
-import com.liferay.faces.util.context.MessageContextFactory;
+import com.liferay.faces.util.i18n.I18n;
+import com.liferay.faces.util.i18n.I18nFactory;
 
 
 /**
@@ -157,10 +157,10 @@ public class AutoComplete extends AutoCompleteBase implements ClientBehaviorHold
 				}
 				else {
 
-					MessageContext messageContext = MessageContextFactory.getMessageContextInstance();
+					I18n i18n = I18nFactory.getI18nInstance();
 					UIViewRoot viewRoot = facesContext.getViewRoot();
 					Locale locale = viewRoot.getLocale();
-					String message = messageContext.getMessage(locale, UISelectOne.INVALID_MESSAGE_ID);
+					String message = i18n.getMessage(facesContext, locale, UISelectOne.INVALID_MESSAGE_ID);
 
 					if (message != null) {
 						message = MessageFormat.format(message, getLabel());

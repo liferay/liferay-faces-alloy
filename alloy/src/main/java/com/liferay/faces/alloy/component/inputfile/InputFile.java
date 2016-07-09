@@ -24,8 +24,8 @@ import javax.faces.context.FacesContext;
 import javax.faces.event.AbortProcessingException;
 import javax.faces.event.FacesEvent;
 
-import com.liferay.faces.util.context.MessageContext;
-import com.liferay.faces.util.context.MessageContextFactory;
+import com.liferay.faces.util.i18n.I18n;
+import com.liferay.faces.util.i18n.I18nFactory;
 import com.liferay.faces.util.logging.Logger;
 import com.liferay.faces.util.logging.LoggerFactory;
 import com.liferay.faces.util.model.UploadedFile;
@@ -69,7 +69,7 @@ public class InputFile extends InputFileBase {
 		if ((maxFileSize != null) || (contentTypeSet != null)) {
 
 			Locale locale = facesContext.getViewRoot().getLocale();
-			MessageContext messageContext = MessageContextFactory.getMessageContextInstance();
+			I18n i18n = I18nFactory.getI18nInstance();
 			String clientId = getClientId(facesContext);
 			@SuppressWarnings("unchecked")
 			List<UploadedFile> uploadedFiles = (List<UploadedFile>) value;
@@ -78,7 +78,7 @@ public class InputFile extends InputFileBase {
 
 				if ((maxFileSize != null) && (maxFileSize >= 0) && (uploadedFile.getSize() > maxFileSize)) {
 
-					String errorMessage = messageContext.getMessage(locale,
+					String errorMessage = i18n.getMessage(facesContext, locale,
 							"file-x-is-y-bytes-but-may-not-exceed-z-bytes", uploadedFile.getName(),
 							uploadedFile.getSize(), maxFileSize);
 					handleInvalidFile(facesContext, clientId, uploadedFile, errorMessage);
@@ -88,7 +88,7 @@ public class InputFile extends InputFileBase {
 
 				if ((contentType == null) || ((contentTypeSet != null) && !contentTypeSet.contains(contentType))) {
 
-					String errorMessage = messageContext.getMessage(locale, "file-x-has-an-invalid-content-type-y",
+					String errorMessage = i18n.getMessage(facesContext, locale, "file-x-has-an-invalid-content-type-y",
 							uploadedFile.getName(), contentType);
 					handleInvalidFile(facesContext, clientId, uploadedFile, errorMessage);
 				}
@@ -96,7 +96,7 @@ public class InputFile extends InputFileBase {
 		}
 	}
 
-	private final void handleInvalidFile(FacesContext facesContext, String clientId, UploadedFile uploadedFile,
+	private void handleInvalidFile(FacesContext facesContext, String clientId, UploadedFile uploadedFile,
 		String errorMessage) {
 
 		facesContext.addMessage(clientId, new FacesMessage(FacesMessage.SEVERITY_ERROR, errorMessage, errorMessage));

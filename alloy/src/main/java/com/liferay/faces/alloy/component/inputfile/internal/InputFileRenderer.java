@@ -33,10 +33,10 @@ import javax.faces.render.FacesRenderer;
 
 import com.liferay.faces.alloy.component.inputfile.FileUploadEvent;
 import com.liferay.faces.alloy.component.inputfile.InputFile;
-import com.liferay.faces.util.context.MessageContext;
-import com.liferay.faces.util.context.MessageContextFactory;
 import com.liferay.faces.util.context.map.MultiPartFormData;
 import com.liferay.faces.util.factory.FactoryExtensionFinder;
+import com.liferay.faces.util.i18n.I18n;
+import com.liferay.faces.util.i18n.I18nFactory;
 import com.liferay.faces.util.model.UploadedFile;
 import com.liferay.faces.util.product.Product;
 import com.liferay.faces.util.product.ProductFactory;
@@ -142,8 +142,8 @@ public class InputFileRenderer extends InputFileRendererBase {
 			String execute = ajaxParameters.getExecute();
 			String render = ajaxParameters.getRender();
 
-			MessageContext messageContext = MessageContextFactory.getMessageContextInstance();
-			String notStartedMessage = messageContext.getMessage(locale, "not-started");
+			I18n i18n = I18nFactory.getI18nInstance();
+			String notStartedMessage = i18n.getMessage(facesContext, locale, "not-started");
 			JavaScriptFragment clientComponent = new JavaScriptFragment("Liferay.component('" + clientKey + "')");
 			encodeFunctionCall(responseWriter, "LFAI.initProgressUploader", alloyNamespace, clientComponent,
 				contentTypes, clientId, formClientId, namingContainerId, inputFile.isAuto(), execute, render,
@@ -250,8 +250,8 @@ public class InputFileRenderer extends InputFileRendererBase {
 
 		// selectFilesButton
 		Locale locale = facesContext.getViewRoot().getLocale();
-		MessageContext messageContext = MessageContextFactory.getMessageContextInstance();
-		String chooseFiles = messageContext.getMessage(locale, "choose-files");
+		I18n i18n = I18nFactory.getI18nInstance();
+		String chooseFiles = i18n.getMessage(facesContext, locale, "choose-files");
 		StringBuilder selectFilesButtonScript = new StringBuilder();
 		selectFilesButtonScript.append(
 			"A.Node.create(\"<button type='button' class='alloy-button' role='button' aria-label='");
@@ -282,20 +282,19 @@ public class InputFileRenderer extends InputFileRendererBase {
 		responseWriter.startElement("tr", inputFile);
 		responseWriter.startElement("th", inputFile);
 
-		MessageContextFactory messageContextFactory = (MessageContextFactory) FactoryExtensionFinder.getFactory(
-				MessageContextFactory.class);
-		MessageContext messageContext = messageContextFactory.getMessageContext();
-		String i18nFileName = messageContext.getMessage(locale, "file-name");
+		I18nFactory i18nFactory = (I18nFactory) FactoryExtensionFinder.getFactory(I18nFactory.class);
+		I18n i18n = i18nFactory.getI18n();
+		String i18nFileName = i18n.getMessage(facesContext, locale, "file-name");
 		responseWriter.writeText(i18nFileName, null);
 		responseWriter.endElement("th");
 		responseWriter.startElement("th", inputFile);
 
-		String i18nFileType = messageContext.getMessage(locale, "file-type");
+		String i18nFileType = i18n.getMessage(facesContext, locale, "file-type");
 		responseWriter.writeText(i18nFileType, null);
 		responseWriter.endElement("th");
 		responseWriter.startElement("th", inputFile);
 
-		String i18nFileSize = messageContext.getMessage(locale, "file-size");
+		String i18nFileSize = i18n.getMessage(facesContext, locale, "file-size");
 		responseWriter.writeText(i18nFileSize, null);
 		responseWriter.endElement("th");
 		responseWriter.endElement("tr");
@@ -305,7 +304,7 @@ public class InputFileRenderer extends InputFileRendererBase {
 		responseWriter.startElement("td", inputFile);
 		responseWriter.writeAttribute("colspan", "3", null);
 
-		String i18nNoFilesSelected = messageContext.getMessage(locale, "no-files-selected");
+		String i18nNoFilesSelected = i18n.getMessage(facesContext, locale, "no-files-selected");
 		responseWriter.writeText(i18nNoFilesSelected, null);
 		responseWriter.endElement("td");
 		responseWriter.endElement("tr");
@@ -327,9 +326,8 @@ public class InputFileRenderer extends InputFileRendererBase {
 		responseWriter.writeAttribute("class", "select-files-box", null);
 		responseWriter.endElement("div");
 
-		MessageContextFactory messageContextFactory = (MessageContextFactory) FactoryExtensionFinder.getFactory(
-				MessageContextFactory.class);
-		MessageContext messageContext = messageContextFactory.getMessageContext();
+		I18nFactory i18nFactory = (I18nFactory) FactoryExtensionFinder.getFactory(I18nFactory.class);
+		I18n i18n = i18nFactory.getI18n();
 
 		if (!inputFile.isAuto()) {
 
@@ -340,7 +338,7 @@ public class InputFileRenderer extends InputFileRendererBase {
 			responseWriter.writeAttribute("id", clientId + "_uploadFilesButton", null);
 			responseWriter.writeAttribute("class", "alloy-button", null);
 
-			String i18nUploadFiles = messageContext.getMessage(locale, "upload-files");
+			String i18nUploadFiles = i18n.getMessage(facesContext, locale, "upload-files");
 			responseWriter.writeText(i18nUploadFiles, null);
 			responseWriter.endElement("button");
 			responseWriter.endElement("div");
@@ -355,22 +353,22 @@ public class InputFileRenderer extends InputFileRendererBase {
 		responseWriter.startElement("tr", inputFile);
 		responseWriter.startElement("th", inputFile);
 
-		String i18nFileName = messageContext.getMessage(locale, "file-name");
+		String i18nFileName = i18n.getMessage(facesContext, locale, "file-name");
 		responseWriter.writeText(i18nFileName, null);
 		responseWriter.endElement("th");
 		responseWriter.startElement("th", inputFile);
 
-		String i18nFileType = messageContext.getMessage(locale, "file-type");
+		String i18nFileType = i18n.getMessage(facesContext, locale, "file-type");
 		responseWriter.writeText(i18nFileType, null);
 		responseWriter.endElement("th");
 		responseWriter.startElement("th", inputFile);
 
-		String i18nFileSize = messageContext.getMessage(locale, "file-size");
+		String i18nFileSize = i18n.getMessage(facesContext, locale, "file-size");
 		responseWriter.writeText(i18nFileSize, null);
 		responseWriter.endElement("th");
 		responseWriter.startElement("th", inputFile);
 
-		String i18nProgress = messageContext.getMessage(locale, "progress");
+		String i18nProgress = i18n.getMessage(facesContext, locale, "progress");
 		responseWriter.writeText(i18nProgress, null);
 		responseWriter.endElement("th");
 		responseWriter.endElement("tr");
@@ -380,7 +378,7 @@ public class InputFileRenderer extends InputFileRendererBase {
 		responseWriter.startElement("td", inputFile);
 		responseWriter.writeAttribute("colspan", "4", null);
 
-		String i18nNoFilesSelected = messageContext.getMessage(locale, "no-files-selected");
+		String i18nNoFilesSelected = i18n.getMessage(facesContext, locale, "no-files-selected");
 		responseWriter.writeText(i18nNoFilesSelected, null);
 		responseWriter.endElement("td");
 		responseWriter.endElement("tr");
