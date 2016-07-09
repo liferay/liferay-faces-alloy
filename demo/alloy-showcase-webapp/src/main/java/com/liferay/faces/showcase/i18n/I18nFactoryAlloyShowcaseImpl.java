@@ -11,23 +11,35 @@
  * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
  * details.
  */
-package com.liferay.faces.showcase.context;
+package com.liferay.faces.showcase.i18n;
 
-import com.liferay.faces.util.context.MessageContext;
-import com.liferay.faces.util.context.MessageContextBundleBase;
+import com.liferay.faces.util.i18n.I18n;
+import com.liferay.faces.util.i18n.I18nFactory;
 
 
 /**
  * @author  Neil Griffin
  */
-public class MessageContextAlloyShowcaseImpl extends MessageContextBundleBase {
+public class I18nFactoryAlloyShowcaseImpl extends I18nFactory {
 
-	public MessageContextAlloyShowcaseImpl(MessageContext messageContext) {
-		super(messageContext);
+	// Private Data Members
+	private I18nFactory wrappedI18nFactory;
+	private I18n i18n;
+
+	public I18nFactoryAlloyShowcaseImpl(I18nFactory i18nFactory) {
+		this.wrappedI18nFactory = i18nFactory;
+
+		I18n wrappedI18n = i18nFactory.getI18n();
+		this.i18n = new I18nAlloyShowcaseImpl(wrappedI18n);
 	}
 
 	@Override
-	public String getBundleKey() {
-		return "i18n-alloy-tags";
+	public I18n getI18n() {
+		return i18n;
+	}
+
+	@Override
+	public I18nFactory getWrapped() {
+		return wrappedI18nFactory;
 	}
 }
