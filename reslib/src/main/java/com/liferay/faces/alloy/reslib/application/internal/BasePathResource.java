@@ -18,50 +18,25 @@ import java.io.InputStream;
 import java.net.URL;
 import java.util.Map;
 
-import javax.faces.application.Resource;
-import javax.faces.application.ResourceHandler;
 import javax.faces.context.FacesContext;
 
 
 /**
- * @author  Kyle Stiemann
+ * This class represents the "base path" of AlloyUI resource as determined by the {@link #getRequestPath()} method.
+ * Since it does not represent an actual resource that can be downloaded, all other methods throw {@link
+ * UnsupportedOperationException}.
+ *
+ * @author  Neil Griffin
  */
-public class ReslibResource extends Resource {
+public class BasePathResource extends AlloyResource {
 
-	// Private Constants
-	private final String DUMMY_RESOURCE_NAME;
-	private final String RESOURCE_NAME;
-
-	// Private Members
-	private String requestPath;
-
-	public ReslibResource(String dummyResourceName, String resourceName) {
-
-		this.DUMMY_RESOURCE_NAME = dummyResourceName;
-		this.RESOURCE_NAME = resourceName;
-		setLibraryName(ResLibResourceHandler.LIBRARY_NAME);
-		setResourceName(RESOURCE_NAME);
-		setContentType("text/plain");
+	public BasePathResource(String resourceName) {
+		super(resourceName);
 	}
 
 	@Override
 	public InputStream getInputStream() throws IOException {
 		throw new UnsupportedOperationException();
-	}
-
-	@Override
-	public String getRequestPath() {
-
-		if (requestPath == null) {
-
-			FacesContext facesContext = FacesContext.getCurrentInstance();
-			ResourceHandler resourceHandlerChain = facesContext.getApplication().getResourceHandler();
-			Resource dummyResource = resourceHandlerChain.createResource(DUMMY_RESOURCE_NAME, getLibraryName());
-			String dummyResourceRequestPath = dummyResource.getRequestPath();
-			requestPath = dummyResourceRequestPath.replace(DUMMY_RESOURCE_NAME, RESOURCE_NAME);
-		}
-
-		return requestPath;
 	}
 
 	@Override
@@ -75,7 +50,7 @@ public class ReslibResource extends Resource {
 	}
 
 	@Override
-	public boolean userAgentNeedsUpdate(FacesContext fc) {
+	public boolean userAgentNeedsUpdate(FacesContext context) {
 		throw new UnsupportedOperationException();
 	}
 }

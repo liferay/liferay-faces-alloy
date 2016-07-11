@@ -38,8 +38,8 @@ import com.liferay.faces.util.product.ProductFactory;
 
 
 /**
- * This is a resource handler that is only necessary in a non-Liferay (webapp) environment. The purpose of this class is
- * to provide Alloy/YUI/Bootstrap resources.
+ * <p>This is a resource handler that is only necessary in a non-Liferay (webapp) environment. The purpose of this class
+ * is to provide Alloy/YUI/Bootstrap resources.</p>
  *
  * @author  Neil Griffin
  */
@@ -56,7 +56,6 @@ public class ResLibResourceHandler extends ResourceHandlerWrapper {
 	private static final String LIFERAY_JS = "liferay.js";
 	private static final boolean LIFERAY_PORTAL_DETECTED = ProductFactory.getProduct(Product.Name.LIFERAY_PORTAL)
 		.isDetected();
-	private static final String SCRIPT_RESOURCE_NAME = "script";
 	private static final String ROOT_RESOURCE_DIRECTORY = "build/";
 
 	// Private Members
@@ -71,34 +70,75 @@ public class ResLibResourceHandler extends ResourceHandlerWrapper {
 
 		Resource resource;
 
-		if (!LIFERAY_PORTAL_DETECTED) {
+		// If Liferay Portal is detected, then ask the delegation chain to create the resource.
+		if (LIFERAY_PORTAL_DETECTED) {
 
-			if (ComboResource.RESOURCE_NAME.equals(resourceName)) {
+			resource = super.createResource(resourceName);
+		}
 
+		// Otherwise,
+		else {
+
+			// If an AlloyUI combo resource is to be created, then
+			if ("combo".equals(resourceName)) {
+
+				// The AlloyUI framework can request a "combo" type of resource, which is either a set of JavaScript
+				// resources or a set of CSS resources that are to be combined (concatenated together). In such cases,
+				// each resource is specified as a separate URL parameter known as the "module path". For example:
+				//
+				// http://localhost:8080/my-webapp/javax.faces.resource/combo?
+				// ln=liferay-faces-alloy-reslib
+				// &build/widget-base/assets/skins/sam/widget-base.css
+				// &build/tabview/assets/skins/sam/tabview.css
+				// &build/aui-tabview/assets/skins/sam/aui-tabview.css
+				// &build/aui-toggler-base/assets/skins/sam/aui-toggler-base.css
+				//
 				FacesContext facesContext = FacesContext.getCurrentInstance();
 				ExternalContext externalContext = facesContext.getExternalContext();
 				List<String> modulePaths = getModulePaths(externalContext);
 
+				// If a module path is not found in the parameter map, then liferay.js is using an EL expression
+				// "#{resource['liferay-faces-alloy-reslib:combo']}" to determine what AlloyUI considers the base path
+				// for combo resources. In this case, create a resource whose getRequestPath() method returns the
+				// expected base path.
 				if (modulePaths.isEmpty()) {
-
-					// Create a dummy resource so that liferay.js can obtain the base combo resource path.
-					resource = new ComboResource();
+					resource = new BasePathResource("combo");
 				}
+
+				// Otherwise, if module path(s) are found in the parameter map, then create a resource that is able
+				// to combine the contents of each resource.
 				else {
 					resource = new ComboResource(modulePaths);
 				}
 			}
-			else if (SCRIPT_RESOURCE_NAME.equals(resourceName)) {
 
+			// Otherwise, if an AlloyUI script resource is to be created, then
+			else if ("script".equals(resourceName)) {
+
+				// Typical JSF webapp resource URLs for individual JavaScript resources typically look like the
+				// following:
+				//
+				// http://localhost:8080/my-webapp/javax.faces.resource/aui-ace-editor/ace/mode-xml.js?ln=liferay-faces-alloy-reslib
+				//
+				// However, the AlloyUI framework constructs JavaScript resource URLs with a different type of pattern
+				// by specifying the script resource name as a URL parameter known as the "module path". For example:
+				//
+				// http://localhost:8080/my-webapp/javax.faces.resource/script?ln=liferay-faces-alloy-reslib&aui-ace-editor/ace/mode-xml.js
+				//
 				FacesContext facesContext = FacesContext.getCurrentInstance();
 				ExternalContext externalContext = facesContext.getExternalContext();
 				List<String> modulePaths = getModulePaths(externalContext);
 
+				// If a module path is not found in the parameter map, then liferay.js is using an EL expression
+				// "#{resource['liferay-faces-alloy-reslib:script']}" to determine what AlloyUI considers the base path
+				// for individual script resources. In this case, create a resource whose getRequestPath() method
+				// returns the expected base path.
 				if (modulePaths.isEmpty()) {
-
-					// Create a dummy resource so that liferay.js can obtain the base script resource path.
-					resource = new ReslibResource("script-resource.txt", SCRIPT_RESOURCE_NAME);
+					resource = new BasePathResource("script");
 				}
+
+				// Otherwise, if a module path is found in the parameter map, then consider it to be the name of an
+				// individual script resource and ask the delegation chain to create it.
 				else {
 
 					if (modulePaths.size() > 1) {
@@ -119,17 +159,18 @@ public class ResLibResourceHandler extends ResourceHandlerWrapper {
 					resource = super.createResource(resourceName, LIBRARY_NAME);
 				}
 			}
+
+			// Otherwise, ask the delegation chain to create the resource.
 			else {
 
 				resource = super.createResource(resourceName);
 
+				// If the resource is for liferay.js, then ensure that the EL expressions within the text of the file
+				// are processed.
 				if (LIFERAY_JS.equals(resourceName)) {
 					resource = new FilteredResourceExpressionImpl(resource);
 				}
 			}
-		}
-		else {
-			resource = super.createResource(resourceName);
 		}
 
 		return resource;
@@ -142,7 +183,7 @@ public class ResLibResourceHandler extends ResourceHandlerWrapper {
 
 		if (!LIFERAY_PORTAL_DETECTED && LIBRARY_NAME.equals(libraryName)) {
 
-			if (ComboResource.RESOURCE_NAME.equals(resourceName) || SCRIPT_RESOURCE_NAME.equals(resourceName)) {
+			if ("combo".equals(resourceName) || "script".equals(resourceName)) {
 				resource = createResource(resourceName);
 			}
 			else {
@@ -168,7 +209,7 @@ public class ResLibResourceHandler extends ResourceHandlerWrapper {
 
 		if (!LIFERAY_PORTAL_DETECTED && LIBRARY_NAME.equals(libraryName)) {
 
-			if (ComboResource.RESOURCE_NAME.equals(resourceName) || SCRIPT_RESOURCE_NAME.equals(resourceName)) {
+			if ("combo".equals(resourceName) || "script".equals(resourceName)) {
 				resource = createResource(resourceName);
 			}
 			else {
@@ -195,9 +236,12 @@ public class ResLibResourceHandler extends ResourceHandlerWrapper {
 	@Override
 	public void handleResourceRequest(FacesContext facesContext) throws IOException {
 
+		// If Liferay Portal is detected, then ask the delegation chain to handle the resource request.
 		if (LIFERAY_PORTAL_DETECTED) {
 			super.handleResourceRequest(facesContext);
 		}
+
+		// Otherwise,
 		else {
 
 			ExternalContext externalContext = facesContext.getExternalContext();
@@ -207,8 +251,7 @@ public class ResLibResourceHandler extends ResourceHandlerWrapper {
 
 			// If the resource that is to be rendered is a combo or script module resource and the module paths
 			// extensions are invalid, then the resource cannot be found.
-			if (LIBRARY_NAME.equals(libraryName) &&
-					(ComboResource.RESOURCE_NAME.equals(resourceName) || SCRIPT_RESOURCE_NAME.equals(resourceName)) &&
+			if (LIBRARY_NAME.equals(libraryName) && ("combo".equals(resourceName) || "script".equals(resourceName)) &&
 					!areModulePathsExtensionsValid(externalContext)) {
 
 				externalContext.setResponseHeader("Cache-Control", "private, no-cache, no-store, must-revalidate");
