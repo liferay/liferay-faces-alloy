@@ -13,21 +13,13 @@
  */
 package com.liferay.faces.alloy.reslib.application.internal;
 
-import java.io.ByteArrayInputStream;
-import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.URL;
-import java.nio.ByteBuffer;
-import java.nio.channels.Channels;
-import java.nio.channels.ReadableByteChannel;
-import java.nio.channels.WritableByteChannel;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-import javax.faces.application.Resource;
 import javax.faces.application.ResourceHandler;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
@@ -40,46 +32,44 @@ import com.liferay.faces.util.logging.LoggerFactory;
 /**
  * @author  Neil Griffin
  */
-public class ComboResource extends Resource {
+public class ComboResource extends ReslibResource {
 
 	// Public Constants
 	public static final String RESOURCE_NAME = "combo";
-	public static final String DUMMY_RESOURCE_NAME = "combo-resource.txt";
 
 	// Logger
 	private static final Logger logger = LoggerFactory.getLogger(ComboResource.class);
 
 	// Private Constants
+	private static final String DUMMY_RESOURCE_NAME = "combo-resource.txt";
 	private static final String RESOURCE_PATH_BASE = "META-INF/resources/liferay-faces-alloy-reslib/";
 
 	// Private Data Members
 	private List<String> modulePaths;
-	private String requestPath;
+
+	public ComboResource() {
+		super(DUMMY_RESOURCE_NAME, RESOURCE_NAME);
+	}
 
 	public ComboResource(List<String> modulePaths) {
 
-		this.modulePaths = modulePaths;
-		setLibraryName(ResLibResourceHandler.LIBRARY_NAME);
-		setResourceName(RESOURCE_NAME);
-	}
+		this();
 
-	@Override
-	public String getContentType() {
-
-		String contentType = "text/plain";
-
-		if ((modulePaths != null) && (modulePaths.size() > 0)) {
-			String firstModulePath = modulePaths.get(0);
-
-			if (firstModulePath.endsWith(".css")) {
-				contentType = "text/css";
-			}
-			else if (firstModulePath.endsWith(".js")) {
-				contentType = "text/javascript";
-			}
+		if ((modulePaths == null) || (modulePaths.isEmpty())) {
+			throw new IllegalArgumentException(
+				"ModulePaths must not be empty. Use the no-arg constructor if you are creating a dummy combo resource.");
 		}
 
-		return contentType;
+		this.modulePaths = modulePaths;
+
+		String firstModulePath = this.modulePaths.get(0);
+
+		if (firstModulePath.endsWith(".css")) {
+			setContentType("text/css");
+		}
+		else if (firstModulePath.endsWith(".js")) {
+			setContentType("text/javascript");
+		}
 	}
 
 	@Override
@@ -109,21 +99,6 @@ public class ComboResource extends Resource {
 		}
 
 		return ResourceUtil.toInputStream(comboResourceText.toString(), "UTF-8");
-	}
-
-	@Override
-	public String getRequestPath() {
-
-		if (requestPath == null) {
-
-			FacesContext facesContext = FacesContext.getCurrentInstance();
-			ResourceHandler resourceHandlerChain = facesContext.getApplication().getResourceHandler();
-			Resource dummyResource = resourceHandlerChain.createResource(DUMMY_RESOURCE_NAME, getLibraryName());
-			String dummyResourceRequestPath = dummyResource.getRequestPath();
-			requestPath = dummyResourceRequestPath.replace(DUMMY_RESOURCE_NAME, RESOURCE_NAME);
-		}
-
-		return requestPath;
 	}
 
 	@Override
