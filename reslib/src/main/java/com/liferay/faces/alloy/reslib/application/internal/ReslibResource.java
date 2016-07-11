@@ -24,37 +24,36 @@ import javax.faces.context.FacesContext;
 
 
 /**
- * @author  Neil Griffin
+ * @author  Kyle Stiemann
  */
-public class ScriptResource extends Resource {
+public class ReslibResource extends Resource {
 
-	// Public Constants
-	public static final String BASE_PATH = "build/";
-	public static final String RESOURCE_NAME = "script";
-	public static final String DUMMY_RESOURCE_NAME = "script-resource.txt";
+	// Private Constants
+	private final String DUMMY_RESOURCE_NAME;
+	private final String RESOURCE_NAME;
 
-	// Private Data Members
-	private Resource internalResource;
-	private String modulePath;
+	// Private Members
 	private String requestPath;
 
-	public ScriptResource(String modulePath) {
+	public ReslibResource(String dummyResourceName, String resourceName) {
 
-		this.modulePath = modulePath;
+		this.DUMMY_RESOURCE_NAME = dummyResourceName;
+		this.RESOURCE_NAME = resourceName;
 		setLibraryName(ResLibResourceHandler.LIBRARY_NAME);
 		setResourceName(RESOURCE_NAME);
-		setContentType("text/javascript");
+		setContentType("text/plain");
 	}
 
 	@Override
 	public InputStream getInputStream() throws IOException {
-		return getInternalResource().getInputStream();
+		throw new UnsupportedOperationException();
 	}
 
 	@Override
 	public String getRequestPath() {
 
 		if (requestPath == null) {
+
 			FacesContext facesContext = FacesContext.getCurrentInstance();
 			ResourceHandler resourceHandlerChain = facesContext.getApplication().getResourceHandler();
 			Resource dummyResource = resourceHandlerChain.createResource(DUMMY_RESOURCE_NAME, getLibraryName());
@@ -67,28 +66,16 @@ public class ScriptResource extends Resource {
 
 	@Override
 	public Map<String, String> getResponseHeaders() {
-		return getInternalResource().getResponseHeaders();
+		throw new UnsupportedOperationException();
 	}
 
 	@Override
 	public URL getURL() {
-		return null;
+		throw new UnsupportedOperationException();
 	}
 
 	@Override
-	public boolean userAgentNeedsUpdate(FacesContext facesContext) {
-		return getInternalResource().userAgentNeedsUpdate(facesContext);
-	}
-
-	protected Resource getInternalResource() {
-
-		if (internalResource == null) {
-			FacesContext facesContext = FacesContext.getCurrentInstance();
-			ResourceHandler resourceHandlerChain = facesContext.getApplication().getResourceHandler();
-			String resourceName = BASE_PATH + modulePath;
-			internalResource = resourceHandlerChain.createResource(resourceName, ResLibResourceHandler.LIBRARY_NAME);
-		}
-
-		return internalResource;
+	public boolean userAgentNeedsUpdate(FacesContext fc) {
+		throw new UnsupportedOperationException();
 	}
 }
