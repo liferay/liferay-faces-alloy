@@ -30,30 +30,25 @@ import com.liferay.faces.util.logging.LoggerFactory;
 
 
 /**
+ * This class represents an AlloyUI "combo" resource, meaning a virtual resource that is able combine the contents of a
+ * set of JavaScript or a set of CSS resources.
+ *
  * @author  Neil Griffin
  */
-public class ComboResource extends ReslibResource {
-
-	// Public Constants
-	public static final String RESOURCE_NAME = "combo";
+public class ComboResource extends AlloyResource {
 
 	// Logger
-	private static final Logger logger = LoggerFactory.getLogger(ComboResource.class);
+	private static final Logger logger = LoggerFactory.getLogger(AlloyResource.class);
 
 	// Private Constants
-	private static final String DUMMY_RESOURCE_NAME = "combo-resource.txt";
 	private static final String RESOURCE_PATH_BASE = "META-INF/resources/liferay-faces-alloy-reslib/";
 
 	// Private Data Members
 	private List<String> modulePaths;
 
-	public ComboResource() {
-		super(DUMMY_RESOURCE_NAME, RESOURCE_NAME);
-	}
-
 	public ComboResource(List<String> modulePaths) {
 
-		this();
+		super("combo");
 
 		if ((modulePaths == null) || (modulePaths.isEmpty())) {
 			throw new IllegalArgumentException(
@@ -84,12 +79,19 @@ public class ComboResource extends ReslibResource {
 		for (String modulePath : modulePaths) {
 
 			String resourcePath = RESOURCE_PATH_BASE + modulePath;
-			URL resourceURL = ComboResource.class.getClassLoader().getResource(resourcePath);
+			URL resourceURL = getClass().getClassLoader().getResource(resourcePath);
 
-			logger.debug("resourcePath=[{0}] resourceURL=[{1}]", resourcePath, resourceURL);
+			String resourceText;
 
-			InputStream inputStream = resourceURL.openStream();
-			String resourceText = ResourceUtil.toString(inputStream, "UTF-8", 1024);
+			if (resourceURL != null) {
+				logger.debug("resourcePath=[{0}] resourceURL=[{1}]", resourcePath, resourceURL);
+
+				InputStream inputStream = resourceURL.openStream();
+				resourceText = ResourceUtil.toString(inputStream, "UTF-8", 1024);
+			}
+			else {
+				throw new IOException("resourceURL cannot be null");
+			}
 
 			if ("text/css".equals(contentType)) {
 				resourceText = ExpressionUtil.filterExpressions(resourceText, resourceHandlerChain, externalContext);
@@ -103,7 +105,7 @@ public class ComboResource extends ReslibResource {
 
 	@Override
 	public Map<String, String> getResponseHeaders() {
-		return Collections.EMPTY_MAP;
+		return Collections.emptyMap();
 	}
 
 	@Override

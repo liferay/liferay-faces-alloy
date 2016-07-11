@@ -26,10 +26,6 @@ import com.liferay.faces.util.application.FilteredResourceBase;
  */
 public class FilteredResourceExpressionImpl extends FilteredResourceBase {
 
-	// Private Constants
-	private static final String RESOURCE_TOKEN_BEGIN = "#{resource['";
-	private static final String RESOURCE_TOKEN_END = "']}";
-
 	// Private Members
 	private Resource wrappedResource;
 
