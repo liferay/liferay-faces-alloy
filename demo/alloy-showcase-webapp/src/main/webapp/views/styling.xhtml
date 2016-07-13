@@ -1,8 +1,7 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:alloy="http://liferay.com/faces/alloy"
 	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core" xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
 
-	<alloy:loadConstants classType="com.liferay.faces.showcase.constants.AlloyShowcaseConstants" var="alloyShowcaseConstants" />
-	<c:if test="#{alloyShowcaseConstants.PLUTO_DETECTED}">
+	<c:if test="#{product.PLUTO.detected}">
 		<alloy:outputStylesheet>
 			.portlet .showcase-accordion .header span {
 				width: auto;
