@@ -11,38 +11,40 @@
  * FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public License for more
  * details.
  */
-package com.liferay.faces.alloy.context.internal;
-
-import java.text.MessageFormat;
-import java.util.Locale;
-import java.util.Map;
-import java.util.MissingResourceException;
-import java.util.ResourceBundle;
-import java.util.concurrent.ConcurrentHashMap;
+package com.liferay.faces.alloy.i18n.internal;
 
 import java.io.Serializable;
 
 import com.liferay.faces.util.i18n.I18n;
-import com.liferay.faces.util.i18n.I18nBundleBase;
-import com.liferay.faces.util.i18n.I18nWrapper;
-import com.liferay.faces.util.logging.Logger;
-import com.liferay.faces.util.logging.LoggerFactory;
+import com.liferay.faces.util.i18n.I18nFactory;
 
 
 /**
  * @author  Neil Griffin
  */
-public class I18nAlloyImpl extends I18nBundleBase implements Serializable {
+public class I18nFactoryAlloyImpl extends I18nFactory implements Serializable {
 
 	// serialVersionUID
-	private static final long serialVersionUID = 2433290128484661875L;
+	private static final long serialVersionUID = 4854765685342340315L;
 
-	public I18nAlloyImpl(I18n i18n) {
-		super(i18n);
+	// Private Data Members
+	private I18n i18n;
+	private I18nFactory wrappedI18nFactory;
+
+	public I18nFactoryAlloyImpl(I18nFactory i18nFactory) {
+
+		I18n i18n = i18nFactory.getI18n();
+		this.i18n = new I18nAlloyImpl(i18n);
+		this.wrappedI18nFactory = i18nFactory;
 	}
 
 	@Override
-	public String getBundleKey() {
-		return "i18n-alloy";
+	public I18n getI18n() {
+		return i18n;
+	}
+
+	@Override
+	public I18nFactory getWrapped() {
+		return wrappedI18nFactory;
 	}
 }
