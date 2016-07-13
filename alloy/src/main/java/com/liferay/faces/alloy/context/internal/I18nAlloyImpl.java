@@ -20,6 +20,8 @@ import java.util.MissingResourceException;
 import java.util.ResourceBundle;
 import java.util.concurrent.ConcurrentHashMap;
 
+import java.io.Serializable;
+
 import com.liferay.faces.util.i18n.I18n;
 import com.liferay.faces.util.i18n.I18nBundleBase;
 import com.liferay.faces.util.i18n.I18nWrapper;
@@ -30,7 +32,10 @@ import com.liferay.faces.util.logging.LoggerFactory;
 /**
  * @author  Neil Griffin
  */
-public class I18nAlloyImpl extends I18nBundleBase {
+public class I18nAlloyImpl extends I18nBundleBase implements Serializable {
+
+	// serialVersionUID
+	private static final long serialVersionUID = 2433290128484661875L;
 
 	public I18nAlloyImpl(I18n i18n) {
 		super(i18n);
