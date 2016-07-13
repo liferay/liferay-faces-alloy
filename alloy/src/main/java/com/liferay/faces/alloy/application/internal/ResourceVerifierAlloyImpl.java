@@ -13,6 +13,8 @@
  */
 package com.liferay.faces.alloy.application.internal;
 
+import java.io.Serializable;
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -29,20 +31,24 @@ import com.liferay.faces.util.product.ProductFactory;
 /**
  * @author  Kyle Stiemann
  */
-public class ResourceVerifierAlloyImpl extends ResourceVerifierWrapper {
+public class ResourceVerifierAlloyImpl extends ResourceVerifierWrapper implements Serializable {
+
+	// serialVersionUID
+	private static final long serialVersionUID = 2927555200777822626L;
 
 	// Private Constants
 	private static final boolean LIFERAY_PORTAL_DETECTED = ProductFactory.getProduct(Product.Name.LIFERAY_PORTAL)
 		.isDetected();
-	private static final Set<String> LIFERAY_PORTAL_INCLUDED_RESOURCE_IDS = new HashSet<String>();
+	private static final Set<String> LIFERAY_PORTAL_INCLUDED_RESOURCE_IDS;
 
 	static {
-		LIFERAY_PORTAL_INCLUDED_RESOURCE_IDS.add(ResourceUtil.getResourceId("liferay-faces-alloy-reslib",
+		Set<String> liferayPortalIncludedResourceIds = new HashSet<String>();
+		liferayPortalIncludedResourceIds.add(ResourceUtil.getResourceId("liferay-faces-alloy-reslib",
 				"build/aui/aui-min.js"));
-		LIFERAY_PORTAL_INCLUDED_RESOURCE_IDS.add(ResourceUtil.getResourceId("liferay-faces-alloy-reslib",
+		liferayPortalIncludedResourceIds.add(ResourceUtil.getResourceId("liferay-faces-alloy-reslib",
 				"build/aui-css/css/bootstrap.min.css"));
-		LIFERAY_PORTAL_INCLUDED_RESOURCE_IDS.add(ResourceUtil.getResourceId("liferay-faces-alloy-reslib",
-				"liferay.js"));
+		liferayPortalIncludedResourceIds.add(ResourceUtil.getResourceId("liferay-faces-alloy-reslib", "liferay.js"));
+		LIFERAY_PORTAL_INCLUDED_RESOURCE_IDS = Collections.unmodifiableSet(liferayPortalIncludedResourceIds);
 	}
 
 	// Private Members

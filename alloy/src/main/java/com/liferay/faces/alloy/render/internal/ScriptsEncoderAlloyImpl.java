@@ -14,6 +14,7 @@
 package com.liferay.faces.alloy.render.internal;
 
 import java.io.IOException;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -31,7 +32,10 @@ import com.liferay.faces.util.client.ScriptsEncoder;
 /**
  * @author  Kyle Stiemann
  */
-public class ScriptsEncoderAlloyImpl implements ScriptsEncoder {
+public class ScriptsEncoderAlloyImpl implements ScriptsEncoder, Serializable {
+
+	// serialVersionUID
+	private static final long serialVersionUID = 9063135909273616418L;
 
 	@Override
 	public void encodeBodyScripts(FacesContext facesContext, List<Script> scripts) throws IOException {
