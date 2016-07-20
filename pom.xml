@@ -82,7 +82,7 @@
 
 	<properties>
 		<alloyui.version>2.0.0</alloyui.version>
-		<alloyui.zip.version>2.0.0.50</alloyui.zip.version>
+		<alloyui.zip.version>2.0.0.79-deprecated</alloyui.zip.version>
 		<component.namespace>none</component.namespace>
 		<faces.group.id>com.sun.faces</faces.group.id>
 		<faces.api.artifact.id>jsf-api</faces.api.artifact.id>
