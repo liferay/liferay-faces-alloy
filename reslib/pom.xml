@@ -50,7 +50,7 @@
 									<url>https://github.com/liferay/alloy-ui/releases/download/${alloyui.zip.version}/alloy-${alloyui.zip.version}.zip</url>
 									<unpack>true</unpack>
 									<outputDirectory>${project.build.directory}/classes/META-INF/resources/alloy-${alloyui.version}</outputDirectory>
-									<md5>3f9e04c1e2c164fad41a7b1b81b6a7e1</md5>
+									<md5>691f1519cd344d15d614f71611940673</md5>
 								</configuration>
 							</execution>
 						</executions>
