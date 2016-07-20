@@ -13,6 +13,8 @@
  */
 package com.liferay.faces.showcase.bean;
 
+import java.io.Serializable;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
@@ -23,7 +25,10 @@ import javax.faces.context.FacesContext;
  */
 @ManagedBean
 @RequestScoped
-public class InputSourceCodeModelBean {
+public class InputSourceCodeModelBean implements Serializable {
+
+	// serialVersionUID
+	private static final long serialVersionUID = 2351729189955624081L;
 
 	private String sourceCode;
 	private String sourceText;
