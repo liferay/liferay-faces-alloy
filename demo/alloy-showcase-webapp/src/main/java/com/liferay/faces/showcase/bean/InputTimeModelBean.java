@@ -13,6 +13,7 @@
  */
 package com.liferay.faces.showcase.bean;
 
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Locale;
 
@@ -25,7 +26,10 @@ import javax.faces.bean.ViewScoped;
  */
 @ManagedBean
 @ViewScoped
-public class InputTimeModelBean {
+public class InputTimeModelBean implements Serializable {
+
+	// serialVersionUID
+	private static final long serialVersionUID = 7445057510998134124L;
 
 	private String highlighterType = "charMatch";
 	private Date time;
