@@ -90,15 +90,15 @@
 		<faces.api.version>${faces.spec.version}</faces.api.version>
 		<faces.impl.artifact.id>jsf-impl</faces.impl.artifact.id>
 		<faces.impl.scope>runtime</faces.impl.scope>
-		<faces.spec.version>2.1</faces.spec.version>
+		<faces.spec.version>2.2</faces.spec.version>
 		<faces.version>${mojarra.version}</faces.version>
 		<full.version>${project.version} (${timestamp} AD)</full.version>
 		<hibernate.validator.version>5.1.3.Final</hibernate.validator.version>
 		<jstl.version>1.2</jstl.version>
-		<liferay.faces.showcase.version>2.0.0-SNAPSHOT</liferay.faces.showcase.version>
-		<liferay.faces.util.version>2.0.0-SNAPSHOT</liferay.faces.util.version>
+		<liferay.faces.showcase.version>3.0.0-SNAPSHOT</liferay.faces.showcase.version>
+		<liferay.faces.util.version>3.0.0-SNAPSHOT</liferay.faces.util.version>
 		<log4j.version>1.2.14</log4j.version>
-		<mojarra.version>2.1.29-05</mojarra.version>
+		<mojarra.version>2.2.13</mojarra.version>
 		<myfaces.version>UNSUPPORTED</myfaces.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.stage>Production</project.stage>
@@ -316,15 +316,6 @@
 					WEB-INF/web-*.xml,
 					WEB-INF/weblogic.xml
 				</war.packaging.excludes>
-			</properties>
-		</profile>
-		<profile>
-			<id>jsf22</id>
-			<properties>
-				<faces.spec.version>2.2</faces.spec.version>
-				<liferay.faces.showcase.version>3.0.0-SNAPSHOT</liferay.faces.showcase.version>
-				<liferay.faces.util.version>3.0.0-SNAPSHOT</liferay.faces.util.version>
-				<mojarra.version>2.2.13</mojarra.version>
 			</properties>
 		</profile>
 		<profile>
