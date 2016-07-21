@@ -744,6 +744,7 @@ java.util.List<java.lang.String> filterResults(java.lang.String, java.util.List<
 		<tag-extension>
 			<extends-tags>autoAjaxCommon styleable uiComponentBaseInherited</extends-tags>
 			<parent-class><![CDATA[javax.faces.component.html.HtmlColumn]]></parent-class>
+			<since>1.0.0</since>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -2401,6 +2402,7 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 		<tag-extension>
 			<extends-tags>styleable uiComponentBaseInherited</extends-tags>
 			<parent-class><![CDATA[javax.faces.component.UIPanel]]></parent-class>
+			<since>1.0.0</since>
 		</tag-extension>
 	</tag>
 	<tag>
