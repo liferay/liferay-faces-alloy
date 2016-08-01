@@ -98,7 +98,7 @@
 		<liferay.faces.showcase.version>2.0.0-SNAPSHOT</liferay.faces.showcase.version>
 		<liferay.faces.util.version>2.0.0-SNAPSHOT</liferay.faces.util.version>
 		<log4j.version>1.2.14</log4j.version>
-		<mojarra.version>2.1.29-05</mojarra.version>
+		<mojarra.version>2.1.29-08</mojarra.version>
 		<myfaces.version>UNSUPPORTED</myfaces.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.stage>Production</project.stage>
