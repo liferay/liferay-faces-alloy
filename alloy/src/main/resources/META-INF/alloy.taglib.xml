@@ -85,7 +85,7 @@
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/accordion/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/accordion/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -391,7 +391,7 @@
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/audio/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/audio/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -753,7 +753,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/autocomplete/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/autocomplete/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -879,7 +879,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/body/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/body/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -1089,7 +1089,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Object</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/button/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/button/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -1191,7 +1191,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/buttonrow/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/buttonrow/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -1335,7 +1335,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Integer</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/column/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/column/general</vdldoc:example-url>
 			<vdldoc:since>1.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -1593,7 +1593,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Object</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/commandbutton/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/commandbutton/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -1851,7 +1851,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Object</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/commandlink/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/commandlink/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -1893,7 +1893,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/dataitem/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/dataitem/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -1953,7 +1953,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/datalist/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/datalist/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -2217,7 +2217,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/datatable/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/datatable/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -2373,7 +2373,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Integer</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/dialog/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/dialog/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -2493,7 +2493,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/field/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/field/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -2607,7 +2607,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/fieldset/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/fieldset/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -2769,7 +2769,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/form/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/form/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -2805,7 +2805,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/head/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/head/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -2859,7 +2859,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/icon/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/icon/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -3045,7 +3045,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/image/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/image/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -3364,7 +3364,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Integer</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/inputdate/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/inputdate/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -3684,7 +3684,7 @@ java.lang.Object)</method-signature>
 			<method-signature>void valueChange(javax.faces.event.ValueChangeEvent)</method-signature>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/inputfile/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/inputfile/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -3769,7 +3769,7 @@ java.lang.Object)</method-signature>
 			<method-signature>void valueChange(javax.faces.event.ValueChangeEvent)</method-signature>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/inputhidden/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/inputhidden/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -4034,7 +4034,7 @@ java.lang.Object)</method-signature>
 			<method-signature>void valueChange(javax.faces.event.ValueChangeEvent)</method-signature>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/inputsecret/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/inputsecret/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -4215,7 +4215,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/inputsourcecode/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/inputsourcecode/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -4474,7 +4474,7 @@ java.lang.Object)</method-signature>
 			<method-signature>void valueChange(javax.faces.event.ValueChangeEvent)</method-signature>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/inputtext/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/inputtext/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -4727,7 +4727,7 @@ java.lang.Object)</method-signature>
 			<method-signature>void valueChange(javax.faces.event.ValueChangeEvent)</method-signature>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/inputtextarea/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/inputtextarea/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -5094,7 +5094,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Integer</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/inputtime/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/inputtime/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -5328,7 +5328,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Object</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/link/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/link/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -5355,7 +5355,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/loadconstants/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/loadconstants/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -5402,7 +5402,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/menu/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/menu/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -5540,7 +5540,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/message/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/message/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -5690,7 +5690,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/messages/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/messages/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -5774,7 +5774,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Object</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/outputformat/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/outputformat/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -5948,7 +5948,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Object</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/outputlabel/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/outputlabel/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -6164,7 +6164,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Object</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/outputlink/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/outputlink/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -6278,7 +6278,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Object</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/outputremainingchars/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/outputremainingchars/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -6344,7 +6344,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Object</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/outputscript/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/outputscript/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -6404,7 +6404,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Object</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/outputstylesheet/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/outputstylesheet/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -6488,7 +6488,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Object</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/outputtext/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/outputtext/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -6614,7 +6614,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Integer</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/outputtooltip/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/outputtooltip/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -6770,7 +6770,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Object</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/paginator/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/paginator/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -6890,7 +6890,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/panel/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/panel/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -7112,7 +7112,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/panelgrid/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/panelgrid/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -7220,7 +7220,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/panelgroup/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/panelgroup/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -7382,7 +7382,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.Integer</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/popover/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/popover/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -7484,7 +7484,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/progressbar/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/progressbar/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -7513,7 +7513,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/resource/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/resource/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -7555,7 +7555,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/row/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/row/general</vdldoc:example-url>
 			<vdldoc:since>1.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -7790,7 +7790,7 @@ java.lang.Object)</method-signature>
 			<method-signature>void valueChange(javax.faces.event.ValueChangeEvent)</method-signature>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/selectbooleancheckbox/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/selectbooleancheckbox/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -8061,7 +8061,7 @@ java.lang.Object)</method-signature>
 			<method-signature>void valueChange(javax.faces.event.ValueChangeEvent)</method-signature>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/selectmanycheckbox/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/selectmanycheckbox/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -8326,7 +8326,7 @@ java.lang.Object)</method-signature>
 			<method-signature>void valueChange(javax.faces.event.ValueChangeEvent)</method-signature>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/selectmanylistbox/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/selectmanylistbox/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -8585,7 +8585,7 @@ java.lang.Object)</method-signature>
 			<method-signature>void valueChange(javax.faces.event.ValueChangeEvent)</method-signature>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/selectmanymenu/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/selectmanymenu/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -8844,7 +8844,7 @@ java.lang.Object)</method-signature>
 			<method-signature>void valueChange(javax.faces.event.ValueChangeEvent)</method-signature>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/selectonelistbox/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/selectonelistbox/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -9097,7 +9097,7 @@ java.lang.Object)</method-signature>
 			<method-signature>void valueChange(javax.faces.event.ValueChangeEvent)</method-signature>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/selectonemenu/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/selectonemenu/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -9350,7 +9350,7 @@ java.lang.Object)</method-signature>
 			<method-signature>void valueChange(javax.faces.event.ValueChangeEvent)</method-signature>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/selectoneradio/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/selectoneradio/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -9477,7 +9477,7 @@ java.lang.Object)</method-signature>
 			<method-signature>void valueChange(javax.faces.event.ValueChangeEvent)</method-signature>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/selectstarrating/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/selectstarrating/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -9604,7 +9604,7 @@ java.lang.Object)</method-signature>
 			<method-signature>void valueChange(javax.faces.event.ValueChangeEvent)</method-signature>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/selectthumbrating/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/selectthumbrating/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -9671,7 +9671,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/tab/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/tab/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -9755,7 +9755,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/tabview/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/tabview/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
@@ -10073,7 +10073,7 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<tag-extension>
-			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/showcase/-/component/alloy/video/general</vdldoc:example-url>
+			<vdldoc:example-url>http://www.liferayfaces.org/web/guest/alloy-showcase/-/alloy-tag/alloy/video/general</vdldoc:example-url>
 			<vdldoc:since>2.0.0</vdldoc:since>
 		</tag-extension>
 	</tag>
