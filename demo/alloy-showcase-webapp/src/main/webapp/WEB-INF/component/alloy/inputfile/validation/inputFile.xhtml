@@ -6,7 +6,7 @@
 
 		<showcase:example description="#{i18n['alloy-inputfile-validation-example']}">
 			<!-- The enclosing form must have enctype="multipart/form-data" in order for files to upload correctly. -->
-			<alloy:form enctype="multipart/form-data" includeViewParams="true">
+			<alloy:form enctype="multipart/form-data">
 				<alloy:messages layout="table" />
 				<alloy:inputFile contentTypes="application/pdf,image/png"
 					fileUploadListener="#{inputFileBackingBean.handleFileUpload}" maxFileSize="600000"
@@ -17,7 +17,7 @@
 				<alloy:commandButton ajax="false" value="#{i18n['submit']}" />
 			</alloy:form>
 		</showcase:example>
-		<alloy:form id="resultsForm" includeViewParams="true">
+		<alloy:form id="resultsForm">
 			<showcase:results id="modelValue" label="#{i18n['model-value']}">
 				<ui:include src="../inputFileCommon.xhtml" />
 			</showcase:results>

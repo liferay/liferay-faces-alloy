@@ -6,7 +6,7 @@
 
 		<showcase:example>
 			<!-- The enclosing form must have enctype="multipart/form-data" in order for files to upload correctly. -->
-			<alloy:form enctype="multipart/form-data" includeViewParams="true">
+			<alloy:form enctype="multipart/form-data">
 				<alloy:selectBooleanCheckbox immediate="true" value="#{inputFileModelBean.appendNewFiles}">
 					<f:ajax render="@form" />
 				</alloy:selectBooleanCheckbox>
@@ -21,7 +21,7 @@
 				</alloy:inputFile>
 			</alloy:form>
 		</showcase:example>
-		<alloy:form id="resultsForm" includeViewParams="true">
+		<alloy:form id="resultsForm">
 			<showcase:results id="modelValue" label="#{i18n['model-value']}">
 				<ui:include src="../inputFileCommon.xhtml" />
 			</showcase:results>
