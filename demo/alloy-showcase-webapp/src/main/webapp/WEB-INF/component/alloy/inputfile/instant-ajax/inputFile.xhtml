@@ -5,14 +5,14 @@
 	<ui:define name="col1">
 
 		<showcase:example>
-			<alloy:form enctype="multipart/form-data" includeViewParams="true">
+			<alloy:form enctype="multipart/form-data">
 				<alloy:messages globalOnly="true" layout="table" />
 				<alloy:inputFile auto="true" fileUploadListener="#{inputFileBackingBean.handleFileUpload}">
 					<f:ajax render=":modelValue" />
 				</alloy:inputFile>
 			</alloy:form>
 		</showcase:example>
-		<alloy:form id="resultsForm" includeViewParams="true">
+		<alloy:form id="resultsForm">
 			<showcase:results id="modelValue" label="#{i18n['model-value']}">
 				<ui:include src="../inputFileCommon.xhtml" />
 			</showcase:results>
