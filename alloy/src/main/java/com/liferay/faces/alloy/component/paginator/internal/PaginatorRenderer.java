@@ -211,10 +211,10 @@ public class PaginatorRenderer extends PaginatorRendererBase implements Componen
 
 			// Encode the starting <div> element that represents the Bootstrap pagination component.
 			responseWriter.startElement("div", uiComponent);
-			responseWriter.writeAttribute("class", "pagination", null);
 
 			// Encode the starting <ul> element that represents the unordered list of pagination controls.
 			responseWriter.startElement("ul", uiComponent);
+			responseWriter.writeAttribute("class", "pagination", null);
 
 			// If the summary is to be positioned on the left of the pagination controls, then encode the
 			// summary.
@@ -382,8 +382,8 @@ public class PaginatorRenderer extends PaginatorRendererBase implements Componen
 
 			// Encode the starting <div> element that represents the Bootstrap pagination component.
 			responseWriter.startElement("div", paginator);
-			responseWriter.writeAttribute("class", "pagination", null);
 			responseWriter.startElement("ul", paginator);
+			responseWriter.writeAttribute("class", "pagination", null);
 		}
 
 		// Determine the first page number and the last page number.
