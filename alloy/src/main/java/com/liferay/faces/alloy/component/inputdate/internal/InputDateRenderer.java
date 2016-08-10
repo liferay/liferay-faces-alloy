@@ -264,7 +264,7 @@ public class InputDateRenderer extends InputDateRendererBase {
 
 		// Note: The JavaScript date object expects zero-based month numbers, so it is necessary to offset the month
 		// by 1.
-		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("'new Date'(yyyy,MM-1,dd,0,0,0,0)");
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("'new Date'(yyyy,M-1,d,0,0,0,0)");
 		simpleDateFormat.setTimeZone(timeZone);
 
 		String dateString = simpleDateFormat.format(date);
