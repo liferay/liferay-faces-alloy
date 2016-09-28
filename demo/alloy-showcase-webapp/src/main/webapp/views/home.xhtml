@@ -3,6 +3,7 @@
 	template="/WEB-INF/templates/showcase-#{showcaseModelBean.deploymentType}.xhtml">
 
 	<ui:define name="content">
+		<ui:include src="test-javascript.xhtml" />
 		<ui:include src="styling.xhtml" />
 		<alloy:outputStylesheet name="home.css" library="css" />
 		<div class="showcase-home">
