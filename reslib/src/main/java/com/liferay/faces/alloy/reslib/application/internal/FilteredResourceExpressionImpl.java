@@ -26,6 +26,10 @@ import com.liferay.faces.util.application.FilteredResourceBase;
  */
 public class FilteredResourceExpressionImpl extends FilteredResourceBase {
 
+	// Private Constants
+	private static final String COMBO_MODULE_PATHS_DELIMITER = "#{comboModulePathsDelimiter}";
+	private static final String SCRIPT_MODULE_PATHS_DELIMITER = "#{scriptModulePathsDelimiter}";
+
 	// Private Members
 	private Resource wrappedResource;
 
@@ -44,7 +48,34 @@ public class FilteredResourceExpressionImpl extends FilteredResourceBase {
 		FacesContext facesContext = FacesContext.getCurrentInstance();
 		ResourceHandler resourceHandlerChain = facesContext.getApplication().getResourceHandler();
 		ExternalContext externalContext = facesContext.getExternalContext();
+		String comboModulePathsDelimiter = getModulePathsDelimiter("combo", resourceHandlerChain, externalContext);
+		String scriptModulePathsDelimiter = getModulePathsDelimiter("script", resourceHandlerChain, externalContext);
+		text = text.replace(COMBO_MODULE_PATHS_DELIMITER, comboModulePathsDelimiter);
+		text = text.replace(SCRIPT_MODULE_PATHS_DELIMITER, scriptModulePathsDelimiter);
 
-		return ExpressionUtil.filterExpressions(text, resourceHandlerChain, externalContext);
+		return ExpressionUtil.filterResourceExpressions(text, resourceHandlerChain, externalContext);
+	}
+
+	private String getModulePathsDelimiter(String resourceName, ResourceHandler resourceHandlerChain,
+		ExternalContext externalContext) {
+
+		String modulePathsDelimiter = "&";
+		Resource resource = resourceHandlerChain.createResource(resourceName, ResLibResourceHandler.LIBRARY_NAME);
+
+		if (resource != null) {
+
+			String requestPath = resource.getRequestPath();
+
+			if (requestPath != null) {
+
+				String resourceURL = externalContext.encodeResourceURL(requestPath);
+
+				if (!resourceURL.contains("?")) {
+					modulePathsDelimiter = "?";
+				}
+			}
+		}
+
+		return modulePathsDelimiter;
 	}
 }

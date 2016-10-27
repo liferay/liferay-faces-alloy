@@ -32,7 +32,7 @@ import javax.faces.context.ExternalContext;
 		throw new AssertionError();
 	}
 
-	/* package-priavte */ static String filterExpressions(String text, ResourceHandler resourceHandlerChain,
+	/* package-priavte */ static String filterResourceExpressions(String text, ResourceHandler resourceHandlerChain,
 		ExternalContext externalContext) {
 
 		int startPos = text.indexOf(RESOURCE_TOKEN_BEGIN);
