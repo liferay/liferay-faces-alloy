@@ -94,7 +94,8 @@ public class ComboResource extends AlloyResource {
 			}
 
 			if ("text/css".equals(contentType)) {
-				resourceText = ExpressionUtil.filterExpressions(resourceText, resourceHandlerChain, externalContext);
+				resourceText = ExpressionUtil.filterResourceExpressions(resourceText, resourceHandlerChain,
+						externalContext);
 			}
 
 			comboResourceText.append(resourceText);
