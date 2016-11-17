@@ -6,12 +6,29 @@
 		<groupId>com.liferay.faces.demo</groupId>
 		<artifactId>com.liferay.faces.demo.alloy.parent</artifactId>
 		<version>3.0.1-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath>
+		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<artifactId>com.liferay.faces.demo.alloy.showcase.webapp</artifactId>
 	<packaging>war</packaging>
 	<name>Alloy Showcase Webapp</name>
 	<description>This plugin is the Liferay Faces Alloy Showcase demo webapp.</description>
+
+	<!--
+		When running tests from an IDE (like eclipse), you may need to set certain system properties:
+
+		-Dintegration.context=/com.liferay.faces.demo.alloy.showcase.webapp/web/guest/showcase/-/component
+		-Dintegration.default.component.prefix=alloy
+
+		Setting system properties in Eclipse:
+		http://stackoverflow.com/questions/862391/how-to-pass-the-d-system-properties-while-testing-on-eclipse
+		Setting systen properties in IntelliJ:
+		http://stackoverflow.com/questions/29454494/set-java-system-properties-in-intellij-or-eclipse
+		It is not necessary to set system properties in Netbeans since Netbeans automatically uses Maven properties
+		correctly.
+	-->
+	<properties>
+		<integration.context>/com.liferay.faces.demo.alloy.showcase.webapp/web/guest/showcase/-/component</integration.context>
+	</properties>
 
 	<profiles>
 		<profile>
@@ -22,6 +39,83 @@
 					<artifactId>prettyfaces-jsf2</artifactId>
 				</dependency>
 			</dependencies>
+		</profile>
+		<profile>
+			<id>integration</id>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>2.19.1</version>
+						<configuration>
+							<systemPropertyVariables>
+								<RUNNING_WITH_MAVEN_SUREFIRE_PLUGIN>true</RUNNING_WITH_MAVEN_SUREFIRE_PLUGIN>
+								<!-- Specify a property like so: -Dintegration.browser=phantomjs -->
+								<integration.browser>${integration.browser}</integration.browser>
+								<integration.browser.wait.time.out>${integration.browser.wait.time.out}</integration.browser.wait.time.out>
+								<integration.log.level>${integration.log.level}</integration.log.level>
+								<integration.container>${integration.container}</integration.container>
+								<integration.host>${integration.host}</integration.host>
+								<integration.port>${integration.port}</integration.port>
+								<integration.context>${integration.context}</integration.context>
+								<integration.default.component.prefix>alloy</integration.default.component.prefix>
+								<integration.sign.in.context>${integration.sign.in.context}</integration.sign.in.context>
+								<integration.login.xpath>${integration.login.xpath}</integration.login.xpath>
+								<integration.password.xpath>${integration.password.xpath}</integration.password.xpath>
+								<integration.sign.in.button.xpath>${integration.sign.in.button.xpath}</integration.sign.in.button.xpath>
+								<integration.login>${integration.login}</integration.login>
+								<integration.password>${integration.password}</integration.password>
+							</systemPropertyVariables>
+							<properties>
+								<property>
+									<name>listener</name>
+									<value>com.liferay.faces.test.selenium.IntegrationTestSuiteListener</value>
+								</property>
+							</properties>
+							<includes>
+								<include>**/*Test.java,**/Test*.java,**/*TestCase.java,**/*Tester.java</include>
+							</includes>
+							<trimStackTrace>false</trimStackTrace>
+							<dependenciesToScan>
+								<dependency>com.liferay.faces.demo:com.liferay.faces.demo.jsf.showcase.webapp</dependency>
+							</dependenciesToScan>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+		<profile>
+			<id>liferay</id>
+			<properties>
+				<integration.container>liferay</integration.container>
+				<integration.context>/web/guest/alloy-showcase/-/alloy-tag</integration.context>
+			</properties>
+		</profile>
+		<profile>
+			<id>pluto</id>
+			<properties>
+				<integration.container>pluto</integration.container>
+				<integration.context>/pluto/portal/alloy-showcase</integration.context>
+			</properties>
+		</profile>
+		<profile>
+			<id>phantomjs</id>
+			<properties>
+				<integration.browser>phantomjs</integration.browser>
+			</properties>
+		</profile>
+		<profile>
+			<id>firefox</id>
+			<properties>
+				<integration.browser>firefox</integration.browser>
+			</properties>
+		</profile>
+		<profile>
+			<id>chrome</id>
+			<properties>
+				<integration.browser>chrome</integration.browser>
+			</properties>
 		</profile>
 	</profiles>
 
@@ -70,6 +164,22 @@
 	</build>
 
 	<dependencies>
+		<!-- Integration test dependencies. -->
+		<dependency>
+			<groupId>com.liferay.faces.test</groupId>
+			<artifactId>com.liferay.faces.test.selenium</artifactId>
+			<version>0.2.0-SNAPSHOT</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>com.liferay.faces.demo</groupId>
+			<artifactId>com.liferay.faces.demo.jsf.showcase.webapp</artifactId>
+			<version>${liferay.faces.showcase.version}</version>
+			<type>test-jar</type>
+			<scope>test</scope>
+		</dependency>
+		<!-- End integration test dependencies. -->
+
 		<dependency>
 			<groupId>com.liferay.faces</groupId>
 			<artifactId>com.liferay.faces.alloy</artifactId>
