@@ -11,12 +11,12 @@
 							<f:ajax render="field" />
 						</alloy:selectBooleanCheckbox>
 					</f:facet>
+					<!-- Navigation based on outcome of navigation-case defined in navigation-rule.xml -->
+					<alloy:commandLink action="toParam" ajax="#{commandModelBean.ajax}">
+						<alloy:outputText value="#{i18n['to-param-page']} " />
+						<alloy:icon name="arrow-right" />
+					</alloy:commandLink>
 				</alloy:field>
-				<!-- Navigation based on outcome of navigation-case defined in navigation-rule.xml -->
-				<alloy:commandLink action="toParam" ajax="#{commandModelBean.ajax}">
-					<alloy:outputText value="#{i18n['to-param-page']} " />
-					<alloy:icon name="arrow-right" />
-				</alloy:commandLink>
 			</showcase:example>
 			<showcase:results label="#{i18n['parameter-value']}">
 				<alloy:outputText id="parameterValue"
