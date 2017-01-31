@@ -6,17 +6,15 @@
 		<alloy:form>
 			<showcase:example>
 				<alloy:field id="field" label="#{i18n['ajax']}">
-					<f:facet name="label">
-						<alloy:selectBooleanCheckbox value="#{commandModelBean.ajax}">
-							<f:ajax render="field" />
-						</alloy:selectBooleanCheckbox>
-					</f:facet>
-					<!-- Navigation based on outcome of navigation-case defined in navigation-rule.xml -->
-					<alloy:commandButton action="toParam" ajax="#{commandModelBean.ajax}">
-						<alloy:outputText value="#{i18n['to-param-page']} " />
-						<alloy:icon name="arrow-right" />
-					</alloy:commandButton>
+					<alloy:selectBooleanCheckbox value="#{commandModelBean.ajax}">
+						<f:ajax render="nav field" />
+					</alloy:selectBooleanCheckbox>
 				</alloy:field>
+				<!-- Navigation based on outcome of navigation-case defined in navigation-rule.xml -->
+				<alloy:commandButton id="nav" action="toParam" ajax="#{commandModelBean.ajax}">
+					<alloy:outputText value="#{i18n['to-param-page']} " />
+					<alloy:icon name="arrow-right" />
+				</alloy:commandButton>
 			</showcase:example>
 			<showcase:results label="#{i18n['parameter-value']}">
 				<alloy:outputText id="parameterValue"
