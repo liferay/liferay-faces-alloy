@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2016 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-2017 Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -28,24 +28,22 @@ public class ButtonRowGeneralTester extends ButtonLinkTester {
 
 	@Test
 	public void runButtonRowGeneralTest() throws Exception {
-		Browser browser = Browser.getInstance();
-		navigateToUseCase(browser, "buttonrow", "general");
 
-		// Test the visibility of alloy button row and button holder.
+		Browser browser = Browser.getInstance();
+		navigateToUseCase(browser, "buttonRow", "general");
+
+		// Test that alloy:buttonRow is visible.
 		SeleniumAssert.assertElementVisible(browser, "//div[@class='alloy-button-row button-holder']");
 
-		// Test the visibility of both button.
-		SeleniumAssert.assertElementVisible(browser,
-			"//*[contains(@class,'btn ')][contains(@class,'btn-primary')][@value='Save' or contains(.,'Save')]");
-		SeleniumAssert.assertElementVisible(browser,
-			"//*[contains(@class,'btn ')][contains(@class,'btn-cancel')][@value='Cancel' or contains(.,'Cancel')]");
+		// Test that both buttons appear and can be clicked.
+		String saveButtonXpath =
+			"//*[contains(@class,'btn ')][contains(@class,'btn-primary')][@value='Save' or contains(.,'Save')]";
+		SeleniumAssert.assertElementVisible(browser, saveButtonXpath);
+		browser.click(saveButtonXpath);
 
-		// click first button
-		browser.click(
-			"//*[contains(@class,'btn ')][contains(@class,'btn-primary')][@value='Save' or contains(.,'Save')]");
-
-		// click second button
-		browser.click(
-			"//*[contains(@class,'btn ')][contains(@class,'btn-cancel')][@value='Cancel' or contains(.,'Cancel')]");
+		String cancelButtonXpath =
+			"//*[contains(@class,'btn ')][contains(@class,'btn-cancel')][@value='Cancel' or contains(.,'Cancel')]";
+		SeleniumAssert.assertElementVisible(browser, cancelButtonXpath);
+		browser.click(cancelButtonXpath);
 	}
 }
