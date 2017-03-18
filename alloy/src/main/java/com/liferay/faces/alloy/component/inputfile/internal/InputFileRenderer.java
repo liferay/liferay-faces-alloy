@@ -26,6 +26,7 @@ import javax.faces.component.NamingContainer;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIForm;
 import javax.faces.component.UIViewRoot;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 import javax.faces.convert.ConverterException;
@@ -141,8 +142,9 @@ public class InputFileRenderer extends InputFileRendererBase {
 			AjaxParameters ajaxParameters = new AjaxParameters(inputFile, clientId, formClientId);
 			String execute = ajaxParameters.getExecute();
 			String render = ajaxParameters.getRender();
+			ExternalContext externalContext = facesContext.getExternalContext();
 
-			I18n i18n = I18nFactory.getI18nInstance();
+			I18n i18n = I18nFactory.getI18nInstance(externalContext);
 			String notStartedMessage = i18n.getMessage(facesContext, locale, "not-started");
 			JavaScriptFragment clientComponent = new JavaScriptFragment("Liferay.component('" + clientKey + "')");
 			encodeFunctionCall(responseWriter, "LFAI.initProgressUploader", alloyNamespace, clientComponent,
@@ -250,7 +252,8 @@ public class InputFileRenderer extends InputFileRendererBase {
 
 		// selectFilesButton
 		Locale locale = facesContext.getViewRoot().getLocale();
-		I18n i18n = I18nFactory.getI18nInstance();
+		ExternalContext externalContext = facesContext.getExternalContext();
+		I18n i18n = I18nFactory.getI18nInstance(externalContext);
 		String chooseFiles = i18n.getMessage(facesContext, locale, "choose-files");
 		StringBuilder selectFilesButtonScript = new StringBuilder();
 		selectFilesButtonScript.append(
@@ -282,7 +285,8 @@ public class InputFileRenderer extends InputFileRendererBase {
 		responseWriter.startElement("tr", inputFile);
 		responseWriter.startElement("th", inputFile);
 
-		I18nFactory i18nFactory = (I18nFactory) FactoryExtensionFinder.getFactory(I18nFactory.class);
+		ExternalContext externalContext = facesContext.getExternalContext();
+		I18nFactory i18nFactory = (I18nFactory) FactoryExtensionFinder.getFactory(externalContext, I18nFactory.class);
 		I18n i18n = i18nFactory.getI18n();
 		String i18nFileName = i18n.getMessage(facesContext, locale, "file-name");
 		responseWriter.writeText(i18nFileName, null);
@@ -326,7 +330,8 @@ public class InputFileRenderer extends InputFileRendererBase {
 		responseWriter.writeAttribute("class", "select-files-box", null);
 		responseWriter.endElement("div");
 
-		I18nFactory i18nFactory = (I18nFactory) FactoryExtensionFinder.getFactory(I18nFactory.class);
+		ExternalContext externalContext = facesContext.getExternalContext();
+		I18nFactory i18nFactory = (I18nFactory) FactoryExtensionFinder.getFactory(externalContext, I18nFactory.class);
 		I18n i18n = i18nFactory.getI18n();
 
 		if (!inputFile.isAuto()) {
