@@ -16,6 +16,7 @@ package com.liferay.faces.alloy.component.outputscript.internal;
 import java.io.IOException;
 
 import javax.faces.component.UIComponent;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 import javax.faces.event.ListenerFor;
@@ -71,14 +72,16 @@ public class OutputScriptRenderer extends OutputScriptRendererBase {
 
 				Script script;
 				String bufferedScriptString = bufferedScriptResponseWriter.toString();
+				ExternalContext externalContext = facesContext.getExternalContext();
 
 				if ((use != null) && (use.length() > 0)) {
 
 					String[] modules = use.split(",");
-					script = ScriptFactory.getScriptInstance(bufferedScriptString, modules, Script.ModulesType.ALLOY);
+					script = ScriptFactory.getScriptInstance(externalContext, bufferedScriptString, modules,
+							Script.ModulesType.ALLOY);
 				}
 				else {
-					script = ScriptFactory.getScriptInstance(bufferedScriptString);
+					script = ScriptFactory.getScriptInstance(externalContext, bufferedScriptString);
 				}
 
 				// Render the script at the bottom of the page immediately before the closing </body> tag.

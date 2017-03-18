@@ -157,7 +157,8 @@ public class AutoComplete extends AutoCompleteBase implements ClientBehaviorHold
 				}
 				else {
 
-					I18n i18n = I18nFactory.getI18nInstance();
+					ExternalContext externalContext = facesContext.getExternalContext();
+					I18n i18n = I18nFactory.getI18nInstance(externalContext);
 					UIViewRoot viewRoot = facesContext.getViewRoot();
 					Locale locale = viewRoot.getLocale();
 					String message = i18n.getMessage(facesContext, locale, UISelectOne.INVALID_MESSAGE_ID);

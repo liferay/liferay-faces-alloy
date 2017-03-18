@@ -16,6 +16,7 @@ package com.liferay.faces.showcase.validator;
 import java.util.Locale;
 
 import javax.faces.FacesException;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
 import com.liferay.faces.alloy.component.inputdate.InputDate;
@@ -31,7 +32,8 @@ public class AlloyValidatorHelper {
 
 	public static String getMessage(FacesContext facesContext, InputDate inputDate, String messageId) {
 
-		I18n i18n = I18nFactory.getI18nInstance();
+		ExternalContext externalContext = facesContext.getExternalContext();
+		I18n i18n = I18nFactory.getI18nInstance(externalContext);
 		Object localeObject = inputDate.getLocale(facesContext);
 		Locale locale = getObjectAsLocale(localeObject);
 
@@ -40,8 +42,9 @@ public class AlloyValidatorHelper {
 
 	public static String getMessage(FacesContext facesContext, InputTime inputTime, String messageId) {
 
-		final I18n i18n = I18nFactory.getI18nInstance();
-		final Object localeObject = inputTime.getLocale(facesContext);
+		ExternalContext externalContext = facesContext.getExternalContext();
+		I18n i18n = I18nFactory.getI18nInstance(externalContext);
+		Object localeObject = inputTime.getLocale(facesContext);
 		Locale locale = getObjectAsLocale(localeObject);
 
 		return i18n.getMessage(facesContext, locale, messageId);

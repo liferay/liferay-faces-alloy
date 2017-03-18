@@ -92,7 +92,7 @@ public class InputFileDecoderCommonsImpl extends InputFileDecoderBase {
 		uploadedFileMap = new HashMap<String, List<UploadedFile>>();
 
 		UploadedFileFactory uploadedFileFactory = (UploadedFileFactory) FactoryExtensionFinder.getFactory(
-				UploadedFileFactory.class);
+				externalContext, UploadedFileFactory.class);
 
 		// Begin parsing the request for file parts:
 		try {

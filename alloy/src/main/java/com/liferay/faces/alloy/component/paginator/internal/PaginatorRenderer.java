@@ -391,7 +391,8 @@ public class PaginatorRenderer extends PaginatorRendererBase implements Componen
 		int paginatorLast = Math.min(first + rows, rowCount);
 
 		// Get an internationalized message that contains the pagination summary.
-		I18n i18n = I18nFactory.getI18nInstance();
+		ExternalContext externalContext = facesContext.getExternalContext();
+		I18n i18n = I18nFactory.getI18nInstance(externalContext);
 		String message = i18n.getMessage(facesContext, locale, "results-x-x-of-x-page-x-of-x", paginatorFirst,
 				paginatorLast, rowCount, curPageNumber, pageCount);
 

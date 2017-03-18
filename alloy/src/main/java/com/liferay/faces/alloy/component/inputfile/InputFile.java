@@ -20,6 +20,7 @@ import java.util.Locale;
 import javax.el.MethodExpression;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.FacesComponent;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.AbortProcessingException;
 import javax.faces.event.FacesEvent;
@@ -69,7 +70,8 @@ public class InputFile extends InputFileBase {
 		if ((maxFileSize != null) || (contentTypeSet != null)) {
 
 			Locale locale = facesContext.getViewRoot().getLocale();
-			I18n i18n = I18nFactory.getI18nInstance();
+			ExternalContext externalContext = facesContext.getExternalContext();
+			I18n i18n = I18nFactory.getI18nInstance(externalContext);
 			String clientId = getClientId(facesContext);
 			@SuppressWarnings("unchecked")
 			List<UploadedFile> uploadedFiles = (List<UploadedFile>) value;

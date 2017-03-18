@@ -22,6 +22,7 @@ import java.util.TimeZone;
 import javax.faces.FacesException;
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIViewRoot;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 import javax.faces.convert.DateTimeConverter;
@@ -181,7 +182,8 @@ public abstract class InputDateTime extends InputDateTimeBase {
 					String minDateString = simpleDateFormat.format(minDate);
 					String maxDateString = simpleDateFormat.format(maxDate);
 					Locale locale = getObjectAsLocale(getLocale(facesContext));
-					I18n i18n = I18nFactory.getI18nInstance();
+					ExternalContext externalContext = facesContext.getExternalContext();
+					I18n i18n = I18nFactory.getI18nInstance(externalContext);
 					String message = i18n.getMessage(facesContext, locale, "please-enter-a-value-between-x-and-x",
 							minDateString, maxDateString);
 					facesMessage = new FacesMessage(FacesMessage.SEVERITY_ERROR, message, message);
