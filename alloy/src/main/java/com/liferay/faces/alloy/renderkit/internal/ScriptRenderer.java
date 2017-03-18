@@ -17,6 +17,7 @@ import java.io.IOException;
 import java.util.Map;
 
 import javax.faces.component.UIComponent;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
@@ -98,8 +99,9 @@ public class ScriptRenderer extends ScriptRendererCompat {
 
 			if (inlineUse != null) {
 				String[] useArray = new String[] { inlineUse };
+				ExternalContext externalContext = facesContext.getExternalContext();
 				BrowserSnifferFactory browserSnifferFactory = (BrowserSnifferFactory) FactoryExtensionFinder.getFactory(
-						BrowserSnifferFactory.class);
+						externalContext, BrowserSnifferFactory.class);
 				BrowserSniffer browserSniffer = browserSnifferFactory.getBrowserSniffer(
 						facesContext.getExternalContext());
 				String alloyBeginScript = AlloyRendererUtil.getAlloyBeginScript(useArray, null, browserSniffer);
@@ -129,7 +131,9 @@ public class ScriptRenderer extends ScriptRendererCompat {
 			Map<String, Object> attributes = uiComponent.getAttributes();
 			String use = (String) attributes.get(USE);
 
-			ScriptFactory scriptFactory = (ScriptFactory) FactoryExtensionFinder.getFactory(ScriptFactory.class);
+			ExternalContext externalContext = facesContext.getExternalContext();
+			ScriptFactory scriptFactory = (ScriptFactory) FactoryExtensionFinder.getFactory(externalContext,
+					ScriptFactory.class);
 
 			Script script;
 			String scriptSourceCode = bufferedScriptResponseWriter.toString();
