@@ -346,7 +346,7 @@ public class PaginatorRenderer extends PaginatorRendererBase implements Componen
 		throws IOException {
 
 		boolean current = (pageNumber == curPageNumber);
-		boolean enabled = (!current || ((first + rows) < rowCount));
+		boolean enabled = !current;
 		String paginatorAction = Integer.toString(pageNumber);
 
 		// If the page number is a single digit, then for formatting purposes, add a blank space before and after the
@@ -420,16 +420,6 @@ public class PaginatorRenderer extends PaginatorRendererBase implements Componen
 		// Encode the starting <li> element that contains the Bootstrap pagination control.
 		responseWriter.startElement("li", paginator);
 
-		if (current) {
-			responseWriter.writeAttribute("class", "active", null);
-		}
-		else {
-
-			if (!enabled) {
-				responseWriter.writeAttribute("class", "disabled", null);
-			}
-		}
-
 		// If the pagination control is enabled, then
 		if (enabled) {
 
@@ -480,6 +470,14 @@ public class PaginatorRenderer extends PaginatorRendererBase implements Componen
 		// Otherwise, since the pagination control is not enabled, simply encode a span containing the label of the
 		// control.
 		else {
+
+			if (current) {
+				responseWriter.writeAttribute("class", "active", null);
+			}
+			else {
+				responseWriter.writeAttribute("class", "disabled", null);
+			}
+
 			responseWriter.startElement("span", paginator);
 			responseWriter.write(text);
 			responseWriter.endElement("span");
