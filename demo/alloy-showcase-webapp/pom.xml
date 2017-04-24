@@ -14,7 +14,6 @@
 	<description>This plugin is the Liferay Faces Alloy Showcase demo webapp.</description>
 
 	<properties>
-		<integration.browser>phantomjs</integration.browser>
 		<liferay.faces.showcase.war.scope>compile</liferay.faces.showcase.war.scope>
 	</properties>
 
@@ -25,6 +24,77 @@
 				<dependency>
 					<groupId>com.ocpsoft</groupId>
 					<artifactId>prettyfaces-jsf2</artifactId>
+				</dependency>
+			</dependencies>
+		</profile>
+		<profile>
+			<id>firefox</id>
+			<properties>
+				<integration.browser>firefox</integration.browser>
+			</properties>
+			<dependencies>
+				<dependency>
+					<groupId>org.seleniumhq.selenium</groupId>
+					<artifactId>selenium-firefox-driver</artifactId>
+					<version>2.53.0</version>
+					<scope>test</scope>
+				</dependency>
+			</dependencies>
+		</profile>
+		<profile>
+			<id>phantomjs</id>
+			<dependencies>
+				<dependency>
+					<groupId>com.codeborne</groupId>
+					<artifactId>phantomjsdriver</artifactId>
+					<version>1.3.0</version>
+					<scope>test</scope>
+				</dependency>
+			</dependencies>
+		</profile>
+		<profile>
+			<id>htmlunit</id>
+			<properties>
+				<integration.browser>htmlunit</integration.browser>
+			</properties>
+			<dependencies>
+				<dependency>
+					<groupId>org.seleniumhq.selenium</groupId>
+					<artifactId>htmlunit-driver</artifactId>
+					<version>2.23.2</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>xml-apis</groupId>
+					<artifactId>xml-apis</artifactId>
+					<version>1.4.01</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.eclipse.jetty.websocket</groupId>
+					<artifactId>websocket-client</artifactId>
+					<version>9.2.18.v20160721</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.apache.httpcomponents</groupId>
+					<artifactId>httpclient</artifactId>
+					<version>4.5.2</version>
+					<scope>test</scope>
+				</dependency>
+			</dependencies>
+		</profile>
+		<profile>
+			<id>jbrowser</id>
+			<properties>
+				<integration.browser>jbrowser</integration.browser>
+			</properties>
+			<dependencies>
+				<dependency>
+					<groupId>com.machinepublishers</groupId>
+					<artifactId>jbrowserdriver</artifactId>
+					<version>0.17.3</version>
+					<scope>test</scope>
 				</dependency>
 			</dependencies>
 		</profile>
@@ -86,6 +156,7 @@
 											automatically uses Maven properties correctly.
 										-->
 										<integration.browser>${integration.browser}</integration.browser>
+										<integration.browser.headless>${integration.browser.headless}</integration.browser.headless>
 										<integration.browser.wait.time.out>${integration.browser.wait.time.out}</integration.browser.wait.time.out>
 										<integration.log.level>${integration.log.level}</integration.log.level>
 										<integration.host>${integration.host}</integration.host>
@@ -118,88 +189,6 @@
 					</plugin>
 				</plugins>
 			</build>
-			<dependencies>
-				<dependency>
-					<groupId>com.codeborne</groupId>
-					<artifactId>phantomjsdriver</artifactId>
-					<version>1.3.0</version>
-					<scope>test</scope>
-				</dependency>
-			</dependencies>
-		</profile>
-		<profile>
-			<id>firefox</id>
-			<properties>
-				<integration.browser>firefox</integration.browser>
-			</properties>
-			<dependencies>
-				<dependency>
-					<groupId>org.seleniumhq.selenium</groupId>
-					<artifactId>selenium-firefox-driver</artifactId>
-					<version>2.53.0</version>
-					<scope>test</scope>
-				</dependency>
-			</dependencies>
-		</profile>
-		<profile>
-			<id>chrome</id>
-			<properties>
-				<integration.browser>chrome</integration.browser>
-			</properties>
-			<dependencies>
-				<dependency>
-					<groupId>org.seleniumhq.selenium</groupId>
-					<artifactId>selenium-chrome-driver</artifactId>
-					<version>2.53.0</version>
-					<scope>test</scope>
-				</dependency>
-			</dependencies>
-		</profile>
-		<profile>
-			<id>htmlunit</id>
-			<properties>
-				<integration.browser>htmlunit</integration.browser>
-			</properties>
-			<dependencies>
-				<dependency>
-					<groupId>org.seleniumhq.selenium</groupId>
-					<artifactId>htmlunit-driver</artifactId>
-					<version>2.23.2</version>
-					<scope>test</scope>
-				</dependency>
-				<dependency>
-					<groupId>xml-apis</groupId>
-					<artifactId>xml-apis</artifactId>
-					<version>1.4.01</version>
-					<scope>test</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.eclipse.jetty.websocket</groupId>
-					<artifactId>websocket-client</artifactId>
-					<version>9.2.18.v20160721</version>
-					<scope>test</scope>
-				</dependency>
-				<dependency>
-					<groupId>org.apache.httpcomponents</groupId>
-					<artifactId>httpclient</artifactId>
-					<version>4.5.2</version>
-					<scope>test</scope>
-				</dependency>
-			</dependencies>
-		</profile>
-		<profile>
-			<id>jbrowser</id>
-			<properties>
-				<integration.browser>jbrowser</integration.browser>
-			</properties>
-			<dependencies>
-				<dependency>
-					<groupId>com.machinepublishers</groupId>
-					<artifactId>jbrowserdriver</artifactId>
-					<version>0.17.3</version>
-					<scope>test</scope>
-				</dependency>
-			</dependencies>
 		</profile>
 	</profiles>
 

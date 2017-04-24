@@ -15,6 +15,9 @@ package com.liferay.faces.test.alloy.showcase.buttonlink;
 
 import java.util.Locale;
 
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+
 import com.liferay.faces.test.selenium.Browser;
 import com.liferay.faces.test.selenium.assertion.SeleniumAssert;
 import com.liferay.faces.test.showcase.TesterBase;
@@ -38,15 +41,30 @@ public class ButtonLinkTester extends TesterBase {
 	protected static final String generalLink2Xpath =
 		"//a[contains(.,'Text for a link')][not(contains(@src,'liferay-faces-logo-small.png'))]";
 
+	protected void clickButtonLink(Browser browser, String xpath) {
+
+		WebElement webElement = browser.findElementByXpath(xpath);
+		String tagName = webElement.getTagName();
+		String onclick = webElement.getAttribute("onclick");
+		browser.click(xpath);
+
+		// If the clicking the button/link will cause the page to reload.
+		if ("a".equals(tagName) && ((onclick == null) || "".equals(onclick))) {
+
+			browser.waitUntil(ExpectedConditions.stalenessOf(webElement));
+			waitForShowcasePageReady(browser);
+		}
+	}
+
 	protected void runButtonGeneralTest(String componentName, String button1xpath, String button2xpath,
 		String button3xpath) throws Exception {
 
 		runButtonLinkGeneralTest(componentName, button1xpath, button2xpath);
 
 		Browser browser = Browser.getInstance();
-		browser.waitForElementPresent(button3xpath);
+		browser.waitForElementVisible(button3xpath);
 		SeleniumAssert.assertElementVisible(browser, button3xpath);
-		browser.click(button3xpath);
+		clickButtonLink(browser, button3xpath);
 		assertImageRendered(browser, getExampleImageXpath("image"));
 	}
 
@@ -58,10 +76,9 @@ public class ButtonLinkTester extends TesterBase {
 
 		// Test that buttons/links render on the page visibly and are clickable.
 		SeleniumAssert.assertElementVisible(browser, buttonLink1xpath);
-		browser.click(buttonLink1xpath);
-		browser.waitForElementPresent(buttonLink2xpath);
+		clickButtonLink(browser, buttonLink1xpath);
 		SeleniumAssert.assertElementVisible(browser, buttonLink2xpath);
-		browser.click(buttonLink2xpath);
+		clickButtonLink(browser, buttonLink2xpath);
 		assertImageRendered(browser, getExampleImageXpath("children"));
 		SeleniumAssert.assertElementVisible(browser, buttonLink1xpath + "/span[contains(@class,'icon-star')]/..");
 	}
