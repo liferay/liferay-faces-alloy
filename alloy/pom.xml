@@ -59,8 +59,8 @@
 		</dependency>
 		<!-- END: Only required for file upload -->
 		<dependency>
-			<groupId>com.sun.faces</groupId>
-			<artifactId>jsf-api</artifactId>
+			<groupId>${faces.impl.group.id}</groupId>
+			<artifactId>${faces.impl.artifact.id}</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
