@@ -157,11 +157,20 @@ public class AccordionRenderer extends AccordionRendererBase {
 		Accordion accordion = (Accordion) uiComponent;
 		responseWriter.startElement("input", accordion);
 
-		String hiddenFieldName = accordion.getClientId(facesContext) + "selectedIndex";
+		String accordionClientId = accordion.getClientId(facesContext);
+		String hiddenFieldName = accordionClientId + "selectedIndex";
 		responseWriter.writeAttribute("id", hiddenFieldName, null);
 		responseWriter.writeAttribute("name", hiddenFieldName, null);
 		responseWriter.writeAttribute("type", "hidden", null);
 		responseWriter.writeAttribute("value", accordion.getSelectedIndex(), null);
+		responseWriter.endElement("input");
+
+		responseWriter.startElement("input", accordion);
+
+		hiddenFieldName = accordionClientId + "collapsedTabIndex";
+		responseWriter.writeAttribute("id", hiddenFieldName, null);
+		responseWriter.writeAttribute("name", hiddenFieldName, null);
+		responseWriter.writeAttribute("type", "hidden", null);
 		responseWriter.endElement("input");
 	}
 
@@ -218,7 +227,7 @@ public class AccordionRenderer extends AccordionRendererBase {
 		behaviorCallback.append(
 			".items,total=togglers.length,i=0;for(i=0;i<total;i++){if(togglers[i]==event.target){eventTabIndex=i;}};");
 
-		// var hidden = document.getElementById('clientId:selectedIndex');
+		// var hidden = document.getElementById('${clientId}selectedIndex');
 		String hiddenFieldId = clientId + "selectedIndex";
 		behaviorCallback.append("var hidden=document.getElementById('");
 		behaviorCallback.append(hiddenFieldId);
@@ -273,10 +282,14 @@ public class AccordionRenderer extends AccordionRendererBase {
 
 						//J-
 						// if ((!event.newVal) && (prevTabIndex == eventTabIndex)) {
+						//	   document.getElementById('${clientId}collapsedTabIndex').value=prevTabIndex;
 						//	   jsf.ajax.request(this, event, {'javax.faces.behavior.event': 'tabCollapse'});
 						// }
 						//J+
 						behaviorCallback.append("if((!event.newVal)&&(prevTabIndex==eventTabIndex)){");
+						behaviorCallback.append("document.getElementById('");
+						behaviorCallback.append(clientId);
+						behaviorCallback.append("collapsedTabIndex').value=prevTabIndex;");
 						behaviorCallback.append(clientBehaviorScript);
 						behaviorCallback.append("}");
 					}

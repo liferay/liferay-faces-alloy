@@ -88,7 +88,14 @@ public class Accordion extends AccordionBase implements ClientBehaviorHolder {
 
 				// Determine the client-side state of the selected tab index.
 				String clientId = getClientId(facesContext);
-				int selectedIndex = IntegerHelper.toInteger(requestParameterMap.get(clientId + "selectedIndex"));
+				int index;
+
+				if (TabCollapseEvent.TAB_COLLAPSE.equals(eventName)) {
+					index = IntegerHelper.toInteger(requestParameterMap.get(clientId + "collapsedTabIndex"));
+				}
+				else {
+					index = IntegerHelper.toInteger(requestParameterMap.get(clientId + "selectedIndex"));
+				}
 
 				// If iterating over a data model, then determine the row data and tab associated with the data model
 				// iteration.
@@ -97,7 +104,7 @@ public class Accordion extends AccordionBase implements ClientBehaviorHolder {
 				String var = getVar();
 
 				if (var != null) {
-					setRowIndex(selectedIndex);
+					setRowIndex(index);
 					rowData = getRowData();
 					tab = TabUtil.getFirstChildTab(this);
 					setRowIndex(-1);
@@ -107,8 +114,8 @@ public class Accordion extends AccordionBase implements ClientBehaviorHolder {
 				else {
 					List<Tab> childTabs = TabUtil.getChildTabs(this);
 
-					if (childTabs.size() >= (selectedIndex + 1)) {
-						tab = childTabs.get(selectedIndex);
+					if (childTabs.size() >= (index + 1)) {
+						tab = childTabs.get(index);
 					}
 				}
 
