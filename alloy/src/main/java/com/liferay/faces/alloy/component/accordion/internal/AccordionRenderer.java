@@ -203,6 +203,13 @@ public class AccordionRenderer extends AccordionRendererBase {
 		// var clientVar = Liferay.component('clientVarName');
 		encodeLiferayComponentVar(responseWriter, clientVarName, clientKey);
 
+		// Workaround FACES-3081 Accordion selected index and events use cases fail when multiple="true"
+		if (accordion.isMultiple()) {
+
+			responseWriter.write(clientVarName);
+			responseWriter.write(".set('closeAllOnExpand', false);");
+		}
+
 		responseWriter.write("var togglers=");
 		responseWriter.write(clientVarName);
 		responseWriter.write(".items;");
@@ -410,9 +417,10 @@ public class AccordionRenderer extends AccordionRendererBase {
 		// animated
 		encodeBoolean(responseWriter, ANIMATED, true, first);
 
-		// closeAllOnExpand
-		boolean multiple = accordion.isMultiple();
-		encodeBoolean(responseWriter, "closeAllOnExpand", !multiple, first);
+		// If closeAllOnExpand is set to false here, Toggler/tab JavaScript is lazily initialized causing FACES-3081.
+		// Workaround FACES-3081 by setting closeAllOnExpand in encodeJavaScriptCustom() if multiple="true" after tabs
+		// are already initialized.
+		encodeBoolean(responseWriter, "closeAllOnExpand", true, first);
 
 		// content
 		encodeString(responseWriter, "content", DOT_CONTENT, first);
