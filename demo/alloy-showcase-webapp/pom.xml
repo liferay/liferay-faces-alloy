@@ -30,7 +30,7 @@
 		<profile>
 			<id>firefox</id>
 			<properties>
-				<integration.browser>firefox</integration.browser>
+				<integration.browser.name>firefox</integration.browser.name>
 			</properties>
 			<dependencies>
 				<dependency>
@@ -55,7 +55,7 @@
 		<profile>
 			<id>htmlunit</id>
 			<properties>
-				<integration.browser>htmlunit</integration.browser>
+				<integration.browser.name>htmlunit</integration.browser.name>
 			</properties>
 			<dependencies>
 				<dependency>
@@ -87,7 +87,7 @@
 		<profile>
 			<id>jbrowser</id>
 			<properties>
-				<integration.browser>jbrowser</integration.browser>
+				<integration.browser.name>jbrowser</integration.browser.name>
 			</properties>
 			<dependencies>
 				<dependency>
@@ -140,7 +140,7 @@
 								<configuration>
 									<systemPropertyVariables>
 										<RUNNING_WITH_MAVEN>true</RUNNING_WITH_MAVEN>
-										<!-- Specify a property like so: -Dintegration.browser=phantomjs -->
+										<!-- Specify a property like so: -Dintegration.browser.name=phantomjs -->
 										<!--
 											When running tests from an IDE (like eclipse), you may need to set certain system
 											properties:
@@ -155,10 +155,10 @@
 											It is not necessary to set system properties in Netbeans since Netbeans
 											automatically uses Maven properties correctly.
 										-->
-										<integration.browser>${integration.browser}</integration.browser>
+										<integration.browser.name>${integration.browser.name}</integration.browser.name>
 										<integration.browser.headless>${integration.browser.headless}</integration.browser.headless>
-										<integration.browser.wait.time.out>${integration.browser.wait.time.out}</integration.browser.wait.time.out>
-										<integration.log.level>${integration.log.level}</integration.log.level>
+										<integration.browser.simulate.mobile>${integration.browser.simulate.mobile}</integration.browser.simulate.mobile>
+										<integration.browser.driver.wait.time.out>${integration.browser.driver.wait.time.out}</integration.browser.driver.wait.time.out>
 										<integration.host>${integration.host}</integration.host>
 										<integration.port>${integration.port}</integration.port>
 										<integration.showcase.context>/com.liferay.faces.demo.alloy.showcase.webapp/web/guest/showcase/-/component</integration.showcase.context>
@@ -253,7 +253,7 @@
 		<dependency>
 			<groupId>com.liferay.faces.test</groupId>
 			<artifactId>com.liferay.faces.test.selenium</artifactId>
-			<version>0.2.0-SNAPSHOT</version>
+			<version>0.3.1</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>

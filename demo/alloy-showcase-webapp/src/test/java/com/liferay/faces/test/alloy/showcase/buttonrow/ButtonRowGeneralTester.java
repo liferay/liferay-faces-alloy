@@ -16,8 +16,8 @@ package com.liferay.faces.test.alloy.showcase.buttonrow;
 import org.junit.Test;
 
 import com.liferay.faces.test.alloy.showcase.buttonlink.ButtonLinkTester;
-import com.liferay.faces.test.selenium.Browser;
-import com.liferay.faces.test.selenium.assertion.SeleniumAssert;
+import com.liferay.faces.test.selenium.browser.BrowserDriver;
+import com.liferay.faces.test.selenium.browser.BrowserStateAsserter;
 
 
 /**
@@ -29,21 +29,22 @@ public class ButtonRowGeneralTester extends ButtonLinkTester {
 	@Test
 	public void runButtonRowGeneralTest() throws Exception {
 
-		Browser browser = Browser.getInstance();
-		navigateToUseCase(browser, "buttonRow", "general");
+		BrowserDriver browserDriver = getBrowserDriver();
+		navigateToUseCase(browserDriver, "buttonRow", "general");
 
-		// Test that alloy:buttonRow is visible.
-		SeleniumAssert.assertElementVisible(browser, "//div[@class='alloy-button-row button-holder']");
+		// Test that alloy:buttonRow is displayed.
+		BrowserStateAsserter browserStateAsserter = getBrowserStateAsserter();
+		browserStateAsserter.assertElementDisplayed("//div[@class='alloy-button-row button-holder']");
 
 		// Test that both buttons appear and can be clicked.
 		String saveButtonXpath =
 			"//*[contains(@class,'btn ')][contains(@class,'btn-primary')][@value='Save' or contains(.,'Save')]";
-		SeleniumAssert.assertElementVisible(browser, saveButtonXpath);
-		browser.click(saveButtonXpath);
+		browserStateAsserter.assertElementDisplayed(saveButtonXpath);
+		browserDriver.clickElement(saveButtonXpath);
 
 		String cancelButtonXpath =
 			"//*[contains(@class,'btn ')][contains(@class,'btn-cancel')][@value='Cancel' or contains(.,'Cancel')]";
-		SeleniumAssert.assertElementVisible(browser, cancelButtonXpath);
-		browser.click(cancelButtonXpath);
+		browserStateAsserter.assertElementDisplayed(cancelButtonXpath);
+		browserDriver.clickElement(cancelButtonXpath);
 	}
 }
