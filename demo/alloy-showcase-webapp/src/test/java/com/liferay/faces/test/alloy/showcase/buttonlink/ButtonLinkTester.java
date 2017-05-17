@@ -18,8 +18,8 @@ import java.util.Locale;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
-import com.liferay.faces.test.selenium.Browser;
-import com.liferay.faces.test.selenium.assertion.SeleniumAssert;
+import com.liferay.faces.test.selenium.browser.BrowserDriver;
+import com.liferay.faces.test.selenium.browser.BrowserStateAsserter;
 import com.liferay.faces.test.showcase.TesterBase;
 
 
@@ -41,18 +41,18 @@ public class ButtonLinkTester extends TesterBase {
 	protected static final String generalLink2Xpath =
 		"//a[contains(.,'Text for a link')][not(contains(@src,'liferay-faces-logo-small.png'))]";
 
-	protected void clickButtonLink(Browser browser, String xpath) {
+	protected void clickButtonLink(BrowserDriver browserDriver, String xpath) {
 
-		WebElement webElement = browser.findElementByXpath(xpath);
+		WebElement webElement = browserDriver.findElementByXpath(xpath);
 		String tagName = webElement.getTagName();
 		String onclick = webElement.getAttribute("onclick");
-		browser.click(xpath);
+		browserDriver.clickElement(xpath);
 
 		// If the clicking the button/link will cause the page to reload.
 		if ("a".equals(tagName) && ((onclick == null) || "".equals(onclick))) {
 
-			browser.waitUntil(ExpectedConditions.stalenessOf(webElement));
-			waitForShowcasePageReady(browser);
+			browserDriver.waitFor(ExpectedConditions.stalenessOf(webElement));
+			waitForShowcasePageReady(browserDriver);
 		}
 	}
 
@@ -61,46 +61,50 @@ public class ButtonLinkTester extends TesterBase {
 
 		runButtonLinkGeneralTest(componentName, button1xpath, button2xpath);
 
-		Browser browser = Browser.getInstance();
-		browser.waitForElementVisible(button3xpath);
-		SeleniumAssert.assertElementVisible(browser, button3xpath);
-		clickButtonLink(browser, button3xpath);
-		assertImageRendered(browser, getExampleImageXpath("image"));
+		BrowserStateAsserter browserStateAsserter = getBrowserStateAsserter();
+		browserStateAsserter.assertElementDisplayed(button3xpath);
+
+		BrowserDriver browserDriver = getBrowserDriver();
+		clickButtonLink(browserDriver, button3xpath);
+		assertImageRendered(browserDriver, browserStateAsserter, getExampleImageXpath("image"));
 	}
 
 	protected void runButtonLinkGeneralTest(String componentName, String buttonLink1xpath, String buttonLink2xpath)
 		throws Exception {
 
-		Browser browser = Browser.getInstance();
-		navigateToUseCase(browser, componentName, "general");
+		BrowserDriver browserDriver = getBrowserDriver();
+		navigateToUseCase(browserDriver, componentName, "general");
 
 		// Test that buttons/links render on the page visibly and are clickable.
-		SeleniumAssert.assertElementVisible(browser, buttonLink1xpath);
-		clickButtonLink(browser, buttonLink1xpath);
-		SeleniumAssert.assertElementVisible(browser, buttonLink2xpath);
-		clickButtonLink(browser, buttonLink2xpath);
-		assertImageRendered(browser, getExampleImageXpath("children"));
-		SeleniumAssert.assertElementVisible(browser, buttonLink1xpath + "/span[contains(@class,'icon-star')]/..");
+		BrowserStateAsserter browserStateAsserter = getBrowserStateAsserter();
+		browserStateAsserter.assertElementDisplayed(buttonLink1xpath);
+		clickButtonLink(browserDriver, buttonLink1xpath);
+		browserStateAsserter.assertElementDisplayed(buttonLink2xpath);
+		clickButtonLink(browserDriver, buttonLink2xpath);
+		assertImageRendered(browserDriver, browserStateAsserter, getExampleImageXpath("children"));
+		browserStateAsserter.assertElementDisplayed(buttonLink1xpath + "/span[contains(@class,'icon-star')]/..");
 	}
 
 	protected void runButtonLinkMenuTest(String componentName) throws Exception {
 
-		Browser browser = Browser.getInstance();
-		navigateToUseCase(browser, componentName, "menu");
+		BrowserDriver browserDriver = getBrowserDriver();
+		navigateToUseCase(browserDriver, componentName, "menu");
 
+		BrowserStateAsserter browserStateAsserter = getBrowserStateAsserter();
 		boolean commandComponent = componentName.toLowerCase(Locale.ENGLISH).contains("command");
-		testMenu(browser, "menu", "caret", commandComponent);
-		testMenu(browser, "facet", "icon-chevron-down", commandComponent);
+		testMenu(browserDriver, browserStateAsserter, "menu", "caret", commandComponent);
+		testMenu(browserDriver, browserStateAsserter, "facet", "icon-chevron-down", commandComponent);
 	}
 
-	private void testMenu(Browser browser, String exampleType, String dropdownButtonClass, boolean commandComponent) {
+	private void testMenu(BrowserDriver browserDriver, BrowserStateAsserter browserStateAsserter, String exampleType,
+		String dropdownButtonClass, boolean commandComponent) {
 
 		// Test that clicking the menu button submits the correct value.
 		String menuButtonText = "User";
 		String menuButtonXpath = "//label[contains(.,'Example')][contains(.,'" + exampleType +
 			"')]/ancestor::div[@class='showcase-example']//a[contains(@class,'btn btn-default alloy-')]/span[contains(text(),'" +
 			menuButtonText + "')]";
-		browser.click(menuButtonXpath);
+		browserDriver.clickElement(menuButtonXpath);
 
 		String menuOutputXpath = "//label[contains(.,'" + exampleType +
 			"')]/parent::div[@class='showcase-example']//ul[contains(@class,'feedback')]/li[contains(@class,'text-info')]";
@@ -113,8 +117,8 @@ public class ButtonLinkTester extends TesterBase {
 			menuOutput = menuOutput.toLowerCase(Locale.ENGLISH);
 		}
 
-		browser.waitForElementTextVisible(menuOutputXpath, menuOutput);
-		SeleniumAssert.assertElementTextVisible(browser, menuOutputXpath, menuOutput);
+		browserDriver.waitForTextPresentInElement(menuOutput, menuOutputXpath);
+		browserStateAsserter.assertTextPresentInElement(menuOutput, menuOutputXpath);
 
 		// Test that clicking each menu item submits the correct value.
 		String[] menuItems = new String[] { "Edit", "Enable", "Disable", "Delete" };
@@ -124,14 +128,14 @@ public class ButtonLinkTester extends TesterBase {
 
 		for (String menuItem : menuItems) {
 
-			browser.waitForElementVisible(dropdownButtonXpath);
-			browser.click(dropdownButtonXpath);
+			browserDriver.waitForElementEnabled(dropdownButtonXpath);
+			browserDriver.clickElement(dropdownButtonXpath);
 
 			String menuItemXpath = "//label[contains(.,'Example')][contains(.,'" + exampleType +
 				"')]/ancestor::div[@class='showcase-example']//span[contains(text(),'" + menuItem + "')]";
 
-			browser.waitForElementVisible(menuItemXpath);
-			browser.click(menuItemXpath);
+			browserDriver.waitForElementEnabled(menuItemXpath);
+			browserDriver.clickElement(menuItemXpath);
 
 			menuOutput = menuItem;
 
@@ -139,8 +143,8 @@ public class ButtonLinkTester extends TesterBase {
 				menuOutput = menuItem.toLowerCase(Locale.ENGLISH);
 			}
 
-			browser.waitForElementTextVisible(menuOutputXpath, menuOutput);
-			SeleniumAssert.assertElementTextVisible(browser, menuOutputXpath, menuOutput);
+			browserDriver.waitForTextPresentInElement(menuOutput, menuOutputXpath);
+			browserStateAsserter.assertTextPresentInElement(menuOutput, menuOutputXpath);
 		}
 	}
 }
