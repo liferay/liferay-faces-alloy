@@ -1,16 +1,13 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:alloy="http://liferay.com/faces/alloy"
 	xmlns:c="http://java.sun.com/jsp/jstl/core" xmlns:ui="http://java.sun.com/jsf/facelets">
 
-	<alloy:loadConstants classType="javax.faces.application.ProjectStage" var="ProjectStage" />
-	<c:if test="#{facesContext.application.projectStage != ProjectStage.Production}">
-		<!--
-			For testing purposes, include a JavaScript variable which is set to true after all JavaScript has run.
-		-->
-		<alloy:outputScript target="head">
-			window.liferay_faces_showcase_ready = false;
-		</alloy:outputScript>
-		<alloy:outputScript use="event-base" target="body">
-			A.on('load', function() { window.liferay_faces_showcase_ready = true; });
-		</alloy:outputScript>
-	</c:if>
+	<!--
+		For testing purposes, include a JavaScript variable which is set to true after all JavaScript has run.
+	-->
+	<alloy:outputScript target="head">
+		window.liferay_faces_showcase_ready = false;
+	</alloy:outputScript>
+	<alloy:outputScript use="event-base" target="body">
+		A.on('load', function() { window.liferay_faces_showcase_ready = true; });
+	</alloy:outputScript>
 </ui:composition>
