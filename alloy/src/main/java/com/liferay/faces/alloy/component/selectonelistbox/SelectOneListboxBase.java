@@ -37,9 +37,9 @@ public abstract class SelectOneListboxBase extends HtmlSelectOneListbox implemen
 	}
 
 	/**
-	 * <code>label</code> attribute description:
-	 * <br /><br />
-	 * A localized label for this component that is typically only rendered in a FacesMessage when validation fails.
+	 * <p><code>label</code> attribute description:</p>
+	 *
+	 * <div>A localized label for this component that is typically only rendered in a FacesMessage when validation fails.</div>
 	 */
 	@Override
 	public String getLabel() {
@@ -59,9 +59,9 @@ public abstract class SelectOneListboxBase extends HtmlSelectOneListbox implemen
 	}
 
 	/**
-	 * <code>styleClass</code> attribute description:
-	 * <br /><br />
-	 * List of CSS class names (separated by spaces) that are to be rendered within the class attribute.
+	 * <p><code>styleClass</code> attribute description:</p>
+	 *
+	 * <div>List of CSS class names (separated by spaces) that are to be rendered within the class attribute.</div>
 	 */
 	@Override
 	public String getStyleClass() {

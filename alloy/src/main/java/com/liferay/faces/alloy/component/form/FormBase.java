@@ -42,27 +42,27 @@ public abstract class FormBase extends HtmlForm implements Styleable {
 	}
 
 	/**
-	 * <code>includeViewParams</code> attribute description:
-	 * <br /><br />
-	 * When this flag is true, view parameters (specified via <code>f:viewParam</code> tags) will be included in the URL rendered in the action attribute.
+	 * <p><code>includeViewParams</code> attribute description:</p>
+	 *
+	 * <div>When this flag is true, view parameters (specified via <code>f:viewParam</code> tags) will be included in the URL rendered in the action attribute.</div>
 	 */
 	public boolean isIncludeViewParams() {
 		return (Boolean) getStateHelper().eval(FormPropertyKeys.includeViewParams, false);
 	}
 
 	/**
-	 * <code>includeViewParams</code> attribute description:
-	 * <br /><br />
-	 * When this flag is true, view parameters (specified via <code>f:viewParam</code> tags) will be included in the URL rendered in the action attribute.
+	 * <p><code>includeViewParams</code> attribute description:</p>
+	 *
+	 * <div>When this flag is true, view parameters (specified via <code>f:viewParam</code> tags) will be included in the URL rendered in the action attribute.</div>
 	 */
 	public void setIncludeViewParams(boolean includeViewParams) {
 		getStateHelper().put(FormPropertyKeys.includeViewParams, includeViewParams);
 	}
 
 	/**
-	 * <code>styleClass</code> attribute description:
-	 * <br /><br />
-	 * List of CSS class names (separated by spaces) that are to be rendered within the class attribute.
+	 * <p><code>styleClass</code> attribute description:</p>
+	 *
+	 * <div>List of CSS class names (separated by spaces) that are to be rendered within the class attribute.</div>
 	 */
 	@Override
 	public String getStyleClass() {

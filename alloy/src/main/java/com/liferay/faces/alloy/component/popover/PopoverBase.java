@@ -52,27 +52,27 @@ public abstract class PopoverBase extends PanelGroupBlockLayout implements Style
 	}
 
 	/**
-	 * <code>autoShow</code> attribute description:
-	 * <br /><br />
-	 * When true, the component is visible initially.
+	 * <p><code>autoShow</code> attribute description:</p>
+	 *
+	 * <div>When true, the component is visible initially.</div>
 	 */
 	public boolean isAutoShow() {
 		return (Boolean) getStateHelper().eval(PopoverPropertyKeys.autoShow, false);
 	}
 
 	/**
-	 * <code>autoShow</code> attribute description:
-	 * <br /><br />
-	 * When true, the component is visible initially.
+	 * <p><code>autoShow</code> attribute description:</p>
+	 *
+	 * <div>When true, the component is visible initially.</div>
 	 */
 	public void setAutoShow(boolean autoShow) {
 		getStateHelper().put(PopoverPropertyKeys.autoShow, autoShow);
 	}
 
 	/**
-	 * <code>clientKey</code> attribute description:
-	 * <br /><br />
-	 * The key name that can be used to reference the component on the client.
+	 * <p><code>clientKey</code> attribute description:</p>
+	 *
+	 * <div>The key name that can be used to reference the component on the client.</div>
 	 */
 	@Override
 	public String getClientKey() {
@@ -80,9 +80,9 @@ public abstract class PopoverBase extends PanelGroupBlockLayout implements Style
 	}
 
 	/**
-	 * <code>clientKey</code> attribute description:
-	 * <br /><br />
-	 * The key name that can be used to reference the component on the client.
+	 * <p><code>clientKey</code> attribute description:</p>
+	 *
+	 * <div>The key name that can be used to reference the component on the client.</div>
 	 */
 	@Override
 	public void setClientKey(String clientKey) {
@@ -90,117 +90,117 @@ public abstract class PopoverBase extends PanelGroupBlockLayout implements Style
 	}
 
 	/**
-	 * <code>dismissible</code> attribute description:
-	 * <br /><br />
-	 * When true, the overlay window is automatically hidden when the user clicks outside of it.
+	 * <p><code>dismissible</code> attribute description:</p>
+	 *
+	 * <div>When true, the overlay window is automatically hidden when the user clicks outside of it.</div>
 	 */
 	public boolean isDismissible() {
 		return (Boolean) getStateHelper().eval(PopoverPropertyKeys.dismissible, true);
 	}
 
 	/**
-	 * <code>dismissible</code> attribute description:
-	 * <br /><br />
-	 * When true, the overlay window is automatically hidden when the user clicks outside of it.
+	 * <p><code>dismissible</code> attribute description:</p>
+	 *
+	 * <div>When true, the overlay window is automatically hidden when the user clicks outside of it.</div>
 	 */
 	public void setDismissible(boolean dismissible) {
 		getStateHelper().put(PopoverPropertyKeys.dismissible, dismissible);
 	}
 
 	/**
-	 * <code>for</code> attribute description:
-	 * <br /><br />
-	 * The id of the component that is associated with the popover.
+	 * <p><code>for</code> attribute description:</p>
+	 *
+	 * <div>The id of the component that is associated with the popover.</div>
 	 */
 	public String getFor() {
 		return (String) getStateHelper().eval(PopoverPropertyKeys.for_, null);
 	}
 
 	/**
-	 * <code>for</code> attribute description:
-	 * <br /><br />
-	 * The id of the component that is associated with the popover.
+	 * <p><code>for</code> attribute description:</p>
+	 *
+	 * <div>The id of the component that is associated with the popover.</div>
 	 */
 	public void setFor(String for_) {
 		getStateHelper().put(PopoverPropertyKeys.for_, for_);
 	}
 
 	/**
-	 * <code>headerText</code> attribute description:
-	 * <br /><br />
-	 * The text to place in the header of the component.
+	 * <p><code>headerText</code> attribute description:</p>
+	 *
+	 * <div>The text to place in the header of the component.</div>
 	 */
 	public String getHeaderText() {
 		return (String) getStateHelper().eval(PopoverPropertyKeys.headerText, null);
 	}
 
 	/**
-	 * <code>headerText</code> attribute description:
-	 * <br /><br />
-	 * The text to place in the header of the component.
+	 * <p><code>headerText</code> attribute description:</p>
+	 *
+	 * <div>The text to place in the header of the component.</div>
 	 */
 	public void setHeaderText(String headerText) {
 		getStateHelper().put(PopoverPropertyKeys.headerText, headerText);
 	}
 
 	/**
-	 * <code>height</code> attribute description:
-	 * <br /><br />
-	 * The height of the dialog/popover.
+	 * <p><code>height</code> attribute description:</p>
+	 *
+	 * <div>The height of the dialog/popover.</div>
 	 */
 	public String getHeight() {
 		return (String) getStateHelper().eval(PopoverPropertyKeys.height, null);
 	}
 
 	/**
-	 * <code>height</code> attribute description:
-	 * <br /><br />
-	 * The height of the dialog/popover.
+	 * <p><code>height</code> attribute description:</p>
+	 *
+	 * <div>The height of the dialog/popover.</div>
 	 */
 	public void setHeight(String height) {
 		getStateHelper().put(PopoverPropertyKeys.height, height);
 	}
 
 	/**
-	 * <code>hideIconRendered</code> attribute description:
-	 * <br /><br />
-	 * When true, an "x" is placed in the upper right corner that the user can click on to hide/dismiss the overlay window.
+	 * <p><code>hideIconRendered</code> attribute description:</p>
+	 *
+	 * <div>When true, an "x" is placed in the upper right corner that the user can click on to hide/dismiss the overlay window.</div>
 	 */
 	public boolean isHideIconRendered() {
 		return (Boolean) getStateHelper().eval(PopoverPropertyKeys.hideIconRendered, true);
 	}
 
 	/**
-	 * <code>hideIconRendered</code> attribute description:
-	 * <br /><br />
-	 * When true, an "x" is placed in the upper right corner that the user can click on to hide/dismiss the overlay window.
+	 * <p><code>hideIconRendered</code> attribute description:</p>
+	 *
+	 * <div>When true, an "x" is placed in the upper right corner that the user can click on to hide/dismiss the overlay window.</div>
 	 */
 	public void setHideIconRendered(boolean hideIconRendered) {
 		getStateHelper().put(PopoverPropertyKeys.hideIconRendered, hideIconRendered);
 	}
 
 	/**
-	 * <code>position</code> attribute description:
-	 * <br /><br />
-	 * Indicates the side of the associated component where the tooltip should appear ("right", "left", "top", "bottom").
+	 * <p><code>position</code> attribute description:</p>
+	 *
+	 * <div>Indicates the side of the associated component where the tooltip should appear ("right", "left", "top", "bottom").</div>
 	 */
 	public String getPosition() {
 		return (String) getStateHelper().eval(PopoverPropertyKeys.position, "right");
 	}
 
 	/**
-	 * <code>position</code> attribute description:
-	 * <br /><br />
-	 * Indicates the side of the associated component where the tooltip should appear ("right", "left", "top", "bottom").
+	 * <p><code>position</code> attribute description:</p>
+	 *
+	 * <div>Indicates the side of the associated component where the tooltip should appear ("right", "left", "top", "bottom").</div>
 	 */
 	public void setPosition(String position) {
 		getStateHelper().put(PopoverPropertyKeys.position, position);
 	}
 
 	/**
-	 * <code>styleClass</code> attribute description:
-	 * <br /><br />
-	 * List of CSS class names (separated by spaces) that are to be rendered within the class attribute.
+	 * <p><code>styleClass</code> attribute description:</p>
+	 *
+	 * <div>List of CSS class names (separated by spaces) that are to be rendered within the class attribute.</div>
 	 */
 	@Override
 	public String getStyleClass() {
@@ -213,36 +213,36 @@ public abstract class PopoverBase extends PanelGroupBlockLayout implements Style
 	}
 
 	/**
-	 * <code>width</code> attribute description:
-	 * <br /><br />
-	 * The width of the dialog/popover.
+	 * <p><code>width</code> attribute description:</p>
+	 *
+	 * <div>The width of the dialog/popover.</div>
 	 */
 	public String getWidth() {
 		return (String) getStateHelper().eval(PopoverPropertyKeys.width, null);
 	}
 
 	/**
-	 * <code>width</code> attribute description:
-	 * <br /><br />
-	 * The width of the dialog/popover.
+	 * <p><code>width</code> attribute description:</p>
+	 *
+	 * <div>The width of the dialog/popover.</div>
 	 */
 	public void setWidth(String width) {
 		getStateHelper().put(PopoverPropertyKeys.width, width);
 	}
 
 	/**
-	 * <code>zIndex</code> attribute description:
-	 * <br /><br />
-	 * Specifies the stack order of the component. The default value is a constant from the Liferay.zIndex JavaScript object.
+	 * <p><code>zIndex</code> attribute description:</p>
+	 *
+	 * <div>Specifies the stack order of the component. The default value is a constant from the Liferay.zIndex JavaScript object.</div>
 	 */
 	public Integer getzIndex() {
 		return (Integer) getStateHelper().eval(PopoverPropertyKeys.zIndex, Integer.MIN_VALUE);
 	}
 
 	/**
-	 * <code>zIndex</code> attribute description:
-	 * <br /><br />
-	 * Specifies the stack order of the component. The default value is a constant from the Liferay.zIndex JavaScript object.
+	 * <p><code>zIndex</code> attribute description:</p>
+	 *
+	 * <div>Specifies the stack order of the component. The default value is a constant from the Liferay.zIndex JavaScript object.</div>
 	 */
 	public void setzIndex(Integer zIndex) {
 		getStateHelper().put(PopoverPropertyKeys.zIndex, zIndex);

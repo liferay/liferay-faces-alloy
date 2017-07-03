@@ -42,9 +42,9 @@ public abstract class SelectRatingBase extends SelectOneRadioBase implements Cli
 	}
 
 	/**
-	 * <code>clientKey</code> attribute description:
-	 * <br /><br />
-	 * The key name that can be used to reference the component on the client.
+	 * <p><code>clientKey</code> attribute description:</p>
+	 *
+	 * <div>The key name that can be used to reference the component on the client.</div>
 	 */
 	@Override
 	public String getClientKey() {
@@ -52,9 +52,9 @@ public abstract class SelectRatingBase extends SelectOneRadioBase implements Cli
 	}
 
 	/**
-	 * <code>clientKey</code> attribute description:
-	 * <br /><br />
-	 * The key name that can be used to reference the component on the client.
+	 * <p><code>clientKey</code> attribute description:</p>
+	 *
+	 * <div>The key name that can be used to reference the component on the client.</div>
 	 */
 	@Override
 	public void setClientKey(String clientKey) {

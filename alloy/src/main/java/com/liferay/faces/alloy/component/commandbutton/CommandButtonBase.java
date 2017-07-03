@@ -50,117 +50,117 @@ public abstract class CommandButtonBase extends HtmlCommandButton implements Sty
 	}
 
 	/**
-	 * <code>ajax</code> attribute description:
-	 * <br /><br />
-	 * When this flag is true, clicking on the button will cause the form to be submitted via XmlHttpRequest.
+	 * <p><code>ajax</code> attribute description:</p>
+	 *
+	 * <div>When this flag is true, clicking on the button will cause the form to be submitted via XmlHttpRequest.</div>
 	 */
 	public boolean isAjax() {
 		return (Boolean) getStateHelper().eval(CommandButtonPropertyKeys.ajax, true);
 	}
 
 	/**
-	 * <code>ajax</code> attribute description:
-	 * <br /><br />
-	 * When this flag is true, clicking on the button will cause the form to be submitted via XmlHttpRequest.
+	 * <p><code>ajax</code> attribute description:</p>
+	 *
+	 * <div>When this flag is true, clicking on the button will cause the form to be submitted via XmlHttpRequest.</div>
 	 */
 	public void setAjax(boolean ajax) {
 		getStateHelper().put(CommandButtonPropertyKeys.ajax, ajax);
 	}
 
 	/**
-	 * <code>autofocus</code> attribute description:
-	 * <br /><br />
-	 * HTML passthrough attribute specifying whether or not the component should automatically recieve focus on the initial page load.
+	 * <p><code>autofocus</code> attribute description:</p>
+	 *
+	 * <div>HTML passthrough attribute specifying whether or not the component should automatically recieve focus on the initial page load.</div>
 	 */
 	public Boolean getAutofocus() {
 		return (Boolean) getStateHelper().eval(CommandButtonPropertyKeys.autofocus, null);
 	}
 
 	/**
-	 * <code>autofocus</code> attribute description:
-	 * <br /><br />
-	 * HTML passthrough attribute specifying whether or not the component should automatically recieve focus on the initial page load.
+	 * <p><code>autofocus</code> attribute description:</p>
+	 *
+	 * <div>HTML passthrough attribute specifying whether or not the component should automatically recieve focus on the initial page load.</div>
 	 */
 	public void setAutofocus(Boolean autofocus) {
 		getStateHelper().put(CommandButtonPropertyKeys.autofocus, autofocus);
 	}
 
 	/**
-	 * <code>disabled</code> attribute description:
-	 * <br /><br />
-	 * When this flag is true, the component will be disabled, and the user will be unable to interact with the component.
+	 * <p><code>disabled</code> attribute description:</p>
+	 *
+	 * <div>When this flag is true, the component will be disabled, and the user will be unable to interact with the component.</div>
 	 */
 	public boolean isDisabled() {
 		return (Boolean) getStateHelper().eval(CommandButtonPropertyKeys.disabled, false);
 	}
 
 	/**
-	 * <code>disabled</code> attribute description:
-	 * <br /><br />
-	 * When this flag is true, the component will be disabled, and the user will be unable to interact with the component.
+	 * <p><code>disabled</code> attribute description:</p>
+	 *
+	 * <div>When this flag is true, the component will be disabled, and the user will be unable to interact with the component.</div>
 	 */
 	public void setDisabled(boolean disabled) {
 		getStateHelper().put(CommandButtonPropertyKeys.disabled, disabled);
 	}
 
 	/**
-	 * <code>execute</code> attribute description:
-	 * <br /><br />
-	 * Space-delimited list of component ids that are to participate in the APPLY_REQUEST_VALUES, PROCESS_VALIDATIONS, UPDATE_MODEL_VALUES, and INVOKE_APPLICATION phases of the JSF lifecycle. The following keywords may also appear in the list: <code>@this</code>, <code>@form</code>, <code>@all</code>, <code>@none</code>.
+	 * <p><code>execute</code> attribute description:</p>
+	 *
+	 * <div>Space-delimited list of component ids that are to participate in the APPLY_REQUEST_VALUES, PROCESS_VALIDATIONS, UPDATE_MODEL_VALUES, and INVOKE_APPLICATION phases of the JSF lifecycle. The following keywords may also appear in the list: <code>@this</code>, <code>@form</code>, <code>@all</code>, <code>@none</code>.</div>
 	 */
 	public String getExecute() {
 		return (String) getStateHelper().eval(CommandButtonPropertyKeys.execute, "@all");
 	}
 
 	/**
-	 * <code>execute</code> attribute description:
-	 * <br /><br />
-	 * Space-delimited list of component ids that are to participate in the APPLY_REQUEST_VALUES, PROCESS_VALIDATIONS, UPDATE_MODEL_VALUES, and INVOKE_APPLICATION phases of the JSF lifecycle. The following keywords may also appear in the list: <code>@this</code>, <code>@form</code>, <code>@all</code>, <code>@none</code>.
+	 * <p><code>execute</code> attribute description:</p>
+	 *
+	 * <div>Space-delimited list of component ids that are to participate in the APPLY_REQUEST_VALUES, PROCESS_VALIDATIONS, UPDATE_MODEL_VALUES, and INVOKE_APPLICATION phases of the JSF lifecycle. The following keywords may also appear in the list: <code>@this</code>, <code>@form</code>, <code>@all</code>, <code>@none</code>.</div>
 	 */
 	public void setExecute(String execute) {
 		getStateHelper().put(CommandButtonPropertyKeys.execute, execute);
 	}
 
 	/**
-	 * <code>process</code> attribute description:
-	 * <br /><br />
-	 * Synonym for the <code>execute</code> attribute. The default value is <code>"@all"</code>.
+	 * <p><code>process</code> attribute description:</p>
+	 *
+	 * <div>Synonym for the <code>execute</code> attribute. The default value is <code>"@all"</code>.</div>
 	 */
 	public String getProcess() {
 		return (String) getStateHelper().eval(CommandButtonPropertyKeys.process, getExecute());
 	}
 
 	/**
-	 * <code>process</code> attribute description:
-	 * <br /><br />
-	 * Synonym for the <code>execute</code> attribute. The default value is <code>"@all"</code>.
+	 * <p><code>process</code> attribute description:</p>
+	 *
+	 * <div>Synonym for the <code>execute</code> attribute. The default value is <code>"@all"</code>.</div>
 	 */
 	public void setProcess(String process) {
 		getStateHelper().put(CommandButtonPropertyKeys.process, process);
 	}
 
 	/**
-	 * <code>render</code> attribute description:
-	 * <br /><br />
-	 * Space-delimited list of component ids that are to participate in the RENDER_RESPONSE phase of the JSF lifecycle and be re-rendered in the DOM after the response is received from the XmlHttpRequest. The following keywords may also appear in the list: <code>@this</code>, <code>@form</code>, <code>@all</code>, <code>@none</code>.
+	 * <p><code>render</code> attribute description:</p>
+	 *
+	 * <div>Space-delimited list of component ids that are to participate in the RENDER_RESPONSE phase of the JSF lifecycle and be re-rendered in the DOM after the response is received from the XmlHttpRequest. The following keywords may also appear in the list: <code>@this</code>, <code>@form</code>, <code>@all</code>, <code>@none</code>.</div>
 	 */
 	public String getRender() {
 		return (String) getStateHelper().eval(CommandButtonPropertyKeys.render, "@none");
 	}
 
 	/**
-	 * <code>render</code> attribute description:
-	 * <br /><br />
-	 * Space-delimited list of component ids that are to participate in the RENDER_RESPONSE phase of the JSF lifecycle and be re-rendered in the DOM after the response is received from the XmlHttpRequest. The following keywords may also appear in the list: <code>@this</code>, <code>@form</code>, <code>@all</code>, <code>@none</code>.
+	 * <p><code>render</code> attribute description:</p>
+	 *
+	 * <div>Space-delimited list of component ids that are to participate in the RENDER_RESPONSE phase of the JSF lifecycle and be re-rendered in the DOM after the response is received from the XmlHttpRequest. The following keywords may also appear in the list: <code>@this</code>, <code>@form</code>, <code>@all</code>, <code>@none</code>.</div>
 	 */
 	public void setRender(String render) {
 		getStateHelper().put(CommandButtonPropertyKeys.render, render);
 	}
 
 	/**
-	 * <code>styleClass</code> attribute description:
-	 * <br /><br />
-	 * List of CSS class names (separated by spaces) that are to be rendered within the class attribute.
+	 * <p><code>styleClass</code> attribute description:</p>
+	 *
+	 * <div>List of CSS class names (separated by spaces) that are to be rendered within the class attribute.</div>
 	 */
 	@Override
 	public String getStyleClass() {
@@ -173,9 +173,9 @@ public abstract class CommandButtonBase extends HtmlCommandButton implements Sty
 	}
 
 	/**
-	 * <code>styleClass</code> attribute description:
-	 * <br /><br />
-	 * List of CSS class names (separated by spaces) that are to be rendered within the class attribute.
+	 * <p><code>styleClass</code> attribute description:</p>
+	 *
+	 * <div>List of CSS class names (separated by spaces) that are to be rendered within the class attribute.</div>
 	 */
 	@Override
 	public void setStyleClass(String styleClass) {
@@ -183,36 +183,36 @@ public abstract class CommandButtonBase extends HtmlCommandButton implements Sty
 	}
 
 	/**
-	 * <code>type</code> attribute description:
-	 * <br /><br />
-	 * The type of the button: button, submit (default), or reset.
+	 * <p><code>type</code> attribute description:</p>
+	 *
+	 * <div>The type of the button: button, submit (default), or reset.</div>
 	 */
 	public String getType() {
 		return (String) getStateHelper().eval(CommandButtonPropertyKeys.type, null);
 	}
 
 	/**
-	 * <code>type</code> attribute description:
-	 * <br /><br />
-	 * The type of the button: button, submit (default), or reset.
+	 * <p><code>type</code> attribute description:</p>
+	 *
+	 * <div>The type of the button: button, submit (default), or reset.</div>
 	 */
 	public void setType(String type) {
 		getStateHelper().put(CommandButtonPropertyKeys.type, type);
 	}
 
 	/**
-	 * <code>update</code> attribute description:
-	 * <br /><br />
-	 * Synonym for the <code>render</code> attribute. The default value is <code>"@none"</code>.
+	 * <p><code>update</code> attribute description:</p>
+	 *
+	 * <div>Synonym for the <code>render</code> attribute. The default value is <code>"@none"</code>.</div>
 	 */
 	public String getUpdate() {
 		return (String) getStateHelper().eval(CommandButtonPropertyKeys.update, getRender());
 	}
 
 	/**
-	 * <code>update</code> attribute description:
-	 * <br /><br />
-	 * Synonym for the <code>render</code> attribute. The default value is <code>"@none"</code>.
+	 * <p><code>update</code> attribute description:</p>
+	 *
+	 * <div>Synonym for the <code>render</code> attribute. The default value is <code>"@none"</code>.</div>
 	 */
 	public void setUpdate(String update) {
 		getStateHelper().put(CommandButtonPropertyKeys.update, update);

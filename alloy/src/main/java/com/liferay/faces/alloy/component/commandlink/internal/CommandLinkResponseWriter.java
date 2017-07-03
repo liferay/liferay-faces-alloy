@@ -23,7 +23,7 @@ import com.liferay.faces.alloy.component.commandlink.CommandLink;
 
 
 /**
- * This class is a {@link DelegationResponseWriter} that will suppress writing of the "value" attribute (the rendered
+ * This class is a {@link ResponseWriter} that will suppress writing of the "value" attribute (the rendered
  * text of the hyperlink) if the {@link CommandLink} has children, so that the rendered children will determine the text
  * of the hyperlink.
  *

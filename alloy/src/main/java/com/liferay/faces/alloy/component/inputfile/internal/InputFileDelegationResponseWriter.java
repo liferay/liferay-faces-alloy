@@ -22,7 +22,7 @@ import com.liferay.faces.alloy.component.inputfile.InputFile;
 
 
 /**
- * This class is a {@link DelegationResponseWriter} that encodes HTML5 attributes for file upload components.
+ * This class is a {@link ResponseWriter} that encodes HTML5 attributes for file upload components.
  *
  * @author  Neil Griffin
  */

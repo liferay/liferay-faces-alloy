@@ -55,9 +55,9 @@ public abstract class InputSourceCodeBase extends HtmlInputText implements Style
 	}
 
 	/**
-	 * <code>clientKey</code> attribute description:
-	 * <br /><br />
-	 * The key name that can be used to reference the component on the client.
+	 * <p><code>clientKey</code> attribute description:</p>
+	 *
+	 * <div>The key name that can be used to reference the component on the client.</div>
 	 */
 	@Override
 	public String getClientKey() {
@@ -65,9 +65,9 @@ public abstract class InputSourceCodeBase extends HtmlInputText implements Style
 	}
 
 	/**
-	 * <code>clientKey</code> attribute description:
-	 * <br /><br />
-	 * The key name that can be used to reference the component on the client.
+	 * <p><code>clientKey</code> attribute description:</p>
+	 *
+	 * <div>The key name that can be used to reference the component on the client.</div>
 	 */
 	@Override
 	public void setClientKey(String clientKey) {
@@ -75,45 +75,45 @@ public abstract class InputSourceCodeBase extends HtmlInputText implements Style
 	}
 
 	/**
-	 * <code>height</code> attribute description:
-	 * <br /><br />
-	 * The the height (in pixels) of the rendered <code>&lt;div&gt;</code>.
+	 * <p><code>height</code> attribute description:</p>
+	 *
+	 * <div>The the height (in pixels) of the rendered <code>&lt;div&gt;</code>.</div>
 	 */
 	public String getHeight() {
 		return (String) getStateHelper().eval(InputSourceCodePropertyKeys.height, null);
 	}
 
 	/**
-	 * <code>height</code> attribute description:
-	 * <br /><br />
-	 * The the height (in pixels) of the rendered <code>&lt;div&gt;</code>.
+	 * <p><code>height</code> attribute description:</p>
+	 *
+	 * <div>The the height (in pixels) of the rendered <code>&lt;div&gt;</code>.</div>
 	 */
 	public void setHeight(String height) {
 		getStateHelper().put(InputSourceCodePropertyKeys.height, height);
 	}
 
 	/**
-	 * <code>highlightActiveLine</code> attribute description:
-	 * <br /><br />
-	 * When true, the background-color of the line that is being edited by the user (the active line) will change to indicate a highlight.
+	 * <p><code>highlightActiveLine</code> attribute description:</p>
+	 *
+	 * <div>When true, the background-color of the line that is being edited by the user (the active line) will change to indicate a highlight.</div>
 	 */
 	public Boolean getHighlightActiveLine() {
 		return (Boolean) getStateHelper().eval(InputSourceCodePropertyKeys.highlightActiveLine, null);
 	}
 
 	/**
-	 * <code>highlightActiveLine</code> attribute description:
-	 * <br /><br />
-	 * When true, the background-color of the line that is being edited by the user (the active line) will change to indicate a highlight.
+	 * <p><code>highlightActiveLine</code> attribute description:</p>
+	 *
+	 * <div>When true, the background-color of the line that is being edited by the user (the active line) will change to indicate a highlight.</div>
 	 */
 	public void setHighlightActiveLine(Boolean highlightActiveLine) {
 		getStateHelper().put(InputSourceCodePropertyKeys.highlightActiveLine, highlightActiveLine);
 	}
 
 	/**
-	 * <code>label</code> attribute description:
-	 * <br /><br />
-	 * A localized label for this component that is typically only rendered in a FacesMessage when validation fails.
+	 * <p><code>label</code> attribute description:</p>
+	 *
+	 * <div>A localized label for this component that is typically only rendered in a FacesMessage when validation fails.</div>
 	 */
 	@Override
 	public String getLabel() {
@@ -133,117 +133,117 @@ public abstract class InputSourceCodeBase extends HtmlInputText implements Style
 	}
 
 	/**
-	 * <code>locale</code> attribute description:
-	 * <br /><br />
-	 * The locale of the text that the editor is editing or displaying.
+	 * <p><code>locale</code> attribute description:</p>
+	 *
+	 * <div>The locale of the text that the editor is editing or displaying.</div>
 	 */
 	public String getLocale() {
 		return (String) getStateHelper().eval(InputSourceCodePropertyKeys.locale, null);
 	}
 
 	/**
-	 * <code>locale</code> attribute description:
-	 * <br /><br />
-	 * The locale of the text that the editor is editing or displaying.
+	 * <p><code>locale</code> attribute description:</p>
+	 *
+	 * <div>The locale of the text that the editor is editing or displaying.</div>
 	 */
 	public void setLocale(String locale) {
 		getStateHelper().put(InputSourceCodePropertyKeys.locale, locale);
 	}
 
 	/**
-	 * <code>maxLines</code> attribute description:
-	 * <br /><br />
-	 * Specifies the maximum number of lines that the editor is to display before a vertical scrollbar appears.
+	 * <p><code>maxLines</code> attribute description:</p>
+	 *
+	 * <div>Specifies the maximum number of lines that the editor is to display before a vertical scrollbar appears.</div>
 	 */
 	public Integer getMaxLines() {
 		return (Integer) getStateHelper().eval(InputSourceCodePropertyKeys.maxLines, 1024);
 	}
 
 	/**
-	 * <code>maxLines</code> attribute description:
-	 * <br /><br />
-	 * Specifies the maximum number of lines that the editor is to display before a vertical scrollbar appears.
+	 * <p><code>maxLines</code> attribute description:</p>
+	 *
+	 * <div>Specifies the maximum number of lines that the editor is to display before a vertical scrollbar appears.</div>
 	 */
 	public void setMaxLines(Integer maxLines) {
 		getStateHelper().put(InputSourceCodePropertyKeys.maxLines, maxLines);
 	}
 
 	/**
-	 * <code>minLines</code> attribute description:
-	 * <br /><br />
-	 * Minimum number of lines that the editor is to display.
+	 * <p><code>minLines</code> attribute description:</p>
+	 *
+	 * <div>Minimum number of lines that the editor is to display.</div>
 	 */
 	public Integer getMinLines() {
 		return (Integer) getStateHelper().eval(InputSourceCodePropertyKeys.minLines, 6);
 	}
 
 	/**
-	 * <code>minLines</code> attribute description:
-	 * <br /><br />
-	 * Minimum number of lines that the editor is to display.
+	 * <p><code>minLines</code> attribute description:</p>
+	 *
+	 * <div>Minimum number of lines that the editor is to display.</div>
 	 */
 	public void setMinLines(Integer minLines) {
 		getStateHelper().put(InputSourceCodePropertyKeys.minLines, minLines);
 	}
 
 	/**
-	 * <code>mode</code> attribute description:
-	 * <br /><br />
-	 * The name of the programming language that the editor is editing or displaying.
+	 * <p><code>mode</code> attribute description:</p>
+	 *
+	 * <div>The name of the programming language that the editor is editing or displaying.</div>
 	 */
 	public String getMode() {
 		return (String) getStateHelper().eval(InputSourceCodePropertyKeys.mode, null);
 	}
 
 	/**
-	 * <code>mode</code> attribute description:
-	 * <br /><br />
-	 * The name of the programming language that the editor is editing or displaying.
+	 * <p><code>mode</code> attribute description:</p>
+	 *
+	 * <div>The name of the programming language that the editor is editing or displaying.</div>
 	 */
 	public void setMode(String mode) {
 		getStateHelper().put(InputSourceCodePropertyKeys.mode, mode);
 	}
 
 	/**
-	 * <code>readOnly</code> attribute description:
-	 * <br /><br />
-	 * When this flag is true, the component will be read-only, meaning that the user will be unable to edit the source code text. The default value is <code>false</code>.
+	 * <p><code>readOnly</code> attribute description:</p>
+	 *
+	 * <div>When this flag is true, the component will be read-only, meaning that the user will be unable to edit the source code text. The default value is <code>false</code>.</div>
 	 */
 	public Boolean getReadOnly() {
 		return (Boolean) getStateHelper().eval(InputSourceCodePropertyKeys.readOnly, null);
 	}
 
 	/**
-	 * <code>readOnly</code> attribute description:
-	 * <br /><br />
-	 * When this flag is true, the component will be read-only, meaning that the user will be unable to edit the source code text. The default value is <code>false</code>.
+	 * <p><code>readOnly</code> attribute description:</p>
+	 *
+	 * <div>When this flag is true, the component will be read-only, meaning that the user will be unable to edit the source code text. The default value is <code>false</code>.</div>
 	 */
 	public void setReadOnly(Boolean readOnly) {
 		getStateHelper().put(InputSourceCodePropertyKeys.readOnly, readOnly);
 	}
 
 	/**
-	 * <code>showPrintMargin</code> attribute description:
-	 * <br /><br />
-	 * When this flag is true, a vertical line will appear that indicates the print margin. The default value is <code>true</code>.
+	 * <p><code>showPrintMargin</code> attribute description:</p>
+	 *
+	 * <div>When this flag is true, a vertical line will appear that indicates the print margin. The default value is <code>true</code>.</div>
 	 */
 	public Boolean getShowPrintMargin() {
 		return (Boolean) getStateHelper().eval(InputSourceCodePropertyKeys.showPrintMargin, null);
 	}
 
 	/**
-	 * <code>showPrintMargin</code> attribute description:
-	 * <br /><br />
-	 * When this flag is true, a vertical line will appear that indicates the print margin. The default value is <code>true</code>.
+	 * <p><code>showPrintMargin</code> attribute description:</p>
+	 *
+	 * <div>When this flag is true, a vertical line will appear that indicates the print margin. The default value is <code>true</code>.</div>
 	 */
 	public void setShowPrintMargin(Boolean showPrintMargin) {
 		getStateHelper().put(InputSourceCodePropertyKeys.showPrintMargin, showPrintMargin);
 	}
 
 	/**
-	 * <code>styleClass</code> attribute description:
-	 * <br /><br />
-	 * List of CSS class names (separated by spaces) that are to be rendered within the class attribute.
+	 * <p><code>styleClass</code> attribute description:</p>
+	 *
+	 * <div>List of CSS class names (separated by spaces) that are to be rendered within the class attribute.</div>
 	 */
 	@Override
 	public String getStyleClass() {
@@ -256,72 +256,72 @@ public abstract class InputSourceCodeBase extends HtmlInputText implements Style
 	}
 
 	/**
-	 * <code>tabSize</code> attribute description:
-	 * <br /><br />
-	 * The number of spaces that are to be displayed in place of each tab character.
+	 * <p><code>tabSize</code> attribute description:</p>
+	 *
+	 * <div>The number of spaces that are to be displayed in place of each tab character.</div>
 	 */
 	public String getTabSize() {
 		return (String) getStateHelper().eval(InputSourceCodePropertyKeys.tabSize, null);
 	}
 
 	/**
-	 * <code>tabSize</code> attribute description:
-	 * <br /><br />
-	 * The number of spaces that are to be displayed in place of each tab character.
+	 * <p><code>tabSize</code> attribute description:</p>
+	 *
+	 * <div>The number of spaces that are to be displayed in place of each tab character.</div>
 	 */
 	public void setTabSize(String tabSize) {
 		getStateHelper().put(InputSourceCodePropertyKeys.tabSize, tabSize);
 	}
 
 	/**
-	 * <code>useSoftTabs</code> attribute description:
-	 * <br /><br />
-	 * When this flag is true, the tab key will produce space characters rather than tab characters. The default value is <code>false</code>.
+	 * <p><code>useSoftTabs</code> attribute description:</p>
+	 *
+	 * <div>When this flag is true, the tab key will produce space characters rather than tab characters. The default value is <code>false</code>.</div>
 	 */
 	public Boolean getUseSoftTabs() {
 		return (Boolean) getStateHelper().eval(InputSourceCodePropertyKeys.useSoftTabs, null);
 	}
 
 	/**
-	 * <code>useSoftTabs</code> attribute description:
-	 * <br /><br />
-	 * When this flag is true, the tab key will produce space characters rather than tab characters. The default value is <code>false</code>.
+	 * <p><code>useSoftTabs</code> attribute description:</p>
+	 *
+	 * <div>When this flag is true, the tab key will produce space characters rather than tab characters. The default value is <code>false</code>.</div>
 	 */
 	public void setUseSoftTabs(Boolean useSoftTabs) {
 		getStateHelper().put(InputSourceCodePropertyKeys.useSoftTabs, useSoftTabs);
 	}
 
 	/**
-	 * <code>useWrapMode</code> attribute description:
-	 * <br /><br />
-	 * When this flag is true, the line will break when it reaches the end of the line. The default value is <code>true</code>.
+	 * <p><code>useWrapMode</code> attribute description:</p>
+	 *
+	 * <div>When this flag is true, the line will break when it reaches the end of the line. The default value is <code>true</code>.</div>
 	 */
 	public Boolean getUseWrapMode() {
 		return (Boolean) getStateHelper().eval(InputSourceCodePropertyKeys.useWrapMode, null);
 	}
 
 	/**
-	 * <code>useWrapMode</code> attribute description:
-	 * <br /><br />
-	 * When this flag is true, the line will break when it reaches the end of the line. The default value is <code>true</code>.
+	 * <p><code>useWrapMode</code> attribute description:</p>
+	 *
+	 * <div>When this flag is true, the line will break when it reaches the end of the line. The default value is <code>true</code>.</div>
 	 */
 	public void setUseWrapMode(Boolean useWrapMode) {
 		getStateHelper().put(InputSourceCodePropertyKeys.useWrapMode, useWrapMode);
 	}
 
 	/**
-	 * <code>width</code> attribute description:
-	 * <br /><br />
-	 * The the width (in pixels) of the rendered <code>&lt;div&gt;</code>.
+	 * <p><code>width</code> attribute description:</p>
+	 *
+	 * <div>The the width (in pixels) of the rendered <code>&lt;div&gt;</code>.</div>
 	 */
 	public String getWidth() {
 		return (String) getStateHelper().eval(InputSourceCodePropertyKeys.width, null);
 	}
 
 	/**
-	 * <code>width</code> attribute description:
-	 * <br /><br />
-	 * The the width (in pixels) of the rendered <code>&lt;div&gt;</code>.
+	 * <p><code>width</code> attribute description:</p>
+	 *
+	 * <div>The the width (in pixels) of the rendered <code>&lt;div&gt;</code>.</div>
 	 */
 	public void setWidth(String width) {
 		getStateHelper().put(InputSourceCodePropertyKeys.width, width);

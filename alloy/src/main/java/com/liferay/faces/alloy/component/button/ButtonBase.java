@@ -45,45 +45,45 @@ public abstract class ButtonBase extends HtmlOutcomeTargetButton implements Styl
 	}
 
 	/**
-	 * <code>autofocus</code> attribute description:
-	 * <br /><br />
-	 * HTML passthrough attribute specifying whether or not the component should automatically recieve focus on the initial page load.
+	 * <p><code>autofocus</code> attribute description:</p>
+	 *
+	 * <div>HTML passthrough attribute specifying whether or not the component should automatically recieve focus on the initial page load.</div>
 	 */
 	public Boolean getAutofocus() {
 		return (Boolean) getStateHelper().eval(ButtonPropertyKeys.autofocus, null);
 	}
 
 	/**
-	 * <code>autofocus</code> attribute description:
-	 * <br /><br />
-	 * HTML passthrough attribute specifying whether or not the component should automatically recieve focus on the initial page load.
+	 * <p><code>autofocus</code> attribute description:</p>
+	 *
+	 * <div>HTML passthrough attribute specifying whether or not the component should automatically recieve focus on the initial page load.</div>
 	 */
 	public void setAutofocus(Boolean autofocus) {
 		getStateHelper().put(ButtonPropertyKeys.autofocus, autofocus);
 	}
 
 	/**
-	 * <code>disabled</code> attribute description:
-	 * <br /><br />
-	 * When this flag is true, the component will be disabled, and the user will be unable to interact with the component.
+	 * <p><code>disabled</code> attribute description:</p>
+	 *
+	 * <div>When this flag is true, the component will be disabled, and the user will be unable to interact with the component.</div>
 	 */
 	public boolean isDisabled() {
 		return (Boolean) getStateHelper().eval(ButtonPropertyKeys.disabled, false);
 	}
 
 	/**
-	 * <code>disabled</code> attribute description:
-	 * <br /><br />
-	 * When this flag is true, the component will be disabled, and the user will be unable to interact with the component.
+	 * <p><code>disabled</code> attribute description:</p>
+	 *
+	 * <div>When this flag is true, the component will be disabled, and the user will be unable to interact with the component.</div>
 	 */
 	public void setDisabled(boolean disabled) {
 		getStateHelper().put(ButtonPropertyKeys.disabled, disabled);
 	}
 
 	/**
-	 * <code>styleClass</code> attribute description:
-	 * <br /><br />
-	 * List of CSS class names (separated by spaces) that are to be rendered within the class attribute.
+	 * <p><code>styleClass</code> attribute description:</p>
+	 *
+	 * <div>List of CSS class names (separated by spaces) that are to be rendered within the class attribute.</div>
 	 */
 	@Override
 	public String getStyleClass() {
@@ -96,9 +96,9 @@ public abstract class ButtonBase extends HtmlOutcomeTargetButton implements Styl
 	}
 
 	/**
-	 * <code>styleClass</code> attribute description:
-	 * <br /><br />
-	 * List of CSS class names (separated by spaces) that are to be rendered within the class attribute.
+	 * <p><code>styleClass</code> attribute description:</p>
+	 *
+	 * <div>List of CSS class names (separated by spaces) that are to be rendered within the class attribute.</div>
 	 */
 	@Override
 	public void setStyleClass(String styleClass) {
@@ -106,18 +106,18 @@ public abstract class ButtonBase extends HtmlOutcomeTargetButton implements Styl
 	}
 
 	/**
-	 * <code>type</code> attribute description:
-	 * <br /><br />
-	 * The type of the button: button (default), submit, or reset.
+	 * <p><code>type</code> attribute description:</p>
+	 *
+	 * <div>The type of the button: button (default), submit, or reset.</div>
 	 */
 	public String getType() {
 		return (String) getStateHelper().eval(ButtonPropertyKeys.type, null);
 	}
 
 	/**
-	 * <code>type</code> attribute description:
-	 * <br /><br />
-	 * The type of the button: button (default), submit, or reset.
+	 * <p><code>type</code> attribute description:</p>
+	 *
+	 * <div>The type of the button: button (default), submit, or reset.</div>
 	 */
 	public void setType(String type) {
 		getStateHelper().put(ButtonPropertyKeys.type, type);

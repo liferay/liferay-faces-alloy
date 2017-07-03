@@ -43,27 +43,27 @@ public abstract class MenuBase extends UIColumn implements Styleable {
 	}
 
 	/**
-	 * <code>label</code> attribute description:
-	 * <br /><br />
-	 * The visible label for the menu. This is only used if a facet with name="label" is not present.
+	 * <p><code>label</code> attribute description:</p>
+	 *
+	 * <div>The visible label for the menu. This is only used if a facet with name="label" is not present.</div>
 	 */
 	public String getLabel() {
 		return (String) getStateHelper().eval(MenuPropertyKeys.label, null);
 	}
 
 	/**
-	 * <code>label</code> attribute description:
-	 * <br /><br />
-	 * The visible label for the menu. This is only used if a facet with name="label" is not present.
+	 * <p><code>label</code> attribute description:</p>
+	 *
+	 * <div>The visible label for the menu. This is only used if a facet with name="label" is not present.</div>
 	 */
 	public void setLabel(String label) {
 		getStateHelper().put(MenuPropertyKeys.label, label);
 	}
 
 	/**
-	 * <code>style</code> attribute description:
-	 * <br /><br />
-	 * HTML passthrough attribute specifying the css style of the element.
+	 * <p><code>style</code> attribute description:</p>
+	 *
+	 * <div>HTML passthrough attribute specifying the css style of the element.</div>
 	 */
 	@Override
 	public String getStyle() {
@@ -71,9 +71,9 @@ public abstract class MenuBase extends UIColumn implements Styleable {
 	}
 
 	/**
-	 * <code>style</code> attribute description:
-	 * <br /><br />
-	 * HTML passthrough attribute specifying the css style of the element.
+	 * <p><code>style</code> attribute description:</p>
+	 *
+	 * <div>HTML passthrough attribute specifying the css style of the element.</div>
 	 */
 	@Override
 	public void setStyle(String style) {
@@ -81,9 +81,9 @@ public abstract class MenuBase extends UIColumn implements Styleable {
 	}
 
 	/**
-	 * <code>styleClass</code> attribute description:
-	 * <br /><br />
-	 * List of CSS class names (separated by spaces) that are to be rendered within the class attribute.
+	 * <p><code>styleClass</code> attribute description:</p>
+	 *
+	 * <div>List of CSS class names (separated by spaces) that are to be rendered within the class attribute.</div>
 	 */
 	@Override
 	public String getStyleClass() {
@@ -96,9 +96,9 @@ public abstract class MenuBase extends UIColumn implements Styleable {
 	}
 
 	/**
-	 * <code>styleClass</code> attribute description:
-	 * <br /><br />
-	 * List of CSS class names (separated by spaces) that are to be rendered within the class attribute.
+	 * <p><code>styleClass</code> attribute description:</p>
+	 *
+	 * <div>List of CSS class names (separated by spaces) that are to be rendered within the class attribute.</div>
 	 */
 	@Override
 	public void setStyleClass(String styleClass) {

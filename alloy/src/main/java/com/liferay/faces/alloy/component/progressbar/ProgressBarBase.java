@@ -60,9 +60,9 @@ public abstract class ProgressBarBase extends UIComponentBase implements Styleab
 	}
 
 	/**
-	 * <code>clientKey</code> attribute description:
-	 * <br /><br />
-	 * The key name that can be used to reference the component on the client.
+	 * <p><code>clientKey</code> attribute description:</p>
+	 *
+	 * <div>The key name that can be used to reference the component on the client.</div>
 	 */
 	@Override
 	public String getClientKey() {
@@ -70,9 +70,9 @@ public abstract class ProgressBarBase extends UIComponentBase implements Styleab
 	}
 
 	/**
-	 * <code>clientKey</code> attribute description:
-	 * <br /><br />
-	 * The key name that can be used to reference the component on the client.
+	 * <p><code>clientKey</code> attribute description:</p>
+	 *
+	 * <div>The key name that can be used to reference the component on the client.</div>
 	 */
 	@Override
 	public void setClientKey(String clientKey) {
@@ -80,135 +80,135 @@ public abstract class ProgressBarBase extends UIComponentBase implements Styleab
 	}
 
 	/**
-	 * <code>height</code> attribute description:
-	 * <br /><br />
-	 * The the height (in pixels) of the progress bar.
+	 * <p><code>height</code> attribute description:</p>
+	 *
+	 * <div>The the height (in pixels) of the progress bar.</div>
 	 */
 	public String getHeight() {
 		return (String) getStateHelper().eval(ProgressBarPropertyKeys.height, null);
 	}
 
 	/**
-	 * <code>height</code> attribute description:
-	 * <br /><br />
-	 * The the height (in pixels) of the progress bar.
+	 * <p><code>height</code> attribute description:</p>
+	 *
+	 * <div>The the height (in pixels) of the progress bar.</div>
 	 */
 	public void setHeight(String height) {
 		getStateHelper().put(ProgressBarPropertyKeys.height, height);
 	}
 
 	/**
-	 * <code>label</code> attribute description:
-	 * <br /><br />
-	 * The label which appears on the progress bar. The <code>{0}</code> token can be used to include the value in the label.
+	 * <p><code>label</code> attribute description:</p>
+	 *
+	 * <div>The label which appears on the progress bar. The <code>{0}</code> token can be used to include the value in the label.</div>
 	 */
 	public String getLabel() {
 		return (String) getStateHelper().eval(ProgressBarPropertyKeys.label, null);
 	}
 
 	/**
-	 * <code>label</code> attribute description:
-	 * <br /><br />
-	 * The label which appears on the progress bar. The <code>{0}</code> token can be used to include the value in the label.
+	 * <p><code>label</code> attribute description:</p>
+	 *
+	 * <div>The label which appears on the progress bar. The <code>{0}</code> token can be used to include the value in the label.</div>
 	 */
 	public void setLabel(String label) {
 		getStateHelper().put(ProgressBarPropertyKeys.label, label);
 	}
 
 	/**
-	 * <code>layout</code> attribute description:
-	 * <br /><br />
-	 * The direction in which the layout of the component should be displayed. Valid values include <code>lineDirection</code> (the default) and <code>pageDirection</code>.
+	 * <p><code>layout</code> attribute description:</p>
+	 *
+	 * <div>The direction in which the layout of the component should be displayed. Valid values include <code>lineDirection</code> (the default) and <code>pageDirection</code>.</div>
 	 */
 	public String getLayout() {
 		return (String) getStateHelper().eval(ProgressBarPropertyKeys.layout, null);
 	}
 
 	/**
-	 * <code>layout</code> attribute description:
-	 * <br /><br />
-	 * The direction in which the layout of the component should be displayed. Valid values include <code>lineDirection</code> (the default) and <code>pageDirection</code>.
+	 * <p><code>layout</code> attribute description:</p>
+	 *
+	 * <div>The direction in which the layout of the component should be displayed. Valid values include <code>lineDirection</code> (the default) and <code>pageDirection</code>.</div>
 	 */
 	public void setLayout(String layout) {
 		getStateHelper().put(ProgressBarPropertyKeys.layout, layout);
 	}
 
 	/**
-	 * <code>maxProgress</code> attribute description:
-	 * <br /><br />
-	 * The maximum value that the progress bar can have. The default value is <code>100</code>.
+	 * <p><code>maxProgress</code> attribute description:</p>
+	 *
+	 * <div>The maximum value that the progress bar can have. The default value is <code>100</code>.</div>
 	 */
 	public Integer getMaxProgress() {
 		return (Integer) getStateHelper().eval(ProgressBarPropertyKeys.maxProgress, null);
 	}
 
 	/**
-	 * <code>maxProgress</code> attribute description:
-	 * <br /><br />
-	 * The maximum value that the progress bar can have. The default value is <code>100</code>.
+	 * <p><code>maxProgress</code> attribute description:</p>
+	 *
+	 * <div>The maximum value that the progress bar can have. The default value is <code>100</code>.</div>
 	 */
 	public void setMaxProgress(Integer maxProgress) {
 		getStateHelper().put(ProgressBarPropertyKeys.maxProgress, maxProgress);
 	}
 
 	/**
-	 * <code>minProgress</code> attribute description:
-	 * <br /><br />
-	 * The minimum value that the progress bar can have. The default value is <code>0</code>.
+	 * <p><code>minProgress</code> attribute description:</p>
+	 *
+	 * <div>The minimum value that the progress bar can have. The default value is <code>0</code>.</div>
 	 */
 	public Integer getMinProgress() {
 		return (Integer) getStateHelper().eval(ProgressBarPropertyKeys.minProgress, null);
 	}
 
 	/**
-	 * <code>minProgress</code> attribute description:
-	 * <br /><br />
-	 * The minimum value that the progress bar can have. The default value is <code>0</code>.
+	 * <p><code>minProgress</code> attribute description:</p>
+	 *
+	 * <div>The minimum value that the progress bar can have. The default value is <code>0</code>.</div>
 	 */
 	public void setMinProgress(Integer minProgress) {
 		getStateHelper().put(ProgressBarPropertyKeys.minProgress, minProgress);
 	}
 
 	/**
-	 * <code>oncomplete</code> attribute description:
-	 * <br /><br />
-	 * Client-side javascript to be executed when progress has completed.
+	 * <p><code>oncomplete</code> attribute description:</p>
+	 *
+	 * <div>Client-side javascript to be executed when progress has completed.</div>
 	 */
 	public String getOncomplete() {
 		return (String) getStateHelper().eval(ProgressBarPropertyKeys.oncomplete, null);
 	}
 
 	/**
-	 * <code>oncomplete</code> attribute description:
-	 * <br /><br />
-	 * Client-side javascript to be executed when progress has completed.
+	 * <p><code>oncomplete</code> attribute description:</p>
+	 *
+	 * <div>Client-side javascript to be executed when progress has completed.</div>
 	 */
 	public void setOncomplete(String oncomplete) {
 		getStateHelper().put(ProgressBarPropertyKeys.oncomplete, oncomplete);
 	}
 
 	/**
-	 * <code>pollingDelay</code> attribute description:
-	 * <br /><br />
-	 * The delay (in milliseconds) before dispatching a polling Ajax request after recieving the response of a previous request.
+	 * <p><code>pollingDelay</code> attribute description:</p>
+	 *
+	 * <div>The delay (in milliseconds) before dispatching a polling Ajax request after recieving the response of a previous request.</div>
 	 */
 	public Integer getPollingDelay() {
 		return (Integer) getStateHelper().eval(ProgressBarPropertyKeys.pollingDelay, 3000);
 	}
 
 	/**
-	 * <code>pollingDelay</code> attribute description:
-	 * <br /><br />
-	 * The delay (in milliseconds) before dispatching a polling Ajax request after recieving the response of a previous request.
+	 * <p><code>pollingDelay</code> attribute description:</p>
+	 *
+	 * <div>The delay (in milliseconds) before dispatching a polling Ajax request after recieving the response of a previous request.</div>
 	 */
 	public void setPollingDelay(Integer pollingDelay) {
 		getStateHelper().put(ProgressBarPropertyKeys.pollingDelay, pollingDelay);
 	}
 
 	/**
-	 * <code>style</code> attribute description:
-	 * <br /><br />
-	 * HTML passthrough attribute specifying the css style of the element.
+	 * <p><code>style</code> attribute description:</p>
+	 *
+	 * <div>HTML passthrough attribute specifying the css style of the element.</div>
 	 */
 	@Override
 	public String getStyle() {
@@ -216,9 +216,9 @@ public abstract class ProgressBarBase extends UIComponentBase implements Styleab
 	}
 
 	/**
-	 * <code>style</code> attribute description:
-	 * <br /><br />
-	 * HTML passthrough attribute specifying the css style of the element.
+	 * <p><code>style</code> attribute description:</p>
+	 *
+	 * <div>HTML passthrough attribute specifying the css style of the element.</div>
 	 */
 	@Override
 	public void setStyle(String style) {
@@ -226,9 +226,9 @@ public abstract class ProgressBarBase extends UIComponentBase implements Styleab
 	}
 
 	/**
-	 * <code>styleClass</code> attribute description:
-	 * <br /><br />
-	 * List of CSS class names (separated by spaces) that are to be rendered within the class attribute.
+	 * <p><code>styleClass</code> attribute description:</p>
+	 *
+	 * <div>List of CSS class names (separated by spaces) that are to be rendered within the class attribute.</div>
 	 */
 	@Override
 	public String getStyleClass() {
@@ -241,9 +241,9 @@ public abstract class ProgressBarBase extends UIComponentBase implements Styleab
 	}
 
 	/**
-	 * <code>styleClass</code> attribute description:
-	 * <br /><br />
-	 * List of CSS class names (separated by spaces) that are to be rendered within the class attribute.
+	 * <p><code>styleClass</code> attribute description:</p>
+	 *
+	 * <div>List of CSS class names (separated by spaces) that are to be rendered within the class attribute.</div>
 	 */
 	@Override
 	public void setStyleClass(String styleClass) {
@@ -251,36 +251,36 @@ public abstract class ProgressBarBase extends UIComponentBase implements Styleab
 	}
 
 	/**
-	 * <code>value</code> attribute description:
-	 * <br /><br />
-	 * The value of this component, which is typically bound via EL to a model bean property.
+	 * <p><code>value</code> attribute description:</p>
+	 *
+	 * <div>The value of this component, which is typically bound via EL to a model bean property.</div>
 	 */
 	public Integer getValue() {
 		return (Integer) getStateHelper().eval(ProgressBarPropertyKeys.value, 0);
 	}
 
 	/**
-	 * <code>value</code> attribute description:
-	 * <br /><br />
-	 * The value of this component, which is typically bound via EL to a model bean property.
+	 * <p><code>value</code> attribute description:</p>
+	 *
+	 * <div>The value of this component, which is typically bound via EL to a model bean property.</div>
 	 */
 	public void setValue(Integer value) {
 		getStateHelper().put(ProgressBarPropertyKeys.value, value);
 	}
 
 	/**
-	 * <code>width</code> attribute description:
-	 * <br /><br />
-	 * The the width (in pixels) of the progress bar.
+	 * <p><code>width</code> attribute description:</p>
+	 *
+	 * <div>The the width (in pixels) of the progress bar.</div>
 	 */
 	public String getWidth() {
 		return (String) getStateHelper().eval(ProgressBarPropertyKeys.width, null);
 	}
 
 	/**
-	 * <code>width</code> attribute description:
-	 * <br /><br />
-	 * The the width (in pixels) of the progress bar.
+	 * <p><code>width</code> attribute description:</p>
+	 *
+	 * <div>The the width (in pixels) of the progress bar.</div>
 	 */
 	public void setWidth(String width) {
 		getStateHelper().put(ProgressBarPropertyKeys.width, width);
