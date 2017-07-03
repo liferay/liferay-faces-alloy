@@ -51,27 +51,27 @@ public abstract class DialogBase extends PanelGroupBlockLayout implements Stylea
 	}
 
 	/**
-	 * <code>autoShow</code> attribute description:
-	 * <br /><br />
-	 * When true, the component is visible initially.
+	 * <p><code>autoShow</code> attribute description:</p>
+	 *
+	 * <div>When true, the component is visible initially.</div>
 	 */
 	public boolean isAutoShow() {
 		return (Boolean) getStateHelper().eval(DialogPropertyKeys.autoShow, false);
 	}
 
 	/**
-	 * <code>autoShow</code> attribute description:
-	 * <br /><br />
-	 * When true, the component is visible initially.
+	 * <p><code>autoShow</code> attribute description:</p>
+	 *
+	 * <div>When true, the component is visible initially.</div>
 	 */
 	public void setAutoShow(boolean autoShow) {
 		getStateHelper().put(DialogPropertyKeys.autoShow, autoShow);
 	}
 
 	/**
-	 * <code>clientKey</code> attribute description:
-	 * <br /><br />
-	 * The key name that can be used to reference the component on the client.
+	 * <p><code>clientKey</code> attribute description:</p>
+	 *
+	 * <div>The key name that can be used to reference the component on the client.</div>
 	 */
 	@Override
 	public String getClientKey() {
@@ -79,9 +79,9 @@ public abstract class DialogBase extends PanelGroupBlockLayout implements Stylea
 	}
 
 	/**
-	 * <code>clientKey</code> attribute description:
-	 * <br /><br />
-	 * The key name that can be used to reference the component on the client.
+	 * <p><code>clientKey</code> attribute description:</p>
+	 *
+	 * <div>The key name that can be used to reference the component on the client.</div>
 	 */
 	@Override
 	public void setClientKey(String clientKey) {
@@ -89,99 +89,99 @@ public abstract class DialogBase extends PanelGroupBlockLayout implements Stylea
 	}
 
 	/**
-	 * <code>dismissible</code> attribute description:
-	 * <br /><br />
-	 * When true, the overlay window is automatically hidden when the user clicks outside of it.
+	 * <p><code>dismissible</code> attribute description:</p>
+	 *
+	 * <div>When true, the overlay window is automatically hidden when the user clicks outside of it.</div>
 	 */
 	public boolean isDismissible() {
 		return (Boolean) getStateHelper().eval(DialogPropertyKeys.dismissible, false);
 	}
 
 	/**
-	 * <code>dismissible</code> attribute description:
-	 * <br /><br />
-	 * When true, the overlay window is automatically hidden when the user clicks outside of it.
+	 * <p><code>dismissible</code> attribute description:</p>
+	 *
+	 * <div>When true, the overlay window is automatically hidden when the user clicks outside of it.</div>
 	 */
 	public void setDismissible(boolean dismissible) {
 		getStateHelper().put(DialogPropertyKeys.dismissible, dismissible);
 	}
 
 	/**
-	 * <code>headerText</code> attribute description:
-	 * <br /><br />
-	 * The text to place in the header of the component.
+	 * <p><code>headerText</code> attribute description:</p>
+	 *
+	 * <div>The text to place in the header of the component.</div>
 	 */
 	public String getHeaderText() {
 		return (String) getStateHelper().eval(DialogPropertyKeys.headerText, null);
 	}
 
 	/**
-	 * <code>headerText</code> attribute description:
-	 * <br /><br />
-	 * The text to place in the header of the component.
+	 * <p><code>headerText</code> attribute description:</p>
+	 *
+	 * <div>The text to place in the header of the component.</div>
 	 */
 	public void setHeaderText(String headerText) {
 		getStateHelper().put(DialogPropertyKeys.headerText, headerText);
 	}
 
 	/**
-	 * <code>height</code> attribute description:
-	 * <br /><br />
-	 * The height of the dialog/popover.
+	 * <p><code>height</code> attribute description:</p>
+	 *
+	 * <div>The height of the dialog/popover.</div>
 	 */
 	public String getHeight() {
 		return (String) getStateHelper().eval(DialogPropertyKeys.height, null);
 	}
 
 	/**
-	 * <code>height</code> attribute description:
-	 * <br /><br />
-	 * The height of the dialog/popover.
+	 * <p><code>height</code> attribute description:</p>
+	 *
+	 * <div>The height of the dialog/popover.</div>
 	 */
 	public void setHeight(String height) {
 		getStateHelper().put(DialogPropertyKeys.height, height);
 	}
 
 	/**
-	 * <code>hideIconRendered</code> attribute description:
-	 * <br /><br />
-	 * When true, an "x" is placed in the upper right corner that the user can click on to hide/dismiss the overlay window.
+	 * <p><code>hideIconRendered</code> attribute description:</p>
+	 *
+	 * <div>When true, an "x" is placed in the upper right corner that the user can click on to hide/dismiss the overlay window.</div>
 	 */
 	public boolean isHideIconRendered() {
 		return (Boolean) getStateHelper().eval(DialogPropertyKeys.hideIconRendered, true);
 	}
 
 	/**
-	 * <code>hideIconRendered</code> attribute description:
-	 * <br /><br />
-	 * When true, an "x" is placed in the upper right corner that the user can click on to hide/dismiss the overlay window.
+	 * <p><code>hideIconRendered</code> attribute description:</p>
+	 *
+	 * <div>When true, an "x" is placed in the upper right corner that the user can click on to hide/dismiss the overlay window.</div>
 	 */
 	public void setHideIconRendered(boolean hideIconRendered) {
 		getStateHelper().put(DialogPropertyKeys.hideIconRendered, hideIconRendered);
 	}
 
 	/**
-	 * <code>modal</code> attribute description:
-	 * <br /><br />
-	 * When true, the user must interact with the child dialog window before continuing to interact with the parent.
+	 * <p><code>modal</code> attribute description:</p>
+	 *
+	 * <div>When true, the user must interact with the child dialog window before continuing to interact with the parent.</div>
 	 */
 	public boolean isModal() {
 		return (Boolean) getStateHelper().eval(DialogPropertyKeys.modal, false);
 	}
 
 	/**
-	 * <code>modal</code> attribute description:
-	 * <br /><br />
-	 * When true, the user must interact with the child dialog window before continuing to interact with the parent.
+	 * <p><code>modal</code> attribute description:</p>
+	 *
+	 * <div>When true, the user must interact with the child dialog window before continuing to interact with the parent.</div>
 	 */
 	public void setModal(boolean modal) {
 		getStateHelper().put(DialogPropertyKeys.modal, modal);
 	}
 
 	/**
-	 * <code>styleClass</code> attribute description:
-	 * <br /><br />
-	 * List of CSS class names (separated by spaces) that are to be rendered within the class attribute.
+	 * <p><code>styleClass</code> attribute description:</p>
+	 *
+	 * <div>List of CSS class names (separated by spaces) that are to be rendered within the class attribute.</div>
 	 */
 	@Override
 	public String getStyleClass() {
@@ -194,36 +194,36 @@ public abstract class DialogBase extends PanelGroupBlockLayout implements Stylea
 	}
 
 	/**
-	 * <code>width</code> attribute description:
-	 * <br /><br />
-	 * The width of the dialog/popover.
+	 * <p><code>width</code> attribute description:</p>
+	 *
+	 * <div>The width of the dialog/popover.</div>
 	 */
 	public String getWidth() {
 		return (String) getStateHelper().eval(DialogPropertyKeys.width, null);
 	}
 
 	/**
-	 * <code>width</code> attribute description:
-	 * <br /><br />
-	 * The width of the dialog/popover.
+	 * <p><code>width</code> attribute description:</p>
+	 *
+	 * <div>The width of the dialog/popover.</div>
 	 */
 	public void setWidth(String width) {
 		getStateHelper().put(DialogPropertyKeys.width, width);
 	}
 
 	/**
-	 * <code>zIndex</code> attribute description:
-	 * <br /><br />
-	 * Specifies the stack order of the component. The default value is a constant from the Liferay.zIndex JavaScript object.
+	 * <p><code>zIndex</code> attribute description:</p>
+	 *
+	 * <div>Specifies the stack order of the component. The default value is a constant from the Liferay.zIndex JavaScript object.</div>
 	 */
 	public Integer getzIndex() {
 		return (Integer) getStateHelper().eval(DialogPropertyKeys.zIndex, Integer.MIN_VALUE);
 	}
 
 	/**
-	 * <code>zIndex</code> attribute description:
-	 * <br /><br />
-	 * Specifies the stack order of the component. The default value is a constant from the Liferay.zIndex JavaScript object.
+	 * <p><code>zIndex</code> attribute description:</p>
+	 *
+	 * <div>Specifies the stack order of the component. The default value is a constant from the Liferay.zIndex JavaScript object.</div>
 	 */
 	public void setzIndex(Integer zIndex) {
 		getStateHelper().put(DialogPropertyKeys.zIndex, zIndex);

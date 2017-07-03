@@ -49,9 +49,9 @@ public abstract class TabViewBase extends UIData implements Styleable, ClientCom
 	}
 
 	/**
-	 * <code>clientKey</code> attribute description:
-	 * <br /><br />
-	 * The key name that can be used to reference the component on the client.
+	 * <p><code>clientKey</code> attribute description:</p>
+	 *
+	 * <div>The key name that can be used to reference the component on the client.</div>
 	 */
 	@Override
 	public String getClientKey() {
@@ -59,9 +59,9 @@ public abstract class TabViewBase extends UIData implements Styleable, ClientCom
 	}
 
 	/**
-	 * <code>clientKey</code> attribute description:
-	 * <br /><br />
-	 * The key name that can be used to reference the component on the client.
+	 * <p><code>clientKey</code> attribute description:</p>
+	 *
+	 * <div>The key name that can be used to reference the component on the client.</div>
 	 */
 	@Override
 	public void setClientKey(String clientKey) {
@@ -69,63 +69,63 @@ public abstract class TabViewBase extends UIData implements Styleable, ClientCom
 	}
 
 	/**
-	 * <code>height</code> attribute description:
-	 * <br /><br />
-	 * The the height (in pixels) of the rendered <code>&lt;div&gt;</code>.
+	 * <p><code>height</code> attribute description:</p>
+	 *
+	 * <div>The the height (in pixels) of the rendered <code>&lt;div&gt;</code>.</div>
 	 */
 	public String getHeight() {
 		return (String) getStateHelper().eval(TabViewPropertyKeys.height, null);
 	}
 
 	/**
-	 * <code>height</code> attribute description:
-	 * <br /><br />
-	 * The the height (in pixels) of the rendered <code>&lt;div&gt;</code>.
+	 * <p><code>height</code> attribute description:</p>
+	 *
+	 * <div>The the height (in pixels) of the rendered <code>&lt;div&gt;</code>.</div>
 	 */
 	public void setHeight(String height) {
 		getStateHelper().put(TabViewPropertyKeys.height, height);
 	}
 
 	/**
-	 * <code>selectedIndex</code> attribute description:
-	 * <br /><br />
-	 * Integer representing the zero-based index representing the selected tab.
+	 * <p><code>selectedIndex</code> attribute description:</p>
+	 *
+	 * <div>Integer representing the zero-based index representing the selected tab.</div>
 	 */
 	public Integer getSelectedIndex() {
 		return (Integer) getStateHelper().eval(TabViewPropertyKeys.selectedIndex, null);
 	}
 
 	/**
-	 * <code>selectedIndex</code> attribute description:
-	 * <br /><br />
-	 * Integer representing the zero-based index representing the selected tab.
+	 * <p><code>selectedIndex</code> attribute description:</p>
+	 *
+	 * <div>Integer representing the zero-based index representing the selected tab.</div>
 	 */
 	public void setSelectedIndex(Integer selectedIndex) {
 		getStateHelper().put(TabViewPropertyKeys.selectedIndex, selectedIndex);
 	}
 
 	/**
-	 * <code>stacked</code> attribute description:
-	 * <br /><br />
-	 * When true, this indicates whether or not the tabs will appear vertically. The default value is <code>false.</code>
+	 * <p><code>stacked</code> attribute description:</p>
+	 *
+	 * <div>When true, this indicates whether or not the tabs will appear vertically. The default value is <code>false.</code></div>
 	 */
 	public Boolean getStacked() {
 		return (Boolean) getStateHelper().eval(TabViewPropertyKeys.stacked, null);
 	}
 
 	/**
-	 * <code>stacked</code> attribute description:
-	 * <br /><br />
-	 * When true, this indicates whether or not the tabs will appear vertically. The default value is <code>false.</code>
+	 * <p><code>stacked</code> attribute description:</p>
+	 *
+	 * <div>When true, this indicates whether or not the tabs will appear vertically. The default value is <code>false.</code></div>
 	 */
 	public void setStacked(Boolean stacked) {
 		getStateHelper().put(TabViewPropertyKeys.stacked, stacked);
 	}
 
 	/**
-	 * <code>style</code> attribute description:
-	 * <br /><br />
-	 * HTML passthrough attribute specifying the css style of the element.
+	 * <p><code>style</code> attribute description:</p>
+	 *
+	 * <div>HTML passthrough attribute specifying the css style of the element.</div>
 	 */
 	@Override
 	public String getStyle() {
@@ -133,9 +133,9 @@ public abstract class TabViewBase extends UIData implements Styleable, ClientCom
 	}
 
 	/**
-	 * <code>style</code> attribute description:
-	 * <br /><br />
-	 * HTML passthrough attribute specifying the css style of the element.
+	 * <p><code>style</code> attribute description:</p>
+	 *
+	 * <div>HTML passthrough attribute specifying the css style of the element.</div>
 	 */
 	@Override
 	public void setStyle(String style) {
@@ -143,9 +143,9 @@ public abstract class TabViewBase extends UIData implements Styleable, ClientCom
 	}
 
 	/**
-	 * <code>styleClass</code> attribute description:
-	 * <br /><br />
-	 * List of CSS class names (separated by spaces) that are to be rendered within the class attribute.
+	 * <p><code>styleClass</code> attribute description:</p>
+	 *
+	 * <div>List of CSS class names (separated by spaces) that are to be rendered within the class attribute.</div>
 	 */
 	@Override
 	public String getStyleClass() {
@@ -158,9 +158,9 @@ public abstract class TabViewBase extends UIData implements Styleable, ClientCom
 	}
 
 	/**
-	 * <code>styleClass</code> attribute description:
-	 * <br /><br />
-	 * List of CSS class names (separated by spaces) that are to be rendered within the class attribute.
+	 * <p><code>styleClass</code> attribute description:</p>
+	 *
+	 * <div>List of CSS class names (separated by spaces) that are to be rendered within the class attribute.</div>
 	 */
 	@Override
 	public void setStyleClass(String styleClass) {
@@ -168,18 +168,18 @@ public abstract class TabViewBase extends UIData implements Styleable, ClientCom
 	}
 
 	/**
-	 * <code>width</code> attribute description:
-	 * <br /><br />
-	 * The the height (in pixels) of the rendered <code>&lt;div&gt;</code>.
+	 * <p><code>width</code> attribute description:</p>
+	 *
+	 * <div>The the height (in pixels) of the rendered <code>&lt;div&gt;</code>.</div>
 	 */
 	public String getWidth() {
 		return (String) getStateHelper().eval(TabViewPropertyKeys.width, null);
 	}
 
 	/**
-	 * <code>width</code> attribute description:
-	 * <br /><br />
-	 * The the height (in pixels) of the rendered <code>&lt;div&gt;</code>.
+	 * <p><code>width</code> attribute description:</p>
+	 *
+	 * <div>The the height (in pixels) of the rendered <code>&lt;div&gt;</code>.</div>
 	 */
 	public void setWidth(String width) {
 		getStateHelper().put(TabViewPropertyKeys.width, width);

@@ -42,54 +42,54 @@ public abstract class OutputStylesheetBase extends UIOutput {
 	}
 
 	/**
-	 * <code>library</code> attribute description:
-	 * <br /><br />
-	 * The name of the library which contains the resource.
+	 * <p><code>library</code> attribute description:</p>
+	 *
+	 * <div>The name of the library which contains the resource.</div>
 	 */
 	public String getLibrary() {
 		return (String) getStateHelper().eval(OutputStylesheetPropertyKeys.library, null);
 	}
 
 	/**
-	 * <code>library</code> attribute description:
-	 * <br /><br />
-	 * The name of the library which contains the resource.
+	 * <p><code>library</code> attribute description:</p>
+	 *
+	 * <div>The name of the library which contains the resource.</div>
 	 */
 	public void setLibrary(String library) {
 		getStateHelper().put(OutputStylesheetPropertyKeys.library, library);
 	}
 
 	/**
-	 * <code>media</code> attribute description:
-	 * <br /><br />
-	 * HTML passthrough attribute specifying the media type of the element.
+	 * <p><code>media</code> attribute description:</p>
+	 *
+	 * <div>HTML passthrough attribute specifying the media type of the element.</div>
 	 */
 	public String getMedia() {
 		return (String) getStateHelper().eval(OutputStylesheetPropertyKeys.media, null);
 	}
 
 	/**
-	 * <code>media</code> attribute description:
-	 * <br /><br />
-	 * HTML passthrough attribute specifying the media type of the element.
+	 * <p><code>media</code> attribute description:</p>
+	 *
+	 * <div>HTML passthrough attribute specifying the media type of the element.</div>
 	 */
 	public void setMedia(String media) {
 		getStateHelper().put(OutputStylesheetPropertyKeys.media, media);
 	}
 
 	/**
-	 * <code>name</code> attribute description:
-	 * <br /><br />
-	 * The name of the resource file to be included on the page.
+	 * <p><code>name</code> attribute description:</p>
+	 *
+	 * <div>The name of the resource file to be included on the page.</div>
 	 */
 	public String getName() {
 		return (String) getStateHelper().eval(OutputStylesheetPropertyKeys.name, null);
 	}
 
 	/**
-	 * <code>name</code> attribute description:
-	 * <br /><br />
-	 * The name of the resource file to be included on the page.
+	 * <p><code>name</code> attribute description:</p>
+	 *
+	 * <div>The name of the resource file to be included on the page.</div>
 	 */
 	public void setName(String name) {
 		getStateHelper().put(OutputStylesheetPropertyKeys.name, name);

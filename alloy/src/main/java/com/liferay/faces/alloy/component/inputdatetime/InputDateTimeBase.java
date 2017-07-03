@@ -49,99 +49,99 @@ public abstract class InputDateTimeBase extends InputTextBase implements Styleab
 	}
 
 	/**
-	 * <code>autoHide</code> attribute description:
-	 * <br /><br />
-	 * When this flag is true, the component will hide when an item is selected. The default value is <code>true</code>.
+	 * <p><code>autoHide</code> attribute description:</p>
+	 *
+	 * <div>When this flag is true, the component will hide when an item is selected. The default value is <code>true</code>.</div>
 	 */
 	public Boolean getAutoHide() {
 		return (Boolean) getStateHelper().eval(InputDateTimePropertyKeys.autoHide, null);
 	}
 
 	/**
-	 * <code>autoHide</code> attribute description:
-	 * <br /><br />
-	 * When this flag is true, the component will hide when an item is selected. The default value is <code>true</code>.
+	 * <p><code>autoHide</code> attribute description:</p>
+	 *
+	 * <div>When this flag is true, the component will hide when an item is selected. The default value is <code>true</code>.</div>
 	 */
 	public void setAutoHide(Boolean autoHide) {
 		getStateHelper().put(InputDateTimePropertyKeys.autoHide, autoHide);
 	}
 
 	/**
-	 * <code>clientKey</code> attribute description:
-	 * <br /><br />
-	 * The key name that can be used to reference the component on the client.
+	 * <p><code>clientKey</code> attribute description:</p>
+	 *
+	 * <div>The key name that can be used to reference the component on the client.</div>
 	 */
 	public String getClientKey() {
 		return (String) getStateHelper().eval(InputDateTimePropertyKeys.clientKey, null);
 	}
 
 	/**
-	 * <code>clientKey</code> attribute description:
-	 * <br /><br />
-	 * The key name that can be used to reference the component on the client.
+	 * <p><code>clientKey</code> attribute description:</p>
+	 *
+	 * <div>The key name that can be used to reference the component on the client.</div>
 	 */
 	public void setClientKey(String clientKey) {
 		getStateHelper().put(InputDateTimePropertyKeys.clientKey, clientKey);
 	}
 
 	/**
-	 * <code>locale</code> attribute description:
-	 * <br /><br />
-	 * The locale of the component which can be of type <code>java.lang.String</code> or <code>java.util.Locale</code>.
+	 * <p><code>locale</code> attribute description:</p>
+	 *
+	 * <div>The locale of the component which can be of type <code>java.lang.String</code> or <code>java.util.Locale</code>.</div>
 	 */
 	public Object getLocale() {
 		return (Object) getStateHelper().eval(InputDateTimePropertyKeys.locale, null);
 	}
 
 	/**
-	 * <code>locale</code> attribute description:
-	 * <br /><br />
-	 * The locale of the component which can be of type <code>java.lang.String</code> or <code>java.util.Locale</code>.
+	 * <p><code>locale</code> attribute description:</p>
+	 *
+	 * <div>The locale of the component which can be of type <code>java.lang.String</code> or <code>java.util.Locale</code>.</div>
 	 */
 	public void setLocale(Object locale) {
 		getStateHelper().put(InputDateTimePropertyKeys.locale, locale);
 	}
 
 	/**
-	 * <code>nativeWhenMobile</code> attribute description:
-	 * <br /><br />
-	 * When true, the component will render an HTML5 <code>&lt;input type="date" /&gt;</code> element on small/mobile displays in order to enable selection of a date with the mobile device's native UI.
+	 * <p><code>nativeWhenMobile</code> attribute description:</p>
+	 *
+	 * <div>When true, the component will render an HTML5 <code>&lt;input type="date" /&gt;</code> element on small/mobile displays in order to enable selection of a date with the mobile device's native UI.</div>
 	 */
 	public boolean isNativeWhenMobile() {
 		return (Boolean) getStateHelper().eval(InputDateTimePropertyKeys.nativeWhenMobile, true);
 	}
 
 	/**
-	 * <code>nativeWhenMobile</code> attribute description:
-	 * <br /><br />
-	 * When true, the component will render an HTML5 <code>&lt;input type="date" /&gt;</code> element on small/mobile displays in order to enable selection of a date with the mobile device's native UI.
+	 * <p><code>nativeWhenMobile</code> attribute description:</p>
+	 *
+	 * <div>When true, the component will render an HTML5 <code>&lt;input type="date" /&gt;</code> element on small/mobile displays in order to enable selection of a date with the mobile device's native UI.</div>
 	 */
 	public void setNativeWhenMobile(boolean nativeWhenMobile) {
 		getStateHelper().put(InputDateTimePropertyKeys.nativeWhenMobile, nativeWhenMobile);
 	}
 
 	/**
-	 * <code>showOn</code> attribute description:
-	 * <br /><br />
-	 * Specifies which event will pop up the picker. Valid values are <code>"focus"</code> (the default), <code>"button"</code>, and <code>"both"</code>.
+	 * <p><code>showOn</code> attribute description:</p>
+	 *
+	 * <div>Specifies which event will pop up the picker. Valid values are <code>"focus"</code> (the default), <code>"button"</code>, and <code>"both"</code>.</div>
 	 */
 	public String getShowOn() {
 		return (String) getStateHelper().eval(InputDateTimePropertyKeys.showOn, "focus");
 	}
 
 	/**
-	 * <code>showOn</code> attribute description:
-	 * <br /><br />
-	 * Specifies which event will pop up the picker. Valid values are <code>"focus"</code> (the default), <code>"button"</code>, and <code>"both"</code>.
+	 * <p><code>showOn</code> attribute description:</p>
+	 *
+	 * <div>Specifies which event will pop up the picker. Valid values are <code>"focus"</code> (the default), <code>"button"</code>, and <code>"both"</code>.</div>
 	 */
 	public void setShowOn(String showOn) {
 		getStateHelper().put(InputDateTimePropertyKeys.showOn, showOn);
 	}
 
 	/**
-	 * <code>styleClass</code> attribute description:
-	 * <br /><br />
-	 * List of CSS class names (separated by spaces) that are to be rendered within the class attribute.
+	 * <p><code>styleClass</code> attribute description:</p>
+	 *
+	 * <div>List of CSS class names (separated by spaces) that are to be rendered within the class attribute.</div>
 	 */
 	@Override
 	public String getStyleClass() {
@@ -154,36 +154,36 @@ public abstract class InputDateTimeBase extends InputTextBase implements Styleab
 	}
 
 	/**
-	 * <code>timeZone</code> attribute description:
-	 * <br /><br />
-	 * The time zone of the component.
+	 * <p><code>timeZone</code> attribute description:</p>
+	 *
+	 * <div>The time zone of the component.</div>
 	 */
 	public String getTimeZone() {
 		return (String) getStateHelper().eval(InputDateTimePropertyKeys.timeZone, "Greenwich");
 	}
 
 	/**
-	 * <code>timeZone</code> attribute description:
-	 * <br /><br />
-	 * The time zone of the component.
+	 * <p><code>timeZone</code> attribute description:</p>
+	 *
+	 * <div>The time zone of the component.</div>
 	 */
 	public void setTimeZone(String timeZone) {
 		getStateHelper().put(InputDateTimePropertyKeys.timeZone, timeZone);
 	}
 
 	/**
-	 * <code>zIndex</code> attribute description:
-	 * <br /><br />
-	 * Specifies the stack order of the component. The default value is a constant from the Liferay.zIndex JavaScript object.
+	 * <p><code>zIndex</code> attribute description:</p>
+	 *
+	 * <div>Specifies the stack order of the component. The default value is a constant from the Liferay.zIndex JavaScript object.</div>
 	 */
 	public Integer getzIndex() {
 		return (Integer) getStateHelper().eval(InputDateTimePropertyKeys.zIndex, null);
 	}
 
 	/**
-	 * <code>zIndex</code> attribute description:
-	 * <br /><br />
-	 * Specifies the stack order of the component. The default value is a constant from the Liferay.zIndex JavaScript object.
+	 * <p><code>zIndex</code> attribute description:</p>
+	 *
+	 * <div>Specifies the stack order of the component. The default value is a constant from the Liferay.zIndex JavaScript object.</div>
 	 */
 	public void setzIndex(Integer zIndex) {
 		getStateHelper().put(InputDateTimePropertyKeys.zIndex, zIndex);

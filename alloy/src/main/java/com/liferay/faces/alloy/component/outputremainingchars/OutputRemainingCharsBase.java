@@ -47,9 +47,9 @@ public abstract class OutputRemainingCharsBase extends OutputTextBase implements
 	}
 
 	/**
-	 * <code>clientKey</code> attribute description:
-	 * <br /><br />
-	 * The key name that can be used to reference the component on the client.
+	 * <p><code>clientKey</code> attribute description:</p>
+	 *
+	 * <div>The key name that can be used to reference the component on the client.</div>
 	 */
 	@Override
 	public String getClientKey() {
@@ -57,9 +57,9 @@ public abstract class OutputRemainingCharsBase extends OutputTextBase implements
 	}
 
 	/**
-	 * <code>clientKey</code> attribute description:
-	 * <br /><br />
-	 * The key name that can be used to reference the component on the client.
+	 * <p><code>clientKey</code> attribute description:</p>
+	 *
+	 * <div>The key name that can be used to reference the component on the client.</div>
 	 */
 	@Override
 	public void setClientKey(String clientKey) {
@@ -67,81 +67,81 @@ public abstract class OutputRemainingCharsBase extends OutputTextBase implements
 	}
 
 	/**
-	 * <code>for</code> attribute description:
-	 * <br /><br />
-	 * The id of the component for which the remaining characters are to be calculated.
+	 * <p><code>for</code> attribute description:</p>
+	 *
+	 * <div>The id of the component for which the remaining characters are to be calculated.</div>
 	 */
 	public String getFor() {
 		return (String) getStateHelper().eval(OutputRemainingCharsPropertyKeys.for_, null);
 	}
 
 	/**
-	 * <code>for</code> attribute description:
-	 * <br /><br />
-	 * The id of the component for which the remaining characters are to be calculated.
+	 * <p><code>for</code> attribute description:</p>
+	 *
+	 * <div>The id of the component for which the remaining characters are to be calculated.</div>
 	 */
 	public void setFor(String for_) {
 		getStateHelper().put(OutputRemainingCharsPropertyKeys.for_, for_);
 	}
 
 	/**
-	 * <code>maxLength</code> attribute description:
-	 * <br /><br />
-	 * The maximum number of charachters to allow in the input.
+	 * <p><code>maxLength</code> attribute description:</p>
+	 *
+	 * <div>The maximum number of charachters to allow in the input.</div>
 	 */
 	public Integer getMaxLength() {
 		return (Integer) getStateHelper().eval(OutputRemainingCharsPropertyKeys.maxLength, null);
 	}
 
 	/**
-	 * <code>maxLength</code> attribute description:
-	 * <br /><br />
-	 * The maximum number of charachters to allow in the input.
+	 * <p><code>maxLength</code> attribute description:</p>
+	 *
+	 * <div>The maximum number of charachters to allow in the input.</div>
 	 */
 	public void setMaxLength(Integer maxLength) {
 		getStateHelper().put(OutputRemainingCharsPropertyKeys.maxLength, maxLength);
 	}
 
 	/**
-	 * <code>onceMaxlengthReached</code> attribute description:
-	 * <br /><br />
-	 * Node or Selector to display the number of remaining characters calculated by the charCounter.
+	 * <p><code>onceMaxlengthReached</code> attribute description:</p>
+	 *
+	 * <div>Node or Selector to display the number of remaining characters calculated by the charCounter.</div>
 	 */
 	public String getOnceMaxlengthReached() {
 		return (String) getStateHelper().eval(OutputRemainingCharsPropertyKeys.onceMaxlengthReached, null);
 	}
 
 	/**
-	 * <code>onceMaxlengthReached</code> attribute description:
-	 * <br /><br />
-	 * Node or Selector to display the number of remaining characters calculated by the charCounter.
+	 * <p><code>onceMaxlengthReached</code> attribute description:</p>
+	 *
+	 * <div>Node or Selector to display the number of remaining characters calculated by the charCounter.</div>
 	 */
 	public void setOnceMaxlengthReached(String onceMaxlengthReached) {
 		getStateHelper().put(OutputRemainingCharsPropertyKeys.onceMaxlengthReached, onceMaxlengthReached);
 	}
 
 	/**
-	 * <code>onMaxlengthReached</code> attribute description:
-	 * <br /><br />
-	 * Node or Selector to display the number of remaining characters calculated by the charCounter.
+	 * <p><code>onMaxlengthReached</code> attribute description:</p>
+	 *
+	 * <div>Node or Selector to display the number of remaining characters calculated by the charCounter.</div>
 	 */
 	public String getOnMaxlengthReached() {
 		return (String) getStateHelper().eval(OutputRemainingCharsPropertyKeys.onMaxlengthReached, null);
 	}
 
 	/**
-	 * <code>onMaxlengthReached</code> attribute description:
-	 * <br /><br />
-	 * Node or Selector to display the number of remaining characters calculated by the charCounter.
+	 * <p><code>onMaxlengthReached</code> attribute description:</p>
+	 *
+	 * <div>Node or Selector to display the number of remaining characters calculated by the charCounter.</div>
 	 */
 	public void setOnMaxlengthReached(String onMaxlengthReached) {
 		getStateHelper().put(OutputRemainingCharsPropertyKeys.onMaxlengthReached, onMaxlengthReached);
 	}
 
 	/**
-	 * <code>styleClass</code> attribute description:
-	 * <br /><br />
-	 * List of CSS class names (separated by spaces) that are to be rendered within the class attribute.
+	 * <p><code>styleClass</code> attribute description:</p>
+	 *
+	 * <div>List of CSS class names (separated by spaces) that are to be rendered within the class attribute.</div>
 	 */
 	@Override
 	public String getStyleClass() {

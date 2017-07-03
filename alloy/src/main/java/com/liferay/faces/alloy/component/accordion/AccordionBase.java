@@ -47,9 +47,9 @@ public abstract class AccordionBase extends UIData implements Styleable, ClientC
 	}
 
 	/**
-	 * <code>clientKey</code> attribute description:
-	 * <br /><br />
-	 * The key name that can be used to reference the component on the client.
+	 * <p><code>clientKey</code> attribute description:</p>
+	 *
+	 * <div>The key name that can be used to reference the component on the client.</div>
 	 */
 	@Override
 	public String getClientKey() {
@@ -57,9 +57,9 @@ public abstract class AccordionBase extends UIData implements Styleable, ClientC
 	}
 
 	/**
-	 * <code>clientKey</code> attribute description:
-	 * <br /><br />
-	 * The key name that can be used to reference the component on the client.
+	 * <p><code>clientKey</code> attribute description:</p>
+	 *
+	 * <div>The key name that can be used to reference the component on the client.</div>
 	 */
 	@Override
 	public void setClientKey(String clientKey) {
@@ -67,45 +67,45 @@ public abstract class AccordionBase extends UIData implements Styleable, ClientC
 	}
 
 	/**
-	 * <code>multiple</code> attribute description:
-	 * <br /><br />
-	 * When true, expanding an item will not collapse the others, allowing multiple items to be visible at the same time.
+	 * <p><code>multiple</code> attribute description:</p>
+	 *
+	 * <div>When true, expanding an item will not collapse the others, allowing multiple items to be visible at the same time.</div>
 	 */
 	public boolean isMultiple() {
 		return (Boolean) getStateHelper().eval(AccordionPropertyKeys.multiple, false);
 	}
 
 	/**
-	 * <code>multiple</code> attribute description:
-	 * <br /><br />
-	 * When true, expanding an item will not collapse the others, allowing multiple items to be visible at the same time.
+	 * <p><code>multiple</code> attribute description:</p>
+	 *
+	 * <div>When true, expanding an item will not collapse the others, allowing multiple items to be visible at the same time.</div>
 	 */
 	public void setMultiple(boolean multiple) {
 		getStateHelper().put(AccordionPropertyKeys.multiple, multiple);
 	}
 
 	/**
-	 * <code>selectedIndex</code> attribute description:
-	 * <br /><br />
-	 * Integer representing the zero-based index representing the selected tab.
+	 * <p><code>selectedIndex</code> attribute description:</p>
+	 *
+	 * <div>Integer representing the zero-based index representing the selected tab.</div>
 	 */
 	public Integer getSelectedIndex() {
 		return (Integer) getStateHelper().eval(AccordionPropertyKeys.selectedIndex, null);
 	}
 
 	/**
-	 * <code>selectedIndex</code> attribute description:
-	 * <br /><br />
-	 * Integer representing the zero-based index representing the selected tab.
+	 * <p><code>selectedIndex</code> attribute description:</p>
+	 *
+	 * <div>Integer representing the zero-based index representing the selected tab.</div>
 	 */
 	public void setSelectedIndex(Integer selectedIndex) {
 		getStateHelper().put(AccordionPropertyKeys.selectedIndex, selectedIndex);
 	}
 
 	/**
-	 * <code>style</code> attribute description:
-	 * <br /><br />
-	 * HTML passthrough attribute specifying the css style of the element.
+	 * <p><code>style</code> attribute description:</p>
+	 *
+	 * <div>HTML passthrough attribute specifying the css style of the element.</div>
 	 */
 	@Override
 	public String getStyle() {
@@ -113,9 +113,9 @@ public abstract class AccordionBase extends UIData implements Styleable, ClientC
 	}
 
 	/**
-	 * <code>style</code> attribute description:
-	 * <br /><br />
-	 * HTML passthrough attribute specifying the css style of the element.
+	 * <p><code>style</code> attribute description:</p>
+	 *
+	 * <div>HTML passthrough attribute specifying the css style of the element.</div>
 	 */
 	@Override
 	public void setStyle(String style) {
@@ -123,9 +123,9 @@ public abstract class AccordionBase extends UIData implements Styleable, ClientC
 	}
 
 	/**
-	 * <code>styleClass</code> attribute description:
-	 * <br /><br />
-	 * List of CSS class names (separated by spaces) that are to be rendered within the class attribute.
+	 * <p><code>styleClass</code> attribute description:</p>
+	 *
+	 * <div>List of CSS class names (separated by spaces) that are to be rendered within the class attribute.</div>
 	 */
 	@Override
 	public String getStyleClass() {
@@ -138,9 +138,9 @@ public abstract class AccordionBase extends UIData implements Styleable, ClientC
 	}
 
 	/**
-	 * <code>styleClass</code> attribute description:
-	 * <br /><br />
-	 * List of CSS class names (separated by spaces) that are to be rendered within the class attribute.
+	 * <p><code>styleClass</code> attribute description:</p>
+	 *
+	 * <div>List of CSS class names (separated by spaces) that are to be rendered within the class attribute.</div>
 	 */
 	@Override
 	public void setStyleClass(String styleClass) {

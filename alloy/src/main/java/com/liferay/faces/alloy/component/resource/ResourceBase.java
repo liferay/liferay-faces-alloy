@@ -47,54 +47,54 @@ public abstract class ResourceBase extends UIComponentBase {
 	}
 
 	/**
-	 * <code>contentType</code> attribute description:
-	 * <br /><br />
-	 * The content type of the resource.
+	 * <p><code>contentType</code> attribute description:</p>
+	 *
+	 * <div>The content type of the resource.</div>
 	 */
 	public String getContentType() {
 		return (String) getStateHelper().eval(ResourcePropertyKeys.contentType, null);
 	}
 
 	/**
-	 * <code>contentType</code> attribute description:
-	 * <br /><br />
-	 * The content type of the resource.
+	 * <p><code>contentType</code> attribute description:</p>
+	 *
+	 * <div>The content type of the resource.</div>
 	 */
 	public void setContentType(String contentType) {
 		getStateHelper().put(ResourcePropertyKeys.contentType, contentType);
 	}
 
 	/**
-	 * <code>library</code> attribute description:
-	 * <br /><br />
-	 * The name of the library which contains the resource.
+	 * <p><code>library</code> attribute description:</p>
+	 *
+	 * <div>The name of the library which contains the resource.</div>
 	 */
 	public String getLibrary() {
 		return (String) getStateHelper().eval(ResourcePropertyKeys.library, null);
 	}
 
 	/**
-	 * <code>library</code> attribute description:
-	 * <br /><br />
-	 * The name of the library which contains the resource.
+	 * <p><code>library</code> attribute description:</p>
+	 *
+	 * <div>The name of the library which contains the resource.</div>
 	 */
 	public void setLibrary(String library) {
 		getStateHelper().put(ResourcePropertyKeys.library, library);
 	}
 
 	/**
-	 * <code>name</code> attribute description:
-	 * <br /><br />
-	 * The name of the resource file to be included on the page.
+	 * <p><code>name</code> attribute description:</p>
+	 *
+	 * <div>The name of the resource file to be included on the page.</div>
 	 */
 	public String getName() {
 		return (String) getStateHelper().eval(ResourcePropertyKeys.name, null);
 	}
 
 	/**
-	 * <code>name</code> attribute description:
-	 * <br /><br />
-	 * The name of the resource file to be included on the page.
+	 * <p><code>name</code> attribute description:</p>
+	 *
+	 * <div>The name of the resource file to be included on the page.</div>
 	 */
 	public void setName(String name) {
 		getStateHelper().put(ResourcePropertyKeys.name, name);

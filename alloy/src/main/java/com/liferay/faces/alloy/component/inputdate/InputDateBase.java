@@ -46,99 +46,99 @@ public abstract class InputDateBase extends InputDateTime implements Styleable {
 	}
 
 	/**
-	 * <code>maxDate</code> attribute description:
-	 * <br /><br />
-	 * The maximum date that can be selected by the user. This attribute can be of type <code>java.lang.String</code> or <code>java.util.Date</code>.
+	 * <p><code>maxDate</code> attribute description:</p>
+	 *
+	 * <div>The maximum date that can be selected by the user. This attribute can be of type <code>java.lang.String</code> or <code>java.util.Date</code>.</div>
 	 */
 	public Object getMaxDate() {
 		return (Object) getStateHelper().eval(InputDatePropertyKeys.maxDate, null);
 	}
 
 	/**
-	 * <code>maxDate</code> attribute description:
-	 * <br /><br />
-	 * The maximum date that can be selected by the user. This attribute can be of type <code>java.lang.String</code> or <code>java.util.Date</code>.
+	 * <p><code>maxDate</code> attribute description:</p>
+	 *
+	 * <div>The maximum date that can be selected by the user. This attribute can be of type <code>java.lang.String</code> or <code>java.util.Date</code>.</div>
 	 */
 	public void setMaxDate(Object maxDate) {
 		getStateHelper().put(InputDatePropertyKeys.maxDate, maxDate);
 	}
 
 	/**
-	 * <code>minDate</code> attribute description:
-	 * <br /><br />
-	 * The minimum date that can be selected by the user. This attribute can be of type <code>java.lang.String</code> or <code>java.util.Date</code>.
+	 * <p><code>minDate</code> attribute description:</p>
+	 *
+	 * <div>The minimum date that can be selected by the user. This attribute can be of type <code>java.lang.String</code> or <code>java.util.Date</code>.</div>
 	 */
 	public Object getMinDate() {
 		return (Object) getStateHelper().eval(InputDatePropertyKeys.minDate, null);
 	}
 
 	/**
-	 * <code>minDate</code> attribute description:
-	 * <br /><br />
-	 * The minimum date that can be selected by the user. This attribute can be of type <code>java.lang.String</code> or <code>java.util.Date</code>.
+	 * <p><code>minDate</code> attribute description:</p>
+	 *
+	 * <div>The minimum date that can be selected by the user. This attribute can be of type <code>java.lang.String</code> or <code>java.util.Date</code>.</div>
 	 */
 	public void setMinDate(Object minDate) {
 		getStateHelper().put(InputDatePropertyKeys.minDate, minDate);
 	}
 
 	/**
-	 * <code>nativeWhenMobile</code> attribute description:
-	 * <br /><br />
-	 * When true, the component will render an HTML5 <code>&lt;input type="date" /&gt;</code> element on small/mobile displays in order to enable selection of a date with the mobile device's native UI.
+	 * <p><code>nativeWhenMobile</code> attribute description:</p>
+	 *
+	 * <div>When true, the component will render an HTML5 <code>&lt;input type="date" /&gt;</code> element on small/mobile displays in order to enable selection of a date with the mobile device's native UI.</div>
 	 */
 	public boolean isNativeWhenMobile() {
 		return (Boolean) getStateHelper().eval(InputDatePropertyKeys.nativeWhenMobile, true);
 	}
 
 	/**
-	 * <code>nativeWhenMobile</code> attribute description:
-	 * <br /><br />
-	 * When true, the component will render an HTML5 <code>&lt;input type="date" /&gt;</code> element on small/mobile displays in order to enable selection of a date with the mobile device's native UI.
+	 * <p><code>nativeWhenMobile</code> attribute description:</p>
+	 *
+	 * <div>When true, the component will render an HTML5 <code>&lt;input type="date" /&gt;</code> element on small/mobile displays in order to enable selection of a date with the mobile device's native UI.</div>
 	 */
 	public void setNativeWhenMobile(boolean nativeWhenMobile) {
 		getStateHelper().put(InputDatePropertyKeys.nativeWhenMobile, nativeWhenMobile);
 	}
 
 	/**
-	 * <code>panes</code> attribute description:
-	 * <br /><br />
-	 * The number of month panes shown in the popup calendar. Valid values are <code>1</code> (the default), <code>2</code>, and <code>3</code>.
+	 * <p><code>panes</code> attribute description:</p>
+	 *
+	 * <div>The number of month panes shown in the popup calendar. Valid values are <code>1</code> (the default), <code>2</code>, and <code>3</code>.</div>
 	 */
 	public Integer getPanes() {
 		return (Integer) getStateHelper().eval(InputDatePropertyKeys.panes, null);
 	}
 
 	/**
-	 * <code>panes</code> attribute description:
-	 * <br /><br />
-	 * The number of month panes shown in the popup calendar. Valid values are <code>1</code> (the default), <code>2</code>, and <code>3</code>.
+	 * <p><code>panes</code> attribute description:</p>
+	 *
+	 * <div>The number of month panes shown in the popup calendar. Valid values are <code>1</code> (the default), <code>2</code>, and <code>3</code>.</div>
 	 */
 	public void setPanes(Integer panes) {
 		getStateHelper().put(InputDatePropertyKeys.panes, panes);
 	}
 
 	/**
-	 * <code>pattern</code> attribute description:
-	 * <br /><br />
-	 * The format of the date that corresponds to patterns described in the javadoc for <code>java.text.SimpleDateFormat</code>.
+	 * <p><code>pattern</code> attribute description:</p>
+	 *
+	 * <div>The format of the date that corresponds to patterns described in the javadoc for <code>java.text.SimpleDateFormat</code>.</div>
 	 */
 	public String getPattern() {
 		return (String) getStateHelper().eval(InputDatePropertyKeys.pattern, null);
 	}
 
 	/**
-	 * <code>pattern</code> attribute description:
-	 * <br /><br />
-	 * The format of the date that corresponds to patterns described in the javadoc for <code>java.text.SimpleDateFormat</code>.
+	 * <p><code>pattern</code> attribute description:</p>
+	 *
+	 * <div>The format of the date that corresponds to patterns described in the javadoc for <code>java.text.SimpleDateFormat</code>.</div>
 	 */
 	public void setPattern(String pattern) {
 		getStateHelper().put(InputDatePropertyKeys.pattern, pattern);
 	}
 
 	/**
-	 * <code>styleClass</code> attribute description:
-	 * <br /><br />
-	 * List of CSS class names (separated by spaces) that are to be rendered within the class attribute.
+	 * <p><code>styleClass</code> attribute description:</p>
+	 *
+	 * <div>List of CSS class names (separated by spaces) that are to be rendered within the class attribute.</div>
 	 */
 	@Override
 	public String getStyleClass() {

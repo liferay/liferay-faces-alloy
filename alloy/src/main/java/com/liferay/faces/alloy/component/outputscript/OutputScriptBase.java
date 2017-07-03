@@ -43,72 +43,72 @@ public abstract class OutputScriptBase extends UIOutput {
 	}
 
 	/**
-	 * <code>library</code> attribute description:
-	 * <br /><br />
-	 * The name of the library which contains the resource.
+	 * <p><code>library</code> attribute description:</p>
+	 *
+	 * <div>The name of the library which contains the resource.</div>
 	 */
 	public String getLibrary() {
 		return (String) getStateHelper().eval(OutputScriptPropertyKeys.library, null);
 	}
 
 	/**
-	 * <code>library</code> attribute description:
-	 * <br /><br />
-	 * The name of the library which contains the resource.
+	 * <p><code>library</code> attribute description:</p>
+	 *
+	 * <div>The name of the library which contains the resource.</div>
 	 */
 	public void setLibrary(String library) {
 		getStateHelper().put(OutputScriptPropertyKeys.library, library);
 	}
 
 	/**
-	 * <code>name</code> attribute description:
-	 * <br /><br />
-	 * The name of the resource file to be included on the page.
+	 * <p><code>name</code> attribute description:</p>
+	 *
+	 * <div>The name of the resource file to be included on the page.</div>
 	 */
 	public String getName() {
 		return (String) getStateHelper().eval(OutputScriptPropertyKeys.name, null);
 	}
 
 	/**
-	 * <code>name</code> attribute description:
-	 * <br /><br />
-	 * The name of the resource file to be included on the page.
+	 * <p><code>name</code> attribute description:</p>
+	 *
+	 * <div>The name of the resource file to be included on the page.</div>
 	 */
 	public void setName(String name) {
 		getStateHelper().put(OutputScriptPropertyKeys.name, name);
 	}
 
 	/**
-	 * <code>target</code> attribute description:
-	 * <br /><br />
-	 * The position on the page where the JavaScript should be rendered. Valid values include <code>body</code>, <code>form</code>, and <code>head</code>. The default value of this attribute is an empty (null) value which causes the <code>&lt;script&gt;</code> to be rendered inline (corresponding to its position in the view). Specifying <code>body</code> for the target attribute will cause the <code>&lt;script&gt;</code> to be rendered as close to the closing body tag as possible.
+	 * <p><code>target</code> attribute description:</p>
+	 *
+	 * <div>The position on the page where the JavaScript should be rendered. Valid values include <code>body</code>, <code>form</code>, and <code>head</code>. The default value of this attribute is an empty (null) value which causes the <code>&lt;script&gt;</code> to be rendered inline (corresponding to its position in the view). Specifying <code>body</code> for the target attribute will cause the <code>&lt;script&gt;</code> to be rendered as close to the closing body tag as possible.</div>
 	 */
 	public String getTarget() {
 		return (String) getStateHelper().eval(OutputScriptPropertyKeys.target, null);
 	}
 
 	/**
-	 * <code>target</code> attribute description:
-	 * <br /><br />
-	 * The position on the page where the JavaScript should be rendered. Valid values include <code>body</code>, <code>form</code>, and <code>head</code>. The default value of this attribute is an empty (null) value which causes the <code>&lt;script&gt;</code> to be rendered inline (corresponding to its position in the view). Specifying <code>body</code> for the target attribute will cause the <code>&lt;script&gt;</code> to be rendered as close to the closing body tag as possible.
+	 * <p><code>target</code> attribute description:</p>
+	 *
+	 * <div>The position on the page where the JavaScript should be rendered. Valid values include <code>body</code>, <code>form</code>, and <code>head</code>. The default value of this attribute is an empty (null) value which causes the <code>&lt;script&gt;</code> to be rendered inline (corresponding to its position in the view). Specifying <code>body</code> for the target attribute will cause the <code>&lt;script&gt;</code> to be rendered as close to the closing body tag as possible.</div>
 	 */
 	public void setTarget(String target) {
 		getStateHelper().put(OutputScriptPropertyKeys.target, target);
 	}
 
 	/**
-	 * <code>use</code> attribute description:
-	 * <br /><br />
-	 * A comma-delimited list of YUI or AlloyUI modules to load for this script. <strong>Note:</strong> if this attribute is specified, a YUI sandbox will be created automatically for the <code>&lt;script&gt;</code>.
+	 * <p><code>use</code> attribute description:</p>
+	 *
+	 * <div>A comma-delimited list of YUI or AlloyUI modules to load for this script. <strong>Note:</strong> if this attribute is specified, a YUI sandbox will be created automatically for the <code>&lt;script&gt;</code>.</div>
 	 */
 	public String getUse() {
 		return (String) getStateHelper().eval(OutputScriptPropertyKeys.use, null);
 	}
 
 	/**
-	 * <code>use</code> attribute description:
-	 * <br /><br />
-	 * A comma-delimited list of YUI or AlloyUI modules to load for this script. <strong>Note:</strong> if this attribute is specified, a YUI sandbox will be created automatically for the <code>&lt;script&gt;</code>.
+	 * <p><code>use</code> attribute description:</p>
+	 *
+	 * <div>A comma-delimited list of YUI or AlloyUI modules to load for this script. <strong>Note:</strong> if this attribute is specified, a YUI sandbox will be created automatically for the <code>&lt;script&gt;</code>.</div>
 	 */
 	public void setUse(String use) {
 		getStateHelper().put(OutputScriptPropertyKeys.use, use);

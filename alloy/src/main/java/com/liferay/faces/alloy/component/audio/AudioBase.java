@@ -43,9 +43,9 @@ public abstract class AudioBase extends Media implements Styleable {
 	}
 
 	/**
-	 * <code>styleClass</code> attribute description:
-	 * <br /><br />
-	 * List of CSS class names (separated by spaces) that are to be rendered within the class attribute.
+	 * <p><code>styleClass</code> attribute description:</p>
+	 *
+	 * <div>List of CSS class names (separated by spaces) that are to be rendered within the class attribute.</div>
 	 */
 	@Override
 	public String getStyleClass() {
@@ -58,9 +58,9 @@ public abstract class AudioBase extends Media implements Styleable {
 	}
 
 	/**
-	 * <code>styleClass</code> attribute description:
-	 * <br /><br />
-	 * List of CSS class names (separated by spaces) that are to be rendered within the class attribute.
+	 * <p><code>styleClass</code> attribute description:</p>
+	 *
+	 * <div>List of CSS class names (separated by spaces) that are to be rendered within the class attribute.</div>
 	 */
 	@Override
 	public void setStyleClass(String styleClass) {
@@ -68,18 +68,18 @@ public abstract class AudioBase extends Media implements Styleable {
 	}
 
 	/**
-	 * <code>volume</code> attribute description:
-	 * <br /><br />
-	 * HTML5 passthrough attribute specifying the initial volume of the player.
+	 * <p><code>volume</code> attribute description:</p>
+	 *
+	 * <div>HTML5 passthrough attribute specifying the initial volume of the player.</div>
 	 */
 	public String getVolume() {
 		return (String) getStateHelper().eval(AudioPropertyKeys.volume, null);
 	}
 
 	/**
-	 * <code>volume</code> attribute description:
-	 * <br /><br />
-	 * HTML5 passthrough attribute specifying the initial volume of the player.
+	 * <p><code>volume</code> attribute description:</p>
+	 *
+	 * <div>HTML5 passthrough attribute specifying the initial volume of the player.</div>
 	 */
 	public void setVolume(String volume) {
 		getStateHelper().put(AudioPropertyKeys.volume, volume);

@@ -46,9 +46,9 @@ public abstract class DataTableBase extends HtmlDataTable implements Styleable, 
 	}
 
 	/**
-	 * <code>clientKey</code> attribute description:
-	 * <br /><br />
-	 * The key name that can be used to reference the component on the client.
+	 * <p><code>clientKey</code> attribute description:</p>
+	 *
+	 * <div>The key name that can be used to reference the component on the client.</div>
 	 */
 	@Override
 	public String getClientKey() {
@@ -56,9 +56,9 @@ public abstract class DataTableBase extends HtmlDataTable implements Styleable, 
 	}
 
 	/**
-	 * <code>clientKey</code> attribute description:
-	 * <br /><br />
-	 * The key name that can be used to reference the component on the client.
+	 * <p><code>clientKey</code> attribute description:</p>
+	 *
+	 * <div>The key name that can be used to reference the component on the client.</div>
 	 */
 	@Override
 	public void setClientKey(String clientKey) {
@@ -66,63 +66,63 @@ public abstract class DataTableBase extends HtmlDataTable implements Styleable, 
 	}
 
 	/**
-	 * <code>multiColumnSort</code> attribute description:
-	 * <br /><br />
-	 * When true, multiple columns can be selected by the user when the meta key is held down during a left click on a sortable column header.
+	 * <p><code>multiColumnSort</code> attribute description:</p>
+	 *
+	 * <div>When true, multiple columns can be selected by the user when the meta key is held down during a left click on a sortable column header.</div>
 	 */
 	public boolean isMultiColumnSort() {
 		return (Boolean) getStateHelper().eval(DataTablePropertyKeys.multiColumnSort, false);
 	}
 
 	/**
-	 * <code>multiColumnSort</code> attribute description:
-	 * <br /><br />
-	 * When true, multiple columns can be selected by the user when the meta key is held down during a left click on a sortable column header.
+	 * <p><code>multiColumnSort</code> attribute description:</p>
+	 *
+	 * <div>When true, multiple columns can be selected by the user when the meta key is held down during a left click on a sortable column header.</div>
 	 */
 	public void setMultiColumnSort(boolean multiColumnSort) {
 		getStateHelper().put(DataTablePropertyKeys.multiColumnSort, multiColumnSort);
 	}
 
 	/**
-	 * <code>selectedRowIndexes</code> attribute description:
-	 * <br /><br />
-	 * Comma-delimited list of row indexes that indicate which rows are selected.
+	 * <p><code>selectedRowIndexes</code> attribute description:</p>
+	 *
+	 * <div>Comma-delimited list of row indexes that indicate which rows are selected.</div>
 	 */
 	public String getSelectedRowIndexes() {
 		return (String) getStateHelper().eval(DataTablePropertyKeys.selectedRowIndexes, null);
 	}
 
 	/**
-	 * <code>selectedRowIndexes</code> attribute description:
-	 * <br /><br />
-	 * Comma-delimited list of row indexes that indicate which rows are selected.
+	 * <p><code>selectedRowIndexes</code> attribute description:</p>
+	 *
+	 * <div>Comma-delimited list of row indexes that indicate which rows are selected.</div>
 	 */
 	public void setSelectedRowIndexes(String selectedRowIndexes) {
 		getStateHelper().put(DataTablePropertyKeys.selectedRowIndexes, selectedRowIndexes);
 	}
 
 	/**
-	 * <code>selectionMode</code> attribute description:
-	 * <br /><br />
-	 * Indicates the type of row selection. Valid values are <code>"checkbox"</code>, <code>"radio"</code>.
+	 * <p><code>selectionMode</code> attribute description:</p>
+	 *
+	 * <div>Indicates the type of row selection. Valid values are <code>"checkbox"</code>, <code>"radio"</code>.</div>
 	 */
 	public String getSelectionMode() {
 		return (String) getStateHelper().eval(DataTablePropertyKeys.selectionMode, null);
 	}
 
 	/**
-	 * <code>selectionMode</code> attribute description:
-	 * <br /><br />
-	 * Indicates the type of row selection. Valid values are <code>"checkbox"</code>, <code>"radio"</code>.
+	 * <p><code>selectionMode</code> attribute description:</p>
+	 *
+	 * <div>Indicates the type of row selection. Valid values are <code>"checkbox"</code>, <code>"radio"</code>.</div>
 	 */
 	public void setSelectionMode(String selectionMode) {
 		getStateHelper().put(DataTablePropertyKeys.selectionMode, selectionMode);
 	}
 
 	/**
-	 * <code>styleClass</code> attribute description:
-	 * <br /><br />
-	 * List of CSS class names (separated by spaces) that are to be rendered within the class attribute.
+	 * <p><code>styleClass</code> attribute description:</p>
+	 *
+	 * <div>List of CSS class names (separated by spaces) that are to be rendered within the class attribute.</div>
 	 */
 	@Override
 	public String getStyleClass() {

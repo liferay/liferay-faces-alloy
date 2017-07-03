@@ -49,27 +49,27 @@ public abstract class OutputTooltipBase extends OutputTextBase implements Stylea
 	}
 
 	/**
-	 * <code>autoShow</code> attribute description:
-	 * <br /><br />
-	 * When true, the component is visible initially.
+	 * <p><code>autoShow</code> attribute description:</p>
+	 *
+	 * <div>When true, the component is visible initially.</div>
 	 */
 	public boolean isAutoShow() {
 		return (Boolean) getStateHelper().eval(OutputTooltipPropertyKeys.autoShow, false);
 	}
 
 	/**
-	 * <code>autoShow</code> attribute description:
-	 * <br /><br />
-	 * When true, the component is visible initially.
+	 * <p><code>autoShow</code> attribute description:</p>
+	 *
+	 * <div>When true, the component is visible initially.</div>
 	 */
 	public void setAutoShow(boolean autoShow) {
 		getStateHelper().put(OutputTooltipPropertyKeys.autoShow, autoShow);
 	}
 
 	/**
-	 * <code>clientKey</code> attribute description:
-	 * <br /><br />
-	 * The key name that can be used to reference the component on the client.
+	 * <p><code>clientKey</code> attribute description:</p>
+	 *
+	 * <div>The key name that can be used to reference the component on the client.</div>
 	 */
 	@Override
 	public String getClientKey() {
@@ -77,9 +77,9 @@ public abstract class OutputTooltipBase extends OutputTextBase implements Stylea
 	}
 
 	/**
-	 * <code>clientKey</code> attribute description:
-	 * <br /><br />
-	 * The key name that can be used to reference the component on the client.
+	 * <p><code>clientKey</code> attribute description:</p>
+	 *
+	 * <div>The key name that can be used to reference the component on the client.</div>
 	 */
 	@Override
 	public void setClientKey(String clientKey) {
@@ -87,81 +87,81 @@ public abstract class OutputTooltipBase extends OutputTextBase implements Stylea
 	}
 
 	/**
-	 * <code>for</code> attribute description:
-	 * <br /><br />
-	 * The id of the component that is associated with the tooltip.
+	 * <p><code>for</code> attribute description:</p>
+	 *
+	 * <div>The id of the component that is associated with the tooltip.</div>
 	 */
 	public String getFor() {
 		return (String) getStateHelper().eval(OutputTooltipPropertyKeys.for_, null);
 	}
 
 	/**
-	 * <code>for</code> attribute description:
-	 * <br /><br />
-	 * The id of the component that is associated with the tooltip.
+	 * <p><code>for</code> attribute description:</p>
+	 *
+	 * <div>The id of the component that is associated with the tooltip.</div>
 	 */
 	public void setFor(String for_) {
 		getStateHelper().put(OutputTooltipPropertyKeys.for_, for_);
 	}
 
 	/**
-	 * <code>headerText</code> attribute description:
-	 * <br /><br />
-	 * The text to place in the header of the component.
+	 * <p><code>headerText</code> attribute description:</p>
+	 *
+	 * <div>The text to place in the header of the component.</div>
 	 */
 	public String getHeaderText() {
 		return (String) getStateHelper().eval(OutputTooltipPropertyKeys.headerText, null);
 	}
 
 	/**
-	 * <code>headerText</code> attribute description:
-	 * <br /><br />
-	 * The text to place in the header of the component.
+	 * <p><code>headerText</code> attribute description:</p>
+	 *
+	 * <div>The text to place in the header of the component.</div>
 	 */
 	public void setHeaderText(String headerText) {
 		getStateHelper().put(OutputTooltipPropertyKeys.headerText, headerText);
 	}
 
 	/**
-	 * <code>opacity</code> attribute description:
-	 * <br /><br />
-	 * A number between 0 and 1 describing how much the tooltip will obscure its background when visible.
+	 * <p><code>opacity</code> attribute description:</p>
+	 *
+	 * <div>A number between 0 and 1 describing how much the tooltip will obscure its background when visible.</div>
 	 */
 	public String getOpacity() {
 		return (String) getStateHelper().eval(OutputTooltipPropertyKeys.opacity, null);
 	}
 
 	/**
-	 * <code>opacity</code> attribute description:
-	 * <br /><br />
-	 * A number between 0 and 1 describing how much the tooltip will obscure its background when visible.
+	 * <p><code>opacity</code> attribute description:</p>
+	 *
+	 * <div>A number between 0 and 1 describing how much the tooltip will obscure its background when visible.</div>
 	 */
 	public void setOpacity(String opacity) {
 		getStateHelper().put(OutputTooltipPropertyKeys.opacity, opacity);
 	}
 
 	/**
-	 * <code>position</code> attribute description:
-	 * <br /><br />
-	 * Indicates the side of the associated component where the tooltip should appear ("right", "left", "top", "bottom").
+	 * <p><code>position</code> attribute description:</p>
+	 *
+	 * <div>Indicates the side of the associated component where the tooltip should appear ("right", "left", "top", "bottom").</div>
 	 */
 	public String getPosition() {
 		return (String) getStateHelper().eval(OutputTooltipPropertyKeys.position, "right");
 	}
 
 	/**
-	 * <code>position</code> attribute description:
-	 * <br /><br />
-	 * Indicates the side of the associated component where the tooltip should appear ("right", "left", "top", "bottom").
+	 * <p><code>position</code> attribute description:</p>
+	 *
+	 * <div>Indicates the side of the associated component where the tooltip should appear ("right", "left", "top", "bottom").</div>
 	 */
 	public void setPosition(String position) {
 		getStateHelper().put(OutputTooltipPropertyKeys.position, position);
 	}
 
 	/**
-	 * <code>styleClass</code> attribute description:
-	 * <br /><br />
-	 * List of CSS class names (separated by spaces) that are to be rendered within the class attribute.
+	 * <p><code>styleClass</code> attribute description:</p>
+	 *
+	 * <div>List of CSS class names (separated by spaces) that are to be rendered within the class attribute.</div>
 	 */
 	@Override
 	public String getStyleClass() {
@@ -174,18 +174,18 @@ public abstract class OutputTooltipBase extends OutputTextBase implements Stylea
 	}
 
 	/**
-	 * <code>zIndex</code> attribute description:
-	 * <br /><br />
-	 * Specifies the stack order of the component. The default value is a constant from the Liferay.zIndex JavaScript object.
+	 * <p><code>zIndex</code> attribute description:</p>
+	 *
+	 * <div>Specifies the stack order of the component. The default value is a constant from the Liferay.zIndex JavaScript object.</div>
 	 */
 	public Integer getzIndex() {
 		return (Integer) getStateHelper().eval(OutputTooltipPropertyKeys.zIndex, Integer.MIN_VALUE);
 	}
 
 	/**
-	 * <code>zIndex</code> attribute description:
-	 * <br /><br />
-	 * Specifies the stack order of the component. The default value is a constant from the Liferay.zIndex JavaScript object.
+	 * <p><code>zIndex</code> attribute description:</p>
+	 *
+	 * <div>Specifies the stack order of the component. The default value is a constant from the Liferay.zIndex JavaScript object.</div>
 	 */
 	public void setzIndex(Integer zIndex) {
 		getStateHelper().put(OutputTooltipPropertyKeys.zIndex, zIndex);

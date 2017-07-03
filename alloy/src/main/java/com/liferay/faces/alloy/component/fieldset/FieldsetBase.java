@@ -55,225 +55,225 @@ public abstract class FieldsetBase extends UIPanel implements Styleable {
 	}
 
 	/**
-	 * <code>disabled</code> attribute description:
-	 * <br /><br />
-	 * When this flag is true, the component will be disabled, and the user will be unable to interact with the component.
+	 * <p><code>disabled</code> attribute description:</p>
+	 *
+	 * <div>When this flag is true, the component will be disabled, and the user will be unable to interact with the component.</div>
 	 */
 	public boolean isDisabled() {
 		return (Boolean) getStateHelper().eval(FieldsetPropertyKeys.disabled, false);
 	}
 
 	/**
-	 * <code>disabled</code> attribute description:
-	 * <br /><br />
-	 * When this flag is true, the component will be disabled, and the user will be unable to interact with the component.
+	 * <p><code>disabled</code> attribute description:</p>
+	 *
+	 * <div>When this flag is true, the component will be disabled, and the user will be unable to interact with the component.</div>
 	 */
 	public void setDisabled(boolean disabled) {
 		getStateHelper().put(FieldsetPropertyKeys.disabled, disabled);
 	}
 
 	/**
-	 * <code>legend</code> attribute description:
-	 * <br /><br />
-	 * The text value for the rendered &lt;legend&gt; element.
+	 * <p><code>legend</code> attribute description:</p>
+	 *
+	 * <div>The text value for the rendered &lt;legend&gt; element.</div>
 	 */
 	public String getLegend() {
 		return (String) getStateHelper().eval(FieldsetPropertyKeys.legend, null);
 	}
 
 	/**
-	 * <code>legend</code> attribute description:
-	 * <br /><br />
-	 * The text value for the rendered &lt;legend&gt; element.
+	 * <p><code>legend</code> attribute description:</p>
+	 *
+	 * <div>The text value for the rendered &lt;legend&gt; element.</div>
 	 */
 	public void setLegend(String legend) {
 		getStateHelper().put(FieldsetPropertyKeys.legend, legend);
 	}
 
 	/**
-	 * <code>onclick</code> attribute description:
-	 * <br /><br />
-	 * Javascript to execute when this component is clicked.
+	 * <p><code>onclick</code> attribute description:</p>
+	 *
+	 * <div>Javascript to execute when this component is clicked.</div>
 	 */
 	public String getOnclick() {
 		return (String) getStateHelper().eval(FieldsetPropertyKeys.onclick, null);
 	}
 
 	/**
-	 * <code>onclick</code> attribute description:
-	 * <br /><br />
-	 * Javascript to execute when this component is clicked.
+	 * <p><code>onclick</code> attribute description:</p>
+	 *
+	 * <div>Javascript to execute when this component is clicked.</div>
 	 */
 	public void setOnclick(String onclick) {
 		getStateHelper().put(FieldsetPropertyKeys.onclick, onclick);
 	}
 
 	/**
-	 * <code>ondblclick</code> attribute description:
-	 * <br /><br />
-	 * Javascript to execute when a double click event occurs.
+	 * <p><code>ondblclick</code> attribute description:</p>
+	 *
+	 * <div>Javascript to execute when a double click event occurs.</div>
 	 */
 	public String getOndblclick() {
 		return (String) getStateHelper().eval(FieldsetPropertyKeys.ondblclick, null);
 	}
 
 	/**
-	 * <code>ondblclick</code> attribute description:
-	 * <br /><br />
-	 * Javascript to execute when a double click event occurs.
+	 * <p><code>ondblclick</code> attribute description:</p>
+	 *
+	 * <div>Javascript to execute when a double click event occurs.</div>
 	 */
 	public void setOndblclick(String ondblclick) {
 		getStateHelper().put(FieldsetPropertyKeys.ondblclick, ondblclick);
 	}
 
 	/**
-	 * <code>onkeydown</code> attribute description:
-	 * <br /><br />
-	 * Javascript to execute when a keydown event occurs.
+	 * <p><code>onkeydown</code> attribute description:</p>
+	 *
+	 * <div>Javascript to execute when a keydown event occurs.</div>
 	 */
 	public String getOnkeydown() {
 		return (String) getStateHelper().eval(FieldsetPropertyKeys.onkeydown, null);
 	}
 
 	/**
-	 * <code>onkeydown</code> attribute description:
-	 * <br /><br />
-	 * Javascript to execute when a keydown event occurs.
+	 * <p><code>onkeydown</code> attribute description:</p>
+	 *
+	 * <div>Javascript to execute when a keydown event occurs.</div>
 	 */
 	public void setOnkeydown(String onkeydown) {
 		getStateHelper().put(FieldsetPropertyKeys.onkeydown, onkeydown);
 	}
 
 	/**
-	 * <code>onkeypress</code> attribute description:
-	 * <br /><br />
-	 * Javascript to execute when a keypress event occurs.
+	 * <p><code>onkeypress</code> attribute description:</p>
+	 *
+	 * <div>Javascript to execute when a keypress event occurs.</div>
 	 */
 	public String getOnkeypress() {
 		return (String) getStateHelper().eval(FieldsetPropertyKeys.onkeypress, null);
 	}
 
 	/**
-	 * <code>onkeypress</code> attribute description:
-	 * <br /><br />
-	 * Javascript to execute when a keypress event occurs.
+	 * <p><code>onkeypress</code> attribute description:</p>
+	 *
+	 * <div>Javascript to execute when a keypress event occurs.</div>
 	 */
 	public void setOnkeypress(String onkeypress) {
 		getStateHelper().put(FieldsetPropertyKeys.onkeypress, onkeypress);
 	}
 
 	/**
-	 * <code>onkeyup</code> attribute description:
-	 * <br /><br />
-	 * Javascript to execute when a keyup event occurs.
+	 * <p><code>onkeyup</code> attribute description:</p>
+	 *
+	 * <div>Javascript to execute when a keyup event occurs.</div>
 	 */
 	public String getOnkeyup() {
 		return (String) getStateHelper().eval(FieldsetPropertyKeys.onkeyup, null);
 	}
 
 	/**
-	 * <code>onkeyup</code> attribute description:
-	 * <br /><br />
-	 * Javascript to execute when a keyup event occurs.
+	 * <p><code>onkeyup</code> attribute description:</p>
+	 *
+	 * <div>Javascript to execute when a keyup event occurs.</div>
 	 */
 	public void setOnkeyup(String onkeyup) {
 		getStateHelper().put(FieldsetPropertyKeys.onkeyup, onkeyup);
 	}
 
 	/**
-	 * <code>onmousedown</code> attribute description:
-	 * <br /><br />
-	 * Javascript to execute when a mousedown event occurs.
+	 * <p><code>onmousedown</code> attribute description:</p>
+	 *
+	 * <div>Javascript to execute when a mousedown event occurs.</div>
 	 */
 	public String getOnmousedown() {
 		return (String) getStateHelper().eval(FieldsetPropertyKeys.onmousedown, null);
 	}
 
 	/**
-	 * <code>onmousedown</code> attribute description:
-	 * <br /><br />
-	 * Javascript to execute when a mousedown event occurs.
+	 * <p><code>onmousedown</code> attribute description:</p>
+	 *
+	 * <div>Javascript to execute when a mousedown event occurs.</div>
 	 */
 	public void setOnmousedown(String onmousedown) {
 		getStateHelper().put(FieldsetPropertyKeys.onmousedown, onmousedown);
 	}
 
 	/**
-	 * <code>onmousemove</code> attribute description:
-	 * <br /><br />
-	 * Javascript to execute when a mousemove event occurs.
+	 * <p><code>onmousemove</code> attribute description:</p>
+	 *
+	 * <div>Javascript to execute when a mousemove event occurs.</div>
 	 */
 	public String getOnmousemove() {
 		return (String) getStateHelper().eval(FieldsetPropertyKeys.onmousemove, null);
 	}
 
 	/**
-	 * <code>onmousemove</code> attribute description:
-	 * <br /><br />
-	 * Javascript to execute when a mousemove event occurs.
+	 * <p><code>onmousemove</code> attribute description:</p>
+	 *
+	 * <div>Javascript to execute when a mousemove event occurs.</div>
 	 */
 	public void setOnmousemove(String onmousemove) {
 		getStateHelper().put(FieldsetPropertyKeys.onmousemove, onmousemove);
 	}
 
 	/**
-	 * <code>onmouseout</code> attribute description:
-	 * <br /><br />
-	 * Javascript to execute when a mouseout event occurs.
+	 * <p><code>onmouseout</code> attribute description:</p>
+	 *
+	 * <div>Javascript to execute when a mouseout event occurs.</div>
 	 */
 	public String getOnmouseout() {
 		return (String) getStateHelper().eval(FieldsetPropertyKeys.onmouseout, null);
 	}
 
 	/**
-	 * <code>onmouseout</code> attribute description:
-	 * <br /><br />
-	 * Javascript to execute when a mouseout event occurs.
+	 * <p><code>onmouseout</code> attribute description:</p>
+	 *
+	 * <div>Javascript to execute when a mouseout event occurs.</div>
 	 */
 	public void setOnmouseout(String onmouseout) {
 		getStateHelper().put(FieldsetPropertyKeys.onmouseout, onmouseout);
 	}
 
 	/**
-	 * <code>onmouseover</code> attribute description:
-	 * <br /><br />
-	 * Javascript to execute when a mouseover event occurs.
+	 * <p><code>onmouseover</code> attribute description:</p>
+	 *
+	 * <div>Javascript to execute when a mouseover event occurs.</div>
 	 */
 	public String getOnmouseover() {
 		return (String) getStateHelper().eval(FieldsetPropertyKeys.onmouseover, null);
 	}
 
 	/**
-	 * <code>onmouseover</code> attribute description:
-	 * <br /><br />
-	 * Javascript to execute when a mouseover event occurs.
+	 * <p><code>onmouseover</code> attribute description:</p>
+	 *
+	 * <div>Javascript to execute when a mouseover event occurs.</div>
 	 */
 	public void setOnmouseover(String onmouseover) {
 		getStateHelper().put(FieldsetPropertyKeys.onmouseover, onmouseover);
 	}
 
 	/**
-	 * <code>onmouseup</code> attribute description:
-	 * <br /><br />
-	 * Javascript to execute when a mouseup event occurs.
+	 * <p><code>onmouseup</code> attribute description:</p>
+	 *
+	 * <div>Javascript to execute when a mouseup event occurs.</div>
 	 */
 	public String getOnmouseup() {
 		return (String) getStateHelper().eval(FieldsetPropertyKeys.onmouseup, null);
 	}
 
 	/**
-	 * <code>onmouseup</code> attribute description:
-	 * <br /><br />
-	 * Javascript to execute when a mouseup event occurs.
+	 * <p><code>onmouseup</code> attribute description:</p>
+	 *
+	 * <div>Javascript to execute when a mouseup event occurs.</div>
 	 */
 	public void setOnmouseup(String onmouseup) {
 		getStateHelper().put(FieldsetPropertyKeys.onmouseup, onmouseup);
 	}
 
 	/**
-	 * <code>style</code> attribute description:
-	 * <br /><br />
-	 * HTML passthrough attribute specifying the css style of the element.
+	 * <p><code>style</code> attribute description:</p>
+	 *
+	 * <div>HTML passthrough attribute specifying the css style of the element.</div>
 	 */
 	@Override
 	public String getStyle() {
@@ -281,9 +281,9 @@ public abstract class FieldsetBase extends UIPanel implements Styleable {
 	}
 
 	/**
-	 * <code>style</code> attribute description:
-	 * <br /><br />
-	 * HTML passthrough attribute specifying the css style of the element.
+	 * <p><code>style</code> attribute description:</p>
+	 *
+	 * <div>HTML passthrough attribute specifying the css style of the element.</div>
 	 */
 	@Override
 	public void setStyle(String style) {
@@ -291,9 +291,9 @@ public abstract class FieldsetBase extends UIPanel implements Styleable {
 	}
 
 	/**
-	 * <code>styleClass</code> attribute description:
-	 * <br /><br />
-	 * List of CSS class names (separated by spaces) that are to be rendered within the class attribute.
+	 * <p><code>styleClass</code> attribute description:</p>
+	 *
+	 * <div>List of CSS class names (separated by spaces) that are to be rendered within the class attribute.</div>
 	 */
 	@Override
 	public String getStyleClass() {
@@ -306,9 +306,9 @@ public abstract class FieldsetBase extends UIPanel implements Styleable {
 	}
 
 	/**
-	 * <code>styleClass</code> attribute description:
-	 * <br /><br />
-	 * List of CSS class names (separated by spaces) that are to be rendered within the class attribute.
+	 * <p><code>styleClass</code> attribute description:</p>
+	 *
+	 * <div>List of CSS class names (separated by spaces) that are to be rendered within the class attribute.</div>
 	 */
 	@Override
 	public void setStyleClass(String styleClass) {

@@ -45,45 +45,45 @@ public abstract class VideoBase extends Media implements Styleable {
 	}
 
 	/**
-	 * <code>height</code> attribute description:
-	 * <br /><br />
-	 * The height (in pixels) of the video, this attribute will also be applied to the Adobe&reg; Flash&reg; player's <code>&lt;object&gt;</code> tag.
+	 * <p><code>height</code> attribute description:</p>
+	 *
+	 * <div>The height (in pixels) of the video, this attribute will also be applied to the Adobe&reg; Flash&reg; player's <code>&lt;object&gt;</code> tag.</div>
 	 */
 	public String getHeight() {
 		return (String) getStateHelper().eval(VideoPropertyKeys.height, null);
 	}
 
 	/**
-	 * <code>height</code> attribute description:
-	 * <br /><br />
-	 * The height (in pixels) of the video, this attribute will also be applied to the Adobe&reg; Flash&reg; player's <code>&lt;object&gt;</code> tag.
+	 * <p><code>height</code> attribute description:</p>
+	 *
+	 * <div>The height (in pixels) of the video, this attribute will also be applied to the Adobe&reg; Flash&reg; player's <code>&lt;object&gt;</code> tag.</div>
 	 */
 	public void setHeight(String height) {
 		getStateHelper().put(VideoPropertyKeys.height, height);
 	}
 
 	/**
-	 * <code>poster</code> attribute description:
-	 * <br /><br />
-	 * A context-relative path, resource URL, or <code>FacesResource</code> that can be used to retrieve the poster image.
+	 * <p><code>poster</code> attribute description:</p>
+	 *
+	 * <div>A context-relative path, resource URL, or <code>FacesResource</code> that can be used to retrieve the poster image.</div>
 	 */
 	public Object getPoster() {
 		return (Object) getStateHelper().eval(VideoPropertyKeys.poster, null);
 	}
 
 	/**
-	 * <code>poster</code> attribute description:
-	 * <br /><br />
-	 * A context-relative path, resource URL, or <code>FacesResource</code> that can be used to retrieve the poster image.
+	 * <p><code>poster</code> attribute description:</p>
+	 *
+	 * <div>A context-relative path, resource URL, or <code>FacesResource</code> that can be used to retrieve the poster image.</div>
 	 */
 	public void setPoster(Object poster) {
 		getStateHelper().put(VideoPropertyKeys.poster, poster);
 	}
 
 	/**
-	 * <code>styleClass</code> attribute description:
-	 * <br /><br />
-	 * List of CSS class names (separated by spaces) that are to be rendered within the class attribute.
+	 * <p><code>styleClass</code> attribute description:</p>
+	 *
+	 * <div>List of CSS class names (separated by spaces) that are to be rendered within the class attribute.</div>
 	 */
 	@Override
 	public String getStyleClass() {
@@ -96,9 +96,9 @@ public abstract class VideoBase extends Media implements Styleable {
 	}
 
 	/**
-	 * <code>styleClass</code> attribute description:
-	 * <br /><br />
-	 * List of CSS class names (separated by spaces) that are to be rendered within the class attribute.
+	 * <p><code>styleClass</code> attribute description:</p>
+	 *
+	 * <div>List of CSS class names (separated by spaces) that are to be rendered within the class attribute.</div>
 	 */
 	@Override
 	public void setStyleClass(String styleClass) {
@@ -106,18 +106,18 @@ public abstract class VideoBase extends Media implements Styleable {
 	}
 
 	/**
-	 * <code>width</code> attribute description:
-	 * <br /><br />
-	 * The width (in pixels) of the video, this attribute will also be applied to the Adobe&reg; Flash&reg; player's <code>&lt;object&gt;</code> tag.
+	 * <p><code>width</code> attribute description:</p>
+	 *
+	 * <div>The width (in pixels) of the video, this attribute will also be applied to the Adobe&reg; Flash&reg; player's <code>&lt;object&gt;</code> tag.</div>
 	 */
 	public String getWidth() {
 		return (String) getStateHelper().eval(VideoPropertyKeys.width, null);
 	}
 
 	/**
-	 * <code>width</code> attribute description:
-	 * <br /><br />
-	 * The width (in pixels) of the video, this attribute will also be applied to the Adobe&reg; Flash&reg; player's <code>&lt;object&gt;</code> tag.
+	 * <p><code>width</code> attribute description:</p>
+	 *
+	 * <div>The width (in pixels) of the video, this attribute will also be applied to the Adobe&reg; Flash&reg; player's <code>&lt;object&gt;</code> tag.</div>
 	 */
 	public void setWidth(String width) {
 		getStateHelper().put(VideoPropertyKeys.width, width);

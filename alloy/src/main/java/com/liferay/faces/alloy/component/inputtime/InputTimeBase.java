@@ -54,243 +54,243 @@ public abstract class InputTimeBase extends InputDateTime implements Styleable {
 	}
 
 	/**
-	 * <code>activateFirstItem</code> attribute description:
-	 * <br /><br />
-	 * When true, the first item in the list will be activated so that users can press TAB or ENTER to select it.
+	 * <p><code>activateFirstItem</code> attribute description:</p>
+	 *
+	 * <div>When true, the first item in the list will be activated so that users can press TAB or ENTER to select it.</div>
 	 */
 	public boolean isActivateFirstItem() {
 		return (Boolean) getStateHelper().eval(InputTimePropertyKeys.activateFirstItem, true);
 	}
 
 	/**
-	 * <code>activateFirstItem</code> attribute description:
-	 * <br /><br />
-	 * When true, the first item in the list will be activated so that users can press TAB or ENTER to select it.
+	 * <p><code>activateFirstItem</code> attribute description:</p>
+	 *
+	 * <div>When true, the first item in the list will be activated so that users can press TAB or ENTER to select it.</div>
 	 */
 	public void setActivateFirstItem(boolean activateFirstItem) {
 		getStateHelper().put(InputTimePropertyKeys.activateFirstItem, activateFirstItem);
 	}
 
 	/**
-	 * <code>circular</code> attribute description:
-	 * <br /><br />
-	 * When true, the autoComplete list will wrap around allowing users to use keyboard navigation to move from the top of the list to the bottom and vice versa. The default value is <code>true</code>.
+	 * <p><code>circular</code> attribute description:</p>
+	 *
+	 * <div>When true, the autoComplete list will wrap around allowing users to use keyboard navigation to move from the top of the list to the bottom and vice versa. The default value is <code>true</code>.</div>
 	 */
 	public Boolean getCircular() {
 		return (Boolean) getStateHelper().eval(InputTimePropertyKeys.circular, null);
 	}
 
 	/**
-	 * <code>circular</code> attribute description:
-	 * <br /><br />
-	 * When true, the autoComplete list will wrap around allowing users to use keyboard navigation to move from the top of the list to the bottom and vice versa. The default value is <code>true</code>.
+	 * <p><code>circular</code> attribute description:</p>
+	 *
+	 * <div>When true, the autoComplete list will wrap around allowing users to use keyboard navigation to move from the top of the list to the bottom and vice versa. The default value is <code>true</code>.</div>
 	 */
 	public void setCircular(Boolean circular) {
 		getStateHelper().put(InputTimePropertyKeys.circular, circular);
 	}
 
 	/**
-	 * <code>filterType</code> attribute description:
-	 * <br /><br />
-	 * Specifies the type of filter that will be used for the pickTime's autocompletion. Valid values include:<ul><li>charMatch</li><li>charMatchCase</li><li>phraseMatch</li><li>phraseMatchCase</li><li>startsWith</li><li>startsWithCase</li><li>subWordMatch</li><li>subWordMatchCase</li><li>wordMatch</li><li>wordMatchCase</li></ul>
+	 * <p><code>filterType</code> attribute description:</p>
+	 *
+	 * <div>Specifies the type of filter that will be used for the pickTime's autocompletion. Valid values include:<ul><li>charMatch</li><li>charMatchCase</li><li>phraseMatch</li><li>phraseMatchCase</li><li>startsWith</li><li>startsWithCase</li><li>subWordMatch</li><li>subWordMatchCase</li><li>wordMatch</li><li>wordMatchCase</li></ul></div>
 	 */
 	public String getFilterType() {
 		return (String) getStateHelper().eval(InputTimePropertyKeys.filterType, null);
 	}
 
 	/**
-	 * <code>filterType</code> attribute description:
-	 * <br /><br />
-	 * Specifies the type of filter that will be used for the pickTime's autocompletion. Valid values include:<ul><li>charMatch</li><li>charMatchCase</li><li>phraseMatch</li><li>phraseMatchCase</li><li>startsWith</li><li>startsWithCase</li><li>subWordMatch</li><li>subWordMatchCase</li><li>wordMatch</li><li>wordMatchCase</li></ul>
+	 * <p><code>filterType</code> attribute description:</p>
+	 *
+	 * <div>Specifies the type of filter that will be used for the pickTime's autocompletion. Valid values include:<ul><li>charMatch</li><li>charMatchCase</li><li>phraseMatch</li><li>phraseMatchCase</li><li>startsWith</li><li>startsWithCase</li><li>subWordMatch</li><li>subWordMatchCase</li><li>wordMatch</li><li>wordMatchCase</li></ul></div>
 	 */
 	public void setFilterType(String filterType) {
 		getStateHelper().put(InputTimePropertyKeys.filterType, filterType);
 	}
 
 	/**
-	 * <code>height</code> attribute description:
-	 * <br /><br />
-	 * The the height (in pixels) of the rendered autoComplete list.
+	 * <p><code>height</code> attribute description:</p>
+	 *
+	 * <div>The the height (in pixels) of the rendered autoComplete list.</div>
 	 */
 	public String getHeight() {
 		return (String) getStateHelper().eval(InputTimePropertyKeys.height, null);
 	}
 
 	/**
-	 * <code>height</code> attribute description:
-	 * <br /><br />
-	 * The the height (in pixels) of the rendered autoComplete list.
+	 * <p><code>height</code> attribute description:</p>
+	 *
+	 * <div>The the height (in pixels) of the rendered autoComplete list.</div>
 	 */
 	public void setHeight(String height) {
 		getStateHelper().put(InputTimePropertyKeys.height, height);
 	}
 
 	/**
-	 * <code>highlighterType</code> attribute description:
-	 * <br /><br />
-	 * Specifies the type of filter that will be used for the pickTime's autocomplete highlighter. Valid values include:<ul><li>charMatch</li><li>charMatchCase</li><li>phraseMatch</li><li>phraseMatchCase</li><li>startsWith</li><li>startsWithCase</li><li>subWordMatch</li><li>subWordMatchCase</li><li>wordMatch</li><li>wordMatchCase</li></ul>
+	 * <p><code>highlighterType</code> attribute description:</p>
+	 *
+	 * <div>Specifies the type of filter that will be used for the pickTime's autocomplete highlighter. Valid values include:<ul><li>charMatch</li><li>charMatchCase</li><li>phraseMatch</li><li>phraseMatchCase</li><li>startsWith</li><li>startsWithCase</li><li>subWordMatch</li><li>subWordMatchCase</li><li>wordMatch</li><li>wordMatchCase</li></ul></div>
 	 */
 	public String getHighlighterType() {
 		return (String) getStateHelper().eval(InputTimePropertyKeys.highlighterType, null);
 	}
 
 	/**
-	 * <code>highlighterType</code> attribute description:
-	 * <br /><br />
-	 * Specifies the type of filter that will be used for the pickTime's autocomplete highlighter. Valid values include:<ul><li>charMatch</li><li>charMatchCase</li><li>phraseMatch</li><li>phraseMatchCase</li><li>startsWith</li><li>startsWithCase</li><li>subWordMatch</li><li>subWordMatchCase</li><li>wordMatch</li><li>wordMatchCase</li></ul>
+	 * <p><code>highlighterType</code> attribute description:</p>
+	 *
+	 * <div>Specifies the type of filter that will be used for the pickTime's autocomplete highlighter. Valid values include:<ul><li>charMatch</li><li>charMatchCase</li><li>phraseMatch</li><li>phraseMatchCase</li><li>startsWith</li><li>startsWithCase</li><li>subWordMatch</li><li>subWordMatchCase</li><li>wordMatch</li><li>wordMatchCase</li></ul></div>
 	 */
 	public void setHighlighterType(String highlighterType) {
 		getStateHelper().put(InputTimePropertyKeys.highlighterType, highlighterType);
 	}
 
 	/**
-	 * <code>maxResults</code> attribute description:
-	 * <br /><br />
-	 * The maximum amount of autoComplete results.
+	 * <p><code>maxResults</code> attribute description:</p>
+	 *
+	 * <div>The maximum amount of autoComplete results.</div>
 	 */
 	public Integer getMaxResults() {
 		return (Integer) getStateHelper().eval(InputTimePropertyKeys.maxResults, null);
 	}
 
 	/**
-	 * <code>maxResults</code> attribute description:
-	 * <br /><br />
-	 * The maximum amount of autoComplete results.
+	 * <p><code>maxResults</code> attribute description:</p>
+	 *
+	 * <div>The maximum amount of autoComplete results.</div>
 	 */
 	public void setMaxResults(Integer maxResults) {
 		getStateHelper().put(InputTimePropertyKeys.maxResults, maxResults);
 	}
 
 	/**
-	 * <code>maxTime</code> attribute description:
-	 * <br /><br />
-	 * The maximum time that can be selected by the user. <code>maxTime</code> can be of type <code>java.lang.String</code> (of the pattern "HH:mm:ss") or <code>java.util.Date</code>.
+	 * <p><code>maxTime</code> attribute description:</p>
+	 *
+	 * <div>The maximum time that can be selected by the user. <code>maxTime</code> can be of type <code>java.lang.String</code> (of the pattern "HH:mm:ss") or <code>java.util.Date</code>.</div>
 	 */
 	public String getMaxTime() {
 		return (String) getStateHelper().eval(InputTimePropertyKeys.maxTime, "23:59:59");
 	}
 
 	/**
-	 * <code>maxTime</code> attribute description:
-	 * <br /><br />
-	 * The maximum time that can be selected by the user. <code>maxTime</code> can be of type <code>java.lang.String</code> (of the pattern "HH:mm:ss") or <code>java.util.Date</code>.
+	 * <p><code>maxTime</code> attribute description:</p>
+	 *
+	 * <div>The maximum time that can be selected by the user. <code>maxTime</code> can be of type <code>java.lang.String</code> (of the pattern "HH:mm:ss") or <code>java.util.Date</code>.</div>
 	 */
 	public void setMaxTime(String maxTime) {
 		getStateHelper().put(InputTimePropertyKeys.maxTime, maxTime);
 	}
 
 	/**
-	 * <code>minTime</code> attribute description:
-	 * <br /><br />
-	 * The minimum time that can be selected by the user. <code>minTime</code> can be of type <code>java.lang.String</code> (of the pattern "HH:mm:ss") or <code>java.util.Date</code>.
+	 * <p><code>minTime</code> attribute description:</p>
+	 *
+	 * <div>The minimum time that can be selected by the user. <code>minTime</code> can be of type <code>java.lang.String</code> (of the pattern "HH:mm:ss") or <code>java.util.Date</code>.</div>
 	 */
 	public String getMinTime() {
 		return (String) getStateHelper().eval(InputTimePropertyKeys.minTime, "00:00:00");
 	}
 
 	/**
-	 * <code>minTime</code> attribute description:
-	 * <br /><br />
-	 * The minimum time that can be selected by the user. <code>minTime</code> can be of type <code>java.lang.String</code> (of the pattern "HH:mm:ss") or <code>java.util.Date</code>.
+	 * <p><code>minTime</code> attribute description:</p>
+	 *
+	 * <div>The minimum time that can be selected by the user. <code>minTime</code> can be of type <code>java.lang.String</code> (of the pattern "HH:mm:ss") or <code>java.util.Date</code>.</div>
 	 */
 	public void setMinTime(String minTime) {
 		getStateHelper().put(InputTimePropertyKeys.minTime, minTime);
 	}
 
 	/**
-	 * <code>nativeWhenMobile</code> attribute description:
-	 * <br /><br />
-	 * When true, the component will render an HTML5 <code>&lt;input type="time" /&gt;</code> element on small/mobile displays in order to enable selection of a time with the mobile device's native UI.
+	 * <p><code>nativeWhenMobile</code> attribute description:</p>
+	 *
+	 * <div>When true, the component will render an HTML5 <code>&lt;input type="time" /&gt;</code> element on small/mobile displays in order to enable selection of a time with the mobile device's native UI.</div>
 	 */
 	public boolean isNativeWhenMobile() {
 		return (Boolean) getStateHelper().eval(InputTimePropertyKeys.nativeWhenMobile, true);
 	}
 
 	/**
-	 * <code>nativeWhenMobile</code> attribute description:
-	 * <br /><br />
-	 * When true, the component will render an HTML5 <code>&lt;input type="time" /&gt;</code> element on small/mobile displays in order to enable selection of a time with the mobile device's native UI.
+	 * <p><code>nativeWhenMobile</code> attribute description:</p>
+	 *
+	 * <div>When true, the component will render an HTML5 <code>&lt;input type="time" /&gt;</code> element on small/mobile displays in order to enable selection of a time with the mobile device's native UI.</div>
 	 */
 	public void setNativeWhenMobile(boolean nativeWhenMobile) {
 		getStateHelper().put(InputTimePropertyKeys.nativeWhenMobile, nativeWhenMobile);
 	}
 
 	/**
-	 * <code>pattern</code> attribute description:
-	 * <br /><br />
-	 * The format of the time that corresponds to patterns described in the javadoc for <code>java.text.SimpleDateFormat</code>.
+	 * <p><code>pattern</code> attribute description:</p>
+	 *
+	 * <div>The format of the time that corresponds to patterns described in the javadoc for <code>java.text.SimpleDateFormat</code>.</div>
 	 */
 	public String getPattern() {
 		return (String) getStateHelper().eval(InputTimePropertyKeys.pattern, "hh:mm a");
 	}
 
 	/**
-	 * <code>pattern</code> attribute description:
-	 * <br /><br />
-	 * The format of the time that corresponds to patterns described in the javadoc for <code>java.text.SimpleDateFormat</code>.
+	 * <p><code>pattern</code> attribute description:</p>
+	 *
+	 * <div>The format of the time that corresponds to patterns described in the javadoc for <code>java.text.SimpleDateFormat</code>.</div>
 	 */
 	public void setPattern(String pattern) {
 		getStateHelper().put(InputTimePropertyKeys.pattern, pattern);
 	}
 
 	/**
-	 * <code>queryDelay</code> attribute description:
-	 * <br /><br />
-	 * The delay in milliseconds before a query occurs. After the <code>autoComplete</code> receives input, it waits the specified number of milliseconds before querying it's source. If input occurs before the specified number of milliseconds has elapsed, the timer is reset.
+	 * <p><code>queryDelay</code> attribute description:</p>
+	 *
+	 * <div>The delay in milliseconds before a query occurs. After the <code>autoComplete</code> receives input, it waits the specified number of milliseconds before querying it's source. If input occurs before the specified number of milliseconds has elapsed, the timer is reset.</div>
 	 */
 	public Integer getQueryDelay() {
 		return (Integer) getStateHelper().eval(InputTimePropertyKeys.queryDelay, null);
 	}
 
 	/**
-	 * <code>queryDelay</code> attribute description:
-	 * <br /><br />
-	 * The delay in milliseconds before a query occurs. After the <code>autoComplete</code> receives input, it waits the specified number of milliseconds before querying it's source. If input occurs before the specified number of milliseconds has elapsed, the timer is reset.
+	 * <p><code>queryDelay</code> attribute description:</p>
+	 *
+	 * <div>The delay in milliseconds before a query occurs. After the <code>autoComplete</code> receives input, it waits the specified number of milliseconds before querying it's source. If input occurs before the specified number of milliseconds has elapsed, the timer is reset.</div>
 	 */
 	public void setQueryDelay(Integer queryDelay) {
 		getStateHelper().put(InputTimePropertyKeys.queryDelay, queryDelay);
 	}
 
 	/**
-	 * <code>scrollIntoView</code> attribute description:
-	 * <br /><br />
-	 * When true, if the active option of the autoComplete is not in view, the view will be scrolled to make the active option is displayed to the user.
+	 * <p><code>scrollIntoView</code> attribute description:</p>
+	 *
+	 * <div>When true, if the active option of the autoComplete is not in view, the view will be scrolled to make the active option is displayed to the user.</div>
 	 */
 	public Boolean getScrollIntoView() {
 		return (Boolean) getStateHelper().eval(InputTimePropertyKeys.scrollIntoView, null);
 	}
 
 	/**
-	 * <code>scrollIntoView</code> attribute description:
-	 * <br /><br />
-	 * When true, if the active option of the autoComplete is not in view, the view will be scrolled to make the active option is displayed to the user.
+	 * <p><code>scrollIntoView</code> attribute description:</p>
+	 *
+	 * <div>When true, if the active option of the autoComplete is not in view, the view will be scrolled to make the active option is displayed to the user.</div>
 	 */
 	public void setScrollIntoView(Boolean scrollIntoView) {
 		getStateHelper().put(InputTimePropertyKeys.scrollIntoView, scrollIntoView);
 	}
 
 	/**
-	 * <code>step</code> attribute description:
-	 * <br /><br />
-	 * The step in seconds between each selectable timestamp. The default value is 3,600 seconds (or 1 hour).
+	 * <p><code>step</code> attribute description:</p>
+	 *
+	 * <div>The step in seconds between each selectable timestamp. The default value is 3,600 seconds (or 1 hour).</div>
 	 */
 	public Integer getStep() {
 		return (Integer) getStateHelper().eval(InputTimePropertyKeys.step, 3600);
 	}
 
 	/**
-	 * <code>step</code> attribute description:
-	 * <br /><br />
-	 * The step in seconds between each selectable timestamp. The default value is 3,600 seconds (or 1 hour).
+	 * <p><code>step</code> attribute description:</p>
+	 *
+	 * <div>The step in seconds between each selectable timestamp. The default value is 3,600 seconds (or 1 hour).</div>
 	 */
 	public void setStep(Integer step) {
 		getStateHelper().put(InputTimePropertyKeys.step, step);
 	}
 
 	/**
-	 * <code>styleClass</code> attribute description:
-	 * <br /><br />
-	 * List of CSS class names (separated by spaces) that are to be rendered within the class attribute.
+	 * <p><code>styleClass</code> attribute description:</p>
+	 *
+	 * <div>List of CSS class names (separated by spaces) that are to be rendered within the class attribute.</div>
 	 */
 	@Override
 	public String getStyleClass() {
