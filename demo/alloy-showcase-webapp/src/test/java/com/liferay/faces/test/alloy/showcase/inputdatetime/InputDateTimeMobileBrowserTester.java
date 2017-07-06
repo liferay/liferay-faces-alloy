@@ -18,15 +18,12 @@ import org.junit.Assume;
 import org.junit.Before;
 import org.junit.Test;
 
-import org.openqa.selenium.WebDriver;
-
-import com.liferay.faces.test.selenium.TestUtil;
 import com.liferay.faces.test.selenium.browser.BrowserDriver;
-import com.liferay.faces.test.selenium.browser.BrowserStateAsserter;
-import com.liferay.faces.test.selenium.webdriver.WebDriverFactory;
+import com.liferay.faces.test.selenium.browser.BrowserDriverFactory;
+import com.liferay.faces.test.selenium.browser.TestUtil;
+import com.liferay.faces.test.selenium.browser.WaitingAsserter;
+import com.liferay.faces.test.selenium.browser.WaitingAsserterFactory;
 import com.liferay.faces.test.showcase.TesterBase;
-import com.liferay.faces.util.logging.Logger;
-import com.liferay.faces.util.logging.LoggerFactory;
 
 
 /**
@@ -34,14 +31,14 @@ import com.liferay.faces.util.logging.LoggerFactory;
  */
 public class InputDateTimeMobileBrowserTester extends TesterBase {
 
-	// Logger
-	private static final Logger logger = LoggerFactory.getLogger(InputDateTimeMobileBrowserTester.class);
-
 	// Private Data Members
 	private static BrowserDriver browserDriverSimulatingMobile;
+	private static WaitingAsserter waitingAsserter;
 
 	@AfterClass
 	public static void quitMobileSimulatingBrowserDriver() {
+
+		waitingAsserter = null;
 
 		if (browserDriverSimulatingMobile != null) {
 
@@ -115,8 +112,9 @@ public class InputDateTimeMobileBrowserTester extends TesterBase {
 			}
 
 			boolean browserHeadless = Boolean.valueOf(browserHeadlessString);
-			WebDriver webDriver = WebDriverFactory.getWebDriver(browserName, browserHeadless, true);
-			browserDriverSimulatingMobile = newBrowserDriver(webDriver, browserHeadless, true);
+			browserDriverSimulatingMobile = BrowserDriverFactory.getBrowserDriver(browserName, browserHeadless,
+					browserHeadless);
+			waitingAsserter = WaitingAsserterFactory.getWaitingAsserter(browserDriverSimulatingMobile);
 		}
 	}
 
@@ -124,12 +122,11 @@ public class InputDateTimeMobileBrowserTester extends TesterBase {
 
 		navigateToUseCase(browserDriverSimulatingMobile, "alloy", "input" + capitalize(inputType), "general");
 
-		BrowserStateAsserter browserStateAsserter = newBrowserStateAsserter(browserDriverSimulatingMobile);
 		String inputXpath = "//input[@type='" + inputType + "']";
-		browserStateAsserter.assertElementDisplayed(inputXpath);
+		waitingAsserter.assertElementDisplayed(inputXpath);
 		browserDriverSimulatingMobile.centerElementInCurrentWindow(inputXpath);
 		browserDriverSimulatingMobile.sendKeysToElement(inputXpath, inputValue);
 		browserDriverSimulatingMobile.clickElement(submitButton1Xpath);
-		browserStateAsserter.assertTextPresentInElement(output, modelValue1Xpath);
+		waitingAsserter.assertTextPresentInElement(output, modelValue1Xpath);
 	}
 }

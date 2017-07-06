@@ -19,7 +19,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import com.liferay.faces.test.selenium.browser.BrowserDriver;
-import com.liferay.faces.test.selenium.browser.BrowserStateAsserter;
+import com.liferay.faces.test.selenium.browser.WaitingAsserter;
 import com.liferay.faces.test.showcase.TesterBase;
 
 
@@ -61,12 +61,12 @@ public class ButtonLinkTester extends TesterBase {
 
 		runButtonLinkGeneralTest(componentName, button1xpath, button2xpath);
 
-		BrowserStateAsserter browserStateAsserter = getBrowserStateAsserter();
-		browserStateAsserter.assertElementDisplayed(button3xpath);
+		WaitingAsserter waitingAsserter = getWaitingAsserter();
+		waitingAsserter.assertElementDisplayed(button3xpath);
 
 		BrowserDriver browserDriver = getBrowserDriver();
 		clickButtonLink(browserDriver, button3xpath);
-		assertImageRendered(browserDriver, browserStateAsserter, getExampleImageXpath("image"));
+		assertImageRendered(browserDriver, waitingAsserter, getExampleImageXpath("image"));
 	}
 
 	protected void runButtonLinkGeneralTest(String componentName, String buttonLink1xpath, String buttonLink2xpath)
@@ -76,13 +76,13 @@ public class ButtonLinkTester extends TesterBase {
 		navigateToUseCase(browserDriver, componentName, "general");
 
 		// Test that buttons/links render on the page visibly and are clickable.
-		BrowserStateAsserter browserStateAsserter = getBrowserStateAsserter();
-		browserStateAsserter.assertElementDisplayed(buttonLink1xpath);
+		WaitingAsserter waitingAsserter = getWaitingAsserter();
+		waitingAsserter.assertElementDisplayed(buttonLink1xpath);
 		clickButtonLink(browserDriver, buttonLink1xpath);
-		browserStateAsserter.assertElementDisplayed(buttonLink2xpath);
+		waitingAsserter.assertElementDisplayed(buttonLink2xpath);
 		clickButtonLink(browserDriver, buttonLink2xpath);
-		assertImageRendered(browserDriver, browserStateAsserter, getExampleImageXpath("children"));
-		browserStateAsserter.assertElementDisplayed(buttonLink1xpath + "/span[contains(@class,'icon-star')]/..");
+		assertImageRendered(browserDriver, waitingAsserter, getExampleImageXpath("children"));
+		waitingAsserter.assertElementDisplayed(buttonLink1xpath + "/span[contains(@class,'icon-star')]/..");
 	}
 
 	protected void runButtonLinkMenuTest(String componentName) throws Exception {
@@ -90,13 +90,13 @@ public class ButtonLinkTester extends TesterBase {
 		BrowserDriver browserDriver = getBrowserDriver();
 		navigateToUseCase(browserDriver, componentName, "menu");
 
-		BrowserStateAsserter browserStateAsserter = getBrowserStateAsserter();
+		WaitingAsserter waitingAsserter = getWaitingAsserter();
 		boolean commandComponent = componentName.toLowerCase(Locale.ENGLISH).contains("command");
-		testMenu(browserDriver, browserStateAsserter, "menu", "caret", commandComponent);
-		testMenu(browserDriver, browserStateAsserter, "facet", "icon-chevron-down", commandComponent);
+		testMenu(browserDriver, waitingAsserter, "menu", "caret", commandComponent);
+		testMenu(browserDriver, waitingAsserter, "facet", "icon-chevron-down", commandComponent);
 	}
 
-	private void testMenu(BrowserDriver browserDriver, BrowserStateAsserter browserStateAsserter, String exampleType,
+	private void testMenu(BrowserDriver browserDriver, WaitingAsserter waitingAsserter, String exampleType,
 		String dropdownButtonClass, boolean commandComponent) {
 
 		// Test that clicking the menu button submits the correct value.
@@ -118,7 +118,7 @@ public class ButtonLinkTester extends TesterBase {
 		}
 
 		browserDriver.waitForTextPresentInElement(menuOutput, menuOutputXpath);
-		browserStateAsserter.assertTextPresentInElement(menuOutput, menuOutputXpath);
+		waitingAsserter.assertTextPresentInElement(menuOutput, menuOutputXpath);
 
 		// Test that clicking each menu item submits the correct value.
 		String[] menuItems = new String[] { "Edit", "Enable", "Disable", "Delete" };
@@ -144,7 +144,7 @@ public class ButtonLinkTester extends TesterBase {
 			}
 
 			browserDriver.waitForTextPresentInElement(menuOutput, menuOutputXpath);
-			browserStateAsserter.assertTextPresentInElement(menuOutput, menuOutputXpath);
+			waitingAsserter.assertTextPresentInElement(menuOutput, menuOutputXpath);
 		}
 	}
 }
