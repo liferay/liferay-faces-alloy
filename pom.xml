@@ -102,6 +102,7 @@
 		<mojarra.version>2.1.29-09</mojarra.version>
 		<myfaces.version>UNSUPPORTED</myfaces.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<project.stage>Production</project.stage>
 		<surefire.version>2.12</surefire.version>
 		<validation-api.version>1.1.0.Final</validation-api.version>
