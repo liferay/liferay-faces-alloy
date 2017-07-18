@@ -62,37 +62,40 @@ public class InputFile extends InputFileBase {
 	@Override
 	protected void validateValue(FacesContext facesContext, Object value) {
 
-		setValid(true);
+		super.validateValue(facesContext, value);
 
-		Long maxFileSize = getMaxFileSize();
-		String contentTypeSet = getContentTypes();
+		if (isValid()) {
 
-		if ((maxFileSize != null) || (contentTypeSet != null)) {
+			Long maxFileSize = getMaxFileSize();
+			String contentTypeSet = getContentTypes();
 
-			Locale locale = facesContext.getViewRoot().getLocale();
-			ExternalContext externalContext = facesContext.getExternalContext();
-			I18n i18n = I18nFactory.getI18nInstance(externalContext);
-			String clientId = getClientId(facesContext);
-			@SuppressWarnings("unchecked")
-			List<UploadedFile> uploadedFiles = (List<UploadedFile>) value;
+			if ((maxFileSize != null) || (contentTypeSet != null)) {
 
-			for (UploadedFile uploadedFile : uploadedFiles) {
+				Locale locale = facesContext.getViewRoot().getLocale();
+				ExternalContext externalContext = facesContext.getExternalContext();
+				I18n i18n = I18nFactory.getI18nInstance(externalContext);
+				String clientId = getClientId(facesContext);
+				@SuppressWarnings("unchecked")
+				List<UploadedFile> uploadedFiles = (List<UploadedFile>) value;
 
-				if ((maxFileSize != null) && (maxFileSize >= 0) && (uploadedFile.getSize() > maxFileSize)) {
+				for (UploadedFile uploadedFile : uploadedFiles) {
 
-					String errorMessage = i18n.getMessage(facesContext, locale,
-							"file-x-is-y-bytes-but-may-not-exceed-z-bytes", uploadedFile.getName(),
-							uploadedFile.getSize(), maxFileSize);
-					handleInvalidFile(facesContext, clientId, uploadedFile, errorMessage);
-				}
+					if ((maxFileSize != null) && (maxFileSize >= 0) && (uploadedFile.getSize() > maxFileSize)) {
 
-				String contentType = uploadedFile.getContentType();
+						String errorMessage = i18n.getMessage(facesContext, locale,
+								"file-x-is-y-bytes-but-may-not-exceed-z-bytes", uploadedFile.getName(),
+								uploadedFile.getSize(), maxFileSize);
+						handleInvalidFile(facesContext, clientId, uploadedFile, errorMessage);
+					}
 
-				if ((contentType == null) || ((contentTypeSet != null) && !contentTypeSet.contains(contentType))) {
+					String contentType = uploadedFile.getContentType();
 
-					String errorMessage = i18n.getMessage(facesContext, locale, "file-x-has-an-invalid-content-type-y",
-							uploadedFile.getName(), contentType);
-					handleInvalidFile(facesContext, clientId, uploadedFile, errorMessage);
+					if ((contentType == null) || ((contentTypeSet != null) && !contentTypeSet.contains(contentType))) {
+
+						String errorMessage = i18n.getMessage(facesContext, locale, "file-x-has-an-invalid-content-type-y",
+								uploadedFile.getName(), contentType);
+						handleInvalidFile(facesContext, clientId, uploadedFile, errorMessage);
+					}
 				}
 			}
 		}
