@@ -81,6 +81,7 @@
 	<properties>
 		<alloyui.version>2.0.0</alloyui.version>
 		<alloyui.zip.version>2.0.0.50</alloyui.zip.version>
+		<bnd.version>3.3.0</bnd.version>
 		<component.namespace>none</component.namespace>
 		<faces.group.id>javax.faces</faces.group.id>
 		<faces.api.artifact.id>jsf-api</faces.api.artifact.id>
@@ -94,6 +95,7 @@
 		<jstl.version>1.2</jstl.version>
 		<liferay.faces.util.version>1.1.0-SNAPSHOT</liferay.faces.util.version>
 		<log4j.version>1.2.14</log4j.version>
+		<maven.jar.plugin.version>3.0.2</maven.jar.plugin.version>
 		<mojarra.version>1.2_15</mojarra.version>
 		<myfaces.version>UNSUPPORTED</myfaces.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -148,12 +150,41 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-compiler-plugin</artifactId>
-					<version>3.1</version>
+					<version>3.5.1</version>
 					<configuration>
 						<source>1.6</source>
 						<target>1.6</target>
 						<encoding>UTF-8</encoding>
 					</configuration>
+				</plugin>
+				<plugin>
+					<groupId>biz.aQute.bnd</groupId>
+					<artifactId>bnd-maven-plugin</artifactId>
+					<version>${bnd.version}</version>
+					<executions>
+						<execution>
+							<goals>
+								<goal>bnd-process</goal>
+							</goals>
+						</execution>
+					</executions>
+				</plugin>
+				<plugin>
+					<groupId>biz.aQute.bnd</groupId>
+					<artifactId>bnd-baseline-maven-plugin</artifactId>
+					<version>${bnd.version}</version>
+					<configuration>
+						<includeDistributionManagement>false</includeDistributionManagement>
+						<fullReport>true</fullReport>
+					</configuration>
+					<executions>
+						<execution>
+							<id>baseline</id>
+							<goals>
+								<goal>baseline</goal>
+							</goals>
+						</execution>
+					</executions>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
@@ -163,9 +194,10 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-jar-plugin</artifactId>
-					<version>2.4</version>
+					<version>${maven.jar.plugin.version}</version>
 					<configuration>
 						<archive>
+							<manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
 							<manifestEntries>
 								<Built-By>Release Manager</Built-By>
 								<Implementation-Title>${project.name}</Implementation-Title>
