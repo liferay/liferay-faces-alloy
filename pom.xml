@@ -100,7 +100,6 @@
 		<liferay.faces.showcase.version>2.0.1-SNAPSHOT</liferay.faces.showcase.version>
 		<liferay.faces.util.version>2.1.0-SNAPSHOT</liferay.faces.util.version>
 		<log4j.version>1.2.14</log4j.version>
-		<maven.jar.plugin.version>3.0.2</maven.jar.plugin.version>
 		<mojarra.version>2.1.29-09</mojarra.version>
 		<myfaces.version>UNSUPPORTED</myfaces.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -200,7 +199,7 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-jar-plugin</artifactId>
-					<version>${maven.jar.plugin.version}</version>
+					<version>3.0.2</version>
 					<configuration>
 						<archive>
 							<manifestFile>${project.build.outputDirectory}/META-INF/MANIFEST.MF</manifestFile>
@@ -521,14 +520,14 @@
 				<artifactId>jstl-impl</artifactId>
 				<version>${jstl.version}</version>
 				<exclusions>
-					 <exclusion>
-						  <groupId>javax.servlet</groupId>
-						  <artifactId>servlet-api</artifactId>
-					 </exclusion>
-					 <exclusion>
-						  <groupId>javax.servlet.jsp</groupId>
-						  <artifactId>jsp-api</artifactId>
-					 </exclusion>
+					<exclusion>
+						<groupId>javax.servlet</groupId>
+						<artifactId>servlet-api</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>javax.servlet.jsp</groupId>
+						<artifactId>jsp-api</artifactId>
+					</exclusion>
 				</exclusions>
 			</dependency>
 			<dependency>
