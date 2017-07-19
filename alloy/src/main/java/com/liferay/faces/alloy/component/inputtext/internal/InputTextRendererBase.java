@@ -16,6 +16,10 @@ package com.liferay.faces.alloy.component.inputtext.internal;
 
 import javax.annotation.Generated;
 
+import javax.faces.component.UIComponent;
+import javax.faces.component.UIInput;
+import javax.faces.context.FacesContext;
+
 import com.liferay.faces.util.render.DelegatingRendererBase;
 
 import com.liferay.faces.alloy.component.inputtext.InputText;
@@ -27,6 +31,20 @@ import com.liferay.faces.alloy.component.inputtext.InputText;
  */
 @Generated(value = "com.liferay.alloy.tools.builder.FacesBuilder")
 public abstract class InputTextRendererBase extends DelegatingRendererBase {
+
+	@Override
+	public void decode(FacesContext facesContext, UIComponent uiComponent) {
+
+		super.decode(facesContext, uiComponent);
+
+		UIInput uiInput = (UIInput) uiComponent;
+		Object submittedValue = uiInput.getSubmittedValue();
+
+		// FACES-3139 Avoid the possibility of a NullPointerException for custom components
+		if (submittedValue == null) {
+			uiInput.setSubmittedValue("");
+		}
+	}
 
 	@Override
 	public String getDelegateComponentFamily() {

@@ -18,6 +18,7 @@ import java.io.IOException;
 
 import javax.annotation.Generated;
 import javax.faces.component.UIComponent;
+import javax.faces.component.UIInput;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
@@ -51,6 +52,20 @@ public abstract class InputSourceCodeRendererBase extends DelegatingAlloyRendere
 
 	// Modules
 	protected static final String[] MODULES = { "aui-ace-editor" };
+
+	@Override
+	public void decode(FacesContext facesContext, UIComponent uiComponent) {
+
+		super.decode(facesContext, uiComponent);
+
+		UIInput uiInput = (UIInput) uiComponent;
+		Object submittedValue = uiInput.getSubmittedValue();
+
+		// FACES-3139 Avoid the possibility of a NullPointerException for custom components
+		if (submittedValue == null) {
+			uiInput.setSubmittedValue("");
+		}
+	}
 
 	@Override
 	public void encodeAlloyAttributes(FacesContext facesContext, ResponseWriter responseWriter, UIComponent uiComponent) throws IOException {

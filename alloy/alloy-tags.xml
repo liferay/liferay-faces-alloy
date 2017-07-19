@@ -600,6 +600,7 @@ java.util.List<java.lang.String> filterResults(java.lang.String, java.util.List<
 			<alloy-ui-modules>autocomplete</alloy-ui-modules>
 			<delegate-renderer-type><![CDATA["javax.faces.Text"]]></delegate-renderer-type>
 			<extends-tags>clientComponent facesMessageLabelTaglibXMLOnly inputText</extends-tags>
+			<generate-null-check-decode-method>true</generate-null-check-decode-method>
 			<parent-class><![CDATA[com.liferay.faces.alloy.component.inputtext.InputTextBase]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.alloy.render.internal.DelegatingAlloyRendererBase]]></renderer-parent-class>
 		</tag-extension>
@@ -1202,6 +1203,7 @@ java.util.List<java.lang.String> filterResults(java.lang.String, java.util.List<
 		</attribute>
 		<tag-extension>
 			<extends-tags>altInherited disabledInherited facesMessageLabelTaglibXMLOnly inputCommonInherited sizeInherited inputDateTimeCommon</extends-tags>
+			<generate-null-check-decode-method>true</generate-null-check-decode-method>
 			<generate-taglib-xml>false</generate-taglib-xml>
 			<parent-class><![CDATA[com.liferay.faces.alloy.component.inputtext.InputTextBase]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.alloy.render.internal.DelegatingAlloyRendererBase]]></renderer-parent-class>
@@ -1286,6 +1288,7 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 		<tag-extension>
 			<delegate-renderer-type><![CDATA["javax.faces.Hidden"]]></delegate-renderer-type>
 			<extends-tags>uiInputInherited</extends-tags>
+			<generate-null-check-decode-method>true</generate-null-check-decode-method>
 			<parent-class><![CDATA[javax.faces.component.html.HtmlInputHidden]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.util.render.DelegatingRendererBase]]></renderer-parent-class>
 		</tag-extension>
@@ -1306,6 +1309,7 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 			<delegate-renderer-type><![CDATA["javax.faces.Secret"]]></delegate-renderer-type>
 			<extends-tags>altInherited autocompleteInherited disabledInherited inputCommonInherited sizeInherited</extends-tags>
 			<extra-style-classes>field</extra-style-classes>
+			<generate-null-check-decode-method>true</generate-null-check-decode-method>
 			<parent-class><![CDATA[javax.faces.component.html.HtmlInputSecret]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.util.render.DelegatingRendererBase]]></renderer-parent-class>
 		</tag-extension>
@@ -1423,6 +1427,7 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 			<alloy-ui-name>AceEditor</alloy-ui-name>
 			<delegate-renderer-type><![CDATA["javax.faces.Text"]]></delegate-renderer-type>
 			<extends-tags>clientComponent facesMessageLabelInherited styleableInherited uiInputInherited</extends-tags>
+			<generate-null-check-decode-method>true</generate-null-check-decode-method>
 			<parent-class><![CDATA[javax.faces.component.html.HtmlInputText]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.alloy.render.internal.DelegatingAlloyRendererBase]]></renderer-parent-class>
 		</tag-extension>
@@ -1434,6 +1439,7 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 			<delegate-renderer-type><![CDATA["javax.faces.Text"]]></delegate-renderer-type>
 			<extends-tags>altInherited autocompleteInherited disabledInherited inputCommonInherited sizeInherited</extends-tags>
 			<extra-style-classes>field</extra-style-classes>
+			<generate-null-check-decode-method>true</generate-null-check-decode-method>
 			<parent-class><![CDATA[javax.faces.component.html.HtmlInputText]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.util.render.DelegatingRendererBase]]></renderer-parent-class>
 		</tag-extension>
@@ -1461,6 +1467,7 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 			<delegate-renderer-type><![CDATA["javax.faces.Textarea"]]></delegate-renderer-type>
 			<extends-tags>disabledInherited inputCommonInherited</extends-tags>
 			<extra-style-classes>field</extra-style-classes>
+			<generate-null-check-decode-method>true</generate-null-check-decode-method>
 			<parent-class><![CDATA[javax.faces.component.html.HtmlInputTextarea]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.util.render.DelegatingRendererBase]]></renderer-parent-class>
 		</tag-extension>

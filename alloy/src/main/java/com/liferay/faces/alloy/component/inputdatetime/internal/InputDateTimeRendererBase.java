@@ -16,6 +16,10 @@ package com.liferay.faces.alloy.component.inputdatetime.internal;
 
 import javax.annotation.Generated;
 
+import javax.faces.component.UIComponent;
+import javax.faces.component.UIInput;
+import javax.faces.context.FacesContext;
+
 import com.liferay.faces.alloy.render.internal.DelegatingAlloyRendererBase;
 
 
@@ -34,5 +38,19 @@ public abstract class InputDateTimeRendererBase extends DelegatingAlloyRendererB
 	protected static final String SHOW_ON = "showOn";
 	protected static final String TIME_ZONE = "timeZone";
 	protected static final String Z_INDEX = "zIndex";
+
+	@Override
+	public void decode(FacesContext facesContext, UIComponent uiComponent) {
+
+		super.decode(facesContext, uiComponent);
+
+		UIInput uiInput = (UIInput) uiComponent;
+		Object submittedValue = uiInput.getSubmittedValue();
+
+		// FACES-3139 Avoid the possibility of a NullPointerException for custom components
+		if (submittedValue == null) {
+			uiInput.setSubmittedValue("");
+		}
+	}
 }
 //J+
