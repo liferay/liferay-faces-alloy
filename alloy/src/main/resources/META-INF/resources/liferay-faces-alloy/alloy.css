@@ -96,6 +96,10 @@ div.alloy-paginator div.pagination {
     margin: 0px;
 }
 
+div.alloy-paginator ul.pagination .alloy-paginator-summary {
+    display: inline;
+}
+
 /* alloy-panel: bootstrap 3 backport */
 div.alloy-panel {
 	margin-bottom: 20px;
