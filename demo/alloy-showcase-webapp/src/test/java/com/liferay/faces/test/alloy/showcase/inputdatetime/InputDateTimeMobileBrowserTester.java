@@ -112,8 +112,7 @@ public class InputDateTimeMobileBrowserTester extends TesterBase {
 			}
 
 			boolean browserHeadless = Boolean.valueOf(browserHeadlessString);
-			browserDriverSimulatingMobile = BrowserDriverFactory.getBrowserDriver(browserName, browserHeadless,
-					browserHeadless);
+			browserDriverSimulatingMobile = BrowserDriverFactory.getBrowserDriver(browserName, browserHeadless, true);
 			waitingAsserter = WaitingAsserterFactory.getWaitingAsserter(browserDriverSimulatingMobile);
 		}
 	}
