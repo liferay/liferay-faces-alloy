@@ -21,5 +21,17 @@ import javax.faces.component.FacesComponent;
  */
 @FacesComponent(value = InputSourceCode.COMPONENT_TYPE)
 public class InputSourceCode extends InputSourceCodeBase {
-	// Initial Generation
+
+	@Override
+	public Object getSubmittedValue() {
+
+		Boolean readOnly = getReadOnly();
+
+		if ((readOnly != null) && readOnly) {
+			return null;
+		}
+		else {
+			return super.getSubmittedValue();
+		}
+	}
 }
