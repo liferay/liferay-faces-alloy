@@ -81,6 +81,7 @@
 	</modules>
 
 	<properties>
+		<additionalparam>-Xdoclint:all -Xdoclint:-missing</additionalparam>
 		<alloyui.version>3.0.3</alloyui.version>
 		<alloyui.zip.version>${alloyui.version}-deprecated.39</alloyui.zip.version>
 		<bnd.version>3.3.0</bnd.version>
