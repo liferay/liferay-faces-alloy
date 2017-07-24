@@ -258,13 +258,12 @@
 			<version>1.7.25</version>
 			<scope>test</scope>
 		</dependency>
+		<!-- End integration test dependencies. -->
+
 		<dependency>
 			<groupId>log4j</groupId>
 			<artifactId>log4j</artifactId>
-			<scope>test</scope>
 		</dependency>
-		<!-- End integration test dependencies. -->
-
 		<dependency>
 			<groupId>com.liferay.faces</groupId>
 			<artifactId>com.liferay.faces.alloy</artifactId>
