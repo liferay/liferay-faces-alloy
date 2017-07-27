@@ -799,7 +799,7 @@ java.util.List<java.lang.String> filterResults(java.lang.String, java.util.List<
 			</attribute-extension>
 			<description><![CDATA[When true, this causes an attribute to be rendered as readonly="readonly", and prevents the user from changing the value of this component.]]></description>
 			<name>readonly</name>
-			<type><![CDATA[java.lang.Boolean]]></type>
+			<type><![CDATA[boolean]]></type>
 		</attribute>
 		<attribute>
 			<description><![CDATA[The type of the button: button, submit (default), or reset.]]></description>
@@ -2441,7 +2441,7 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 			</attribute-extension>
 			<description><![CDATA[A CSS class name to apply to the label of each selected item.]]></description>
 			<name>selectedClass</name>
-			<type><![CDATA[java.lang.Boolean]]></type>
+			<type><![CDATA[java.lang.String]]></type>
 		</attribute>
 		<attribute>
 			<attribute-extension>
@@ -2449,7 +2449,7 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 			</attribute-extension>
 			<description><![CDATA[A CSS class name to apply to the label of each unselected item.]]></description>
 			<name>unselectedClass</name>
-			<type><![CDATA[java.lang.Boolean]]></type>
+			<type><![CDATA[java.lang.String]]></type>
 		</attribute>
 		<tag-extension>
 			<delegate-renderer-type><![CDATA["javax.faces.Checkbox"]]></delegate-renderer-type>
