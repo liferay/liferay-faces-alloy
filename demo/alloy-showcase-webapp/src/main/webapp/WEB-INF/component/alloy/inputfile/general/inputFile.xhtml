@@ -4,17 +4,20 @@
 
 	<ui:define name="col1">
 
-		<showcase:example>
-			<!-- The enclosing form must have enctype="multipart/form-data" in order for files to upload correctly. -->
-			<alloy:form enctype="multipart/form-data">
-				<alloy:messages globalOnly="true" layout="table" />
-				<alloy:inputFile fileUploadListener="#{inputFileBackingBean.handleFileUpload}" />
+		<!-- The enclosing form must have enctype="multipart/form-databank" in order for files to upload correctly. -->
+		<alloy:form enctype="multipart/form-data">
+			<showcase:example renderedCheckbox="true" requiredCheckbox="true">
+				<alloy:field>
+					<alloy:inputFile id="file" fileUploadListener="#{inputFileBackingBean.handleFileUpload}"
+						rendered="#{showcaseModelBean.selectedComponent.rendered}"
+						required="#{showcaseModelBean.selectedComponent.required}" />
+					<alloy:message for="file" />
+				</alloy:field>
 				<hr />
-
 				<!-- Note: ajax="true" works in JSF 2.2 -->
 				<alloy:commandButton ajax="false" value="#{i18n['submit']}" />
-			</alloy:form>
-		</showcase:example>
+			</showcase:example>
+		</alloy:form>
 		<alloy:form id="resultsForm">
 			<showcase:results id="modelValue" label="#{i18n['model-value']}">
 				<ui:include src="../inputFileCommon.xhtml" />
