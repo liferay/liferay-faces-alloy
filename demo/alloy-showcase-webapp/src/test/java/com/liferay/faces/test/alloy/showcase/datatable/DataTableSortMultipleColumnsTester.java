@@ -13,20 +13,31 @@
  */
 package com.liferay.faces.test.alloy.showcase.datatable;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
+import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 import org.junit.Assert;
 import org.junit.Test;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 
+import com.liferay.faces.showcase.dto.Country;
 import com.liferay.faces.showcase.dto.Customer;
 import com.liferay.faces.test.selenium.browser.BrowserDriver;
 import com.liferay.faces.test.selenium.browser.WaitingAsserter;
+import com.liferay.faces.util.logging.Logger;
+import com.liferay.faces.util.logging.LoggerFactory;
 
 
 /**
@@ -34,6 +45,9 @@ import com.liferay.faces.test.selenium.browser.WaitingAsserter;
  * @author  Philip White
  */
 public class DataTableSortMultipleColumnsTester extends DataTableTester {
+
+	// Logger
+	private static final Logger logger = LoggerFactory.getLogger(DataTableSortMultipleColumnsTester.class);
 
 	@Test
 	public void runDataTableSortMultipleColumnsTest() throws Exception {
@@ -134,5 +148,87 @@ public class DataTableSortMultipleColumnsTester extends DataTableTester {
 		// 8. Verify that the sorted list obtained from the UI matches the order of the expected list (sorted in
 		// ascending order).
 		Assert.assertEquals(expectedFirstNames, actualFirstNames);
+	}
+
+	/**
+	 * Extract the customers from each page of the dataTable associated with the specified column elements via xpath.
+	 */
+	private LinkedList<Customer> extractCustomersFromDataTable(BrowserDriver browserDriver, String firstNameXpath,
+		String lastNameXpath, String dateOfBirthXpath) {
+
+		LinkedList<Customer> customers = new LinkedList<Customer>();
+
+		// While the *Last Page* button is still active:
+		WebDriver webDriver = browserDriver.getWebDriver();
+		ExpectedCondition<Boolean> navigationButtonClassDisabledCondition = textPresentInElementClass("disabled",
+				"(" + PAGE_BUTTON_XPATH_PREFIX + "/li[last()])[1]");
+
+		Country country = new Country(0, "", "");
+		DateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy");
+
+		while (!navigationButtonClassDisabledCondition.apply(webDriver)) {
+
+			// Extract the customers from the current page of the dataTable.
+			List<WebElement> firstNameElements = browserDriver.findElementsByXpath(firstNameXpath);
+			List<WebElement> lastNameElements = browserDriver.findElementsByXpath(lastNameXpath);
+			List<WebElement> dateOfBirthElements = browserDriver.findElementsByXpath(dateOfBirthXpath);
+
+			int i = 0;
+
+			for (WebElement firstNameElement : firstNameElements) {
+
+				WebElement lastNameElement = lastNameElements.get(i);
+				WebElement dateOfBirthElement = dateOfBirthElements.get(i);
+
+				String firstName = firstNameElement.getText();
+				String lastName = lastNameElement.getText();
+				String dateOfBirth = dateOfBirthElement.getText();
+
+				try {
+					Date date = dateFormat.parse(dateOfBirth);
+					Customer customer = new Customer(i, country, firstName, lastName, date);
+					customers.add(customer);
+				}
+				catch (ParseException e) {
+					throw new IllegalArgumentException(e);
+				}
+
+				i++;
+			}
+
+			// Click the *Next Page* button.
+			Action clickNextPageAction = browserDriver.createClickElementAction(getNavigationButtonXpath("nextPage"));
+			browserDriver.performAndWaitForRerender(clickNextPageAction, firstNameXpath);
+		}
+
+		// Extract customers from the last page of the dataTable.
+		List<WebElement> firstNameElements = browserDriver.findElementsByXpath(firstNameXpath);
+		List<WebElement> lastNameElements = browserDriver.findElementsByXpath(lastNameXpath);
+		List<WebElement> dateOfBirthElements = browserDriver.findElementsByXpath(dateOfBirthXpath);
+
+		int i = 0;
+
+		for (WebElement firstNameElement : firstNameElements) {
+
+			WebElement lastNameElement = lastNameElements.get(i);
+			WebElement dateOfBirthElement = dateOfBirthElements.get(i);
+
+			String firstName = firstNameElement.getText();
+			String lastName = lastNameElement.getText();
+			String dateOfBirth = dateOfBirthElement.getText();
+
+			try {
+				Date date = dateFormat.parse(dateOfBirth);
+				Customer customer = new Customer(i, country, firstName, lastName, date);
+				customers.add(customer);
+			}
+			catch (ParseException e) {
+				throw new IllegalArgumentException(e);
+			}
+
+			i++;
+		}
+
+		return customers;
 	}
 }

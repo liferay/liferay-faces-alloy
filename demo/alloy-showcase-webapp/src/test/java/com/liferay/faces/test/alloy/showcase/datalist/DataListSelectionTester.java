@@ -53,7 +53,7 @@ public class DataListSelectionTester extends DataListTester {
 		testShowModal(browserDriver, waitingAsserter, "Lightweight", LIGHTWEIGHT_DESCRIPTION_TEXT);
 	}
 
-	protected void testShowModal(BrowserDriver browserDriver, WaitingAsserter waitingAsserter, String text,
+	private void testShowModal(BrowserDriver browserDriver, WaitingAsserter waitingAsserter, String text,
 		String descriptionText) {
 
 		// Verify that the "Show Modal" button's value is visibly correct.
