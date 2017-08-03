@@ -23,7 +23,7 @@ import javax.faces.event.AbortProcessingException;
 import javax.faces.event.ComponentSystemEvent;
 import javax.faces.event.ComponentSystemEventListener;
 import javax.faces.event.ListenerFor;
-import javax.faces.event.PostAddToViewEvent;
+import javax.faces.event.PreRenderComponentEvent;
 import javax.faces.render.FacesRenderer;
 
 import com.liferay.faces.alloy.component.commandlink.CommandLink;
@@ -34,7 +34,7 @@ import com.liferay.faces.util.render.RendererUtil;
  * @author  Vernon Singleton
  */
 @FacesRenderer(componentFamily = CommandLink.COMPONENT_FAMILY, rendererType = CommandLink.RENDERER_TYPE)
-@ListenerFor(systemEventClass = PostAddToViewEvent.class, sourceClass = CommandLink.class)
+@ListenerFor(systemEventClass = PreRenderComponentEvent.class, sourceClass = CommandLink.class)
 @ResourceDependency(library = "javax.faces", name = "jsf.js")
 public class CommandLinkRenderer extends CommandLinkRendererBase implements ComponentSystemEventListener {
 
