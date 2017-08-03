@@ -91,4 +91,42 @@ public class DataTableServerEventsTester extends DataTableTester {
 		String[] francisLewis = { firstPageFullNames.get(firstPageFullNames.size() - 1) };
 		testDataTableServerEvents(browserDriver, waitingAsserter, "9", francisLewis);
 	}
+
+	private String serverEventInfoText(String rowSelectEvent, String rowIndex, String customer) {
+		return "Received " + rowSelectEvent + " for rowIndex=[" + rowIndex + "] customer=[" + customer +
+			"] in the APPLY_REQUEST_VALUES 2 phase.";
+	}
+
+	/**
+	 * Verify that at the moment of selecting or deselecting the customer that RowSelectEvent and RowDeselectEvent fire
+	 * respectively, and this is used for either 'checkbox' or 'radio'.
+	 */
+	private void testDataTableServerEvents(BrowserDriver browserDriver, WaitingAsserter waitingAsserter,
+		String rowIndex, String[] customers) {
+
+		for (String customer : customers) {
+			String[] tokens = customer.split(" ");
+
+			String tableRowCustomersXpath = getTableRowCustomersXpath(tokens[0], tokens[1]);
+			String serverEventInfoText = serverEventInfoText("RowSelectEvent", rowIndex, arrayToString(customers));
+			verifyClickWaitAssertText(browserDriver, waitingAsserter, tableRowCustomersXpath,
+				ASSERT_SERVER_EVENT_INFO_TEXT_XPATH, serverEventInfoText);
+
+			if (browserDriver.findElementsByXpath("//input[contains(@type,'checkbox')]").isEmpty()) {
+
+				metaOrCommandClick(browserDriver, tableRowCustomersXpath);
+			}
+			else {
+				browserDriver.clickElement(tableRowCustomersXpath);
+			}
+
+			waitingAsserter.assertElementDisplayed(alloyMessageXpath(
+					serverEventInfoText("RowDeselectEvent", rowIndex, arrayToString(customers))));
+			verifyClickWaitAssertText(browserDriver, waitingAsserter, tableRowCustomersXpath,
+				ASSERT_SERVER_EVENT_INFO_TEXT_XPATH, serverEventInfoText);
+		}
+
+		// Reset UI state
+		navigateToUseCase(browserDriver, "dataTable", "server-events");
+	}
 }

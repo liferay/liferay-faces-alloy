@@ -17,10 +17,7 @@ import java.util.List;
 
 import org.junit.Assert;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedCondition;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 
 import com.liferay.faces.test.selenium.browser.BrowserDriver;
 import com.liferay.faces.test.showcase.TesterBase;
@@ -36,30 +33,14 @@ public class DataTester extends TesterBase {
 	protected static final String modalDialogXpath = "(//div[contains(@class,'yui3-widget-modal')])[1]";
 
 	protected final void assertListChildElementCount(BrowserDriver browserDriver, String listType, String listItemTag,
-		int expecteds) {
+		int expectedCount) {
 		String listItemXpath = "(//div[@class='showcase-example']//" + listType + "//" + listItemTag + ")";
 
 		List<WebElement> elements = browserDriver.findElementsByXpath(listItemXpath);
 		Assert.assertNotNull("Element " + listItemXpath + " is not present in the DOM.", elements);
 
 		int elementsSize = elements.size();
-		Assert.assertEquals("Element " + listItemXpath + " does not equal \"" + expecteds + "\". Instead it equals \"" +
-			elementsSize + "\".", expecteds, elementsSize);
-	}
-
-	protected String getNavigationButtonXpath(String buttonOnClickText) {
-		return
-			"//div[contains(@class,'alloy-paginator')]//ul[contains(@class,'pagination')]//li//*[contains(@onclick,'" +
-			buttonOnClickText + "')]";
-	}
-
-	protected ExpectedCondition<Boolean> textPresentInElementClass(String text, String elementXpath) {
-
-		By locator = By.xpath(elementXpath);
-		ExpectedCondition<WebElement> elementDisplayed = ExpectedConditions.visibilityOfElementLocated(locator);
-		ExpectedCondition<Boolean> textPresentInElementClass = ExpectedConditions.attributeContains(locator, "class",
-				text);
-
-		return ExpectedConditions.and(elementDisplayed, textPresentInElementClass);
+		Assert.assertEquals("Element " + listItemXpath + " does not equal \"" + expectedCount +
+			"\". Instead it equals \"" + elementsSize + "\".", expectedCount, elementsSize);
 	}
 }
