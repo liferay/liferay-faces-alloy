@@ -32,11 +32,11 @@ import com.liferay.faces.alloy.component.tab.Tab;
 import com.liferay.faces.alloy.component.tab.TabCollapseEvent;
 import com.liferay.faces.alloy.component.tab.TabExpandEvent;
 import com.liferay.faces.alloy.component.tab.TabUtil;
-import com.liferay.faces.util.component.ComponentUtil;
 import com.liferay.faces.util.component.Styleable;
 import com.liferay.faces.util.helper.IntegerHelper;
 import com.liferay.faces.util.logging.Logger;
 import com.liferay.faces.util.logging.LoggerFactory;
+import com.liferay.faces.util.render.JavaScriptFragment;
 import com.liferay.faces.util.render.RendererUtil;
 
 
@@ -67,7 +67,6 @@ public class AccordionRenderer extends AccordionRendererBase {
 	private static final String HEADER_COLLAPSED_CLASSES = "header toggler-header toggler-header-collapsed";
 	private static final String HEADER_EXPANDED_CLASSES = "header toggler-header toggler-header-expanded";
 	private static final String EXPANDED = "expanded";
-	private static final String EXPANDED_CHANGE = "expandedChange";
 
 	// Logger
 	private static final Logger logger = LoggerFactory.getLogger(AccordionRenderer.class);
@@ -108,12 +107,13 @@ public class AccordionRenderer extends AccordionRendererBase {
 				int rowCount = accordion.getRowCount();
 
 				for (int i = 0; i < rowCount; i++) {
+
 					accordion.setRowIndex(i);
 
 					if (prototypeChildTab.isRendered()) {
 
 						boolean selected = ((selectedIndex != null) && (i == selectedIndex));
-						encodeHeader(facesContext, responseWriter, uiComponent, prototypeChildTab, selected);
+						encodeHeader(facesContext, responseWriter, uiComponent, prototypeChildTab, selected, i);
 						encodeContent(facesContext, responseWriter, uiComponent, prototypeChildTab, selected);
 					}
 				}
@@ -134,11 +134,15 @@ public class AccordionRenderer extends AccordionRendererBase {
 
 				UIComponent child = children.get(i);
 
-				if ((child instanceof Tab) && child.isRendered()) {
-					Tab childTab = (Tab) child;
-					boolean selected = ((selectedIndex != null) && (i == selectedIndex));
-					encodeHeader(facesContext, responseWriter, uiComponent, childTab, selected);
-					encodeContent(facesContext, responseWriter, uiComponent, childTab, selected);
+				if ((child instanceof Tab)) {
+
+					if (child.isRendered()) {
+
+						Tab childTab = (Tab) child;
+						boolean selected = ((selectedIndex != null) && (i == selectedIndex));
+						encodeHeader(facesContext, responseWriter, uiComponent, childTab, selected, i);
+						encodeContent(facesContext, responseWriter, uiComponent, childTab, selected);
+					}
 				}
 				else {
 					logger.warn("Unable to render child element of alloy:accordion since it is not alloy:tab");
@@ -177,22 +181,11 @@ public class AccordionRenderer extends AccordionRendererBase {
 	@Override
 	public void encodeJavaScriptCustom(FacesContext facesContext, UIComponent uiComponent) throws IOException {
 
-		// The outermost div was initially styled with "display:none;" in order to prevent blinking when Alloy's
-		// JavaScript attempts to hide the div. At this point in JavaScript execution, Alloy is done manipulating the
-		// DOM and it is necessary to set the style back to "display:block;" so that the component will be visible.
-		ResponseWriter responseWriter = facesContext.getResponseWriter();
-		responseWriter.write("A.one('");
-
-		String clientId = uiComponent.getClientId(facesContext);
-		String escapedClientId = "#" + ComponentUtil.escapeClientId(clientId);
-		responseWriter.write(escapedClientId);
-		responseWriter.write("')._node['style'].display='block';");
-
 		// Encode a script that will handle the client-side state of the selected tab index, as well as submitting
 		// Ajax requests to support server-side events.
 		Accordion accordion = (Accordion) uiComponent;
 
-		// var clientVarName = Liferay.component('clientKey');
+		// var accordionClientVarName = Liferay.component('{clientKey}');
 		String clientVarName = getClientVarName(facesContext, accordion);
 		String clientKey = accordion.getClientKey();
 
@@ -200,61 +193,58 @@ public class AccordionRenderer extends AccordionRendererBase {
 			clientKey = clientVarName;
 		}
 
-		// var clientVar = Liferay.component('clientVarName');
+		ResponseWriter responseWriter = facesContext.getResponseWriter();
 		encodeLiferayComponentVar(responseWriter, clientVarName, clientKey);
 
-		// Workaround FACES-3081 Accordion selected index and events use cases fail when multiple="true"
-		if (accordion.isMultiple()) {
+		// Expand the selected tab.
+		Integer selectedIndex = accordion.getSelectedIndex();
 
-			responseWriter.write(clientVarName);
-			responseWriter.write(".set('closeAllOnExpand', false);");
+		if ((selectedIndex != null) && (selectedIndex > -1)) {
+
+			int clientSideTabIndex = 0;
+			List<UIComponent> children = accordion.getChildren();
+			int childCount = accordion.getChildCount();
+
+			for (int i = 0; i < childCount; i++) {
+
+				UIComponent child = children.get(i);
+
+				if ((child instanceof Tab) && child.isRendered()) {
+
+					Tab childTab = (Tab) child;
+
+					if (!childTab.isDisabled() && (i == selectedIndex)) {
+
+						// accordionClientVarName.items[clientSideTabIndexString].expand();
+						responseWriter.write(clientVarName);
+						responseWriter.write(".items[");
+						responseWriter.write(Integer.toString(clientSideTabIndex));
+						responseWriter.write("].expand();");
+
+						break;
+					}
+
+					clientSideTabIndex++;
+				}
+			}
 		}
 
-		responseWriter.write("var togglers=");
-		responseWriter.write(clientVarName);
-		responseWriter.write(".items;");
+		// LFAI.initAccordion(multiple, accordionClientVarName, '{clientId}selectedIndex', '{clientId}',
+		// [tabExpandClientBehaviorScriptFunction1, tabExpandClientBehaviorScriptFunction2,
+		// tabExpandClientBehaviorScriptFunction3], '{clientId}collapsedTabIndex',
+		// [tabCollapseClientBehaviorScriptFunction1, tabCollapseClientBehaviorScriptFunction2,
+		// tabCollapseClientBehaviorScriptFunction3]);
+		boolean multiple = accordion.isMultiple();
+		String clientId = accordion.getClientId(facesContext);
 
-		responseWriter.write("var totalTogglers=togglers.length;");
+		StringBuilder tabExpandedClientBehaviors = new StringBuilder();
+		tabExpandedClientBehaviors.append("[");
 
-		responseWriter.write("for(var i=0;i<totalTogglers;i++){");
+		StringBuilder tabCollapsedClientBehaviors = new StringBuilder();
+		tabCollapsedClientBehaviors.append("[");
 
-		StringBuilder behaviorCallback = new StringBuilder();
-
-		//J-
-		// var eventTabIndex = 0, togglers = j_idt23.items, total = togglers.length, i = 0;
-		// for (i = 0; i < total; i++) {
-		//	   if (togglers[i] == event.target) {
-		//		   eventTabIndex = i;
-		//	   }
-		// };
-		//J+
-
-		behaviorCallback.append("var eventTabIndex=0,togglers=");
-		behaviorCallback.append(clientVarName);
-		behaviorCallback.append(
-			".items,total=togglers.length,i=0;for(i=0;i<total;i++){if(togglers[i]==event.target){eventTabIndex=i;}};");
-
-		// var hidden = document.getElementById('${clientId}selectedIndex');
-		String hiddenFieldId = clientId + "selectedIndex";
-		behaviorCallback.append("var hidden=document.getElementById('");
-		behaviorCallback.append(hiddenFieldId);
-		behaviorCallback.append("');");
-
-		// var prevTabIndex = hidden.value;
-		behaviorCallback.append("var prevTabIndex=hidden.value;");
-
-		//J-
-		// if (event.newVal) {
-		//	   hidden.value=eventTabIndex;
-		// }
-		//	   else if (prevTabIndex==eventTabIndex) {
-		//		   hidden.value='';
-		//	   }
-		// }
-		//J+
-		behaviorCallback.append(
-			"if(event.newVal){hidden.value=eventTabIndex;}else if (prevTabIndex==eventTabIndex){hidden.value='';};");
-
+		boolean firstTabExpandedClientBehavior = true;
+		boolean firstTabCollapsedClientBehavior = true;
 		Map<String, List<ClientBehavior>> clientBehaviorMap = accordion.getClientBehaviors();
 		Collection<String> eventNames = accordion.getEventNames();
 
@@ -267,46 +257,53 @@ public class AccordionRenderer extends AccordionRendererBase {
 
 					ClientBehaviorContext clientBehaviorContext = ClientBehaviorContext.createClientBehaviorContext(
 							facesContext, accordion, eventName, clientId, null);
-					String clientBehaviorScript = clientBehavior.getScript(clientBehaviorContext);
 
-					// If <f:ajax event="tabExpanded" /> is specified in the view, then render a script that submits
+					// If <f:ajax event="tabExpand" /> is specified in the view, then render a script that submits
 					// an Ajax request.
 					if (TabExpandEvent.TAB_EXPAND.equals(eventName)) {
 
+						if (!firstTabExpandedClientBehavior) {
+							tabExpandedClientBehaviors.append(",");
+						}
+
 						//J-
-						// if (event.newVal) {
-						//	   jsf.ajax.request(this, event, {'javax.faces.behavior.event': 'tabExpand'});
-						// }
+						// function(event) {
+						//	jsf.ajax.request(this, event, {'javax.faces.behavior.event': 'tabSelect'})
+						// };
 						//J+
-						behaviorCallback.append("if(event.newVal){");
-						behaviorCallback.append(clientBehaviorScript);
-						behaviorCallback.append("}");
+						tabExpandedClientBehaviors.append("function(event){");
+						tabExpandedClientBehaviors.append(clientBehavior.getScript(clientBehaviorContext));
+						tabExpandedClientBehaviors.append("}");
+						firstTabExpandedClientBehavior = false;
 					}
 
-					// Similarly, if <f:ajax event="tabCollapsed" /> is specified in the view, then render a script
-					// that submits an Ajax request.
+					// If <f:ajax event="tabCollapse" /> is specified in the view, then render a script that submits
+					// an Ajax request.
 					else if (TabCollapseEvent.TAB_COLLAPSE.equals(eventName)) {
 
+						if (!firstTabCollapsedClientBehavior) {
+							tabCollapsedClientBehaviors.append(",");
+						}
+
 						//J-
-						// if ((!event.newVal) && (prevTabIndex == eventTabIndex)) {
-						//	   document.getElementById('${clientId}collapsedTabIndex').value=prevTabIndex;
-						//	   jsf.ajax.request(this, event, {'javax.faces.behavior.event': 'tabCollapse'});
-						// }
+						// function(event) {
+						//	jsf.ajax.request(this, event, {'javax.faces.behavior.event': 'tabSelect'})
+						// };
 						//J+
-						behaviorCallback.append("if((!event.newVal)&&(prevTabIndex==eventTabIndex)){");
-						behaviorCallback.append("document.getElementById('");
-						behaviorCallback.append(clientId);
-						behaviorCallback.append("collapsedTabIndex').value=prevTabIndex;");
-						behaviorCallback.append(clientBehaviorScript);
-						behaviorCallback.append("}");
+						tabCollapsedClientBehaviors.append("function(event){");
+						tabCollapsedClientBehaviors.append(clientBehavior.getScript(clientBehaviorContext));
+						tabCollapsedClientBehaviors.append("}");
+						firstTabCollapsedClientBehavior = false;
 					}
 				}
 			}
 		}
 
-		encodeEventCallback(responseWriter, "togglers[i]", "after", EXPANDED_CHANGE, behaviorCallback.toString());
-
-		responseWriter.write("}");
+		tabExpandedClientBehaviors.append("]");
+		tabCollapsedClientBehaviors.append("]");
+		encodeFunctionCall(responseWriter, "LFAI.initAccordion", multiple, new JavaScriptFragment(clientVarName),
+			clientId + "selectedIndex", clientId, new JavaScriptFragment(tabExpandedClientBehaviors.toString()),
+			clientId + "collapsedTabIndex", new JavaScriptFragment(tabCollapsedClientBehaviors.toString()));
 	}
 
 	@Override
@@ -362,7 +359,7 @@ public class AccordionRenderer extends AccordionRendererBase {
 	}
 
 	protected void encodeHeader(FacesContext facesContext, ResponseWriter responseWriter, UIComponent uiComponent,
-		Tab tab, boolean selected) throws IOException {
+		Tab tab, boolean selected, int serverSideIndex) throws IOException {
 
 		// Encode the starting <div> element that represents the specified tab's header.
 		responseWriter.startElement("div", tab);
@@ -381,6 +378,7 @@ public class AccordionRenderer extends AccordionRendererBase {
 			headerClass += " " + tabHeaderClass;
 		}
 
+		headerClass += " serverSideIndex" + serverSideIndex;
 		responseWriter.writeAttribute("class", headerClass, Styleable.STYLE_CLASS);
 
 		// If the header facet exists for the specified tab, then encode the header facet.

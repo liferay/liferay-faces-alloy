@@ -598,7 +598,91 @@ LFAI = {
 		});
 	},
 
+	initTabView: function(tabView, selectedIndexClientId, clientId, tabSelectClientBehaviors) {
+
+		tabView.after('selectionChange', function(event) {
+
+			var selectedIndexInput = document.getElementById(selectedIndexClientId);
+
+			if (event.newVal) {
+
+				selectedIndexInput.value = LFAI.getServerSideIndex(event.newVal.get('srcNode').get('parentNode'));
+
+				for (var i = 0; i < tabSelectClientBehaviors.length; i++) {
+					tabSelectClientBehaviors[i]();
+				}
+			}
+			else {
+				selectedIndexInput.value='';
+			}
+		});
+
+		// The outermost div was initially styled with "display:none;" in order to prevent blinking when Alloy's
+		// JavaScript attempts to hide the div. At this point in JavaScript execution, Alloy is done manipulating the
+		// DOM and it is necessary to reset the style so that the component will be visible.
+		document.getElementById(clientId).style.display = null;
+	},
+
+	initAccordion: function(multiple, accordion, selectedIndexClientId, clientId, tabExpandedClientBehaviors,
+		collapsedTabIndexClientId, tabCollapsedClientBehaviors) {
+
+		// Workaround FACES-3081 Accordion selected index and events use cases fail when multiple="true"
+		if (multiple) {
+			accordion.set('closeAllOnExpand', false);
+		}
+
+		var togglers = accordion.items;
+
+		for (var i = 0; i < togglers.length; i++) {
+
+			togglers[i].after('expandedChange', function(event) {
+
+				var selectedIndexInput = document.getElementById(selectedIndexClientId),
+				prevTabIndex = selectedIndexInput.value,
+				eventTabIndex = LFAI.getServerSideIndex(event.target.get('header'));
+
+				if (event.newVal) {
+
+					selectedIndexInput.value = eventTabIndex;
+
+					for (var i = 0; i < tabExpandedClientBehaviors.length; i++) {
+						tabExpandedClientBehaviors[i]();
+					}
+				}
+				else if (prevTabIndex === eventTabIndex) {
+
+					selectedIndexInput.value = '';
+					document.getElementById(collapsedTabIndexClientId).value = prevTabIndex;
+
+					for (var i = 0; i < tabCollapsedClientBehaviors.length; i++) {
+						tabCollapsedClientBehaviors[i]();
+					}
+				}
+			});
+		}
+
+		// The outermost div was initially styled with "display:none;" in order to prevent blinking when Alloy's
+		// JavaScript attempts to hide the div. At this point in JavaScript execution, Alloy is done manipulating the
+		// DOM and it is necessary to reset the style so that the component will be visible.
+		document.getElementById(clientId).style.display = null;
+	},
+
 	getCenteredMargin: function(pixels) {
 		return (-1 * (parseInt(pixels, 10)/2.0)) + 'px';
+	},
+
+	/**
+	 * Returns the server-side selected index (which may differ from the client-side selected index) which was encoded
+	 * as a class name "serverSideIndex{index}".
+	 */
+	getServerSideIndex: function(node) {
+
+		// Remove "serverSideIndex" and any text before it from the beginning of the cssClasses.
+		var cssClasses = node.get('className'),
+		i = cssClasses.indexOf('serverSideIndex'),
+		serverSideIndex = cssClasses.substr(i + 'serverSideIndex'.length);
+
+		// Return the digits at the beginning of the string as the serverSideIndex.
+		return serverSideIndex.match(/^\d+/)[0];
 	}
 };
