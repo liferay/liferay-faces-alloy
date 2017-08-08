@@ -14,15 +14,15 @@
 package com.liferay.faces.alloy.component.datalist.internal;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
+import javax.faces.component.UIColumn;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIData;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 import javax.faces.render.FacesRenderer;
 
+import com.liferay.faces.alloy.component.data.internal.DataEncoderBase;
 import com.liferay.faces.alloy.component.dataitem.DataItem;
 import com.liferay.faces.alloy.component.datalist.DataList;
 import com.liferay.faces.util.component.Styleable;
@@ -41,7 +41,6 @@ import com.liferay.faces.util.render.RendererUtil;
 public class DataListRenderer extends DataListRendererBase {
 
 	// Private constants
-	private static final String ITEM = "item";
 	private static final String DESCRIPTION = "description";
 	private static final String ORDERED = "ordered";
 	private static final String UNORDERED = "unordered";
@@ -77,87 +76,17 @@ public class DataListRenderer extends DataListRendererBase {
 	public void encodeChildren(FacesContext facesContext, UIComponent uiComponent) throws IOException {
 
 		DataList dataList = (DataList) uiComponent;
-		String type = dataList.getType();
 		UIComponent facet = dataList.getFacet(DESCRIPTION);
-		String styleClass = dataList.getStyleClass();
-
-		Object value = dataList.getValue();
-		String var = dataList.getVar();
-		boolean iterateOverDataModel = ((value != null) && (var != null));
-		ResponseWriter responseWriter = facesContext.getResponseWriter();
 
 		String itemTag = "li";
+		String type = dataList.getType();
 
 		if (DESCRIPTION.equals(type)) {
 			itemTag = "dt";
 		}
 
-		if (iterateOverDataModel) {
-
-			// Get the first child and use it as a prototype.
-			DataItem prototypeChildDataItem = getFirstChildDataItem(dataList);
-
-			if (prototypeChildDataItem == null) {
-				logger.warn("Unable to iterate because alloy:dataList does not have an alloy:dataItem child element.");
-			}
-			else {
-
-				int rowCount = dataList.getRowCount();
-
-				for (int i = 0; i < rowCount; i++) {
-					dataList.setRowIndex(i);
-
-					// Encode the starting element that represents the specified child's content.
-					responseWriter.startElement(itemTag, prototypeChildDataItem);
-					RendererUtil.encodeStyleable(responseWriter, prototypeChildDataItem);
-
-					// Encode the children of the specified child as the actual content.
-					prototypeChildDataItem.encodeAll(facesContext);
-
-					// Encode the closing element for the specified child.
-					responseWriter.endElement(itemTag);
-
-					if (facet != null) {
-						responseWriter.startElement("dd", uiComponent);
-						responseWriter.writeAttribute("class", styleClass + "-" + DESCRIPTION, "class");
-						facet.encodeAll(facesContext);
-						responseWriter.endElement("dd");
-					}
-				}
-
-				dataList.setRowIndex(-1);
-			}
-		}
-
-		// Otherwise, encode content for each child of the specified dataList.
-		else {
-			List<UIComponent> children = uiComponent.getChildren();
-			int childCount = children.size();
-
-			for (int i = 0; i < childCount; i++) {
-
-				UIComponent child = children.get(i);
-
-				if (child.isRendered() && (child instanceof DataItem)) {
-					DataItem childDataItem = (DataItem) child;
-
-					// Encode the starting element that represents the specified child's content.
-					responseWriter.startElement(itemTag, childDataItem);
-					RendererUtil.encodeStyleable(responseWriter, childDataItem);
-
-					// Encode the children of the specified child as the actual content.
-					childDataItem.encodeAll(facesContext);
-
-					// Encode the closing element for the specified child.
-					responseWriter.endElement(itemTag);
-				}
-				else {
-					logger.warn("Unable to render child element of alloy:dataList since it is not alloy:dataItem");
-				}
-			}
-		}
-
-		dataList.setRowIndex(-1);
+		DataEncoderBase dataEncoder = new DataEncoderDataItemImpl(facet, itemTag);
+		dataEncoder.encodeColumns(facesContext, dataList);
 	}
 
 	@Override
@@ -184,32 +113,69 @@ public class DataListRenderer extends DataListRendererBase {
 		return true;
 	}
 
-	protected List<DataItem> getChildDataItems(UIData uiData) {
+	private static class DataEncoderDataItemImpl extends DataEncoderBase {
 
-		List<DataItem> childDataItems = new ArrayList<DataItem>();
+		// Private Final Data Members
+		private final UIComponent facet;
+		private final String itemTag;
 
-		List<UIComponent> children = uiData.getChildren();
+		public DataEncoderDataItemImpl(UIComponent facet, String itemTag) {
 
-		for (UIComponent child : children) {
+			this.facet = facet;
+			this.itemTag = itemTag;
+		}
 
-			if (child instanceof DataItem) {
-				childDataItems.add((DataItem) child);
+		@Override
+		protected void encodeColumn(FacesContext facesContext, UIData uiData, UIColumn currentUIColumn,
+			int currentIndex) throws IOException {
+
+			if (currentUIColumn.isRendered() && (currentUIColumn instanceof DataItem)) {
+
+				// Encode the starting element that represents the specified child's content.
+				ResponseWriter responseWriter = facesContext.getResponseWriter();
+				DataItem childDataItem = (DataItem) currentUIColumn;
+				responseWriter.startElement(itemTag, childDataItem);
+				RendererUtil.encodeStyleable(responseWriter, childDataItem);
+
+				// Encode the children of the specified child as the actual content.
+				childDataItem.encodeAll(facesContext);
+
+				// Encode the closing element for the specified child.
+				responseWriter.endElement(itemTag);
+
+				if (facet != null) {
+
+					if (isIterateOverDataModel(uiData)) {
+
+						DataList dataList = (DataList) uiData;
+						String type = dataList.getType();
+
+						if (DESCRIPTION.equals(type)) {
+
+							responseWriter.startElement("dd", uiData);
+
+							String styleClass = dataList.getStyleClass();
+							responseWriter.writeAttribute("class", styleClass + "-" + DESCRIPTION, "class");
+							facet.encodeAll(facesContext);
+							responseWriter.endElement("dd");
+						}
+						else {
+							logger.warn(
+								"Ignoring description facet since alloy:dataList type [{0}] is not \"description\".",
+								type);
+						}
+					}
+					else {
+						logger.warn(
+							"Ignoring description facet since the value and var attributes are not specified on alloy:dataList.");
+					}
+				}
 			}
 		}
 
-		return childDataItems;
-	}
-
-	protected DataItem getFirstChildDataItem(UIData uiData) {
-
-		DataItem prototypeChildType = null;
-
-		List<DataItem> childDataItems = getChildDataItems(uiData);
-
-		if (childDataItems.size() > 0) {
-			prototypeChildType = childDataItems.get(0);
+		@Override
+		protected Class<? extends UIColumn> getColumnClass() {
+			return DataItem.class;
 		}
-
-		return prototypeChildType;
 	}
 }
