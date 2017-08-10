@@ -29,7 +29,7 @@ public class DataListTesterBase extends DataTesterBase {
 		};
 	protected static final String[] DESCRIPTION_LIST_DETAILS = new String[] {
 			"Liferay lets you reuse the enterprise software and skills you already have in-house.",
-			"Liferay is designed for scalability, reliablity, and high performance both on-premise and in the cloud.",
+			"Liferay is designed for scalability, reliability, and high performance both on-premise and in the cloud.",
 			"Liferay is designed for integrating with both enterprise systems and web-based resources.",
 			"With Liferay, projects are completed faster and with smaller budgets so you can see immediate results.",
 			"Our open source community fosters innovation, increase security, and improves quality of the software."
