@@ -42,11 +42,15 @@ public class DataTableLazyTester extends DataTableTesterBase {
 		WaitingAsserter waitingAsserter = getWaitingAsserter();
 		testPaginator(browserDriver, waitingAsserter, componentUseCase);
 
-		// 3. Take note of how many rows are in each page, clicking the *Next* button until a total count of all the
+		// 3. Select "100" from the *Rows Per Page" dropdown list (reduces the number of *Next* button clicks in the
+		// following step).
+		clickOptionAndWaitForRerender(browserDriver, getDropDownListXpath("Rows Per Page", "100"));
+
+		// 4. Take note of how many rows are in each page, clicking the *Next* button until a total count of all the
 		// rows has been noted.
 		List<Customer> customers = extractCustomersFromAllPages(browserDriver, componentUseCase);
 
-		// 4. Verify that 162 total rows were displayed.
+		// 5. Verify that 162 total rows were displayed.
 		Assert.assertEquals(customers.size(), TOTAL_CUSTOMERS);
 	}
 }

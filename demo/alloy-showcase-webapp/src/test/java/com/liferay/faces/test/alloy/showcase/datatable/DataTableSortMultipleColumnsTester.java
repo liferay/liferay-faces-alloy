@@ -50,13 +50,17 @@ public class DataTableSortMultipleColumnsTester extends DataTableTesterBase {
 		// 3. Navigate to the "Sort (Multiple Column)" use case in order to reset the state of the UI.
 		navigateToUseCase(browserDriver, DATA_TABLE, componentUseCase);
 
-		// 4. Click the *Last Name* header in order to sort the table primarily by last name in ascending order and
+		// 4. Select "100" from the *Rows Per Page" dropdown list (reduces the number of *Next* button clicks in the
+		// following steps).
+		clickOptionAndWaitForRerender(browserDriver, getDropDownListXpath("Rows Per Page", "100"));
+
+		// 5. Click the *Last Name* header in order to sort the table primarily by last name in ascending order and
 		// verify that the sort indication icon is pointed up.
 		browserDriver.centerElementInCurrentWindow(LAST_NAME_HEADER_XPATH);
 		browserDriver.clickElementAndWaitForRerender(LAST_NAME_HEADER_XPATH);
 		waitingAsserter.assertElementDisplayed(SORTED_ASCENDING_ICON_XPATH);
 
-		// 5. Click the *Date of Birth* header while holding down the meta or command key in order to sort the table
+		// 6. Click the *Date of Birth* header while holding down the meta or command key in order to sort the table
 		// secondarily by date of birth in ascending order.
 		WebElement rerenderElement = browserDriver.findElementByXpath(DATE_OF_BIRTH_HEADER_XPATH);
 		browserDriver.centerElementInCurrentWindow(DATE_OF_BIRTH_HEADER_XPATH);
@@ -64,11 +68,11 @@ public class DataTableSortMultipleColumnsTester extends DataTableTesterBase {
 		browserDriver.waitFor(ExpectedConditions.stalenessOf(rerenderElement));
 		browserDriver.waitForElementDisplayed(DATE_OF_BIRTH_HEADER_XPATH);
 
-		// 6. Take note of each customer shown in the table, clicking the *Next* button until all the customers in
+		// 7. Take note of each customer shown in the table, clicking the *Next* button until all the customers in
 		// the table have been noted.
 		List<Customer> actualCustomers = extractCustomersFromAllPages(browserDriver, componentUseCase);
 
-		// 7. Verify that the list of noted customers is sorted primarily by last name, and secondarily by date of
+		// 8. Verify that the list of noted customers is sorted primarily by last name, and secondarily by date of
 		// birth.
 		List<Customer> expectedCustomers = new ArrayList<Customer>(actualCustomers);
 		Collections.sort(expectedCustomers, new CustomerComparator());
