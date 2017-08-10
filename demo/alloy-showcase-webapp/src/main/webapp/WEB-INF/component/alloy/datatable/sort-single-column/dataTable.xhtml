@@ -5,6 +5,17 @@
 	<ui:define name="col1">
 		<alloy:form id="myForm">
 			<showcase:example id="ex1" renderedCheckbox="true">
+				<alloy:field label="#{i18n['rows-per-page']}">
+					<alloy:selectOneMenu value="#{dataTableBacking.rowsPerPage}">
+						<f:selectItem itemLabel="5" itemValue="5" />
+						<f:selectItem itemLabel="10" itemValue="10" />
+						<f:selectItem itemLabel="25" itemValue="25" />
+						<f:selectItem itemLabel="50" itemValue="50" />
+						<f:selectItem itemLabel="75" itemValue="75" />
+						<f:selectItem itemLabel="100" itemValue="100" />
+						<f:ajax render="@form" />
+					</alloy:selectOneMenu>
+				</alloy:field>
 				<alloy:dataTable id="customerTable" rendered="#{showcaseModelBean.selectedComponent.rendered}"
 					rows="#{dataTableBacking.rowsPerPage}" value="#{dataTableBacking.customerOnDemandDataModel}"
 					var="customer">
