@@ -94,18 +94,25 @@ public class DataTablePaginationTester extends DataTableTesterBase {
 		waitingAsserter.assertTextPresentInElement("Results 1-5 of " + TOTAL_CUSTOMERS + " (Page 1 of 33)",
 			defaultPositionXpath);
 
-		// Select "15" from the *Rows Per Page* dropdown list and verify that only 15 rows are displayed.
-		clickOptionAndWaitForRerender(browserDriver, getDropDownListXpath("Rows Per Page", "15"));
-		browserDriver.waitForElementDisplayed(getDropDownListXpath("Rows Per Page", "15") + "[@selected='selected']");
-		assertListChildElementCount(browserDriver, "tbody", "tr", 15);
-		waitingAsserter.assertTextPresentInElement("Results 1-15 of " + TOTAL_CUSTOMERS + " (Page 1 of 11)",
+		// Select "25" from the *Rows Per Page* dropdown list and verify that only 25 rows are displayed.
+		clickOptionAndWaitForRerender(browserDriver, getDropDownListXpath("Rows Per Page", "25"));
+		browserDriver.waitForElementDisplayed(getDropDownListXpath("Rows Per Page", "25") + "[@selected='selected']");
+		assertListChildElementCount(browserDriver, "tbody", "tr", 25);
+		waitingAsserter.assertTextPresentInElement("Results 1-25 of " + TOTAL_CUSTOMERS + " (Page 1 of 7)",
 			defaultPositionXpath);
 
-		// Select "20" from the *Rows Per Page* dropdown list and verify that only 20 rows are displayed.
-		clickOptionAndWaitForRerender(browserDriver, getDropDownListXpath("Rows Per Page", "20"));
-		browserDriver.waitForElementDisplayed(getDropDownListXpath("Rows Per Page", "20") + "[@selected='selected']");
-		assertListChildElementCount(browserDriver, "tbody", "tr", 20);
-		waitingAsserter.assertTextPresentInElement("Results 1-20 of " + TOTAL_CUSTOMERS + " (Page 1 of 9)",
+		// Select "50" from the *Rows Per Page* dropdown list and verify that only 50 rows are displayed.
+		clickOptionAndWaitForRerender(browserDriver, getDropDownListXpath("Rows Per Page", "50"));
+		browserDriver.waitForElementDisplayed(getDropDownListXpath("Rows Per Page", "50") + "[@selected='selected']");
+		assertListChildElementCount(browserDriver, "tbody", "tr", 50);
+		waitingAsserter.assertTextPresentInElement("Results 1-50 of " + TOTAL_CUSTOMERS + " (Page 1 of 4)",
+			defaultPositionXpath);
+
+		// Select "100" from the *Rows Per Page* dropdown list and verify that only 100 rows are displayed.
+		clickOptionAndWaitForRerender(browserDriver, getDropDownListXpath("Rows Per Page", "100"));
+		browserDriver.waitForElementDisplayed(getDropDownListXpath("Rows Per Page", "100") + "[@selected='selected']");
+		assertListChildElementCount(browserDriver, "tbody", "tr", 100);
+		waitingAsserter.assertTextPresentInElement("Results 1-100 of " + TOTAL_CUSTOMERS + " (Page 1 of 2)",
 			defaultPositionXpath);
 
 		// Select "10" from the *Rows Per Page* dropdown list and verify that only 10 rows are displayed.
