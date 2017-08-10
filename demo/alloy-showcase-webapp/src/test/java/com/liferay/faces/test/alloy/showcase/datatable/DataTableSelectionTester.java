@@ -13,7 +13,7 @@
  */
 package com.liferay.faces.test.alloy.showcase.datatable;
 
-import java.util.LinkedList;
+import java.util.List;
 
 import org.junit.Test;
 
@@ -24,20 +24,28 @@ import com.liferay.faces.test.selenium.browser.WaitingAsserter;
 /**
  * @author  Kyle Stiemann
  * @author  Philip White
+ * @author  Neil Griffin
  */
-public class DataTableSelectionTester extends DataTableTester {
+public class DataTableSelectionTester extends DataTableTesterBase {
 
 	@Test
 	public void runDataTableSelectionTest() throws Exception {
+
+		// 1. Navigate to the "Selection" use case in order to reset the state of the UI.
 		BrowserDriver browserDriver = getBrowserDriver();
 		String componentUseCase = "selection";
-		navigateToUseCase(browserDriver, "dataTable", componentUseCase);
+		navigateToUseCase(browserDriver, DATA_TABLE, componentUseCase);
 
+		// 2. Verify that the paginator is working correctly by making sure that the first customer on page 1 is not
+		// present on page 2, etc.
 		WaitingAsserter waitingAsserter = getWaitingAsserter();
-		testPagesPagination(browserDriver, waitingAsserter, true);
+		testPaginator(browserDriver, waitingAsserter, componentUseCase);
 
-		LinkedList<String> firstPageFullNames = getFirstPageFullNames(browserDriver, componentUseCase,
-				FIRST_NAME_CELL_SELECTION_XPATH, LAST_NAME_CELL_SELECTION_XPATH);
-		testDataTableSelection(browserDriver, waitingAsserter, componentUseCase, firstPageFullNames);
+		// 3. Navigate to the "Selection" use case in order to reset the state of the UI.
+		navigateToUseCase(browserDriver, DATA_TABLE, componentUseCase);
+
+		// 4. Verify that rows are selected/deselected when clicking on the corresponding checkbox or radio button.
+		List<Customer> customersOnPage1 = extractCustomersFromCurrentPage(browserDriver, componentUseCase);
+		testDataTableSelection(browserDriver, waitingAsserter, componentUseCase, customersOnPage1);
 	}
 }

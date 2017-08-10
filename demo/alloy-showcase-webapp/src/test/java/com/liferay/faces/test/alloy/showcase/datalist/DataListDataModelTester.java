@@ -23,38 +23,37 @@ import com.liferay.faces.test.selenium.browser.WaitingAsserter;
  * @author  Kyle Stiemann
  * @author  Philip White
  */
-public class DataListDataModelTester extends DataListTester {
+public class DataListDataModelTester extends DataListTesterBase {
 
 	@Test
 	public void runDataListDataModelTest() throws Exception {
 
+		// 1. Navigate to the "Data Model" use case in order to reset the state of the UI.
 		BrowserDriver browserDriver = getBrowserDriver();
 		navigateToUseCase(browserDriver, "dataList", "data-model");
 
-		// Verify that five list items appear on each example of list types.
-		assertListChildElementCount(browserDriver, "dl", "dt", 5); // description type
-		assertListChildElementCount(browserDriver, "dl", "dd", 5); // description type tags
-
+		// 2. Verify that the following description list terms are displayed: Compatible, Enterprise Ready, Powerful
+		// Integration, Lightweight, and Open Source.
 		WaitingAsserter waitingAsserter = getWaitingAsserter();
 
-		// Verify that list item icons are visible.
+		for (int i = 0; i < DESCRIPTION_LIST_TERMS.length; i++) {
+			assertListItemText(waitingAsserter, "dl", "dt", i + 1, DESCRIPTION_LIST_TERMS[i]);
+		}
+
+		assertListChildElementCount(browserDriver, "dl", "dt", DESCRIPTION_LIST_TERMS.length);
+
+		// 3. Verify that each description list term has a corresponding icon displayed.
 		waitingAsserter.assertElementDisplayed("(//img[contains(@src,'icon-compatible.png')])");
 		waitingAsserter.assertElementDisplayed("(//img[contains(@src,'icon-enterprise.png')])");
 		waitingAsserter.assertElementDisplayed("(//img[contains(@src,'icon-integration.png')])");
 		waitingAsserter.assertElementDisplayed("(//img[contains(@src,'icon-lightweight.png')])");
 		waitingAsserter.assertElementDisplayed("(//img[contains(@src,'icon-open-source.png')])");
 
-		// Verify that list items' text of list type description are visible.
-		assertListItemText(waitingAsserter, "dl", "dt", 1, "Compatible");
-		assertListItemText(waitingAsserter, "dl", "dt", 2, "Enterprise Ready");
-		assertListItemText(waitingAsserter, "dl", "dt", 3, "Powerful Integration");
-		assertListItemText(waitingAsserter, "dl", "dt", 4, "Lightweight");
-		assertListItemText(waitingAsserter, "dl", "dt", 5, "Open Source");
+		// 4. Verify that each description list term has a corresponding description displayed.
+		for (int i = 0; i < DESCRIPTION_LIST_DETAILS.length; i++) {
+			assertListItemText(waitingAsserter, "dl", "dd", i + 1, DESCRIPTION_LIST_DETAILS[i]);
+		}
 
-		assertListItemText(waitingAsserter, "dl", "dd", 1, COMPATIBLE_DESCRIPTION_TEXT);
-		assertListItemText(waitingAsserter, "dl", "dd", 2, ENTERPRISE_READY_DESCRIPTION_TEXT);
-		assertListItemText(waitingAsserter, "dl", "dd", 3, POWERFUL_INTEGRATION_DESCRIPTION_TEXT);
-		assertListItemText(waitingAsserter, "dl", "dd", 4, LIGHTWEIGHT_DESCRIPTION_TEXT);
-		assertListItemText(waitingAsserter, "dl", "dd", 5, OPEN_SOURCE_DESCRIPTION_TEXT);
+		assertListChildElementCount(browserDriver, "dl", "dd", DESCRIPTION_LIST_DETAILS.length);
 	}
 }

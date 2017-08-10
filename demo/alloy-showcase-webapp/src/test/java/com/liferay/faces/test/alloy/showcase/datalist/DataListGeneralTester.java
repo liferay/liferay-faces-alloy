@@ -23,26 +23,31 @@ import com.liferay.faces.test.selenium.browser.WaitingAsserter;
  * @author  Kyle Stiemann
  * @author  Philip White
  */
-public class DataListGeneralTester extends DataListTester {
+public class DataListGeneralTester extends DataListTesterBase {
 
 	@Test
 	public void runDataListGeneralTest() throws Exception {
 
+		// 1. Navigate to the "General" use case in order to reset the state of the UI.
 		BrowserDriver browserDriver = getBrowserDriver();
 		navigateToUseCase(browserDriver, "dataList", "general");
 
-		// Verify that five list items of each list type are visible.
-		assertListChildElementCount(browserDriver, "ul", "li", 5); // unordered type
-		assertListChildElementCount(browserDriver, "ol", "li", 5); // ordered type
-		assertListChildElementCount(browserDriver, "dl", "dt", 5); // description type
-
+		// 2. For each type of list (unordered, ordered, description):
+		String[] listTypes = new String[] { "ul", "ol", "dl" };
+		String[] listItemTypes = new String[] { "li", "li", "dt" };
 		WaitingAsserter waitingAsserter = getWaitingAsserter();
 
-		// Verify that the list items' text of each list type are visible.
-		assertListItemText(waitingAsserter, "ul", "li", 1, COMPATIBLE_DESCRIPTION_TEXT);
-		assertListItemText(waitingAsserter, "ul", "li", 2, ENTERPRISE_READY_DESCRIPTION_TEXT);
-		assertListItemText(waitingAsserter, "ol", "li", 3, POWERFUL_INTEGRATION_DESCRIPTION_TEXT);
-		assertListItemText(waitingAsserter, "dl", "dt", 4, LIGHTWEIGHT_DESCRIPTION_TEXT);
-		assertListItemText(waitingAsserter, "dl", "dt", 5, OPEN_SOURCE_DESCRIPTION_TEXT);
+		for (int i = 0; i < listTypes.length; i++) {
+
+			// 2a. Verify that five list items are present in the list.
+			String listType = listTypes[i];
+			String listItemType = listItemTypes[i];
+			assertListChildElementCount(browserDriver, listType, listItemType, DESCRIPTION_LIST_DETAILS.length);
+
+			// 2b. Verify that each description list item contains the expected details.
+			for (int j = 0; j < DESCRIPTION_LIST_DETAILS.length; j++) {
+				assertListItemText(waitingAsserter, listType, listItemType, j + 1, DESCRIPTION_LIST_DETAILS[j]);
+			}
+		}
 	}
 }
