@@ -27,13 +27,14 @@ import com.liferay.faces.test.showcase.TesterBase;
  * @author  Kyle Stiemann
  * @author  Philip White
  */
-public class DataTester extends TesterBase {
+public class DataTesterBase extends TesterBase {
 
-	// Common Xpath
-	protected static final String modalDialogXpath = "(//div[contains(@class,'yui3-widget-modal')])[1]";
+	// Protected Constants
+	protected static final String MODAL_DIALOG_XPATH = "(//div[contains(@class,'yui3-widget-modal')])[1]";
 
-	protected final void assertListChildElementCount(BrowserDriver browserDriver, String listType, String listItemTag,
+	protected void assertListChildElementCount(BrowserDriver browserDriver, String listType, String listItemTag,
 		int expectedCount) {
+
 		String listItemXpath = "(//div[@class='showcase-example']//" + listType + "//" + listItemTag + ")";
 
 		List<WebElement> elements = browserDriver.findElementsByXpath(listItemXpath);

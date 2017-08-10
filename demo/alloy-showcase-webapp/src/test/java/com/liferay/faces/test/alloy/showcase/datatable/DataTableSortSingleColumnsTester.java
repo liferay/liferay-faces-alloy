@@ -13,9 +13,7 @@
  */
 package com.liferay.faces.test.alloy.showcase.datatable;
 
-import java.text.DateFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -26,152 +24,138 @@ import org.junit.Test;
 
 import com.liferay.faces.test.selenium.browser.BrowserDriver;
 import com.liferay.faces.test.selenium.browser.WaitingAsserter;
-import com.liferay.faces.util.logging.Logger;
-import com.liferay.faces.util.logging.LoggerFactory;
 
 
 /**
  * @author  Kyle Stiemann
  * @author  Philip White
+ * @author  Neil Griffin
  */
-public class DataTableSortSingleColumnsTester extends DataTableTester {
+public class DataTableSortSingleColumnsTester extends DataTableTesterBase {
 
-	// Logger
-	private static final Logger logger = LoggerFactory.getLogger(DataTableSortSingleColumnsTester.class);
+	// Private Constants
+	private static final String COMPONENT_USE_CASE = "sort-single-column";
+	private static final String FIRST_NAME_HEADER_XPATH = "//table/thead/tr/th[@scope='col'][contains(.,'First Name')]";
 
 	@Test
 	public void runDataTableSortSingleColumnsTest() throws Exception {
 
+		// 1. Navigate to the "Sort (Single Column)" use case in order to reset the state of the UI.
 		BrowserDriver browserDriver = getBrowserDriver();
-		String componentUseCase = "sort-single-column";
-		navigateToUseCase(browserDriver, "dataTable", componentUseCase);
+		navigateToUseCase(browserDriver, DATA_TABLE, COMPONENT_USE_CASE);
 
+		// 2. Verify that the paginator is working correctly by making sure that the first customer on page 1 is not
+		// present on page 2, etc.
 		WaitingAsserter waitingAsserter = getWaitingAsserter();
-		testPagesPagination(browserDriver, waitingAsserter, false);
+		testPaginator(browserDriver, waitingAsserter, COMPONENT_USE_CASE);
 
-		// Test and verify sort by first name column in both ascending and descending order.
-		verifyDataTableSort(browserDriver, waitingAsserter, FIRST_NAME_HEADER_XPATH, FIRST_NAME_CELL_XPATH,
-			componentUseCase);
-
-		// Test and verify sort by last name column in both ascending and descending order.
-		verifyDataTableSort(browserDriver, waitingAsserter, LAST_NAME_HEADER_XPATH, LAST_NAME_CELL_XPATH,
-			componentUseCase);
-
-		// Test and verify sort by date of birth column in both ascending and descending order.
-		verifyDataTableSort(browserDriver, waitingAsserter, DATE_OF_BIRTH_HEADER_XPATH, DATE_OF_BIRTH_CELL_XPATH,
-			componentUseCase, true);
+		// 3. For each column header: *First Name*, *Last Name*, and *Date of Birth*: Verify that clicking on the column
+		// header causes the tabular data to be sorted in ascending order. Also verify that a subsequent click on the
+		// column header causes the tabular data to be sorted in descending order.
+		verifyDataTableSort(browserDriver, waitingAsserter, FIRST_NAME_HEADER_XPATH);
+		verifyDataTableSort(browserDriver, waitingAsserter, LAST_NAME_HEADER_XPATH);
+		verifyDataTableSort(browserDriver, waitingAsserter, DATE_OF_BIRTH_HEADER_XPATH);
 	}
 
-	private List<String> sortDateList(List<String> dateList, Boolean reverseOrder) {
+	private void sortCustomers(List<Customer> customers, Comparator comparator, boolean ascending) {
 
-		Comparator<String> dateStringComparator = new Comparator<String>() {
-				DateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy");
-
-				@Override
-				public int compare(String o1, String o2) {
-
-					try {
-						return dateFormat.parse(o1).compareTo(dateFormat.parse(o2));
-					}
-					catch (ParseException e) {
-						throw new IllegalArgumentException(e);
-					}
-				}
-			};
-
-		if (reverseOrder.equals(true)) {
-			Collections.sort(dateList, Collections.reverseOrder(dateStringComparator));
+		if (ascending) {
+			Collections.sort(customers, comparator);
 		}
 		else {
-			Collections.sort(dateList, dateStringComparator);
+			Collections.sort(customers, Collections.reverseOrder(comparator));
 		}
-
-		return dateList;
 	}
 
-	private void verifyDataTableSort(BrowserDriver browserDriver, WaitingAsserter waitingAsserter,
-		String columnHeaderXpath, String columnElementsXpath, String componentUseCase) {
-		verifyDataTableSort(browserDriver, waitingAsserter, columnHeaderXpath, columnElementsXpath, componentUseCase,
-			false);
+	private void sortCustomers(List<Customer> customers, String columnHeaderXpath, boolean ascending) {
+
+		if (FIRST_NAME_HEADER_XPATH.equals(columnHeaderXpath)) {
+			sortCustomers(customers, new CustomerFirstNameComparator(), ascending);
+		}
+		else if (LAST_NAME_HEADER_XPATH.equals(columnHeaderXpath)) {
+			sortCustomers(customers, new CustomerLastNameComparator(), ascending);
+		}
+		else if (DATE_OF_BIRTH_HEADER_XPATH.equals(columnHeaderXpath)) {
+			sortCustomers(customers, new CustomerDateOfBirthComparator(), ascending);
+		}
 	}
 
 	/**
-	 * Verify the sorted order state after executing a column ordering feature of dataTable.
+	 * Verify that clicking on the column header targeted by the specified XPath causes the tabular data to be sorted in
+	 * ascending order, and that a subsequent click on the column header causes the tabular data to be sorted in
+	 * descending order.
 	 */
 	private void verifyDataTableSort(BrowserDriver browserDriver, WaitingAsserter waitingAsserter,
-		String columnHeaderXpath, String columnElementsXpath, String componentUseCase, Boolean sortDate) {
+		String columnHeaderXpath) throws ParseException {
 
-		// 1. Take note of each dataTable value in a specified column of the table, clicking the *Next* button until
-		// all the values in that column have been noted.
-		List<String> firstNames = extractColumnValuesFromDataTable(browserDriver, columnElementsXpath);
+		// 1. Navigate to the "Sort (Single Column)" use case in order to reset the state of the UI.
+		navigateToUseCase(browserDriver, DATA_TABLE, COMPONENT_USE_CASE);
 
-		// 2. Sort the initial unsorted list of values to obtain the expected list sorted in ascending order.
-		List<String> expectedColumnValuesAscending = new ArrayList<String>(firstNames);
-
-		if (sortDate.equals(true)) {
-			sortDateList(expectedColumnValuesAscending, false);
-		}
-		else {
-			Collections.sort(expectedColumnValuesAscending);
-		}
-
-		logger.debug("Expected sorted list of first names (ascending):[{}]", expectedColumnValuesAscending);
-
-		// 3. Reset UI state
-		navigateToUseCase(browserDriver, "dataTable", componentUseCase);
-
-		// 4. Click the specified header to sort dataTable values into ascending order and verify that the sort
-		// indication icon is pointed up (ascending order).
+		// 2. Click the specified column header in order to sort the table by ascending order and verify that the sort
+		// indication icon is pointed up.
 		browserDriver.centerElementInCurrentWindow(columnHeaderXpath);
 		browserDriver.clickElement(columnHeaderXpath);
 		waitingAsserter.assertElementDisplayed(SORTED_ASCENDING_ICON_XPATH);
 
-		// 5. Take note of each dataTable value in a specified column of the table, clicking the *Next* button until
-		// all the values in that column have been noted.
-		List<String> actualColumnValuesAscending = extractColumnValuesFromDataTable(browserDriver, columnElementsXpath);
-		logger.debug("Actual screen names extracted from the UI after sorting by ascending order:[{}]",
-			actualColumnValuesAscending);
+		// 3. Take note of each customer shown in the table, clicking the *Next* button until all the customers in
+		// the table have been noted.
+		List<Customer> actualCustomersAscending = extractCustomersFromAllPages(browserDriver, COMPONENT_USE_CASE);
 
-		// 6. Verify that the sorted list obtained from the UI matches the order of the expected list (sorted in
-		// ascending order).
-		Assert.assertEquals(expectedColumnValuesAscending, actualColumnValuesAscending);
+		// 4. Verify that the list of noted customers is sorted in descending order according to the specified column
+		// header.
+		List<Customer> expectedCustomers = new ArrayList<Customer>(actualCustomersAscending);
+		sortCustomers(expectedCustomers, columnHeaderXpath, true);
+		Assert.assertEquals(actualCustomersAscending.size(), TOTAL_CUSTOMERS);
+		Assert.assertEquals(expectedCustomers, actualCustomersAscending);
 
-		// 7. Click the *First Page* button to go back to the first page of users.
+		// 5. Click the *First Page* button to go back to the first page of users.
 		browserDriver.centerElementInCurrentWindow(columnHeaderXpath);
-		browserDriver.clickElement(getNavigationButtonXpath("firstPage"));
-		browserDriver.waitFor(pageButtonClassActive(1));
+		browserDriver.clickElement(getPaginatorButtonXpath("firstPage"));
+		browserDriver.waitFor(isPaginatorPageNumberButtonActive(1));
 
-		// 8. Click the specified header to sort dataTable values into descending order and verify that the sort
+		// 6. Click the specified column header in order to sort the table by descending order and verify that the sort
 		// indication icon is pointed down.
+		browserDriver.centerElementInCurrentWindow(columnHeaderXpath);
 		browserDriver.centerElementInCurrentWindow(columnHeaderXpath);
 		browserDriver.clickElement(columnHeaderXpath);
 		waitingAsserter.assertElementDisplayed(
 			"//th[contains(@class,'table-sortable-column table-sorted table-sorted-desc')]//span[contains(@class,'table-sort-indicator')]");
 
-		// 9. Take note of each dataTable value in a specified column of the table, clicking the *Next* button until
-		// all the values in that column have been noted.
-		List<String> actualColumnValuesDescending = extractColumnValuesFromDataTable(browserDriver,
-				columnElementsXpath);
-		logger.debug("Actual screen names extracted from the UI after sorting by descending order:[{}]",
-			actualColumnValuesDescending);
+		// 7. Take note of each customer shown in the table, clicking the *Next* button until all the customers have
+		// been noted.
+		List<Customer> actualCustomersDescending = extractCustomersFromAllPages(browserDriver, COMPONENT_USE_CASE);
 
-		// 10. Sort the initial unsorted list of values to obtain the expected list sorted in descending order.
-		List<String> expectedColumnValuesDescending = new ArrayList<String>(firstNames);
+		// 8. Verify that the list of noted customers is sorted in descending order according to the specified column
+		// header.
+		Assert.assertEquals(actualCustomersDescending.size(), TOTAL_CUSTOMERS);
+		sortCustomers(expectedCustomers, columnHeaderXpath, false);
+		Assert.assertEquals(expectedCustomers, actualCustomersDescending);
 
-		if (sortDate.equals(true)) {
-			sortDateList(expectedColumnValuesDescending, true);
+		// 9. Again, navigate to the "Sort (Single Column)" use case in order to reset the state of the UI.
+		navigateToUseCase(browserDriver, DATA_TABLE, COMPONENT_USE_CASE);
+	}
+
+	private static final class CustomerDateOfBirthComparator implements Comparator<Customer> {
+
+		@Override
+		public int compare(Customer customer1, Customer customer2) {
+			return customer1.getDateOfBirth().compareTo(customer2.getDateOfBirth());
 		}
-		else {
-			Collections.sort(expectedColumnValuesDescending, Collections.reverseOrder());
+	}
+
+	private static final class CustomerFirstNameComparator implements Comparator<Customer> {
+
+		@Override
+		public int compare(Customer customer1, Customer customer2) {
+			return customer1.getFirstName().compareTo(customer2.getFirstName());
 		}
+	}
 
-		logger.debug("Expected sorted list of first names (descending):[{}]", expectedColumnValuesDescending);
+	private static final class CustomerLastNameComparator implements Comparator<Customer> {
 
-		// 11. Verify that the sorted list obtained from the UI matches the order of the expected list (sorted in
-		// descending order).
-		Assert.assertEquals(expectedColumnValuesDescending, actualColumnValuesDescending);
-
-		// 12. Reset UI state
-		navigateToUseCase(browserDriver, "dataTable", componentUseCase);
+		@Override
+		public int compare(Customer customer1, Customer customer2) {
+			return customer1.getLastName().compareTo(customer2.getLastName());
+		}
 	}
 }

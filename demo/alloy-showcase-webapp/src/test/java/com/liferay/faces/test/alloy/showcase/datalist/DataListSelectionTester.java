@@ -23,34 +23,42 @@ import com.liferay.faces.test.selenium.browser.WaitingAsserter;
  * @author  Kyle Stiemann
  * @author  Philip White
  */
-public class DataListSelectionTester extends DataListTester {
+public class DataListSelectionTester extends DataListTesterBase {
 
 	@Test
 	public void runDataListSelectionTest() throws Exception {
 
+		// 1. Navigate to the "Selection" use case in order to reset the state of the UI.
 		BrowserDriver browserDriver = getBrowserDriver();
 		navigateToUseCase(browserDriver, "dataList", "selection");
 
-		// Verify that five list items are visible.
-		assertListChildElementCount(browserDriver, "ul", "li", 5); // unordered type
-
+		// 2. Verify that the following description list terms are displayed: Compatible, Enterprise Ready, Powerful
+		// Integration, Lightweight, and Open Source.
 		WaitingAsserter waitingAsserter = getWaitingAsserter();
 
-		// Verify that first and last search icons are visible.
-		waitingAsserter.assertElementDisplayed("(//*[contains(@class,'icon-search')])[1]");
-		waitingAsserter.assertElementDisplayed("(//*[contains(@class,'icon-search')])[5]");
+		for (int i = 0; i < DESCRIPTION_LIST_TERMS.length; i++) {
+			assertListItemLinkText(waitingAsserter, "ul", "li", i + 1, DESCRIPTION_LIST_TERMS[i]);
+		}
 
-		// Verify that list items' text of list type description are visible.
-		assertListItemText(waitingAsserter, "ul", "li", 1, "Compatible");
-		assertListItemText(waitingAsserter, "ul", "li", 2, "Enterprise Ready");
-		assertListItemText(waitingAsserter, "ul", "li", 3, "Powerful Integration");
-		assertListItemText(waitingAsserter, "ul", "li", 4, "Lightweight");
-		assertListItemText(waitingAsserter, "ul", "li", 5, "Open Source");
+		assertListChildElementCount(browserDriver, "ul", "li", DESCRIPTION_LIST_TERMS.length);
 
-		browserDriver.centerElementInCurrentWindow("(//*[contains(@class,'icon-search')])[5]");
+		// 3. Verify that a search icon appears with each of the description list terms.
+		for (int i = 0; i < 5; i++) {
+			waitingAsserter.assertElementDisplayed("(//*[contains(@class,'icon-search')])[" + (i + 1) + "]");
+		}
 
-		testShowModal(browserDriver, waitingAsserter, "Enterprise Ready", ENTERPRISE_READY_DESCRIPTION_TEXT);
-		testShowModal(browserDriver, waitingAsserter, "Lightweight", LIGHTWEIGHT_DESCRIPTION_TEXT);
+		// 4. Click on each search icon and verify that the corresponding description list detail is displayed.
+		for (int i = 0; i < DESCRIPTION_LIST_TERMS.length; i++) {
+			testShowModal(browserDriver, waitingAsserter, DESCRIPTION_LIST_TERMS[i], DESCRIPTION_LIST_DETAILS[i]);
+		}
+	}
+
+	private void assertListItemLinkText(WaitingAsserter waitingAsserter, String listType, String listItemType,
+		int itemNumber, String expectedContent) {
+
+		String listItemXpath = "//div[@class='showcase-example']//" + listType + "//" + listItemType;
+		String listItemContentXpath = listItemXpath + "[" + itemNumber + "]//a";
+		waitingAsserter.assertTextPresentInElement(expectedContent, listItemContentXpath);
 	}
 
 	private void testShowModal(BrowserDriver browserDriver, WaitingAsserter waitingAsserter, String text,
@@ -58,12 +66,12 @@ public class DataListSelectionTester extends DataListTester {
 
 		// Verify that the "Show Modal" button's value is visibly correct.
 		browserDriver.clickElement("(//*[contains(text(),'" + text + "')])[1]");
-		browserDriver.waitForTextPresentInElement(text, modalDialogXpath);
-		waitingAsserter.assertElementDisplayed(modalDialogXpath);
+		browserDriver.waitForTextPresentInElement(text, MODAL_DIALOG_XPATH);
+		waitingAsserter.assertElementDisplayed(MODAL_DIALOG_XPATH);
 
-		waitingAsserter.assertTextPresentInElement(descriptionText, modalDialogXpath);
+		waitingAsserter.assertTextPresentInElement(descriptionText, MODAL_DIALOG_XPATH);
 
 		browserDriver.clickElement("(//button[contains(@class,'close')])");
-		waitingAsserter.assertElementNotDisplayed(modalDialogXpath);
+		waitingAsserter.assertElementNotDisplayed(MODAL_DIALOG_XPATH);
 	}
 }

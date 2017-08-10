@@ -13,6 +13,9 @@
  */
 package com.liferay.faces.test.alloy.showcase.datatable;
 
+import java.util.List;
+
+import org.junit.Assert;
 import org.junit.Test;
 
 import com.liferay.faces.test.selenium.browser.BrowserDriver;
@@ -22,16 +25,28 @@ import com.liferay.faces.test.selenium.browser.WaitingAsserter;
 /**
  * @author  Kyle Stiemann
  * @author  Philip White
+ * @author  Neil Griffin
  */
-public class DataTableLazyTester extends DataTableTester {
+public class DataTableLazyTester extends DataTableTesterBase {
 
 	@Test
 	public void runDataTableLazyTest() throws Exception {
 
+		// 1. Navigate to the "Lazy" use case in order to reset the state of the UI.
 		BrowserDriver browserDriver = getBrowserDriver();
-		navigateToUseCase(browserDriver, "dataTable", "lazy");
+		String componentUseCase = "lazy";
+		navigateToUseCase(browserDriver, DATA_TABLE, componentUseCase);
 
+		// 2. Verify that the paginator is working correctly by making sure that the first customer on page 1 is not
+		// present on page 2, etc.
 		WaitingAsserter waitingAsserter = getWaitingAsserter();
-		testPagesPagination(browserDriver, waitingAsserter, false);
+		testPaginator(browserDriver, waitingAsserter, componentUseCase);
+
+		// 3. Take note of how many rows are in each page, clicking the *Next* button until a total count of all the
+		// rows has been noted.
+		List<Customer> customers = extractCustomersFromAllPages(browserDriver, componentUseCase);
+
+		// 4. Verify that 162 total rows were displayed.
+		Assert.assertEquals(customers.size(), TOTAL_CUSTOMERS);
 	}
 }
