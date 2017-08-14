@@ -28,25 +28,26 @@ public class DataListGeneralTester extends DataListTesterBase {
 	@Test
 	public void runDataListGeneralTest() throws Exception {
 
-		// 1. Navigate to the "General" use case in order to reset the state of the UI.
+		// 1. Navigate to the alloy:dataList "General" use case.
 		BrowserDriver browserDriver = getBrowserDriver();
 		navigateToUseCase(browserDriver, "dataList", "general");
 
 		// 2. For each type of list (unordered, ordered, description):
-		String[] listTypes = new String[] { "ul", "ol", "dl" };
-		String[] listItemTypes = new String[] { "li", "li", "dt" };
+		String[] listTagNames = new String[] { "ul", "ol", "dl" };
+		String[] listItemTagNames = new String[] { "li", "li", "dt" };
 		WaitingAsserter waitingAsserter = getWaitingAsserter();
 
-		for (int i = 0; i < listTypes.length; i++) {
+		for (int i = 0; i < listTagNames.length; i++) {
 
 			// 2a. Verify that five list items are present in the list.
-			String listType = listTypes[i];
-			String listItemType = listItemTypes[i];
-			assertListChildElementCount(browserDriver, listType, listItemType, DESCRIPTION_LIST_DETAILS.length);
+			String listType = listTagNames[i];
+			String listItemType = listItemTagNames[i];
+			assertChildElementCount(browserDriver, listType, listItemType, LIFERAY_BENEFIT_DESCRIPTIONS.length);
 
 			// 2b. Verify that each description list item contains the expected details.
-			for (int j = 0; j < DESCRIPTION_LIST_DETAILS.length; j++) {
-				assertListItemText(waitingAsserter, listType, listItemType, j + 1, DESCRIPTION_LIST_DETAILS[j]);
+			for (int j = 0; j < LIFERAY_BENEFIT_DESCRIPTIONS.length; j++) {
+				assertTextPresentInListItem(waitingAsserter, LIFERAY_BENEFIT_DESCRIPTIONS[j], listType, listItemType,
+					j + 1);
 			}
 		}
 	}

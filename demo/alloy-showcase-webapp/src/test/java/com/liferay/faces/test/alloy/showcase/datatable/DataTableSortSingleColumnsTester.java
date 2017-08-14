@@ -40,9 +40,9 @@ public class DataTableSortSingleColumnsTester extends DataTableTesterBase {
 	@Test
 	public void runDataTableSortSingleColumnsTest() throws Exception {
 
-		// 1. Navigate to the "Sort (Single Column)" use case in order to reset the state of the UI.
+		// 1. Navigate to the "Sort (Single Column)" use case.
 		BrowserDriver browserDriver = getBrowserDriver();
-		navigateToUseCase(browserDriver, DATA_TABLE, COMPONENT_USE_CASE);
+		navigateToUseCase(browserDriver, COMPONENT_USE_CASE);
 
 		// 2. Verify that the paginator is working correctly by making sure that the first customer on page 1 is not
 		// present on page 2, etc.
@@ -88,8 +88,8 @@ public class DataTableSortSingleColumnsTester extends DataTableTesterBase {
 	private void verifyDataTableSort(BrowserDriver browserDriver, WaitingAsserter waitingAsserter,
 		String columnHeaderXpath) throws ParseException {
 
-		// 1. Navigate to the "Sort (Single Column)" use case in order to reset the state of the UI.
-		navigateToUseCase(browserDriver, DATA_TABLE, COMPONENT_USE_CASE);
+		// 1. Navigate to the alloy:dataTable "Sort (Single Column)" use case in order to reset the state of the UI.
+		navigateToUseCase(browserDriver, COMPONENT_USE_CASE);
 
 		// 2. Select "100" from the *Rows Per Page" dropdown list (reduces the number of *Next* button clicks in the
 		// following steps).
@@ -97,7 +97,6 @@ public class DataTableSortSingleColumnsTester extends DataTableTesterBase {
 
 		// 3. Click the specified column header in order to sort the table by ascending order and verify that the sort
 		// indication icon is pointed up.
-		browserDriver.centerElementInCurrentWindow(columnHeaderXpath);
 		browserDriver.clickElement(columnHeaderXpath);
 		waitingAsserter.assertElementDisplayed(SORTED_ASCENDING_ICON_XPATH);
 
@@ -109,18 +108,15 @@ public class DataTableSortSingleColumnsTester extends DataTableTesterBase {
 		// header.
 		List<Customer> expectedCustomers = new ArrayList<Customer>(actualCustomersAscending);
 		sortCustomers(expectedCustomers, columnHeaderXpath, true);
-		Assert.assertEquals(actualCustomersAscending.size(), TOTAL_CUSTOMERS);
+		Assert.assertEquals(TOTAL_CUSTOMERS, actualCustomersAscending.size());
 		Assert.assertEquals(expectedCustomers, actualCustomersAscending);
 
 		// 6. Click the *First Page* button to go back to the first page of users.
-		browserDriver.centerElementInCurrentWindow(columnHeaderXpath);
 		browserDriver.clickElement(getPaginatorButtonXpath("firstPage"));
-		browserDriver.waitFor(isPaginatorPageNumberButtonActive(1));
+		browserDriver.waitFor(pageButtonClassActive(1));
 
 		// 7. Click the specified column header in order to sort the table by descending order and verify that the sort
 		// indication icon is pointed down.
-		browserDriver.centerElementInCurrentWindow(columnHeaderXpath);
-		browserDriver.centerElementInCurrentWindow(columnHeaderXpath);
 		browserDriver.clickElement(columnHeaderXpath);
 		waitingAsserter.assertElementDisplayed(
 			"//th[contains(@class,'table-sortable-column table-sorted table-sorted-desc')]//span[contains(@class,'table-sort-indicator')]");
@@ -131,12 +127,12 @@ public class DataTableSortSingleColumnsTester extends DataTableTesterBase {
 
 		// 9. Verify that the list of noted customers is sorted in descending order according to the specified column
 		// header.
-		Assert.assertEquals(actualCustomersDescending.size(), TOTAL_CUSTOMERS);
+		Assert.assertEquals(TOTAL_CUSTOMERS, actualCustomersDescending.size());
 		sortCustomers(expectedCustomers, columnHeaderXpath, false);
 		Assert.assertEquals(expectedCustomers, actualCustomersDescending);
 
 		// 10. Again, navigate to the "Sort (Single Column)" use case in order to reset the state of the UI.
-		navigateToUseCase(browserDriver, DATA_TABLE, COMPONENT_USE_CASE);
+		navigateToUseCase(browserDriver, COMPONENT_USE_CASE);
 	}
 
 	private static final class CustomerDateOfBirthComparator implements Comparator<Customer> {

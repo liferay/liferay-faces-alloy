@@ -24,10 +24,10 @@ import com.liferay.faces.test.selenium.browser.WaitingAsserter;
 public class DataListTesterBase extends DataTesterBase {
 
 	// Protected Constants
-	protected static final String[] DESCRIPTION_LIST_TERMS = {
+	protected static final String[] LIFERAY_BENEFIT_TERMS = {
 			"Compatible", "Enterprise Ready", "Powerful Integration", "Lightweight", "Open Source"
 		};
-	protected static final String[] DESCRIPTION_LIST_DETAILS = new String[] {
+	protected static final String[] LIFERAY_BENEFIT_DESCRIPTIONS = new String[] {
 			"Liferay lets you reuse the enterprise software and skills you already have in-house.",
 			"Liferay is designed for scalability, reliability, and high performance both on-premise and in the cloud.",
 			"Liferay is designed for integrating with both enterprise systems and web-based resources.",
@@ -38,11 +38,11 @@ public class DataListTesterBase extends DataTesterBase {
 	/**
 	 * Verify that the list item text property is rendered and visible on the page.
 	 */
-	protected void assertListItemText(WaitingAsserter waitingAsserter, String listType, String listItemType,
-		int itemNumber, String expectedContent) {
+	protected void assertTextPresentInListItem(WaitingAsserter waitingAsserter, String text, String listTagName,
+		String listItemTagName, int listItemNumber) {
 
-		String listItemXpath = "//div[@class='showcase-example']//" + listType + "//" + listItemType;
-		String listItemContentXpath = listItemXpath + "[" + itemNumber + "]//span";
-		waitingAsserter.assertTextPresentInElement(expectedContent, listItemContentXpath);
+		String listItemXpath = "//div[@class='showcase-example']//" + listTagName + "//" + listItemTagName;
+		String listItemContentXpath = listItemXpath + "[" + listItemNumber + "]";
+		waitingAsserter.assertTextPresentInElement(text, listItemContentXpath);
 	}
 }

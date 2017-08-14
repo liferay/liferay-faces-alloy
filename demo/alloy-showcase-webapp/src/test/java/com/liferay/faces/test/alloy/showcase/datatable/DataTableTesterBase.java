@@ -13,7 +13,6 @@
  */
 package com.liferay.faces.test.alloy.showcase.datatable;
 
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -48,33 +47,17 @@ public class DataTableTesterBase extends DataTesterBase {
 	private static final Logger logger = LoggerFactory.getLogger(DataTableTesterBase.class);
 
 	// Protected Constants
-	protected static final String DATA_TABLE = "dataTable";
+	protected static final String ALLOY_MESSAGES_XPATH = "//table[contains(@class,'alloy-messages')]";
 	protected static final String DATE_OF_BIRTH_HEADER_XPATH =
 		"//table/thead/tr/th[@scope='col'][contains(.,'Date of Birth')]";
 	protected static final String LAST_NAME_HEADER_XPATH = "//table/thead/tr/th[@scope='col'][contains(.,'Last Name')]";
-	protected static final String SERVER_EVENT_INFO_TEXT_XPATH =
-		"//table[contains(@class,'alloy-messages')]/tbody/tr/td";
 	protected static final String SORTED_ASCENDING_ICON_XPATH =
 		"//th[contains(@class,'table-sortable-column table-sorted')][not(contains(@class,'table-sorted-desc'))]//span[contains(@class,'table-sort-indicator')]";
 	protected static final int TOTAL_CUSTOMERS = 162;
 
 	// Private Constants
-	private static final String PAGE_BUTTON_XPATH_PREFIX =
-		"//div[contains(@class,'alloy-paginator')]//ul[contains(@class,'pagination')]";
-
-	// Note: SimpleDateFormat is not thread-safe but Selenium testing is single-threaded.
-	private static final DateFormat DATE_FORMAT = new SimpleDateFormat("MMM dd, yyyy");
-
-	/**
-	 * Clicks on the specified element and verifies that the specified text is present in the element targeted by the
-	 * specified xpath.
-	 */
-	protected void clickElementAndVerifyTextIsPresent(BrowserDriver browserDriver, WaitingAsserter waitingAsserter,
-		String clickXpath, String assertElementXpath, String containsText) {
-		browserDriver.centerElementInCurrentWindow(clickXpath);
-		browserDriver.clickElement(clickXpath);
-		waitingAsserter.assertTextPresentInElement(containsText, assertElementXpath);
-	}
+	private static final String PAGINATOR_XPATH_PREFIX =
+		"//div[contains(@class,'alloy-paginator')]//*[contains(@class,'pagination')]";
 
 	/**
 	 * Returns a complete list of customers by iterating through each of the numbered <code>alloy:dataTable</code> pages
@@ -87,8 +70,8 @@ public class DataTableTesterBase extends DataTesterBase {
 
 		// While the *Last Page* button is still active:
 		WebDriver webDriver = browserDriver.getWebDriver();
-		ExpectedCondition<Boolean> navigationButtonClassDisabledCondition = isTextPresentInElementClassAttribute(
-				"disabled", "(" + PAGE_BUTTON_XPATH_PREFIX + "/li[last()])[1]");
+		ExpectedCondition<Boolean> navigationButtonClassDisabledCondition = navigationButtonClassDisabled("(" +
+				PAGINATOR_XPATH_PREFIX + "//li[last()])[1]");
 
 		while (!navigationButtonClassDisabledCondition.apply(webDriver)) {
 
@@ -117,57 +100,20 @@ public class DataTableTesterBase extends DataTesterBase {
 		List<WebElement> lastNameElements = browserDriver.findElementsByXpath(getLastNameCellXpath(componentUseCase));
 		List<WebElement> dateOfBirthElements = browserDriver.findElementsByXpath(getDateOfBirthCellXpath(
 					componentUseCase));
+		SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MMM dd, yyyy");
 
 		for (int i = 0; i < firstNameElements.size(); i++) {
 
 			WebElement firstNameElement = firstNameElements.get(i);
 			WebElement lastNameElement = lastNameElements.get(i);
 			WebElement dateOfBirthElement = dateOfBirthElements.get(i);
-			Date dateOfBirth = DATE_FORMAT.parse(dateOfBirthElement.getText());
+			Date dateOfBirth = simpleDateFormat.parse(dateOfBirthElement.getText());
+
 			Customer customer = new Customer(firstNameElement.getText(), lastNameElement.getText(), dateOfBirth);
 			extractedCustomers.add(customer);
 		}
 
 		return extractedCustomers;
-	}
-
-	/**
-	 * Returns the xpath expression that targets the rendered <code>alloy:messages</code> component markup that displays
-	 * the specified message.
-	 */
-	protected String getAlloyMessageXpath(String message) {
-
-		StringBuilder alloyMessageXpath = new StringBuilder();
-		alloyMessageXpath.append("(//table[contains(@class,'alloy-messages')]/tbody/tr/td[contains(.,'");
-		alloyMessageXpath.append(message);
-		alloyMessageXpath.append("')])");
-
-		return alloyMessageXpath.toString();
-	}
-
-	/**
-	 * Returns the xpath expression that targets the rendered <code>alloy:messages</code> component markup that displays
-	 * a comma-delimited list of full names for the specified customers.
-	 */
-	protected String getAlloyMessageXpath(Customer[] customers) {
-
-		StringBuilder message = new StringBuilder();
-
-		boolean firstCustomer = true;
-
-		for (Customer customer : customers) {
-
-			if (firstCustomer) {
-				firstCustomer = false;
-			}
-			else {
-				message.append(", ");
-			}
-
-			message.append(customer.toString());
-		}
-
-		return getAlloyMessageXpath(message.toString());
 	}
 
 	/**
@@ -226,7 +172,7 @@ public class DataTableTesterBase extends DataTesterBase {
 	 */
 	protected String getPaginatorButtonXpath(String buttonLabel) {
 		return
-			"//div[contains(@class,'alloy-paginator')]//ul[contains(@class,'pagination')]//li//*[contains(@onclick,'" +
+			"//div[contains(@class,'alloy-paginator')]//*[contains(@class,'pagination')]//li//*[contains(@onclick,'" +
 			buttonLabel + "')]";
 	}
 
@@ -238,24 +184,12 @@ public class DataTableTesterBase extends DataTesterBase {
 			"')]//input[contains(@id,'customers:')]";
 	}
 
-	/**
-	 * Determines whether or not the specified page number is active in the rendered <code>alloy:paginator</code>
-	 * markup.
-	 */
-	protected ExpectedCondition<Boolean> isPaginatorPageNumberButtonActive(int pageButtonNumber) {
-
-		String pageButtonXpath = PAGE_BUTTON_XPATH_PREFIX + "//*[contains(.,'" + Integer.toString(pageButtonNumber) +
-			"')]/parent::li";
-
-		return isTextPresentInElementClassAttribute("active", pageButtonXpath);
+	protected int getTotalPages(int rowsPerPage) {
+		return (int) Math.ceil((double) TOTAL_CUSTOMERS / rowsPerPage);
 	}
 
-	/**
-	 * Must build this action using keyDown(key) and keyUp(key) since Action sendKeys behaves differently than
-	 * WebElement sendKeys (unless the browser is phantomjs, then it would need the following script).
-	 * https://seleniumhq.github.io/selenium/docs/api/java/org/openqa/selenium/interactions/Actions.html#sendKeys-java.lang.CharSequence...-
-	 */
 	protected void metaOrCommandClick(BrowserDriver browserDriver, String xpath) {
+
 		Keys metaOrCommandKey = Keys.META;
 
 		if (System.getProperty("os.name").toLowerCase(Locale.ENGLISH).contains("mac")) {
@@ -263,18 +197,40 @@ public class DataTableTesterBase extends DataTesterBase {
 		}
 
 		if ("phantomjs".equals(browserDriver.getBrowserName())) {
+
+			// Use a script to simulate the meta-click in PhantomJS.
 			browserDriver.executeScriptInCurrentWindow(
 				"var element = arguments[0]; YUI().use('node-event-simulate', function(Y) { Y.one(element).simulate('click', { metaKey: true }); });",
 				browserDriver.findElementByXpath(xpath));
 		}
 		else {
-			Actions metaOrCommandClickBuilder = browserDriver.createActions();
+
+			Actions metaOrCommandClickBuilder = browserDriver.createActions(xpath);
+
+			// Build the action using keyDown and keyUp since Actions.sendKeys() does not release modifier keys:
+			// https://seleniumhq.github.io/selenium/docs/api/java/org/openqa/selenium/interactions/Actions.html#sendKeys-java.lang.CharSequence...-
 			metaOrCommandClickBuilder.keyDown(metaOrCommandKey).click(browserDriver.findElementByXpath(xpath)).keyUp(
 				metaOrCommandKey);
 
 			Action metaOrCommandClick = metaOrCommandClickBuilder.build();
 			metaOrCommandClick.perform();
 		}
+	}
+
+	protected void navigateToUseCase(BrowserDriver browserDriver, String componentUseCase) {
+		navigateToUseCase(browserDriver, "dataTable", componentUseCase);
+	}
+
+	/**
+	 * Determines whether or not the specified page number is active in the rendered <code>alloy:paginator</code>
+	 * markup.
+	 */
+	protected ExpectedCondition<Boolean> pageButtonClassActive(int pageButtonNumber) {
+
+		String pageButtonXpath = PAGINATOR_XPATH_PREFIX + "//*[contains(.,'" + Integer.toString(pageButtonNumber) +
+			"')]/parent::li";
+
+		return textPresentInElementClass("active", pageButtonXpath);
 	}
 
 	/**
@@ -331,20 +287,20 @@ public class DataTableTesterBase extends DataTesterBase {
 		// has been selected.
 		waitingAsserter.assertTextPresentInElementValue("0", "(//table/input)", false);
 
+		browserDriver.clickElement("//button[contains(.,'Feedback')]");
+
 		// 9. Verify that the full name of the first customer is present in the feedback message.
-		clickElementAndVerifyTextIsPresent(browserDriver, waitingAsserter, "//button[contains(.,'Feedback')]",
-			SERVER_EVENT_INFO_TEXT_XPATH, firstCustomer.toString());
+		waitingAsserter.assertTextPresentInElement(firstCustomer.toString(), ALLOY_MESSAGES_XPATH);
 
 		// 10. Verify that the full name of the first customer is present in the modal dialog.
-		browserDriver.centerElementInCurrentWindow("//button[contains(.,'Modal Dialog')]");
-		clickElementAndVerifyTextIsPresent(browserDriver, waitingAsserter, "//button[contains(.,'Modal Dialog')]",
-			MODAL_DIALOG_XPATH + "//*[@class='alloy-output-text']", firstCustomer.toString());
-		browserDriver.centerElementInCurrentWindow(MODAL_DIALOG_XPATH + "//button[contains(.,'Cancel')]");
+		browserDriver.clickElement("//button[contains(.,'Modal Dialog')]");
+		waitingAsserter.assertTextPresentInElement(firstCustomer.toString(),
+			MODAL_DIALOG_XPATH + "//*[@class='alloy-output-text']");
 		browserDriver.clickElement(MODAL_DIALOG_XPATH + "//button[contains(.,'Cancel')]");
 		browserDriver.waitForElementNotDisplayed(MODAL_DIALOG_XPATH);
 
 		// 11. Navigate to the specified use-case in order to reset the state of the UI.
-		navigateToUseCase(browserDriver, DATA_TABLE, componentUseCase);
+		navigateToUseCase(browserDriver, componentUseCase);
 	}
 
 	/**
@@ -362,7 +318,7 @@ public class DataTableTesterBase extends DataTesterBase {
 
 		// 2. Click the *Next Page* button and verify that the page 2 button is highlighted.
 		browserDriver.clickElement(getPaginatorButtonXpath("nextPage"));
-		waitingAsserter.assertTrue(isPaginatorPageNumberButtonActive(2));
+		waitingAsserter.assertTrue(pageButtonClassActive(2));
 
 		// 3. Verify that the first name noted from page 1 is not present on page 2.
 		waitingAsserter.assertTextNotPresentInElement(firstCustomerFirstNameOnPageOne, firstNameCellXpath);
@@ -373,7 +329,7 @@ public class DataTableTesterBase extends DataTesterBase {
 
 		// 5. Click on *3* button and verify that the page 3 button is highlighted.
 		browserDriver.clickElement(getPageButtonXpath(3));
-		waitingAsserter.assertTrue(isPaginatorPageNumberButtonActive(3));
+		waitingAsserter.assertTrue(pageButtonClassActive(3));
 
 		// 6. Verify that the first names noted from page 1 and 2 are not present on page 3.
 		waitingAsserter.assertTextNotPresentInElement(firstCustomerFirstNameOnPageOne, firstNameCellXpath);
@@ -385,7 +341,7 @@ public class DataTableTesterBase extends DataTesterBase {
 
 		// 8. Click on *Previous Page* button and verify that the page 2 button is highlighted.
 		browserDriver.clickElement(getPaginatorButtonXpath("previousPage"));
-		waitingAsserter.assertTrue(isPaginatorPageNumberButtonActive(2));
+		waitingAsserter.assertTrue(pageButtonClassActive(2));
 
 		// 9. Verify that the first names noted from page 1 and 3 are not present on page 2.
 		waitingAsserter.assertTextNotPresentInElement(firstCustomerFirstNameOnPageOne, firstNameCellXpath);
@@ -394,9 +350,8 @@ public class DataTableTesterBase extends DataTesterBase {
 		// 10. Click on *Last Page* button and verify that the last button is highlighted and that the *Next Page* and
 		// *Last Page* buttons are disabled.
 		browserDriver.clickElement(getPaginatorButtonXpath("lastPage"));
-		waitingAsserter.assertTrue(isPaginatorPageNumberButtonActive(17));
-		waitingAsserter.assertTrue(isTextPresentInElementClassAttribute("disabled",
-				PAGE_BUTTON_XPATH_PREFIX + "//li[last()]"));
+		waitingAsserter.assertTrue(pageButtonClassActive(getTotalPages(10)));
+		waitingAsserter.assertTrue(navigationButtonClassDisabled(PAGINATOR_XPATH_PREFIX + "//li[last()]"));
 
 		// 11. Verify that the first names noted from page 1, 2 and 3 are not present on the last page.
 		waitingAsserter.assertTextNotPresentInElement(firstCustomerFirstNameOnPageOne, firstNameCellXpath);
@@ -410,8 +365,8 @@ public class DataTableTesterBase extends DataTesterBase {
 		// 13. Click on *First Page* button and verify that the page 1 button is highlighted and the *First Page* and
 		// *Previous Page* buttons are disabled.
 		browserDriver.clickElement(getPaginatorButtonXpath("firstPage"));
-		waitingAsserter.assertTrue(isPaginatorPageNumberButtonActive(1));
-		waitingAsserter.assertTrue(isTextPresentInElementClassAttribute("disabled", PAGE_BUTTON_XPATH_PREFIX + "//li"));
+		waitingAsserter.assertTrue(pageButtonClassActive(1));
+		waitingAsserter.assertTrue(navigationButtonClassDisabled(PAGINATOR_XPATH_PREFIX + "//li"));
 
 		// 14. Verify that the first names noted from page 2, 3 and the last page are not present on the first page.
 		waitingAsserter.assertTextNotPresentInElement(firstCustomerFirstNameOnPageTwo, firstNameCellXpath);
@@ -440,7 +395,6 @@ public class DataTableTesterBase extends DataTesterBase {
 	private void clickAndVerifyRowSelection(BrowserDriver browserDriver, WaitingAsserter waitingAsserter,
 		Customer customer) {
 
-		browserDriver.centerElementInCurrentWindow(getRowSelectionInputXpath(customer));
 		browserDriver.clickElement(getRowSelectionInputXpath(customer));
 		waitingAsserter.assertElementDisplayed(getSelectedRowXpath(customer));
 	}
@@ -450,7 +404,7 @@ public class DataTableTesterBase extends DataTesterBase {
 	 * alloy:paginator</code> component.
 	 */
 	private String getPageButtonXpath(int buttonPageNumber) {
-		return PAGE_BUTTON_XPATH_PREFIX + "//li/*[contains(.,'" + buttonPageNumber + "')]";
+		return PAGINATOR_XPATH_PREFIX + "//li/*[contains(.,'" + buttonPageNumber + "')]";
 	}
 
 	/**
@@ -475,18 +429,8 @@ public class DataTableTesterBase extends DataTesterBase {
 			customer.getFirstName() + "')][contains(.,'" + customer.getLastName() + "')]";
 	}
 
-	/**
-	 * Determines whether or not the specified text is present in the class attribute of the element targeted by the
-	 * specified xpath expression.
-	 */
-	private ExpectedCondition<Boolean> isTextPresentInElementClassAttribute(String text, String elementXpath) {
-
-		By locator = By.xpath(elementXpath);
-		ExpectedCondition<WebElement> elementDisplayed = ExpectedConditions.visibilityOfElementLocated(locator);
-		ExpectedCondition<Boolean> textPresentInElementClass = ExpectedConditions.attributeContains(locator, "class",
-				text);
-
-		return ExpectedConditions.and(elementDisplayed, textPresentInElementClass);
+	private ExpectedCondition<Boolean> navigationButtonClassDisabled(String buttonXpath) {
+		return textPresentInElementClass("disabled", buttonXpath);
 	}
 
 	/**
@@ -496,33 +440,25 @@ public class DataTableTesterBase extends DataTesterBase {
 	private void selectCustomersAndVerifySelection(BrowserDriver browserDriver, WaitingAsserter waitingAsserter,
 		String componentUseCase, Customer... customers) {
 
-		// 1. Click on the checkbox next to each of the specified customers so that a check mark APPEARS in each of the
-		// checkboxes.
+		// 1. Click on the checkbox next to each of the specified customers so that a check mark **appears** in each of
+		// the checkboxes.
 		for (Customer customer : customers) {
-			browserDriver.centerElementInCurrentWindow(getRowSelectionInputXpath(customer));
 			clickAndVerifyRowSelection(browserDriver, waitingAsserter, customer);
 		}
 
 		// 2. Click on the *Show Selected Customers as Feedback* button.
-		browserDriver.centerElementInCurrentWindow("//button[contains(.,'Feedback')]");
 		browserDriver.clickElement("//button[contains(.,'Feedback')]");
-		browserDriver.waitForElementDisplayed(getAlloyMessageXpath(customers));
 
 		// 3. Verify that each of the specified customers is displayed in the feedback message.
-		browserDriver.centerElementInCurrentWindow(getAlloyMessageXpath(customers));
-
 		for (Customer customer : customers) {
-			waitingAsserter.assertTextPresentInElement(customer.toString(), getAlloyMessageXpath(customers));
+			waitingAsserter.assertTextPresentInElement(customer.toString(), ALLOY_MESSAGES_XPATH);
 		}
 
 		// 4. Click on the *Show Selected Customers in Modal Dialog* button.
-		browserDriver.centerElementInCurrentWindow("//button[contains(.,'Modal Dialog')]");
 		browserDriver.clickElement("//button[contains(.,'Modal Dialog')]");
 		browserDriver.waitForTextPresentInElement(customers[0].toString(), MODAL_DIALOG_XPATH);
 
 		// 5. Verify that each of the specified customers appears in the modal popup.
-		browserDriver.centerElementInCurrentWindow(MODAL_DIALOG_XPATH + "//button[contains(.,'Cancel')]");
-
 		for (int i = 0; i < customers.length; i++) {
 			waitingAsserter.assertTextPresentInElement(customers[i].toString(),
 				"(" + MODAL_DIALOG_XPATH + "//*[@class='alloy-output-text']" + ")[" + (i + 1) + "]");
@@ -531,23 +467,19 @@ public class DataTableTesterBase extends DataTesterBase {
 		browserDriver.clickElement(MODAL_DIALOG_XPATH + "//button[contains(.,'Cancel')]");
 		browserDriver.waitForElementNotDisplayed(MODAL_DIALOG_XPATH);
 
-		// 6. Click on the checkbox next to each of the specified customers so that a check mark DISAPPEARS from each of
-		// the checkboxes.
+		// 6. Click on the checkbox next to each of the specified customers so that a check mark **disappears** from
+		// each of the checkboxes.
 		for (Customer customer : customers) {
-			browserDriver.centerElementInCurrentWindow(getRowSelectionInputXpath(customer));
 			clickAndVerifyRowDeselection(browserDriver, waitingAsserter, customer);
 		}
 
 		// 7. Click on the *Show Selected Customers as Feedback* button.
-		browserDriver.centerElementInCurrentWindow("//button[contains(.,'Feedback')]");
 		browserDriver.clickElement("//button[contains(.,'Feedback')]");
-		browserDriver.waitForElementDisplayed(getAlloyMessageXpath("No Customers Selected"));
 
 		// 8. Verify that "No Customers Selected" is displayed in the feedback message.
-		waitingAsserter.assertElementDisplayed(getAlloyMessageXpath("No Customers Selected"));
+		waitingAsserter.assertTextPresentInElement("No Customers Selected", ALLOY_MESSAGES_XPATH);
 
 		// 9. Click on the *Show Selected Customers in Modal Dialog* button.
-		browserDriver.centerElementInCurrentWindow("//button[contains(.,'Modal Dialog')]");
 		browserDriver.clickElement("//button[contains(.,'Modal Dialog')]");
 		browserDriver.waitForTextPresentInElement("No Customers Selected",
 			MODAL_DIALOG_XPATH + "//*[@class='alloy-output-text']");
@@ -557,6 +489,20 @@ public class DataTableTesterBase extends DataTesterBase {
 			MODAL_DIALOG_XPATH + "//*[@class='alloy-output-text']");
 
 		// 11. Navigate to the specified use-case in order to reset the state of the UI.
-		navigateToUseCase(browserDriver, DATA_TABLE, componentUseCase);
+		navigateToUseCase(browserDriver, componentUseCase);
+	}
+
+	/**
+	 * Determines whether or not the specified text is present in the class attribute of the element targeted by the
+	 * specified xpath expression.
+	 */
+	private ExpectedCondition<Boolean> textPresentInElementClass(String text, String elementXpath) {
+
+		By locator = By.xpath(elementXpath);
+		ExpectedCondition<WebElement> elementDisplayed = ExpectedConditions.visibilityOfElementLocated(locator);
+		ExpectedCondition<Boolean> textPresentInElementClass = ExpectedConditions.attributeContains(locator, "class",
+				text);
+
+		return ExpectedConditions.and(elementDisplayed, textPresentInElementClass);
 	}
 }

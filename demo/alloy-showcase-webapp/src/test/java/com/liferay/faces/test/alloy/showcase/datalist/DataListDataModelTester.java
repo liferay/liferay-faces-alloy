@@ -28,32 +28,34 @@ public class DataListDataModelTester extends DataListTesterBase {
 	@Test
 	public void runDataListDataModelTest() throws Exception {
 
-		// 1. Navigate to the "Data Model" use case in order to reset the state of the UI.
+		// 1. Navigate to the alloy:dataList "Data Model" use case.
 		BrowserDriver browserDriver = getBrowserDriver();
 		navigateToUseCase(browserDriver, "dataList", "data-model");
 
-		// 2. Verify that the following description list terms are displayed: Compatible, Enterprise Ready, Powerful
+		// 2. Verify that the following description terms are displayed: Compatible, Enterprise Ready, Powerful
 		// Integration, Lightweight, and Open Source.
 		WaitingAsserter waitingAsserter = getWaitingAsserter();
 
-		for (int i = 0; i < DESCRIPTION_LIST_TERMS.length; i++) {
-			assertListItemText(waitingAsserter, "dl", "dt", i + 1, DESCRIPTION_LIST_TERMS[i]);
+		for (int i = 0; i < LIFERAY_BENEFIT_TERMS.length; i++) {
+			assertTextPresentInListItem(waitingAsserter, LIFERAY_BENEFIT_TERMS[i], "dl", "dt", i + 1);
 		}
 
-		assertListChildElementCount(browserDriver, "dl", "dt", DESCRIPTION_LIST_TERMS.length);
+		// 3. Verify that only 5 description terms appear.
+		assertChildElementCount(browserDriver, "dl", "dt", LIFERAY_BENEFIT_TERMS.length);
 
-		// 3. Verify that each description list term has a corresponding icon displayed.
+		// 4. Verify that each description list term has a corresponding icon displayed.
 		waitingAsserter.assertElementDisplayed("(//img[contains(@src,'icon-compatible.png')])");
 		waitingAsserter.assertElementDisplayed("(//img[contains(@src,'icon-enterprise.png')])");
 		waitingAsserter.assertElementDisplayed("(//img[contains(@src,'icon-integration.png')])");
 		waitingAsserter.assertElementDisplayed("(//img[contains(@src,'icon-lightweight.png')])");
 		waitingAsserter.assertElementDisplayed("(//img[contains(@src,'icon-open-source.png')])");
 
-		// 4. Verify that each description list term has a corresponding description displayed.
-		for (int i = 0; i < DESCRIPTION_LIST_DETAILS.length; i++) {
-			assertListItemText(waitingAsserter, "dl", "dd", i + 1, DESCRIPTION_LIST_DETAILS[i]);
+		// 5. Verify that each description list term has a corresponding description displayed.
+		for (int i = 0; i < LIFERAY_BENEFIT_DESCRIPTIONS.length; i++) {
+			assertTextPresentInListItem(waitingAsserter, LIFERAY_BENEFIT_DESCRIPTIONS[i], "dl", "dd", i + 1);
 		}
 
-		assertListChildElementCount(browserDriver, "dl", "dd", DESCRIPTION_LIST_DETAILS.length);
+		// 6. Verify that only 5 descriptions appear.
+		assertChildElementCount(browserDriver, "dl", "dd", LIFERAY_BENEFIT_DESCRIPTIONS.length);
 	}
 }
