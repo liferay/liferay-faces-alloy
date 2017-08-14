@@ -29,10 +29,10 @@ public class DataTablePaginationTester extends DataTableTesterBase {
 	@Test
 	public void runDataTablePaginationTest() throws Exception {
 
-		// 1. Navigate to the "Pagination" use case in order to reset the state of the UI.
+		// 1. Navigate to the alloy:dataTable "Pagination" use case.
 		BrowserDriver browserDriver = getBrowserDriver();
 		String componentUseCase = "pagination";
-		navigateToUseCase(browserDriver, DATA_TABLE, componentUseCase);
+		navigateToUseCase(browserDriver, componentUseCase);
 
 		// 2. Verify that the paginator is working correctly by making sure that the first customer on page 1 is not
 		// present on page 2, etc.
@@ -43,82 +43,72 @@ public class DataTablePaginationTester extends DataTableTesterBase {
 		waitingAsserter.assertElementDisplayed(getDropDownListXpath("Summary Position", "bottom") +
 			"[@selected='selected']");
 
-		String defaultPositionXpath = "(//*[@class='pagination'])[2]//span";
-		String defaultResults = "Results 1-10 of " + TOTAL_CUSTOMERS + " (Page 1 of 17)";
-		waitingAsserter.assertTextPresentInElement(defaultResults, defaultPositionXpath);
+		String summaryPositionBottomXpath = "(//thead//*[@class='pagination'])[2]";
+		String defaultSummaryPositionXpath = summaryPositionBottomXpath;
+		String defaultSummaryText = getExpectedSummaryText(10);
+		waitingAsserter.assertTextPresentInElement(getExpectedSummaryText(10), defaultSummaryPositionXpath);
 
 		// 4. Select "Top" from the *Summary Position* dropdown list and verify that "Results..." is positioned at the
 		// top of the paginator.
 		clickOptionAndWaitForRerender(browserDriver, getDropDownListXpath("Summary Position", "top"));
-		browserDriver.waitForElementDisplayed(getDropDownListXpath("Summary Position", "top") +
-			"[@selected='selected']");
-		waitingAsserter.assertTextPresentInElement(defaultResults, "(//*[@class='pagination'])[1]//span");
+		waitingAsserter.assertTextNotPresentInElement(defaultSummaryText, summaryPositionBottomXpath);
+		waitingAsserter.assertTextPresentInElement(defaultSummaryText, "(//thead//*[@class='pagination'])[1]");
 
 		// 5. Select "Left" from the *Summary Position* dropdown list and verify that "Results..." is positioned at
 		// the left of the paginator.
 		clickOptionAndWaitForRerender(browserDriver, getDropDownListXpath("Summary Position", "left"));
-		browserDriver.waitForElementDisplayed(getDropDownListXpath("Summary Position", "left") +
-			"[@selected='selected']");
-		waitingAsserter.assertTextPresentInElement(defaultResults, "//*[@class='pagination']//li[1]/span");
+		waitingAsserter.assertElementNotDisplayed(summaryPositionBottomXpath);
+		waitingAsserter.assertTextPresentInElement(defaultSummaryText, "(//thead//*[@class='pagination'])[1]//li[1]");
 
 		// 6. Select "Right" from the *Summary Position* dropdown list and verify that "Results..." is positioned at the
 		// right of the paginator.
 		clickOptionAndWaitForRerender(browserDriver, getDropDownListXpath("Summary Position", "right"));
-		browserDriver.waitForElementDisplayed(getDropDownListXpath("Summary Position", "right") +
-			"[@selected='selected']");
-		waitingAsserter.assertTextPresentInElement(defaultResults, "//*[@class='pagination']//li[last()]/span");
+		waitingAsserter.assertElementNotDisplayed(summaryPositionBottomXpath);
+		waitingAsserter.assertTextPresentInElement(defaultSummaryText,
+			"(//thead//*[@class='pagination'])[1]//li[last()]");
 
 		// 7. Select "None" from the *Summary Position* dropdown list and verify that "Results..." is no longer
 		// displayed near the paginator.
 		clickOptionAndWaitForRerender(browserDriver, getDropDownListXpath("Summary Position", "none"));
-		browserDriver.waitForElementDisplayed(getDropDownListXpath("Summary Position", "none") +
-			"[@selected='selected']");
-		waitingAsserter.assertElementNotDisplayed("//*[@class='pagination']//li//span[contains(.,'" + defaultResults +
-			"]");
+		waitingAsserter.assertTextNotPresentInElement(defaultSummaryText, "//thead//*[@class='pagination']");
 
 		// 8. Select "Bottom" from the *Summary Position* dropdown list and verify that "Results..." is positioned at
 		// the bottom of the paginator.
 		clickOptionAndWaitForRerender(browserDriver, getDropDownListXpath("Summary Position", "bottom"));
-		browserDriver.waitForElementDisplayed(getDropDownListXpath("Summary Position", "bottom") +
-			"[@selected='selected']");
-		waitingAsserter.assertTextPresentInElement(defaultResults, defaultPositionXpath);
+		waitingAsserter.assertTextPresentInElement(defaultSummaryText, defaultSummaryPositionXpath);
 
 		// Verify that there are 10 rows per page by default.
 		waitingAsserter.assertElementDisplayed(getDropDownListXpath("Rows Per Page", "10") + "[@selected='selected']");
-		assertListChildElementCount(browserDriver, "tbody", "tr", 10);
+		assertChildElementCount(browserDriver, "tbody", "tr", 10);
 
 		// Select "5" from the *Rows Per Page* dropdown list and verify that only 5 rows are displayed.
 		clickOptionAndWaitForRerender(browserDriver, getDropDownListXpath("Rows Per Page", "5"));
-		browserDriver.waitForElementDisplayed(getDropDownListXpath("Rows Per Page", "5") + "[@selected='selected']");
-		assertListChildElementCount(browserDriver, "tbody", "tr", 5);
-		waitingAsserter.assertTextPresentInElement("Results 1-5 of " + TOTAL_CUSTOMERS + " (Page 1 of 33)",
-			defaultPositionXpath);
+		assertChildElementCount(browserDriver, "tbody", "tr", 5);
+		waitingAsserter.assertTextPresentInElement(getExpectedSummaryText(5), defaultSummaryPositionXpath);
 
 		// Select "25" from the *Rows Per Page* dropdown list and verify that only 25 rows are displayed.
 		clickOptionAndWaitForRerender(browserDriver, getDropDownListXpath("Rows Per Page", "25"));
-		browserDriver.waitForElementDisplayed(getDropDownListXpath("Rows Per Page", "25") + "[@selected='selected']");
-		assertListChildElementCount(browserDriver, "tbody", "tr", 25);
-		waitingAsserter.assertTextPresentInElement("Results 1-25 of " + TOTAL_CUSTOMERS + " (Page 1 of 7)",
-			defaultPositionXpath);
+		assertChildElementCount(browserDriver, "tbody", "tr", 25);
+		waitingAsserter.assertTextPresentInElement(getExpectedSummaryText(25), defaultSummaryPositionXpath);
 
 		// Select "50" from the *Rows Per Page* dropdown list and verify that only 50 rows are displayed.
 		clickOptionAndWaitForRerender(browserDriver, getDropDownListXpath("Rows Per Page", "50"));
-		browserDriver.waitForElementDisplayed(getDropDownListXpath("Rows Per Page", "50") + "[@selected='selected']");
-		assertListChildElementCount(browserDriver, "tbody", "tr", 50);
-		waitingAsserter.assertTextPresentInElement("Results 1-50 of " + TOTAL_CUSTOMERS + " (Page 1 of 4)",
-			defaultPositionXpath);
+		assertChildElementCount(browserDriver, "tbody", "tr", 50);
+		waitingAsserter.assertTextPresentInElement(getExpectedSummaryText(50), defaultSummaryPositionXpath);
 
 		// Select "100" from the *Rows Per Page* dropdown list and verify that only 100 rows are displayed.
 		clickOptionAndWaitForRerender(browserDriver, getDropDownListXpath("Rows Per Page", "100"));
-		browserDriver.waitForElementDisplayed(getDropDownListXpath("Rows Per Page", "100") + "[@selected='selected']");
-		assertListChildElementCount(browserDriver, "tbody", "tr", 100);
-		waitingAsserter.assertTextPresentInElement("Results 1-100 of " + TOTAL_CUSTOMERS + " (Page 1 of 2)",
-			defaultPositionXpath);
+		assertChildElementCount(browserDriver, "tbody", "tr", 100);
+		waitingAsserter.assertTextPresentInElement(getExpectedSummaryText(100), defaultSummaryPositionXpath);
 
 		// Select "10" from the *Rows Per Page* dropdown list and verify that only 10 rows are displayed.
 		clickOptionAndWaitForRerender(browserDriver, getDropDownListXpath("Rows Per Page", "10"));
-		browserDriver.waitForElementDisplayed(getDropDownListXpath("Rows Per Page", "10") + "[@selected='selected']");
-		assertListChildElementCount(browserDriver, "tbody", "tr", 10);
-		waitingAsserter.assertTextPresentInElement(defaultResults, defaultPositionXpath);
+		assertChildElementCount(browserDriver, "tbody", "tr", 10);
+		waitingAsserter.assertTextPresentInElement(defaultSummaryText, defaultSummaryPositionXpath);
+	}
+
+	private String getExpectedSummaryText(int rowsPerPage) {
+		return "Results 1-" + rowsPerPage + " of " + TOTAL_CUSTOMERS + " (Page 1 of " + getTotalPages(rowsPerPage) +
+			")";
 	}
 }

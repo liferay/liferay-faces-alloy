@@ -32,10 +32,10 @@ public class DataTableLazyTester extends DataTableTesterBase {
 	@Test
 	public void runDataTableLazyTest() throws Exception {
 
-		// 1. Navigate to the "Lazy" use case in order to reset the state of the UI.
+		// 1. Navigate to the alloy:dataTable "Lazy" use case.
 		BrowserDriver browserDriver = getBrowserDriver();
 		String componentUseCase = "lazy";
-		navigateToUseCase(browserDriver, DATA_TABLE, componentUseCase);
+		navigateToUseCase(browserDriver, componentUseCase);
 
 		// 2. Verify that the paginator is working correctly by making sure that the first customer on page 1 is not
 		// present on page 2, etc.
@@ -51,6 +51,6 @@ public class DataTableLazyTester extends DataTableTesterBase {
 		List<Customer> customers = extractCustomersFromAllPages(browserDriver, componentUseCase);
 
 		// 5. Verify that 162 total rows were displayed.
-		Assert.assertEquals(customers.size(), TOTAL_CUSTOMERS);
+		Assert.assertEquals(TOTAL_CUSTOMERS, customers.size());
 	}
 }

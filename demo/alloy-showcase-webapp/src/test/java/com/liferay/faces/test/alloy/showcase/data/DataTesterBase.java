@@ -32,10 +32,10 @@ public class DataTesterBase extends TesterBase {
 	// Protected Constants
 	protected static final String MODAL_DIALOG_XPATH = "(//div[contains(@class,'yui3-widget-modal')])[1]";
 
-	protected void assertListChildElementCount(BrowserDriver browserDriver, String listType, String listItemTag,
+	protected void assertChildElementCount(BrowserDriver browserDriver, String parentTagName, String childTagName,
 		int expectedCount) {
 
-		String listItemXpath = "(//div[@class='showcase-example']//" + listType + "//" + listItemTag + ")";
+		String listItemXpath = "(//div[@class='showcase-example']//" + parentTagName + "//" + childTagName + ")";
 
 		List<WebElement> elements = browserDriver.findElementsByXpath(listItemXpath);
 		Assert.assertNotNull("Element " + listItemXpath + " is not present in the DOM.", elements);
