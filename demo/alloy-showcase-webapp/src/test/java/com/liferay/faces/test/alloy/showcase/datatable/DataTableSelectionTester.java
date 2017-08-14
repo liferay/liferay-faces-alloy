@@ -31,10 +31,10 @@ public class DataTableSelectionTester extends DataTableTesterBase {
 	@Test
 	public void runDataTableSelectionTest() throws Exception {
 
-		// 1. Navigate to the "Selection" use case in order to reset the state of the UI.
+		// 1. Navigate to the alloy:dataTable "Selection" use case.
 		BrowserDriver browserDriver = getBrowserDriver();
 		String componentUseCase = "selection";
-		navigateToUseCase(browserDriver, DATA_TABLE, componentUseCase);
+		navigateToUseCase(browserDriver, componentUseCase);
 
 		// 2. Verify that the paginator is working correctly by making sure that the first customer on page 1 is not
 		// present on page 2, etc.
@@ -42,7 +42,7 @@ public class DataTableSelectionTester extends DataTableTesterBase {
 		testPaginator(browserDriver, waitingAsserter, componentUseCase);
 
 		// 3. Navigate to the "Selection" use case in order to reset the state of the UI.
-		navigateToUseCase(browserDriver, DATA_TABLE, componentUseCase);
+		navigateToUseCase(browserDriver, componentUseCase);
 
 		// 4. Verify that rows are selected/deselected when clicking on the corresponding checkbox or radio button.
 		List<Customer> customersOnPage1 = extractCustomersFromCurrentPage(browserDriver, componentUseCase);

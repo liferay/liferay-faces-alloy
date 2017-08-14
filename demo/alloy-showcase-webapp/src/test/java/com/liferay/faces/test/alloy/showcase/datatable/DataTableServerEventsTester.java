@@ -34,9 +34,9 @@ public class DataTableServerEventsTester extends DataTableTesterBase {
 	@Test
 	public void runDataTableServerEventsTest() throws Exception {
 
-		// 1. Navigate to the "Server Events" use case in order to reset the state of the UI.
+		// 1. Navigate to the alloy:dataTable "Server Events" use case.
 		BrowserDriver browserDriver = getBrowserDriver();
-		navigateToUseCase(browserDriver, DATA_TABLE, COMPONENT_USE_CASE);
+		navigateToUseCase(browserDriver, COMPONENT_USE_CASE);
 
 		// 2. Verify that the paginator is working correctly by making sure that the first customer on page 1 is not
 		// present on page 2, etc.
@@ -57,36 +57,36 @@ public class DataTableServerEventsTester extends DataTableTesterBase {
 		String serverEventInfoText =
 			"Received RowSelectRangeEvent for rowIndexes=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9] Customers=" + customersOnPage1 +
 			" in the APPLY_REQUEST_VALUES 2 phase.";
-		clickElementAndVerifyTextIsPresent(browserDriver, waitingAsserter, "//input[contains(@id,'selectAll')]",
-			SERVER_EVENT_INFO_TEXT_XPATH, serverEventInfoText);
+		browserDriver.clickElement("//input[contains(@id,'selectAll')]");
+		waitingAsserter.assertTextPresentInElement(serverEventInfoText, ALLOY_MESSAGES_XPATH);
 
 		// 6. Click again on the *Check All* checkbox and verify that the RowDeselectEvent fires for row indexes 0-9.
 		serverEventInfoText =
 			"Received RowDeselectRangeEvent for rowIndexes=[0, 1, 2, 3, 4, 5, 6, 7, 8, 9] Customers=" +
 			customersOnPage1.toString() + " in the APPLY_REQUEST_VALUES 2 phase.";
-		clickElementAndVerifyTextIsPresent(browserDriver, waitingAsserter, "//input[contains(@id,'selectAll')]",
-			SERVER_EVENT_INFO_TEXT_XPATH, serverEventInfoText);
+		browserDriver.clickElement("//input[contains(@id,'selectAll')]");
+		waitingAsserter.assertTextPresentInElement(serverEventInfoText, ALLOY_MESSAGES_XPATH);
 
 		// 7. Navigate to the "Server Events" use case in order to reset the state of the UI.
-		navigateToUseCase(browserDriver, DATA_TABLE, COMPONENT_USE_CASE);
+		navigateToUseCase(browserDriver, COMPONENT_USE_CASE);
 
-		// 8. Repeat the following steps for the first, second, third, and last customer:
+		// 8. For the first, second, third, and last customer:
 		int[] rowIndexes = new int[] { 0, 1, 2, (customersOnPage1.size() - 1) };
 
 		for (int rowIndex : rowIndexes) {
 
-			// 9. Click on the *Selection Mode* dropdown and select "radio".
+			// 8a. Click on the *Selection Mode* dropdown and select "radio".
 			String selectRadioXpath = getDropDownListXpath("Selection Mode", "radio");
 			browserDriver.clickElement(selectRadioXpath);
 			browserDriver.waitForElementDisplayed("//input[contains(@type,'radio')]");
 
-			// 10. Verify that selecting or deselecting the first, second, and third customers, that RowSelectEvent and
-			// RowDeselectEvent fire respectively.
+			// 8b. Verify that selecting and deselecting the customer causes RowSelectEvent and
+			// RowDeselectEvent to fire respectively.
 			browserDriver.waitForElementDisplayed("//input[contains(@type,'radio')]");
 			testDataTableServerEvents(browserDriver, waitingAsserter, rowIndex, customersOnPage1.get(rowIndex));
 
-			// 11. Navigate to the "Server Events" use case in order to reset the state of the UI.
-			navigateToUseCase(browserDriver, DATA_TABLE, COMPONENT_USE_CASE);
+			// 8c. Navigate to the "Server Events" use case in order to reset the state of the UI.
+			navigateToUseCase(browserDriver, COMPONENT_USE_CASE);
 		}
 	}
 
@@ -103,21 +103,20 @@ public class DataTableServerEventsTester extends DataTableTesterBase {
 		Customer customer) {
 
 		String tableRowCustomersXpath = getRowSelectionInputXpath(customer);
-		String serverEventInfoText = getServerEventInfoText("RowSelectEvent", rowIndex, customer);
-		clickElementAndVerifyTextIsPresent(browserDriver, waitingAsserter, tableRowCustomersXpath,
-			SERVER_EVENT_INFO_TEXT_XPATH, serverEventInfoText);
+		String rowSelectEventInfoText = getServerEventInfoText("RowSelectEvent", rowIndex, customer);
+		browserDriver.clickElement(tableRowCustomersXpath);
+		waitingAsserter.assertTextPresentInElement(rowSelectEventInfoText, ALLOY_MESSAGES_XPATH);
 
 		if (browserDriver.findElementsByXpath("//input[contains(@type,'checkbox')]").isEmpty()) {
-
 			metaOrCommandClick(browserDriver, tableRowCustomersXpath);
 		}
 		else {
 			browserDriver.clickElement(tableRowCustomersXpath);
 		}
 
-		waitingAsserter.assertElementDisplayed(getAlloyMessageXpath(
-				getServerEventInfoText("RowDeselectEvent", rowIndex, customer)));
-		clickElementAndVerifyTextIsPresent(browserDriver, waitingAsserter, tableRowCustomersXpath,
-			SERVER_EVENT_INFO_TEXT_XPATH, serverEventInfoText);
+		String rowDeselectEventInfoText = getServerEventInfoText("RowDeselectEvent", rowIndex, customer);
+		waitingAsserter.assertTextPresentInElement(rowDeselectEventInfoText, ALLOY_MESSAGES_XPATH);
+		browserDriver.clickElement(tableRowCustomersXpath);
+		waitingAsserter.assertTextPresentInElement(rowSelectEventInfoText, ALLOY_MESSAGES_XPATH);
 	}
 }
