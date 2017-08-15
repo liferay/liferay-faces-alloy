@@ -20,25 +20,22 @@ import java.util.Map;
 
 import javax.faces.application.ResourceDependencies;
 import javax.faces.application.ResourceDependency;
-import javax.faces.component.UIColumn;
 import javax.faces.component.UIComponent;
-import javax.faces.component.UIData;
 import javax.faces.component.behavior.ClientBehavior;
 import javax.faces.component.behavior.ClientBehaviorContext;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 import javax.faces.render.FacesRenderer;
 
-import com.liferay.faces.alloy.component.data.internal.DataEncoderBase;
 import com.liferay.faces.alloy.component.tab.Tab;
 import com.liferay.faces.alloy.component.tab.TabSelectEvent;
-import com.liferay.faces.alloy.component.tab.internal.DataEncoderTabImpl;
+import com.liferay.faces.alloy.component.tab.TabUtil;
 import com.liferay.faces.alloy.component.tabview.TabView;
+import com.liferay.faces.util.component.ComponentUtil;
 import com.liferay.faces.util.component.Styleable;
 import com.liferay.faces.util.helper.IntegerHelper;
 import com.liferay.faces.util.logging.Logger;
 import com.liferay.faces.util.logging.LoggerFactory;
-import com.liferay.faces.util.render.JavaScriptFragment;
 import com.liferay.faces.util.render.RendererUtil;
 
 
@@ -54,7 +51,6 @@ import com.liferay.faces.util.render.RendererUtil;
 @ResourceDependencies(
 	{
 		@ResourceDependency(library = "liferay-faces-alloy", name = "alloy.css"),
-		@ResourceDependency(library = "liferay-faces-alloy", name = "alloy.js"),
 		@ResourceDependency(library = "liferay-faces-alloy-reslib", name = "build/aui-css/css/bootstrap.min.css"),
 		@ResourceDependency(library = "liferay-faces-alloy-reslib", name = "build/aui/aui-min.js"),
 		@ResourceDependency(library = "liferay-faces-alloy-reslib", name = "liferay.js")
@@ -69,16 +65,6 @@ public class TabViewRenderer extends TabViewRendererBase {
 
 	// Logger
 	private static final Logger logger = LoggerFactory.getLogger(TabViewRenderer.class);
-
-	private static int getIntegerOrDefault(Integer i, int defaultValue) {
-
-		if (i != null) {
-			return i;
-		}
-		else {
-			return defaultValue;
-		}
-	}
 
 	@Override
 	public void decodeClientState(FacesContext facesContext, UIComponent uiComponent) {
@@ -101,15 +87,57 @@ public class TabViewRenderer extends TabViewRendererBase {
 		// using a prototype child tab.
 		TabView tabView = (TabView) uiComponent;
 		Integer selectedIndex = tabView.getSelectedIndex();
-		boolean iterateOverDataModel = DataEncoderBase.isIterateOverDataModel(tabView);
+		Object value = tabView.getValue();
+		String var = tabView.getVar();
+		boolean iterateOverDataModel = ((value != null) && (var != null));
+		Tab prototypeChildTab = TabUtil.getFirstChildTab(tabView);
 
 		// Encode the starting <ul> unordered list element that represents the list of clickable tabs.
 		ResponseWriter responseWriter = facesContext.getResponseWriter();
 		responseWriter.startElement("ul", tabView);
 		responseWriter.writeAttribute("class", "nav nav-tabs", null);
 
-		DataEncoderBase dataEncoder = new DataEncoderTabHeaderImpl(selectedIndex);
-		dataEncoder.encodeColumns(facesContext, tabView, iterateOverDataModel);
+		if (iterateOverDataModel) {
+
+			if (prototypeChildTab != null) {
+
+				int rowCount = tabView.getRowCount();
+
+				for (int i = 0; i < rowCount; i++) {
+					tabView.setRowIndex(i);
+
+					if (prototypeChildTab.isRendered()) {
+
+						boolean selected = ((selectedIndex != null) && (i == selectedIndex));
+						encodeTabListItem(facesContext, responseWriter, prototypeChildTab, selected);
+					}
+				}
+
+				tabView.setRowIndex(-1);
+
+			}
+			else {
+				logger.warn("Unable to iterate because alloy:tabView does not have an alloy:tab child element.");
+			}
+		}
+		else {
+			List<UIComponent> children = uiComponent.getChildren();
+			int childCount = children.size();
+
+			for (int i = 0; i < childCount; i++) {
+				UIComponent child = children.get(i);
+
+				if ((child instanceof Tab) && child.isRendered()) {
+					Tab childTab = (Tab) child;
+					boolean selected = ((selectedIndex != null) && (i == selectedIndex));
+					encodeTabListItem(facesContext, responseWriter, childTab, selected);
+				}
+				else {
+					logger.warn("Unable to render child element of alloy:tabView since it is not alloy:tab");
+				}
+			}
+		}
+
 		responseWriter.endElement("ul");
 
 		// Encode the starting <div> element that represents the content for the selected tab.
@@ -117,8 +145,26 @@ public class TabViewRenderer extends TabViewRendererBase {
 		responseWriter.writeAttribute("class", "tab-content", null);
 
 		// Encode the content for each tab.
-		dataEncoder = new DataEncoderTabImpl();
-		dataEncoder.encodeColumns(facesContext, tabView, iterateOverDataModel);
+		if ((iterateOverDataModel) && (prototypeChildTab != null)) {
+			int rowCount = tabView.getRowCount();
+
+			for (int i = 0; i < rowCount; i++) {
+				tabView.setRowIndex(i);
+				prototypeChildTab.encodeAll(facesContext);
+			}
+		}
+		else {
+			List<UIComponent> children = tabView.getChildren();
+
+			for (int i = 0; i < children.size(); i++) {
+				UIComponent child = children.get(i);
+
+				if (child.isRendered()) {
+					child.encodeAll(facesContext);
+				}
+			}
+		}
+
 		tabView.setRowIndex(-1);
 
 		// Encode the closing </div> element for the content.
@@ -145,11 +191,24 @@ public class TabViewRenderer extends TabViewRendererBase {
 	@Override
 	public void encodeJavaScriptCustom(FacesContext facesContext, UIComponent uiComponent) throws IOException {
 
+		// The outermost div was initially styled with "display:none;" in order to prevent blinking when Alloy's
+		// JavaScript attempts to hide the div. At this point in JavaScript execution, Alloy is done manipulating the
+		// DOM and it is necessary to set the style back to "display:block;" so that the component will be visible.
+
+		// A.one('#tabViewExample\x5c\x3atabViewForm\x5c\x3aj\x5fidt73')._node['style'].display = 'block';
+		ResponseWriter responseWriter = facesContext.getResponseWriter();
+		responseWriter.write("A.one('");
+
+		String clientId = uiComponent.getClientId(facesContext);
+		String escapedClientId = "#" + ComponentUtil.escapeClientId(clientId);
+		responseWriter.write(escapedClientId);
+		responseWriter.write("')._node['style'].display='block';");
+
 		// Encode a script that will handle the client-side state of the selected tab index, as well as submitting
 		// Ajax requests to support server-side events.
 		TabView tabView = (TabView) uiComponent;
 
-		// var tabViewClientVarName = Liferay.component('{clientKey}');
+		// var clientVarName = Liferay.component('clientKey');
 		String clientVarName = getClientVarName(facesContext, tabView);
 		String clientKey = tabView.getClientKey();
 
@@ -157,24 +216,28 @@ public class TabViewRenderer extends TabViewRendererBase {
 			clientKey = clientVarName;
 		}
 
-		ResponseWriter responseWriter = facesContext.getResponseWriter();
+		// var clientVar = Liferay.component('clientVarName');
+		// var tabViewExample_tabViewForm_j_idt73 = Liferay.component('tabViewExample\x5ftabViewForm\x5fj\x5fidt73');
 		encodeLiferayComponentVar(responseWriter, clientVarName, clientKey);
 
-		// Enable the enabled tabs, disable the disabled tabs, and select the selected tab on the client side.
-		Integer selectedIndex = tabView.getSelectedIndex();
-		DataEncoderBase dataEncoder = new DataEncoderTabJavaScriptImpl(selectedIndex, clientVarName);
-		dataEncoder.encodeColumns(facesContext, tabView);
-
-		// LFAI.initTabView(tabViewClientVarName, '{clientId}selectedIndex', '{clientId}',
-		// [tabSelectClientBehaviorScriptFunction1, tabSelectClientBehaviorScriptFunction2,
-		// tabSelectClientBehaviorScriptFunction3]);
-		String clientId = uiComponent.getClientId(facesContext);
+		// clientIdselectedIndex
 		String hiddenFieldId = clientId + "selectedIndex";
 
-		StringBuilder clientBehaviorsArrayStringBuilder = new StringBuilder();
-		clientBehaviorsArrayStringBuilder.append("[");
+		// tabViewExample_tabViewForm_j_idt73.after('selectionChange', function(event){
+		responseWriter.write(clientVarName);
+		responseWriter.write(".after('"); // begin call to "after" method
+		responseWriter.write("selectionChange");
+		responseWriter.write("', function(event){ "); // begin function to call after selectionChange
 
-		boolean first = true;
+		// var hidden = document.getElementById('tabViewExample:tabViewForm:j_idt73selectedIndex');
+		responseWriter.write("var hidden=document.getElementById('");
+		responseWriter.write(hiddenFieldId);
+		responseWriter.write("'");
+		responseWriter.append(");");
+
+		responseWriter.write(
+			"var prevTabIndex=hidden.value;if(event.newVal){hidden.value=event.newVal.get('index');}else if (prevTabIndex==event.newVal.get('index')){hidden.value='';};");
+
 		Map<String, List<ClientBehavior>> clientBehaviorMap = tabView.getClientBehaviors();
 		Collection<String> eventNames = tabView.getEventNames();
 
@@ -187,32 +250,51 @@ public class TabViewRenderer extends TabViewRendererBase {
 
 					ClientBehaviorContext clientBehaviorContext = ClientBehaviorContext.createClientBehaviorContext(
 							facesContext, tabView, eventName, clientId, null);
+					String clientBehaviorScript = clientBehavior.getScript(clientBehaviorContext);
 
-					// If <f:ajax event="tabSelect" /> is specified in the view, then render a script that submits
+					// If <f:ajax event="tabSelected" /> is specified in the view, then render a script that submits
 					// an Ajax request.
 					if (TabSelectEvent.TAB_SELECT.equals(eventName)) {
 
-						if (!first) {
-							clientBehaviorsArrayStringBuilder.append(",");
-						}
-
 						//J-
-						// function(event) {
-						//	jsf.ajax.request(this, event, {'javax.faces.behavior.event': 'tabSelect'})
-						// };
+						// if (event.newVal) {
+						//	   jsf.ajax.request(this, event, {'javax.faces.behavior.event': 'tabExpanded'});
+						// }
 						//J+
-						clientBehaviorsArrayStringBuilder.append("function(event){");
-						clientBehaviorsArrayStringBuilder.append(clientBehavior.getScript(clientBehaviorContext));
-						clientBehaviorsArrayStringBuilder.append("}");
-						first = false;
+						responseWriter.write("if(event.newVal){");
+						responseWriter.write(clientBehaviorScript);
+						responseWriter.write("}");
 					}
 				}
 			}
 		}
 
-		clientBehaviorsArrayStringBuilder.append("]");
-		encodeFunctionCall(responseWriter, "LFAI.initTabView", new JavaScriptFragment(clientVarName), hiddenFieldId,
-			clientId, new JavaScriptFragment(clientBehaviorsArrayStringBuilder.toString()));
+		responseWriter.write("});"); // end function to call after selectionChange + end call to "after" method
+
+		int tabIndex = 0;
+		List<UIComponent> children = tabView.getChildren();
+
+		for (UIComponent child : children) {
+
+			if ((child instanceof Tab) && child.isRendered()) {
+				Tab childTab = (Tab) child;
+
+				if (childTab.isDisabled()) {
+					responseWriter.write(clientVarName);
+					responseWriter.write(".disableTab(");
+					responseWriter.write(Integer.toString(tabIndex));
+					responseWriter.write(");");
+				}
+				else {
+					responseWriter.write(clientVarName);
+					responseWriter.write(".enableTab(");
+					responseWriter.write(Integer.toString(tabIndex));
+					responseWriter.write(");");
+				}
+
+				tabIndex++;
+			}
+		}
 	}
 
 	@Override
@@ -249,126 +331,51 @@ public class TabViewRenderer extends TabViewRendererBase {
 		encodeClientId(responseWriter, "srcNode", tabView.getClientId(facesContext), first);
 	}
 
-	private static class DataEncoderTabHeaderImpl extends DataEncoderTabImpl {
+	protected void encodeTabListItem(FacesContext facesContext, ResponseWriter responseWriter, Tab tab,
+		boolean selected) throws IOException {
 
-		// Private Final Data Members
-		private final int selectedIndex;
+		responseWriter.startElement("li", tab);
 
-		public DataEncoderTabHeaderImpl(Integer selectedIndex) {
-			this.selectedIndex = getIntegerOrDefault(selectedIndex, -1);
+		// Encode the div's class attribute according to the specified tab's selected/un-selected state.
+		String tabClasses = UNSELECTED_TAB_HEADER_CLASSES;
+
+		if (selected) {
+			tabClasses = SELECTED_TAB_HEADER_CLASSES;
 		}
 
-		@Override
-		protected void encodeColumn(FacesContext facesContext, UIData uiData, UIColumn currentUIColumn,
-			int serverSideIndex) throws IOException {
+		// If the specified tab has a headerClass, then append it to the class attribute before encoding.
+		String tabHeaderClass = tab.getHeaderClass();
 
-			if ((currentUIColumn instanceof Tab) && currentUIColumn.isRendered()) {
+		if (tabHeaderClass != null) {
+			tabClasses += " " + tabHeaderClass;
+		}
 
-				ResponseWriter responseWriter = facesContext.getResponseWriter();
-				Tab tab = (Tab) currentUIColumn;
-				responseWriter.startElement("li", tab);
+		responseWriter.writeAttribute("class", tabClasses, Styleable.STYLE_CLASS);
+		responseWriter.startElement("a", tab);
 
-				// Encode the div's class attribute according to the specified tab's selected/un-selected state.
-				String tabClasses = UNSELECTED_TAB_HEADER_CLASSES;
-				boolean selected = (serverSideIndex == selectedIndex);
+		if (tab.isDisabled()) {
+			responseWriter.writeAttribute("disabled", "disabled", null);
+		}
 
-				if (selected) {
-					tabClasses = SELECTED_TAB_HEADER_CLASSES;
-				}
+		responseWriter.writeAttribute("href", "#" + tab.getClientId(facesContext), null);
 
-				// If the specified tab has a headerClass, then append it to the class attribute before encoding.
-				String tabHeaderClass = tab.getHeaderClass();
+		// If the header facet exists for the specified tab, then encode the header facet.
+		UIComponent headerFacet = tab.getFacet("header");
 
-				if (tabHeaderClass != null) {
-					tabClasses += " " + tabHeaderClass;
-				}
+		if (headerFacet != null) {
+			headerFacet.encodeAll(facesContext);
+		}
 
-				tabClasses += " serverSideIndex" + serverSideIndex;
-				responseWriter.writeAttribute("class", tabClasses, Styleable.STYLE_CLASS);
-				responseWriter.startElement("a", tab);
+		// Otherwise, render the label of the specified tab.
+		else {
+			String headerText = tab.getHeaderText();
 
-				if (tab.isDisabled()) {
-					responseWriter.writeAttribute("disabled", "disabled", null);
-				}
-
-				String clientId = tab.getClientId(facesContext);
-				responseWriter.writeAttribute("href", "#" + clientId, null);
-
-				// If the header facet exists for the specified tab, then encode the header facet.
-				UIComponent headerFacet = tab.getFacet("header");
-
-				if (headerFacet != null) {
-					headerFacet.encodeAll(facesContext);
-				}
-
-				// Otherwise, render the label of the specified tab.
-				else {
-					String headerText = tab.getHeaderText();
-
-					if (headerText != null) {
-						responseWriter.write(headerText);
-					}
-				}
-
-				responseWriter.endElement("a");
-				responseWriter.endElement("li");
+			if (headerText != null) {
+				responseWriter.write(headerText);
 			}
 		}
-	}
 
-	private static class DataEncoderTabJavaScriptImpl extends DataEncoderTabImpl {
-
-		// Private Final Data Members
-		private final String clientVarName;
-		private final int selectedIndex;
-
-		// Private Data Members
-		int clientSideTabIndex = 0;
-
-		public DataEncoderTabJavaScriptImpl(Integer selectedIndex, String clientVarName) {
-
-			this.selectedIndex = getIntegerOrDefault(selectedIndex, -1);
-			this.clientVarName = clientVarName;
-		}
-
-		@Override
-		protected void encodeColumn(FacesContext facesContext, UIData uiData, UIColumn currentUIColumn,
-			int currentIndex) throws IOException {
-
-			if ((currentUIColumn instanceof Tab) && currentUIColumn.isRendered()) {
-
-				ResponseWriter responseWriter = facesContext.getResponseWriter();
-				String clientSideTabIndexString = Integer.toString(clientSideTabIndex);
-				Tab childTab = (Tab) currentUIColumn;
-
-				if (childTab.isDisabled()) {
-
-					// tabViewClientVarName.disableTab(clientSideTabIndexString);
-					responseWriter.write(clientVarName);
-					responseWriter.write(".disableTab(");
-					responseWriter.write(clientSideTabIndexString);
-					responseWriter.write(");");
-				}
-				else {
-
-					// tabViewClientVarName.enableTab(clientSideTabIndexString);
-					responseWriter.write(clientVarName);
-					responseWriter.write(".enableTab(");
-					responseWriter.write(clientSideTabIndexString);
-					responseWriter.write(");");
-
-					if (currentIndex == selectedIndex) {
-
-						// tabViewClientVarName.selectChild(clientSideTabIndexString);
-						responseWriter.write(clientVarName);
-						responseWriter.write(".selectChild(");
-						responseWriter.write(clientSideTabIndexString);
-						responseWriter.write(");");
-					}
-				}
-
-				clientSideTabIndex++;
-			}
-		}
+		responseWriter.endElement("a");
+		responseWriter.endElement("li");
 	}
 }
