@@ -23,7 +23,6 @@ import javax.faces.event.PreRenderComponentEvent;
 import javax.faces.render.FacesRenderer;
 
 import com.liferay.faces.alloy.component.commandbutton.CommandButton;
-import com.liferay.faces.util.render.RendererUtil;
 
 
 /**
@@ -43,7 +42,7 @@ import com.liferay.faces.util.render.RendererUtil;
 	}
 )
 //J+
-public class CommandButtonRenderer extends CommandButtonRendererBase implements ComponentSystemEventListener {
+public class CommandButtonRenderer extends CommandButtonRendererCompat implements ComponentSystemEventListener {
 
 	@Override
 	public void processEvent(ComponentSystemEvent componentSystemEvent) throws AbortProcessingException {
@@ -51,8 +50,7 @@ public class CommandButtonRenderer extends CommandButtonRendererBase implements 
 		CommandButton commandButton = (CommandButton) componentSystemEvent.getComponent();
 
 		if (commandButton.isAjax()) {
-			RendererUtil.addDefaultAjaxBehavior(commandButton, commandButton.getExecute(), commandButton.getProcess(),
-				"@all", commandButton.getRender(), commandButton.getUpdate(), "@none");
+			addDefaultAjaxBehavior(commandButton);
 		}
 	}
 }
