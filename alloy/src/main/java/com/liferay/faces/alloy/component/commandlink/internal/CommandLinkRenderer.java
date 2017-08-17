@@ -27,7 +27,6 @@ import javax.faces.event.PreRenderComponentEvent;
 import javax.faces.render.FacesRenderer;
 
 import com.liferay.faces.alloy.component.commandlink.CommandLink;
-import com.liferay.faces.util.render.RendererUtil;
 
 
 /**
@@ -36,7 +35,7 @@ import com.liferay.faces.util.render.RendererUtil;
 @FacesRenderer(componentFamily = CommandLink.COMPONENT_FAMILY, rendererType = CommandLink.RENDERER_TYPE)
 @ListenerFor(systemEventClass = PreRenderComponentEvent.class, sourceClass = CommandLink.class)
 @ResourceDependency(library = "javax.faces", name = "jsf.js")
-public class CommandLinkRenderer extends CommandLinkRendererBase implements ComponentSystemEventListener {
+public class CommandLinkRenderer extends CommandLinkRendererCompat implements ComponentSystemEventListener {
 
 	@Override
 	public void encodeBegin(FacesContext facesContext, UIComponent uiComponent) throws IOException {
@@ -53,8 +52,7 @@ public class CommandLinkRenderer extends CommandLinkRendererBase implements Comp
 		CommandLink commandLink = (CommandLink) componentSystemEvent.getComponent();
 
 		if (commandLink.isAjax()) {
-			RendererUtil.addDefaultAjaxBehavior(commandLink, commandLink.getExecute(), commandLink.getProcess(), "@all",
-				commandLink.getRender(), commandLink.getUpdate(), "@none");
+			addDefaultAjaxBehavior(commandLink);
 		}
 	}
 }
