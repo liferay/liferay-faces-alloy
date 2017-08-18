@@ -72,8 +72,9 @@ public class DataTableTesterBase extends DataTesterBase {
 		WebDriver webDriver = browserDriver.getWebDriver();
 		ExpectedCondition<Boolean> navigationButtonClassDisabledCondition = navigationButtonClassDisabled("(" +
 				PAGINATOR_XPATH_PREFIX + "//li[last()])[1]");
+		Boolean navigationButtonDisabled = navigationButtonClassDisabledCondition.apply(webDriver);
 
-		while (!navigationButtonClassDisabledCondition.apply(webDriver)) {
+		while (!navigationButtonDisabled) {
 
 			// Extract the customers from the current page of the table.
 			extractedCustomers.addAll(extractCustomersFromCurrentPage(browserDriver, componentUseCase));
