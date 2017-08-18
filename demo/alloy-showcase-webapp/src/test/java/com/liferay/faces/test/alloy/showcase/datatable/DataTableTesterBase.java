@@ -82,6 +82,7 @@ public class DataTableTesterBase extends DataTesterBase {
 			// Click the *Next Page* button.
 			Action clickNextPageAction = browserDriver.createClickElementAction(getPaginatorButtonXpath("nextPage"));
 			browserDriver.performAndWaitForRerender(clickNextPageAction, getFirstNameCellXpath(componentUseCase));
+			navigationButtonDisabled = navigationButtonClassDisabledCondition.apply(webDriver);
 		}
 
 		// Extract customers from the last page of the table.
