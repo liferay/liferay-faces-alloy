@@ -15,6 +15,8 @@ package com.liferay.faces.alloy.i18n.internal;
 
 import java.io.Serializable;
 
+import javax.faces.context.ExternalContext;
+
 import com.liferay.faces.util.i18n.I18n;
 import com.liferay.faces.util.i18n.I18nBundleBase;
 
@@ -34,5 +36,19 @@ public class I18nAlloyImpl extends I18nBundleBase implements Serializable {
 	@Override
 	public String getBundleKey() {
 		return "i18n-alloy";
+	}
+
+	@Override
+	protected Integer getMaxCacheCapacity(ExternalContext externalContext) {
+
+		Integer maxCacheCapacity = null;
+		String maxCacheCapacityString = externalContext.getInitParameter(
+				"com.liferay.faces.alloy.i18n.AlloyI18nBundle.maxCacheCapacity");
+
+		if (maxCacheCapacityString != null) {
+			maxCacheCapacity = Integer.parseInt(maxCacheCapacityString);
+		}
+
+		return maxCacheCapacity;
 	}
 }
