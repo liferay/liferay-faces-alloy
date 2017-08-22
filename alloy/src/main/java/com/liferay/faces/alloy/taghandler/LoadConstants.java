@@ -91,7 +91,7 @@ public class LoadConstants extends TagHandler {
 	}
 
 	@Override
-	public void apply(FaceletContext facletContext, UIComponent parentUIComponent) throws IOException {
+	public void apply(FaceletContext faceletContext, UIComponent parentUIComponent) throws IOException {
 
 		Cache<String, Map<String, Object>> constantCache = LoadConstants.constantCache;
 
@@ -105,7 +105,7 @@ public class LoadConstants extends TagHandler {
 
 				if (constantCache == null) {
 
-					FacesContext facesContext = facletContext.getFacesContext();
+					FacesContext facesContext = faceletContext.getFacesContext();
 					ExternalContext externalContext = facesContext.getExternalContext();
 					String maxCacheCapacityString = externalContext.getInitParameter(LoadConstants.class.getName() +
 							".maxCacheCapacity");
@@ -128,7 +128,7 @@ public class LoadConstants extends TagHandler {
 		}
 
 		if (cacheable && constantCache.containsKey(classType)) {
-			facletContext.setAttribute(var, constantCache.get(classType));
+			faceletContext.setAttribute(var, constantCache.get(classType));
 		}
 		else {
 
@@ -154,7 +154,7 @@ public class LoadConstants extends TagHandler {
 					constantMap = constantCache.putIfAbsent(classType, constantMap);
 				}
 
-				facletContext.setAttribute(var, constantMap);
+				faceletContext.setAttribute(var, constantMap);
 			}
 			catch (ClassNotFoundException e) {
 				throw new IllegalArgumentException("Referenced class cannot be found.", e);
