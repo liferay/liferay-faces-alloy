@@ -56,17 +56,17 @@ public class I18nAlloyImpl extends I18nBundleBase implements Serializable {
 	protected Cache<String, String> newConcurrentMessageCache(ExternalContext externalContext) {
 
 		Cache<String, String> concurrentMessageCache;
+		int initialCacheCapacity = AlloyWebConfigParam.AlloyI18nBundleInitialCacheCapacity.getIntegerValue(
+				externalContext);
 		AlloyWebConfigParam AlloyI18nBundleMaxCacheCapacity = AlloyWebConfigParam.AlloyI18nBundleMaxCacheCapacity;
 		int maxCacheCapacity = AlloyI18nBundleMaxCacheCapacity.getIntegerValue(externalContext);
 
 		if (maxCacheCapacity != AlloyI18nBundleMaxCacheCapacity.getDefaultIntegerValue()) {
-
-			int initialCacheCapacity = WebConfigParam.DefaultInitialCacheCapacity.getIntegerValue(externalContext);
 			concurrentMessageCache = CacheFactory.getConcurrentLRUCacheInstance(externalContext, initialCacheCapacity,
 					maxCacheCapacity);
 		}
 		else {
-			concurrentMessageCache = super.newConcurrentMessageCache(externalContext);
+			concurrentMessageCache = CacheFactory.getConcurrentCacheInstance(externalContext, initialCacheCapacity);
 		}
 
 		return concurrentMessageCache;
