@@ -108,20 +108,19 @@ public class LoadConstants extends TagHandler {
 
 					FacesContext facesContext = faceletContext.getFacesContext();
 					ExternalContext externalContext = facesContext.getExternalContext();
+					int initialCacheCapacity = AlloyWebConfigParam.AlloyLoadConstantsInitialCacheCapacity
+						.getIntegerValue(externalContext);
 					AlloyWebConfigParam AlloyLoadConstantsMaxCacheCapacity =
 						AlloyWebConfigParam.AlloyLoadConstantsMaxCacheCapacity;
 					int maxCacheCapacity = AlloyLoadConstantsMaxCacheCapacity.getIntegerValue(externalContext);
 
 					if (maxCacheCapacity != AlloyLoadConstantsMaxCacheCapacity.getDefaultIntegerValue()) {
-
-						int initialCacheCapacity = WebConfigParam.DefaultInitialCacheCapacity.getIntegerValue(
-								externalContext);
 						constantCache = LoadConstants.constantCache = CacheFactory.getConcurrentLRUCacheInstance(
 									externalContext, initialCacheCapacity, maxCacheCapacity);
 					}
 					else {
 						constantCache = LoadConstants.constantCache = CacheFactory.getConcurrentCacheInstance(
-									externalContext);
+									externalContext, initialCacheCapacity);
 					}
 				}
 			}
