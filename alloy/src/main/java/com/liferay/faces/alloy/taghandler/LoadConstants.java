@@ -28,9 +28,10 @@ import javax.faces.view.facelets.TagAttribute;
 import javax.faces.view.facelets.TagConfig;
 import javax.faces.view.facelets.TagHandler;
 
+import com.liferay.faces.alloy.config.internal.AlloyWebConfigParam;
 import com.liferay.faces.util.cache.Cache;
 import com.liferay.faces.util.cache.CacheFactory;
-import com.liferay.faces.util.factory.FactoryExtensionFinder;
+import com.liferay.faces.util.config.WebConfigParam;
 import com.liferay.faces.util.jsp.JspTagConfig;
 import com.liferay.faces.util.logging.Logger;
 import com.liferay.faces.util.logging.LoggerFactory;
@@ -96,28 +97,27 @@ public class LoadConstants extends TagHandler {
 		Cache<String, Map<String, Object>> constantCache = LoadConstants.constantCache;
 
 		// First check without locking (not yet thread-safe)
-		if (constantCache == null) {
+		if (cacheable && (constantCache == null)) {
 
-			// Second check with locking (thread-safe)
 			synchronized (LoadConstants.class) {
 
 				constantCache = LoadConstants.constantCache;
 
+				// Second check with locking (thread-safe)
 				if (constantCache == null) {
 
 					FacesContext facesContext = faceletContext.getFacesContext();
 					ExternalContext externalContext = facesContext.getExternalContext();
-					String maxCacheCapacityString = externalContext.getInitParameter(LoadConstants.class.getName() +
-							".maxCacheCapacity");
+					AlloyWebConfigParam AlloyLoadConstantsMaxCacheCapacity =
+						AlloyWebConfigParam.AlloyLoadConstantsMaxCacheCapacity;
+					int maxCacheCapacity = AlloyLoadConstantsMaxCacheCapacity.getIntegerValue(externalContext);
 
-					if (maxCacheCapacityString != null) {
+					if (maxCacheCapacity != AlloyLoadConstantsMaxCacheCapacity.getDefaultIntegerValue()) {
 
-						CacheFactory cacheFactory = (CacheFactory) FactoryExtensionFinder.getFactory(externalContext,
-								CacheFactory.class);
-						int initialCacheCapacity = cacheFactory.getDefaultInitialCapacity();
-						int maxCacheCapacity = Integer.parseInt(maxCacheCapacityString);
-						constantCache = LoadConstants.constantCache = cacheFactory.getConcurrentCache(
-									initialCacheCapacity, maxCacheCapacity);
+						int initialCacheCapacity = WebConfigParam.DefaultInitialCacheCapacity.getIntegerValue(
+								externalContext);
+						constantCache = LoadConstants.constantCache = CacheFactory.getConcurrentLRUCacheInstance(
+									externalContext, initialCacheCapacity, maxCacheCapacity);
 					}
 					else {
 						constantCache = LoadConstants.constantCache = CacheFactory.getConcurrentCacheInstance(
@@ -128,7 +128,7 @@ public class LoadConstants extends TagHandler {
 		}
 
 		if (cacheable && constantCache.containsKey(classType)) {
-			faceletContext.setAttribute(var, constantCache.get(classType));
+			faceletContext.setAttribute(var, constantCache.getValue(classType));
 		}
 		else {
 
@@ -143,15 +143,24 @@ public class LoadConstants extends TagHandler {
 
 					int modifiers = field.getModifiers();
 
-					if (Modifier.isPublic(modifiers) && Modifier.isStatic(modifiers) && Modifier.isFinal(modifiers)) {
-						constantMap.put(field.getName(), field.get(null));
+					if (Modifier.isPublic(modifiers) && Modifier.isStatic(modifiers)) {
+
+						String fieldName = field.getName();
+
+						if (!Modifier.isFinal(modifiers)) {
+							logger.warn(
+								"Loading non-final field: {0}. alloy:loadConstants is designed to load \"public static final\" fields. The behavior of alloy:loadConstants is undefined when loading non-final fields.",
+								fieldName);
+						}
+
+						constantMap.put(fieldName, field.get(null));
 					}
 				}
 
 				constantMap = Collections.unmodifiableMap(constantMap);
 
 				if (cacheable) {
-					constantMap = constantCache.putIfAbsent(classType, constantMap);
+					constantMap = constantCache.putValueIfAbsent(classType, constantMap);
 				}
 
 				faceletContext.setAttribute(var, constantMap);

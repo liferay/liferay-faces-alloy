@@ -17,6 +17,10 @@ import java.io.Serializable;
 
 import javax.faces.context.ExternalContext;
 
+import com.liferay.faces.alloy.config.internal.AlloyWebConfigParam;
+import com.liferay.faces.util.cache.Cache;
+import com.liferay.faces.util.cache.CacheFactory;
+import com.liferay.faces.util.config.WebConfigParam;
 import com.liferay.faces.util.i18n.I18n;
 import com.liferay.faces.util.i18n.I18nBundleBase;
 
@@ -39,16 +43,22 @@ public class I18nAlloyImpl extends I18nBundleBase implements Serializable {
 	}
 
 	@Override
-	protected Integer getMaxCacheCapacity(ExternalContext externalContext) {
+	protected Cache<String, String> newConcurrentMessageCache(ExternalContext externalContext) {
 
-		Integer maxCacheCapacity = null;
-		String maxCacheCapacityString = externalContext.getInitParameter(
-				"com.liferay.faces.alloy.i18n.AlloyI18nBundle.maxCacheCapacity");
+		Cache<String, String> concurrentMessageCache;
+		AlloyWebConfigParam AlloyI18nBundleMaxCacheCapacity = AlloyWebConfigParam.AlloyI18nBundleMaxCacheCapacity;
+		int maxCacheCapacity = AlloyI18nBundleMaxCacheCapacity.getIntegerValue(externalContext);
 
-		if (maxCacheCapacityString != null) {
-			maxCacheCapacity = Integer.parseInt(maxCacheCapacityString);
+		if (maxCacheCapacity != AlloyI18nBundleMaxCacheCapacity.getDefaultIntegerValue()) {
+
+			int initialCacheCapacity = WebConfigParam.DefaultInitialCacheCapacity.getIntegerValue(externalContext);
+			concurrentMessageCache = CacheFactory.getConcurrentLRUCacheInstance(externalContext, initialCacheCapacity,
+					maxCacheCapacity);
+		}
+		else {
+			concurrentMessageCache = super.newConcurrentMessageCache(externalContext);
 		}
 
-		return maxCacheCapacity;
+		return concurrentMessageCache;
 	}
 }

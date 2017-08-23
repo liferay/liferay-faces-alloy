@@ -15,6 +15,7 @@ package com.liferay.faces.alloy.config.internal;
 
 import javax.faces.context.ExternalContext;
 
+import com.liferay.faces.alloy.taghandler.LoadConstants;
 import com.liferay.faces.util.config.WebConfigParamUtil;
 
 
@@ -23,11 +24,19 @@ import com.liferay.faces.util.config.WebConfigParamUtil;
  */
 public enum AlloyWebConfigParam {
 
+	AlloyLoadConstantsMaxCacheCapacity(LoadConstants.class.getName() + ".maxCacheCapacity", -1),
+	AlloyI18nBundleMaxCacheCapacity("com.liferay.faces.alloy.i18n.AlloyI18nBundle.maxCacheCapacity", -1),
 	AlloyTagDecoratorEnabled("com.liferay.faces.util.AlloyTagDecoratorEnabled", true);
 
 	// Private Data Members
 	private boolean defaultBooleanValue;
+	private int defaultIntegerValue;
 	private String name;
+
+	private AlloyWebConfigParam(String name, int defaultIntegerValue) {
+		this.name = name;
+		this.defaultIntegerValue = defaultIntegerValue;
+	}
 
 	private AlloyWebConfigParam(String name, boolean defaultBooleanValue) {
 		this.name = name;
@@ -36,5 +45,17 @@ public enum AlloyWebConfigParam {
 
 	public boolean getBooleanValue(ExternalContext externalContext) {
 		return WebConfigParamUtil.getBooleanValue(externalContext, name, null, defaultBooleanValue);
+	}
+
+	public int getDefaultIntegerValue() {
+		return defaultIntegerValue;
+	}
+
+	public int getIntegerValue(ExternalContext externalContext) {
+		return WebConfigParamUtil.getIntegerValue(externalContext, name, null, defaultIntegerValue);
+	}
+
+	public boolean isDefaultBooleanValue() {
+		return defaultBooleanValue;
 	}
 }
