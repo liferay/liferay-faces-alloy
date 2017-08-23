@@ -15,7 +15,6 @@ package com.liferay.faces.alloy.config.internal;
 
 import javax.faces.context.ExternalContext;
 
-import com.liferay.faces.alloy.taghandler.LoadConstants;
 import com.liferay.faces.util.config.WebConfigParamUtil;
 
 
@@ -24,11 +23,8 @@ import com.liferay.faces.util.config.WebConfigParamUtil;
  */
 public enum AlloyWebConfigParam {
 
-	AlloyLoadConstantsInitialCacheCapacity(LoadConstants.class.getName() + ".INITIAL_CACHE_CAPACITY", 16),
 	AlloyI18nBundleInitialCacheCapacity("com.liferay.faces.alloy.i18n.AlloyI18nBundle.INITIAL_CACHE_CAPACITY", 16),
-	AlloyLoadConstantsMaxCacheCapacity(LoadConstants.class.getName() + ".MAX_CACHE_CAPACITY", -1),
-	AlloyI18nBundleMaxCacheCapacity("com.liferay.faces.alloy.i18n.AlloyI18nBundle.MAX_CACHE_CAPACITY", -1),
-	AlloyTagDecoratorEnabled("com.liferay.faces.util.AlloyTagDecoratorEnabled", true);
+	AlloyI18nBundleMaxCacheCapacity("com.liferay.faces.alloy.i18n.AlloyI18nBundle.MAX_CACHE_CAPACITY", -1);
 
 	// Private Data Members
 	private boolean defaultBooleanValue;
