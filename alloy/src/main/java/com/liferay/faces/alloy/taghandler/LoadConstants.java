@@ -110,11 +110,10 @@ public class LoadConstants extends TagHandler {
 					ExternalContext externalContext = facesContext.getExternalContext();
 					int initialCacheCapacity = AlloyWebConfigParam.AlloyLoadConstantsInitialCacheCapacity
 						.getIntegerValue(externalContext);
-					AlloyWebConfigParam AlloyLoadConstantsMaxCacheCapacity =
-						AlloyWebConfigParam.AlloyLoadConstantsMaxCacheCapacity;
-					int maxCacheCapacity = AlloyLoadConstantsMaxCacheCapacity.getIntegerValue(externalContext);
+					int maxCacheCapacity = AlloyWebConfigParam.AlloyLoadConstantsMaxCacheCapacity.getIntegerValue(
+							externalContext);
 
-					if (maxCacheCapacity != AlloyLoadConstantsMaxCacheCapacity.getDefaultIntegerValue()) {
+					if (maxCacheCapacity > -1) {
 						constantCache = LoadConstants.constantCache = CacheFactory.getConcurrentLRUCacheInstance(
 									externalContext, initialCacheCapacity, maxCacheCapacity);
 					}
