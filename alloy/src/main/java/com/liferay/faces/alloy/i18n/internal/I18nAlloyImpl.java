@@ -27,7 +27,6 @@ import javax.faces.context.ExternalContext;
 import com.liferay.faces.alloy.config.internal.AlloyWebConfigParam;
 import com.liferay.faces.util.cache.Cache;
 import com.liferay.faces.util.cache.CacheFactory;
-import com.liferay.faces.util.config.WebConfigParam;
 import com.liferay.faces.util.i18n.I18n;
 import com.liferay.faces.util.i18n.I18nBundleBase;
 import com.liferay.faces.util.i18n.I18nWrapper;
@@ -58,10 +57,9 @@ public class I18nAlloyImpl extends I18nBundleBase implements Serializable {
 		Cache<String, String> concurrentMessageCache;
 		int initialCacheCapacity = AlloyWebConfigParam.AlloyI18nBundleInitialCacheCapacity.getIntegerValue(
 				externalContext);
-		AlloyWebConfigParam AlloyI18nBundleMaxCacheCapacity = AlloyWebConfigParam.AlloyI18nBundleMaxCacheCapacity;
-		int maxCacheCapacity = AlloyI18nBundleMaxCacheCapacity.getIntegerValue(externalContext);
+		int maxCacheCapacity = AlloyWebConfigParam.AlloyI18nBundleMaxCacheCapacity.getIntegerValue(externalContext);
 
-		if (maxCacheCapacity != AlloyI18nBundleMaxCacheCapacity.getDefaultIntegerValue()) {
+		if (maxCacheCapacity > -1) {
 			concurrentMessageCache = CacheFactory.getConcurrentLRUCacheInstance(externalContext, initialCacheCapacity,
 					maxCacheCapacity);
 		}
