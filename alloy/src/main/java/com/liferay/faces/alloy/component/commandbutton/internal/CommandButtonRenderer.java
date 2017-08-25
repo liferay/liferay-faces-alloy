@@ -15,23 +15,31 @@ package com.liferay.faces.alloy.component.commandbutton.internal;
 
 import javax.faces.application.ResourceDependencies;
 import javax.faces.application.ResourceDependency;
+import javax.faces.component.behavior.AjaxBehavior;
 import javax.faces.event.AbortProcessingException;
 import javax.faces.event.ComponentSystemEvent;
 import javax.faces.event.ComponentSystemEventListener;
 import javax.faces.event.ListenerFor;
+import javax.faces.event.ListenersFor;
+import javax.faces.event.PostAddToViewEvent;
 import javax.faces.event.PreRenderComponentEvent;
 import javax.faces.render.FacesRenderer;
 
 import com.liferay.faces.alloy.component.commandbutton.CommandButton;
+import com.liferay.faces.util.render.RendererUtil;
 
 
 /**
  * @author  Kyle Stiemann
+ * @author  Neil Griffin
  */
 
 //J-
 @FacesRenderer(componentFamily = CommandButton.COMPONENT_FAMILY, rendererType = CommandButton.RENDERER_TYPE)
-@ListenerFor(systemEventClass = PreRenderComponentEvent.class, sourceClass = CommandButton.class)
+@ListenersFor({
+	@ListenerFor(systemEventClass = PostAddToViewEvent.class, sourceClass = CommandButton.class),
+	@ListenerFor(systemEventClass = PreRenderComponentEvent.class, sourceClass = CommandButton.class)
+})
 @ResourceDependencies(
 	{
 		@ResourceDependency(library = "liferay-faces-alloy", name = "alloy.css"),
@@ -42,15 +50,29 @@ import com.liferay.faces.alloy.component.commandbutton.CommandButton;
 	}
 )
 //J+
-public class CommandButtonRenderer extends CommandButtonRendererCompat implements ComponentSystemEventListener {
+public class CommandButtonRenderer extends CommandButtonRendererBase implements ComponentSystemEventListener {
 
 	@Override
 	public void processEvent(ComponentSystemEvent componentSystemEvent) throws AbortProcessingException {
 
 		CommandButton commandButton = (CommandButton) componentSystemEvent.getComponent();
 
-		if (commandButton.isAjax()) {
-			addDefaultAjaxBehavior(commandButton);
+		// If the specified event indicates that the command button was added to the component tree, then
+		if (componentSystemEvent instanceof PostAddToViewEvent) {
+
+			// Add the default Ajax behavior in order to support the ajax attribute. This effectively simulates the
+			// presence of a child f:ajax tag.
+			RendererUtil.addDefaultAjaxBehavior(commandButton, commandButton.getExecute(), commandButton.getProcess(),
+				"@all", commandButton.getRender(), commandButton.getUpdate(), "@none");
+		}
+
+		// Otherwise, the specified event indicates that the command button is about to be rendered. If the ajax
+		// attribute is true, then ensure that the AjaxBehavior is rendered. Otherwise, ensure that the AjaxBehavior is
+		// not rendered.
+		else {
+
+			AjaxBehavior ajaxBehavior = RendererUtil.getDefaultAjaxBehavior(commandButton);
+			ajaxBehavior.setDisabled(!commandButton.isAjax());
 		}
 	}
 }

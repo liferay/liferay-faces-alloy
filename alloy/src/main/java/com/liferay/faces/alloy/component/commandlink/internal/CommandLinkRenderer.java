@@ -13,46 +13,57 @@
  */
 package com.liferay.faces.alloy.component.commandlink.internal;
 
-import java.io.IOException;
-
 import javax.faces.application.ResourceDependency;
-import javax.faces.component.UIComponent;
-import javax.faces.context.FacesContext;
-import javax.faces.context.ResponseWriter;
+import javax.faces.component.behavior.AjaxBehavior;
 import javax.faces.event.AbortProcessingException;
 import javax.faces.event.ComponentSystemEvent;
 import javax.faces.event.ComponentSystemEventListener;
 import javax.faces.event.ListenerFor;
+import javax.faces.event.ListenersFor;
+import javax.faces.event.PostAddToViewEvent;
 import javax.faces.event.PreRenderComponentEvent;
 import javax.faces.render.FacesRenderer;
 
 import com.liferay.faces.alloy.component.commandlink.CommandLink;
+import com.liferay.faces.util.render.RendererUtil;
 
 
 /**
  * @author  Vernon Singleton
+ * @author  Neil Griffin
  */
+
+//J-
 @FacesRenderer(componentFamily = CommandLink.COMPONENT_FAMILY, rendererType = CommandLink.RENDERER_TYPE)
-@ListenerFor(systemEventClass = PreRenderComponentEvent.class, sourceClass = CommandLink.class)
+@ListenersFor({
+	@ListenerFor(systemEventClass = PostAddToViewEvent.class, sourceClass = CommandLink.class),
+	@ListenerFor(systemEventClass = PreRenderComponentEvent.class, sourceClass = CommandLink.class)
+})
 @ResourceDependency(library = "javax.faces", name = "jsf.js")
-public class CommandLinkRenderer extends CommandLinkRendererCompat implements ComponentSystemEventListener {
-
-	@Override
-	public void encodeBegin(FacesContext facesContext, UIComponent uiComponent) throws IOException {
-
-		ResponseWriter responseWriter = facesContext.getResponseWriter();
-		ResponseWriter delegationResponseWriter = new CommandLinkResponseWriter(responseWriter,
-				(uiComponent.getChildCount() > 0));
-		super.encodeBegin(facesContext, uiComponent, delegationResponseWriter);
-	}
+//J+
+public class CommandLinkRenderer extends CommandLinkRendererBase implements ComponentSystemEventListener {
 
 	@Override
 	public void processEvent(ComponentSystemEvent componentSystemEvent) throws AbortProcessingException {
 
 		CommandLink commandLink = (CommandLink) componentSystemEvent.getComponent();
 
-		if (commandLink.isAjax()) {
-			addDefaultAjaxBehavior(commandLink);
+		// If the specified event indicates that the command link was added to the component tree, then
+		if (componentSystemEvent instanceof PostAddToViewEvent) {
+
+			// Add the default Ajax behavior in order to support the ajax attribute. This effectively simulates the
+			// presence of a child f:ajax tag.
+			RendererUtil.addDefaultAjaxBehavior(commandLink, commandLink.getExecute(), commandLink.getProcess(), "@all",
+				commandLink.getRender(), commandLink.getUpdate(), "@none");
+		}
+
+		// Otherwise, the specified event indicates that the command link is about to be rendered. If the ajax
+		// attribute is true, then ensure that the AjaxBehavior is rendered. Otherwise, ensure that the AjaxBehavior is
+		// not rendered.
+		else {
+
+			AjaxBehavior ajaxBehavior = RendererUtil.getDefaultAjaxBehavior(commandLink);
+			ajaxBehavior.setDisabled(!commandLink.isAjax());
 		}
 	}
 }
