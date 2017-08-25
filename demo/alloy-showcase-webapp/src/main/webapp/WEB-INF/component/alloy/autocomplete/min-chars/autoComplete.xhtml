@@ -1,10 +1,9 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:alloy="http://liferay.com/faces/alloy"
-	xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:showcase="http://liferay.com/faces/showcase" xmlns:ui="http://java.sun.com/jsf/facelets"
-	template="/WEB-INF/templates/component-1col-60.xhtml">
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:showcase="http://liferay.com/faces/showcase"
+	xmlns:ui="http://java.sun.com/jsf/facelets" template="/WEB-INF/templates/component-1col-60.xhtml">
 
 	<ui:define name="col1">
-		<h:form>
+		<alloy:form>
 			<showcase:example description="#{i18n['alloy-autocomplete-min-chars-example-1']}">
 				<alloy:field label="#{i18n['favorite-liferay-benefit']}">
 					<alloy:autoComplete minChars="2" serverFilterType="phraseMatch" value="#{autoCompleteModelBean.text}">
@@ -21,7 +20,7 @@
 			<showcase:results label="#{i18n['model-value']}">
 				<alloy:outputText id="modelValue" value="#{autoCompleteModelBean.text}" />
 			</showcase:results>
-		</h:form>
+		</alloy:form>
 	</ui:define>
 
 </ui:composition>
