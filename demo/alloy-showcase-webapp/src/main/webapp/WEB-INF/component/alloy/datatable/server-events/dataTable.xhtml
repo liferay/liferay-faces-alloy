@@ -11,7 +11,7 @@
 						valueChangeListener="#{dataTableBacking.modeSwitch}">
 						<f:selectItem itemLabel="checkbox" itemValue="checkbox" />
 						<f:selectItem itemLabel="radio" itemValue="radio" />
-						<f:ajax render="customers :exampleForm:example:feedback" />
+						<f:ajax render="customers :exampleForm:feedback" />
 					</alloy:selectOneMenu>
 				</alloy:field>
 				<alloy:dataTable id="customers" rendered="#{showcaseModelBean.selectedComponent.rendered}" rows="10"
