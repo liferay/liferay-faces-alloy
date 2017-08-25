@@ -1,11 +1,10 @@
 <ui:composition xmlns="http://www.w3.org/1999/xhtml" xmlns:alloy="http://liferay.com/faces/alloy"
-	xmlns:f="http://java.sun.com/jsf/core" xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:showcase="http://liferay.com/faces/showcase" xmlns:ui="http://java.sun.com/jsf/facelets"
-	template="/WEB-INF/templates/component-2col.xhtml">
+	xmlns:f="http://java.sun.com/jsf/core" xmlns:showcase="http://liferay.com/faces/showcase"
+	xmlns:ui="http://java.sun.com/jsf/facelets" template="/WEB-INF/templates/component-1col-60.xhtml">
 
 	<ui:define name="col1">
 		<!-- Specifying listItemRequired="true" -->
-		<h:form>
+		<alloy:form>
 			<showcase:example description="#{i18n['alloy-autocomplete-validation-example-1']}" number="1">
 				<alloy:field label="#{i18n['favorite-liferay-benefit']}">
 					<alloy:autoComplete id="autocomplete" listItemRequired="true" serverFilterType="phraseMatch"
@@ -24,12 +23,12 @@
 			<showcase:results label="#{i18n['model-value']}">
 				<alloy:outputText id="modelValue" value="#{autoCompleteModelBean.text}" />
 			</showcase:results>
-		</h:form>
+		</alloy:form>
 	</ui:define>
 
 	<ui:define name="col2">
 		<!-- Specifying an f:validateRegex-->
-		<h:form>
+		<alloy:form>
 			<showcase:example description="#{i18n['alloy-autocomplete-validation-example-2']}" number="2">
 				<alloy:field label="#{i18n['favorite-liferay-benefit']}">
 					<alloy:autoComplete id="autocomplete" serverFilterType="phraseMatch" value="#{autoCompleteModelBean.text}">
@@ -48,7 +47,7 @@
 			<showcase:results label="#{i18n['model-value']}">
 				<alloy:outputText id="modelValue" value="#{autoCompleteModelBean.text}" />
 			</showcase:results>
-		</h:form>
+		</alloy:form>
 	</ui:define>
 
 </ui:composition>
