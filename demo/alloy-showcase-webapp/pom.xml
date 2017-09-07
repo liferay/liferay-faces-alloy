@@ -93,6 +93,33 @@
 				<!-- Skip war overlay when testing. -->
 				<liferay.faces.showcase.war.scope>provided</liferay.faces.showcase.war.scope>
 			</properties>
+			<dependencies>
+				<dependency>
+					<groupId>com.liferay.faces.test</groupId>
+					<artifactId>com.liferay.faces.test.selenium</artifactId>
+					<version>0.4.0</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>com.liferay.faces.demo</groupId>
+					<artifactId>com.liferay.faces.demo.jsf.showcase.webapp</artifactId>
+					<version>${liferay.faces.showcase.version}</version>
+					<type>test-jar</type>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>org.slf4j</groupId>
+					<artifactId>slf4j-log4j12</artifactId>
+					<version>1.7.25</version>
+					<scope>test</scope>
+				</dependency>
+				<dependency>
+					<groupId>com.codeborne</groupId>
+					<artifactId>phantomjsdriver</artifactId>
+					<scope>test</scope>
+					<version>1.3.0</version>
+				</dependency>
+			</dependencies>
 			<build>
 				<plugins>
 					<!-- Ensure that the png resource is in the temporary directory for testing. -->
@@ -238,34 +265,6 @@
 	</build>
 
 	<dependencies>
-		<!-- Integration test dependencies. -->
-		<dependency>
-			<groupId>com.liferay.faces.test</groupId>
-			<artifactId>com.liferay.faces.test.selenium</artifactId>
-			<version>0.4.0</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.liferay.faces.demo</groupId>
-			<artifactId>com.liferay.faces.demo.jsf.showcase.webapp</artifactId>
-			<version>${liferay.faces.showcase.version}</version>
-			<type>test-jar</type>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.slf4j</groupId>
-			<artifactId>slf4j-log4j12</artifactId>
-			<version>1.7.25</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>com.codeborne</groupId>
-			<artifactId>phantomjsdriver</artifactId>
-			<scope>test</scope>
-			<version>1.3.0</version>
-		</dependency>
-		<!-- End integration test dependencies. -->
-
 		<dependency>
 			<groupId>com.liferay.faces</groupId>
 			<artifactId>com.liferay.faces.alloy</artifactId>
