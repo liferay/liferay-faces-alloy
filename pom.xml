@@ -110,6 +110,7 @@
 		</war.packaging.excludes>
 		<webapp.descriptor>web.xml</webapp.descriptor>
 		<weblogic.xerces.version>2.11.0</weblogic.xerces.version>
+		<war.name>${project.build.finalName}</war.name>
 	</properties>
 
 	<build>
@@ -210,6 +211,7 @@
 						<filteringDeploymentDescriptors>true</filteringDeploymentDescriptors>
 						<packagingExcludes>${war.packaging.excludes}</packagingExcludes>
 						<webXml>${basedir}/src/main/webapp/WEB-INF/${webapp.descriptor}</webXml>
+						<warName>${war.name}</warName>
 					</configuration>
 				</plugin>
 				<plugin>
@@ -286,6 +288,12 @@
 			<id>development</id>
 			<properties>
 				<project.stage>Development</project.stage>
+			</properties>
+		</profile>
+		<profile>
+			<id>removeWarVersion</id>
+			<properties>
+				<war.name>${project.artifactId}</war.name>
 			</properties>
 		</profile>
 		<profile>
