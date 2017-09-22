@@ -75,6 +75,12 @@
 			</dependencies>
 		</profile>
 		<profile>
+			<id>phantomjs</id>
+			<properties>
+				<integration.browser.name>phantomjs</integration.browser.name>
+			</properties>
+		</profile>
+		<profile>
 			<id>jbrowser</id>
 			<properties>
 				<integration.browser.name>jbrowser</integration.browser.name>
