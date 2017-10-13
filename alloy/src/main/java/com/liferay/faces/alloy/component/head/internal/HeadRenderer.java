@@ -14,12 +14,19 @@
 package com.liferay.faces.alloy.component.head.internal;
 
 import java.io.IOException;
+import java.util.Map;
 
 import javax.faces.application.ResourceDependencies;
 import javax.faces.application.ResourceDependency;
-import javax.faces.component.UIComponent;
+import javax.faces.component.UIComponentBase;
+import javax.faces.component.UIViewRoot;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
+import javax.faces.event.AbortProcessingException;
+import javax.faces.event.ComponentSystemEvent;
+import javax.faces.event.ComponentSystemEventListener;
+import javax.faces.event.ListenerFor;
+import javax.faces.event.PostAddToViewEvent;
 import javax.faces.render.FacesRenderer;
 
 import com.liferay.faces.alloy.component.head.Head;
@@ -43,31 +50,49 @@ import com.liferay.faces.util.product.ProductFactory;
 		}
 	)
 //J+
-public class HeadRenderer extends HeadRendererBase {
+@ListenerFor(systemEventClass = PostAddToViewEvent.class, sourceClass = Head.class)
+public class HeadRenderer extends HeadRendererBase implements ComponentSystemEventListener {
 
 	// Private Constants
 	private static final boolean LIFERAY_PORTAL_DETECTED = ProductFactory.getProduct(Product.Name.LIFERAY_PORTAL)
 		.isDetected();
 
 	@Override
-	public void encodeChildren(FacesContext facesContext, UIComponent uiComponent) throws IOException {
+	public void processEvent(ComponentSystemEvent componentSystemEvent) throws AbortProcessingException {
 
 		// If Liferay Portal is not detected, then encode a meta tag as a child of the head that will cause bootstrap
 		// to behave responsively.
 		if (!LIFERAY_PORTAL_DETECTED) {
 
+			FacesContext facesContext = FacesContext.getCurrentInstance();
+			UIViewRoot uiViewRoot = facesContext.getViewRoot();
+			ResponsiveMetadata responsiveMetadata = new ResponsiveMetadata();
+			Map<String, Object> attributes = responsiveMetadata.getAttributes();
+			attributes.put("name", ResponsiveMetadata.COMPONENT_FAMILY);
+			uiViewRoot.addComponentResource(facesContext, responsiveMetadata);
+		}
+	}
+
+	public static class ResponsiveMetadata extends UIComponentBase {
+
+		// Private Constants
+		private static final String COMPONENT_FAMILY = "com.liferay.faces.alloy.component.internal.responsive.metadata";
+
+		@Override
+		public void encodeEnd(FacesContext facesContext) throws IOException {
+
 			ResponseWriter responseWriter = facesContext.getResponseWriter();
-			responseWriter.startElement("meta", null);
+			responseWriter.startElement("meta", this);
 			responseWriter.writeAttribute("name", "viewport", null);
 			responseWriter.writeAttribute("content", "width=device-width,initial-scale=1", null);
 			responseWriter.endElement("meta");
+
+			super.encodeEnd(facesContext);
 		}
 
-		super.encodeChildren(facesContext, uiComponent);
-	}
-
-	@Override
-	public boolean getRendersChildren() {
-		return true;
+		@Override
+		public String getFamily() {
+			return COMPONENT_FAMILY;
+		}
 	}
 }
