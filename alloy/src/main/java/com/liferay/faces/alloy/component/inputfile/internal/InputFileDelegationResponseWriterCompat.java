@@ -15,11 +15,11 @@ package com.liferay.faces.alloy.component.inputfile.internal;
 
 import java.io.IOException;
 
+import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 import javax.faces.context.ResponseWriterWrapper;
 
-import com.liferay.faces.util.product.Product;
-import com.liferay.faces.util.product.ProductFactory;
+import com.liferay.faces.alloy.util.internal.JSFUtil;
 
 
 /**
@@ -28,9 +28,6 @@ import com.liferay.faces.util.product.ProductFactory;
  * @author  Neil Griffin
  */
 public abstract class InputFileDelegationResponseWriterCompat extends ResponseWriterWrapper {
-
-	// Private Constants
-	private static final Product JSF = ProductFactory.getProduct(Product.Name.JSF);
 
 	// Private Members
 	private ResponseWriter wrappedResponseWriter;
@@ -47,16 +44,12 @@ public abstract class InputFileDelegationResponseWriterCompat extends ResponseWr
 	@Override
 	public void writeAttribute(String name, Object value, String property) throws IOException {
 
-		if ("type".equals(name) && !isFaces_2_2_OrNewer()) {
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+
+		if ("type".equals(name) && !JSFUtil.isFaces_2_2_OrNewer(facesContext)) {
 			value = "file";
 		}
 
 		super.writeAttribute(name, value, property);
-	}
-
-	protected boolean isFaces_2_2_OrNewer() {
-
-		return JSF.isDetected() &&
-			((JSF.getMajorVersion() > 2) || ((JSF.getMajorVersion() == 2) && (JSF.getMinorVersion() >= 2)));
 	}
 }

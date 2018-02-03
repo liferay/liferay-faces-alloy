@@ -64,10 +64,6 @@ import com.liferay.faces.util.render.RendererUtil;
 //J+
 public class InputFileRenderer extends InputFileRendererBase {
 
-	// Private Constants
-	private static final boolean LIFERAY_FACES_BRIDGE_DETECTED = ProductFactory.getProduct(
-			Product.Name.LIFERAY_FACES_BRIDGE).isDetected();
-
 	@Override
 	public void decode(FacesContext facesContext, UIComponent uiComponent) {
 
@@ -427,8 +423,11 @@ public class InputFileRenderer extends InputFileRendererBase {
 	protected Map<String, List<UploadedFile>> getUploadedFileMap(FacesContext facesContext, String location) {
 
 		Map<String, List<UploadedFile>> uploadedFileMap = null;
+		ExternalContext externalContext = facesContext.getExternalContext();
+		final Product LIFERAY_FACES_BRIDGE = ProductFactory.getProductInstance(externalContext,
+				Product.Name.LIFERAY_FACES_BRIDGE);
 
-		if (LIFERAY_FACES_BRIDGE_DETECTED) {
+		if (LIFERAY_FACES_BRIDGE.isDetected()) {
 			Map<String, Object> requestAttributeMap = facesContext.getExternalContext().getRequestMap();
 			MultiPartFormData multiPartFormData = (MultiPartFormData) requestAttributeMap.get(MultiPartFormData.class
 					.getName());

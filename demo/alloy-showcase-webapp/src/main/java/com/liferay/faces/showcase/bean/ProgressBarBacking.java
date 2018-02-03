@@ -34,10 +34,13 @@ import com.liferay.faces.util.logging.LoggerFactory;
 @ManagedBean
 public class ProgressBarBacking implements Serializable {
 
+	// serialVersionUID
 	private static final long serialVersionUID = 1014691234870238235L;
 
+	// Logger
 	private static final Logger logger = LoggerFactory.getLogger(ProgressBarBacking.class);
 
+	// Private Data Members
 	private Integer progress = 0;
 
 	public int getProgress() {

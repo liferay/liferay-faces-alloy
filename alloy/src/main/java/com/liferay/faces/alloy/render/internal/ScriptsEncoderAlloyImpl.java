@@ -20,6 +20,7 @@ import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
@@ -27,31 +28,70 @@ import com.liferay.faces.util.client.BrowserSniffer;
 import com.liferay.faces.util.client.BrowserSnifferFactory;
 import com.liferay.faces.util.client.Script;
 import com.liferay.faces.util.client.ScriptsEncoder;
+import com.liferay.faces.util.client.ScriptsEncoderWrapper;
+import com.liferay.faces.util.factory.FactoryExtensionFinder;
+import com.liferay.faces.util.product.Product;
+import com.liferay.faces.util.product.ProductFactory;
 
 
 /**
  * @author  Kyle Stiemann
  */
-public class ScriptsEncoderAlloyImpl implements ScriptsEncoder, Serializable {
+public class ScriptsEncoderAlloyImpl extends ScriptsEncoderWrapper implements Serializable {
 
 	// serialVersionUID
 	private static final long serialVersionUID = 9063135909273616418L;
 
+	// Private Data Members
+	private final ScriptsEncoder wrappedScriptsEncoder;
+
+	public ScriptsEncoderAlloyImpl(ScriptsEncoder wrappedScriptsEncoder) {
+		this.wrappedScriptsEncoder = wrappedScriptsEncoder;
+	}
+
+	private static boolean allowLiferayToHandleScripts(FacesContext facesContext) {
+
+		ExternalContext externalContext = facesContext.getExternalContext();
+		ProductFactory productFactory = (ProductFactory) FactoryExtensionFinder.getFactory(externalContext,
+				ProductFactory.class);
+		final Product LIFERAY_PORTAL = productFactory.getProductInfo(Product.Name.LIFERAY_PORTAL);
+		final Product LIFERAY_FACES_BRIDGE = productFactory.getProductInfo(Product.Name.LIFERAY_FACES_BRIDGE);
+
+		return LIFERAY_PORTAL.isDetected() && LIFERAY_FACES_BRIDGE.isDetected();
+	}
+
 	@Override
 	public void encodeBodyScripts(FacesContext facesContext, List<Script> scripts) throws IOException {
 
-		ResponseWriter responseWriter = facesContext.getResponseWriter();
-		responseWriter.startElement("script", null);
-		responseWriter.writeAttribute("type", "text/javascript", null);
-		encodeScripts(facesContext, responseWriter, scripts);
-		responseWriter.endElement("script");
+		if (allowLiferayToHandleScripts(facesContext)) {
+			super.encodeBodyScripts(facesContext, scripts);
+		}
+		else {
+
+			ResponseWriter responseWriter = facesContext.getResponseWriter();
+			responseWriter.startElement("script", null);
+			responseWriter.writeAttribute("type", "text/javascript", null);
+			encodeScripts(facesContext, responseWriter, scripts);
+			responseWriter.endElement("script");
+		}
 	}
 
 	@Override
 	public void encodeEvalScripts(FacesContext facesContext, List<Script> scripts) throws IOException {
 
-		ResponseWriter responseWriter = facesContext.getResponseWriter();
-		encodeScripts(facesContext, responseWriter, scripts);
+		if (allowLiferayToHandleScripts(facesContext)) {
+			super.encodeEvalScripts(facesContext, scripts);
+		}
+		else {
+
+			ResponseWriter responseWriter = facesContext.getResponseWriter();
+			encodeScripts(facesContext, responseWriter, scripts);
+		}
+	}
+
+	@Override
+	public ScriptsEncoder getWrapped() {
+		return wrappedScriptsEncoder;
 	}
 
 	private void encodeScripts(FacesContext facesContext, ResponseWriter responseWriter, List<Script> scripts)

@@ -28,6 +28,7 @@ import com.liferay.faces.util.logging.LoggerFactory;
 @RequestScoped
 public class SelectThumbRatingBackingBean {
 
+	// Logger
 	private static final Logger logger = LoggerFactory.getLogger(SelectThumbRatingBackingBean.class);
 
 	@ManagedProperty(name = "selectThumbRatingModelBean", value = "#{selectThumbRatingModelBean}")

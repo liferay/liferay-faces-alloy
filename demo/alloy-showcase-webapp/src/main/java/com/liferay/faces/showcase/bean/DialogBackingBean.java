@@ -28,6 +28,7 @@ import com.liferay.faces.util.logging.LoggerFactory;
 @RequestScoped
 public class DialogBackingBean {
 
+	// Logger
 	private static final Logger logger = LoggerFactory.getLogger(DialogBackingBean.class);
 
 	@ManagedProperty(name = "dialogModelBean", value = "#{dialogModelBean}")

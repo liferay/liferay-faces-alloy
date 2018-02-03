@@ -20,6 +20,7 @@ import javax.faces.application.ResourceDependencies;
 import javax.faces.application.ResourceDependency;
 import javax.faces.component.UIComponentBase;
 import javax.faces.component.UIViewRoot;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 import javax.faces.event.AbortProcessingException;
@@ -53,18 +54,17 @@ import com.liferay.faces.util.product.ProductFactory;
 @ListenerFor(systemEventClass = PostAddToViewEvent.class, sourceClass = Head.class)
 public class HeadRenderer extends HeadRendererBase implements ComponentSystemEventListener {
 
-	// Private Constants
-	private static final boolean LIFERAY_PORTAL_DETECTED = ProductFactory.getProduct(Product.Name.LIFERAY_PORTAL)
-		.isDetected();
-
 	@Override
 	public void processEvent(ComponentSystemEvent componentSystemEvent) throws AbortProcessingException {
 
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+		ExternalContext externalContext = facesContext.getExternalContext();
+		final Product LIFERAY_PORTAL = ProductFactory.getProductInstance(externalContext, Product.Name.LIFERAY_PORTAL);
+
 		// If Liferay Portal is not detected, then encode a meta tag as a child of the head that will cause bootstrap
 		// to behave responsively.
-		if (!LIFERAY_PORTAL_DETECTED) {
+		if (!LIFERAY_PORTAL.isDetected()) {
 
-			FacesContext facesContext = FacesContext.getCurrentInstance();
 			UIViewRoot uiViewRoot = facesContext.getViewRoot();
 			ResponsiveMetadata responsiveMetadata = new ResponsiveMetadata();
 			Map<String, Object> attributes = responsiveMetadata.getAttributes();

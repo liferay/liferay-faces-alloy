@@ -26,8 +26,10 @@ import javax.faces.bean.ViewScoped;
 @ViewScoped
 public class DynamicTabBean implements Serializable {
 
+	// serialVersionUID
 	private static final long serialVersionUID = 9059601641277438559L;
 
+	// Private Data Members
 	private boolean compatible = true;
 	private boolean enterpriseReady = true;
 	private boolean lightweight = true;

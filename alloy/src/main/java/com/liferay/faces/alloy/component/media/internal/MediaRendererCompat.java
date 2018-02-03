@@ -19,13 +19,13 @@ import java.util.Map;
 import java.util.Set;
 
 import javax.faces.application.ResourceHandler;
+import javax.faces.context.FacesContext;
 import javax.faces.context.ResponseWriter;
 
 import com.liferay.faces.alloy.component.media.Media;
+import com.liferay.faces.alloy.util.internal.JSFUtil;
 import com.liferay.faces.util.logging.Logger;
 import com.liferay.faces.util.logging.LoggerFactory;
-import com.liferay.faces.util.product.Product;
-import com.liferay.faces.util.product.ProductFactory;
 
 
 /**
@@ -38,10 +38,8 @@ public class MediaRendererCompat extends MediaRendererBase {
 	// Logger
 	private static final Logger logger = LoggerFactory.getLogger(MediaRendererCompat.class);
 
-	// Private Constants
-	private static final Product JSF = ProductFactory.getProduct(Product.Name.JSF);
-
-	protected void encodeJSF22PassthroughAttributes(Media media, ResponseWriter responseWriter) throws IOException {
+	protected void encodeJSF22PassthroughAttributes(FacesContext facesContext, Media media,
+		ResponseWriter responseWriter) throws IOException {
 
 		Method getPassThroughAttributesMethod = null;
 
@@ -50,7 +48,7 @@ public class MediaRendererCompat extends MediaRendererBase {
 		}
 		catch (NoSuchMethodException e) {
 
-			if (isFaces_2_2_OrNewer()) {
+			if (JSFUtil.isFaces_2_2_OrNewer(facesContext)) {
 				logger.error(e);
 			}
 		}
@@ -74,7 +72,7 @@ public class MediaRendererCompat extends MediaRendererBase {
 		}
 	}
 
-	protected boolean isEncodedResourceURL(ResourceHandler resourceHandler, String value) {
+	protected boolean isEncodedResourceURL(FacesContext facesContext, ResourceHandler resourceHandler, String value) {
 
 		boolean facesResourceURL = false;
 		Method isResourceURLMethod = null;
@@ -84,7 +82,7 @@ public class MediaRendererCompat extends MediaRendererBase {
 		}
 		catch (NoSuchMethodException e) {
 
-			if (isFaces_2_2_OrNewer()) {
+			if (JSFUtil.isFaces_2_2_OrNewer(facesContext)) {
 				logger.error(e);
 			}
 		}
@@ -103,11 +101,5 @@ public class MediaRendererCompat extends MediaRendererBase {
 		}
 
 		return facesResourceURL;
-	}
-
-	protected boolean isFaces_2_2_OrNewer() {
-
-		return JSF.isDetected() &&
-			((JSF.getMajorVersion() > 2) || ((JSF.getMajorVersion() == 2) && (JSF.getMinorVersion() >= 2)));
 	}
 }

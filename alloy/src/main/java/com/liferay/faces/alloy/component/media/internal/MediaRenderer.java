@@ -111,7 +111,7 @@ public abstract class MediaRenderer extends MediaRendererCompat {
 
 		// Encode JSF 2.2 passthrough attributes (attributes prefixed with the http://xmlns.jcp.org/jsf/passthrough
 		// namespace)
-		encodeJSF22PassthroughAttributes(media, responseWriter);
+		encodeJSF22PassthroughAttributes(facesContext, media, responseWriter);
 
 		encodeCustomMediaAttributes(facesContext, responseWriter, media);
 	}
@@ -454,7 +454,7 @@ public abstract class MediaRenderer extends MediaRendererCompat {
 
 		String encodedResourceURL = resourceURL;
 
-		if (!isEncodedResourceURL(resourceHandler, encodedResourceURL)) {
+		if (!isEncodedResourceURL(facesContext, resourceHandler, encodedResourceURL)) {
 
 			ViewHandler viewHandler = application.getViewHandler();
 			resourceURL = viewHandler.getResourceURL(facesContext, resourceURL);

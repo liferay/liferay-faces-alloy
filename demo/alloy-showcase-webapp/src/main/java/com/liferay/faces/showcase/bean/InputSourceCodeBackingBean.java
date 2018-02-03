@@ -28,6 +28,7 @@ import com.liferay.faces.util.logging.LoggerFactory;
 @RequestScoped
 public class InputSourceCodeBackingBean {
 
+	// Logger
 	private static final Logger logger = LoggerFactory.getLogger(InputSourceCodeBackingBean.class);
 
 	@ManagedProperty(name = "inputSourceCodeModelBean", value = "#{inputSourceCodeModelBean}")

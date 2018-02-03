@@ -30,8 +30,10 @@ import com.liferay.faces.alloy.component.tab.TabSelectEvent;
 @ViewScoped
 public class TabViewWizardBean implements Serializable {
 
+	// serialVersionUID
 	private static final long serialVersionUID = 101469870238569865L;
 
+	// Private Data Members
 	private Integer selectedTabIndex = 0;
 	private String firstName;
 	private String lastName;

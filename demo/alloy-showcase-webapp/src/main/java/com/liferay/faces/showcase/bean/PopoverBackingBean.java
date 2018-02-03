@@ -28,6 +28,7 @@ import com.liferay.faces.util.logging.LoggerFactory;
 @RequestScoped
 public class PopoverBackingBean {
 
+	// Logger
 	private static final Logger logger = LoggerFactory.getLogger(PopoverBackingBean.class);
 
 	@ManagedProperty(name = "popoverModelBean", value = "#{popoverModelBean}")

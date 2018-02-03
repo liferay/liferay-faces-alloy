@@ -28,6 +28,7 @@ import com.liferay.faces.util.logging.LoggerFactory;
 @RequestScoped
 public class StarRatingBackingBean {
 
+	// Logger
 	private static final Logger logger = LoggerFactory.getLogger(StarRatingBackingBean.class);
 
 	@ManagedProperty(name = "starRatingModelBean", value = "#{starRatingModelBean}")

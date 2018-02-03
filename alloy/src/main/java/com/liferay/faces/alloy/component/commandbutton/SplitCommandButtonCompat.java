@@ -13,15 +13,11 @@
  */
 package com.liferay.faces.alloy.component.commandbutton;
 
-import java.lang.reflect.Method;
-import java.util.HashMap;
 import java.util.Map;
 
 import com.liferay.faces.alloy.component.commandlink.CommandLinkBase;
 import com.liferay.faces.util.logging.Logger;
 import com.liferay.faces.util.logging.LoggerFactory;
-import com.liferay.faces.util.product.Product;
-import com.liferay.faces.util.product.ProductFactory;
 
 
 /**
@@ -34,112 +30,29 @@ public abstract class SplitCommandButtonCompat extends CommandLinkBase {
 	// Logger
 	private static final Logger logger = LoggerFactory.getLogger(SplitCommandButtonCompat.class);
 
-	// Private Constants
-	private static final Product JSF = ProductFactory.getProduct(Product.Name.JSF);
-
-	// Private Data Members
-	private Map<String, Object> passThroughAttributes;
-	private String role;
-
 	// Protected Data Members
+	/**
+	 * @deprecated  Please use {@link SplitCommandButton#getWrappedCommandButton()} and {@link
+	 *              SplitCommandButton#setWrappedCommandButton(com.liferay.faces.alloy.component.commandbutton.CommandButton)
+	 *              } instead.
+	 */
+	@Deprecated
 	protected CommandButton wrappedCommandButton;
 
+	@Override
 	public Map<String, Object> getPassThroughAttributes(boolean create) {
-
-		if (passThroughAttributes == null) {
-			passThroughAttributes = new HashMap<String, Object>();
-		}
-
-		Method getPassThroughAttributesMethod = null;
-
-		try {
-			Class<? extends CommandButton> wrappedCommandButtonClass = wrappedCommandButton.getClass();
-			getPassThroughAttributesMethod = wrappedCommandButtonClass.getMethod("getPassThroughAttributes",
-					new Class[] { boolean.class });
-		}
-		catch (NoSuchMethodException e) {
-
-			if (isFaces_2_2_OrNewer()) {
-				logger.error(e);
-			}
-		}
-
-		if (getPassThroughAttributesMethod != null) {
-
-			try {
-				passThroughAttributes = (Map<String, Object>) getPassThroughAttributesMethod.invoke(
-						wrappedCommandButton, new Object[] { create });
-			}
-			catch (Exception e) {
-				logger.error(e);
-			}
-		}
-
-		return passThroughAttributes;
+		return getWrappedCommandButton().getPassThroughAttributes(create);
 	}
 
+	@Override
 	public String getRole() {
-
-		Method getRoleMethod = null;
-
-		Class<? extends CommandButton> wrappedCommandButtonClass = wrappedCommandButton.getClass();
-
-		try {
-			getRoleMethod = wrappedCommandButtonClass.getMethod("getRole", new Class[] {});
-		}
-		catch (NoSuchMethodException e) {
-
-			if (isFaces_2_2_OrNewer()) {
-				logger.error(e);
-			}
-		}
-
-		if (getRoleMethod != null) {
-
-			try {
-				role = (String) getRoleMethod.invoke(wrappedCommandButton, new Object[] {});
-			}
-			catch (Exception e) {
-				logger.error(e);
-			}
-		}
-
-		return role;
+		return getWrappedCommandButton().getRole();
 	}
 
+	@Override
 	public void setRole(String role) {
-
-		Method setRoleMethod = null;
-
-		Class<? extends CommandButton> wrappedCommandButtonClass = wrappedCommandButton.getClass();
-
-		try {
-			setRoleMethod = wrappedCommandButtonClass.getMethod("setRole", new Class[] { String.class });
-		}
-		catch (NoSuchMethodException e) {
-
-			if (isFaces_2_2_OrNewer()) {
-				logger.error(e);
-			}
-		}
-
-		if (setRoleMethod == null) {
-			this.role = role;
-		}
-		else {
-
-			try {
-				setRoleMethod.invoke(wrappedCommandButton, new Object[] { role });
-			}
-			catch (Exception e) {
-				logger.error(e);
-			}
-		}
+		getWrappedCommandButton().setRole(role);
 	}
 
-	protected boolean isFaces_2_2_OrNewer() {
-
-		return JSF.isDetected() &&
-			((JSF.getMajorVersion() > 2) || ((JSF.getMajorVersion() == 2) && (JSF.getMinorVersion() >= 2)));
-	}
+	protected abstract CommandButton getWrappedCommandButton();
 }

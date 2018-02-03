@@ -54,8 +54,6 @@ public class ResLibResourceHandler extends ResourceHandlerWrapper {
 	// Private Constants
 	private static final String ACE_EDITOR_SCRIPTS_DIRECTORY = "aui-ace-editor/ace";
 	private static final String LIFERAY_JS = "liferay.js";
-	private static final boolean LIFERAY_PORTAL_DETECTED = ProductFactory.getProduct(Product.Name.LIFERAY_PORTAL)
-		.isDetected();
 	private static final String ROOT_RESOURCE_DIRECTORY = "build/";
 
 	// Private Members
@@ -65,13 +63,29 @@ public class ResLibResourceHandler extends ResourceHandlerWrapper {
 		this.wrappedResourceHandler = wrappedResourceHandler;
 	}
 
+	private static boolean isLiferayPortalDetected(FacesContext facesContext) {
+
+		ExternalContext externalContext = facesContext.getExternalContext();
+
+		return isLiferayPortalDetected(externalContext);
+	}
+
+	private static boolean isLiferayPortalDetected(ExternalContext externalContext) {
+
+		final Product LIFERAY_PORTAL = ProductFactory.getProductInstance(externalContext, Product.Name.LIFERAY_PORTAL);
+
+		return LIFERAY_PORTAL.isDetected();
+	}
+
 	@Override
 	public Resource createResource(String resourceName) {
 
 		Resource resource;
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+		ExternalContext externalContext = facesContext.getExternalContext();
 
 		// If Liferay Portal is detected, then ask the delegation chain to create the resource.
-		if (LIFERAY_PORTAL_DETECTED) {
+		if (isLiferayPortalDetected(externalContext)) {
 
 			resource = super.createResource(resourceName);
 		}
@@ -93,8 +107,6 @@ public class ResLibResourceHandler extends ResourceHandlerWrapper {
 				// &build/aui-tabview/assets/skins/sam/aui-tabview.css
 				// &build/aui-toggler-base/assets/skins/sam/aui-toggler-base.css
 				//
-				FacesContext facesContext = FacesContext.getCurrentInstance();
-				ExternalContext externalContext = facesContext.getExternalContext();
 				List<String> modulePaths = getModulePaths(externalContext);
 
 				// If a module path is not found in the parameter map, then liferay.js is using an EL expression
@@ -125,8 +137,6 @@ public class ResLibResourceHandler extends ResourceHandlerWrapper {
 				//
 				// http://localhost:8080/my-webapp/javax.faces.resource/script?ln=liferay-faces-alloy-reslib&aui-ace-editor/ace/mode-xml.js
 				//
-				FacesContext facesContext = FacesContext.getCurrentInstance();
-				ExternalContext externalContext = facesContext.getExternalContext();
 				List<String> modulePaths = getModulePaths(externalContext);
 
 				// If a module path is not found in the parameter map, then liferay.js is using an EL expression
@@ -180,8 +190,9 @@ public class ResLibResourceHandler extends ResourceHandlerWrapper {
 	public Resource createResource(String resourceName, String libraryName) {
 
 		Resource resource;
+		FacesContext facesContext = FacesContext.getCurrentInstance();
 
-		if (!LIFERAY_PORTAL_DETECTED && LIBRARY_NAME.equals(libraryName)) {
+		if (!isLiferayPortalDetected(facesContext) && LIBRARY_NAME.equals(libraryName)) {
 
 			if ("combo".equals(resourceName) || "script".equals(resourceName)) {
 				resource = createResource(resourceName);
@@ -206,8 +217,9 @@ public class ResLibResourceHandler extends ResourceHandlerWrapper {
 	public Resource createResource(String resourceName, String libraryName, String contentType) {
 
 		Resource resource;
+		FacesContext facesContext = FacesContext.getCurrentInstance();
 
-		if (!LIFERAY_PORTAL_DETECTED && LIBRARY_NAME.equals(libraryName)) {
+		if (!isLiferayPortalDetected(facesContext) && LIBRARY_NAME.equals(libraryName)) {
 
 			if ("combo".equals(resourceName) || "script".equals(resourceName)) {
 				resource = createResource(resourceName);
@@ -237,7 +249,7 @@ public class ResLibResourceHandler extends ResourceHandlerWrapper {
 	public void handleResourceRequest(FacesContext facesContext) throws IOException {
 
 		// If Liferay Portal is detected, then ask the delegation chain to handle the resource request.
-		if (LIFERAY_PORTAL_DETECTED) {
+		if (isLiferayPortalDetected(facesContext)) {
 			super.handleResourceRequest(facesContext);
 		}
 
@@ -268,7 +280,9 @@ public class ResLibResourceHandler extends ResourceHandlerWrapper {
 	@Override
 	public boolean libraryExists(String libraryName) {
 
-		if (!LIFERAY_PORTAL_DETECTED && LIBRARY_NAME.equals(libraryName)) {
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+
+		if (!isLiferayPortalDetected(facesContext) && LIBRARY_NAME.equals(libraryName)) {
 			return true;
 		}
 		else {

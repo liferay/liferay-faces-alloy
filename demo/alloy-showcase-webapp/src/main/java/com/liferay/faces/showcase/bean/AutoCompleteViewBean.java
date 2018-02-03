@@ -26,8 +26,10 @@ import javax.faces.bean.ViewScoped;
 @ViewScoped
 public class AutoCompleteViewBean implements Serializable {
 
+	// serialVersionUID
 	private static final long serialVersionUID = 101469870238239865L;
 
+	// Private Data Members
 	private String clientFilterType = "charMatch";
 	private String serverFilterType = "charMatch";
 

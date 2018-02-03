@@ -19,6 +19,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.faces.component.UIComponent;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 
 import com.liferay.faces.util.application.ResourceUtil;
@@ -37,8 +38,6 @@ public class ResourceVerifierAlloyImpl extends ResourceVerifierWrapper implement
 	private static final long serialVersionUID = 2927555200777822626L;
 
 	// Private Constants
-	private static final boolean LIFERAY_PORTAL_DETECTED = ProductFactory.getProduct(Product.Name.LIFERAY_PORTAL)
-		.isDetected();
 	private static final Set<String> LIFERAY_PORTAL_INCLUDED_RESOURCE_IDS;
 
 	static {
@@ -52,7 +51,7 @@ public class ResourceVerifierAlloyImpl extends ResourceVerifierWrapper implement
 	}
 
 	// Private Members
-	private ResourceVerifier wrappedResourceVerifier;
+	private final ResourceVerifier wrappedResourceVerifier;
 
 	public ResourceVerifierAlloyImpl(ResourceVerifier wrappedResourceVerifier) {
 		this.wrappedResourceVerifier = wrappedResourceVerifier;
@@ -67,8 +66,10 @@ public class ResourceVerifierAlloyImpl extends ResourceVerifierWrapper implement
 	public boolean isDependencySatisfied(FacesContext facesContext, UIComponent componentResource) {
 
 		boolean dependencySatisfied;
+		ExternalContext externalContext = facesContext.getExternalContext();
+		final Product LIFERAY_PORTAL = ProductFactory.getProductInstance(externalContext, Product.Name.LIFERAY_PORTAL);
 
-		if (LIFERAY_PORTAL_DETECTED &&
+		if (LIFERAY_PORTAL.isDetected() &&
 				LIFERAY_PORTAL_INCLUDED_RESOURCE_IDS.contains(ResourceUtil.getResourceId(componentResource))) {
 			dependencySatisfied = true;
 		}

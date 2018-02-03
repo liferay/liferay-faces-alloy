@@ -13,15 +13,11 @@
  */
 package com.liferay.faces.alloy.component.button;
 
-import java.lang.reflect.Method;
-import java.util.HashMap;
 import java.util.Map;
 
 import com.liferay.faces.alloy.component.link.LinkBase;
 import com.liferay.faces.util.logging.Logger;
 import com.liferay.faces.util.logging.LoggerFactory;
-import com.liferay.faces.util.product.Product;
-import com.liferay.faces.util.product.ProductFactory;
 
 
 /**
@@ -34,197 +30,43 @@ public abstract class SplitButtonCompat extends LinkBase {
 	// Logger
 	private static final Logger logger = LoggerFactory.getLogger(SplitButtonCompat.class);
 
-	// Private Constants
-	private static final Product JSF = ProductFactory.getProduct(Product.Name.JSF);
-
-	// Private Data Members
-	private boolean disableClientWindow;
-	private Map<String, Object> passThroughAttributes;
-	private String role;
-
 	// Protected Data Members
+	/**
+	 * @deprecated  Please use {@link SplitButton#getWrappedButton()} and {@link
+	 *              SplitButton#setWrappedButton(com.liferay.faces.alloy.component.button.Button)} instead.
+	 */
+	@Deprecated
 	protected Button wrappedButton;
 
+	@Override
 	public Map<String, Object> getPassThroughAttributes(boolean create) {
-
-		if (passThroughAttributes == null) {
-			passThroughAttributes = new HashMap<String, Object>();
-		}
-
-		Method getPassThroughAttributesMethod = null;
-
-		try {
-			Class<? extends Button> wrappedButtonClass = wrappedButton.getClass();
-			getPassThroughAttributesMethod = wrappedButtonClass.getMethod("getPassThroughAttributes",
-					new Class[] { boolean.class });
-		}
-		catch (NoSuchMethodException e) {
-
-			if (isFaces_2_2_OrNewer()) {
-				logger.error(e);
-			}
-		}
-
-		if (getPassThroughAttributesMethod != null) {
-
-			try {
-				passThroughAttributes = (Map<String, Object>) getPassThroughAttributesMethod.invoke(wrappedButton,
-						new Object[] { create });
-			}
-			catch (Exception e) {
-				logger.error(e);
-			}
-		}
-
-		return passThroughAttributes;
+		return getWrappedButton().getPassThroughAttributes(create);
 	}
 
+	@Override
 	public String getRole() {
-
-		Method getRoleMethod = null;
-
-		Class<? extends Button> wrappedButtonClass = wrappedButton.getClass();
-
-		try {
-			getRoleMethod = wrappedButtonClass.getMethod("getRole", new Class[] {});
-		}
-		catch (NoSuchMethodException e) {
-
-			if (isFaces_2_2_OrNewer()) {
-				logger.error(e);
-			}
-		}
-
-		if (getRoleMethod != null) {
-
-			try {
-				role = (String) getRoleMethod.invoke(wrappedButton, new Object[] {});
-			}
-			catch (Exception e) {
-				logger.error(e);
-			}
-		}
-
-		return role;
+		return getWrappedButton().getRole();
 	}
 
+	@Override
 	public boolean isDisableClientWindow() {
-
-		Method isDisableClientWindowMethod = null;
-
-		try {
-			Class<? extends Button> wrappedButtonClass = wrappedButton.getClass();
-			isDisableClientWindowMethod = wrappedButtonClass.getMethod("isDisableClientWindow", new Class[] {});
-		}
-		catch (NoSuchMethodException e) {
-
-			if (isFaces_2_2_OrNewer()) {
-				logger.error(e);
-			}
-		}
-
-		if (isDisableClientWindowMethod != null) {
-
-			try {
-				disableClientWindow = (Boolean) isDisableClientWindowMethod.invoke(wrappedButton, new Object[] {});
-			}
-			catch (Exception e) {
-				logger.error(e);
-			}
-		}
-
-		return disableClientWindow;
+		return getWrappedButton().isDisableClientWindow();
 	}
 
+	@Override
 	public void resetValue() {
-
-		Method resetValueMethod = null;
-
-		try {
-			Class<? extends Button> wrappedButtonClass = wrappedButton.getClass();
-			resetValueMethod = wrappedButtonClass.getMethod("resetValue", new Class[] {});
-		}
-		catch (NoSuchMethodException e) {
-
-			if (isFaces_2_2_OrNewer()) {
-				logger.error(e);
-			}
-		}
-
-		if (resetValueMethod != null) {
-
-			try {
-				resetValueMethod.invoke(wrappedButton, new Object[] {});
-			}
-			catch (Exception e) {
-				logger.error(e);
-			}
-		}
+		getWrappedButton().resetValue();
 	}
 
+	@Override
 	public void setDisableClientWindow(boolean disableClientWindow) {
-
-		Method setDisableClientWindowMethod = null;
-
-		try {
-			Class<? extends Button> wrappedButtonClass = wrappedButton.getClass();
-			setDisableClientWindowMethod = wrappedButtonClass.getMethod("setDisableClientWindow",
-					new Class[] { boolean.class });
-		}
-		catch (NoSuchMethodException e) {
-
-			if (isFaces_2_2_OrNewer()) {
-				logger.error(e);
-			}
-		}
-
-		if (setDisableClientWindowMethod == null) {
-			this.disableClientWindow = disableClientWindow;
-		}
-		else {
-
-			try {
-				setDisableClientWindowMethod.invoke(wrappedButton, disableClientWindow);
-			}
-			catch (Exception e) {
-				logger.error(e);
-			}
-		}
+		getWrappedButton().setDisableClientWindow(disableClientWindow);
 	}
 
+	@Override
 	public void setRole(String role) {
-
-		Method setRoleMethod = null;
-
-		Class<? extends Button> wrappedButtonClass = wrappedButton.getClass();
-
-		try {
-			setRoleMethod = wrappedButtonClass.getMethod("setRole", new Class[] { String.class });
-		}
-		catch (NoSuchMethodException e) {
-
-			if (isFaces_2_2_OrNewer()) {
-				logger.error(e);
-			}
-		}
-
-		if (setRoleMethod == null) {
-			this.role = role;
-		}
-		else {
-
-			try {
-				setRoleMethod.invoke(wrappedButton, new Object[] { role });
-			}
-			catch (Exception e) {
-				logger.error(e);
-			}
-		}
+		getWrappedButton().setRole(role);
 	}
 
-	protected boolean isFaces_2_2_OrNewer() {
-
-		return JSF.isDetected() &&
-			((JSF.getMajorVersion() > 2) || ((JSF.getMajorVersion() == 2) && (JSF.getMinorVersion() >= 2)));
-	}
+	protected abstract Button getWrappedButton();
 }

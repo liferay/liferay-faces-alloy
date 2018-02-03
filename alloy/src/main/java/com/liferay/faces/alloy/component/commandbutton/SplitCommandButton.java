@@ -49,97 +49,99 @@ public class SplitCommandButton extends SplitCommandButtonCompat {
 	public static final String RENDERER_TYPE =
 		"com.liferay.faces.alloy.component.button.internal.SplitCommandButtonRenderer";
 
+	// Private Data Members
 	private String rendererType;
+	private CommandButton wrappedCommandButton;
 
 	public SplitCommandButton() {
 		setRendererType(RENDERER_TYPE);
 	}
 
-	public SplitCommandButton(CommandButton commandButton) {
+	public SplitCommandButton(CommandButton wrappedCommandButton) {
 		this();
-		this.wrappedCommandButton = commandButton;
+		this.wrappedCommandButton = wrappedCommandButton;
 	}
 
 	@Override
 	public void addActionListener(ActionListener listener) {
-		wrappedCommandButton.addActionListener(listener);
+		getWrappedCommandButton().addActionListener(listener);
 	}
 
 	@Override
 	public void addClientBehavior(String eventName, ClientBehavior behavior) {
-		wrappedCommandButton.addClientBehavior(eventName, behavior);
+		getWrappedCommandButton().addClientBehavior(eventName, behavior);
 	}
 
 	@Override
 	public void broadcast(FacesEvent event) throws AbortProcessingException {
-		wrappedCommandButton.broadcast(event);
+		getWrappedCommandButton().broadcast(event);
 	}
 
 	@Override
 	public void clearInitialState() {
-		wrappedCommandButton.clearInitialState();
+		getWrappedCommandButton().clearInitialState();
 	}
 
 	@Override
 	public void decode(FacesContext context) {
-		wrappedCommandButton.decode(context);
+		getWrappedCommandButton().decode(context);
 	}
 
 	@Override
 	public void encodeAll(FacesContext context) throws IOException {
-		wrappedCommandButton.encodeAll(context);
+		getWrappedCommandButton().encodeAll(context);
 	}
 
 	@Override
 	public void encodeBegin(FacesContext context) throws IOException {
-		wrappedCommandButton.encodeBegin(context);
+		getWrappedCommandButton().encodeBegin(context);
 	}
 
 	@Override
 	public void encodeChildren(FacesContext context) throws IOException {
-		wrappedCommandButton.encodeChildren(context);
+		getWrappedCommandButton().encodeChildren(context);
 	}
 
 	@Override
 	public void encodeEnd(FacesContext context) throws IOException {
-		wrappedCommandButton.encodeEnd(context);
+		getWrappedCommandButton().encodeEnd(context);
 	}
 
 	@Override
 	public UIComponent findComponent(String expr) {
-		return wrappedCommandButton.findComponent(expr);
+		return getWrappedCommandButton().findComponent(expr);
 	}
 
 	@Override
 	public String getAccesskey() {
-		return wrappedCommandButton.getAccesskey();
+		return getWrappedCommandButton().getAccesskey();
 	}
 
 	@Override
 	@SuppressWarnings("deprecation")
 	public javax.faces.el.MethodBinding getAction() {
-		return wrappedCommandButton.getAction();
+		return getWrappedCommandButton().getAction();
 	}
 
 	@Override
 	public MethodExpression getActionExpression() {
-		return wrappedCommandButton.getActionExpression();
+		return getWrappedCommandButton().getActionExpression();
 	}
 
 	@Override
 	@SuppressWarnings("deprecation")
 	public javax.faces.el.MethodBinding getActionListener() {
-		return wrappedCommandButton.getActionListener();
+		return getWrappedCommandButton().getActionListener();
 	}
 
 	@Override
 	public ActionListener[] getActionListeners() {
-		return wrappedCommandButton.getActionListeners();
+		return getWrappedCommandButton().getActionListeners();
 	}
 
 	@Override
 	public Map<String, Object> getAttributes() {
-		return wrappedCommandButton.getAttributes();
+		return getWrappedCommandButton().getAttributes();
 	}
 
 	@Override
@@ -149,27 +151,27 @@ public class SplitCommandButton extends SplitCommandButtonCompat {
 
 	@Override
 	public int getChildCount() {
-		return wrappedCommandButton.getChildCount();
+		return getWrappedCommandButton().getChildCount();
 	}
 
 	@Override
 	public List<UIComponent> getChildren() {
-		return wrappedCommandButton.getChildren();
+		return getWrappedCommandButton().getChildren();
 	}
 
 	@Override
 	public Map<String, List<ClientBehavior>> getClientBehaviors() {
-		return wrappedCommandButton.getClientBehaviors();
+		return getWrappedCommandButton().getClientBehaviors();
 	}
 
 	@Override
 	public String getClientId() {
-		return wrappedCommandButton.getClientId();
+		return getWrappedCommandButton().getClientId();
 	}
 
 	@Override
 	public String getClientId(FacesContext context) {
-		return wrappedCommandButton.getClientId();
+		return getWrappedCommandButton().getClientId();
 	}
 
 	public String getClientKey() {
@@ -178,7 +180,7 @@ public class SplitCommandButton extends SplitCommandButtonCompat {
 
 	@Override
 	public String getContainerClientId(FacesContext context) {
-		return wrappedCommandButton.getContainerClientId(context);
+		return getWrappedCommandButton().getContainerClientId(context);
 	}
 
 	@Override
@@ -188,42 +190,42 @@ public class SplitCommandButton extends SplitCommandButtonCompat {
 
 	@Override
 	public String getDefaultEventName() {
-		return wrappedCommandButton.getDefaultEventName();
+		return getWrappedCommandButton().getDefaultEventName();
 	}
 
 	@Override
 	public String getDir() {
-		return wrappedCommandButton.getDir();
+		return getWrappedCommandButton().getDir();
 	}
 
 	@Override
 	public Collection<String> getEventNames() {
-		return wrappedCommandButton.getEventNames();
+		return getWrappedCommandButton().getEventNames();
 	}
 
 	@Override
 	public UIComponent getFacet(String name) {
-		return wrappedCommandButton.getFacet(name);
+		return getWrappedCommandButton().getFacet(name);
 	}
 
 	@Override
 	public int getFacetCount() {
-		return wrappedCommandButton.getFacetCount();
+		return getWrappedCommandButton().getFacetCount();
 	}
 
 	@Override
 	public Map<String, UIComponent> getFacets() {
-		return wrappedCommandButton.getFacets();
+		return getWrappedCommandButton().getFacets();
 	}
 
 	@Override
 	public Iterator<UIComponent> getFacetsAndChildren() {
-		return wrappedCommandButton.getFacetsAndChildren();
+		return getWrappedCommandButton().getFacetsAndChildren();
 	}
 
 	@Override
 	public String getFamily() {
-		return wrappedCommandButton.getFamily();
+		return getWrappedCommandButton().getFamily();
 	}
 
 	@Override
@@ -233,87 +235,87 @@ public class SplitCommandButton extends SplitCommandButtonCompat {
 
 	@Override
 	public String getId() {
-		return wrappedCommandButton.getId();
+		return getWrappedCommandButton().getId();
 	}
 
 	@Override
 	public String getLang() {
-		return wrappedCommandButton.getLang();
+		return getWrappedCommandButton().getLang();
 	}
 
 	@Override
 	public List<SystemEventListener> getListenersForEventClass(Class<? extends SystemEvent> eventClass) {
-		return wrappedCommandButton.getListenersForEventClass(eventClass);
+		return getWrappedCommandButton().getListenersForEventClass(eventClass);
 	}
 
 	@Override
 	public UIComponent getNamingContainer() {
-		return wrappedCommandButton.getNamingContainer();
+		return getWrappedCommandButton().getNamingContainer();
 	}
 
 	@Override
 	public String getOnblur() {
-		return wrappedCommandButton.getOnblur();
+		return getWrappedCommandButton().getOnblur();
 	}
 
 	@Override
 	public String getOnclick() {
-		return wrappedCommandButton.getOnclick();
+		return getWrappedCommandButton().getOnclick();
 	}
 
 	@Override
 	public String getOndblclick() {
-		return wrappedCommandButton.getOndblclick();
+		return getWrappedCommandButton().getOndblclick();
 	}
 
 	@Override
 	public String getOnfocus() {
-		return wrappedCommandButton.getOnfocus();
+		return getWrappedCommandButton().getOnfocus();
 	}
 
 	@Override
 	public String getOnkeydown() {
-		return wrappedCommandButton.getOnkeydown();
+		return getWrappedCommandButton().getOnkeydown();
 	}
 
 	@Override
 	public String getOnkeypress() {
-		return wrappedCommandButton.getOnkeypress();
+		return getWrappedCommandButton().getOnkeypress();
 	}
 
 	@Override
 	public String getOnkeyup() {
-		return wrappedCommandButton.getOnkeyup();
+		return getWrappedCommandButton().getOnkeyup();
 	}
 
 	@Override
 	public String getOnmousedown() {
-		return wrappedCommandButton.getOnmousedown();
+		return getWrappedCommandButton().getOnmousedown();
 	}
 
 	@Override
 	public String getOnmousemove() {
-		return wrappedCommandButton.getOnmousemove();
+		return getWrappedCommandButton().getOnmousemove();
 	}
 
 	@Override
 	public String getOnmouseout() {
-		return wrappedCommandButton.getOnmouseout();
+		return getWrappedCommandButton().getOnmouseout();
 	}
 
 	@Override
 	public String getOnmouseover() {
-		return wrappedCommandButton.getOnmouseover();
+		return getWrappedCommandButton().getOnmouseover();
 	}
 
 	@Override
 	public String getOnmouseup() {
-		return wrappedCommandButton.getOnmouseup();
+		return getWrappedCommandButton().getOnmouseup();
 	}
 
 	@Override
 	public UIComponent getParent() {
-		return wrappedCommandButton.getParent();
+		return getWrappedCommandButton().getParent();
 	}
 
 	@Override
@@ -328,12 +330,12 @@ public class SplitCommandButton extends SplitCommandButtonCompat {
 
 	@Override
 	public boolean getRendersChildren() {
-		return wrappedCommandButton.getRendersChildren();
+		return getWrappedCommandButton().getRendersChildren();
 	}
 
 	@Override
 	public Map<String, String> getResourceBundleMap() {
-		return wrappedCommandButton.getResourceBundleMap();
+		return getWrappedCommandButton().getResourceBundleMap();
 	}
 
 	@Override
@@ -348,13 +350,13 @@ public class SplitCommandButton extends SplitCommandButtonCompat {
 
 	@Override
 	public String getStyle() {
-		return wrappedCommandButton.getStyle();
+		return getWrappedCommandButton().getStyle();
 	}
 
 	@Override
 	public String getStyleClass() {
 
-		String styleClass = wrappedCommandButton.getStyleClass();
+		String styleClass = getWrappedCommandButton().getStyleClass();
 
 		if (styleClass == null) {
 			styleClass = "btn-default";
@@ -380,7 +382,7 @@ public class SplitCommandButton extends SplitCommandButtonCompat {
 
 	@Override
 	public String getTabindex() {
-		return wrappedCommandButton.getTabindex();
+		return getWrappedCommandButton().getTabindex();
 	}
 
 	@Override
@@ -390,160 +392,161 @@ public class SplitCommandButton extends SplitCommandButtonCompat {
 
 	@Override
 	public String getTitle() {
-		return wrappedCommandButton.getTitle();
+		return getWrappedCommandButton().getTitle();
 	}
 
 	@Override
 	public TransientStateHelper getTransientStateHelper(boolean create) {
-		return wrappedCommandButton.getTransientStateHelper(create);
+		return getWrappedCommandButton().getTransientStateHelper(create);
 	}
 
 	@Override
 	public String getType() {
-		return wrappedCommandButton.getType();
+		return getWrappedCommandButton().getType();
 	}
 
 	@Override
 	public Object getValue() {
-		return wrappedCommandButton.getValue();
+		return getWrappedCommandButton().getValue();
 	}
 
 	@SuppressWarnings("deprecation")
 	@Override
 	public javax.faces.el.ValueBinding getValueBinding(String name) {
-		return wrappedCommandButton.getValueBinding(name);
+		return getWrappedCommandButton().getValueBinding(name);
 	}
 
 	@Override
 	public ValueExpression getValueExpression(String name) {
-		return wrappedCommandButton.getValueExpression(name);
+		return getWrappedCommandButton().getValueExpression(name);
 	}
 
+	@Override
 	public CommandButton getWrappedCommandButton() {
 		return wrappedCommandButton;
 	}
 
 	@Override
 	public boolean initialStateMarked() {
-		return wrappedCommandButton.initialStateMarked();
+		return getWrappedCommandButton().initialStateMarked();
 	}
 
 	@Override
 	public boolean invokeOnComponent(FacesContext context, String clientId, ContextCallback callback)
 		throws FacesException {
-		return wrappedCommandButton.invokeOnComponent(context, clientId, callback);
+		return getWrappedCommandButton().invokeOnComponent(context, clientId, callback);
 	}
 
 	@Override
 	public boolean isDisabled() {
-		return wrappedCommandButton.isDisabled();
+		return getWrappedCommandButton().isDisabled();
 	}
 
 	@Override
 	public boolean isImmediate() {
-		return wrappedCommandButton.isImmediate();
+		return getWrappedCommandButton().isImmediate();
 	}
 
 	@Override
 	public boolean isInView() {
-		return wrappedCommandButton.isInView();
+		return getWrappedCommandButton().isInView();
 	}
 
 	@Override
 	public boolean isRendered() {
-		return wrappedCommandButton.isRendered();
+		return getWrappedCommandButton().isRendered();
 	}
 
 	@Override
 	public boolean isTransient() {
-		return wrappedCommandButton.isTransient();
+		return getWrappedCommandButton().isTransient();
 	}
 
 	@Override
 	public void markInitialState() {
-		wrappedCommandButton.markInitialState();
+		getWrappedCommandButton().markInitialState();
 	}
 
 	@Override
 	public void processDecodes(FacesContext context) {
-		wrappedCommandButton.processDecodes(context);
+		getWrappedCommandButton().processDecodes(context);
 	}
 
 	@Override
 	public void processEvent(ComponentSystemEvent event) throws AbortProcessingException {
-		wrappedCommandButton.processEvent(event);
+		getWrappedCommandButton().processEvent(event);
 	}
 
 	@Override
 	public void processRestoreState(FacesContext context, Object state) {
-		wrappedCommandButton.processRestoreState(context, state);
+		getWrappedCommandButton().processRestoreState(context, state);
 	}
 
 	@Override
 	public Object processSaveState(FacesContext context) {
-		return wrappedCommandButton.processSaveState(context);
+		return getWrappedCommandButton().processSaveState(context);
 	}
 
 	@Override
 	public void processUpdates(FacesContext context) {
-		wrappedCommandButton.processUpdates(context);
+		getWrappedCommandButton().processUpdates(context);
 	}
 
 	@Override
 	public void processValidators(FacesContext context) {
-		wrappedCommandButton.processValidators(context);
+		getWrappedCommandButton().processValidators(context);
 	}
 
 	@Override
 	public void queueEvent(FacesEvent event) {
-		wrappedCommandButton.queueEvent(event);
+		getWrappedCommandButton().queueEvent(event);
 	}
 
 	@Override
 	public void removeActionListener(ActionListener listener) {
-		wrappedCommandButton.removeActionListener(listener);
+		getWrappedCommandButton().removeActionListener(listener);
 	}
 
 	@Override
 	public void restoreState(FacesContext context, Object state) {
-		wrappedCommandButton.restoreState(context, state);
+		getWrappedCommandButton().restoreState(context, state);
 	}
 
 	@Override
 	public void restoreTransientState(FacesContext context, Object state) {
-		wrappedCommandButton.restoreTransientState(context, state);
+		getWrappedCommandButton().restoreTransientState(context, state);
 	}
 
 	@Override
 	public Object saveState(FacesContext context) {
-		return wrappedCommandButton.saveState(context);
+		return getWrappedCommandButton().saveState(context);
 	}
 
 	@Override
 	public Object saveTransientState(FacesContext context) {
-		return wrappedCommandButton.saveTransientState(context);
+		return getWrappedCommandButton().saveTransientState(context);
 	}
 
 	@Override
 	public void setAccesskey(String accesskey) {
-		wrappedCommandButton.setAccesskey(accesskey);
+		getWrappedCommandButton().setAccesskey(accesskey);
 	}
 
 	@Override
 	@SuppressWarnings("deprecation")
 	public void setAction(javax.faces.el.MethodBinding action) {
-		wrappedCommandButton.setAction(action);
+		getWrappedCommandButton().setAction(action);
 	}
 
 	@Override
 	public void setActionExpression(MethodExpression actionExpression) {
-		wrappedCommandButton.setActionExpression(actionExpression);
+		getWrappedCommandButton().setActionExpression(actionExpression);
 	}
 
 	@Override
 	@SuppressWarnings("deprecation")
 	public void setActionListener(javax.faces.el.MethodBinding actionListener) {
-		wrappedCommandButton.setActionListener(actionListener);
+		getWrappedCommandButton().setActionListener(actionListener);
 	}
 
 	@Override
@@ -562,12 +565,12 @@ public class SplitCommandButton extends SplitCommandButtonCompat {
 
 	@Override
 	public void setDir(String dir) {
-		wrappedCommandButton.setDir(dir);
+		getWrappedCommandButton().setDir(dir);
 	}
 
 	@Override
 	public void setDisabled(boolean disabled) {
-		wrappedCommandButton.setDisabled(disabled);
+		getWrappedCommandButton().setDisabled(disabled);
 	}
 
 	@Override
@@ -577,87 +580,87 @@ public class SplitCommandButton extends SplitCommandButtonCompat {
 
 	@Override
 	public void setId(String id) {
-		wrappedCommandButton.setId(id);
+		getWrappedCommandButton().setId(id);
 	}
 
 	@Override
 	public void setImmediate(boolean immediate) {
-		wrappedCommandButton.setImmediate(immediate);
+		getWrappedCommandButton().setImmediate(immediate);
 	}
 
 	@Override
 	public void setInView(boolean isInView) {
-		wrappedCommandButton.setInView(isInView);
+		getWrappedCommandButton().setInView(isInView);
 	}
 
 	@Override
 	public void setLang(String lang) {
-		wrappedCommandButton.setLang(lang);
+		getWrappedCommandButton().setLang(lang);
 	}
 
 	@Override
 	public void setOnblur(String onblur) {
-		wrappedCommandButton.setOnblur(onblur);
+		getWrappedCommandButton().setOnblur(onblur);
 	}
 
 	@Override
 	public void setOnclick(String onclick) {
-		wrappedCommandButton.setOnclick(onclick);
+		getWrappedCommandButton().setOnclick(onclick);
 	}
 
 	@Override
 	public void setOndblclick(String ondblclick) {
-		wrappedCommandButton.setOndblclick(ondblclick);
+		getWrappedCommandButton().setOndblclick(ondblclick);
 	}
 
 	@Override
 	public void setOnfocus(String onfocus) {
-		wrappedCommandButton.setOnfocus(onfocus);
+		getWrappedCommandButton().setOnfocus(onfocus);
 	}
 
 	@Override
 	public void setOnkeydown(String onkeydown) {
-		wrappedCommandButton.setOnkeydown(onkeydown);
+		getWrappedCommandButton().setOnkeydown(onkeydown);
 	}
 
 	@Override
 	public void setOnkeypress(String onkeypress) {
-		wrappedCommandButton.setOnkeypress(onkeypress);
+		getWrappedCommandButton().setOnkeypress(onkeypress);
 	}
 
 	@Override
 	public void setOnkeyup(String onkeyup) {
-		wrappedCommandButton.setOnkeyup(onkeyup);
+		getWrappedCommandButton().setOnkeyup(onkeyup);
 	}
 
 	@Override
 	public void setOnmousedown(String onmousedown) {
-		wrappedCommandButton.setOnmousedown(onmousedown);
+		getWrappedCommandButton().setOnmousedown(onmousedown);
 	}
 
 	@Override
 	public void setOnmousemove(String onmousemove) {
-		wrappedCommandButton.setOnmousemove(onmousemove);
+		getWrappedCommandButton().setOnmousemove(onmousemove);
 	}
 
 	@Override
 	public void setOnmouseout(String onmouseout) {
-		wrappedCommandButton.setOnmouseout(onmouseout);
+		getWrappedCommandButton().setOnmouseout(onmouseout);
 	}
 
 	@Override
 	public void setOnmouseover(String onmouseover) {
-		wrappedCommandButton.setOnmouseover(onmouseover);
+		getWrappedCommandButton().setOnmouseover(onmouseover);
 	}
 
 	@Override
 	public void setOnmouseup(String onmouseup) {
-		wrappedCommandButton.setOnmouseup(onmouseup);
+		getWrappedCommandButton().setOnmouseup(onmouseup);
 	}
 
 	@Override
 	public void setParent(UIComponent parent) {
-		wrappedCommandButton.setParent(parent);
+		getWrappedCommandButton().setParent(parent);
 	}
 
 	@Override
@@ -667,7 +670,7 @@ public class SplitCommandButton extends SplitCommandButtonCompat {
 
 	@Override
 	public void setRendered(boolean rendered) {
-		wrappedCommandButton.setRendered(rendered);
+		getWrappedCommandButton().setRendered(rendered);
 	}
 
 	@Override
@@ -687,17 +690,17 @@ public class SplitCommandButton extends SplitCommandButtonCompat {
 
 	@Override
 	public void setStyle(String style) {
-		wrappedCommandButton.setStyle(style);
+		getWrappedCommandButton().setStyle(style);
 	}
 
 	@Override
 	public void setStyleClass(String styleClass) {
-		wrappedCommandButton.setStyleClass(styleClass);
+		getWrappedCommandButton().setStyleClass(styleClass);
 	}
 
 	@Override
 	public void setTabindex(String tabindex) {
-		wrappedCommandButton.setTabindex(tabindex);
+		getWrappedCommandButton().setTabindex(tabindex);
 	}
 
 	@Override
@@ -707,53 +710,53 @@ public class SplitCommandButton extends SplitCommandButtonCompat {
 
 	@Override
 	public void setTitle(String title) {
-		wrappedCommandButton.setTitle(title);
+		getWrappedCommandButton().setTitle(title);
 	}
 
 	@Override
 	public void setTransient(boolean newTransientValue) {
-		wrappedCommandButton.setTransient(newTransientValue);
+		getWrappedCommandButton().setTransient(newTransientValue);
 	}
 
 	@Override
 	public void setType(String type) {
-		wrappedCommandButton.setType(type);
+		getWrappedCommandButton().setType(type);
 	}
 
 	@Override
 	public void setValue(Object value) {
-		wrappedCommandButton.setValue(value);
+		getWrappedCommandButton().setValue(value);
 	}
 
 	@SuppressWarnings("deprecation")
 	@Override
 	public void setValueBinding(String name, javax.faces.el.ValueBinding binding) {
-		wrappedCommandButton.setValueBinding(name, binding);
+		getWrappedCommandButton().setValueBinding(name, binding);
 	}
 
 	@Override
 	public void setValueExpression(String name, ValueExpression binding) {
-		wrappedCommandButton.setValueExpression(name, binding);
+		getWrappedCommandButton().setValueExpression(name, binding);
 	}
 
-	public void setWrappedCommandButton(CommandButton commandButton) {
-		this.wrappedCommandButton = commandButton;
+	public void setWrappedCommandButton(CommandButton wrappedCommandButton) {
+		this.wrappedCommandButton = wrappedCommandButton;
 	}
 
 	@Override
 	public void subscribeToEvent(Class<? extends SystemEvent> eventClass,
 		ComponentSystemEventListener componentListener) {
-		wrappedCommandButton.subscribeToEvent(eventClass, componentListener);
+		getWrappedCommandButton().subscribeToEvent(eventClass, componentListener);
 	}
 
 	@Override
 	public void unsubscribeFromEvent(Class<? extends SystemEvent> eventClass,
 		ComponentSystemEventListener componentListener) {
-		wrappedCommandButton.unsubscribeFromEvent(eventClass, componentListener);
+		getWrappedCommandButton().unsubscribeFromEvent(eventClass, componentListener);
 	}
 
 	@Override
 	public boolean visitTree(VisitContext context, VisitCallback callback) {
-		return wrappedCommandButton.visitTree(context, callback);
+		return getWrappedCommandButton().visitTree(context, callback);
 	}
 }
