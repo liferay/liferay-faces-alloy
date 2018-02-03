@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2017 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-2018 Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -17,8 +17,6 @@ import java.io.Serializable;
 
 import com.liferay.faces.util.client.ScriptsEncoder;
 import com.liferay.faces.util.client.ScriptsEncoderFactory;
-import com.liferay.faces.util.product.Product;
-import com.liferay.faces.util.product.ProductFactory;
 
 
 /**
@@ -29,25 +27,14 @@ public class ScriptsEncoderFactoryAlloyImpl extends ScriptsEncoderFactory implem
 	// serialVersionUID
 	private static final long serialVersionUID = 2186017689814362487L;
 
-	// Private Constants
-	private static final boolean LIFERAY_FACES_BRIDGE_DETECTED = ProductFactory.getProduct(
-			Product.Name.LIFERAY_FACES_BRIDGE).isDetected();
-	private static final boolean LIFERAY_PORTAL_DETECTED = ProductFactory.getProduct(Product.Name.LIFERAY_PORTAL)
-		.isDetected();
-
-	// Private Data Members
-	ScriptsEncoder scriptsEncoder;
-	ScriptsEncoderFactory wrappedScriptsEncoderFactory;
+	// Private Final Data Members
+	private final ScriptsEncoder scriptsEncoder;
+	private final ScriptsEncoderFactory wrappedScriptsEncoderFactory;
 
 	public ScriptsEncoderFactoryAlloyImpl(ScriptsEncoderFactory scriptEncoderFactory) {
 
-		if (LIFERAY_PORTAL_DETECTED && LIFERAY_FACES_BRIDGE_DETECTED) {
-			this.scriptsEncoder = scriptEncoderFactory.getScriptsEncoder();
-		}
-		else {
-			this.scriptsEncoder = new ScriptsEncoderAlloyImpl();
-		}
-
+		ScriptsEncoder scriptsEncoder = scriptEncoderFactory.getScriptsEncoder();
+		this.scriptsEncoder = new ScriptsEncoderAlloyImpl(scriptsEncoder);
 		this.wrappedScriptsEncoderFactory = scriptEncoderFactory;
 	}
 

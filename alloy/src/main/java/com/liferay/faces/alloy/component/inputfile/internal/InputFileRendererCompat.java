@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2017 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-2018 Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -13,18 +13,14 @@
  */
 package com.liferay.faces.alloy.component.inputfile.internal;
 
-import java.util.Map;
-
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import com.liferay.faces.alloy.component.inputfile.InputFile;
 import com.liferay.faces.alloy.render.internal.DelegatingAlloyRendererBase;
-import com.liferay.faces.util.product.Product;
-import com.liferay.faces.util.product.ProductFactory;
+import com.liferay.faces.alloy.util.internal.JSFUtil;
 
 
 /**
@@ -34,9 +30,6 @@ import com.liferay.faces.util.product.ProductFactory;
  */
 public abstract class InputFileRendererCompat extends DelegatingAlloyRendererBase {
 
-	// Private Constants
-	private static final Product JSF = ProductFactory.getProduct(Product.Name.JSF);
-
 	@Override
 	public String getDelegateComponentFamily() {
 		return InputFile.COMPONENT_FAMILY;
@@ -45,7 +38,9 @@ public abstract class InputFileRendererCompat extends DelegatingAlloyRendererBas
 	@Override
 	public String getDelegateRendererType() {
 
-		if (isFaces_2_2_OrNewer()) {
+		FacesContext facesContext = FacesContext.getCurrentInstance();
+
+		if (JSFUtil.isFaces_2_2_OrNewer(facesContext)) {
 			return "javax.faces.File";
 		}
 		else {
@@ -58,7 +53,7 @@ public abstract class InputFileRendererCompat extends DelegatingAlloyRendererBas
 		// If running with JSF 2.2 (or higher), then the javax.servlet.http.Part (Servlet 3.0) mechanism for decoding
 		// uploaded files must be used. This is because the the @MultipartConfig annotation on the FacesServlet will
 		// cause commons-fileupload to throw exceptions.
-		if (isFaces_2_2_OrNewer()) {
+		if (JSFUtil.isFaces_2_2_OrNewer(facesContext)) {
 			return new InputFileDecoderPartImpl();
 		}
 
@@ -85,11 +80,5 @@ public abstract class InputFileRendererCompat extends DelegatingAlloyRendererBas
 				return new InputFileDecoderCommonsImpl();
 			}
 		}
-	}
-
-	protected boolean isFaces_2_2_OrNewer() {
-
-		return JSF.isDetected() &&
-			((JSF.getMajorVersion() > 2) || ((JSF.getMajorVersion() == 2) && (JSF.getMinorVersion() >= 2)));
 	}
 }

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2017 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-2018 Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -28,6 +28,7 @@ import com.liferay.faces.util.logging.LoggerFactory;
 @RequestScoped
 public class SelectThumbRatingBackingBean {
 
+	// Logger
 	private static final Logger logger = LoggerFactory.getLogger(SelectThumbRatingBackingBean.class);
 
 	@ManagedProperty(name = "selectThumbRatingModelBean", value = "#{selectThumbRatingModelBean}")

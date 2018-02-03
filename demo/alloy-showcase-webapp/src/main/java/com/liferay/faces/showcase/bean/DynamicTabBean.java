@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2017 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-2018 Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -26,8 +26,10 @@ import javax.faces.bean.ViewScoped;
 @ViewScoped
 public class DynamicTabBean implements Serializable {
 
+	// serialVersionUID
 	private static final long serialVersionUID = 9059601641277438559L;
 
+	// Private Data Members
 	private boolean compatible = true;
 	private boolean enterpriseReady = true;
 	private boolean lightweight = true;

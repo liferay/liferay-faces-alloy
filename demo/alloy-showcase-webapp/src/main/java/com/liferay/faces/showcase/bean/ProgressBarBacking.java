@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2017 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-2018 Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -34,10 +34,13 @@ import com.liferay.faces.util.logging.LoggerFactory;
 @ManagedBean
 public class ProgressBarBacking implements Serializable {
 
+	// serialVersionUID
 	private static final long serialVersionUID = 1014691234870238235L;
 
+	// Logger
 	private static final Logger logger = LoggerFactory.getLogger(ProgressBarBacking.class);
 
+	// Private Data Members
 	private Integer progress = 0;
 
 	public int getProgress() {

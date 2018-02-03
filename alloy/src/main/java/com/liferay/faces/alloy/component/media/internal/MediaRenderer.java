@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2017 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-2018 Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -111,7 +111,7 @@ public abstract class MediaRenderer extends MediaRendererCompat {
 
 		// Encode JSF 2.2 passthrough attributes (attributes prefixed with the http://xmlns.jcp.org/jsf/passthrough
 		// namespace)
-		encodeJSF22PassthroughAttributes(media, responseWriter);
+		encodeJSF22PassthroughAttributes(facesContext, media, responseWriter);
 
 		encodeCustomMediaAttributes(facesContext, responseWriter, media);
 	}
@@ -454,7 +454,7 @@ public abstract class MediaRenderer extends MediaRendererCompat {
 
 		String encodedResourceURL = resourceURL;
 
-		if (!isEncodedResourceURL(resourceHandler, encodedResourceURL)) {
+		if (!isEncodedResourceURL(facesContext, resourceHandler, encodedResourceURL)) {
 
 			ViewHandler viewHandler = application.getViewHandler();
 			resourceURL = viewHandler.getResourceURL(facesContext, resourceURL);
