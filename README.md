@@ -4,7 +4,7 @@
 
 ## Notice:
 
-**This branch supports Liferay 6.2 which has entered the [*Limited Support Phase*](https://www.liferay.com/subscription-services/end-of-life/liferay-portal). Only security fixes will be applied to this branch. This branch stopped receiving backports after 4/5/2018. The last commit backported to this branch was [218fe6d83498572fb7301be4f7bc095aaa47c87b](https://github.com/liferay/liferay-faces-alloy/commit/218fe6d83498572fb7301be4f7bc095aaa47c87b).  The first commit not backported to this branch was [48b0dc8abf24a0165706d3902e9ebe3a1cf3d79d](https://github.com/liferay/liferay-faces-alloy/commit/48b0dc8abf24a0165706d3902e9ebe3a1cf3d79d). The last tested commit on this branch was [0ecabc776ba1966f99e837b95108f374c55e7a55](https://github.com/liferay/liferay-faces-alloy/commit/0ecabc776ba1966f99e837b95108f374c55e7a55).**
+**This branch supports Liferay 6.2 which has entered the [*Limited Support Phase*](https://www.liferay.com/subscription-services/end-of-life/liferay-portal). Only security fixes will be applied to this branch. This branch stopped receiving backports after 9/21/2017. The last commit backported to this branch was [218fe6d83498572fb7301be4f7bc095aaa47c87b](https://github.com/liferay/liferay-faces-alloy/commit/218fe6d83498572fb7301be4f7bc095aaa47c87b).  The first commit not backported to this branch was [48b0dc8abf24a0165706d3902e9ebe3a1cf3d79d](https://github.com/liferay/liferay-faces-alloy/commit/48b0dc8abf24a0165706d3902e9ebe3a1cf3d79d). The last tested commit on this branch was [0ecabc776ba1966f99e837b95108f374c55e7a55](https://github.com/liferay/liferay-faces-alloy/commit/0ecabc776ba1966f99e837b95108f374c55e7a55).**
 
 ---
 
