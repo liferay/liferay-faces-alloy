@@ -96,7 +96,7 @@
 		<full.version>${project.version} (${timestamp} AD)</full.version>
 		<hibernate.validator.version>5.1.3.Final</hibernate.validator.version>
 		<jstl.version>1.2</jstl.version>
-		<liferay.faces.showcase.version>3.0.1</liferay.faces.showcase.version>
+		<liferay.faces.showcase.version>3.0.2</liferay.faces.showcase.version>
 		<liferay.faces.util.version>3.1.0</liferay.faces.util.version>
 		<log4j.version>1.2.14</log4j.version>
 		<mojarra.version>2.2.17</mojarra.version>
