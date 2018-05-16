@@ -5,6 +5,12 @@
 	xmlns:util="http://www.liferay.com/xml/ns/liferay-faces-util-extension">
 
 	<name>LiferayFacesAlloy</name>
+	<application>
+		<system-event-listener>
+			<system-event-listener-class>com.liferay.faces.alloy.event.internal.ApplicationConfigConstructedListener</system-event-listener-class>
+			<system-event-class>com.liferay.faces.util.event.PostConstructApplicationConfigEvent</system-event-class>
+		</system-event-listener>
+	</application>
 	<factory>
 		<factory-extension>
 			<util:i18n-factory>com.liferay.faces.alloy.i18n.internal.I18nFactoryAlloyImpl</util:i18n-factory>
