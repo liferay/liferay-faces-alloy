@@ -16,11 +16,12 @@ package com.liferay.faces.alloy.component.button.internal;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIParameter;
 import javax.faces.component.UIViewParameter;
+import javax.faces.context.FacesContext;
 
+import com.liferay.faces.alloy.util.internal.JSFUtil;
+import com.liferay.faces.util.lang.ThreadSafeAccessor;
 import com.liferay.faces.util.logging.Logger;
 import com.liferay.faces.util.logging.LoggerFactory;
-import com.liferay.faces.util.product.Product;
-import com.liferay.faces.util.product.ProductFactory;
 import com.liferay.faces.util.render.DelegatingRendererBase;
 
 
@@ -31,47 +32,55 @@ import com.liferay.faces.util.render.DelegatingRendererBase;
  */
 public abstract class ButtonRendererCompat extends DelegatingRendererBase {
 
-	// Private Constants
-	private static final Product JSF = ProductFactory.getProduct(Product.Name.JSF);
-	private static final Class<?> UI_VIEW_ACTION_CLASS;
-
 	// Logger
 	private static final Logger logger = LoggerFactory.getLogger(ButtonRendererCompat.class);
 
-	static {
+	// Private Final Data Members
+	private final Faces_2_2_OrNewerAccessor faces_2_2_OrNewerAccessor = new Faces_2_2_OrNewerAccessor();
 
-		Class<?> clazz = null;
+	private static boolean isInstanceOfUIViewAction(Faces_2_2_OrNewerAccessor faces_2_2_OrNewerAccessor,
+		UIComponent uiComponent) {
 
-		try {
-			clazz = Class.forName("javax.faces.component.UIViewAction");
-		}
-		catch (ClassNotFoundException e) {
+		FacesContext facesContext = FacesContext.getCurrentInstance();
 
-			if (isFaces_2_2_OrNewer()) {
-				logger.error(e);
-			}
-		}
-
-		UI_VIEW_ACTION_CLASS = clazz;
-	}
-
-	protected static boolean isFaces_2_2_OrNewer() {
-
-		return JSF.isDetected() &&
-			((JSF.getMajorVersion() > 2) || ((JSF.getMajorVersion() == 2) && (JSF.getMinorVersion() >= 2)));
+		return faces_2_2_OrNewerAccessor.get(facesContext) &&
+			uiComponent.getClass().isAssignableFrom(OnDemandUIViewActionClass.INSTANCE);
 	}
 
 	protected boolean isVisualComponent(UIComponent uiComponent) {
+		return !(uiComponent instanceof UIParameter) && !(uiComponent instanceof UIViewParameter) &&
+			!isInstanceOfUIViewAction(faces_2_2_OrNewerAccessor, uiComponent);
+	}
 
-		if (UI_VIEW_ACTION_CLASS == null) {
-			return (!(uiComponent instanceof UIParameter)) || (!(uiComponent instanceof UIViewParameter));
+	private static final class Faces_2_2_OrNewerAccessor extends ThreadSafeAccessor<Boolean, FacesContext> {
+
+		@Override
+		protected Boolean computeValue(FacesContext facesContext) {
+			return JSFUtil.isFaces_2_2_OrNewer(facesContext);
 		}
-		else {
-			Class<? extends UIComponent> uiComponentClass = uiComponent.getClass();
+	}
 
-			return (!(uiComponent instanceof UIParameter)) ||
-				(!(uiComponentClass.isAssignableFrom(UI_VIEW_ACTION_CLASS))) ||
-				(!(uiComponent instanceof UIViewParameter));
+	private static final class OnDemandUIViewActionClass {
+
+		// Since this class is not referenced until isVisualComponent() is called and the JSF version is 2.2+, the
+		// UIViewActionClass instance will be lazily initialized when those two things are true. Class initialization is
+		// thread-safe. For more details on this pattern, see
+		// http://stackoverflow.com/questions/7420504/threading-lazy-initialization-vs-static-lazy-initialization and
+		// http://docs.oracle.com/javase/specs/jls/se7/html/jls-12.html#jls-12.4.2
+		private static final Class<?> INSTANCE;
+
+		static {
+
+			Class<?> uiViewActionClass = null;
+
+			try {
+				uiViewActionClass = Class.forName("javax.faces.component.UIViewAction");
+			}
+			catch (ClassNotFoundException e) {
+				logger.error(e);
+			}
+
+			INSTANCE = uiViewActionClass;
 		}
 	}
 }

@@ -28,11 +28,9 @@ import javax.faces.view.facelets.TagAttribute;
 import javax.faces.view.facelets.TagConfig;
 import javax.faces.view.facelets.TagHandler;
 
-import com.liferay.faces.alloy.config.internal.AlloyWebConfigParam;
 import com.liferay.faces.util.cache.Cache;
-import com.liferay.faces.util.cache.CacheFactory;
-import com.liferay.faces.util.config.WebConfigParam;
 import com.liferay.faces.util.jsp.JspTagConfig;
+import com.liferay.faces.util.lang.ThreadSafeAccessor;
 import com.liferay.faces.util.logging.Logger;
 import com.liferay.faces.util.logging.LoggerFactory;
 
@@ -46,22 +44,23 @@ public class LoadConstants extends TagHandler {
 	// Logger
 	private static final Logger logger = LoggerFactory.getLogger(LoadConstants.class);
 
-	// Static field must be declared volatile in order for the double-check idiom to work (requires JRE 1.5+)
-	private static volatile Cache<String, Map<String, Object>> constantCache;
-
 	// Protected Enumerations
 	protected enum PropertyKeys {
 		cacheable, classType, var
 	}
 
-	// Private Data Members
-	private boolean cacheable = true;
-	private String classType;
-	private String var;
+	// Private Final Data Members
+	private final String classType;
+	private final ConstantCacheAccessor constantCacheAccessor;
+	private final String var;
 
 	// Workaround for https://issues.liferay.com/browse/FACES-1576
 	public LoadConstants() throws Exception {
+
 		super(new JspTagConfig());
+		this.classType = null;
+		this.constantCacheAccessor = null;
+		this.var = null;
 	}
 
 	public LoadConstants(TagConfig config) throws Exception {
@@ -86,55 +85,38 @@ public class LoadConstants extends TagHandler {
 
 		TagAttribute cacheableAttr = getAttribute(PropertyKeys.cacheable.toString());
 
-		if (cacheableAttr != null) {
-			this.cacheable = Boolean.parseBoolean(cacheableAttr.getValue());
+		if ((cacheableAttr == null) || Boolean.parseBoolean(cacheableAttr.getValue())) {
+			this.constantCacheAccessor = new ConstantCacheAccessor();
+		}
+		else {
+			this.constantCacheAccessor = null;
 		}
 	}
 
 	@Override
 	public void apply(FaceletContext faceletContext, UIComponent parentUIComponent) throws IOException {
 
-		Cache<String, Map<String, Object>> constantCache = LoadConstants.constantCache;
+		Cache<String, Map<String, Object>> constantCache = null;
 
-		// First check without locking (not yet thread-safe)
-		if (cacheable && (constantCache == null)) {
-
-			synchronized (LoadConstants.class) {
-
-				constantCache = LoadConstants.constantCache;
-
-				// Second check with locking (thread-safe)
-				if (constantCache == null) {
-
-					FacesContext facesContext = faceletContext.getFacesContext();
-					ExternalContext externalContext = facesContext.getExternalContext();
-					int initialCacheCapacity = AlloyWebConfigParam.AlloyLoadConstantsInitialCacheCapacity
-						.getIntegerValue(externalContext);
-					int maxCacheCapacity = AlloyWebConfigParam.AlloyLoadConstantsMaxCacheCapacity.getIntegerValue(
-							externalContext);
-
-					if (maxCacheCapacity > -1) {
-						constantCache = LoadConstants.constantCache = CacheFactory.getConcurrentLRUCacheInstance(
-									externalContext, initialCacheCapacity, maxCacheCapacity);
-					}
-					else {
-						constantCache = LoadConstants.constantCache = CacheFactory.getConcurrentCacheInstance(
-									externalContext, initialCacheCapacity);
-					}
-				}
-			}
+		if (constantCacheAccessor != null) {
+			constantCache = constantCacheAccessor.get(faceletContext);
 		}
 
-		if (cacheable && constantCache.containsKey(classType)) {
+		if ((constantCache != null) && constantCache.containsKey(classType)) {
 			faceletContext.setAttribute(var, constantCache.getValue(classType));
 		}
 		else {
 
 			Map<String, Object> constantMap = new HashMap<String, Object>();
+			ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
+
+			if (classLoader == null) {
+				classLoader = getClass().getClassLoader();
+			}
 
 			try {
 
-				Class<?> clazz = Class.forName(classType);
+				Class<?> clazz = Class.forName(classType, true, classLoader);
 				Field[] fields = clazz.getFields();
 
 				for (Field field : fields) {
@@ -157,7 +139,7 @@ public class LoadConstants extends TagHandler {
 
 				constantMap = Collections.unmodifiableMap(constantMap);
 
-				if (cacheable) {
+				if ((constantCache != null)) {
 					constantMap = constantCache.putValueIfAbsent(classType, constantMap);
 				}
 
@@ -169,6 +151,26 @@ public class LoadConstants extends TagHandler {
 			catch (IllegalAccessException e) {
 				logger.error(e);
 			}
+		}
+	}
+
+	/**
+	 * This class provides lazy access to the constant cache that is set up by {@link
+	 * com.liferay.faces.alloy.event.internal.ApplicationConfigConstructedListener}.
+	 */
+	private static final class ConstantCacheAccessor
+		extends ThreadSafeAccessor<Cache<String, Map<String, Object>>, FaceletContext> {
+
+		@Override
+		protected Cache<String, Map<String, Object>> computeValue(FaceletContext faceletContext) {
+
+			FacesContext facesContext = faceletContext.getFacesContext();
+			ExternalContext externalContext = facesContext.getExternalContext();
+			Map<String, Object> applicationMap = externalContext.getApplicationMap();
+			Cache<String, Map<String, Object>> constantCache = (Cache<String, Map<String, Object>>) applicationMap.get(
+					LoadConstants.class.getName());
+
+			return constantCache;
 		}
 	}
 }
