@@ -22,6 +22,7 @@ import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 
 import com.liferay.faces.util.application.FacesResource;
+import java.util.Collections;
 
 
 /**
@@ -50,5 +51,6 @@ public class AudioServiceMockImpl implements AudioService, Serializable {
 		audioList.add(new FacesResource("audios", "over-the-rainbow.wav"));
 		audioList.add(new FacesResource("audios", "over-the-rainbow.webm"));
 		audioList.add(new FacesResource("audios", "over-the-rainbow.ogg"));
+		audioList = Collections.unmodifiableList(audioList);
 	}
 }

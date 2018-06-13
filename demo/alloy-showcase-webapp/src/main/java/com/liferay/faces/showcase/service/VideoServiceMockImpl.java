@@ -22,6 +22,7 @@ import javax.faces.bean.ApplicationScoped;
 import javax.faces.bean.ManagedBean;
 
 import com.liferay.faces.util.application.FacesResource;
+import java.util.Collections;
 
 
 /**
@@ -48,5 +49,6 @@ public class VideoServiceMockImpl implements VideoService, Serializable {
 		videoList.add(new FacesResource("videos", "over-the-rainbow.mp4"));
 		videoList.add(new FacesResource("videos", "over-the-rainbow.webm"));
 		videoList.add(new FacesResource("videos", "over-the-rainbow.ogv"));
+		videoList = Collections.unmodifiableList(videoList);
 	}
 }
