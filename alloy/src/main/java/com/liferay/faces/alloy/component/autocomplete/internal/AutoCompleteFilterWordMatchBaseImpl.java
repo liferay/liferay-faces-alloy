@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2018 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-2017 Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -15,7 +15,6 @@ package com.liferay.faces.alloy.component.autocomplete.internal;
 
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.EnumMap;
 import java.util.Iterator;
 import java.util.List;
@@ -29,13 +28,12 @@ import java.util.regex.Pattern;
  */
 abstract class AutoCompleteFilterWordMatchBaseImpl implements AutoCompleteFilter {
 
-	private static final Map<PATTERN_KEYS, Pattern> PATTERNS;
+	private static final Map<PATTERN_KEYS, Pattern> patterns = new EnumMap<PATTERN_KEYS, Pattern>(PATTERN_KEYS.class);
 	private static final Pattern SINGLE_QUOTE_PATTERN = Pattern.compile("'");
 	private static final Pattern WHITESPACE = Pattern.compile("\\s");
 
 	static {
 
-		Map<PATTERN_KEYS, Pattern> patterns = new EnumMap<PATTERN_KEYS, Pattern>(PATTERN_KEYS.class);
 		String path = "META-INF/resources/liferay-faces-alloy/yui/autocomplete/text-data-wordbreak.js";
 		InputStream inputStream = AutoCompleteFilterWordMatchBaseImpl.class.getClassLoader().getResourceAsStream(path);
 		Scanner scanner = new Scanner(inputStream);
@@ -66,7 +64,6 @@ abstract class AutoCompleteFilterWordMatchBaseImpl implements AutoCompleteFilter
 			}
 		}
 
-		PATTERNS = Collections.unmodifiableMap(patterns);
 		scanner.close();
 	}
 
@@ -75,7 +72,11 @@ abstract class AutoCompleteFilterWordMatchBaseImpl implements AutoCompleteFilter
 		PUNCTUATION
 	}
 
-	protected static List<String> getWords(String words) {
+	private static boolean matches(String character, PATTERN_KEYS patternKey) {
+		return patterns.get(patternKey).matcher(character).matches();
+	}
+
+	protected List<String> getWords(String words) {
 
 		// http://unicode.org/reports/tr29/#Word_Boundary_Rules
 
@@ -236,9 +237,5 @@ abstract class AutoCompleteFilterWordMatchBaseImpl implements AutoCompleteFilter
 		}
 
 		return wordList;
-	}
-
-	private static boolean matches(String character, PATTERN_KEYS patternKey) {
-		return PATTERNS.get(patternKey).matcher(character).matches();
 	}
 }

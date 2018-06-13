@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2018 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-2017 Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -63,6 +63,10 @@ import com.liferay.faces.util.render.RendererUtil;
 	)
 //J+
 public class InputFileRenderer extends InputFileRendererBase {
+
+	// Private Constants
+	private static final boolean LIFERAY_FACES_BRIDGE_DETECTED = ProductFactory.getProduct(
+			Product.Name.LIFERAY_FACES_BRIDGE).isDetected();
 
 	@Override
 	public void decode(FacesContext facesContext, UIComponent uiComponent) {
@@ -423,11 +427,8 @@ public class InputFileRenderer extends InputFileRendererBase {
 	protected Map<String, List<UploadedFile>> getUploadedFileMap(FacesContext facesContext, String location) {
 
 		Map<String, List<UploadedFile>> uploadedFileMap = null;
-		ExternalContext externalContext = facesContext.getExternalContext();
-		final Product LIFERAY_FACES_BRIDGE = ProductFactory.getProductInstance(externalContext,
-				Product.Name.LIFERAY_FACES_BRIDGE);
 
-		if (LIFERAY_FACES_BRIDGE.isDetected()) {
+		if (LIFERAY_FACES_BRIDGE_DETECTED) {
 			Map<String, Object> requestAttributeMap = facesContext.getExternalContext().getRequestMap();
 			MultiPartFormData multiPartFormData = (MultiPartFormData) requestAttributeMap.get(MultiPartFormData.class
 					.getName());

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2018 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-2017 Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -49,70 +49,69 @@ public class SplitButton extends SplitButtonCompat {
 
 	// Private Members
 	private String rendererType;
-	private Button wrappedButton;
 
 	public SplitButton() {
 		setRendererType(RENDERER_TYPE);
 	}
 
-	public SplitButton(Button wrappedButton) {
+	public SplitButton(Button button) {
 		this();
-		this.wrappedButton = wrappedButton;
+		this.wrappedButton = button;
 	}
 
 	@Override
 	public void addClientBehavior(String eventName, ClientBehavior behavior) {
-		getWrappedButton().addClientBehavior(eventName, behavior);
+		wrappedButton.addClientBehavior(eventName, behavior);
 	}
 
 	@Override
 	public void broadcast(FacesEvent event) throws AbortProcessingException {
-		getWrappedButton().broadcast(event);
+		wrappedButton.broadcast(event);
 	}
 
 	@Override
 	public void clearInitialState() {
-		getWrappedButton().clearInitialState();
+		wrappedButton.clearInitialState();
 	}
 
 	@Override
 	public void decode(FacesContext context) {
-		getWrappedButton().decode(context);
+		wrappedButton.decode(context);
 	}
 
 	@Override
 	public void encodeAll(FacesContext context) throws IOException {
-		getWrappedButton().encodeAll(context);
+		wrappedButton.encodeAll(context);
 	}
 
 	@Override
 	public void encodeBegin(FacesContext context) throws IOException {
-		getWrappedButton().encodeBegin(context);
+		wrappedButton.encodeBegin(context);
 	}
 
 	@Override
 	public void encodeChildren(FacesContext context) throws IOException {
-		getWrappedButton().encodeChildren(context);
+		wrappedButton.encodeChildren(context);
 	}
 
 	@Override
 	public void encodeEnd(FacesContext context) throws IOException {
-		getWrappedButton().encodeEnd(context);
+		wrappedButton.encodeEnd(context);
 	}
 
 	@Override
 	public UIComponent findComponent(String expr) {
-		return getWrappedButton().findComponent(expr);
+		return wrappedButton.findComponent(expr);
 	}
 
 	@Override
 	public String getAccesskey() {
-		return getWrappedButton().getAccesskey();
+		return wrappedButton.getAccesskey();
 	}
 
 	@Override
 	public Map<String, Object> getAttributes() {
-		return getWrappedButton().getAttributes();
+		return wrappedButton.getAttributes();
 	}
 
 	@Override
@@ -122,27 +121,27 @@ public class SplitButton extends SplitButtonCompat {
 
 	@Override
 	public int getChildCount() {
-		return getWrappedButton().getChildCount();
+		return wrappedButton.getChildCount();
 	}
 
 	@Override
 	public List<UIComponent> getChildren() {
-		return getWrappedButton().getChildren();
+		return wrappedButton.getChildren();
 	}
 
 	@Override
 	public Map<String, List<ClientBehavior>> getClientBehaviors() {
-		return getWrappedButton().getClientBehaviors();
+		return wrappedButton.getClientBehaviors();
 	}
 
 	@Override
 	public String getClientId() {
-		return getWrappedButton().getClientId();
+		return wrappedButton.getClientId();
 	}
 
 	@Override
 	public String getClientId(FacesContext context) {
-		return getWrappedButton().getClientId();
+		return wrappedButton.getClientId();
 	}
 
 	public String getClientKey() {
@@ -151,12 +150,12 @@ public class SplitButton extends SplitButtonCompat {
 
 	@Override
 	public String getContainerClientId(FacesContext context) {
-		return getWrappedButton().getContainerClientId(context);
+		return wrappedButton.getContainerClientId(context);
 	}
 
 	@Override
 	public Converter getConverter() {
-		return getWrappedButton().getConverter();
+		return wrappedButton.getConverter();
 	}
 
 	@Override
@@ -166,42 +165,42 @@ public class SplitButton extends SplitButtonCompat {
 
 	@Override
 	public String getDefaultEventName() {
-		return getWrappedButton().getDefaultEventName();
+		return wrappedButton.getDefaultEventName();
 	}
 
 	@Override
 	public String getDir() {
-		return getWrappedButton().getDir();
+		return wrappedButton.getDir();
 	}
 
 	@Override
 	public Collection<String> getEventNames() {
-		return getWrappedButton().getEventNames();
+		return wrappedButton.getEventNames();
 	}
 
 	@Override
 	public UIComponent getFacet(String name) {
-		return getWrappedButton().getFacet(name);
+		return wrappedButton.getFacet(name);
 	}
 
 	@Override
 	public int getFacetCount() {
-		return getWrappedButton().getFacetCount();
+		return wrappedButton.getFacetCount();
 	}
 
 	@Override
 	public Map<String, UIComponent> getFacets() {
-		return getWrappedButton().getFacets();
+		return wrappedButton.getFacets();
 	}
 
 	@Override
 	public Iterator<UIComponent> getFacetsAndChildren() {
-		return getWrappedButton().getFacetsAndChildren();
+		return wrappedButton.getFacetsAndChildren();
 	}
 
 	@Override
 	public String getFamily() {
-		return getWrappedButton().getFamily();
+		return wrappedButton.getFamily();
 	}
 
 	@Override
@@ -211,97 +210,97 @@ public class SplitButton extends SplitButtonCompat {
 
 	@Override
 	public String getId() {
-		return getWrappedButton().getId();
+		return wrappedButton.getId();
 	}
 
 	@Override
 	public String getLang() {
-		return getWrappedButton().getLang();
+		return wrappedButton.getLang();
 	}
 
 	@Override
 	public List<SystemEventListener> getListenersForEventClass(Class<? extends SystemEvent> eventClass) {
-		return getWrappedButton().getListenersForEventClass(eventClass);
+		return wrappedButton.getListenersForEventClass(eventClass);
 	}
 
 	@Override
 	public Object getLocalValue() {
-		return getWrappedButton().getLocalValue();
+		return wrappedButton.getLocalValue();
 	}
 
 	@Override
 	public UIComponent getNamingContainer() {
-		return getWrappedButton().getNamingContainer();
+		return wrappedButton.getNamingContainer();
 	}
 
 	@Override
 	public String getOnblur() {
-		return getWrappedButton().getOnblur();
+		return wrappedButton.getOnblur();
 	}
 
 	@Override
 	public String getOnclick() {
-		return getWrappedButton().getOnclick();
+		return wrappedButton.getOnclick();
 	}
 
 	@Override
 	public String getOndblclick() {
-		return getWrappedButton().getOndblclick();
+		return wrappedButton.getOndblclick();
 	}
 
 	@Override
 	public String getOnfocus() {
-		return getWrappedButton().getOnfocus();
+		return wrappedButton.getOnfocus();
 	}
 
 	@Override
 	public String getOnkeydown() {
-		return getWrappedButton().getOnkeydown();
+		return wrappedButton.getOnkeydown();
 	}
 
 	@Override
 	public String getOnkeypress() {
-		return getWrappedButton().getOnkeypress();
+		return wrappedButton.getOnkeypress();
 	}
 
 	@Override
 	public String getOnkeyup() {
-		return getWrappedButton().getOnkeyup();
+		return wrappedButton.getOnkeyup();
 	}
 
 	@Override
 	public String getOnmousedown() {
-		return getWrappedButton().getOnmousedown();
+		return wrappedButton.getOnmousedown();
 	}
 
 	@Override
 	public String getOnmousemove() {
-		return getWrappedButton().getOnmousemove();
+		return wrappedButton.getOnmousemove();
 	}
 
 	@Override
 	public String getOnmouseout() {
-		return getWrappedButton().getOnmouseout();
+		return wrappedButton.getOnmouseout();
 	}
 
 	@Override
 	public String getOnmouseover() {
-		return getWrappedButton().getOnmouseover();
+		return wrappedButton.getOnmouseover();
 	}
 
 	@Override
 	public String getOnmouseup() {
-		return getWrappedButton().getOnmouseup();
+		return wrappedButton.getOnmouseup();
 	}
 
 	@Override
 	public String getOutcome() {
-		return getWrappedButton().getOutcome();
+		return wrappedButton.getOutcome();
 	}
 
 	@Override
 	public UIComponent getParent() {
-		return getWrappedButton().getParent();
+		return wrappedButton.getParent();
 	}
 
 	@Override
@@ -316,12 +315,12 @@ public class SplitButton extends SplitButtonCompat {
 
 	@Override
 	public boolean getRendersChildren() {
-		return getWrappedButton().getRendersChildren();
+		return wrappedButton.getRendersChildren();
 	}
 
 	@Override
 	public Map<String, String> getResourceBundleMap() {
-		return getWrappedButton().getResourceBundleMap();
+		return wrappedButton.getResourceBundleMap();
 	}
 
 	@Override
@@ -336,13 +335,13 @@ public class SplitButton extends SplitButtonCompat {
 
 	@Override
 	public String getStyle() {
-		return getWrappedButton().getStyle();
+		return wrappedButton.getStyle();
 	}
 
 	@Override
 	public String getStyleClass() {
 
-		String styleClass = getWrappedButton().getStyleClass();
+		String styleClass = wrappedButton.getStyleClass();
 
 		if (styleClass == null) {
 			styleClass = "btn-default";
@@ -368,7 +367,7 @@ public class SplitButton extends SplitButtonCompat {
 
 	@Override
 	public String getTabindex() {
-		return getWrappedButton().getTabindex();
+		return wrappedButton.getTabindex();
 	}
 
 	@Override
@@ -378,139 +377,138 @@ public class SplitButton extends SplitButtonCompat {
 
 	@Override
 	public String getTitle() {
-		return getWrappedButton().getTitle();
+		return wrappedButton.getTitle();
 	}
 
 	@Override
 	public TransientStateHelper getTransientStateHelper(boolean create) {
-		return getWrappedButton().getTransientStateHelper(create);
+		return wrappedButton.getTransientStateHelper(create);
 	}
 
 	@Override
 	public String getType() {
-		return getWrappedButton().getType();
+		return wrappedButton.getType();
 	}
 
 	@Override
 	public Object getValue() {
-		return getWrappedButton().getValue();
+		return wrappedButton.getValue();
 	}
 
 	@SuppressWarnings("deprecation")
 	@Override
 	public javax.faces.el.ValueBinding getValueBinding(String name) {
-		return getWrappedButton().getValueBinding(name);
+		return wrappedButton.getValueBinding(name);
 	}
 
 	@Override
 	public ValueExpression getValueExpression(String name) {
-		return getWrappedButton().getValueExpression(name);
+		return wrappedButton.getValueExpression(name);
 	}
 
-	@Override
 	public Button getWrappedButton() {
 		return wrappedButton;
 	}
 
 	@Override
 	public boolean initialStateMarked() {
-		return getWrappedButton().initialStateMarked();
+		return wrappedButton.initialStateMarked();
 	}
 
 	@Override
 	public boolean invokeOnComponent(FacesContext context, String clientId, ContextCallback callback)
 		throws FacesException {
-		return getWrappedButton().invokeOnComponent(context, clientId, callback);
+		return wrappedButton.invokeOnComponent(context, clientId, callback);
 	}
 
 	@Override
 	public boolean isDisabled() {
-		return getWrappedButton().isDisabled();
+		return wrappedButton.isDisabled();
 	}
 
 	@Override
 	public boolean isIncludeViewParams() {
-		return getWrappedButton().isIncludeViewParams();
+		return wrappedButton.isIncludeViewParams();
 	}
 
 	@Override
 	public boolean isInView() {
-		return getWrappedButton().isInView();
+		return wrappedButton.isInView();
 	}
 
 	@Override
 	public boolean isRendered() {
-		return getWrappedButton().isRendered();
+		return wrappedButton.isRendered();
 	}
 
 	@Override
 	public boolean isTransient() {
-		return getWrappedButton().isTransient();
+		return wrappedButton.isTransient();
 	}
 
 	@Override
 	public void markInitialState() {
-		getWrappedButton().markInitialState();
+		wrappedButton.markInitialState();
 	}
 
 	@Override
 	public void processDecodes(FacesContext context) {
-		getWrappedButton().processDecodes(context);
+		wrappedButton.processDecodes(context);
 	}
 
 	@Override
 	public void processEvent(ComponentSystemEvent event) throws AbortProcessingException {
-		getWrappedButton().processEvent(event);
+		wrappedButton.processEvent(event);
 	}
 
 	@Override
 	public void processRestoreState(FacesContext context, Object state) {
-		getWrappedButton().processRestoreState(context, state);
+		wrappedButton.processRestoreState(context, state);
 	}
 
 	@Override
 	public Object processSaveState(FacesContext context) {
-		return getWrappedButton().processSaveState(context);
+		return wrappedButton.processSaveState(context);
 	}
 
 	@Override
 	public void processUpdates(FacesContext context) {
-		getWrappedButton().processUpdates(context);
+		wrappedButton.processUpdates(context);
 	}
 
 	@Override
 	public void processValidators(FacesContext context) {
-		getWrappedButton().processValidators(context);
+		wrappedButton.processValidators(context);
 	}
 
 	@Override
 	public void queueEvent(FacesEvent event) {
-		getWrappedButton().queueEvent(event);
+		wrappedButton.queueEvent(event);
 	}
 
 	@Override
 	public void restoreState(FacesContext context, Object state) {
-		getWrappedButton().restoreState(context, state);
+		wrappedButton.restoreState(context, state);
 	}
 
 	@Override
 	public void restoreTransientState(FacesContext context, Object state) {
-		getWrappedButton().restoreTransientState(context, state);
+		wrappedButton.restoreTransientState(context, state);
 	}
 
 	@Override
 	public Object saveState(FacesContext context) {
-		return getWrappedButton().saveState(context);
+		return wrappedButton.saveState(context);
 	}
 
 	@Override
 	public Object saveTransientState(FacesContext context) {
-		return getWrappedButton().saveTransientState(context);
+		return wrappedButton.saveTransientState(context);
 	}
 
 	@Override
 	public void setAccesskey(String accesskey) {
-		getWrappedButton().setAccesskey(accesskey);
+		wrappedButton.setAccesskey(accesskey);
 	}
 
 	@Override
@@ -524,7 +522,7 @@ public class SplitButton extends SplitButtonCompat {
 
 	@Override
 	public void setConverter(Converter converter) {
-		getWrappedButton().setConverter(converter);
+		wrappedButton.setConverter(converter);
 	}
 
 	@Override
@@ -534,12 +532,12 @@ public class SplitButton extends SplitButtonCompat {
 
 	@Override
 	public void setDir(String dir) {
-		getWrappedButton().setDir(dir);
+		wrappedButton.setDir(dir);
 	}
 
 	@Override
 	public void setDisabled(boolean disabled) {
-		getWrappedButton().setDisabled(disabled);
+		wrappedButton.setDisabled(disabled);
 	}
 
 	@Override
@@ -549,92 +547,92 @@ public class SplitButton extends SplitButtonCompat {
 
 	@Override
 	public void setId(String id) {
-		getWrappedButton().setId(id);
+		wrappedButton.setId(id);
 	}
 
 	@Override
 	public void setIncludeViewParams(boolean includeViewParams) {
-		getWrappedButton().setIncludeViewParams(includeViewParams);
+		wrappedButton.setIncludeViewParams(includeViewParams);
 	}
 
 	@Override
 	public void setInView(boolean isInView) {
-		getWrappedButton().setInView(isInView);
+		wrappedButton.setInView(isInView);
 	}
 
 	@Override
 	public void setLang(String lang) {
-		getWrappedButton().setLang(lang);
+		wrappedButton.setLang(lang);
 	}
 
 	@Override
 	public void setOnblur(String onblur) {
-		getWrappedButton().setOnblur(onblur);
+		wrappedButton.setOnblur(onblur);
 	}
 
 	@Override
 	public void setOnclick(String onclick) {
-		getWrappedButton().setOnclick(onclick);
+		wrappedButton.setOnclick(onclick);
 	}
 
 	@Override
 	public void setOndblclick(String ondblclick) {
-		getWrappedButton().setOndblclick(ondblclick);
+		wrappedButton.setOndblclick(ondblclick);
 	}
 
 	@Override
 	public void setOnfocus(String onfocus) {
-		getWrappedButton().setOnfocus(onfocus);
+		wrappedButton.setOnfocus(onfocus);
 	}
 
 	@Override
 	public void setOnkeydown(String onkeydown) {
-		getWrappedButton().setOnkeydown(onkeydown);
+		wrappedButton.setOnkeydown(onkeydown);
 	}
 
 	@Override
 	public void setOnkeypress(String onkeypress) {
-		getWrappedButton().setOnkeypress(onkeypress);
+		wrappedButton.setOnkeypress(onkeypress);
 	}
 
 	@Override
 	public void setOnkeyup(String onkeyup) {
-		getWrappedButton().setOnkeyup(onkeyup);
+		wrappedButton.setOnkeyup(onkeyup);
 	}
 
 	@Override
 	public void setOnmousedown(String onmousedown) {
-		getWrappedButton().setOnmousedown(onmousedown);
+		wrappedButton.setOnmousedown(onmousedown);
 	}
 
 	@Override
 	public void setOnmousemove(String onmousemove) {
-		getWrappedButton().setOnmousemove(onmousemove);
+		wrappedButton.setOnmousemove(onmousemove);
 	}
 
 	@Override
 	public void setOnmouseout(String onmouseout) {
-		getWrappedButton().setOnmouseout(onmouseout);
+		wrappedButton.setOnmouseout(onmouseout);
 	}
 
 	@Override
 	public void setOnmouseover(String onmouseover) {
-		getWrappedButton().setOnmouseover(onmouseover);
+		wrappedButton.setOnmouseover(onmouseover);
 	}
 
 	@Override
 	public void setOnmouseup(String onmouseup) {
-		getWrappedButton().setOnmouseup(onmouseup);
+		wrappedButton.setOnmouseup(onmouseup);
 	}
 
 	@Override
 	public void setOutcome(String outcome) {
-		getWrappedButton().setOutcome(outcome);
+		wrappedButton.setOutcome(outcome);
 	}
 
 	@Override
 	public void setParent(UIComponent parent) {
-		getWrappedButton().setParent(parent);
+		wrappedButton.setParent(parent);
 	}
 
 	@Override
@@ -644,7 +642,7 @@ public class SplitButton extends SplitButtonCompat {
 
 	@Override
 	public void setRendered(boolean rendered) {
-		getWrappedButton().setRendered(rendered);
+		wrappedButton.setRendered(rendered);
 	}
 
 	@Override
@@ -664,17 +662,17 @@ public class SplitButton extends SplitButtonCompat {
 
 	@Override
 	public void setStyle(String style) {
-		getWrappedButton().setStyle(style);
+		wrappedButton.setStyle(style);
 	}
 
 	@Override
 	public void setStyleClass(String styleClass) {
-		getWrappedButton().setStyleClass(styleClass);
+		wrappedButton.setStyleClass(styleClass);
 	}
 
 	@Override
 	public void setTabindex(String tabindex) {
-		getWrappedButton().setTabindex(tabindex);
+		wrappedButton.setTabindex(tabindex);
 	}
 
 	@Override
@@ -684,53 +682,53 @@ public class SplitButton extends SplitButtonCompat {
 
 	@Override
 	public void setTitle(String title) {
-		getWrappedButton().setTitle(title);
+		wrappedButton.setTitle(title);
 	}
 
 	@Override
 	public void setTransient(boolean newTransientValue) {
-		getWrappedButton().setTransient(newTransientValue);
+		wrappedButton.setTransient(newTransientValue);
 	}
 
 	@Override
 	public void setType(String type) {
-		getWrappedButton().setType(type);
+		wrappedButton.setType(type);
 	}
 
 	@Override
 	public void setValue(Object value) {
-		getWrappedButton().setValue(value);
+		wrappedButton.setValue(value);
 	}
 
 	@SuppressWarnings("deprecation")
 	@Override
 	public void setValueBinding(String name, javax.faces.el.ValueBinding binding) {
-		getWrappedButton().setValueBinding(name, binding);
+		wrappedButton.setValueBinding(name, binding);
 	}
 
 	@Override
 	public void setValueExpression(String name, ValueExpression binding) {
-		getWrappedButton().setValueExpression(name, binding);
+		wrappedButton.setValueExpression(name, binding);
 	}
 
-	public void setWrappedButton(Button wrappedButton) {
-		this.wrappedButton = wrappedButton;
+	public void setWrappedButton(Button button) {
+		this.wrappedButton = button;
 	}
 
 	@Override
 	public void subscribeToEvent(Class<? extends SystemEvent> eventClass,
 		ComponentSystemEventListener componentListener) {
-		getWrappedButton().subscribeToEvent(eventClass, componentListener);
+		wrappedButton.subscribeToEvent(eventClass, componentListener);
 	}
 
 	@Override
 	public void unsubscribeFromEvent(Class<? extends SystemEvent> eventClass,
 		ComponentSystemEventListener componentListener) {
-		getWrappedButton().unsubscribeFromEvent(eventClass, componentListener);
+		wrappedButton.unsubscribeFromEvent(eventClass, componentListener);
 	}
 
 	@Override
 	public boolean visitTree(VisitContext context, VisitCallback callback) {
-		return getWrappedButton().visitTree(context, callback);
+		return wrappedButton.visitTree(context, callback);
 	}
 }
