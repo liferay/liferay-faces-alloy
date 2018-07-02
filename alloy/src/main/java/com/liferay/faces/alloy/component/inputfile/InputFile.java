@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2017 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-2018 Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -92,8 +92,8 @@ public class InputFile extends InputFileBase {
 
 					if ((contentType == null) || ((contentTypeSet != null) && !contentTypeSet.contains(contentType))) {
 
-						String errorMessage = i18n.getMessage(facesContext, locale, "file-x-has-an-invalid-content-type-y",
-								uploadedFile.getName(), contentType);
+						String errorMessage = i18n.getMessage(facesContext, locale,
+								"file-x-has-an-invalid-content-type-y", uploadedFile.getName(), contentType);
 						handleInvalidFile(facesContext, clientId, uploadedFile, errorMessage);
 					}
 				}
