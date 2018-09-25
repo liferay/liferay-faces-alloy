@@ -24,6 +24,7 @@ import com.liferay.faces.test.selenium.browser.TestUtil;
 import com.liferay.faces.test.selenium.browser.WaitingAsserter;
 import com.liferay.faces.test.selenium.browser.WaitingAsserterFactory;
 import com.liferay.faces.test.showcase.TesterBase;
+import com.liferay.faces.util.client.BrowserSnifferFactory;
 
 
 /**
@@ -82,36 +83,9 @@ public class InputDateTimeMobileBrowserTester extends TesterBase {
 
 		if (browserDriverSimulatingMobile == null) {
 
-			String browserName = TestUtil.getSystemPropertyOrDefault("integration.browser.name", null);
-			String browserHeadlessString = TestUtil.getSystemPropertyOrDefault("integration.browser.headless", null);
-
-			// Chrome does not support simulating a mobile browser in headless mode, so default to running mobile tests
-			// in PhantomJS instead.
-			if ((browserName == null) && (browserHeadlessString == null)) {
-
-				browserName = "phantomjs";
-				browserHeadlessString = "true";
-			}
-			else if (browserHeadlessString == null) {
-
-				if ("firefox".equals(browserName) || "chrome".equals(browserName)) {
-					browserHeadlessString = "false";
-				}
-				else {
-					browserHeadlessString = "true";
-				}
-			}
-			else if (browserName == null) {
-
-				if ("true".equals(browserHeadlessString)) {
-					browserName = "phantomjs";
-				}
-				else if ("false".equals(browserHeadlessString)) {
-					browserName = "chrome";
-				}
-			}
-
-			boolean browserHeadless = Boolean.valueOf(browserHeadlessString);
+			BrowserDriver browserDriver = getBrowserDriver();
+			String browserName = browserDriver.getBrowserName();
+			boolean browserHeadless = browserDriver.isBrowserHeadless();
 			browserDriverSimulatingMobile = BrowserDriverFactory.getBrowserDriver(browserName, browserHeadless, true);
 			waitingAsserter = WaitingAsserterFactory.getWaitingAsserter(browserDriverSimulatingMobile);
 		}
