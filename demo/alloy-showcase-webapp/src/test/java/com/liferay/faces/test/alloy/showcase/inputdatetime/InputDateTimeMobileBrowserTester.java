@@ -24,7 +24,6 @@ import com.liferay.faces.test.selenium.browser.TestUtil;
 import com.liferay.faces.test.selenium.browser.WaitingAsserter;
 import com.liferay.faces.test.selenium.browser.WaitingAsserterFactory;
 import com.liferay.faces.test.showcase.TesterBase;
-import com.liferay.faces.util.client.BrowserSnifferFactory;
 
 
 /**
@@ -83,6 +82,9 @@ public class InputDateTimeMobileBrowserTester extends TesterBase {
 
 		if (browserDriverSimulatingMobile == null) {
 
+			Runtime runtime = Runtime.getRuntime();
+			runtime.addShutdownHook(new Thread(new RunnableQuitMobileSimulatingBrowserDriverImpl()));
+
 			BrowserDriver browserDriver = getBrowserDriver();
 			String browserName = browserDriver.getBrowserName();
 			boolean browserHeadless = browserDriver.isBrowserHeadless();
@@ -101,5 +103,13 @@ public class InputDateTimeMobileBrowserTester extends TesterBase {
 		browserDriverSimulatingMobile.sendKeysToElement(inputXpath, inputValue);
 		browserDriverSimulatingMobile.clickElement(submitButton1Xpath);
 		waitingAsserter.assertTextPresentInElement(output, modelValue1Xpath);
+	}
+
+	private static final class RunnableQuitMobileSimulatingBrowserDriverImpl implements Runnable {
+
+		@Override
+		public void run() {
+			quitMobileSimulatingBrowserDriver();
+		}
 	}
 }
