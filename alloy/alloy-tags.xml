@@ -1185,6 +1185,14 @@ java.util.List<java.lang.String> filterResults(java.lang.String, java.util.List<
 	<tag>
 		<tag-name>inputDateTime</tag-name>
 		<attribute>
+			<attribute-extension>
+				<inherited>true</inherited>
+			</attribute-extension>
+			<description><![CDATA[HTML passthrough attribute specifying whether autocomplete is turned on or off for the rendered HTML element. Valid values include <code>off</code> (the default for <code>showOn="focus"</code> and <code>showOn="both"</code>) and <code>on</code> (the default for <code>showOn="button"</code>).]]></description>
+			<name>autocomplete</name>
+			<type><![CDATA[java.lang.String]]></type>
+		</attribute>
+		<attribute>
 			<description><![CDATA[When this flag is true, the component will hide when an item is selected. The default value is <code>true</code>.]]></description>
 			<name>autoHide</name>
 			<type><![CDATA[java.lang.Boolean]]></type>

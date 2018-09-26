@@ -39,6 +39,11 @@ public abstract class InputDateTime extends InputDateTimeBase {
 	public abstract String getPattern();
 
 	@Override
+	public String getAutocomplete() {
+		return (java.lang.String) getStateHelper().eval(PropertyKeys.autocomplete, getDefaultAutocomplete());
+	}
+
+	@Override
 	public Converter getConverter() {
 		Converter converter = super.getConverter();
 
@@ -205,5 +210,17 @@ public abstract class InputDateTime extends InputDateTimeBase {
 			String clientId = getClientId(facesContext);
 			facesContext.addMessage(clientId, facesMessage);
 		}
+	}
+
+	private String getDefaultAutocomplete() {
+
+		String autocomplete = null;
+		String showOn = getShowOn();
+
+		if ("focus".equalsIgnoreCase(showOn) || "both".equalsIgnoreCase(showOn)) {
+			autocomplete = "off";
+		}
+
+		return autocomplete;
 	}
 }

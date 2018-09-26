@@ -3069,6 +3069,12 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
+			<description><![CDATA[HTML passthrough attribute specifying whether autocomplete is turned on or off for the rendered HTML element. Valid values include <code>off</code> (the default for <code>showOn="focus"</code> and <code>showOn="both"</code>) and <code>on</code> (the default for <code>showOn="button"</code>).]]></description>
+			<name>autocomplete</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
 			<description><![CDATA[When this flag is true, the component will hide when an item is selected. The default value is <code>true</code>.]]></description>
 			<name>autoHide</name>
 			<required>false</required>
@@ -4753,6 +4759,12 @@ java.lang.Object)</method-signature>
 		<attribute>
 			<description><![CDATA[HTML passthrough attribute specifying alternative information about the rendered HTML element.]]></description>
 			<name>alt</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[HTML passthrough attribute specifying whether autocomplete is turned on or off for the rendered HTML element. Valid values include <code>off</code> (the default for <code>showOn="focus"</code> and <code>showOn="both"</code>) and <code>on</code> (the default for <code>showOn="button"</code>).]]></description>
+			<name>autocomplete</name>
 			<required>false</required>
 			<type>java.lang.String</type>
 		</attribute>
