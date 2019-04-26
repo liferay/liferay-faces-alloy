@@ -37,7 +37,10 @@ public class AutoCompleteInputResponseWriter extends IdResponseWriter {
 	@Override
 	public void writeAttribute(String name, Object value, String property) throws IOException {
 
-		if (!Styleable.STYLE.equals(name) && !Styleable.STYLE_CLASS.equals(name)) {
+		if ("class".equals(name)) {
+			super.writeAttribute(name, "form-control", property);
+		}
+		else if (!Styleable.STYLE.equals(name) && !Styleable.STYLE_CLASS.equals(name)) {
 			super.writeAttribute(name, value, property);
 		}
 	}
