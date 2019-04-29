@@ -78,7 +78,7 @@ public class FACES_3274Tester extends TesterBase {
 		navigateToUseCase(browserDriver, "autoComplete", "general");
 
 		WaitingAsserter waitingAsserter = getWaitingAsserter();
-		String autoCompleteInputXpath = "(//input[contains(@class,'alloy-auto-complete')][contains(@id,'_input')])";
+		String autoCompleteInputXpath = "(//*[contains(@class,'alloy-auto-complete')]/input[contains(@id,'_input')])";
 		assertAutocompleteAttributeOff(waitingAsserter, autoCompleteInputXpath + "[1]");
 		assertAutocompleteAttributeOff(waitingAsserter, autoCompleteInputXpath + "[2]");
 	}
