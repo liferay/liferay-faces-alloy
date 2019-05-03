@@ -14,13 +14,39 @@
 	<description>This plugin is the Liferay Faces Alloy Showcase demo webapp.</description>
 
 	<properties>
+		<allow.casual.multipart.parsing>false</allow.casual.multipart.parsing>
 		<maven.test.skip>true</maven.test.skip>
 		<liferay.faces.showcase.war.scope>compile</liferay.faces.showcase.war.scope>
 	</properties>
 
 	<profiles>
 		<profile>
+			<id>jsf22</id>
+			<dependencies>
+				<dependency>
+					<groupId>com.liferay.faces.demo</groupId>
+					<artifactId>com.liferay.faces.demo.jsf.showcase.webapp</artifactId>
+					<version>${liferay.faces.showcase.version}</version>
+					<type>war</type>
+					<scope>${liferay.faces.showcase.war.scope}</scope>
+					<exclusions>
+						<exclusion>
+							<groupId>commons-fileupload</groupId>
+							<artifactId>commons-fileupload</artifactId>
+						</exclusion>
+						<exclusion>
+							<groupId>commons-io</groupId>
+							<artifactId>commons-io</artifactId>
+						</exclusion>
+					</exclusions>
+				</dependency>
+			</dependencies>
+		</profile>
+		<profile>
 			<id>prettyfaces</id>
+			<properties>
+				<allow.casual.multipart.parsing>true</allow.casual.multipart.parsing>
+			</properties>
 			<dependencies>
 				<dependency>
 					<groupId>com.ocpsoft</groupId>
@@ -240,6 +266,14 @@
 				<artifactId>maven-war-plugin</artifactId>
 				<configuration>
 					<dependentWarExcludes>**/h-tags*,**/component/h/**/*,**/images/jsf*.png,WEB-INF/lib/*</dependentWarExcludes>
+					<filteringDeploymentDescriptors>true</filteringDeploymentDescriptors>
+					<webResources>
+						<resource>
+							<directory>src/main/webapp/META-INF</directory>
+							<targetPath>/META-INF</targetPath>
+							<filtering>true</filtering>
+						</resource>
+					</webResources>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -276,7 +310,6 @@
 		<dependency>
 			<groupId>com.liferay.faces</groupId>
 			<artifactId>com.liferay.faces.alloy</artifactId>
-			<version>${project.version}</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
