@@ -2580,7 +2580,7 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 			<alloy-ui-modules>aui-rating</alloy-ui-modules>
 			<alloy-ui-name>Rating</alloy-ui-name>
 			<delegate-renderer-type><![CDATA["javax.faces.Radio"]]></delegate-renderer-type>
-			<extends-tags>clientComponent uiComponentBaseInherited uiInputInherited</extends-tags>
+			<extends-tags>clientComponent facesMessageLabelTaglibXMLOnly uiComponentBaseInherited uiInputInherited</extends-tags>
 			<generate-taglib-xml>false</generate-taglib-xml>
 			<parent-class><![CDATA[com.liferay.faces.alloy.component.selectoneradio.SelectOneRadioBase]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.alloy.render.internal.DelegatingAlloyRendererBase]]></renderer-parent-class>

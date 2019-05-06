@@ -6,7 +6,7 @@
 		<alloy:form>
 			<showcase:example>
 				<alloy:field label="#{i18n['request-a-day-off-weekdays-only']}">
-					<alloy:inputDate id="dayOff" datePattern="MM/dd/yyyy"
+					<alloy:inputDate id="dayOff" pattern="MM/dd/yyyy"
 						validator="com.liferay.faces.showcase.validator.WeekdayValidator"
 						value="#{inputDateModelBean.birthday}" />
 					<alloy:message for="dayOff" />

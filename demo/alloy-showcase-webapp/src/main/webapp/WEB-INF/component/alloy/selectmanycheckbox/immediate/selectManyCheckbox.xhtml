@@ -8,7 +8,7 @@
 			<showcase:example description="#{i18n['valuechangelistener-execution-when-immediate-is-true']}" number="1">
 				<alloy:outputLabel value="#{i18n['favorite-liferay-benefit']}" />
 				<alloy:messages globalOnly="true" styleClass="feedback" />
-				<alloy:selectManyCheckbox id="selectManyCheckbox" immediate="true" layout="pageDirection"
+				<alloy:selectManyCheckbox id="selectManyCheckbox" immediate="true"
 					value="#{selectManyModelBean.favoriteIds}"
 					valueChangeListener="#{selectManyBackingBean.valueChangeListener}">
 					<f:selectItem itemLabel="Compatible" itemValue="1" />
@@ -36,7 +36,7 @@
 			<showcase:example description="#{i18n['valuechangelistener-execution-when-immediate-is-false']}" number="2">
 				<alloy:outputLabel value="#{i18n['favorite-liferay-benefit']}" />
 				<alloy:messages globalOnly="true" styleClass="feedback" />
-				<alloy:selectManyCheckbox id="selectManyCheckbox" layout="pageDirection" value="#{selectManyModelBean.favoriteIds}"
+				<alloy:selectManyCheckbox id="selectManyCheckbox" value="#{selectManyModelBean.favoriteIds}"
 					valueChangeListener="#{selectManyBackingBean.valueChangeListener}">
 					<f:selectItem itemLabel="Compatible" itemValue="1" />
 					<f:selectItem itemLabel="Enterprise Ready" itemValue="2" />

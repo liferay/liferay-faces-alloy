@@ -6,7 +6,7 @@
 		<alloy:form>
 			<showcase:example>
 				<alloy:outputLabel for="selectStarRating" value="#{i18n['rating']}" />
-				<alloy:selectStarRating id="selectStarRating" value="#{selectStarRatingModelBean.favoriteId}" label="#{i18n['rating']}:">
+				<alloy:selectStarRating id="selectStarRating" value="#{selectStarRatingModelBean.favoriteId}">
 					<f:selectItems value="#{selectStarRatingModelBean.liferayBenefits}" var="benefit"
 						itemValue="#{benefit.id}"
 						itemLabel="#{benefit.label}" />

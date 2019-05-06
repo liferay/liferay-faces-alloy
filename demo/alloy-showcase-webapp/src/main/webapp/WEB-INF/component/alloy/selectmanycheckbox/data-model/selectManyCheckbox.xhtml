@@ -6,7 +6,7 @@
 		<alloy:form>
 			<showcase:example>
 				<alloy:outputLabel value="#{i18n['favorite-liferay-benefit']}" />
-				<alloy:selectManyCheckbox id="selectManyCheckbox" layout="lineDirection" value="#{selectManyModelBean.favoriteIds}">
+				<alloy:selectManyCheckbox id="selectManyCheckbox" value="#{selectManyModelBean.favoriteIds}">
 					<f:selectItems value="#{selectManyModelBean.liferayBenefits}" var="benefit"
 						itemValue="#{benefit.id}"
 						itemLabel="#{benefit.label}" />

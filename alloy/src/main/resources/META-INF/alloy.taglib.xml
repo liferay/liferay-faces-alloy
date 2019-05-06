@@ -9410,6 +9410,12 @@ java.lang.Object)</method-signature>
 			<type>boolean</type>
 		</attribute>
 		<attribute>
+			<description><![CDATA[A localized label for this component that is typically only rendered in a FacesMessage when validation fails.]]></description>
+			<name>label</name>
+			<required>false</required>
+			<type>java.lang.String</type>
+		</attribute>
+		<attribute>
 			<description><![CDATA[HTML passthrough attribute specifying the language code used in the element.]]></description>
 			<name>lang</name>
 			<required>false</required>
@@ -9535,6 +9541,12 @@ java.lang.Object)</method-signature>
 			<name>immediate</name>
 			<required>false</required>
 			<type>boolean</type>
+		</attribute>
+		<attribute>
+			<description><![CDATA[A localized label for this component that is typically only rendered in a FacesMessage when validation fails.]]></description>
+			<name>label</name>
+			<required>false</required>
+			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
 			<description><![CDATA[HTML passthrough attribute specifying the language code used in the element.]]></description>
