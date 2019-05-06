@@ -31,9 +31,9 @@ import javax.faces.render.FacesRenderer;
 
 import com.liferay.faces.alloy.component.inputdate.InputDate;
 import com.liferay.faces.alloy.component.inputdatetime.internal.InputDateTimeResponseWriter;
+import com.liferay.faces.alloy.render.internal.EscapedClientId;
 import com.liferay.faces.util.client.BrowserSniffer;
 import com.liferay.faces.util.client.BrowserSnifferFactory;
-import com.liferay.faces.util.component.ComponentUtil;
 import com.liferay.faces.util.helper.StringHelper;
 import com.liferay.faces.util.render.JavaScriptFragment;
 import com.liferay.faces.util.render.RendererUtil;
@@ -144,7 +144,7 @@ public class InputDateRenderer extends InputDateRendererBase {
 
 				String clientId = inputDate.getClientId(facesContext);
 				String inputClientId = clientId.concat(INPUT_SUFFIX);
-				String escapedInputClientId = ComponentUtil.escapeClientId(inputClientId);
+				EscapedClientId escapedInputClientId = new EscapedClientId(inputClientId);
 
 				encodeFunctionCall(responseWriter, "LFAI.initDatePickerShowOnButton", 'A', escapedInputClientId,
 					liferayComponent);
@@ -230,7 +230,7 @@ public class InputDateRenderer extends InputDateRendererBase {
 
 			String clientId = inputDate.getClientId(facesContext);
 			String inputClientId = clientId.concat(INPUT_SUFFIX);
-			String escapedInputClientId = ComponentUtil.escapeClientId(inputClientId);
+			EscapedClientId escapedInputClientId = new EscapedClientId(inputClientId);
 			JavaScriptFragment selectable = new JavaScriptFragment("this._canBeSelected(event.date)");
 			JavaScriptFragment date = null;
 

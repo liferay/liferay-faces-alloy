@@ -34,9 +34,9 @@ import javax.faces.render.FacesRenderer;
 
 import com.liferay.faces.alloy.component.inputdatetime.internal.InputDateTimeResponseWriter;
 import com.liferay.faces.alloy.component.inputtime.InputTime;
+import com.liferay.faces.alloy.render.internal.EscapedClientId;
 import com.liferay.faces.util.client.BrowserSniffer;
 import com.liferay.faces.util.client.BrowserSnifferFactory;
-import com.liferay.faces.util.component.ComponentUtil;
 import com.liferay.faces.util.helper.StringHelper;
 import com.liferay.faces.util.render.JavaScriptFragment;
 import com.liferay.faces.util.render.RendererUtil;
@@ -340,7 +340,7 @@ public class InputTimeRenderer extends InputTimeRendererBase {
 
 			String clientId = inputTime.getClientId(facesContext);
 			String inputClientId = clientId.concat(INPUT_SUFFIX);
-			String escapedInputClientId = ComponentUtil.escapeClientId(inputClientId);
+			EscapedClientId escapedInputClientId = new EscapedClientId(inputClientId);
 			boolean selectable = true;
 			JavaScriptFragment time = null;
 

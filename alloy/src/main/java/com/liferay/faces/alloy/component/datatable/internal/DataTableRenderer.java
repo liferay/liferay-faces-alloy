@@ -46,7 +46,7 @@ import com.liferay.faces.alloy.component.datatable.RowDeselectRangeEvent;
 import com.liferay.faces.alloy.component.datatable.RowSelectEvent;
 import com.liferay.faces.alloy.component.datatable.RowSelectRangeEvent;
 import com.liferay.faces.alloy.component.outputtext.OutputText;
-import com.liferay.faces.util.component.ComponentUtil;
+import com.liferay.faces.alloy.render.internal.EscapedClientId;
 import com.liferay.faces.util.helper.BooleanHelper;
 import com.liferay.faces.util.logging.Logger;
 import com.liferay.faces.util.logging.LoggerFactory;
@@ -206,9 +206,9 @@ public class DataTableRenderer extends DataTableRendererBase {
 		if ("checkbox".equals(selectionMode) || "radio".equals(selectionMode)) {
 
 			String dataTableClientId = dataTable.getClientId(facesContext);
-			String escapedDataTableClientId = ComponentUtil.escapeClientId(dataTableClientId);
+			EscapedClientId escapedDataTableClientId = new EscapedClientId(dataTableClientId);
 			String hiddenFieldClientId = dataTableClientId.concat("_selectedRowIndexes");
-			String escapedHiddenFieldClientId = ComponentUtil.escapeClientId(hiddenFieldClientId);
+			EscapedClientId escapedHiddenFieldClientId = new EscapedClientId(hiddenFieldClientId);
 			ResponseWriter responseWriter = facesContext.getResponseWriter();
 
 			// rowSelect
@@ -231,7 +231,7 @@ public class DataTableRenderer extends DataTableRendererBase {
 
 				// Register the onclick event callback for the "Select All" checkbox.
 				String selectAllCheckboxClientId = dataTableClientId.concat("_selectAll");
-				String escapedSelectAllCheckboxClientId = ComponentUtil.escapeClientId(selectAllCheckboxClientId);
+				EscapedClientId escapedSelectAllCheckboxClientId = new EscapedClientId(selectAllCheckboxClientId);
 				encodeFunctionCall(responseWriter, "LFAI.initDataTableSelectAllCheckbox", 'A', escapedDataTableClientId,
 					escapedSelectAllCheckboxClientId, rowSelectRangeClientBehaviorScript,
 					rowDeselectRangeClientBehaviorScript);
