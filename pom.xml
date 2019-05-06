@@ -82,7 +82,7 @@
 
 	<properties>
 		<alloyui.version>3.0.3</alloyui.version>
-		<alloyui.zip.version>${alloyui.version}-deprecated.39</alloyui.zip.version>
+		<alloyui.zip.version>${alloyui.version}-deprecated.91</alloyui.zip.version>
 		<component.namespace>none</component.namespace>
 		<faces.api.group.id>javax.faces</faces.api.group.id>
 		<faces.api.artifact.id>javax.faces-api</faces.api.artifact.id>
