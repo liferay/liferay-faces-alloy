@@ -345,7 +345,7 @@
 				<faces.spec.version>2.2</faces.spec.version>
 				<liferay.faces.showcase.version>3.0.1</liferay.faces.showcase.version>
 				<liferay.faces.util.version>3.1.0</liferay.faces.util.version>
-				<mojarra.version>2.2.14</mojarra.version>
+				<mojarra.version>2.2.19</mojarra.version>
 			</properties>
 		</profile>
 		<profile>
