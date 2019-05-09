@@ -15,7 +15,6 @@ package com.liferay.faces.alloy.component.inputfile.internal;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -24,11 +23,11 @@ import java.util.Map;
 
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
-import javax.servlet.ServletContext;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
+import com.liferay.faces.util.config.WebConfigParam;
 import com.liferay.faces.util.factory.FactoryExtensionFinder;
 import com.liferay.faces.util.logging.Logger;
 import com.liferay.faces.util.logging.LoggerFactory;
@@ -112,6 +111,15 @@ public class InputFileDecoderPartImpl extends InputFileDecoderBase {
 
 							try {
 
+								long partSize = part.getSize();
+								int uploadedFileMaxSize = WebConfigParam.UploadedFileMaxSize.getIntegerValue(
+										externalContext);
+
+								if (partSize > uploadedFileMaxSize) {
+									throw new UploadedFileMaxSizeExceededException(fileName, partSize,
+										uploadedFileMaxSize, WebConfigParam.UploadedFileMaxSize.getName());
+								}
+
 								// Copy the stream of file data to a file.
 								File copiedFile = new File(uploadedFilesPath, safeFileName);
 								String copiedFileAbsolutePath = copiedFile.getAbsolutePath();
@@ -152,8 +160,8 @@ public class InputFileDecoderPartImpl extends InputFileDecoderBase {
 								String id = Long.toString(((long) hashCode()) + System.currentTimeMillis());
 								String message = null;
 								UploadedFile uploadedFile = uploadedFileFactory.getUploadedFile(copiedFileAbsolutePath,
-										attributeMap, charSet, contentType, headersMap, id, message, fileName,
-										part.getSize(), UploadedFile.Status.FILE_SAVED);
+										attributeMap, charSet, contentType, headersMap, id, message, fileName, partSize,
+										UploadedFile.Status.FILE_SAVED);
 
 								addUploadedFile(uploadedFileMap, fieldName, uploadedFile);
 								logger.debug("Received uploaded file fieldName=[{0}] fileName=[{1}]", fieldName,
@@ -162,7 +170,14 @@ public class InputFileDecoderPartImpl extends InputFileDecoderBase {
 								// Delete temporary file created by the Servlet API.
 								part.delete();
 							}
+							catch (UploadedFileMaxSizeExceededException e) {
+
+								UploadedFile uploadedFile = uploadedFileFactory.getUploadedFile(e,
+										UploadedFile.Status.FILE_SIZE_LIMIT_EXCEEDED);
+								addUploadedFile(uploadedFileMap, fieldName, uploadedFile);
+							}
 							catch (IOException e) {
+
 								UploadedFile uploadedFile = uploadedFileFactory.getUploadedFile(e);
 								addUploadedFile(uploadedFileMap, fieldName, uploadedFile);
 							}
@@ -189,5 +204,18 @@ public class InputFileDecoderPartImpl extends InputFileDecoderBase {
 		}
 
 		return uploadedFileMap;
+	}
+
+	private static final class UploadedFileMaxSizeExceededException extends Exception {
+
+		// serialVersionUID
+		private static final long serialVersionUID = 2838188574159123411L;
+
+		private UploadedFileMaxSizeExceededException(String fileName, long fileSize, long maxSize,
+			String contextParamName) {
+			super("Failed to upload file (\"" + fileName + "\") since the file's size (" + fileSize +
+				" bytes) is larger than the allowed maximum (" + maxSize + " bytes) set by the " + contextParamName +
+				" conext parameter.");
+		}
 	}
 }
