@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2017 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-2019 Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -35,6 +35,7 @@ import javax.faces.render.FacesRenderer;
 
 import com.liferay.faces.alloy.component.inputfile.FileUploadEvent;
 import com.liferay.faces.alloy.component.inputfile.InputFile;
+import com.liferay.faces.alloy.render.internal.AlloyRendererUtil;
 import com.liferay.faces.util.context.map.MultiPartFormData;
 import com.liferay.faces.util.factory.FactoryExtensionFinder;
 import com.liferay.faces.util.i18n.I18n;
@@ -110,14 +111,17 @@ public class InputFileRenderer extends InputFileRendererBase {
 
 		ResponseWriter responseWriter = facesContext.getResponseWriter();
 		InputFile inputFile = (InputFile) uiComponent;
-		JavaScriptFragment alloyNamespace = new JavaScriptFragment("A");
 
 		// Determine the valid content-types and maximum file size from the validator (if specified).
-		JavaScriptFragment contentTypes = new JavaScriptFragment("[]");
-		String validContentTypes = inputFile.getContentTypes();
+		String validContentTypesString = inputFile.getContentTypes();
+		JavaScriptFragment[] validContentTypes;
 
-		if (validContentTypes != null) {
-			contentTypes = toJavaScriptArray(validContentTypes.split(","));
+		if ((validContentTypesString == null) || "".equals(validContentTypesString)) {
+			validContentTypes = new JavaScriptFragment[] {};
+		}
+		else {
+			validContentTypes = AlloyRendererUtil.toEscapedJavaScriptStringArray(validContentTypesString.split(
+						"\\s*,\\s*"));
 		}
 
 		String clientId = inputFile.getClientId(facesContext);
@@ -158,16 +162,15 @@ public class InputFileRenderer extends InputFileRendererBase {
 			I18n i18n = I18nFactory.getI18nInstance(externalContext);
 			String notStartedMessage = i18n.getMessage(facesContext, locale, "not-started");
 			JavaScriptFragment clientComponent = new JavaScriptFragment("Liferay.component('" + clientKey + "')");
-			encodeFunctionCall(responseWriter, "LFAI.initProgressUploader", alloyNamespace, clientComponent,
-				contentTypes, clientId, formClientId, namingContainerId, inputFile.isAuto(), execute, render,
-				partialActionURL, maxFileSize, notStartedMessage);
+			encodeFunctionCall(responseWriter, "LFAI.initProgressUploader", 'A', clientComponent, validContentTypes,
+				clientId, formClientId, namingContainerId, inputFile.isAuto(), execute, render, partialActionURL,
+				maxFileSize, notStartedMessage);
 		}
 
 		// Otherwise, if the component should render the upload preview table, then format the preview-uploader.js
 		// template and write it to the response.
 		else if (inputFile.isShowPreview()) {
-
-			encodeFunctionCall(responseWriter, "LFAI.initPreviewUploader", alloyNamespace, contentTypes, clientId,
+			encodeFunctionCall(responseWriter, "LFAI.initPreviewUploader", 'A', validContentTypes, clientId,
 				maxFileSize);
 		}
 	}
@@ -443,28 +446,5 @@ public class InputFileRenderer extends InputFileRendererBase {
 		}
 
 		return uploadedFileMap;
-	}
-
-	protected JavaScriptFragment toJavaScriptArray(String[] items) {
-
-		StringBuilder buf = new StringBuilder("[");
-
-		if (items != null) {
-
-			for (int i = 0; i < items.length; i++) {
-
-				if (i > 0) {
-					buf.append(",");
-				}
-
-				buf.append("'");
-				buf.append(items[i].trim());
-				buf.append("'");
-			}
-		}
-
-		buf.append("]");
-
-		return new JavaScriptFragment(buf.toString());
 	}
 }

@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2017 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-2019 Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -33,6 +33,7 @@ import javax.faces.context.ResponseWriter;
 import javax.faces.render.FacesRenderer;
 
 import com.liferay.faces.alloy.component.autocomplete.AutoComplete;
+import com.liferay.faces.alloy.render.internal.AlloyRendererUtil;
 import com.liferay.faces.util.client.Script;
 import com.liferay.faces.util.component.ClientComponent;
 import com.liferay.faces.util.component.Styleable;
@@ -149,22 +150,7 @@ public class AutoCompleteRenderer extends AutoCompleteRendererBase {
 				//J-
 				// ['item1', 'item2', 'item3', ... 'itemN']
 				//J+
-				StringBuilder resultArrayStringBuilder = new StringBuilder();
-
-				resultArrayStringBuilder.append("[");
-
-				for (int i = 0; i < items.size(); i++) {
-
-					if (i > 0) {
-						resultArrayStringBuilder.append(",");
-					}
-
-					resultArrayStringBuilder.append("'");
-					resultArrayStringBuilder.append(items.get(i));
-					resultArrayStringBuilder.append("'");
-				}
-
-				resultArrayStringBuilder.append("]");
+				JavaScriptFragment[] results = AlloyRendererUtil.toEscapedJavaScriptStringArray(items);
 
 				// Buffer all JavaScript so that it is rendered in the <eval> section of the partial response.
 				BufferedScriptResponseWriter bufferedScriptResponseWriter = new BufferedScriptResponseWriter();
@@ -174,7 +160,7 @@ public class AutoCompleteRenderer extends AutoCompleteRendererBase {
 				//		'hiddenClientId')
 				//J+
 				encodeFunctionCall(bufferedScriptResponseWriter, "LFAI.setAutoCompleteServerResults",
-					liferayComponentJavaScriptFragment, resultArrayStringBuilder, hiddenClientId);
+					liferayComponentJavaScriptFragment, results, hiddenClientId);
 
 				String[] modules = getModules(facesContext, uiComponent);
 				renderScript(facesContext, bufferedScriptResponseWriter.toString(), modules, Script.ModulesType.ALLOY);

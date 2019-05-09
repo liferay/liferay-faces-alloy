@@ -1,5 +1,5 @@
 /**
- * Copyright (c) 2000-2017 Liferay, Inc. All rights reserved.
+ * Copyright (c) 2000-2019 Liferay, Inc. All rights reserved.
  *
  * This library is free software; you can redistribute it and/or modify it under
  * the terms of the GNU Lesser General Public License as published by the Free
@@ -13,10 +13,13 @@
  */
 package com.liferay.faces.alloy.render.internal;
 
+import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 
 import com.liferay.faces.util.client.BrowserSniffer;
+import com.liferay.faces.util.render.JavaScriptFragment;
+import com.liferay.faces.util.render.RendererUtil;
 
 
 /**
@@ -79,5 +82,25 @@ public class AlloyRendererUtil {
 		stringBuilder.append("function(A){");
 
 		return stringBuilder.toString();
+	}
+
+	public static JavaScriptFragment[] toEscapedJavaScriptStringArray(List<String> strings) {
+
+		String[] stringsArray = strings.toArray(new String[strings.size()]);
+
+		return toEscapedJavaScriptStringArray(stringsArray);
+	}
+
+	public static JavaScriptFragment[] toEscapedJavaScriptStringArray(String[] strings) {
+
+		JavaScriptFragment[] escapedJavaScriptStringArray = new JavaScriptFragment[strings.length];
+
+		for (int i = 0; i < strings.length; i++) {
+
+			String escapedJavaScript = RendererUtil.escapeJavaScript(strings[i]);
+			escapedJavaScriptStringArray[i] = new JavaScriptFragment("'" + escapedJavaScript + "'");
+		}
+
+		return escapedJavaScriptStringArray;
 	}
 }
