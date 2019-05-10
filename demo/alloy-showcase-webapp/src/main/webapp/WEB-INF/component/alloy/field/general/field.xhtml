@@ -8,9 +8,7 @@
 				<alloy:messages globalOnly="true" layout="table" />
 				<alloy:field id="field" label="#{i18n['first-name']}"
 					rendered="#{showcaseModelBean.selectedComponent.rendered}" styleClass="form-inline">
-					<alloy:inputText id="firstName" required="true" value="#{fieldModelBean.firstName}">
-						<f:ajax render="field" />
-					</alloy:inputText>
+					<alloy:inputText id="firstName" required="true" value="#{fieldModelBean.firstName}" />
 					<alloy:icon name="asterisk" />
 					<alloy:message for="firstName" />
 				</alloy:field>
