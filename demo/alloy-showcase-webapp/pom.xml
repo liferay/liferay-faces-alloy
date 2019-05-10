@@ -332,7 +332,7 @@
 			<type>warpath</type>
 		</dependency>
 
-		<!--- Begin Selenium Test Dependencies -->
+		<!-- Begin Selenium Test Dependencies -->
 		<dependency>
 			<groupId>com.liferay.faces.test</groupId>
 			<artifactId>com.liferay.faces.test.selenium</artifactId>
