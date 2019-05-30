@@ -1452,7 +1452,7 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 			<alloy-ui-modules>aui-ace-editor</alloy-ui-modules>
 			<alloy-ui-name>AceEditor</alloy-ui-name>
 			<delegate-renderer-type><![CDATA["javax.faces.Text"]]></delegate-renderer-type>
-			<extends-tags>clientComponent facesMessageLabelInherited styleableInherited uiInputInherited</extends-tags>
+			<extends-tags>clientComponent disabledInherited facesMessageLabelInherited styleableInherited uiInputInherited</extends-tags>
 			<generate-null-check-decode-method>true</generate-null-check-decode-method>
 			<parent-class><![CDATA[javax.faces.component.html.HtmlInputText]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.alloy.render.internal.DelegatingAlloyRendererBase]]></renderer-parent-class>

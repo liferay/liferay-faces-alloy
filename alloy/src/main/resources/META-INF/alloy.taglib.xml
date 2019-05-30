@@ -4076,6 +4076,12 @@ java.lang.Object)</method-signature>
 			<type>java.lang.String</type>
 		</attribute>
 		<attribute>
+			<description><![CDATA[When this flag is true, the component will be disabled, and the user will be unable to interact with the component. The default value is <code>false</code>.]]></description>
+			<name>disabled</name>
+			<required>false</required>
+			<type>boolean</type>
+		</attribute>
+		<attribute>
 			<description><![CDATA[The the height (in pixels) of the rendered <code>&lt;div&gt;</code>.]]></description>
 			<name>height</name>
 			<required>false</required>
