@@ -183,6 +183,21 @@
 				</dependency>
 			</dependencies>
 		</profile>
+		<profile>
+			<id>release</id>
+			<properties>
+				<maven.test.skip>false</maven.test.skip>
+			</properties>
+			<dependencies>
+				<dependency>
+					<groupId>com.liferay.faces.demo</groupId>
+					<artifactId>com.liferay.faces.demo.jsf.showcase.webapp</artifactId>
+					<version>${liferay.faces.showcase.version}</version>
+					<type>test-jar</type>
+					<scope>test</scope>
+				</dependency>
+			</dependencies>
+		</profile>
 	</profiles>
 
 	<build>
@@ -190,7 +205,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-jar-plugin</artifactId>
-				<version>3.0.2</version>
+				<version>3.1.2</version>
 				<executions>
 					<execution>
 						<goals>
