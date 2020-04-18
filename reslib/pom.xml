@@ -6,7 +6,7 @@
 		<groupId>com.liferay.faces</groupId>
 		<artifactId>com.liferay.faces.alloy.parent</artifactId>
 		<relativePath>../pom.xml</relativePath>
-		<version>3.0.4-SNAPSHOT</version>
+		<version>4.0.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>com.liferay.faces.alloy.reslib</artifactId>
 	<name>Liferay Faces Alloy Resource Library</name>
@@ -51,7 +51,7 @@
 									<url>https://github.com/liferay/alloy-ui/releases/download/${alloyui.zip.version}/alloy-${alloyui.zip.version}.zip</url>
 									<unpack>true</unpack>
 									<outputDirectory>${project.build.directory}/classes/META-INF/resources/alloy-${alloyui.version}</outputDirectory>
-									<md5>0e3e20aea7b0f1be55089b456e3bb6ab</md5>
+									<md5>9053d96910a3719a21879bb32cb90926</md5>
 								</configuration>
 							</execution>
 						</executions>

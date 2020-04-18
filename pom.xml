@@ -10,7 +10,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.liferay.faces</groupId>
 	<artifactId>com.liferay.faces.alloy.parent</artifactId>
-	<version>3.0.4-SNAPSHOT</version>
+	<version>4.0.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<name>Liferay Faces Alloy Parent</name>
 	<description>Parent POM for all Liferay Faces Alloy modules</description>
@@ -81,8 +81,8 @@
 	</modules>
 
 	<properties>
-		<alloyui.version>3.0.3</alloyui.version>
-		<alloyui.zip.version>${alloyui.version}-deprecated.91</alloyui.zip.version>
+		<alloyui.version>3.1.0</alloyui.version>
+		<alloyui.zip.version>${alloyui.version}-deprecated.60</alloyui.zip.version>
 		<component.namespace>none</component.namespace>
 		<faces.api.group.id>javax.faces</faces.api.group.id>
 		<faces.api.artifact.id>javax.faces-api</faces.api.artifact.id>

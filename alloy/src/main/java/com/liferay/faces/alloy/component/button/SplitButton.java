@@ -345,13 +345,13 @@ public class SplitButton extends SplitButtonCompat {
 		String styleClass = getWrappedButton().getStyleClass();
 
 		if (styleClass == null) {
-			styleClass = "btn-default";
+			styleClass = "btn-secondary";
 		}
 
 		String defaultButtonClass = null;
 
 		if (!styleClass.contains("btn-")) {
-			defaultButtonClass = "btn-default";
+			defaultButtonClass = "btn-secondary";
 		}
 
 		String disabledClass = null;

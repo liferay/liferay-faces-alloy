@@ -52,12 +52,12 @@
 			<c:if test="#{selectedComponentPrefix != 'alloy'}">
 				<c:set var="sourceControlURL" value="#{showcaseModelBean.sourceControlURL}" />
 			</c:if>
-			<alloy:button styleClass="btn-default btn-sm btn-small"
+			<alloy:button styleClass="btn-secondary btn-sm btn-small"
 				onclick="window.open('#{sourceControlURL}');">
 				<showcase:icon name="github" styleClass="showcase-btn-icon icon-large" />
 				<alloy:outputText value="#{i18n['improve-this-example']}!" />
 			</alloy:button>
-			<alloy:button styleClass="btn-default btn-sm btn-small"
+			<alloy:button styleClass="btn-secondary btn-sm btn-small"
 				onclick="window.open('https://issues.liferay.com/secure/CreateIssue.jspa?pid=12081&amp;issuetype=4');">
 				<alloy:outputText value="#{i18n['request-a-new-example']}" />
 			</alloy:button>

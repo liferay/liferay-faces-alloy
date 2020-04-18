@@ -90,7 +90,7 @@ public abstract class ButtonBase extends HtmlOutcomeTargetButton implements Styl
 
 		// getStateHelper().eval(ButtonPropertyKeys.styleClass, null) is called because
 		// super.getStyleClass() may return the styleClass name of the super class.
-		String styleClass = (String) getStateHelper().eval(ButtonPropertyKeys.styleClass, "btn-default");
+		String styleClass = (String) getStateHelper().eval(ButtonPropertyKeys.styleClass, "btn-secondary");
 
 		return com.liferay.faces.util.component.ComponentUtil.concatCssClasses(styleClass, "alloy-button");
 	}

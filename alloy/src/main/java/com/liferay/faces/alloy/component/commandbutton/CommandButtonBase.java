@@ -167,7 +167,7 @@ public abstract class CommandButtonBase extends HtmlCommandButton implements Sty
 
 		// getStateHelper().eval(CommandButtonPropertyKeys.styleClass, null) is called because
 		// super.getStyleClass() may return the styleClass name of the super class.
-		String styleClass = (String) getStateHelper().eval(CommandButtonPropertyKeys.styleClass, "btn-default");
+		String styleClass = (String) getStateHelper().eval(CommandButtonPropertyKeys.styleClass, "btn-secondary");
 
 		return com.liferay.faces.util.component.ComponentUtil.concatCssClasses(styleClass, "alloy-command-button");
 	}

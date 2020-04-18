@@ -154,7 +154,7 @@
 		</attribute>
 		<attribute>
 			<attribute-extension>
-				<default-value><![CDATA["btn-default"]]></default-value>
+				<default-value><![CDATA["btn-secondary"]]></default-value>
 				<override>true</override>
 			</attribute-extension>
 			<description><![CDATA[List of CSS class names (separated by spaces) that are to be rendered within the class attribute.]]></description>

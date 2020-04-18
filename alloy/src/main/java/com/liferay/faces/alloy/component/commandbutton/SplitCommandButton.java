@@ -359,13 +359,13 @@ public class SplitCommandButton extends SplitCommandButtonCompat {
 		String styleClass = getWrappedCommandButton().getStyleClass();
 
 		if (styleClass == null) {
-			styleClass = "btn-default";
+			styleClass = "btn-secondary";
 		}
 
 		String defaultCommandButtonClass = null;
 
 		if (!styleClass.contains("btn-")) {
-			defaultCommandButtonClass = "btn-default";
+			defaultCommandButtonClass = "btn-secondary";
 		}
 
 		String disabledClass = null;

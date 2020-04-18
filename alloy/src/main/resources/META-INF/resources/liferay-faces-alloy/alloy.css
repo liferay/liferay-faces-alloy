@@ -268,8 +268,8 @@ div.yui3-menu-horizontal span.yui3-menu-label {
 	margin-left: 0;
 }
 
-/* yui3-splitbuttonnav: btn-default have black font all other btn-* have white font */
-div.yui3-splitbuttonnav .yui3-menu-label a.btn-default {
+/* yui3-splitbuttonnav: btn-secondary have black font all other btn-* have white font */
+div.yui3-splitbuttonnav .yui3-menu-label a.btn-secondary {
 	color: #000000;
 }
 
