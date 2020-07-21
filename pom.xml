@@ -94,7 +94,7 @@
 		<faces.spec.version>2.2</faces.spec.version>
 		<faces.version>${mojarra.version}</faces.version>
 		<full.version>${project.version} (${timestamp} AD)</full.version>
-		<hibernate.validator.version>5.1.3.Final</hibernate.validator.version>
+		<hibernate.validator.version>6.1.0.Final</hibernate.validator.version>
 		<jstl.version>1.2</jstl.version>
 		<liferay.faces.showcase.version>3.0.5</liferay.faces.showcase.version>
 		<liferay.faces.util.version>3.3.0</liferay.faces.util.version>
@@ -494,9 +494,15 @@
 				</exclusions>
 			</dependency>
 			<dependency>
-				<groupId>org.hibernate</groupId>
+				<groupId>org.hibernate.validator</groupId>
 				<artifactId>hibernate-validator</artifactId>
 				<version>${hibernate.validator.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>jakarta.validation</groupId>
+						<artifactId>jakarta.validation-api</artifactId>
+					</exclusion>
+				</exclusions>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
