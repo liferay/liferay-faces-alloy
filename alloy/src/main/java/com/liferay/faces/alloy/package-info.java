@@ -12,4 +12,4 @@
  * details.
  */
 @org.osgi.annotation.versioning.Version("3.1.0")
-package com.liferay.faces.alloy.component.body;
+package com.liferay.faces.alloy;
