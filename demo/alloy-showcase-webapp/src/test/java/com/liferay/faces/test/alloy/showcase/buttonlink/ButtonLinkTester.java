@@ -102,7 +102,7 @@ public class ButtonLinkTester extends TesterBase {
 		// Test that clicking the menu button submits the correct value.
 		String menuButtonText = "User";
 		String menuButtonXpath = "//label[contains(.,'Example')][contains(.,'" + exampleType +
-			"')]/ancestor::div[@class='showcase-example']//a[contains(@class,'btn btn-default alloy-')]/span[contains(text(),'" +
+			"')]/ancestor::div[@class='showcase-example']//a[contains(@class,'btn alloy-')]/span[contains(text(),'" +
 			menuButtonText + "')]";
 		browserDriver.clickElement(menuButtonXpath);
 
@@ -123,7 +123,7 @@ public class ButtonLinkTester extends TesterBase {
 		// Test that clicking each menu item submits the correct value.
 		String[] menuItems = new String[] { "Edit", "Enable", "Disable", "Delete" };
 		String dropdownButtonXpath =
-			"//span[@role='menuitem']/a[contains(@class,'btn btn-default alloy-')]/span[contains(@class,'" +
+			"//span[@role='menuitem']/a[contains(@class,'btn alloy-')]/span[contains(@class,'" +
 			dropdownButtonClass + "')]";
 
 		for (String menuItem : menuItems) {
