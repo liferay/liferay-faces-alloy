@@ -123,8 +123,8 @@ public class ButtonLinkTester extends TesterBase {
 		// Test that clicking each menu item submits the correct value.
 		String[] menuItems = new String[] { "Edit", "Enable", "Disable", "Delete" };
 		String dropdownButtonXpath =
-			"//span[@role='menuitem']/a[contains(@class,'btn alloy-')]/span[contains(@class,'" +
-			dropdownButtonClass + "')]";
+			"//span[@role='menuitem']/a[contains(@class,'btn alloy-')]/span[contains(@class,'" + dropdownButtonClass +
+			"')]";
 
 		for (String menuItem : menuItems) {
 
