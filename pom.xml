@@ -98,7 +98,7 @@
 		<jstl.version>1.2</jstl.version>
 		<liferay.faces.showcase.version>3.1.1</liferay.faces.showcase.version>
 		<liferay.faces.util.version>3.4.1</liferay.faces.util.version>
-		<log4j.version>1.2.14</log4j.version>
+		<log4j.version>2.17.1</log4j.version>
 		<mojarra.version>2.2.20</mojarra.version>
 		<myfaces.version>UNSUPPORTED</myfaces.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -459,8 +459,13 @@
 				<scope>test</scope>
 			</dependency>
 			<dependency>
-				<groupId>log4j</groupId>
-				<artifactId>log4j</artifactId>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-1.2-api</artifactId>
+				<version>${log4j.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-core</artifactId>
 				<version>${log4j.version}</version>
 			</dependency>
 			<dependency>
