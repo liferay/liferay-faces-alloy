@@ -11,7 +11,7 @@
 	<name>Liferay Faces Alloy</name>
 
 	<properties>
-		<bnd.version>4.1.0</bnd.version>
+		<bnd.version>5.3.0</bnd.version>
 	</properties>
 
 	<build>
