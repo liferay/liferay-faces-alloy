@@ -296,6 +296,10 @@
 			<version>${liferay.faces.showcase.version}</version>
 			<type>warpath</type>
 		</dependency>
+        <dependency>
+            <groupId>javax.annotation</groupId>
+            <artifactId>javax.annotation-api</artifactId>
+        </dependency>
 
 		<!-- Begin Selenium Test Dependencies -->
 		<dependency>
