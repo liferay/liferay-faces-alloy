@@ -17,10 +17,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
-import javax.faces.component.behavior.AjaxBehavior;
-import javax.faces.component.behavior.ClientBehaviorContext;
-import javax.faces.context.FacesContext;
-import javax.faces.render.ClientBehaviorRenderer;
+import jakarta.faces.component.behavior.AjaxBehavior;
+import jakarta.faces.component.behavior.ClientBehaviorContext;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.render.ClientBehaviorRenderer;
 
 import com.liferay.faces.util.component.behavior.AjaxBehaviorWrapper;
 

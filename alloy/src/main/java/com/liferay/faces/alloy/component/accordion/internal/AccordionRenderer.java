@@ -18,16 +18,16 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-import javax.faces.application.ResourceDependencies;
-import javax.faces.application.ResourceDependency;
-import javax.faces.component.UIColumn;
-import javax.faces.component.UIComponent;
-import javax.faces.component.UIData;
-import javax.faces.component.behavior.ClientBehavior;
-import javax.faces.component.behavior.ClientBehaviorContext;
-import javax.faces.context.FacesContext;
-import javax.faces.context.ResponseWriter;
-import javax.faces.render.FacesRenderer;
+import jakarta.faces.application.ResourceDependencies;
+import jakarta.faces.application.ResourceDependency;
+import jakarta.faces.component.UIColumn;
+import jakarta.faces.component.UIComponent;
+import jakarta.faces.component.UIData;
+import jakarta.faces.component.behavior.ClientBehavior;
+import jakarta.faces.component.behavior.ClientBehaviorContext;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.context.ResponseWriter;
+import jakarta.faces.render.FacesRenderer;
 
 import com.liferay.faces.alloy.component.accordion.Accordion;
 import com.liferay.faces.alloy.component.data.internal.DataEncoderBase;
@@ -200,7 +200,7 @@ public class AccordionRenderer extends AccordionRendererBase {
 
 						//J-
 						// function(event) {
-						//	jsf.ajax.request(this, event, {'javax.faces.behavior.event': 'tabSelect'})
+						//	jsf.ajax.request(this, event, {'jakarta.faces.behavior.event': 'tabSelect'})
 						// };
 						//J+
 						tabExpandedClientBehaviors.append("function(event){");
@@ -219,7 +219,7 @@ public class AccordionRenderer extends AccordionRendererBase {
 
 						//J-
 						// function(event) {
-						//	jsf.ajax.request(this, event, {'javax.faces.behavior.event': 'tabSelect'})
+						//	jsf.ajax.request(this, event, {'jakarta.faces.behavior.event': 'tabSelect'})
 						// };
 						//J+
 						tabCollapsedClientBehaviors.append("function(event){");

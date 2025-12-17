@@ -15,7 +15,7 @@ package com.liferay.faces.alloy.component.inputdate.internal;
 
 import java.io.IOException;
 
-import javax.faces.context.ResponseWriter;
+import jakarta.faces.context.ResponseWriter;
 
 import com.liferay.faces.alloy.component.inputdatetime.internal.InputDateTimeResponseWriter;
 

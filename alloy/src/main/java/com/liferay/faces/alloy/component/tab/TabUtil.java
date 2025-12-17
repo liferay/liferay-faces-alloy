@@ -16,8 +16,8 @@ package com.liferay.faces.alloy.component.tab;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.faces.component.UIComponent;
-import javax.faces.component.UIData;
+import jakarta.faces.component.UIComponent;
+import jakarta.faces.component.UIData;
 
 
 /**

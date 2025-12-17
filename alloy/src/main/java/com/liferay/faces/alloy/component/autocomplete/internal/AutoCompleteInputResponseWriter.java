@@ -15,7 +15,7 @@ package com.liferay.faces.alloy.component.autocomplete.internal;
 
 import java.io.IOException;
 
-import javax.faces.context.ResponseWriter;
+import jakarta.faces.context.ResponseWriter;
 
 import com.liferay.faces.util.component.Styleable;
 import com.liferay.faces.util.render.IdResponseWriter;

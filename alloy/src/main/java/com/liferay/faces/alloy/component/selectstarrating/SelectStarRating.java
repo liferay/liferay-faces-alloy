@@ -13,7 +13,7 @@
  */
 package com.liferay.faces.alloy.component.selectstarrating;
 
-import javax.faces.component.FacesComponent;
+import jakarta.faces.component.FacesComponent;
 
 
 /**

@@ -18,9 +18,9 @@ import java.lang.reflect.Method;
 import java.util.Map;
 import java.util.Set;
 
-import javax.faces.application.ResourceHandler;
-import javax.faces.context.FacesContext;
-import javax.faces.context.ResponseWriter;
+import jakarta.faces.application.ResourceHandler;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.context.ResponseWriter;
 
 import com.liferay.faces.alloy.component.media.Media;
 import com.liferay.faces.alloy.util.internal.JSFUtil;
@@ -88,7 +88,7 @@ public class MediaRendererCompat extends MediaRendererBase {
 		}
 
 		if (isResourceURLMethod == null) {
-			facesResourceURL = ((value != null) && value.contains("javax.faces.resource"));
+			facesResourceURL = ((value != null) && value.contains("jakarta.faces.resource"));
 		}
 		else {
 

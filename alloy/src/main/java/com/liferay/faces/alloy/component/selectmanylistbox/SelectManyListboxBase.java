@@ -14,8 +14,8 @@
 package com.liferay.faces.alloy.component.selectmanylistbox;
 //J-
 
-import javax.annotation.Generated;
-import javax.faces.component.html.HtmlSelectManyListbox;
+import jakarta.annotation.Generated;
+import jakarta.faces.component.html.HtmlSelectManyListbox;
 
 import com.liferay.faces.util.component.Styleable;
 
@@ -48,9 +48,9 @@ public abstract class SelectManyListboxBase extends HtmlSelectManyListbox implem
 
 		if (label == null) {
 
-			javax.faces.context.FacesContext facesContext = javax.faces.context.FacesContext.getCurrentInstance();
+			jakarta.faces.context.FacesContext facesContext = jakarta.faces.context.FacesContext.getCurrentInstance();
 
-			if (facesContext.getCurrentPhaseId() == javax.faces.event.PhaseId.PROCESS_VALIDATIONS) {
+			if (facesContext.getCurrentPhaseId() == jakarta.faces.event.PhaseId.PROCESS_VALIDATIONS) {
 				label = com.liferay.faces.util.component.ComponentUtil.getComponentLabel(this);
 			}
 		}

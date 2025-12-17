@@ -13,10 +13,10 @@
  */
 package com.liferay.faces.alloy.component.button.internal;
 
-import javax.faces.component.UIComponent;
-import javax.faces.component.UIParameter;
-import javax.faces.component.UIViewParameter;
-import javax.faces.context.FacesContext;
+import jakarta.faces.component.UIComponent;
+import jakarta.faces.component.UIParameter;
+import jakarta.faces.component.UIViewParameter;
+import jakarta.faces.context.FacesContext;
 
 import com.liferay.faces.alloy.util.internal.JSFUtil;
 import com.liferay.faces.util.lang.ThreadSafeAccessor;
@@ -74,7 +74,7 @@ public abstract class ButtonRendererCompat extends DelegatingRendererBase {
 			Class<?> uiViewActionClass = null;
 
 			try {
-				uiViewActionClass = Class.forName("javax.faces.component.UIViewAction");
+				uiViewActionClass = Class.forName("jakarta.faces.component.UIViewAction");
 			}
 			catch (ClassNotFoundException e) {
 				logger.error(e);

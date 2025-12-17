@@ -19,24 +19,24 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-import javax.faces.application.Application;
-import javax.faces.application.ResourceDependencies;
-import javax.faces.application.ResourceDependency;
-import javax.faces.component.UIComponent;
-import javax.faces.component.UIData;
-import javax.faces.component.UIParameter;
-import javax.faces.component.UIViewRoot;
-import javax.faces.component.behavior.ClientBehavior;
-import javax.faces.component.behavior.ClientBehaviorContext;
-import javax.faces.context.ExternalContext;
-import javax.faces.context.FacesContext;
-import javax.faces.context.ResponseWriter;
-import javax.faces.event.AbortProcessingException;
-import javax.faces.event.ComponentSystemEvent;
-import javax.faces.event.ComponentSystemEventListener;
-import javax.faces.event.ListenerFor;
-import javax.faces.event.PostAddToViewEvent;
-import javax.faces.render.FacesRenderer;
+import jakarta.faces.application.Application;
+import jakarta.faces.application.ResourceDependencies;
+import jakarta.faces.application.ResourceDependency;
+import jakarta.faces.component.UIComponent;
+import jakarta.faces.component.UIData;
+import jakarta.faces.component.UIParameter;
+import jakarta.faces.component.UIViewRoot;
+import jakarta.faces.component.behavior.ClientBehavior;
+import jakarta.faces.component.behavior.ClientBehaviorContext;
+import jakarta.faces.context.ExternalContext;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.context.ResponseWriter;
+import jakarta.faces.event.AbortProcessingException;
+import jakarta.faces.event.ComponentSystemEvent;
+import jakarta.faces.event.ComponentSystemEventListener;
+import jakarta.faces.event.ListenerFor;
+import jakarta.faces.event.PostAddToViewEvent;
+import jakarta.faces.render.FacesRenderer;
 
 import com.liferay.faces.alloy.component.commandlink.CommandLink;
 import com.liferay.faces.alloy.component.outputtext.OutputText;
@@ -58,7 +58,7 @@ import com.liferay.faces.util.render.RendererUtil;
 @ListenerFor(systemEventClass = PostAddToViewEvent.class, sourceClass = Paginator.class)
 @ResourceDependencies(
 	{
-		@ResourceDependency(library = "javax.faces", name = "jsf.js"),
+		@ResourceDependency(library = "jakarta.faces", name = "jsf.js"),
 		@ResourceDependency(library = "liferay-faces-alloy", name = "alloy.css"),
 		@ResourceDependency(library = "liferay-faces-alloy-reslib", name = "build/aui-css/css/bootstrap.min.css")
 	}

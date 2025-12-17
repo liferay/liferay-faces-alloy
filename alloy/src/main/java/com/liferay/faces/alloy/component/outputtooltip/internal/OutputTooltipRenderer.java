@@ -16,13 +16,13 @@ package com.liferay.faces.alloy.component.outputtooltip.internal;
 import java.io.IOException;
 import java.util.List;
 
-import javax.faces.application.ProjectStage;
-import javax.faces.application.ResourceDependencies;
-import javax.faces.application.ResourceDependency;
-import javax.faces.component.UIComponent;
-import javax.faces.context.FacesContext;
-import javax.faces.context.ResponseWriter;
-import javax.faces.render.FacesRenderer;
+import jakarta.faces.application.ProjectStage;
+import jakarta.faces.application.ResourceDependencies;
+import jakarta.faces.application.ResourceDependency;
+import jakarta.faces.component.UIComponent;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.context.ResponseWriter;
+import jakarta.faces.render.FacesRenderer;
 
 import com.liferay.faces.alloy.component.outputtooltip.OutputTooltip;
 import com.liferay.faces.util.component.ClientComponent;
@@ -56,7 +56,7 @@ public class OutputTooltipRenderer extends OutputTooltipRendererBase {
 	public void encodeChildren(FacesContext facesContext, UIComponent uiComponent) throws IOException {
 
 		// It is necessary to override this method since the JSF runtime does not provide the ability for {@link
-		// javax.faces.component.html.HtmlOutputText} (the delegation component) to encode any of its children without
+		// jakarta.faces.component.html.HtmlOutputText} (the delegation component) to encode any of its children without
 		// enabling a special vendor-specific configuration option.
 		List<UIComponent> children = uiComponent.getChildren();
 

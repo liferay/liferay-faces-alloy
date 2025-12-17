@@ -13,11 +13,11 @@
  */
 package com.liferay.faces.alloy.component.outputscriptstylesheet.internal;
 
-import javax.faces.context.FacesContext;
-import javax.faces.event.AbortProcessingException;
-import javax.faces.event.ComponentSystemEvent;
-import javax.faces.event.ComponentSystemEventListener;
-import javax.faces.render.Renderer;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.event.AbortProcessingException;
+import jakarta.faces.event.ComponentSystemEvent;
+import jakarta.faces.event.ComponentSystemEventListener;
+import jakarta.faces.render.Renderer;
 
 import com.liferay.faces.util.render.DelegatingRendererBase;
 

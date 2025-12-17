@@ -14,7 +14,7 @@
 package com.liferay.faces.alloy.component.panelgroup.internal;
 //J-
 
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 import com.liferay.faces.util.render.DelegatingRendererBase;
 
@@ -35,7 +35,7 @@ public abstract class PanelGroupRendererBase extends DelegatingRendererBase {
 
 	@Override
 	public String getDelegateRendererType() {
-		return "javax.faces.Group";
+		return "jakarta.faces.Group";
 	}
 }
 //J+

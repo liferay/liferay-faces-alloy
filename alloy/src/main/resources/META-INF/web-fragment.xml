@@ -6,7 +6,7 @@
 
 	<!-- Enable <audio> and <video> HTML5 passthrough elements by specifying the Liferay Faces AlloyTagDecorator. -->
 	<context-param>
-		<param-name>javax.faces.FACELETS_DECORATORS</param-name>
+		<param-name>jakarta.faces.FACELETS_DECORATORS</param-name>
 		<param-value>com.liferay.faces.alloy.tagdecorator.internal.TagDecoratorAlloyImpl</param-value>
 	</context-param>
 

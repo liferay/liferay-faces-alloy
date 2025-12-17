@@ -17,9 +17,9 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-import javax.faces.component.UIComponent;
-import javax.faces.context.ResponseWriter;
-import javax.faces.context.ResponseWriterWrapper;
+import jakarta.faces.component.UIComponent;
+import jakarta.faces.context.ResponseWriter;
+import jakarta.faces.context.ResponseWriterWrapper;
 
 
 /**

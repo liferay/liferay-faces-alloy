@@ -13,7 +13,7 @@
  */
 package com.liferay.faces.alloy.component.tab.internal;
 
-import javax.faces.component.UIColumn;
+import jakarta.faces.component.UIColumn;
 
 import com.liferay.faces.alloy.component.data.internal.DataEncoderBase;
 import com.liferay.faces.alloy.component.tab.Tab;

@@ -13,7 +13,7 @@
  */
 package com.liferay.faces.alloy.component.audio;
 
-import javax.faces.component.FacesComponent;
+import jakarta.faces.component.FacesComponent;
 
 
 /**

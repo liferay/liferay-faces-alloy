@@ -17,10 +17,10 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
-import javax.faces.component.UIColumn;
-import javax.faces.component.UIComponent;
-import javax.faces.component.UIData;
-import javax.faces.context.FacesContext;
+import jakarta.faces.component.UIColumn;
+import jakarta.faces.component.UIComponent;
+import jakarta.faces.component.UIData;
+import jakarta.faces.context.FacesContext;
 
 import com.liferay.faces.util.logging.Logger;
 import com.liferay.faces.util.logging.LoggerFactory;

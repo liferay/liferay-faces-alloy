@@ -15,8 +15,8 @@ package com.liferay.faces.alloy.component.datatable.internal;
 
 import java.util.List;
 
-import javax.faces.component.UIColumn;
-import javax.faces.component.UIComponent;
+import jakarta.faces.component.UIColumn;
+import jakarta.faces.component.UIComponent;
 
 import com.liferay.faces.alloy.component.column.Column;
 import com.liferay.faces.alloy.component.datatable.DataTable;

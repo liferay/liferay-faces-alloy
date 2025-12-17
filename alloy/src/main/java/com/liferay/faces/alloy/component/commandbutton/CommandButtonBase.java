@@ -14,8 +14,8 @@
 package com.liferay.faces.alloy.component.commandbutton;
 //J-
 
-import javax.annotation.Generated;
-import javax.faces.component.html.HtmlCommandButton;
+import jakarta.annotation.Generated;
+import jakarta.faces.component.html.HtmlCommandButton;
 
 import com.liferay.faces.util.component.Styleable;
 

@@ -14,11 +14,11 @@
 package com.liferay.faces.alloy.component.inputtextarea.internal;
 //J-
 
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
-import javax.faces.component.UIComponent;
-import javax.faces.component.UIInput;
-import javax.faces.context.FacesContext;
+import jakarta.faces.component.UIComponent;
+import jakarta.faces.component.UIInput;
+import jakarta.faces.context.FacesContext;
 
 import com.liferay.faces.util.render.DelegatingRendererBase;
 
@@ -53,7 +53,7 @@ public abstract class InputTextareaRendererBase extends DelegatingRendererBase {
 
 	@Override
 	public String getDelegateRendererType() {
-		return "javax.faces.Textarea";
+		return "jakarta.faces.Textarea";
 	}
 }
 //J+

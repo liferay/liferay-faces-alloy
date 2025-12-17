@@ -13,10 +13,10 @@
  */
 package com.liferay.faces.alloy.component.outputremainingchars;
 
-import javax.faces.component.FacesComponent;
-import javax.faces.component.UIComponent;
-import javax.faces.component.html.HtmlInputText;
-import javax.faces.component.html.HtmlInputTextarea;
+import jakarta.faces.component.FacesComponent;
+import jakarta.faces.component.UIComponent;
+import jakarta.faces.component.html.HtmlInputText;
+import jakarta.faces.component.html.HtmlInputTextarea;
 
 import com.liferay.faces.util.logging.Logger;
 import com.liferay.faces.util.logging.LoggerFactory;

@@ -16,11 +16,11 @@ package com.liferay.faces.alloy.component.inputsourcecode.internal;
 
 import java.io.IOException;
 
-import javax.annotation.Generated;
-import javax.faces.component.UIComponent;
-import javax.faces.component.UIInput;
-import javax.faces.context.FacesContext;
-import javax.faces.context.ResponseWriter;
+import jakarta.annotation.Generated;
+import jakarta.faces.component.UIComponent;
+import jakarta.faces.component.UIInput;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.context.ResponseWriter;
 
 import com.liferay.faces.alloy.render.internal.DelegatingAlloyRendererBase;
 
@@ -229,7 +229,7 @@ public abstract class InputSourceCodeRendererBase extends DelegatingAlloyRendere
 
 	@Override
 	public String getDelegateRendererType() {
-		return "javax.faces.Text";
+		return "jakarta.faces.Text";
 	}
 }
 //J+

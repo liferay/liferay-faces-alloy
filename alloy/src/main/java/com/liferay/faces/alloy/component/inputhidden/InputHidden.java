@@ -13,9 +13,9 @@
  */
 package com.liferay.faces.alloy.component.inputhidden;
 
-import javax.faces.component.FacesComponent;
-import javax.faces.context.FacesContext;
-import javax.faces.event.PhaseId;
+import jakarta.faces.component.FacesComponent;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.event.PhaseId;
 
 import com.liferay.faces.util.component.ComponentUtil;
 

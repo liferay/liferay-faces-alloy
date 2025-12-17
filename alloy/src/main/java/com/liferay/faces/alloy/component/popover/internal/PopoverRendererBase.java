@@ -16,10 +16,10 @@ package com.liferay.faces.alloy.component.popover.internal;
 
 import java.io.IOException;
 
-import javax.annotation.Generated;
-import javax.faces.component.UIComponent;
-import javax.faces.context.FacesContext;
-import javax.faces.context.ResponseWriter;
+import jakarta.annotation.Generated;
+import jakarta.faces.component.UIComponent;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.context.ResponseWriter;
 
 import com.liferay.faces.alloy.component.overlay.internal.OverlayRendererBase;
 
@@ -126,7 +126,7 @@ public abstract class PopoverRendererBase extends OverlayRendererBase {
 
 	@Override
 	public String getDelegateRendererType() {
-		return "javax.faces.Group";
+		return "jakarta.faces.Group";
 	}
 }
 //J+

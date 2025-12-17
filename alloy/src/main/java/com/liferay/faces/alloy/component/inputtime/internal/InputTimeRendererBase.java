@@ -16,10 +16,10 @@ package com.liferay.faces.alloy.component.inputtime.internal;
 
 import java.io.IOException;
 
-import javax.annotation.Generated;
-import javax.faces.component.UIComponent;
-import javax.faces.context.FacesContext;
-import javax.faces.context.ResponseWriter;
+import jakarta.annotation.Generated;
+import jakarta.faces.component.UIComponent;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.context.ResponseWriter;
 
 import com.liferay.faces.alloy.component.inputdatetime.internal.InputDateTimeRenderer;
 
@@ -93,7 +93,7 @@ public abstract class InputTimeRendererBase extends InputDateTimeRenderer {
 
 	@Override
 	public String getDelegateRendererType() {
-		return "javax.faces.Text";
+		return "jakarta.faces.Text";
 	}
 }
 //J+

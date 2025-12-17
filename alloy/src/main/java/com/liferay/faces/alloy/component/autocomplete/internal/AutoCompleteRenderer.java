@@ -19,18 +19,18 @@ import java.util.List;
 import java.util.Locale;
 import java.util.Map;
 
-import javax.el.ELContext;
-import javax.el.MethodExpression;
-import javax.faces.application.ResourceDependencies;
-import javax.faces.application.ResourceDependency;
-import javax.faces.component.NamingContainer;
-import javax.faces.component.UIComponent;
-import javax.faces.component.UIViewRoot;
-import javax.faces.component.behavior.ClientBehavior;
-import javax.faces.context.ExternalContext;
-import javax.faces.context.FacesContext;
-import javax.faces.context.ResponseWriter;
-import javax.faces.render.FacesRenderer;
+import jakarta.el.ELContext;
+import jakarta.el.MethodExpression;
+import jakarta.faces.application.ResourceDependencies;
+import jakarta.faces.application.ResourceDependency;
+import jakarta.faces.component.NamingContainer;
+import jakarta.faces.component.UIComponent;
+import jakarta.faces.component.UIViewRoot;
+import jakarta.faces.component.behavior.ClientBehavior;
+import jakarta.faces.context.ExternalContext;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.context.ResponseWriter;
+import jakarta.faces.render.FacesRenderer;
 
 import com.liferay.faces.alloy.component.autocomplete.AutoComplete;
 import com.liferay.faces.alloy.render.internal.AlloyRendererUtil;
@@ -51,7 +51,7 @@ import com.liferay.faces.util.render.RendererUtil;
 @FacesRenderer(componentFamily = AutoComplete.COMPONENT_FAMILY, rendererType = AutoComplete.RENDERER_TYPE)
 @ResourceDependencies(
 	{
-		@ResourceDependency(library = "javax.faces", name = "jsf.js"),
+		@ResourceDependency(library = "jakarta.faces", name = "jsf.js"),
 		@ResourceDependency(library = "liferay-faces-alloy", name = "alloy.js"),
 		@ResourceDependency(library = "liferay-faces-alloy-reslib", name = "build/aui-css/css/bootstrap.min.css"),
 		@ResourceDependency(library = "liferay-faces-alloy-reslib", name = "build/aui/aui-min.js"),

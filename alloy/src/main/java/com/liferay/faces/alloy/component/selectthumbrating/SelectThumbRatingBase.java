@@ -14,7 +14,7 @@
 package com.liferay.faces.alloy.component.selectthumbrating;
 //J-
 
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 import com.liferay.faces.alloy.component.selectrating.SelectRating;
 
 import com.liferay.faces.util.component.Styleable;

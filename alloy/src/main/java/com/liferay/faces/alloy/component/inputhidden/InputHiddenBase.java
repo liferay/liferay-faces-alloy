@@ -14,8 +14,8 @@
 package com.liferay.faces.alloy.component.inputhidden;
 //J-
 
-import javax.annotation.Generated;
-import javax.faces.component.html.HtmlInputHidden;
+import jakarta.annotation.Generated;
+import jakarta.faces.component.html.HtmlInputHidden;
 
 
 /**

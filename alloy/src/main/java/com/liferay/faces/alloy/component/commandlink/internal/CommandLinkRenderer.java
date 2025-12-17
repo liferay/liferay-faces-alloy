@@ -13,16 +13,16 @@
  */
 package com.liferay.faces.alloy.component.commandlink.internal;
 
-import javax.faces.application.ResourceDependency;
-import javax.faces.component.behavior.AjaxBehavior;
-import javax.faces.event.AbortProcessingException;
-import javax.faces.event.ComponentSystemEvent;
-import javax.faces.event.ComponentSystemEventListener;
-import javax.faces.event.ListenerFor;
-import javax.faces.event.ListenersFor;
-import javax.faces.event.PostAddToViewEvent;
-import javax.faces.event.PreRenderComponentEvent;
-import javax.faces.render.FacesRenderer;
+import jakarta.faces.application.ResourceDependency;
+import jakarta.faces.component.behavior.AjaxBehavior;
+import jakarta.faces.event.AbortProcessingException;
+import jakarta.faces.event.ComponentSystemEvent;
+import jakarta.faces.event.ComponentSystemEventListener;
+import jakarta.faces.event.ListenerFor;
+import jakarta.faces.event.ListenersFor;
+import jakarta.faces.event.PostAddToViewEvent;
+import jakarta.faces.event.PreRenderComponentEvent;
+import jakarta.faces.render.FacesRenderer;
 
 import com.liferay.faces.alloy.component.commandlink.CommandLink;
 import com.liferay.faces.util.render.RendererUtil;
@@ -39,7 +39,7 @@ import com.liferay.faces.util.render.RendererUtil;
 	@ListenerFor(systemEventClass = PostAddToViewEvent.class, sourceClass = CommandLink.class),
 	@ListenerFor(systemEventClass = PreRenderComponentEvent.class, sourceClass = CommandLink.class)
 })
-@ResourceDependency(library = "javax.faces", name = "jsf.js")
+@ResourceDependency(library = "jakarta.faces", name = "jsf.js")
 //J+
 public class CommandLinkRenderer extends CommandLinkRendererBase implements ComponentSystemEventListener {
 

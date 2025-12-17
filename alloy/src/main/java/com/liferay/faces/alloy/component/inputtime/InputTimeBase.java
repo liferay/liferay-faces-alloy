@@ -14,7 +14,7 @@
 package com.liferay.faces.alloy.component.inputtime;
 //J-
 
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 import com.liferay.faces.alloy.component.inputdatetime.InputDateTime;
 
 import com.liferay.faces.util.component.Styleable;

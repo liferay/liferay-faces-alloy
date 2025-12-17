@@ -15,7 +15,7 @@ package com.liferay.faces.alloy.i18n.internal;
 
 import java.io.Serializable;
 
-import javax.faces.context.ExternalContext;
+import jakarta.faces.context.ExternalContext;
 
 import com.liferay.faces.alloy.config.internal.AlloyWebConfigParam;
 import com.liferay.faces.util.cache.Cache;

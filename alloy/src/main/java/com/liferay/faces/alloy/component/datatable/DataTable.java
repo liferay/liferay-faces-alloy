@@ -20,15 +20,15 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-import javax.el.ValueExpression;
-import javax.faces.FacesException;
-import javax.faces.component.FacesComponent;
-import javax.faces.component.behavior.Behavior;
-import javax.faces.component.behavior.ClientBehaviorHolder;
-import javax.faces.context.ExternalContext;
-import javax.faces.context.FacesContext;
-import javax.faces.event.AjaxBehaviorEvent;
-import javax.faces.event.FacesEvent;
+import jakarta.el.ValueExpression;
+import jakarta.faces.FacesException;
+import jakarta.faces.component.FacesComponent;
+import jakarta.faces.component.behavior.Behavior;
+import jakarta.faces.component.behavior.ClientBehaviorHolder;
+import jakarta.faces.context.ExternalContext;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.event.AjaxBehaviorEvent;
+import jakarta.faces.event.FacesEvent;
 
 import com.liferay.faces.util.helper.IntegerHelper;
 
@@ -85,7 +85,7 @@ public class DataTable extends DataTableBase implements ClientBehaviorHolder {
 			FacesContext facesContext = FacesContext.getCurrentInstance();
 			ExternalContext externalContext = facesContext.getExternalContext();
 			Map<String, String> requestParameterMap = externalContext.getRequestParameterMap();
-			String eventName = requestParameterMap.get("javax.faces.behavior.event");
+			String eventName = requestParameterMap.get("jakarta.faces.behavior.event");
 
 			// If the AjaxBehaviorEvent indicates a row being selected/deselected, then
 			if (RowSelectEvent.ROW_SELECT.equals(eventName) || RowDeselectEvent.ROW_DESELECT.equals(eventName)) {

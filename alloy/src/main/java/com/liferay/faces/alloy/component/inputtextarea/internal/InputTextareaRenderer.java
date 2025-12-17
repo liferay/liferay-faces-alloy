@@ -13,7 +13,7 @@
  */
 package com.liferay.faces.alloy.component.inputtextarea.internal;
 
-import javax.faces.render.FacesRenderer;
+import jakarta.faces.render.FacesRenderer;
 
 import com.liferay.faces.alloy.component.inputtextarea.InputTextarea;
 

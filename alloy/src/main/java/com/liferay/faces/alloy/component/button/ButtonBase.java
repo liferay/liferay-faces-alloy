@@ -14,8 +14,8 @@
 package com.liferay.faces.alloy.component.button;
 //J-
 
-import javax.annotation.Generated;
-import javax.faces.component.html.HtmlOutcomeTargetButton;
+import jakarta.annotation.Generated;
+import jakarta.faces.component.html.HtmlOutcomeTargetButton;
 
 import com.liferay.faces.util.component.Styleable;
 

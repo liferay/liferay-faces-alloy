@@ -14,7 +14,7 @@
 package com.liferay.faces.alloy.component.inputfile;
 //J-
 
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 import com.liferay.faces.util.component.ClientComponent;
 import com.liferay.faces.util.component.Styleable;
@@ -129,8 +129,8 @@ public abstract class InputFileBase extends com.liferay.faces.util.component.Inp
 	 *
 	 * <div>A method that is executed when a file is uploaded. The method must be <code>public</code>, return <code>void</code>, and take a <code>FileUploadEvent</code> argument.</div>
 	 */
-	public javax.el.MethodExpression getFileUploadListener() {
-		return (javax.el.MethodExpression) getStateHelper().eval(InputFilePropertyKeys.fileUploadListener, null);
+	public jakarta.el.MethodExpression getFileUploadListener() {
+		return (jakarta.el.MethodExpression) getStateHelper().eval(InputFilePropertyKeys.fileUploadListener, null);
 	}
 
 	/**
@@ -138,7 +138,7 @@ public abstract class InputFileBase extends com.liferay.faces.util.component.Inp
 	 *
 	 * <div>A method that is executed when a file is uploaded. The method must be <code>public</code>, return <code>void</code>, and take a <code>FileUploadEvent</code> argument.</div>
 	 */
-	public void setFileUploadListener(javax.el.MethodExpression fileUploadListener) {
+	public void setFileUploadListener(jakarta.el.MethodExpression fileUploadListener) {
 		getStateHelper().put(InputFilePropertyKeys.fileUploadListener, fileUploadListener);
 	}
 
@@ -154,9 +154,9 @@ public abstract class InputFileBase extends com.liferay.faces.util.component.Inp
 
 		if (label == null) {
 
-			javax.faces.context.FacesContext facesContext = javax.faces.context.FacesContext.getCurrentInstance();
+			jakarta.faces.context.FacesContext facesContext = jakarta.faces.context.FacesContext.getCurrentInstance();
 
-			if (facesContext.getCurrentPhaseId() == javax.faces.event.PhaseId.PROCESS_VALIDATIONS) {
+			if (facesContext.getCurrentPhaseId() == jakarta.faces.event.PhaseId.PROCESS_VALIDATIONS) {
 				label = com.liferay.faces.util.component.ComponentUtil.getComponentLabel(this);
 			}
 		}

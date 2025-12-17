@@ -13,7 +13,7 @@
  */
 package com.liferay.faces.alloy.reslib.config;
 
-import javax.faces.context.ExternalContext;
+import jakarta.faces.context.ExternalContext;
 
 import com.liferay.faces.util.config.ConfigParam;
 import com.liferay.faces.util.config.WebConfigParamUtil;

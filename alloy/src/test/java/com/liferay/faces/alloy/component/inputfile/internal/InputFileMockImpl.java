@@ -18,7 +18,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import javax.faces.component.behavior.ClientBehavior;
+import jakarta.faces.component.behavior.ClientBehavior;
 
 import com.liferay.faces.alloy.component.inputfile.InputFile;
 

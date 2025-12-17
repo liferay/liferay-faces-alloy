@@ -13,7 +13,7 @@
  */
 package com.liferay.faces.alloy.component.button.internal;
 
-import javax.faces.render.FacesRenderer;
+import jakarta.faces.render.FacesRenderer;
 
 import com.liferay.faces.alloy.component.button.SplitButton;
 import com.liferay.faces.alloy.component.nodemenunav.internal.NodeMenuNavRendererBase;
@@ -35,6 +35,6 @@ public class SplitButtonRenderer extends NodeMenuNavRendererBase {
 
 	@Override
 	public String getDelegateRendererType() {
-		return "javax.faces.Link";
+		return "jakarta.faces.Link";
 	}
 }

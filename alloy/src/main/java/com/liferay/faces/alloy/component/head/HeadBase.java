@@ -14,8 +14,8 @@
 package com.liferay.faces.alloy.component.head;
 //J-
 
-import javax.annotation.Generated;
-import javax.faces.component.html.HtmlHead;
+import jakarta.annotation.Generated;
+import jakarta.faces.component.html.HtmlHead;
 
 
 /**

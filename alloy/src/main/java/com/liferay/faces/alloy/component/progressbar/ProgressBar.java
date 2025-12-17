@@ -18,14 +18,14 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Map;
 
-import javax.faces.component.FacesComponent;
-import javax.faces.component.UIComponent;
-import javax.faces.component.behavior.Behavior;
-import javax.faces.component.behavior.ClientBehaviorHolder;
-import javax.faces.context.ExternalContext;
-import javax.faces.context.FacesContext;
-import javax.faces.event.AjaxBehaviorEvent;
-import javax.faces.event.FacesEvent;
+import jakarta.faces.component.FacesComponent;
+import jakarta.faces.component.UIComponent;
+import jakarta.faces.component.behavior.Behavior;
+import jakarta.faces.component.behavior.ClientBehaviorHolder;
+import jakarta.faces.context.ExternalContext;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.event.AjaxBehaviorEvent;
+import jakarta.faces.event.FacesEvent;
 
 
 /**
@@ -57,7 +57,7 @@ public class ProgressBar extends ProgressBarBase implements ClientBehaviorHolder
 			FacesContext facesContext = FacesContext.getCurrentInstance();
 			ExternalContext externalContext = facesContext.getExternalContext();
 			Map<String, String> requestParameterMap = externalContext.getRequestParameterMap();
-			String eventName = requestParameterMap.get("javax.faces.behavior.event");
+			String eventName = requestParameterMap.get("jakarta.faces.behavior.event");
 
 			// If the AjaxBehaviorEvent indicates completion of progress, then
 			if (ProgressCompleteEvent.PROGRESS_COMPLETE.equals(eventName)) {

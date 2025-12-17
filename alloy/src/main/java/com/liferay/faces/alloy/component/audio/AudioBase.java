@@ -14,7 +14,7 @@
 package com.liferay.faces.alloy.component.audio;
 //J-
 
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 import com.liferay.faces.alloy.component.media.Media;
 
 import com.liferay.faces.util.component.Styleable;

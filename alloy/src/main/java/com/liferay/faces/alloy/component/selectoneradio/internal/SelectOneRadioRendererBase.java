@@ -14,7 +14,7 @@
 package com.liferay.faces.alloy.component.selectoneradio.internal;
 //J-
 
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 import com.liferay.faces.alloy.component.select.internal.SelectDelegatingRendererBase;
 
@@ -35,7 +35,7 @@ public abstract class SelectOneRadioRendererBase extends SelectDelegatingRendere
 
 	@Override
 	public String getDelegateRendererType() {
-		return "javax.faces.Radio";
+		return "jakarta.faces.Radio";
 	}
 }
 //J+

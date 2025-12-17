@@ -14,11 +14,11 @@
 package com.liferay.faces.alloy.component.inputsecret.internal;
 //J-
 
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
-import javax.faces.component.UIComponent;
-import javax.faces.component.UIInput;
-import javax.faces.context.FacesContext;
+import jakarta.faces.component.UIComponent;
+import jakarta.faces.component.UIInput;
+import jakarta.faces.context.FacesContext;
 
 import com.liferay.faces.util.render.DelegatingRendererBase;
 
@@ -53,7 +53,7 @@ public abstract class InputSecretRendererBase extends DelegatingRendererBase {
 
 	@Override
 	public String getDelegateRendererType() {
-		return "javax.faces.Secret";
+		return "jakarta.faces.Secret";
 	}
 }
 //J+

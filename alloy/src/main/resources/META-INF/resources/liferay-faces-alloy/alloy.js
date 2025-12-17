@@ -75,23 +75,23 @@ LFAI = {
 				if (fileList.length > 0) {
 
 					formNode = A.one('#' + escapedFormClientId);
-					viewStateNode = formNode.one('>input[name="javax.faces.ViewState"]');
+					viewStateNode = formNode.one('>input[name="jakarta.faces.ViewState"]');
 
 					if (!viewStateNode) {
 						viewStateNode = formNode.one('>input[name="' + namingContainerId +
-							'javax.faces.ViewState"]');
+							'jakarta.faces.ViewState"]');
 					}
 
 					requestParams = {};
 					requestParams[namingContainerId + formClientId] = formClientId;
 					requestParams[namingContainerId + 'Faces-Request'] = 'partial/ajax';
-					requestParams[namingContainerId + 'javax.faces.behavior.event'] = 'valueChange';
-					requestParams[namingContainerId + 'javax.faces.partial.ajax'] = 'true';
-					requestParams[namingContainerId + 'javax.faces.partial.event'] = 'click';
-					requestParams[namingContainerId + 'javax.faces.partial.execute'] = execute;
-					requestParams[namingContainerId + 'javax.faces.partial.render'] = render;
-					requestParams[namingContainerId + 'javax.faces.source'] = clientId;
-					requestParams[namingContainerId + 'javax.faces.ViewState'] = viewStateNode.get(
+					requestParams[namingContainerId + 'jakarta.faces.behavior.event'] = 'valueChange';
+					requestParams[namingContainerId + 'jakarta.faces.partial.ajax'] = 'true';
+					requestParams[namingContainerId + 'jakarta.faces.partial.event'] = 'click';
+					requestParams[namingContainerId + 'jakarta.faces.partial.execute'] = execute;
+					requestParams[namingContainerId + 'jakarta.faces.partial.render'] = render;
+					requestParams[namingContainerId + 'jakarta.faces.source'] = clientId;
+					requestParams[namingContainerId + 'jakarta.faces.ViewState'] = viewStateNode.get(
 						'value');
 					clientComponent.uploadAll(partialActionURL, requestParams);
 				}

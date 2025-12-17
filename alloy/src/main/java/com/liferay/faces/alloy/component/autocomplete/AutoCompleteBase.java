@@ -14,7 +14,7 @@
 package com.liferay.faces.alloy.component.autocomplete;
 //J-
 
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 import com.liferay.faces.alloy.component.inputtext.InputTextBase;
 
 import com.liferay.faces.util.component.ClientComponent;
@@ -299,8 +299,8 @@ public abstract class AutoCompleteBase extends InputTextBase implements Styleabl
 	 *
 	 * <div>A method that is executed when a query occurs. The method must be <code>public</code>, return a <code>java.util.List&lt;java.lang.String&gt;</code>, and takes a <code>java.lang.String</code> and a <code>java.util.List&lt;java.lang.String&gt;</code> as a arguments. The <code>String</code> passed to the method is the current query. The <code>List&lt;String&gt;</code> is an immutable list of unfiltered results. The method must return a <code>List&lt;String&gt;</code> which contains the filtered results.</div>
 	 */
-	public javax.el.MethodExpression getServerCustomFilter() {
-		return (javax.el.MethodExpression) getStateHelper().eval(AutoCompletePropertyKeys.serverCustomFilter, null);
+	public jakarta.el.MethodExpression getServerCustomFilter() {
+		return (jakarta.el.MethodExpression) getStateHelper().eval(AutoCompletePropertyKeys.serverCustomFilter, null);
 	}
 
 	/**
@@ -308,7 +308,7 @@ public abstract class AutoCompleteBase extends InputTextBase implements Styleabl
 	 *
 	 * <div>A method that is executed when a query occurs. The method must be <code>public</code>, return a <code>java.util.List&lt;java.lang.String&gt;</code>, and takes a <code>java.lang.String</code> and a <code>java.util.List&lt;java.lang.String&gt;</code> as a arguments. The <code>String</code> passed to the method is the current query. The <code>List&lt;String&gt;</code> is an immutable list of unfiltered results. The method must return a <code>List&lt;String&gt;</code> which contains the filtered results.</div>
 	 */
-	public void setServerCustomFilter(javax.el.MethodExpression serverCustomFilter) {
+	public void setServerCustomFilter(jakarta.el.MethodExpression serverCustomFilter) {
 		getStateHelper().put(AutoCompletePropertyKeys.serverCustomFilter, serverCustomFilter);
 	}
 

@@ -14,7 +14,7 @@
 package com.liferay.faces.alloy.component.panel;
 //J-
 
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 import com.liferay.faces.alloy.component.panelgroup.PanelGroupBlockLayout;
 
 import com.liferay.faces.util.component.Styleable;

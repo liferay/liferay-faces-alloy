@@ -16,7 +16,7 @@ package com.liferay.faces.alloy.component.inputfile.internal;
 import java.util.Arrays;
 import java.util.Collection;
 
-import javax.faces.component.behavior.AjaxBehavior;
+import jakarta.faces.component.behavior.AjaxBehavior;
 
 
 /**

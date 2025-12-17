@@ -14,8 +14,8 @@
 package com.liferay.faces.alloy.component.media;
 //J-
 
-import javax.annotation.Generated;
-import javax.faces.component.UIComponentBase;
+import jakarta.annotation.Generated;
+import jakarta.faces.component.UIComponentBase;
 
 
 /**

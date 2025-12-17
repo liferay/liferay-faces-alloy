@@ -18,9 +18,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import javax.faces.context.ExternalContext;
-import javax.faces.context.FacesContext;
-import javax.faces.webapp.FacesServlet;
+import jakarta.faces.context.ExternalContext;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.webapp.FacesServlet;
 
 import com.liferay.faces.util.config.ApplicationConfig;
 import com.liferay.faces.util.config.ConfiguredServlet;

@@ -14,8 +14,8 @@
 package com.liferay.faces.alloy.component.selectoneradio;
 //J-
 
-import javax.annotation.Generated;
-import javax.faces.component.html.HtmlSelectOneRadio;
+import jakarta.annotation.Generated;
+import jakarta.faces.component.html.HtmlSelectOneRadio;
 
 import com.liferay.faces.util.component.Styleable;
 
@@ -48,9 +48,9 @@ public abstract class SelectOneRadioBase extends HtmlSelectOneRadio implements S
 
 		if (label == null) {
 
-			javax.faces.context.FacesContext facesContext = javax.faces.context.FacesContext.getCurrentInstance();
+			jakarta.faces.context.FacesContext facesContext = jakarta.faces.context.FacesContext.getCurrentInstance();
 
-			if (facesContext.getCurrentPhaseId() == javax.faces.event.PhaseId.PROCESS_VALIDATIONS) {
+			if (facesContext.getCurrentPhaseId() == jakarta.faces.event.PhaseId.PROCESS_VALIDATIONS) {
 				label = com.liferay.faces.util.component.ComponentUtil.getComponentLabel(this);
 			}
 		}

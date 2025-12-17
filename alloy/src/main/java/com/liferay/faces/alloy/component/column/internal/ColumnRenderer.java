@@ -15,19 +15,19 @@ package com.liferay.faces.alloy.component.column.internal;
 
 import java.io.IOException;
 
-import javax.faces.application.ResourceDependencies;
-import javax.faces.application.ResourceDependency;
-import javax.faces.component.UIComponent;
-import javax.faces.component.html.HtmlDataTable;
-import javax.faces.component.html.HtmlPanelGrid;
-import javax.faces.context.FacesContext;
-import javax.faces.context.ResponseWriter;
-import javax.faces.event.AbortProcessingException;
-import javax.faces.event.ComponentSystemEvent;
-import javax.faces.event.ComponentSystemEventListener;
-import javax.faces.event.ListenerFor;
-import javax.faces.event.PostAddToViewEvent;
-import javax.faces.render.FacesRenderer;
+import jakarta.faces.application.ResourceDependencies;
+import jakarta.faces.application.ResourceDependency;
+import jakarta.faces.component.UIComponent;
+import jakarta.faces.component.html.HtmlDataTable;
+import jakarta.faces.component.html.HtmlPanelGrid;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.context.ResponseWriter;
+import jakarta.faces.event.AbortProcessingException;
+import jakarta.faces.event.ComponentSystemEvent;
+import jakarta.faces.event.ComponentSystemEventListener;
+import jakarta.faces.event.ListenerFor;
+import jakarta.faces.event.PostAddToViewEvent;
+import jakarta.faces.render.FacesRenderer;
 
 import com.liferay.faces.alloy.component.column.Column;
 import com.liferay.faces.alloy.component.datatable.DataTable;
@@ -41,7 +41,7 @@ import com.liferay.faces.util.render.RendererUtil;
 @ListenerFor(systemEventClass = PostAddToViewEvent.class, sourceClass = Column.class)
 @ResourceDependencies(
 	{
-		@ResourceDependency(library = "javax.faces", name = "jsf.js"),
+		@ResourceDependency(library = "jakarta.faces", name = "jsf.js"),
 		@ResourceDependency(library = "liferay-faces-alloy-reslib", name = "build/aui-css/css/bootstrap.min.css")
 	}
 )

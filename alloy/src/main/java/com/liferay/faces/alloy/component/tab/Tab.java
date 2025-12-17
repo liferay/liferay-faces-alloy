@@ -13,12 +13,12 @@
  */
 package com.liferay.faces.alloy.component.tab;
 
-import javax.faces.component.FacesComponent;
-import javax.faces.component.UIColumn;
-import javax.faces.component.UIComponent;
-import javax.faces.component.UIData;
-import javax.faces.model.DataModel;
-import javax.faces.render.Renderer;
+import jakarta.faces.component.FacesComponent;
+import jakarta.faces.component.UIColumn;
+import jakarta.faces.component.UIComponent;
+import jakarta.faces.component.UIData;
+import jakarta.faces.model.DataModel;
+import jakarta.faces.render.Renderer;
 
 import com.liferay.faces.alloy.component.tabview.TabView;
 

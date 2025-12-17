@@ -14,7 +14,7 @@
 package com.liferay.faces.alloy.component.outputtooltip;
 //J-
 
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 import com.liferay.faces.alloy.component.outputtext.OutputTextBase;
 
 import com.liferay.faces.util.component.ClientComponent;

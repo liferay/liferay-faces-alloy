@@ -15,14 +15,14 @@ package com.liferay.faces.alloy.component.selectbooleancheckbox.internal;
 
 import java.io.IOException;
 
-import javax.faces.application.ResourceDependency;
-import javax.faces.component.UIComponent;
-import javax.faces.component.html.HtmlSelectBooleanCheckbox;
-import javax.faces.context.FacesContext;
-import javax.faces.context.ResponseWriter;
-import javax.faces.convert.ConverterException;
-import javax.faces.render.FacesRenderer;
-import javax.faces.view.facelets.FacetHandler;
+import jakarta.faces.application.ResourceDependency;
+import jakarta.faces.component.UIComponent;
+import jakarta.faces.component.html.HtmlSelectBooleanCheckbox;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.context.ResponseWriter;
+import jakarta.faces.convert.ConverterException;
+import jakarta.faces.render.FacesRenderer;
+import jakarta.faces.view.facelets.FacetHandler;
 
 import com.liferay.faces.alloy.component.field.Field;
 import com.liferay.faces.alloy.component.selectbooleancheckbox.SelectBooleanCheckbox;

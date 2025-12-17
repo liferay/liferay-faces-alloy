@@ -14,7 +14,7 @@
 package com.liferay.faces.alloy.component.outputscript.internal;
 //J-
 
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 import com.liferay.faces.alloy.component.outputscriptstylesheet.internal.OutputScriptStylesheetRendererBase;
 
@@ -36,12 +36,12 @@ public abstract class OutputScriptRendererBase extends OutputScriptStylesheetRen
 
 	@Override
 	public String getDelegateComponentFamily() {
-		return javax.faces.component.UIOutput.COMPONENT_FAMILY;
+		return jakarta.faces.component.UIOutput.COMPONENT_FAMILY;
 	}
 
 	@Override
 	public String getDelegateRendererType() {
-		return "javax.faces.resource.Script";
+		return "jakarta.faces.resource.Script";
 	}
 }
 //J+

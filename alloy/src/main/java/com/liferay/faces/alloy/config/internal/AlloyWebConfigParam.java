@@ -13,7 +13,7 @@
  */
 package com.liferay.faces.alloy.config.internal;
 
-import javax.faces.context.ExternalContext;
+import jakarta.faces.context.ExternalContext;
 
 import com.liferay.faces.alloy.taghandler.LoadConstants;
 import com.liferay.faces.util.config.WebConfigParamUtil;

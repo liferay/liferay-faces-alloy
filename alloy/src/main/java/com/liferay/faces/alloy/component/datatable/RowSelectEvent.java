@@ -13,10 +13,10 @@
  */
 package com.liferay.faces.alloy.component.datatable;
 
-import javax.faces.component.UIComponent;
-import javax.faces.component.behavior.Behavior;
-import javax.faces.event.AjaxBehaviorEvent;
-import javax.faces.event.PhaseId;
+import jakarta.faces.component.UIComponent;
+import jakarta.faces.component.behavior.Behavior;
+import jakarta.faces.event.AjaxBehaviorEvent;
+import jakarta.faces.event.PhaseId;
 
 
 /**

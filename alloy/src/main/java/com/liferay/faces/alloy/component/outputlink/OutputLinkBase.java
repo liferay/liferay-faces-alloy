@@ -14,8 +14,8 @@
 package com.liferay.faces.alloy.component.outputlink;
 //J-
 
-import javax.annotation.Generated;
-import javax.faces.component.html.HtmlOutputLink;
+import jakarta.annotation.Generated;
+import jakarta.faces.component.html.HtmlOutputLink;
 
 import com.liferay.faces.util.component.Styleable;
 

@@ -15,11 +15,11 @@ package com.liferay.faces.alloy.event.internal;
 
 import java.util.Map;
 
-import javax.faces.context.ExternalContext;
-import javax.faces.context.FacesContext;
-import javax.faces.event.AbortProcessingException;
-import javax.faces.event.SystemEvent;
-import javax.faces.event.SystemEventListener;
+import jakarta.faces.context.ExternalContext;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.event.AbortProcessingException;
+import jakarta.faces.event.SystemEvent;
+import jakarta.faces.event.SystemEventListener;
 
 import com.liferay.faces.alloy.config.internal.AlloyWebConfigParam;
 import com.liferay.faces.alloy.taghandler.LoadConstants;
@@ -35,7 +35,7 @@ public class ApplicationConfigConstructedListener implements SystemEventListener
 
 	/**
 	 * This method initializes the constant cache for {@link LoadConstants}. This method is called in {@link
-	 * com.liferay.faces.alloy.event.internal.ApplicationConfigConstructedListener#processEvent(javax.faces.event.SystemEvent)
+	 * com.liferay.faces.alloy.event.internal.ApplicationConfigConstructedListener#processEvent(jakarta.faces.event.SystemEvent)
 	 * } to ensure that the CacheFactory has been created and the cache is initialized in a single-threaded context. The
 	 * initialization cannot be performed in the constructor of LoadConstants since that would create a race condition
 	 * where different instances of LoadConstants might overwrite the initial cache.

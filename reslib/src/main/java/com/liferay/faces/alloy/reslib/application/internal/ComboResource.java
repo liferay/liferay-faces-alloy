@@ -20,9 +20,9 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
-import javax.faces.application.ResourceHandler;
-import javax.faces.context.ExternalContext;
-import javax.faces.context.FacesContext;
+import jakarta.faces.application.ResourceHandler;
+import jakarta.faces.context.ExternalContext;
+import jakarta.faces.context.FacesContext;
 
 import com.liferay.faces.util.application.ResourceUtil;
 import com.liferay.faces.util.logging.Logger;

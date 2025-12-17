@@ -15,8 +15,8 @@ package com.liferay.faces.alloy.component.form.internal;
 
 import java.io.IOException;
 
-import javax.faces.context.ResponseWriter;
-import javax.faces.context.ResponseWriterWrapper;
+import jakarta.faces.context.ResponseWriter;
+import jakarta.faces.context.ResponseWriterWrapper;
 
 
 /**

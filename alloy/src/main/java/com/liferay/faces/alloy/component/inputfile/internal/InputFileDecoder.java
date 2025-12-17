@@ -16,7 +16,7 @@ package com.liferay.faces.alloy.component.inputfile.internal;
 import java.util.List;
 import java.util.Map;
 
-import javax.faces.context.FacesContext;
+import jakarta.faces.context.FacesContext;
 
 import com.liferay.faces.util.model.UploadedFile;
 

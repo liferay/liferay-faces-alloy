@@ -17,13 +17,13 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
-import javax.faces.component.UIComponent;
-import javax.faces.component.html.HtmlOutcomeTargetButton;
-import javax.faces.context.FacesContext;
-import javax.faces.context.ResponseWriter;
-import javax.faces.convert.ConverterException;
-import javax.faces.render.RenderKit;
-import javax.faces.render.Renderer;
+import jakarta.faces.component.UIComponent;
+import jakarta.faces.component.html.HtmlOutcomeTargetButton;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.context.ResponseWriter;
+import jakarta.faces.convert.ConverterException;
+import jakarta.faces.render.RenderKit;
+import jakarta.faces.render.Renderer;
 
 import com.liferay.faces.alloy.component.button.Button;
 import com.liferay.faces.alloy.component.button.SplitButton;

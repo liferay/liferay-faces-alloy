@@ -14,8 +14,8 @@
 package com.liferay.faces.alloy.component.datatable;
 //J-
 
-import javax.annotation.Generated;
-import javax.faces.component.html.HtmlDataTable;
+import jakarta.annotation.Generated;
+import jakarta.faces.component.html.HtmlDataTable;
 
 import com.liferay.faces.util.component.ClientComponent;
 import com.liferay.faces.util.component.Styleable;

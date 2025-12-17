@@ -16,12 +16,12 @@ package com.liferay.faces.alloy.component.messages.internal;
 import java.io.IOException;
 import java.util.Iterator;
 
-import javax.faces.application.FacesMessage;
-import javax.faces.application.ProjectStage;
-import javax.faces.application.ResourceDependency;
-import javax.faces.component.UIComponent;
-import javax.faces.context.FacesContext;
-import javax.faces.render.FacesRenderer;
+import jakarta.faces.application.FacesMessage;
+import jakarta.faces.application.ProjectStage;
+import jakarta.faces.application.ResourceDependency;
+import jakarta.faces.component.UIComponent;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.render.FacesRenderer;
 
 import com.liferay.faces.alloy.component.messages.Messages;
 

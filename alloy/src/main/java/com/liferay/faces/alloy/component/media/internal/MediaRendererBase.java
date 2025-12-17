@@ -14,7 +14,7 @@
 package com.liferay.faces.alloy.component.media.internal;
 //J-
 
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 import com.liferay.faces.util.render.PassThroughRenderer;
 

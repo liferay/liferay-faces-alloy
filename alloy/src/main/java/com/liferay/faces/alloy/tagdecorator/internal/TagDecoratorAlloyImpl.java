@@ -13,12 +13,12 @@
  */
 package com.liferay.faces.alloy.tagdecorator.internal;
 
-import javax.faces.context.ExternalContext;
-import javax.faces.context.FacesContext;
-import javax.faces.view.facelets.Tag;
-import javax.faces.view.facelets.TagAttribute;
-import javax.faces.view.facelets.TagAttributes;
-import javax.faces.view.facelets.TagDecorator;
+import jakarta.faces.context.ExternalContext;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.view.facelets.Tag;
+import jakarta.faces.view.facelets.TagAttribute;
+import jakarta.faces.view.facelets.TagAttributes;
+import jakarta.faces.view.facelets.TagDecorator;
 
 import com.liferay.faces.alloy.config.internal.AlloyWebConfigParam;
 

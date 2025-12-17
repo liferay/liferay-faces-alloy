@@ -13,9 +13,9 @@
  */
 package com.liferay.faces.alloy.component.button.internal;
 
-import javax.faces.application.ResourceDependencies;
-import javax.faces.application.ResourceDependency;
-import javax.faces.render.FacesRenderer;
+import jakarta.faces.application.ResourceDependencies;
+import jakarta.faces.application.ResourceDependency;
+import jakarta.faces.render.FacesRenderer;
 
 import com.liferay.faces.alloy.component.button.Button;
 

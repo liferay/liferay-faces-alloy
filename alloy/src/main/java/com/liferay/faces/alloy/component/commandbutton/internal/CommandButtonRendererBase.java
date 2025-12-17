@@ -14,7 +14,7 @@
 package com.liferay.faces.alloy.component.commandbutton.internal;
 //J-
 
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 import com.liferay.faces.alloy.component.button.internal.AbstractButtonRenderer;
 
@@ -46,7 +46,7 @@ public abstract class CommandButtonRendererBase extends AbstractButtonRenderer {
 
 	@Override
 	public String getDelegateRendererType() {
-		return "javax.faces.Button";
+		return "jakarta.faces.Button";
 	}
 }
 //J+

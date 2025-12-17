@@ -13,9 +13,9 @@
  */
 package com.liferay.faces.alloy.reslib.application.internal;
 
-import javax.faces.application.Resource;
-import javax.faces.application.ResourceHandler;
-import javax.faces.context.ExternalContext;
+import jakarta.faces.application.Resource;
+import jakarta.faces.application.ResourceHandler;
+import jakarta.faces.context.ExternalContext;
 
 
 /**

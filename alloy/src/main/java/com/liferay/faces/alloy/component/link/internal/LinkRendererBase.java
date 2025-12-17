@@ -14,7 +14,7 @@
 package com.liferay.faces.alloy.component.link.internal;
 //J-
 
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 import com.liferay.faces.util.render.DelegatingRendererBase;
 
@@ -35,7 +35,7 @@ public abstract class LinkRendererBase extends DelegatingRendererBase {
 
 	@Override
 	public String getDelegateRendererType() {
-		return "javax.faces.Link";
+		return "jakarta.faces.Link";
 	}
 }
 //J+

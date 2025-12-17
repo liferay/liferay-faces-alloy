@@ -14,7 +14,7 @@
 package com.liferay.faces.alloy.component.field.internal;
 //J-
 
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 import com.liferay.faces.alloy.component.panelgroup.internal.PanelGroupRendererBase;
 

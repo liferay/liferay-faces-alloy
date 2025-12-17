@@ -13,7 +13,7 @@
  */
 package com.liferay.faces.alloy.component.body.internal;
 
-import javax.faces.render.FacesRenderer;
+import jakarta.faces.render.FacesRenderer;
 
 import com.liferay.faces.alloy.component.body.Body;
 

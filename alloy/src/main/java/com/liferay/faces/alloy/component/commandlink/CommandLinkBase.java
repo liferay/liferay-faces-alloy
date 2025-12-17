@@ -14,8 +14,8 @@
 package com.liferay.faces.alloy.component.commandlink;
 //J-
 
-import javax.annotation.Generated;
-import javax.faces.component.html.HtmlCommandLink;
+import jakarta.annotation.Generated;
+import jakarta.faces.component.html.HtmlCommandLink;
 
 import com.liferay.faces.util.component.Styleable;
 

@@ -19,13 +19,13 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import javax.faces.application.Resource;
-import javax.faces.application.ResourceHandler;
-import javax.faces.application.ResourceHandlerWrapper;
-import javax.faces.context.ExternalContext;
-import javax.faces.context.FacesContext;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
+import jakarta.faces.application.Resource;
+import jakarta.faces.application.ResourceHandler;
+import jakarta.faces.application.ResourceHandlerWrapper;
+import jakarta.faces.context.ExternalContext;
+import jakarta.faces.context.FacesContext;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 
 import com.liferay.faces.alloy.reslib.config.ResLibConfigParam;
 import com.liferay.faces.util.config.ApplicationConfig;
@@ -100,7 +100,7 @@ public class ResLibResourceHandler extends ResourceHandlerWrapper {
 				// resources or a set of CSS resources that are to be combined (concatenated together). In such cases,
 				// each resource is specified as a separate URL parameter known as the "module path". For example:
 				//
-				// http://localhost:8080/my-webapp/javax.faces.resource/combo?
+				// http://localhost:8080/my-webapp/jakarta.faces.resource/combo?
 				// ln=liferay-faces-alloy-reslib
 				// &build/widget-base/assets/skins/sam/widget-base.css
 				// &build/tabview/assets/skins/sam/tabview.css
@@ -130,12 +130,12 @@ public class ResLibResourceHandler extends ResourceHandlerWrapper {
 				// Typical JSF webapp resource URLs for individual JavaScript resources typically look like the
 				// following:
 				//
-				// http://localhost:8080/my-webapp/javax.faces.resource/aui-ace-editor/ace/mode-xml.js?ln=liferay-faces-alloy-reslib
+				// http://localhost:8080/my-webapp/jakarta.faces.resource/aui-ace-editor/ace/mode-xml.js?ln=liferay-faces-alloy-reslib
 				//
 				// However, the AlloyUI framework constructs JavaScript resource URLs with a different type of pattern
 				// by specifying the script resource name as a URL parameter known as the "module path". For example:
 				//
-				// http://localhost:8080/my-webapp/javax.faces.resource/script?ln=liferay-faces-alloy-reslib&aui-ace-editor/ace/mode-xml.js
+				// http://localhost:8080/my-webapp/jakarta.faces.resource/script?ln=liferay-faces-alloy-reslib&aui-ace-editor/ace/mode-xml.js
 				//
 				List<String> modulePaths = getModulePaths(externalContext);
 
@@ -350,9 +350,9 @@ public class ResLibResourceHandler extends ResourceHandlerWrapper {
 
 	protected String getResourceName(ExternalContext externalContext) {
 
-		// Attempt to get the resource name from the "javax.faces.resource" request parameter. If it exists, then
+		// Attempt to get the resource name from the "jakarta.faces.resource" request parameter. If it exists, then
 		// this is probably a non-Liferay portlet environment like Pluto.
-		String resourceName = externalContext.getRequestParameterMap().get("javax.faces.resource");
+		String resourceName = externalContext.getRequestParameterMap().get("jakarta.faces.resource");
 
 		if (resourceName == null) {
 

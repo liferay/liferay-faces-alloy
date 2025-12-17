@@ -14,8 +14,8 @@
 package com.liferay.faces.alloy.component.messages;
 //J-
 
-import javax.annotation.Generated;
-import javax.faces.component.html.HtmlMessages;
+import jakarta.annotation.Generated;
+import jakarta.faces.component.html.HtmlMessages;
 
 import com.liferay.faces.util.component.Styleable;
 

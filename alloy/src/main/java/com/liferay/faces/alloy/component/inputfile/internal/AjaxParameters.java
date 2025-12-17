@@ -17,9 +17,9 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
-import javax.faces.component.UIComponent;
-import javax.faces.component.behavior.AjaxBehavior;
-import javax.faces.component.behavior.ClientBehavior;
+import jakarta.faces.component.UIComponent;
+import jakarta.faces.component.behavior.AjaxBehavior;
+import jakarta.faces.component.behavior.ClientBehavior;
 
 import com.liferay.faces.alloy.component.inputfile.InputFile;
 import com.liferay.faces.util.logging.Logger;

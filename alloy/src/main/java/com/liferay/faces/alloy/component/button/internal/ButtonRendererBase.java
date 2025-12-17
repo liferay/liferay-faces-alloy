@@ -14,7 +14,7 @@
 package com.liferay.faces.alloy.component.button.internal;
 //J-
 
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 import com.liferay.faces.alloy.component.button.internal.ButtonRendererCompat;
 
@@ -41,7 +41,7 @@ public abstract class ButtonRendererBase extends ButtonRendererCompat {
 
 	@Override
 	public String getDelegateRendererType() {
-		return "javax.faces.Button";
+		return "jakarta.faces.Button";
 	}
 }
 //J+

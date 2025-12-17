@@ -13,7 +13,7 @@
  */
 package com.liferay.faces.alloy.component.messages;
 
-import javax.faces.component.FacesComponent;
+import jakarta.faces.component.FacesComponent;
 
 import com.liferay.faces.util.component.ComponentUtil;
 

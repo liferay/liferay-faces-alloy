@@ -14,7 +14,7 @@
 package com.liferay.faces.alloy.component.form.internal;
 //J-
 
-import javax.annotation.Generated;
+import jakarta.annotation.Generated;
 
 import com.liferay.faces.util.render.DelegatingRendererBase;
 
@@ -38,7 +38,7 @@ public abstract class FormRendererBase extends DelegatingRendererBase {
 
 	@Override
 	public String getDelegateRendererType() {
-		return "javax.faces.Form";
+		return "jakarta.faces.Form";
 	}
 }
 //J+

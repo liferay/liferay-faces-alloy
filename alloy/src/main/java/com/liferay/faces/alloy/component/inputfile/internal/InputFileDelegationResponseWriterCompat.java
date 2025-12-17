@@ -15,9 +15,9 @@ package com.liferay.faces.alloy.component.inputfile.internal;
 
 import java.io.IOException;
 
-import javax.faces.context.FacesContext;
-import javax.faces.context.ResponseWriter;
-import javax.faces.context.ResponseWriterWrapper;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.context.ResponseWriter;
+import jakarta.faces.context.ResponseWriterWrapper;
 
 import com.liferay.faces.alloy.util.internal.JSFUtil;
 

@@ -13,7 +13,7 @@
  */
 package com.liferay.faces.alloy.component.selectrating;
 
-import javax.faces.context.FacesContext;
+import jakarta.faces.context.FacesContext;
 
 
 /**

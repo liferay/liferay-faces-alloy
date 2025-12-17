@@ -17,10 +17,10 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Collections;
 
-import javax.faces.component.FacesComponent;
-import javax.faces.component.UIComponent;
-import javax.faces.component.UIData;
-import javax.faces.component.behavior.ClientBehaviorHolder;
+import jakarta.faces.component.FacesComponent;
+import jakarta.faces.component.UIComponent;
+import jakarta.faces.component.UIData;
+import jakarta.faces.component.behavior.ClientBehaviorHolder;
 
 
 /**
