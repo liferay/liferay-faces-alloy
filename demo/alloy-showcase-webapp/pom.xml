@@ -16,6 +16,7 @@
 	<properties>
 		<integration.container>webapp</integration.container>
 		<allow.casual.multipart.parsing>false</allow.casual.multipart.parsing>
+		<liferay.faces.showcase.version>4.0.1</liferay.faces.showcase.version>
 		<maven.test.skip>true</maven.test.skip>
 		<liferay.faces.showcase.war.scope>compile</liferay.faces.showcase.war.scope>
 	</properties>

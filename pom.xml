@@ -90,7 +90,6 @@
 		<full.version>${project.version} (${timestamp} AD)</full.version>
 		<hibernate.validator.version>6.2.5.Final.JAKARTA-LIFERAY-PATCHED-1</hibernate.validator.version>
 		<jstl.version>3.0.1</jstl.version>
-		<liferay.faces.showcase.version>4.0.1</liferay.faces.showcase.version>
 		<liferay.faces.util.version>5.0.0-SNAPSHOT</liferay.faces.util.version>
 		<log4j.version>2.17.1</log4j.version>
 		<mojarra.version>4.0.1</mojarra.version>
@@ -108,7 +107,6 @@
 			WEB-INF/weblogic.xml
 		</war.packaging.excludes>
 		<webapp.descriptor>web.xml</webapp.descriptor>
-		<weblogic.xerces.version>2.11.0</weblogic.xerces.version>
 		<war.name>${project.build.finalName}</war.name>
 	</properties>
 
