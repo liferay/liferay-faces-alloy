@@ -6,7 +6,7 @@
 		<groupId>com.liferay.faces</groupId>
 		<artifactId>com.liferay.faces.alloy.parent</artifactId>
 		<relativePath>../pom.xml</relativePath>
-		<version>4.1.3-SNAPSHOT</version>
+		<version>5.0.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>com.liferay.faces.alloy.reslib</artifactId>
 	<name>Liferay Faces Alloy Resource Library</name>
@@ -17,12 +17,12 @@
 			<artifactId>com.liferay.faces.util</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>javax.faces</groupId>
-			<artifactId>javax.faces-api</artifactId>
+			<groupId>jakarta.faces</groupId>
+			<artifactId>jakarta.faces-api</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
+			<groupId>jakarta.servlet</groupId>
+			<artifactId>jakarta.servlet-api</artifactId>
 		</dependency>
 	</dependencies>
 

@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>com.liferay.faces</groupId>
 		<artifactId>com.liferay.faces.alloy.parent</artifactId>
-		<version>4.1.3-SNAPSHOT</version>
+		<version>5.0.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>com.liferay.faces.alloy</artifactId>
 	<name>Liferay Faces Alloy</name>
@@ -116,13 +116,11 @@
 								com.liferay.faces.alloy.render.internal,\
 								com.liferay.faces.alloy.tagdecorator.internal,\
 								com.liferay.faces.alloy.util.internal
-							# javax.el is automatically imported with the following versions:
-							# javax.el;version="[2.2.0,3.0.0)", but versions 3.0.0+ are also valid.
 							Import-Package: \
 								!com.liferay.faces.alloy,\
 								!com.liferay.faces.alloy.*,\
-								com.liferay.faces.util.*;version="[3.0.0,5.0.0)",\
-								javax.el;version="[2.2.0,4.0.0)",\
+								com.liferay.faces.util.*;version="[4.0.0,6.0.0)",\
+								jakarta.el;version="[2.2.0,6.0.0)",\
 								org.apache.commons.io;resolution:=optional,\
 								*
 						]]>
@@ -210,24 +208,24 @@
 			<scope>test</scope>
 		</dependency>
         <dependency>
-            <groupId>javax.annotation</groupId>
-            <artifactId>javax.annotation-api</artifactId>
+			<groupId>jakarta.annotation</groupId>
+			<artifactId>jakarta.annotation-api</artifactId>
         </dependency>
 		<dependency>
-			<groupId>javax.el</groupId>
-			<artifactId>javax.el-api</artifactId>
+			<groupId>jakarta.el</groupId>
+			<artifactId>jakarta.el-api</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>javax.faces</groupId>
-			<artifactId>javax.faces-api</artifactId>
+			<groupId>jakarta.faces</groupId>
+			<artifactId>jakarta.faces-api</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>javax.servlet</groupId>
-			<artifactId>javax.servlet-api</artifactId>
+			<groupId>jakarta.servlet</groupId>
+			<artifactId>jakarta.servlet-api</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>javax.servlet.jsp</groupId>
-			<artifactId>javax.servlet.jsp-api</artifactId>
+			<groupId>jakarta.servlet.jsp</groupId>
+			<artifactId>jakarta.servlet.jsp-api</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>com.liferay.faces</groupId>
