@@ -15,9 +15,9 @@ package com.liferay.faces.showcase.validator;
 
 import java.util.Locale;
 
-import javax.faces.FacesException;
-import javax.faces.context.ExternalContext;
-import javax.faces.context.FacesContext;
+import jakarta.faces.FacesException;
+import jakarta.faces.context.ExternalContext;
+import jakarta.faces.context.FacesContext;
 
 import com.liferay.faces.alloy.component.inputdate.InputDate;
 import com.liferay.faces.alloy.component.inputtime.InputTime;

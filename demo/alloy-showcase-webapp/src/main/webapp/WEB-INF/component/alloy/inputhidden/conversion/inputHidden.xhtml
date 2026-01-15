@@ -9,7 +9,7 @@
 				<showcase:container>
 					<alloy:outputText value="#{i18n['this-is-a-div-that-contains-a-hidden-input']}" />
 					<alloy:field>
-						<alloy:inputHidden id="hidden1" binding="#{inputHidden1}" converter="javax.faces.DateTime"
+						<alloy:inputHidden id="hidden1" binding="#{inputHidden1}" converter="jakarta.faces.DateTime"
 							converterMessage="#{i18n['converter-message']}" value="#{inputHiddenModelBean.date}" />
 						<alloy:message for="hidden1" />
 					</alloy:field>
@@ -23,7 +23,7 @@
 					value="#{i18n['submit']}" />
 			</showcase:example>
 			<showcase:results label="#{i18n['model-value']}">
-				<alloy:outputText id="modelValue" converter="javax.faces.DateTime"
+				<alloy:outputText id="modelValue" converter="jakarta.faces.DateTime"
 					value="#{inputHiddenModelBean.date}" />
 			</showcase:results>
 		</alloy:form>

@@ -15,12 +15,12 @@ package com.liferay.faces.showcase.bean;
 
 import java.io.Serializable;
 
-import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.ViewScoped;
-import javax.faces.context.FacesContext;
-import javax.faces.event.AjaxBehaviorEvent;
-import javax.faces.event.PhaseId;
+import jakarta.faces.application.FacesMessage;
+import jakarta.faces.bean.ManagedBean;
+import jakarta.faces.bean.ViewScoped;
+import jakarta.faces.context.FacesContext;
+import jakarta.faces.event.AjaxBehaviorEvent;
+import jakarta.faces.event.PhaseId;
 
 import com.liferay.faces.alloy.component.progressbar.ProgressCompleteEvent;
 import com.liferay.faces.util.logging.Logger;
