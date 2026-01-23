@@ -405,7 +405,7 @@
 			<alloy-ui-modules>aui-toggler</alloy-ui-modules>
 			<alloy-ui-name>TogglerDelegate</alloy-ui-name>
 			<extends-tags>clientComponent styleable uiComponentBaseInherited uiDataInherited</extends-tags>
-			<parent-class><![CDATA[javax.faces.component.UIData]]></parent-class>
+			<parent-class><![CDATA[jakarta.faces.component.UIData]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.alloy.render.internal.AlloyRendererBase]]></renderer-parent-class>
 		</tag-extension>
 	</tag>
@@ -608,7 +608,7 @@ java.util.List<java.lang.String> filterResults(java.lang.String, java.util.List<
 		</attribute>
 		<tag-extension>
 			<alloy-ui-modules>autocomplete</alloy-ui-modules>
-			<delegate-renderer-type><![CDATA["javax.faces.Text"]]></delegate-renderer-type>
+			<delegate-renderer-type><![CDATA["jakarta.faces.Text"]]></delegate-renderer-type>
 			<extends-tags>clientComponent facesMessageLabelTaglibXMLOnly inputText</extends-tags>
 			<generate-null-check-decode-method>true</generate-null-check-decode-method>
 			<parent-class><![CDATA[com.liferay.faces.alloy.component.inputtext.InputTextBase]]></parent-class>
@@ -637,14 +637,14 @@ java.util.List<java.lang.String> filterResults(java.lang.String, java.util.List<
 			<type><![CDATA[java.lang.String]]></type>
 		</attribute>
 		<tag-extension>
-			<delegate-renderer-type><![CDATA["javax.faces.Body"]]></delegate-renderer-type>
+			<delegate-renderer-type><![CDATA["jakarta.faces.Body"]]></delegate-renderer-type>
 			<extends-tags>headBodyCommonInherited keyboardDOMEventsInherited mouseDOMEventsInherited styleableInherited titleInherited</extends-tags>
-			<parent-class><![CDATA[javax.faces.component.html.HtmlBody]]></parent-class>
+			<parent-class><![CDATA[jakarta.faces.component.html.HtmlBody]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.util.render.DelegatingRendererBase]]></renderer-parent-class>
 		</tag-extension>
 	</tag>
 	<tag>
-		<description><![CDATA[Button is a UIOutput component that renders a styleable HTML <code>&lt;button&gt;</code> element. The default type is button. Since it extends <a href="http://docs.oracle.com/javaee/7/api/javax/faces/component/html/HtmlOutcomeTargetButton.html" target="_blank"><code>HtmlOutcomeTargetButton</code></a> it supports all the features of <a href="https://javaserverfaces.java.net/nonav/docs/2.2/vdldocs/facelets/h/button.html" target="_blank"><code>h:button</code></a>. The component does not need to be a child of h:form since the outcome attribute is designed to navigate via HTTP GET.]]></description>
+		<description><![CDATA[Button is a UIOutput component that renders a styleable HTML <code>&lt;button&gt;</code> element. The default type is button. Since it extends <a href="http://docs.oracle.com/javaee/7/api/jakarta/faces/component/html/HtmlOutcomeTargetButton.html" target="_blank"><code>HtmlOutcomeTargetButton</code></a> it supports all the features of <a href="https://javaserverfaces.java.net/nonav/docs/2.2/vdldocs/facelets/h/button.html" target="_blank"><code>h:button</code></a>. The component does not need to be a child of h:form since the outcome attribute is designed to navigate via HTTP GET.]]></description>
 		<tag-name>button</tag-name>
 		<attribute>
 			<description><![CDATA[The type of the button: button (default), submit, or reset.]]></description>
@@ -652,9 +652,9 @@ java.util.List<java.lang.String> filterResults(java.lang.String, java.util.List<
 			<type><![CDATA[java.lang.String]]></type>
 		</attribute>
 		<tag-extension>
-			<delegate-renderer-type><![CDATA["javax.faces.Button"]]></delegate-renderer-type>
+			<delegate-renderer-type><![CDATA["jakarta.faces.Button"]]></delegate-renderer-type>
 			<extends-tags>buttonCommon uiOutcomeTargetInherited</extends-tags>
-			<parent-class><![CDATA[javax.faces.component.html.HtmlOutcomeTargetButton]]></parent-class>
+			<parent-class><![CDATA[jakarta.faces.component.html.HtmlOutcomeTargetButton]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.alloy.component.button.internal.ButtonRendererCompat]]></renderer-parent-class>
 		</tag-extension>
 	</tag>
@@ -662,10 +662,10 @@ java.util.List<java.lang.String> filterResults(java.lang.String, java.util.List<
 		<description><![CDATA[ButtonRow is a UIPanel component that renders a <code>&lt;div&gt;</code> element for grouping purposes. Since it extends HtmlPanelGroup, it supports all the features of h:panelGroup.]]></description>
 		<tag-name>buttonRow</tag-name>
 		<tag-extension>
-			<delegate-renderer-type><![CDATA["javax.faces.Group"]]></delegate-renderer-type>
+			<delegate-renderer-type><![CDATA["jakarta.faces.Group"]]></delegate-renderer-type>
 			<extends-tags>htmlCommonEventsInherited</extends-tags>
 			<extra-style-classes>button-holder</extra-style-classes>
-			<parent-class><![CDATA[javax.faces.component.html.HtmlPanelGroup]]></parent-class>
+			<parent-class><![CDATA[jakarta.faces.component.html.HtmlPanelGroup]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.util.render.DelegatingRendererBase]]></renderer-parent-class>
 		</tag-extension>
 	</tag>
@@ -762,12 +762,12 @@ java.util.List<java.lang.String> filterResults(java.lang.String, java.util.List<
 		</attribute>
 		<tag-extension>
 			<extends-tags>autoAjaxCommon styleable uiComponentBaseInherited</extends-tags>
-			<parent-class><![CDATA[javax.faces.component.html.HtmlColumn]]></parent-class>
+			<parent-class><![CDATA[jakarta.faces.component.html.HtmlColumn]]></parent-class>
 			<since>1.0.0</since>
 		</tag-extension>
 	</tag>
 	<tag>
-		<description><![CDATA[CommandButton is a UICommand component that renders a styleable HTML <code>&lt;button&gt;</code> element. The default type is submit. Since it extends <a href="http://docs.oracle.com/javaee/7/api/javax/faces/component/html/HtmlCommandButton.html" target="_blank"><code>HtmlCommandButton</code></a> it supports all the features of <a href="https://javaserverfaces.java.net/nonav/docs/2.2/vdldocs/facelets/h/commandButton.html" target="_blank"><code>h:commandButton</code></a>. The component must be a child of h:form in order to trigger the action or actionListener.]]></description>
+		<description><![CDATA[CommandButton is a UICommand component that renders a styleable HTML <code>&lt;button&gt;</code> element. The default type is submit. Since it extends <a href="http://docs.oracle.com/javaee/7/api/jakarta/faces/component/html/HtmlCommandButton.html" target="_blank"><code>HtmlCommandButton</code></a> it supports all the features of <a href="https://javaserverfaces.java.net/nonav/docs/2.2/vdldocs/facelets/h/commandButton.html" target="_blank"><code>h:commandButton</code></a>. The component must be a child of h:form in order to trigger the action or actionListener.]]></description>
 		<tag-name>commandButton</tag-name>
 		<attribute>
 			<attribute-extension>
@@ -807,9 +807,9 @@ java.util.List<java.lang.String> filterResults(java.lang.String, java.util.List<
 			<type><![CDATA[java.lang.String]]></type>
 		</attribute>
 		<tag-extension>
-			<delegate-renderer-type><![CDATA["javax.faces.Button"]]></delegate-renderer-type>
+			<delegate-renderer-type><![CDATA["jakarta.faces.Button"]]></delegate-renderer-type>
 			<extends-tags>autoAjaxCommandCommon buttonCommon uiCommandInherited</extends-tags>
-			<parent-class><![CDATA[javax.faces.component.html.HtmlCommandButton]]></parent-class>
+			<parent-class><![CDATA[jakarta.faces.component.html.HtmlCommandButton]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.alloy.component.button.internal.AbstractButtonRenderer]]></renderer-parent-class>
 		</tag-extension>
 	</tag>
@@ -817,9 +817,9 @@ java.util.List<java.lang.String> filterResults(java.lang.String, java.util.List<
 		<description><![CDATA[CommandLink is a UICommand component that renders an HTML <code>&lt;a&gt;</code> element. Since it extends HtmlCommandLink, it supports all the features of h:commandLink. The component must be a child of h:form in order to trigger the action or actionListener.]]></description>
 		<tag-name>commandLink</tag-name>
 		<tag-extension>
-			<delegate-renderer-type><![CDATA["javax.faces.Link"]]></delegate-renderer-type>
+			<delegate-renderer-type><![CDATA["jakarta.faces.Link"]]></delegate-renderer-type>
 			<extends-tags>anchorLinkCommonInherited autoAjaxCommandCommon disabledInherited uiCommandInherited valueInherited</extends-tags>
-			<parent-class><![CDATA[javax.faces.component.html.HtmlCommandLink]]></parent-class>
+			<parent-class><![CDATA[jakarta.faces.component.html.HtmlCommandLink]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.util.render.DelegatingRendererBase]]></renderer-parent-class>
 		</tag-extension>
 	</tag>
@@ -828,7 +828,7 @@ java.util.List<java.lang.String> filterResults(java.lang.String, java.util.List<
 		<tag-name>dataItem</tag-name>
 		<tag-extension>
 			<extends-tags>styleable uiComponentBaseInherited</extends-tags>
-			<parent-class>javax.faces.component.UIColumn</parent-class>
+			<parent-class>jakarta.faces.component.UIColumn</parent-class>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -844,7 +844,7 @@ java.util.List<java.lang.String> filterResults(java.lang.String, java.util.List<
 		</attribute>
 		<tag-extension>
 			<extends-tags>styleable uiComponentBaseInherited uiDataInherited</extends-tags>
-			<parent-class><![CDATA[javax.faces.component.UIData]]></parent-class>
+			<parent-class><![CDATA[jakarta.faces.component.UIData]]></parent-class>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -888,7 +888,7 @@ java.util.List<java.lang.String> filterResults(java.lang.String, java.util.List<
 			<alloy-ui-modules>aui-datatable,node-event-simulate</alloy-ui-modules>
 			<extends-tags>clientComponent htmlCommonEventsInherited htmlPassthroughInherited htmlTableInherited uiDataInherited</extends-tags>
 			<extra-style-classes>table table-bordered table-hover table-striped</extra-style-classes>
-			<parent-class><![CDATA[javax.faces.component.html.HtmlDataTable]]></parent-class>
+			<parent-class><![CDATA[jakarta.faces.component.html.HtmlDataTable]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.alloy.render.internal.AlloyRendererBase]]></renderer-parent-class>
 		</tag-extension>
 	</tag>
@@ -915,7 +915,7 @@ java.util.List<java.lang.String> filterResults(java.lang.String, java.util.List<
 		<tag-extension>
 			<alloy-ui-modules>aui-modal</alloy-ui-modules>
 			<alloy-ui-name>Modal</alloy-ui-name>
-			<delegate-renderer-type><![CDATA["javax.faces.Group"]]></delegate-renderer-type>
+			<delegate-renderer-type><![CDATA["jakarta.faces.Group"]]></delegate-renderer-type>
 			<extends-tags>dialogPopoverCommon htmlCommonEventsInherited overlayCommon</extends-tags>
 			<parent-class><![CDATA[com.liferay.faces.alloy.component.panelgroup.PanelGroupBlockLayout]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.alloy.component.overlay.internal.OverlayRendererBase]]></renderer-parent-class>
@@ -970,12 +970,12 @@ java.util.List<java.lang.String> filterResults(java.lang.String, java.util.List<
 		<tag-extension>
 			<extends-tags>keyboardDOMEvents mouseDOMEvents styleable uiComponentBaseInherited</extends-tags>
 			<extra-style-classes>fieldset</extra-style-classes>
-			<parent-class><![CDATA[javax.faces.component.UIPanel]]></parent-class>
+			<parent-class><![CDATA[jakarta.faces.component.UIPanel]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.util.render.PassThroughRenderer]]></renderer-parent-class>
 		</tag-extension>
 	</tag>
 	<tag>
-		<description><![CDATA[Form is an <a href="http://docs.oracle.com/javaee/7/api/javax/faces/component/html/HtmlForm.html" target="_blank"><code>HtmlForm</code></a> component that delegates rendering to its JSF renderer.]]></description>
+		<description><![CDATA[Form is an <a href="http://docs.oracle.com/javaee/7/api/jakarta/faces/component/html/HtmlForm.html" target="_blank"><code>HtmlForm</code></a> component that delegates rendering to its JSF renderer.]]></description>
 		<tag-name>form</tag-name>
 		<attribute>
 			<attribute-extension>
@@ -1028,9 +1028,9 @@ java.util.List<java.lang.String> filterResults(java.lang.String, java.util.List<
 			<type><![CDATA[java.lang.String]]></type>
 		</attribute>
 		<tag-extension>
-			<delegate-renderer-type><![CDATA["javax.faces.Form"]]></delegate-renderer-type>
+			<delegate-renderer-type><![CDATA["jakarta.faces.Form"]]></delegate-renderer-type>
 			<extends-tags>htmlCommonEventsInherited htmlPassthroughInherited</extends-tags>
-			<parent-class><![CDATA[javax.faces.component.html.HtmlForm]]></parent-class>
+			<parent-class><![CDATA[jakarta.faces.component.html.HtmlForm]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.util.render.DelegatingRendererBase]]></renderer-parent-class>
 		</tag-extension>
 	</tag>
@@ -1038,9 +1038,9 @@ java.util.List<java.lang.String> filterResults(java.lang.String, java.util.List<
 		<description><![CDATA[Head is a UIOutput that renders a <code>&lt;head&gt;</code> element for webapps, but not for portlets. In the case of portlets, the presence of alloy:head informs the JSF portlet bridge that JSF resources with target="head" should be included in the <code>&lt;head&gt;</code> element rendered by the portal. Since it extends HtmlHead, it supports all the features of h:head.]]></description>
 		<tag-name>head</tag-name>
 		<tag-extension>
-			<delegate-renderer-type><![CDATA["javax.faces.Head"]]></delegate-renderer-type>
+			<delegate-renderer-type><![CDATA["jakarta.faces.Head"]]></delegate-renderer-type>
 			<extends-tags>headBodyCommonInherited</extends-tags>
-			<parent-class><![CDATA[javax.faces.component.html.HtmlHead]]></parent-class>
+			<parent-class><![CDATA[jakarta.faces.component.html.HtmlHead]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.util.render.DelegatingRendererBase]]></renderer-parent-class>
 		</tag-extension>
 	</tag>
@@ -1137,9 +1137,9 @@ java.util.List<java.lang.String> filterResults(java.lang.String, java.util.List<
 			<type><![CDATA[java.lang.String]]></type>
 		</attribute>
 		<tag-extension>
-			<delegate-renderer-type><![CDATA["javax.faces.Image"]]></delegate-renderer-type>
+			<delegate-renderer-type><![CDATA["jakarta.faces.Image"]]></delegate-renderer-type>
 			<extends-tags>altInherited htmlCommonEventsInherited htmlPassthroughInherited</extends-tags>
-			<parent-class><![CDATA[javax.faces.component.html.HtmlGraphicImage]]></parent-class>
+			<parent-class><![CDATA[jakarta.faces.component.html.HtmlGraphicImage]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.util.render.DelegatingRendererBase]]></renderer-parent-class>
 		</tag-extension>
 	</tag>
@@ -1175,7 +1175,7 @@ java.util.List<java.lang.String> filterResults(java.lang.String, java.util.List<
 		<tag-extension>
 			<alloy-ui-modules>aui-datepicker</alloy-ui-modules>
 			<alloy-ui-name>DatePicker</alloy-ui-name>
-			<delegate-renderer-type><![CDATA["javax.faces.Text"]]></delegate-renderer-type>
+			<delegate-renderer-type><![CDATA["jakarta.faces.Text"]]></delegate-renderer-type>
 			<extends-tags>inputDateTimeCommon inputDateTimeInherited</extends-tags>
 			<extra-style-classes>form-inline</extra-style-classes>
 			<parent-class><![CDATA[com.liferay.faces.alloy.component.inputdatetime.InputDateTime]]></parent-class>
@@ -1312,10 +1312,10 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 		<description><![CDATA[InputHidden is a UIInput component that renders an input element with type="hidden". Since it extends HtmlInputHidden, it supports all the features of h:inputHidden.]]></description>
 		<tag-name>inputHidden</tag-name>
 		<tag-extension>
-			<delegate-renderer-type><![CDATA["javax.faces.Hidden"]]></delegate-renderer-type>
+			<delegate-renderer-type><![CDATA["jakarta.faces.Hidden"]]></delegate-renderer-type>
 			<extends-tags>uiInputInherited</extends-tags>
 			<generate-null-check-decode-method>true</generate-null-check-decode-method>
-			<parent-class><![CDATA[javax.faces.component.html.HtmlInputHidden]]></parent-class>
+			<parent-class><![CDATA[jakarta.faces.component.html.HtmlInputHidden]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.util.render.DelegatingRendererBase]]></renderer-parent-class>
 		</tag-extension>
 	</tag>
@@ -1332,11 +1332,11 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 			<type><![CDATA[boolean]]></type>
 		</attribute>
 		<tag-extension>
-			<delegate-renderer-type><![CDATA["javax.faces.Secret"]]></delegate-renderer-type>
+			<delegate-renderer-type><![CDATA["jakarta.faces.Secret"]]></delegate-renderer-type>
 			<extends-tags>altInherited autocompleteInherited disabledInherited inputCommonInherited sizeInherited</extends-tags>
 			<extra-style-classes>form-control</extra-style-classes>
 			<generate-null-check-decode-method>true</generate-null-check-decode-method>
-			<parent-class><![CDATA[javax.faces.component.html.HtmlInputSecret]]></parent-class>
+			<parent-class><![CDATA[jakarta.faces.component.html.HtmlInputSecret]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.util.render.DelegatingRendererBase]]></renderer-parent-class>
 		</tag-extension>
 	</tag>
@@ -1451,10 +1451,10 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 		<tag-extension>
 			<alloy-ui-modules>aui-ace-editor</alloy-ui-modules>
 			<alloy-ui-name>AceEditor</alloy-ui-name>
-			<delegate-renderer-type><![CDATA["javax.faces.Text"]]></delegate-renderer-type>
+			<delegate-renderer-type><![CDATA["jakarta.faces.Text"]]></delegate-renderer-type>
 			<extends-tags>clientComponent disabledInherited facesMessageLabelInherited styleableInherited uiInputInherited</extends-tags>
 			<generate-null-check-decode-method>true</generate-null-check-decode-method>
-			<parent-class><![CDATA[javax.faces.component.html.HtmlInputText]]></parent-class>
+			<parent-class><![CDATA[jakarta.faces.component.html.HtmlInputText]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.alloy.render.internal.DelegatingAlloyRendererBase]]></renderer-parent-class>
 		</tag-extension>
 	</tag>
@@ -1462,11 +1462,11 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 		<description><![CDATA[InputText is a UIInput component that renders a field for editing single-line text. Since it extends HtmlInputText, it supports all the features of h:inputText.]]></description>
 		<tag-name>inputText</tag-name>
 		<tag-extension>
-			<delegate-renderer-type><![CDATA["javax.faces.Text"]]></delegate-renderer-type>
+			<delegate-renderer-type><![CDATA["jakarta.faces.Text"]]></delegate-renderer-type>
 			<extends-tags>altInherited autocompleteInherited disabledInherited inputCommonInherited sizeInherited</extends-tags>
 			<extra-style-classes>form-control</extra-style-classes>
 			<generate-null-check-decode-method>true</generate-null-check-decode-method>
-			<parent-class><![CDATA[javax.faces.component.html.HtmlInputText]]></parent-class>
+			<parent-class><![CDATA[jakarta.faces.component.html.HtmlInputText]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.util.render.DelegatingRendererBase]]></renderer-parent-class>
 		</tag-extension>
 	</tag>
@@ -1490,11 +1490,11 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 			<type><![CDATA[int]]></type>
 		</attribute>
 		<tag-extension>
-			<delegate-renderer-type><![CDATA["javax.faces.Textarea"]]></delegate-renderer-type>
+			<delegate-renderer-type><![CDATA["jakarta.faces.Textarea"]]></delegate-renderer-type>
 			<extends-tags>disabledInherited inputCommonInherited</extends-tags>
 			<extra-style-classes>form-control</extra-style-classes>
 			<generate-null-check-decode-method>true</generate-null-check-decode-method>
-			<parent-class><![CDATA[javax.faces.component.html.HtmlInputTextarea]]></parent-class>
+			<parent-class><![CDATA[jakarta.faces.component.html.HtmlInputTextarea]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.util.render.DelegatingRendererBase]]></renderer-parent-class>
 		</tag-extension>
 	</tag>
@@ -1616,7 +1616,7 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 		<tag-extension>
 			<alloy-ui-modules>aui-timepicker</alloy-ui-modules>
 			<alloy-ui-name>TimePicker</alloy-ui-name>
-			<delegate-renderer-type><![CDATA["javax.faces.Text"]]></delegate-renderer-type>
+			<delegate-renderer-type><![CDATA["jakarta.faces.Text"]]></delegate-renderer-type>
 			<extends-tags>inputDateTimeCommon inputDateTimeInherited</extends-tags>
 			<extra-style-classes>form-inline</extra-style-classes>
 			<parent-class><![CDATA[com.liferay.faces.alloy.component.inputdatetime.InputDateTime]]></parent-class>
@@ -1627,9 +1627,9 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 		<description><![CDATA[Link is a UIOutcomeTarget component that renders an <code>&lt;a&gt;</code> element (hyperlink). Since it extends HtmlLink, it supports all the features of h:link.]]></description>
 		<tag-name>link</tag-name>
 		<tag-extension>
-			<delegate-renderer-type><![CDATA["javax.faces.Link"]]></delegate-renderer-type>
+			<delegate-renderer-type><![CDATA["jakarta.faces.Link"]]></delegate-renderer-type>
 			<extends-tags>anchorLinkCommonInherited disabledInherited styleableInherited uiComponentBaseInherited uiOutcomeTargetInherited valueInherited</extends-tags>
-			<parent-class><![CDATA[javax.faces.component.html.HtmlOutcomeTargetLink]]></parent-class>
+			<parent-class><![CDATA[jakarta.faces.component.html.HtmlOutcomeTargetLink]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.util.render.DelegatingRendererBase]]></renderer-parent-class>
 		</tag-extension>
 	</tag>
@@ -1874,7 +1874,7 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 		<tag-extension>
 			<extends-tags>styleable uiComponentBaseInherited</extends-tags>
 			<generate-renderer>false</generate-renderer>
-			<parent-class><![CDATA[javax.faces.component.UIColumn]]></parent-class>
+			<parent-class><![CDATA[jakarta.faces.component.UIColumn]]></parent-class>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -1889,10 +1889,10 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 			<type><![CDATA[java.lang.String]]></type>
 		</attribute>
 		<tag-extension>
-			<delegate-renderer-type><![CDATA["javax.faces.Message"]]></delegate-renderer-type>
+			<delegate-renderer-type><![CDATA["jakarta.faces.Message"]]></delegate-renderer-type>
 			<extends-tags>messageCommonInherited</extends-tags>
 			<extra-style-classes>help-block</extra-style-classes>
-			<parent-class><![CDATA[javax.faces.component.html.HtmlMessage]]></parent-class>
+			<parent-class><![CDATA[jakarta.faces.component.html.HtmlMessage]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.util.render.DelegatingRendererBase]]></renderer-parent-class>
 		</tag-extension>
 	</tag>
@@ -1926,9 +1926,9 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 			<type><![CDATA[java.lang.String]]></type>
 		</attribute>
 		<tag-extension>
-			<delegate-renderer-type><![CDATA["javax.faces.Messages"]]></delegate-renderer-type>
+			<delegate-renderer-type><![CDATA["jakarta.faces.Messages"]]></delegate-renderer-type>
 			<extends-tags>messageCommonInherited</extends-tags>
-			<parent-class><![CDATA[javax.faces.component.html.HtmlMessages]]></parent-class>
+			<parent-class><![CDATA[jakarta.faces.component.html.HtmlMessages]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.util.render.DelegatingRendererBase]]></renderer-parent-class>
 		</tag-extension>
 	</tag>
@@ -1936,9 +1936,9 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 		<description><![CDATA[OutputFormat is a UIOutput component that renders parameterized text. Since it extends HtmlOutputFormat, it supports all the features of h:outputFormat.]]></description>
 		<tag-name>outputFormat</tag-name>
 		<tag-extension>
-			<delegate-renderer-type><![CDATA["javax.faces.Format"]]></delegate-renderer-type>
+			<delegate-renderer-type><![CDATA["jakarta.faces.Format"]]></delegate-renderer-type>
 			<extends-tags>escapeInherited htmlPassthroughInherited uiOutputInherited</extends-tags>
-			<parent-class><![CDATA[javax.faces.component.html.HtmlOutputFormat]]></parent-class>
+			<parent-class><![CDATA[jakarta.faces.component.html.HtmlOutputFormat]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.util.render.DelegatingRendererBase]]></renderer-parent-class>
 		</tag-extension>
 	</tag>
@@ -1954,9 +1954,9 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 			<type><![CDATA[java.lang.String]]></type>
 		</attribute>
 		<tag-extension>
-			<delegate-renderer-type><![CDATA["javax.faces.Label"]]></delegate-renderer-type>
+			<delegate-renderer-type><![CDATA["jakarta.faces.Label"]]></delegate-renderer-type>
 			<extends-tags>escapeInherited htmlAccessibilityEventsInherited htmlPassthrough uiOutputInherited</extends-tags>
-			<parent-class><![CDATA[javax.faces.component.html.HtmlOutputLabel]]></parent-class>
+			<parent-class><![CDATA[jakarta.faces.component.html.HtmlOutputLabel]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.util.render.DelegatingRendererBase]]></renderer-parent-class>
 		</tag-extension>
 	</tag>
@@ -1964,9 +1964,9 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 		<description><![CDATA[OutputLink is a UIOutput component that renders an <code>&lt;a&gt;</code> element (hyperlink). Since it extends HtmlOutputLink, it supports all the features of h:outputLink.]]></description>
 		<tag-name>outputLink</tag-name>
 		<tag-extension>
-			<delegate-renderer-type><![CDATA["javax.faces.Link"]]></delegate-renderer-type>
+			<delegate-renderer-type><![CDATA["jakarta.faces.Link"]]></delegate-renderer-type>
 			<extends-tags>anchorLinkCommonInherited disabledInherited htmlAccessibilityEventsInherited htmlPassthrough uiOutputInherited</extends-tags>
-			<parent-class><![CDATA[javax.faces.component.html.HtmlOutputLink]]></parent-class>
+			<parent-class><![CDATA[jakarta.faces.component.html.HtmlOutputLink]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.util.render.DelegatingRendererBase]]></renderer-parent-class>
 		</tag-extension>
 	</tag>
@@ -2004,7 +2004,7 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 		<tag-extension>
 			<alloy-ui-modules>aui-char-counter</alloy-ui-modules>
 			<alloy-ui-name>CharCounter</alloy-ui-name>
-			<delegate-renderer-type><![CDATA["javax.faces.Text"]]></delegate-renderer-type>
+			<delegate-renderer-type><![CDATA["jakarta.faces.Text"]]></delegate-renderer-type>
 			<extends-tags>clientComponent outputTextInherited</extends-tags>
 			<parent-class><![CDATA[com.liferay.faces.alloy.component.outputtext.OutputTextBase]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.alloy.render.internal.DelegatingAlloyRendererBase]]></renderer-parent-class>
@@ -2024,10 +2024,10 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 			<type><![CDATA[java.lang.String]]></type>
 		</attribute>
 		<tag-extension>
-			<delegate-component-family><![CDATA[javax.faces.component.UIOutput.COMPONENT_FAMILY]]></delegate-component-family>
-			<delegate-renderer-type><![CDATA["javax.faces.resource.Script"]]></delegate-renderer-type>
+			<delegate-component-family><![CDATA[jakarta.faces.component.UIOutput.COMPONENT_FAMILY]]></delegate-component-family>
+			<delegate-renderer-type><![CDATA["jakarta.faces.resource.Script"]]></delegate-renderer-type>
 			<extends-tags>resourceCommon uiOutputInherited</extends-tags>
-			<parent-class><![CDATA[javax.faces.component.UIOutput]]></parent-class>
+			<parent-class><![CDATA[jakarta.faces.component.UIOutput]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.alloy.component.outputscriptstylesheet.internal.OutputScriptStylesheetRendererBase]]></renderer-parent-class>
 		</tag-extension>
 	</tag>
@@ -2040,15 +2040,15 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 			<type><![CDATA[java.lang.String]]></type>
 		</attribute>
 		<tag-extension>
-			<delegate-component-family><![CDATA[javax.faces.component.UIOutput.COMPONENT_FAMILY]]></delegate-component-family>
-			<delegate-renderer-type><![CDATA["javax.faces.resource.Stylesheet"]]></delegate-renderer-type>
+			<delegate-component-family><![CDATA[jakarta.faces.component.UIOutput.COMPONENT_FAMILY]]></delegate-component-family>
+			<delegate-renderer-type><![CDATA["jakarta.faces.resource.Stylesheet"]]></delegate-renderer-type>
 			<extends-tags>resourceCommon uiOutputInherited</extends-tags>
-			<parent-class><![CDATA[javax.faces.component.UIOutput]]></parent-class>
+			<parent-class><![CDATA[jakarta.faces.component.UIOutput]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.alloy.component.outputscriptstylesheet.internal.OutputScriptStylesheetRendererBase]]></renderer-parent-class>
 		</tag-extension>
 	</tag>
 	<tag>
-		<description><![CDATA[OutputText is an <a href="http://docs.oracle.com/javaee/7/api/javax/faces/component/html/HtmlOutputText.html" target="_blank"><code>HtmlOutputText</code></a> component that delegates rendering to its JSF renderer.]]></description>
+		<description><![CDATA[OutputText is an <a href="http://docs.oracle.com/javaee/7/api/jakarta/faces/component/html/HtmlOutputText.html" target="_blank"><code>HtmlOutputText</code></a> component that delegates rendering to its JSF renderer.]]></description>
 		<tag-name>outputText</tag-name>
 		<attribute>
 			<attribute-extension>
@@ -2060,9 +2060,9 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 			<type><![CDATA[java.lang.String]]></type>
 		</attribute>
 		<tag-extension>
-			<delegate-renderer-type><![CDATA["javax.faces.Text"]]></delegate-renderer-type>
+			<delegate-renderer-type><![CDATA["jakarta.faces.Text"]]></delegate-renderer-type>
 			<extends-tags>htmlPassthroughInherited uiOutputInherited</extends-tags>
-			<parent-class><![CDATA[javax.faces.component.html.HtmlOutputText]]></parent-class>
+			<parent-class><![CDATA[jakarta.faces.component.html.HtmlOutputText]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.util.render.DelegatingRendererBase]]></renderer-parent-class>
 		</tag-extension>
 	</tag>
@@ -2090,7 +2090,7 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 		<tag-extension>
 			<alloy-ui-modules>aui-tooltip</alloy-ui-modules>
 			<alloy-ui-name>Tooltip</alloy-ui-name>
-			<delegate-renderer-type><![CDATA["javax.faces.Text"]]></delegate-renderer-type>
+			<delegate-renderer-type><![CDATA["jakarta.faces.Text"]]></delegate-renderer-type>
 			<extends-tags>outputText outputTooltipPopoverCommon</extends-tags>
 			<parent-class><![CDATA[com.liferay.faces.alloy.component.outputtext.OutputTextBase]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.alloy.component.overlay.internal.OverlayRendererBase]]></renderer-parent-class>
@@ -2260,9 +2260,9 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 			<type><![CDATA[int]]></type>
 		</attribute>
 		<tag-extension>
-			<delegate-renderer-type><![CDATA["javax.faces.Grid"]]></delegate-renderer-type>
+			<delegate-renderer-type><![CDATA["jakarta.faces.Grid"]]></delegate-renderer-type>
 			<extends-tags>htmlTableInherited</extends-tags>
-			<parent-class><![CDATA[javax.faces.component.html.HtmlPanelGrid]]></parent-class>
+			<parent-class><![CDATA[jakarta.faces.component.html.HtmlPanelGrid]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.util.render.DelegatingRendererBase]]></renderer-parent-class>
 		</tag-extension>
 	</tag>
@@ -2278,9 +2278,9 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 			<type><![CDATA[java.lang.String]]></type>
 		</attribute>
 		<tag-extension>
-			<delegate-renderer-type><![CDATA["javax.faces.Group"]]></delegate-renderer-type>
+			<delegate-renderer-type><![CDATA["jakarta.faces.Group"]]></delegate-renderer-type>
 			<extends-tags>htmlCommonEventsInherited</extends-tags>
-			<parent-class><![CDATA[javax.faces.component.html.HtmlPanelGroup]]></parent-class>
+			<parent-class><![CDATA[jakarta.faces.component.html.HtmlPanelGroup]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.util.render.DelegatingRendererBase]]></renderer-parent-class>
 		</tag-extension>
 	</tag>
@@ -2303,7 +2303,7 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 		</attribute>
 		<tag-extension>
 			<alloy-ui-modules>aui-popover</alloy-ui-modules>
-			<delegate-renderer-type><![CDATA["javax.faces.Group"]]></delegate-renderer-type>
+			<delegate-renderer-type><![CDATA["jakarta.faces.Group"]]></delegate-renderer-type>
 			<extends-tags>dialogPopoverCommon htmlCommonEventsInherited outputTooltipPopoverCommon</extends-tags>
 			<parent-class><![CDATA[com.liferay.faces.alloy.component.panelgroup.PanelGroupBlockLayout]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.alloy.component.overlay.internal.OverlayRendererBase]]></renderer-parent-class>
@@ -2426,7 +2426,7 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 		<tag-name>row</tag-name>
 		<tag-extension>
 			<extends-tags>styleable uiComponentBaseInherited</extends-tags>
-			<parent-class><![CDATA[javax.faces.component.UIPanel]]></parent-class>
+			<parent-class><![CDATA[jakarta.faces.component.UIPanel]]></parent-class>
 			<since>1.0.0</since>
 		</tag-extension>
 	</tag>
@@ -2434,9 +2434,9 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 		<description><![CDATA[SelectBooleanCheckbox is a UISelectOne component that renders a check box. Since it extends HtmlSelectBooleanCheckbox, it supports all the features of h:selectBooleanCheckbox such as accepting f:selectItem or f:selectItems as child tags.]]></description>
 		<tag-name>selectBooleanCheckbox</tag-name>
 		<tag-extension>
-			<delegate-renderer-type><![CDATA["javax.faces.Checkbox"]]></delegate-renderer-type>
+			<delegate-renderer-type><![CDATA["jakarta.faces.Checkbox"]]></delegate-renderer-type>
 			<extends-tags>selectCommonInherited</extends-tags>
-			<parent-class><![CDATA[javax.faces.component.html.HtmlSelectBooleanCheckbox]]></parent-class>
+			<parent-class><![CDATA[jakarta.faces.component.html.HtmlSelectBooleanCheckbox]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.util.render.DelegatingRendererBase]]></renderer-parent-class>
 		</tag-extension>
 	</tag>
@@ -2460,10 +2460,10 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 			<type><![CDATA[java.lang.String]]></type>
 		</attribute>
 		<tag-extension>
-			<delegate-renderer-type><![CDATA["javax.faces.Checkbox"]]></delegate-renderer-type>
+			<delegate-renderer-type><![CDATA["jakarta.faces.Checkbox"]]></delegate-renderer-type>
 			<extends-tags>selectCommonInherited uiSelectManyInherited</extends-tags>
 			<extra-style-classes>checkbox</extra-style-classes>
-			<parent-class><![CDATA[javax.faces.component.html.HtmlSelectManyCheckbox]]></parent-class>
+			<parent-class><![CDATA[jakarta.faces.component.html.HtmlSelectManyCheckbox]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.alloy.component.select.internal.SelectDelegatingRendererBase]]></renderer-parent-class>
 		</tag-extension>
 	</tag>
@@ -2479,9 +2479,9 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 			<type><![CDATA[int]]></type>
 		</attribute>
 		<tag-extension>
-			<delegate-renderer-type><![CDATA["javax.faces.Listbox"]]></delegate-renderer-type>
+			<delegate-renderer-type><![CDATA["jakarta.faces.Listbox"]]></delegate-renderer-type>
 			<extends-tags>selectCommonInherited uiSelectManyInherited</extends-tags>
-			<parent-class><![CDATA[javax.faces.component.html.HtmlSelectManyListbox]]></parent-class>
+			<parent-class><![CDATA[jakarta.faces.component.html.HtmlSelectManyListbox]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.util.render.DelegatingRendererBase]]></renderer-parent-class>
 		</tag-extension>
 	</tag>
@@ -2489,9 +2489,9 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 		<description><![CDATA[SelectManyMenu is a UISelectMany component that renders a select element and enables the user to select multiple values. It has the same basic features of alloy:selectManyListbox except that there is no size attribute because JSF "select*menu" components always render size=1. Since it extends HtmlSelectManyMenu, it supports all the features of h:selectManyMenu such as accepting f:selectItem or f:selectItems as child tags.]]></description>
 		<tag-name>selectManyMenu</tag-name>
 		<tag-extension>
-			<delegate-renderer-type><![CDATA["javax.faces.Menu"]]></delegate-renderer-type>
+			<delegate-renderer-type><![CDATA["jakarta.faces.Menu"]]></delegate-renderer-type>
 			<extends-tags>selectCommonInherited uiSelectManyInherited</extends-tags>
-			<parent-class><![CDATA[javax.faces.component.html.HtmlSelectManyMenu]]></parent-class>
+			<parent-class><![CDATA[jakarta.faces.component.html.HtmlSelectManyMenu]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.util.render.DelegatingRendererBase]]></renderer-parent-class>
 		</tag-extension>
 	</tag>
@@ -2507,9 +2507,9 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 			<type><![CDATA[int]]></type>
 		</attribute>
 		<tag-extension>
-			<delegate-renderer-type><![CDATA["javax.faces.Listbox"]]></delegate-renderer-type>
+			<delegate-renderer-type><![CDATA["jakarta.faces.Listbox"]]></delegate-renderer-type>
 			<extends-tags>selectCommonInherited uiSelectInherited</extends-tags>
-			<parent-class><![CDATA[javax.faces.component.html.HtmlSelectOneListbox]]></parent-class>
+			<parent-class><![CDATA[jakarta.faces.component.html.HtmlSelectOneListbox]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.util.render.DelegatingRendererBase]]></renderer-parent-class>
 		</tag-extension>
 	</tag>
@@ -2517,20 +2517,20 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 		<description><![CDATA[SelectOneMenu is a UISelectOne component that renders a select element (drop down list) and enables the user to select one value. Since it extends HtmlSelectOneMenu, it supports all the features of h:selectOneMenu such as accepting f:selectItem or f:selectItems as child tags.]]></description>
 		<tag-name>selectOneMenu</tag-name>
 		<tag-extension>
-			<delegate-renderer-type><![CDATA["javax.faces.Menu"]]></delegate-renderer-type>
+			<delegate-renderer-type><![CDATA["jakarta.faces.Menu"]]></delegate-renderer-type>
 			<extends-tags>selectCommonInherited uiSelectInherited</extends-tags>
-			<parent-class><![CDATA[javax.faces.component.html.HtmlSelectOneMenu]]></parent-class>
+			<parent-class><![CDATA[jakarta.faces.component.html.HtmlSelectOneMenu]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.util.render.DelegatingRendererBase]]></renderer-parent-class>
 		</tag-extension>
 	</tag>
 	<tag>
-		<description><![CDATA[SelectOneRadio is a UISelectOne component that renders radio buttons. Since it extends <a href="http://docs.oracle.com/javaee/7/api/javax/faces/component/html/HtmlSelectOneRadio.html" target="_blank"><code>HtmlSelectOneRadio</code></a>, it supports all the features of h:selectOneRadio such as accepting f:selectItem or f:selectItems as child tags. However, since it does not render a &lt;table&gt;, it does not support h:selectOneRadio's <code>border</code> and <code>layout</code> attributes.]]></description>
+		<description><![CDATA[SelectOneRadio is a UISelectOne component that renders radio buttons. Since it extends <a href="http://docs.oracle.com/javaee/7/api/jakarta/faces/component/html/HtmlSelectOneRadio.html" target="_blank"><code>HtmlSelectOneRadio</code></a>, it supports all the features of h:selectOneRadio such as accepting f:selectItem or f:selectItems as child tags. However, since it does not render a &lt;table&gt;, it does not support h:selectOneRadio's <code>border</code> and <code>layout</code> attributes.]]></description>
 		<tag-name>selectOneRadio</tag-name>
 		<tag-extension>
-			<delegate-renderer-type><![CDATA["javax.faces.Radio"]]></delegate-renderer-type>
+			<delegate-renderer-type><![CDATA["jakarta.faces.Radio"]]></delegate-renderer-type>
 			<extends-tags>selectCommonInherited uiSelectInherited</extends-tags>
 			<extra-style-classes>radio</extra-style-classes>
-			<parent-class><![CDATA[javax.faces.component.html.HtmlSelectOneRadio]]></parent-class>
+			<parent-class><![CDATA[jakarta.faces.component.html.HtmlSelectOneRadio]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.alloy.component.select.internal.SelectDelegatingRendererBase]]></renderer-parent-class>
 		</tag-extension>
 	</tag>
@@ -2542,7 +2542,7 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 			</attribute-extension>
 			<description><![CDATA[The class name of the converter instance that is to be used by this component.]]></description>
 			<name>converter</name>
-			<type><![CDATA[javax.faces.convert.Converter]]></type>
+			<type><![CDATA[jakarta.faces.convert.Converter]]></type>
 		</attribute>
 		<attribute>
 			<attribute-extension>
@@ -2579,7 +2579,7 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 		<tag-extension>
 			<alloy-ui-modules>aui-rating</alloy-ui-modules>
 			<alloy-ui-name>Rating</alloy-ui-name>
-			<delegate-renderer-type><![CDATA["javax.faces.Radio"]]></delegate-renderer-type>
+			<delegate-renderer-type><![CDATA["jakarta.faces.Radio"]]></delegate-renderer-type>
 			<extends-tags>clientComponent facesMessageLabelTaglibXMLOnly uiComponentBaseInherited uiInputInherited</extends-tags>
 			<generate-taglib-xml>false</generate-taglib-xml>
 			<parent-class><![CDATA[com.liferay.faces.alloy.component.selectoneradio.SelectOneRadioBase]]></parent-class>
@@ -2587,7 +2587,7 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 		</tag-extension>
 	</tag>
 	<tag>
-		<description><![CDATA[SelectStarRating is a UISelectOne component that renders a set of stars. The user can click on a star to select a rating and click on the same star a second time to de-select a rating. Since it extends <a href="http://docs.oracle.com/javaee/7/api/javax/faces/component/html/HtmlSelectOneRadio.html" target="_blank"><code>HtmlSelectOneRadio</code></a>, it accepts f:selectItem or f:selectItems as child tags.]]></description>
+		<description><![CDATA[SelectStarRating is a UISelectOne component that renders a set of stars. The user can click on a star to select a rating and click on the same star a second time to de-select a rating. Since it extends <a href="http://docs.oracle.com/javaee/7/api/jakarta/faces/component/html/HtmlSelectOneRadio.html" target="_blank"><code>HtmlSelectOneRadio</code></a>, it accepts f:selectItem or f:selectItems as child tags.]]></description>
 		<tag-name>selectStarRating</tag-name>
 		<tag-extension>
 			<extends-tags>clientComponentInherited selectRating styleableInherited</extends-tags>
@@ -2596,7 +2596,7 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 		</tag-extension>
 	</tag>
 	<tag>
-		<description><![CDATA[SelectThumbRating is a UISelectOne component that renders a pair of thumb icons that a user can select to indicate their favor. The user can click on a thumb to select their favor and click on the same thumb a second time to de-select their favor. Since it extends <a href="http://docs.oracle.com/javaee/7/api/javax/faces/component/html/HtmlSelectOneRadio.html" target="_blank"><code>HtmlSelectOneRadio</code></a>, it accepts f:selectItem or f:selectItems as children.]]></description>
+		<description><![CDATA[SelectThumbRating is a UISelectOne component that renders a pair of thumb icons that a user can select to indicate their favor. The user can click on a thumb to select their favor and click on the same thumb a second time to de-select their favor. Since it extends <a href="http://docs.oracle.com/javaee/7/api/jakarta/faces/component/html/HtmlSelectOneRadio.html" target="_blank"><code>HtmlSelectOneRadio</code></a>, it accepts f:selectItem or f:selectItems as children.]]></description>
 		<tag-name>selectThumbRating</tag-name>
 		<tag-extension>
 			<extends-tags>clientComponentInherited selectRating styleableInherited</extends-tags>
@@ -2633,7 +2633,7 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 		</attribute>
 		<tag-extension>
 			<extends-tags>styleable uiComponentBaseInherited</extends-tags>
-			<parent-class><![CDATA[javax.faces.component.UIColumn]]></parent-class>
+			<parent-class><![CDATA[jakarta.faces.component.UIColumn]]></parent-class>
 		</tag-extension>
 	</tag>
 	<tag>
@@ -2671,7 +2671,7 @@ void fileUploadListener(com.liferay.faces.util.component.inputfile.FileUploadEve
 		<tag-extension>
 			<alloy-ui-modules>aui-tabview</alloy-ui-modules>
 			<extends-tags>clientComponent styleable uiComponentBaseInherited uiDataInherited</extends-tags>
-			<parent-class><![CDATA[javax.faces.component.UIData]]></parent-class>
+			<parent-class><![CDATA[jakarta.faces.component.UIData]]></parent-class>
 			<renderer-parent-class><![CDATA[com.liferay.faces.alloy.render.internal.AlloyRendererBase]]></renderer-parent-class>
 		</tag-extension>
 	</tag>
