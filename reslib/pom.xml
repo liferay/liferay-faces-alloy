@@ -17,8 +17,8 @@
 			<artifactId>com.liferay.faces.util</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>jakarta.faces</groupId>
-			<artifactId>jakarta.faces-api</artifactId>
+			<groupId>${faces.api.group.id}</groupId>
+			<artifactId>${faces.api.artifact.id}</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>jakarta.servlet</groupId>
