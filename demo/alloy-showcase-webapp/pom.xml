@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>com.liferay.faces.demo</groupId>
 		<artifactId>com.liferay.faces.demo.alloy.parent</artifactId>
-		<version>5.0.0-SNAPSHOT</version>
+		<version>5.0.0</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<artifactId>com.liferay.faces.demo.alloy.showcase.webapp</artifactId>
@@ -16,7 +16,7 @@
 	<properties>
 		<integration.container>webapp</integration.container>
 		<allow.casual.multipart.parsing>false</allow.casual.multipart.parsing>
-		<liferay.faces.showcase.version>5.0.0-SNAPSHOT</liferay.faces.showcase.version>
+		<liferay.faces.showcase.version>5.0.0</liferay.faces.showcase.version>
 		<maven.test.skip>true</maven.test.skip>
 		<liferay.faces.showcase.war.scope>compile</liferay.faces.showcase.war.scope>
 	</properties>
