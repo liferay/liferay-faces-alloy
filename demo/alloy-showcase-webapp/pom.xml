@@ -259,13 +259,13 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>com.liferay.faces</groupId>
+			<groupId>com.liferay</groupId>
 			<artifactId>com.liferay.faces.alloy</artifactId>
 			<version>${project.version}</version>
 			<scope>compile</scope>
 		</dependency>
 		<dependency>
-			<groupId>com.liferay.faces</groupId>
+			<groupId>com.liferay</groupId>
 			<artifactId>com.liferay.faces.alloy.reslib</artifactId>
 			<version>${project.version}</version>
 		</dependency>
