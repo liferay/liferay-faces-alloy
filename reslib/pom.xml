@@ -6,7 +6,7 @@
 		<groupId>com.liferay</groupId>
 		<artifactId>com.liferay.faces.alloy.parent</artifactId>
 		<relativePath>../pom.xml</relativePath>
-		<version>5.0.0</version>
+		<version>5.0.1</version>
 	</parent>
 	<artifactId>com.liferay.faces.alloy.reslib</artifactId>
 	<name>Liferay Faces Alloy Resource Library</name>
