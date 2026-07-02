@@ -158,7 +158,7 @@
 									</includes>
 									<trimStackTrace>false</trimStackTrace>
 									<dependenciesToScan>
-										<dependency>com.liferay.faces.demo:com.liferay.faces.demo.jsf.showcase.webapp</dependency>
+										<dependency>com.liferay:com.liferay.faces.demo.jsf.showcase.webapp</dependency>
 									</dependenciesToScan>
 								</configuration>
 							</execution>
